@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spu</title>
+    <link href="/src/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body >
+    <!--1. Header -->
+    <div x-data="{ headerHtml: '' }" x-init="fetch('/components/navbar.html')
+            .then(r => r.text())
+            .then(html => { headerHtml = html; })" x-html="headerHtml"></div>
+    <!-- 2. Hero -->
+    <div x-data x-init="fetch('/components/hero.html').then(r => r.text()).then(d => $el.innerHTML = d)"></div>
+    <!-- 3. Statsitics -->
+    <div x-data x-init="fetch('/components/stats.html').then(r => r.text()).then(d => $el.innerHTML = d)"></div>
+    <!-- 4. Faculties -->
+    <div x-data x-init="fetch('/components/Faculties.html').then(r => r.text()).then(d => $el.innerHTML = d)"></div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
