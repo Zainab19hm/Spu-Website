@@ -1,0 +1,58 @@
+<section x-data class=" mt-[192px] bg-white font-hacen">
+    <div class="container flex flex-col md:flex-row gap-8 items-stretch">
+
+        <div
+            class="w-full md:w-[322px] h-[435px] bg-spu-blue rounded-[12px]  flex flex-col justify-center items-start text-white shrink-0">
+            <h2 class="text-[45px] font-bold leading-tight mb-12">
+                Our <br> Faculties
+            </h2>
+            <a href="#"
+                class="bg-white text-[#1e2652] px-6 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-gray-200 transition">
+                View All Faculties
+                <i class="fas fa-chevron-right text-xs"></i>
+            </a>
+        </div>
+
+        <div class="flex-1 flex gap-6 overflow-x-auto pb-4 no-scrollbar">
+            <template x-for="faculty in $store.faculties.items" :key="faculty.id">
+                <div
+                    class="min-w-[280px] bg-white rounded-[20px] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center text-center">
+
+                    <div class="w-32 h-32 mb-6">
+                        <img :src="faculty.logo" class="w-full h-full object-contain">
+                    </div>
+
+                    <h3 class="text-[22px] font-bold mb-1" :style="'color:' + faculty.color" x-text="faculty.nameAr">
+                    </h3>
+                    <p class="text-[11px] font-bold mb-6 opacity-80 tracking-wider" :style="'color:' + faculty.color"
+                        x-text="faculty.nameEn"></p>
+
+                    <div class="w-full py-2 rounded-lg text-white font-bold text-sm mb-6"
+                        :style="'background-color:' + faculty.color" x-text="faculty.years">
+                    </div>
+
+                    <a href="#" class="text-sm font-bold ml-auto" :style="'color:' + faculty.color">
+                        Learn More
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <div class="main-container flex justify-end gap-4 mt-8">
+        <button class="p-2 text-gray-400 hover:text-spu-blue"><i class="fas fa-chevron-left text-2xl"></i></button>
+        <button class="p-2 text-spu-blue"><i class="fas fa-chevron-right text-2xl"></i></button>
+    </div>
+</section>
+
+<style>
+    /* لإخفاء شريط التمرير مع بقاء ميزة السكرول */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
