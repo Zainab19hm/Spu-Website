@@ -31,7 +31,7 @@
                 <div class="group rounded-2xl">
                     <div class="mb-6 flex justify-center">
                         <div class="w-[257px] h-[281px] rounded-xl pb-5 bg-spu-blue text-white duration-300">
-                            <img :src="stat.svgPath" :alt="stat.labelEn" class="w-[101px] h-[101px] mt-[38px] mx-auto">
+                            <img :src="stat.svgPath" :alt="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn" class="w-[101px] h-[101px] mt-[38px] mx-auto">
                             <div class="text-4xl font-bold mt-[13px]">
                                 <span x-show="stat.plus" x-text="stat.plus"></span>
                                 <span x-text="stat.current"></span>

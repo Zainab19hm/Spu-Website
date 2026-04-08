@@ -23,8 +23,9 @@
     --color-spu-blue: #202759;
     /* Very Dark Blue [cite: 14, 16, 17, 18] */
     --color-spu-red: #6f1616;
+    /* --color-spu-red-hover: #c02323; */
     /* Very Dark Red [cite: 7, 8, 10, 12] */
-
+    --color-section: #EAF3FF40;
     /* 4. ألوان الكليات (حسب الملف) */
     --color-med: #BC2428;
     /* كلية الطب - Strong Red [cite: 23, 25, 26] */
@@ -63,4 +64,17 @@
 
 .hero-slant {
     clip-path: polygon(0 0, 100% 12%, 100% 100%, 0 100%);
+}
+
+.fac-card:hover i{
+    transform: translateX(15px);
+    transition: all ease-in-out 0.3s;
+}
+
+
+.shad{
+    filter: drop-shadow(0 7px 15px rgba(0, 0, 0, 0.10));
+
+
+    color:#c02323; 
 }
