@@ -282,5 +282,46 @@ document.addEventListener('alpine:init', () => {
         ]
     });
 })
-
+document.addEventListener('alpine:init', () => {
+    Alpine.store('news', {
+        items: [
+            {
+                id: 1,
+                category: 'Camps',
+                categoryColor: 'bg-[#1e2652]', // Dark blue
+                title: 'Title Of News',
+                date: 'month day, year',
+                summary: 'Brief news summary Brief news summary. Brief news summary.',
+                image: '/images/unsplash_s9CC2SKySJM.png'
+            },
+            {
+                id: 2,
+                category: 'Admission',
+                categoryColor: 'bg-[#7a1212]', // Maroon/Red
+                title: 'Title Of News',
+                date: 'month day, year',
+                summary: 'Brief news summary Brief news summary. Brief news summary.',
+                image: '/images/unsplash_VckdJzo7ig0.png'
+            },
+            {
+                id: 3,
+                category: 'Events',
+                categoryColor: 'bg-[#1a203d]', // Navy
+                title: 'Title Of News',
+                date: 'month day, year',
+                summary: 'Brief news summary Brief news summary. Brief news summary.',
+                image: 'assets/news3.jpg'
+            },
+            {
+                id: 4,
+                category: 'Community',
+                categoryColor: 'bg-[#912b2b]', // Light Crimson
+                title: 'Title Of News',
+                date: 'month day, year',
+                summary: 'Brief news summary Brief news summary. Brief news summary.',
+                image: 'assets/news4.jpg'
+            }
+        ]
+    });
+});
 Alpine.start()

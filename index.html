@@ -30,6 +30,10 @@
     <div x-data x-init="fetch('/components/paths.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
         <div x-ref="mount"></div>
     </div>
+    <!-- 6. News -->
+    <div x-data x-init="fetch('/components/new.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
+        <div x-ref="mount"></div>
+    </div>
     <script type="module" src="/main.js"></script>
 </body>
 
