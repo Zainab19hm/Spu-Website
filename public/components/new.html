@@ -1,0 +1,42 @@
+<section class="py-16 bg-white font-hacen overflow-hidden">
+    <div class="container mx-auto px-4">
+
+        <div class="flex items-center justify-between mb-10">
+            <h2 class="text-[42px] font-bold text-[#1e2652] tracking-tight">
+                SP<span class="text-spu-red">U</span> News
+            </h2>
+
+            <div class="flex items-center gap-6">
+                <a href="#"
+                    class="bg-[#1e2652] text-white px-6 py-2 rounded-md text-sm font-bold flex items-center gap-3 hover:bg-opacity-90 transition-all">
+                    View All News
+                    <i class="fas fa-chevron-right text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 pb-10 md:grid-cols-2 xl:grid-cols-4">
+
+            <template x-for="news in $store.news.items.slice(0, 4)" :key="news.id">
+                <div
+                    class="w-full bg-white rounded-[25px] shadow-[0_15px_35px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
+
+                    <div class="relative h-[210px]">
+                        <img :src="news.image" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 px-4 py-1 rounded-md text-white text-[11px] font-bold"
+                            :class="news.categoryColor" x-text="news.category"></div>
+                        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-spu-red opacity-80"></div>
+                    </div>
+
+                    <div class="p-6 text-center flex flex-col flex-1">
+                        <h3 class="text-[22px] font-bold text-black mb-1 leading-tight" x-text="news.title"></h3>
+
+                        <p class="text-spu-red text-[15px] mb-3" x-text="news.date"></p>
+
+                        <p class="text-gray-700 text-[14px] leading-[1.6] line-clamp-3" x-text="news.summary"></p>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>
