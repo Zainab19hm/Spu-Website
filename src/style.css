@@ -47,7 +47,7 @@
 
 @layer components {
     .container {
-        @apply mx-auto 
+        @apply mx-auto px-[80px] max-w-[1560px];
     }
 }
 

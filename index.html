@@ -50,6 +50,11 @@
         x-init="fetch('/components/events.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
         <div x-ref="mount"></div>
     </div>
+    <!-- 9. Healthcare -->
+    <div x-data
+        x-init="fetch('/components/healthcare.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
+        <div x-ref="mount"></div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     
     <script type="module" src="/main.js"></script>
