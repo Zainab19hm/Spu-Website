@@ -1,0 +1,55 @@
+<section x-data="researchSlider()" class="py-7.5 mt-[70px] bg-section font-hacen relative overflow-hidden">
+
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-[42px] font-bold text-spu-blue">
+                SP<span class="text-spu-red">U</span> Research
+            </h2>
+
+            <div class="flex items-center gap-4">
+                <button @click="slide('left')" class="p-2 text-gray-400 hover:text-spu-blue transition-all">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button @click="slide('right')" class="p-2 text-gray-400 hover:text-spu-blue transition-all">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div x-ref="researchTrack" class="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth pb-10">
+
+            <template x-for="item in $store.research.items" :key="item.id">
+                <div
+                    class="w-[289px] h-[348.03px] shrink-0 relative bg-white rounded-[25px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col group transition-all duration-500 hover:-translate-y-2">
+
+                    <div class="relative h-[50%] ">
+                        <img :src="item.image" :alt="item.title"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 px-4 py-1.5 rounded-lg text-white text-[11px] font-bold"
+                            :style="'background-color:' + item.tagColor" x-text="item.category"></div>
+                    </div>
+
+                    <div
+                        class="px-4 py-2 h-[40%] flex flex-col  justify-around items-start flex-1 border-b-[3px] border-transparent group-hover:border-spu-red transition-all">
+                        <p class="text-spu-red text-[13px] mb-2 font-medium" x-text="item.meta"></p>
+                        <div class="flex flex-col pb-1 justify-start">
+
+                            <h3 class="text-[18px] font-bold text-spu-blue mb-1 leading-tight" x-text="item.title"></h3>
+
+                            <p class="text-gray-500 text-[14px] research-summary"
+                                x-text="item.summary">
+                            </p>
+                        </div>
+
+                        <div class="mt-auto flex justify-start absolute right-0 bottom-0">
+                            <a :href="item.link"
+                                class="w-10 h-10 rounded-full flex items-center justify-center text-[#1e2652] group-hover:bg-[#1e2652] group-hover:text-white transition-all">
+                                <i class="fas fa-chevron-right text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>
