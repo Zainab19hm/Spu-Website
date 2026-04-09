@@ -1,4 +1,4 @@
-﻿import './src/style.css'
+import './src/style.css'
 
 import Alpine from 'alpinejs'
 
@@ -564,4 +564,65 @@ function calendarApp() {
         }
     }
 }
+
+document.addEventListener('alpine:init', () => {
+    Alpine.store('healthcare', {
+        mainCard: {
+            image: '/images/healthcare-main.png',
+            title: 'HealthCare at SPU',
+            description: 'SPU provides students with access to a well-rounded healthcare environment that combines academic learning with practical medical and dental exposure on campus',
+            featuresEn: ['University Hospital', 'Dental Clinic', 'Clinical Learning Support'],
+            featuresAr: ['مشفى الجامعة', 'عيادة الأسنان', 'دعم التعلم السريري'],
+            actionEn: 'Explore Hospital',
+            actionAr: 'استكشاف المشفى',
+            link: '#'
+        },
+        hospitalCard: {
+            image: '/images/healthcare-hospital.png',
+            titleEn: 'SPU Hospital',
+            titleAr: 'مشفى SPU',
+            descriptionEn: 'More than 105 Dental Unit More than 105 Dental Unit Digital Dentistry and Oral Regeneration Studies',
+            descriptionAr: 'أكثر من 105 وحدة طب أسنان ودراسات تجديد الفم والأسنان الرقمية',
+            link: '#'
+        },
+        dentalCard: {
+            image: '/images/healthcare-dental.png',
+            titleEn: 'SPU Dental Clinical',
+            titleAr: 'عيادة SPU للأسنان',
+            descriptionEn: 'More than 105 Dental Unit More than 105 Dental Unit Digital Dentistry and Oral Regeneration Studies',
+            descriptionAr: 'أكثر من 105 وحدة طب أسنان ودراسات تجديد الفم والأسنان الرقمية',
+            linkTextEn: 'Explore Clinic',
+            linkTextAr: 'استكشاف العيادة',
+            link: '#'
+        },
+        stats: [
+            { id: 1, labelEn: 'HOSPITAL BEDS', labelAr: 'أسرة المشفى', value: 200, current: 0, suffix: '+' },
+            { id: 2, labelEn: 'SPECIALIST DOCTORS', labelAr: 'أطباء أخصائيين', value: 80, current: 0, suffix: '+' },
+            { id: 3, labelEn: 'DENTAL CHAIRS', labelAr: 'كراسي الأسنان', value: 30, current: 0, suffix: '+' },
+            { id: 4, labelEn: 'PATIENTS ANNUALLY', labelAr: 'مرضى سنوياً', value: 12, current: 0, suffix: 'k+' }
+        ],
+        startCounting() {
+            this.stats.forEach(stat => {
+                stat.current = 0;
+                const end = stat.value;
+                const duration = 2000;
+                const frameRate = 1000 / 60;
+                const totalFrames = Math.round(duration / frameRate);
+                const increment = end / totalFrames;
+                let currentFrame = 0;
+                const timer = setInterval(() => {
+                    currentFrame++;
+                    const nextValue = Math.round(increment * currentFrame);
+                    if (currentFrame >= totalFrames) {
+                        stat.current = end;
+                        clearInterval(timer);
+                    } else {
+                        stat.current = nextValue;
+                    }
+                }, frameRate);
+            });
+        }
+    });
+});
+
 Alpine.start()
