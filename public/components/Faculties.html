@@ -26,7 +26,7 @@
                     </h2>
                     <a href="#"
                         class="bg-white mx-auto absolute w-[195px] top-[358px] left-[63px]  h-[40px] text-spu-blue justify-center rounded-[8px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
-                        <span x-text="$store.app.currentLang === 'ar' ? 'عرض الكل' : 'View All'"></span>
+                        <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
                         <i
                             class="fas fa-arrow-right text-[10px] transition-transform group-hover/btn:translate-x-1"></i>
                     </a>
@@ -67,7 +67,7 @@
                         <a href="#"
                             class="mt-auto mb-6 flex items-center gap-2 text-[13px] font-extrabold transition-all duration-300 group-hover:gap-3"
                             :style="'color:' + faculty.color">
-                            <span x-text="$store.app.currentLang === 'ar' ? 'اعرف المزيد' : 'LEARN MORE'"></span>
+                            <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>
                             <i
                                 class="fas fa-arrow-right text-[10px] opacity-50 group-hover:opacity-100 transition-transform group-hover:translate-x-1"></i>
                         </a>
