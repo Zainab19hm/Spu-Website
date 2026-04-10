@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
-/* 1. تعريف الخط الأساسي للجامعة */
+/**
+ * 1. TYPOGRAPHY
+ * Define the standard brand fonts for the university
+ */
 @font-face {
     font-family: 'HacenTunisia';
     src: url('/fonts/HacenTunisia-Regular.ttf') format('truetype');
@@ -15,74 +18,99 @@
     font-style: normal;
 }
 
+/**
+ * 2. DESIGN SYSTEM TOKENS
+ * Brand colors, fonts, and theme variables
+ */
 @theme {
-    /* font */
+    /* Branding Fonts */
     --font-hacen: "HacenTunisia", sans-serif;
 
-    /* main colors */
+    /* Core Brand Colors */
     --color-spu-blue: #202759;
-    /* Very Dark Blue [cite: 14, 16, 17, 18] */
     --color-spu-red: #6f1616;
-    /* --color-spu-red-hover: #c02323; */
-    /* Very Dark Red [cite: 7, 8, 10, 12] */
     --color-section: #EAF3FF40;
-    /* 4. ألوان الكليات (حسب الملف) */
-    --color-med: #BC2428;
-    /* كلية الطب - Strong Red [cite: 23, 25, 26] */
-    --color-dent: #1F77B4;
-    /* طب الأسنان - Strong Blue [cite: 32, 33] */
-    --color-pharm: #5ebe7b;
-    /* الصيدلة - Moderate Cyan [cite: 37, 63, 64] */
-    --color-petro: #5EBE7B;
-    /* هندسة البترول - Very Dark Cyan [cite: 46, 65, 66, 67] */
-    --color-admin: #caa949;
-    /* العلوم الإدارية - Moderate Orange [cite: 51, 68, 69, 70] */
-    --color-const: #7f8c8d;
-    /* هندسة البناء - Dark Grayish Cyan [cite: 56, 71, 72] */
-    --color-ai: #683695;
-    /* الذكاء الاصطناعي - Dark Moderate Violet [cite: 61, 73, 74] */
+
+    /* Faculty-Specific Colors */
+    --color-med: #BC2428;     /* Medicine */
+    --color-dent: #1F77B4;    /* Dentistry */
+    --color-pharm: #5ebe7b;   /* Pharmacy */
+    --color-petro: #5EBE7B;   /* Petroleum Engineering */
+    --color-admin: #caa949;   /* Administrative Sciences */
+    --color-const: #7f8c8d;   /* Construction Engineering */
+    --color-ai: #683695;      /* Artificial Intelligence */
 }
 
-
-
+/**
+ * 3. LAYOUT COMPONENTS
+ * Global structural classes
+ */
 @layer components {
+    /* 
+       Standard Container Style 
+       Enforces a global 80px horizontal padding and centers content
+    */
     .container {
         @apply mx-auto px-[80px] max-w-[1560px];
     }
 }
 
+/**
+ * 4. UTILITY & COMPONENT CLASSES
+ */
 
-.line-height-100{
+/* Custom Line Heights */
+.line-height-100 {
     line-height: 100%;
 }
+
+/* Hero Section Refinements */
 .hero-container {
     backface-visibility: hidden;
     perspective: 1000px;
 }
 
-
-
 .hero-slant {
     clip-path: polygon(0 0, 100% 12%, 100% 100%, 0 100%);
 }
 
-.fac-card:hover i{
+/* Interactive Faculty Cards */
+.fac-card:hover i {
     transform: translateX(15px);
     transition: all ease-in-out 0.3s;
 }
 
-
-.shad{
+/* Custom Shadows and Effects */
+.shad {
     filter: drop-shadow(0 7px 15px rgba(0, 0, 0, 0.10));
-
-
-    color:#c02323; 
+    color: #c02323; 
 }
 
-/* Research card summary line clamp */
+/* Research card summary line clamp (Safari/Legacy Support) */
 .research-summary {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* limit to 3 lines */
-  overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    overflow: hidden;
+}
+
+/* Hide scrollbars but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;    /* Firefox */
+}
+
+/* 
+   RTL ICON MIRRORING
+   Automatically flip directional icons when the document direction is RTL
+*/
+[dir="rtl"] .fa-chevron-right,
+[dir="rtl"] .fa-chevron-left,
+[dir="rtl"] .fa-arrow-right,
+[dir="rtl"] .fa-arrow-left {
+    transform: scaleX(-1);
 }

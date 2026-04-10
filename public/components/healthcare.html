@@ -1,16 +1,22 @@
+<!-- 
+    HEALTHCARE FACILITIES SECTION
+    Includes content cards for Hospital/Dental and a scrolling-stats banner 
+-->
 <section 
     x-data="{
         hasCounted: false,
+        // Trigger counter animation once
         runCount() {
             if (this.hasCounted) return;
             this.hasCounted = true;
             this.$store.healthcare.startCounting();
         },
+        // Initialize IntersectionObserver to detect when user scrolls to the stats
         init() {
             const observer = new IntersectionObserver((entries) => {
                 if (entries[0].isIntersecting) {
                     this.runCount();
-                    observer.disconnect();
+                    observer.disconnect(); // Stop observing after animation starts
                 }
             }, { threshold: 0.1 });
             observer.observe(this.$refs.statsBanner);
@@ -19,23 +25,24 @@
     class="py-16 bg-section font-hacen overflow-hidden"
 >
     <div class="container">
-        <!-- Section Title -->
+        <!-- Section Title with branding 'U' -->
         <h2 class="text-[42px] font-bold text-spu-blue mb-10 text-center lg:text-right">
-            SP<span class="text-spu-red">U</span> Healthcare Facilities
+            <span x-text="$store.app.currentLang === 'ar' ? 'المرافق الطبية والخدمية' : 'SPU Healthcare Facilities'"></span>
         </h2>
 
-        <!-- Main Grid -->
+        <!-- Main Facility Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
             
-            <!-- Large Card (Left) -->
+            <!-- Large Focus Card (Left) -->
             <div class="lg:col-span-7 bg-white rounded-[25px] shadow-xl overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-500">
                 <div class="h-[300px] overflow-hidden">
                     <img :src="$store.healthcare.mainCard.image" alt="Healthcare Staff" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 </div>
                 <div class="p-8 flex-1">
-                    <h3 class="text-[28px] font-bold text-spu-blue mb-4" x-text="$store.healthcare.mainCard.title"></h3>
-                    <p class="text-gray-600 text-[16px] leading-relaxed mb-8" x-text="$store.healthcare.mainCard.description"></p>
+                    <h3 class="text-[28px] font-bold text-spu-blue mb-4" x-text="$store.app.currentLang === 'ar' ? $store.healthcare.mainCard.titleAr : $store.healthcare.mainCard.titleEn"></h3>
+                    <p class="text-gray-600 text-[16px] leading-relaxed mb-8" x-text="$store.app.currentLang === 'ar' ? $store.healthcare.mainCard.descriptionAr : $store.healthcare.mainCard.descriptionEn"></p>
                     
+                    <!-- Feature List with localized features from store -->
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <template x-for="feature in ($store.app.currentLang === 'ar' ? $store.healthcare.mainCard.featuresAr : $store.healthcare.mainCard.featuresEn)" :key="feature">
                             <li class="flex items-center gap-3">
@@ -47,13 +54,14 @@
                         </template>
                     </ul>
 
+                    <!-- Primary Action Button -->
                     <a :href="$store.healthcare.mainCard.link" class="inline-flex items-center justify-center px-10 py-3.5 bg-spu-blue text-white rounded-[12px] font-bold hover:bg-opacity-90 transition-all">
                        <span x-text="$store.app.currentLang === 'ar' ? $store.healthcare.mainCard.actionAr : $store.healthcare.mainCard.actionEn"></span>
                     </a>
                 </div>
             </div>
 
-            <!-- Right Column (Stacked Cards) -->
+            <!-- Side Facilities (Stacked) -->
             <div class="lg:col-span-5 flex flex-col gap-8">
                 
                 <!-- Hospital Card -->
@@ -85,9 +93,8 @@
             </div>
         </div>
 
-        <!-- Statistics Banner -->
+        <!-- Animated Statistics Banner -->
         <div x-ref="statsBanner" class="bg-spu-blue rounded-[25px] py-12 px-8 shadow-2xl relative overflow-hidden">
-            <!-- Decorative background pattern -->
             <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">

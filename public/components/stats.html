@@ -1,3 +1,7 @@
+<!-- 
+    MAIN UNIVERSITY STATISTICS
+    Horizontal banner with animated numeric counters
+-->
 <section
     x-data="{
         hasCounted: false,
@@ -7,6 +11,7 @@
             this.$store.stats.startCounting();
         },
         init() {
+            // Detect when stats banner enters viewport to start counting
             const observer = new IntersectionObserver((entries) => {
                 if (entries[0].isIntersecting) {
                     this.runCount();
@@ -16,6 +21,7 @@
 
             observer.observe(this.$el);
 
+            // Manual check for initial visibility
             const rect = this.$el.getBoundingClientRect();
             const inView = rect.top < window.innerHeight && rect.bottom > 0;
             if (inView) {
@@ -26,11 +32,13 @@
     }"
     class="text-white font-hacen overflow-hidden absolute top-[801px] w-full z-10">
     <div class="container">
+        <!-- Statistics Grid -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-[71px] text-center">
             <template x-for="stat in $store.stats.items" :key="stat.id">
                 <div class="group rounded-2xl">
                     <div class="mb-6 flex justify-center">
-                        <div class="w-[257px] h-[281px] rounded-xl pb-5 bg-spu-blue text-white duration-300">
+                        <!-- Stat Item Card -->
+                        <div class="w-[257px] h-[281px] rounded-xl pb-5 bg-spu-blue text-white duration-300 shadow-xl">
                             <img :src="stat.svgPath" :alt="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn" class="w-[101px] h-[101px] mt-[38px] mx-auto">
                             <div class="text-4xl font-bold mt-[13px]">
                                 <span x-show="stat.plus" x-text="stat.plus"></span>

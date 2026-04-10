@@ -82,7 +82,7 @@
                             class="mt-auto flex items-center justify-between text-[13px] font-bold transition-all"
                             :class="$store.paths.activePath === path.id ? 'text-blue-300' : 'text-spu-blue'"
                         >
-                            <span x-text="$store.app.currentLang === 'ar' ? 'اعرف المزيد' : 'LEARN MORE'"></span>
+                            <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>
                             <i class="fas fa-arrow-right text-[12px] transition-transform group-hover:translate-x-2"></i>
                         </div>
                     </div>
