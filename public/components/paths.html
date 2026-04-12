@@ -36,7 +36,6 @@
 
             <div
                 x-ref="pathsTrack"
-                :class="$store.app.currentLang === 'ar' ? 'lg:-ml-[50vw] lg:pl-4' : 'lg:-mr-[50vw] lg:pr-4'"
                 class="flex-1 w-full h-[390px] flex flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth px-4 items-start z-10"
             >
                 <template x-for="path in $store.paths.items" :key="path.id">

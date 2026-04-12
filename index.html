@@ -7,59 +7,30 @@
     <link href="/src/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <link rel="icon" href="data:,">
 </head>
 
 <body>
     <!--1. Header -->
-    <div x-data
-        x-init="fetch('/components/navbar.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/navbar.html')" x-html="html"></div>
     <!-- 2. Hero -->
-    <div x-data
-        x-init="fetch('/components/hero.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/hero.html')" x-html="html"></div>
     <!-- 3. Statsitics -->
-    <div x-data
-        x-init="fetch('/components/stats.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/stats.html')" x-html="html"></div>
     <!-- 4. Faculties -->
-    <div x-data
-        x-init="fetch('/components/faculties.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/faculties.html')" x-html="html"></div>
     <!-- 5. Paths -->
-    <div x-data
-        x-init="fetch('/components/paths.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/paths.html')" x-html="html"></div>
     <!-- 6. News -->
-    <div x-data
-        x-init="fetch('/components/news.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/news.html')" x-html="html"></div>
     <!-- 7. Research -->
-    <div x-data
-        x-init="fetch('/components/research.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/research.html')" x-html="html"></div>
     <!-- 8. Events -->
-    <div x-data
-        x-init="fetch('/components/events.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/events.html')" x-html="html"></div>
     <!-- 9. Healthcare -->
-    <div x-data
-        x-init="fetch('/components/healthcare.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </div>
+    <div x-data="sectionLoader('/components/healthcare.html')" x-html="html"></div>
     <!-- 10. Footer -->
-    <footer x-data
-        x-init="fetch('/components/footer.html').then(r => r.text()).then(d => { $refs.mount.innerHTML = d; Alpine.initTree($refs.mount) })">
-        <div x-ref="mount"></div>
-    </footer>
+    <footer x-data="sectionLoader('/components/footer.html')" x-html="html"></footer>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     
     <script type="module" src="/main.js"></script>

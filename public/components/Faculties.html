@@ -34,7 +34,6 @@
             </div>
 
             <div x-ref="facultiesTrack"
-                :class="$store.app.currentLang === 'ar' ? 'lg:-ml-[calc((100vw-1400px)/2+100px)] lg:pl-2' : 'lg:-mr-[calc((100vw-1400px)/2+100px)] lg:pr-2'"
                 class="flex-1 h-[390px] flex flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth px-4 items-start z-10">
 
                 <template x-for="faculty in $store.faculties.items" :key="faculty.id">

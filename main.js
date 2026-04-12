@@ -119,24 +119,70 @@ document.addEventListener('alpine:init', () => {
     // --- 3. HERO SLIDER ---
     Alpine.store('hero', {
         currentIndex: 0,
+        isDarkImage: false,
         titleAr: 'الجامعة السورية الخاصة',
         titleEn: 'Syrian Private University',
         subtitleAr: 'تعليم أكاديمي متميز يجمع بين الخبرة والابتكار لبناء جيل مبدع.',
         subtitleEn: 'Explore accredited programs, campus life, and a direct path to your success.',
         images: [
-            '/images/slider-1.jpeg',
-            '/images/slider-2.jpg',
-            '/images/slider-3.jpg',
-            '/images/slider-4.jpg'
+            '/images/DSC_1015.JPG',
+            '/images/DSC_1016.JPG',
+            '/images/DSC_1060.jpg',
+            '/images/DSC_1075.JPG'
         ],
         primaryBtnAr: 'استكشف البرامج', primaryBtnEn: 'Explore Programs',
         secondaryBtnAr: 'جولة افتراضية', secondaryBtnEn: 'Virtual Tour',
 
         init() {
+            this.checkCurrentDarkness();
             // Auto-rotate hero images every 5 seconds
             setInterval(() => {
                 this.currentIndex = (this.currentIndex + 1) % this.images.length;
+                this.checkCurrentDarkness();
             }, 5000);
+        },
+
+        checkCurrentDarkness() {
+            const imgSrc = this.images[this.currentIndex];
+            if (!imgSrc) return;
+            
+            const img = new Image();
+            img.src = imgSrc;
+            img.onload = () => {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 50;
+                    canvas.height = 10; // We only sample the top section where the navbar sits
+                    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                    
+                    // Draw top 20% of the image into our small 50x10 analytical canvas
+                    ctx.drawImage(img, 0, 0, img.width, img.height * 0.2, 0, 0, 50, 10);
+                    
+                    const data = ctx.getImageData(0, 0, 50, 10).data;
+                    let r = 0, g = 0, b = 0;
+                    
+                    for (let i = 0; i < data.length; i += 4) {
+                        r += data[i];
+                        g += data[i + 1];
+                        b += data[i + 2];
+                    }
+                    
+                    const pixelCount = data.length / 4;
+                    r /= pixelCount;
+                    g /= pixelCount;
+                    b /= pixelCount;
+                    
+                    // Standard luminance formula
+                    const perceivedLightness = (r * 299 + g * 587 + b * 114) / 1000;
+                    
+                    // If darkness threshold is met, consider it dark
+                    this.isDarkImage = perceivedLightness < 150;
+                } catch(e) {
+                    // Fallback securely in case of cross-origin or canvas issues
+                    this.isDarkImage = true; 
+                    console.error('Image darkness calculation error:', e);
+                }
+            };
         }
     });
 
@@ -287,12 +333,35 @@ document.addEventListener('alpine:init', () => {
     });
 
 
+    // --- 11. REUSABLE SECTION LOADER ---
+    Alpine.data('sectionLoader', (url) => ({
+        html: '',
+        async init() {
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                // Security check to prevent infinite loops if Vite serves index.html for a 404 path
+                if (text.includes('<!DOCTYPE html>')) {
+                    console.error('Failed to load component or path not found:', url);
+                    return;
+                }
+                
+                this.html = text;
+            } catch (err) {
+                console.error('Error loading section:', url, err);
+            }
+        }
+    }));
+
 });
 
 /**
  * COMPONENT COMPONENT LOGIC
  * Standalone functions for specific complex animations and calendars
  */
+
+
 
 // Research Slider Logic
 window.researchSlider = function() {
