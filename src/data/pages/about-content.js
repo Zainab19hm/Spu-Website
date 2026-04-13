@@ -81,6 +81,51 @@ export const aboutPageContent = {
         roleEn: 'Academic leadership focused on quality and long-term impact.',
         roleAr: 'قيادة أكاديمية تركز على الجودة والأثر طويل المدى.'
     },
+    history: {
+        eyebrowEn: 'Our Journey',
+        eyebrowAr: 'رحلتنا عبر الزمن',
+        titleEn: 'A legacy of excellence built through determination and vision.',
+        titleAr: 'إرث من التميز بني بالعزيمة والرؤية.',
+        summaryEn: 'Since our establishment in 2005, SPU has evolved from a foundational concept into one of the region\'s leading private academic institutions.',
+        summaryAr: 'منذ تأسيسنا في عام 2005، تطورت SPU من مفهوم تأسيسي لتصبح واحدة من المؤسسات الأكاديمية الخاصة الرائدة في المنطقة.'
+    },
+    historyPoints: [
+        {
+            year: '2005',
+            titleEn: 'Founding Milestone',
+            titleAr: 'التأسيس التاريخي',
+            descEn: 'SPU was established by Presidential Decree No. 339, marking its beginning as the Syrian International Private University for Science and Technology.',
+            descAr: 'تأسست الجامعة بمرسوم جمهوري رقم 339، لتكون الجامعة السورية الدولية الخاصة للعلوم والتكنولوجيا.'
+        },
+        {
+            year: '2009',
+            titleEn: 'First Cohort Graduated',
+            titleAr: 'تخرج الدفعة الأولى',
+            descEn: 'A major milestone reached with the graduation of our first class, sending skilled professionals into the medical and engineering workforces.',
+            descAr: 'تحقيق إنجاز كبير بتخرج الدفعة الأولى من الطلاب، ورفد سوق العمل بكوادر طبية وهندسية مؤهلة.'
+        },
+        {
+            year: '2012',
+            titleEn: 'Strategic Rebranding',
+            titleAr: 'إعادة العلامة التجارية الاستراتيجية',
+            descEn: 'The university was officially renamed the "Syrian Private University" (SPU) by Decree No. 343, reflecting a broader academic scope.',
+            descAr: 'تم تغيير اسم الجامعة رسمياً إلى "الجامعة السورية الخاصة" بموجب المرسوم رقم 343، ليعكس شمولية الاختصاصات الأكاديمية.'
+        },
+        {
+            year: '2016',
+            titleEn: 'Clinical Excellence Expansion',
+            titleAr: 'توسيع التميز السريري',
+            descEn: 'Significant development of the SPU Medical Center and dental clinics, enhancing practical training for health science students.',
+            descAr: 'تطوير كبير للمركز الطبي التابع للجامعة والعيادات السنية، مما عزز التدريب العملي لطلاب الكليات الطبية.'
+        },
+        {
+            year: '2023',
+            titleEn: 'Digital Transformation',
+            titleAr: 'التحول الرقمي',
+            descEn: 'Implementation of advanced digital management systems and adaptive learning technologies to meet modern global standards.',
+            descAr: 'اعتماد أنظمة إدارة رقمية متطورة وتقنيات التعلم التكيفي لتلبية المعايير العالمية الحديثة.'
+        }
+    ],
     highlights: [
         {
             titleEn: 'Applied Learning Environment',

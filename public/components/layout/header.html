@@ -1,7 +1,7 @@
 <header x-data="{ openMenu: null, stickyNav: false, mobileNav: false }" @keydown.escape.window="mobileNav = false; openMenu = null" @click.outside="openMenu = null; if (window.innerWidth < 1024) { mobileNav = false; }" @scroll.window="stickyNav = window.scrollY > 40" class="fixed inset-x-0 top-0 z-50 w-full font-hacen">
     <div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-950/28 via-slate-900/10 to-transparent"></div>
 
-    <div class="container pt-4 sm:pt-6">
+    <div class="container pt-2 sm:pt-4">
         <div class="site-nav-shell" :class="stickyNav ? 'site-nav-shell--sticky' : ''">
             
 

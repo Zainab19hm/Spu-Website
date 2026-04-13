@@ -48,6 +48,7 @@
       "components": [
         "/components/pages/about/hero.html",
         "/components/pages/about/overview.html",
+        "/components/pages/about/history.html",
         "/components/pages/about/quality.html",
         "/components/pages/about/leadership.html"
       ]

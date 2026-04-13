@@ -1,8 +1,8 @@
 <section x-data class="relative py-24 overflow-hidden bg-white font-hacen">
     <div class="absolute inset-0 -skew-y-3 origin-right transform translate-y-20"></div>
 
-    <div class="container relative z-10 ">
-        <div class="mb-16 max-w-4xl  text-cyan-50">
+    <div class="container relative  z-10 ">
+        <div class="mb-16 max-w-4xl mx-auto text-center text-cyan-50">
             <p class="text-sm font-bold uppercase tracking-widest text-spu-red"
                 x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.story.eyebrowAr : $store.aboutPage.story.eyebrowEn">
             </p>
@@ -14,7 +14,7 @@
             </p>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 ">
             <template x-for="item in $store.aboutPage.story.items" :key="item.id">
                 <div :class="item.theme === 'dark' 
                     ? 'bg-spu-blue text-white shadow-2xl' 
