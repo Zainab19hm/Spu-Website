@@ -1,0 +1,60 @@
+<footer id="site-footer" x-data class="overflow-hidden bg-spu-blue pt-16 pb-8 font-hacen text-white">
+    <div class="container">
+        <div class="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12">
+            <div class="flex flex-col items-start lg:col-span-4">
+                <h2 class="mb-6 text-[24px] font-bold uppercase leading-tight tracking-wider" x-text="$store.app.currentLang === 'ar' ? $store.footer.identity.titleAr : $store.footer.identity.titleEn"></h2>
+                <p class="mb-8 max-w-[320px] text-[16px] leading-[1.6] text-white/70" x-text="$store.app.currentLang === 'ar' ? $store.footer.identity.missionAr : $store.footer.identity.missionEn"></p>
+
+                <div class="flex items-center gap-6 text-[22px]">
+                    <template x-for="social in $store.footer.identity.socials" :key="social.icon">
+                        <a :href="social.url" target="_blank" rel="noreferrer" class="text-white/80 transition-all hover:scale-110 hover:text-spu-red">
+                            <i :class="social.icon"></i>
+                        </a>
+                    </template>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h3 class="mb-8 text-[18px] font-bold uppercase tracking-widest text-white/50" x-text="$store.app.currentLang === 'ar' ? $store.footer.resources.titleAr : $store.footer.resources.titleEn"></h3>
+                <ul class="flex flex-col gap-4">
+                    <template x-for="link in $store.footer.resources.links" :key="link.labelEn">
+                        <li>
+                            <a :href="link.url" class="text-[16px] text-white/80 transition-colors hover:text-white" x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-3">
+                <h3 class="mb-8 text-[18px] font-bold uppercase tracking-widest text-white/50" x-text="$store.app.currentLang === 'ar' ? $store.footer.contact.titleAr : $store.footer.contact.titleEn"></h3>
+                <div class="flex flex-col gap-6">
+                    <template x-for="item in $store.footer.contact.items" :key="item.icon + item.textEn">
+                        <div class="flex items-start gap-4">
+                            <i :class="item.icon" class="mt-1.5 text-spu-red"></i>
+                            <span class="text-[15px] leading-relaxed text-white/80" :class="item.ltr ? 'ltr' : ''" x-text="$store.app.currentLang === 'ar' ? item.textAr : item.textEn"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-start lg:col-span-3 lg:items-end">
+                <h3 class="mb-8 w-full text-left text-[18px] font-bold uppercase tracking-widest text-white/50" :class="$store.app.currentLang === 'ar' ? 'lg:text-right' : 'lg:text-left'" x-text="$store.app.currentLang === 'ar' ? $store.footer.location.titleAr : $store.footer.location.titleEn"></h3>
+                <div class="group h-[180px] w-full overflow-hidden rounded-[12px] border border-white/10 shadow-2xl">
+                    <iframe :src="$store.footer.location.mapUrl" class="h-full w-full grayscale-[0.3] opacity-80 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mb-8 border-white/10">
+
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <p class="text-[14px] text-white/50" x-text="$store.app.currentLang === 'ar' ? $store.footer.bottom.copyrightAr : $store.footer.bottom.copyrightEn"></p>
+
+            <div class="flex flex-wrap items-center justify-center gap-6 text-[14px]">
+                <template x-for="link in $store.footer.bottom.links" :key="link.labelEn">
+                    <a :href="link.url" class="text-white/50 transition-colors hover:text-white" :target="link.url.startsWith('http') ? '_blank' : null" :rel="link.url.startsWith('http') ? 'noreferrer' : null" x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></a>
+                </template>
+            </div>
+        </div>
+    </div>
+</footer>

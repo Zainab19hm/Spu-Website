@@ -1,0 +1,177 @@
+{
+  "layout": {
+    "header": "/components/layout/header.html",
+    "footer": "/components/layout/footer.html"
+  },
+  "pages": [
+    {
+      "name": "home",
+      "fileName": "index.html",
+      "path": "/index.html",
+      "canonicalPath": "/",
+      "title": "Syrian Private University",
+      "description": "Official website of Syrian Private University with admissions, faculties, research, student life, campus updates, and contact information.",
+      "keywords": [
+        "Syrian Private University",
+        "SPU",
+        "Damascus university",
+        "faculties",
+        "admissions",
+        "research"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/home/hero.html",
+        "/components/pages/home/stats.html",
+        "/components/pages/home/faculties.html",
+        "/components/pages/home/paths.html",
+        "/components/pages/home/news.html",
+        "/components/pages/home/research.html",
+        "/components/pages/home/events.html",
+        "/components/pages/home/healthcare.html"
+      ]
+    },
+    {
+      "name": "about",
+      "fileName": "about.html",
+      "path": "/about.html",
+      "canonicalPath": "/about.html",
+      "title": "About | Syrian Private University",
+      "description": "Learn about Syrian Private University, its mission, leadership, institutional quality framework, and academic culture.",
+      "keywords": [
+        "about SPU",
+        "SPU mission",
+        "SPU leadership",
+        "SPU accreditation"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/about/hero.html",
+        "/components/pages/about/overview.html",
+        "/components/pages/about/quality.html",
+        "/components/pages/about/leadership.html"
+      ]
+    },
+    {
+      "name": "faculties",
+      "fileName": "faculties.html",
+      "path": "/faculties.html",
+      "canonicalPath": "/faculties.html",
+      "title": "Faculties | Syrian Private University",
+      "description": "Explore the faculties and academic programs offered by Syrian Private University across health sciences, engineering, and administrative sciences.",
+      "keywords": [
+        "SPU faculties",
+        "medicine",
+        "dentistry",
+        "pharmacy",
+        "engineering"
+      ],
+      "ogImage": "/images/faculty-medicine-banner.png",
+      "components": [
+        "/components/pages/faculties/hero.html",
+        "/components/pages/faculties/catalog.html",
+        "/components/pages/faculties/support.html"
+      ]
+    },
+    {
+      "name": "admissions",
+      "fileName": "admissions.html",
+      "path": "/admissions.html",
+      "canonicalPath": "/admissions.html",
+      "title": "Admissions | Syrian Private University",
+      "description": "Review admissions requirements, tuition guidance, and enrollment steps for Syrian Private University.",
+      "keywords": [
+        "SPU admissions",
+        "registration",
+        "tuition",
+        "requirements"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/admissions/hero.html",
+        "/components/pages/admissions/process.html",
+        "/components/pages/admissions/requirements.html"
+      ]
+    },
+    {
+      "name": "research",
+      "fileName": "research.html",
+      "path": "/research.html",
+      "canonicalPath": "/research.html",
+      "title": "Research | Syrian Private University",
+      "description": "Discover SPU research priorities, applied initiatives, and academic partnerships supporting innovation and regional impact.",
+      "keywords": [
+        "SPU research",
+        "scientific research",
+        "innovation",
+        "academic partnerships"
+      ],
+      "ogImage": "/images/Frame 114.png",
+      "components": [
+        "/components/pages/research/hero.html",
+        "/components/pages/research/priorities.html",
+        "/components/pages/research/initiatives.html"
+      ]
+    },
+    {
+      "name": "student-life",
+      "fileName": "student-life.html",
+      "path": "/student-life.html",
+      "canonicalPath": "/student-life.html",
+      "title": "Student Life | Syrian Private University",
+      "description": "Explore student life at SPU, including campus services, student clubs, digital portals, and academic support.",
+      "keywords": [
+        "SPU student life",
+        "campus services",
+        "student clubs",
+        "student portal"
+      ],
+      "ogImage": "/images/slider-3.jpg",
+      "components": [
+        "/components/pages/student-life/hero.html",
+        "/components/pages/student-life/services.html",
+        "/components/pages/student-life/highlights.html"
+      ]
+    },
+    {
+      "name": "news",
+      "fileName": "news.html",
+      "path": "/news.html",
+      "canonicalPath": "/news.html",
+      "title": "News | Syrian Private University",
+      "description": "Read the latest university announcements, academic updates, and community stories from Syrian Private University.",
+      "keywords": [
+        "SPU news",
+        "announcements",
+        "events",
+        "campus updates"
+      ],
+      "ogImage": "/images/slider-4.jpg",
+      "components": [
+        "/components/pages/news/hero.html",
+        "/components/pages/news/featured.html",
+        "/components/pages/news/archive.html"
+      ]
+    },
+    {
+      "name": "contact",
+      "fileName": "contact.html",
+      "path": "/contact.html",
+      "canonicalPath": "/contact.html",
+      "title": "Contact | Syrian Private University",
+      "description": "Find campus locations, admissions support, university offices, and official contact details for Syrian Private University.",
+      "keywords": [
+        "contact SPU",
+        "campus location",
+        "admissions support",
+        "Damascus"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/contact/hero.html",
+        "/components/pages/contact/channels.html",
+        "/components/pages/contact/visit.html"
+      ]
+    }
+  ]
+}

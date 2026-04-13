@@ -1,0 +1,35 @@
+<section id="news-archive" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+            <div class="max-w-3xl">
+                <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الأرشيف والتحديثات' : 'Archive and Updates'"></p>
+                <h2 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'بنية قابلة للتوسع للأخبار والإعلانات' : 'A scalable structure for announcements and stories'"></h2>
+            </div>
+
+            <div class="mt-10 grid gap-6 md:grid-cols-2">
+                <template x-for="story in $store.newsPage.stories" :key="`${story.titleEn}-${story.date}`">
+                    <article class="overflow-hidden rounded-[28px] bg-white shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
+                        <img :src="story.image" :alt="$store.app.currentLang === 'ar' ? story.titleAr : story.titleEn" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <p class="text-xs font-bold uppercase tracking-[0.24em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? story.categoryAr : story.categoryEn"></p>
+                            <h3 class="mt-4 text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? story.titleAr : story.titleEn"></h3>
+                            <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? story.summaryAr : story.summaryEn"></p>
+                        </div>
+                    </article>
+                </template>
+            </div>
+        </div>
+
+        <article class="rounded-[32px] bg-spu-blue p-8 text-white shadow-[0_28px_80px_rgba(20,30,70,0.18)] lg:p-10">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/55" x-text="$store.app.currentLang === 'ar' ? $store.newsPage.newsroom.eyebrowAr : $store.newsPage.newsroom.eyebrowEn"></p>
+            <h2 class="mt-5 text-3xl font-bold leading-tight" x-text="$store.app.currentLang === 'ar' ? $store.newsPage.newsroom.titleAr : $store.newsPage.newsroom.titleEn"></h2>
+            <p class="mt-6 text-[16px] leading-8 text-white/80" x-text="$store.app.currentLang === 'ar' ? $store.newsPage.newsroom.summaryAr : $store.newsPage.newsroom.summaryEn"></p>
+
+            <div class="mt-8 space-y-4">
+                <template x-for="item in $store.newsPage.newsroom.resources" :key="item.labelEn">
+                    <div class="rounded-[22px] border border-white/12 bg-white/8 px-5 py-4 text-[15px] font-medium text-white/85 backdrop-blur-sm" x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></div>
+                </template>
+            </div>
+        </article>
+    </div>
+</section>

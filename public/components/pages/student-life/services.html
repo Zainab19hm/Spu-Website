@@ -1,0 +1,31 @@
+<section id="services" x-data class="bg-white py-20 font-hacen lg:py-24">
+    <div class="container grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+            <div class="max-w-3xl">
+                <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الخدمات والدعم' : 'Services and Support'"></p>
+                <h2 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'مركز أوضح لما يحتاجه الطالب خلال العام' : 'A clearer home for what students need throughout the year'"></h2>
+            </div>
+
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+                <template x-for="item in $store.studentLifePage.services" :key="item.titleEn">
+                    <article class="rounded-[28px] border border-slate-200/80 bg-white p-7 shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
+                        <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                        <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                    </article>
+                </template>
+            </div>
+        </div>
+
+        <div class="rounded-[32px] bg-section p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)] lg:p-10">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-blue/60" x-text="$store.app.currentLang === 'ar' ? 'الوصول الرقمي' : 'Digital Access'"></p>
+            <div class="mt-6 grid gap-4">
+                <template x-for="portal in $store.studentLifePage.portals" :key="portal.titleEn">
+                    <a :href="portal.url" class="rounded-[22px] bg-white px-5 py-5 shadow-[0_16px_45px_rgba(20,30,70,0.06)] transition-transform duration-300 hover:-translate-y-1" :target="portal.url.startsWith('http') ? '_blank' : null" :rel="portal.url.startsWith('http') ? 'noreferrer' : null">
+                        <h3 class="text-lg font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? portal.titleAr : portal.titleEn"></h3>
+                        <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? portal.summaryAr : portal.summaryEn"></p>
+                    </a>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>

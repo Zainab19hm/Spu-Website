@@ -1,0 +1,61 @@
+<!-- 
+    MAIN UNIVERSITY STATISTICS
+    Horizontal banner with animated numeric counters
+-->
+<section id="hero-next"
+    x-data="{
+        hasCounted: false,
+        runCount() {
+            if (this.hasCounted) return;
+            this.hasCounted = true;
+            this.$store.stats.startCounting();
+        },
+        init() {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    this.runCount();
+                    observer.disconnect();
+                }
+            }, { threshold: 0.2 });
+
+            observer.observe(this.$el);
+
+            const rect = this.$el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                this.runCount();
+                observer.disconnect();
+            }
+        }
+    }"
+    class="stats-section relative z-20 w-full overflow-hidden font-hacen reveal scroll-mt-24"
+    x-init="init()">
+    <div class="container">
+        <div class="stats-shell reveal-item">
+            <div class="stats-shell__grid">
+                <template x-for="stat in $store.stats.items" :key="stat.id">
+                    <article class="stats-card" :style="`--card-accent: ${stat.accent};`">
+                        <div class="stats-card__top">
+                            <div class="stats-icon-badge">
+                                <img :src="stat.svgPath" :alt="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn" class="h-7 w-7 object-contain sm:h-8 sm:w-8">
+                            </div>
+
+                            <!-- <span class="stats-card__eyebrow" x-text="$store.app.currentLang === 'ar' ? 'مؤشر مؤسسي' : 'Institutional Snapshot'"></span> -->
+                        </div>
+
+                        <div class="stats-card__body">
+                            <div class="stats-card__value-row">
+                                <span class="stats-card-value" x-text="new Intl.NumberFormat($store.app.currentLang === 'ar' ? 'ar-EG' : 'en-US').format(stat.current)"></span>
+                                <span x-show="stat.plus" class="stats-card-plus" x-text="stat.plus"></span>
+                            </div>
+
+                            <p class="stats-card-label" x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
+                            <p class="stats-card-summary" x-text="$store.app.currentLang === 'ar' ? stat.summaryAr : stat.summaryEn"></p>
+                        </div>
+
+                        <span class="stats-card-line" aria-hidden="true"></span>
+                    </article>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>

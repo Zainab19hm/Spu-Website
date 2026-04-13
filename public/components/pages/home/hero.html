@@ -1,0 +1,40 @@
+<section x-data="{ heroVisible: false }" x-init="heroVisible = true" class="home-hero relative overflow-hidden font-hacen bg-spu-blue text-white z-10">
+    <template x-for="(img, index) in $store.hero.images" :key="index">
+        <div x-show="$store.hero.currentIndex === index" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform scale-105" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0">
+            <img :src="img" alt="" aria-hidden="true" class="h-full w-full object-cover">
+        </div>
+    </template>
+
+    <div class="home-hero__overlay" aria-hidden="true"></div>
+    <div class="home-hero__ambient" aria-hidden="true"></div>
+
+    <div class="container relative z-10">
+        <div class="home-hero__inner">
+            <div class="home-hero__content">
+                <p class="home-hero__eyebrow transition duration-700 ease-out" :class="heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+                    <span class="home-hero__eyebrow-line" aria-hidden="true"></span>
+                    <span x-text="$store.app.currentLang === 'ar' ? 'التميز الأكاديمي من قلب دمشق' : 'Academic excellence from the heart of Damascus'"></span>
+                </p>
+
+                <h1 class="home-hero__title transition duration-700 ease-out delay-75" :class="heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'" x-text="$store.app.currentLang === 'ar' ? $store.hero.titleAr : $store.hero.titleEn"></h1>
+
+                <p class="home-hero__summary transition duration-700 ease-out delay-150" :class="heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'" x-text="$store.app.currentLang === 'ar' ? $store.hero.subtitleAr : $store.hero.subtitleEn"></p>
+
+                <div class="home-hero__actions transition duration-700 ease-out delay-200" :class="heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+                    <a href="/faculties.html" class="home-hero__primary-btn">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.hero.primaryBtnAr : $store.hero.primaryBtnEn"></span>
+                        <i class="fas fa-arrow-right text-[0.78rem]" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                    </a>
+
+                    <a href="/contact.html#visit-campus" class="home-hero__secondary-btn">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.hero.secondaryBtnAr : $store.hero.secondaryBtnEn"></span>
+                    </a>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    
+</section>

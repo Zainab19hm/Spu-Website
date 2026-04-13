@@ -1,13 +1,25 @@
 {
   "name": "website-frontend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "Frontend for the Syrian Private University website built with Vite, Alpine.js, and Tailwind CSS.",
   "scripts": {
+    "generate:pages": "node scripts/generate-page-shells.js",
+    "predev": "npm run generate:pages",
     "dev": "vite",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "npm run generate:pages && npm run audit:fragments",
+    "build": "vite build",
+    "preview": "vite preview",
+    "audit:fragments": "node scripts/audit-fragment-roots.js",
+    "inspect:html": "node scripts/inspect-html.js"
   },
-  "keywords": [],
+  "keywords": [
+    "vite",
+    "alpinejs",
+    "tailwindcss",
+    "university",
+    "frontend"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {

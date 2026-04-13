@@ -1,0 +1,41 @@
+/**
+ * Global foundations: fonts, tokens, and base page behavior.
+ */
+
+@font-face {
+    font-family: 'HacenTunisia';
+    src: url('/fonts/Hacen Tunisia Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HacenTunisia';
+    src: url('/fonts/Hacen Tunisia Bold Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@theme {
+    --font-hacen: "HacenTunisia", sans-serif;
+
+    --color-spu-blue: #202759;
+    --color-spu-red: #6f1616;
+    --color-section: #EAF3FF40;
+
+    --color-med: #BC2428;
+    --color-dent: #1F77B4;
+    --color-pharm: #5ebe7b;
+    --color-petro: #5EBE7B;
+    --color-admin: #caa949;
+    --color-const: #7f8c8d;
+    --color-ai: #683695;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}

@@ -1,0 +1,23 @@
+<section id="activities" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <article class="rounded-[32px] bg-spu-blue p-10 text-white shadow-[0_28px_80px_rgba(20,30,70,0.18)] lg:p-12">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/55" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.activities.eyebrowAr : $store.studentLifePage.activities.eyebrowEn"></p>
+            <h2 class="mt-5 text-3xl font-bold leading-tight md:text-4xl" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.activities.titleAr : $store.studentLifePage.activities.titleEn"></h2>
+            <p class="mt-6 text-[16px] leading-8 text-white/80" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.activities.summaryAr : $store.studentLifePage.activities.summaryEn"></p>
+
+            <div id="calendar" class="mt-8 rounded-[24px] border border-white/12 bg-white/8 p-6 backdrop-blur-sm">
+                <p class="text-xs font-bold uppercase tracking-[0.24em] text-white/55" x-text="$store.app.currentLang === 'ar' ? 'التقويم الأكاديمي' : 'Academic Calendar'"></p>
+                <p class="mt-3 text-[15px] leading-7 text-white/85" x-text="$store.app.currentLang === 'ar' ? 'يمكن أن يتوسع هذا القسم لاحقاً إلى جداول فصلية كاملة ومواعيد امتحانية رسمية.' : 'This section can later expand into full semester schedules and official exam dates.'"></p>
+            </div>
+        </article>
+
+        <div class="grid gap-5 md:grid-cols-3">
+            <template x-for="item in $store.studentLifePage.activityCards" :key="item.titleEn">
+                <article class="rounded-[28px] bg-white p-7 shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
+                    <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                    <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<section x-data class="relative min-h-[70vh] flex items-center overflow-hidden bg-spu-blue py-18 font-hacen">
+
+    <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-spu-red/20 "></div>
+    <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-yellow-600/10"></div>
+
+    <div class="container relative z-10 ">
+        <div class="grid gap-16 lg:grid-cols-12 pt-16 items-center">
+
+            <div class="lg:col-span-7">
+                <div
+                    class="inline-flex items-center gap-3 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-spu-red opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-spu-red"></span>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-white/80"
+                        x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.eyebrowAr : $store.aboutPage.hero.eyebrowEn"></span>
+                </div>
+
+                <h1 class="mt-8 text-5xl font-extrabold leading-[1.1] text-white md:text-[48px]"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.titleAr : $store.aboutPage.hero.titleEn">
+                </h1>
+
+                <div class="mt-8 h-1 w-24 bg-gradient-to-r from-spu-red to-transparent"></div>
+
+                <p class="mt-8 max-w-xl text-xl leading-relaxed text-white/70"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.summaryAr : $store.aboutPage.hero.summaryEn">
+                </p>
+            </div>
+            <!-- !right boxes -->
+            <div class="lg:col-span-5  lg:-mb-20 grid grid-cols-2 gap-4 relative">
+                <template x-for="(metric, index) in $store.aboutPage.metrics" :key="metric.labelEn">
+                    <div :class="index % 2 !== 0 ? 'mt-4' : ''"
+                        class="group relative overflow-hidden rounded-3xl border  border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5   backdrop-blur-xl transition-all ">
+
+                        <div class="text-4xl  font-black text-white group-hover:scale-110 transition-transform duration-500"
+                            x-text="metric.value"></div>
+
+                        <div class="mt-3 text-[10px] font-bold uppercase tracking-widest text-yellow-500/80"
+                            x-text="$store.app.currentLang === 'ar' ? metric.labelAr : metric.labelEn"></div>
+
+                       
+                    </div>
+                </template>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,98 @@
+<!-- 
+    RESEARCH HIGHLIGHTS SECTION
+    Horizontal scrolling slider showcasing faculty research projects
+    Performance optimized: GPU acceleration, lazy loading, minimal reflows
+-->
+<section 
+    x-data="researchSlider()" 
+    class="py-7.5 mt-[70px] bg-section font-hacen relative overflow-hidden reveal"
+    style="content-visibility: auto; contain-intrinsic-size: auto 500px;">
+
+    <div class="container">
+        <!-- Header: Title and Navigation Arrows -->
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-[42px] font-bold text-spu-blue">
+                <span x-text="$store.app.currentLang === 'ar' ? 'أبحاث ودراسات' : 'SPU Research'"></span>
+            </h2>
+
+            <!-- Manual slider controls -->
+            <div class="flex items-center gap-3">
+                <button 
+                    type="button"
+                    @click="slide('left')" 
+                    class="slider-nav-btn" 
+                    :aria-label="$store.app.ui.prev[$store.app.currentLang]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                        <path d="M15.5 18.5L8.5 12l7-6.5" />
+                    </svg>
+                    <span class="sr-only" x-text="$store.app.ui.prev[$store.app.currentLang]"></span>
+                </button>
+                <button 
+                    type="button"
+                    @click="slide('right')" 
+                    class="slider-nav-btn" 
+                    :aria-label="$store.app.ui.next[$store.app.currentLang]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                        <path d="M8.5 18.5L15.5 12l-7-6.5" />
+                    </svg>
+                    <span class="sr-only" x-text="$store.app.ui.next[$store.app.currentLang]"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Research Cards Track (Horizontal scroll) -->
+        <div 
+            x-ref="researchTrack" 
+            class="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth pb-10"
+            style="will-change: scroll-position;">
+
+            <template x-for="item in $store.research.items" :key="item.id">
+                <article
+                    class="reveal-item research-card w-[289px] h-[348.03px] shrink-0 relative bg-white rounded-[25px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col group"
+                    style="transform: translateZ(0);">
+
+                    <!-- Content Image with Category Tag -->
+                    <div class="relative h-[50%] overflow-hidden bg-gray-100">
+                        <img 
+                            :src="item.image" 
+                            :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"
+                            loading="lazy"
+                            decoding="async"
+                            width="289"
+                            height="174"
+                            class="w-full h-full object-cover"
+                            style="transform: translateZ(0);">
+                        <div class="absolute top-4 left-4 px-4 py-1.5 rounded-lg text-white text-[11px] font-bold"
+                            :style="'background-color:' + item.tagColor" x-text="item.category"></div>
+                    </div>
+
+                    <!-- Text Content Area -->
+                    <div class="px-4 py-2 h-[40%] flex flex-col justify-between items-start flex-1 border-b-[3px] border-transparent group-hover:border-spu-red transition-colors duration-200">
+                        <div>
+                            <p class="text-spu-red text-[13px] mb-2 font-medium" 
+                                x-text="$store.app.currentLang === 'ar' ? item.metaAr : item.metaEn"></p>
+                            <h3 class="text-[18px] font-bold text-spu-blue mb-1 leading-tight" 
+                                x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                            <p class="text-gray-500 text-[14px] line-clamp-2"
+                                x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn">
+                            </p>
+                        </div>
+
+                        <!-- Action Link -->
+                        <div class="mt-3">
+                            <a :href="item.link"
+                                class="research-card__action"
+                                :aria-label="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'">
+                                <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 transition-transform duration-200 ease-in-out"
+                                    :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''">
+                                    <path d="M9 6l6 6-6 6" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

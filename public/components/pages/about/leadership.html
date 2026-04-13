@@ -1,0 +1,24 @@
+<section id="leadership" x-data class=" py-20 font-hacen lg:py-24">
+    <div class="container grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <article class="rounded-[32px] bg-spu-blue p-10 text-white shadow-[0_28px_80px_rgba(20,30,70,0.22)] lg:p-12">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/55" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.eyebrowAr : $store.aboutPage.leadership.eyebrowEn"></p>
+            <blockquote class="mt-6 text-2xl font-bold leading-relaxed md:text-[32px]" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.quoteAr : $store.aboutPage.leadership.quoteEn"></blockquote>
+            <div class="mt-10 border-t border-white/12 pt-6">
+                <p class="text-lg font-bold" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.nameAr : $store.aboutPage.leadership.nameEn"></p>
+                <p class="mt-2 text-white/70" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.roleAr : $store.aboutPage.leadership.roleEn"></p>
+            </div>
+        </article>
+
+        <div>
+            <h2 class="text-3xl font-bold text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'ما الذي يميز بيئة SPU' : 'What Shapes the SPU Experience'"></h2>
+            <div class="mt-8 grid gap-5 sm:grid-cols-2">
+                <template x-for="item in $store.aboutPage.highlights" :key="item.titleEn">
+                    <article class="rounded-[28px] border border-white/70 bg-white p-7 shadow-[0_18px_45px_rgba(20,30,70,0.08)]">
+                        <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                        <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                    </article>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>

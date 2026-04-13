@@ -1,0 +1,75 @@
+<header x-data="{ openMenu: null, stickyNav: false, mobileNav: false }" @keydown.escape.window="mobileNav = false; openMenu = null" @click.outside="openMenu = null; if (window.innerWidth < 1024) { mobileNav = false; }" @scroll.window="stickyNav = window.scrollY > 40" class="fixed inset-x-0 top-0 z-50 w-full font-hacen">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-950/28 via-slate-900/10 to-transparent"></div>
+
+    <div class="container pt-4 sm:pt-6">
+        <div class="site-nav-shell" :class="stickyNav ? 'site-nav-shell--sticky' : ''">
+            
+
+            <div class="site-nav-shell__main">
+                <a href="/index.html" aria-label="Syrian Private University home" class="site-nav-brand">
+                    <img src="/images/logo-spu.png" alt="Syrian Private University logo" class="h-auto w-[9.25rem] sm:w-[11rem] xl:w-[13.5rem]">
+                </a>
+
+                <nav class="hidden flex-1 justify-center lg:flex" aria-label="Primary navigation">
+                    <ul class="site-nav-list">
+                        <template x-for="item in $store.navigation.menuItems" :key="item.id">
+                            <li class="site-nav-item" @mouseenter="openMenu = item.hasDropdown ? item.id : null" @mouseleave="openMenu = null">
+                                <a :href="item.url || '#'" class="site-nav-link" :class="item.page === $store.app.currentPage ? 'site-nav-link--active' : ''" :aria-current="item.page === $store.app.currentPage ? 'page' : null">
+                                    <span x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></span>
+
+                                    <template x-if="item.hasDropdown">
+                                        <svg class="site-nav-link__chevron" :class="openMenu === item.id ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="m5 7.5 5 5 5-5"></path>
+                                        </svg>
+                                    </template>
+                                </a>
+
+                                <div x-show="item.hasDropdown && openMenu === item.id" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 -translate-y-3 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-2 scale-95" style="display: none;" class="site-nav-dropdown">
+                                    <template x-for="child in item.children" :key="child.url">
+                                        <a :href="child.url" class="site-nav-dropdown-link" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                    </template>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </nav>
+
+                <div class="site-nav-actions">
+                   
+                    <button type="button" @click="$store.app.setLang($store.app.currentLang === 'en' ? 'ar' : 'en')" class="site-nav-lang">
+                        <img src="/images/ic_outline-language.svg" alt="Language" class="h-[1.05rem] w-[1.05rem]">
+                        <span x-text="$store.app.currentLang === 'ar' ? 'English' : 'العربية'"></span>
+                    </button>
+
+                    <button type="button" @click="mobileNav = !mobileNav; if (!mobileNav) { openMenu = null; }" aria-label="Toggle navigation" class="site-nav-menu-btn lg:hidden">
+                        <i class="fas text-sm" :class="mobileNav ? 'fa-times' : 'fa-bars'"></i>
+                    </button>
+                </div>
+            </div>
+           
+
+            <div x-show="mobileNav" x-transition:enter="transition duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-3" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition duration-180 ease-in" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" style="display: none;" class="site-nav-mobile-panel lg:hidden">
+                
+                <div class="site-nav-mobile-list">
+                    <template x-for="item in $store.navigation.menuItems" :key="`mobile-${item.id}`">
+                        <div class="site-nav-mobile-card">
+                            <div class="site-nav-mobile-row">
+                                <a :href="item.url || '#'" @click="mobileNav = false; openMenu = null" class="site-nav-mobile-link" :class="item.page === $store.app.currentPage ? 'site-nav-mobile-link--active' : ''" x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></a>
+
+                                <button x-show="item.hasDropdown" type="button" @click.prevent="openMenu = openMenu === item.id ? null : item.id" aria-label="Toggle submenu" class="site-nav-mobile-toggle">
+                                    <i class="fas fa-chevron-down text-[11px] transition-transform duration-200" :class="openMenu === item.id ? 'rotate-180' : ''"></i>
+                                </button>
+                            </div>
+
+                            <div x-show="item.hasDropdown && openMenu === item.id" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" style="display: none;" class="site-nav-mobile-children">
+                                <template x-for="child in item.children" :key="`mobile-${child.url}`">
+                                    <a :href="child.url" @click="mobileNav = false; openMenu = null" class="site-nav-mobile-child" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

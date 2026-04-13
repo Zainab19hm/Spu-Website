@@ -1,0 +1,115 @@
+/**
+ * Homepage section components shared by multiple homepage fragments.
+ */
+
+@layer components {
+    .fac-card:hover i {
+        transform: translateX(15px);
+        transition: all ease-in-out 0.3s;
+    }
+
+    .path-card {
+        background: rgba(255,255,255,0.94);
+        border-color: rgba(255,255,255,0.72);
+        box-shadow: 0 28px 70px rgba(20,30,70,0.12);
+        backdrop-filter: blur(18px);
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.45s ease, background-color 0.45s ease, filter 0.45s ease;
+    }
+
+    .path-card:hover {
+        transform: translateY(-12px) scale(1.01);
+        box-shadow: 0 40px 110px rgba(20,30,70,0.18);
+        border-color: rgba(255,255,255,0.9);
+    }
+
+    .path-card .path-card-accent {
+        opacity: 0;
+        transition: opacity 0.45s ease;
+    }
+
+    .path-card:hover .path-card-accent {
+        opacity: 1;
+    }
+
+    .slider-nav-btn {
+        width: 2.4rem;
+        height: 2.4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
+        border: 1px solid rgba(32,39,89,0.1);
+        background: rgba(255,255,255,0.9);
+        color: #202759;
+        box-shadow: 0 6px 16px rgba(17,26,63,0.08);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+    }
+
+    .slider-nav-btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255,255,255,1);
+        color: #202759;
+        box-shadow: 0 10px 20px rgba(17,26,63,0.1);
+    }
+
+    .slider-nav-btn svg {
+        display: block;
+        transition: transform 0.18s ease;
+    }
+
+    .slider-nav-btn:hover svg {
+        transform: translateX(1px);
+    }
+
+    .slider-nav-btn:first-child:hover svg {
+        transform: translateX(-1px);
+    }
+
+    .research-card__action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: #202759;
+        font-size: 0.84rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        text-decoration: none;
+        transition: color 0.18s ease, text-decoration-color 0.18s ease;
+    }
+
+    .research-card__action:hover {
+        color: #17214d;
+        text-decoration: underline;
+    }
+
+    .research-card__action svg {
+        display: block;
+        stroke: currentColor;
+        transition: transform 0.18s ease;
+    }
+
+    .research-card__action:hover svg {
+        transform: translateX(2px);
+    }
+
+    /* Research card optimized hover effects */
+    .research-card {
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+
+    .research-card:hover {
+        transform: translateY(-8px) translateZ(0);
+    }
+
+    .research-card img {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .research-card:hover img {
+        transform: scale(1.05) translateZ(0);
+    }
+}

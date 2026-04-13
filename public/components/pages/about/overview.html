@@ -1,0 +1,45 @@
+<section x-data class="relative py-24 overflow-hidden bg-white font-hacen">
+    <div class="absolute inset-0 -skew-y-3 origin-right transform translate-y-20"></div>
+
+    <div class="container relative z-10 ">
+        <div class="mb-16 max-w-4xl  text-cyan-50">
+            <p class="text-sm font-bold uppercase tracking-widest text-spu-red"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.story.eyebrowAr : $store.aboutPage.story.eyebrowEn">
+            </p>
+            <h2 class="mt-4 text-3xl md:text-4xl font-bold text-spu-blue leading-tight"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.story.titleAr : $store.aboutPage.story.titleEn">
+            </h2>
+            <p class="mt-6 text-lg text-gray-600 leading-relaxed"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.story.bodyAr : $store.aboutPage.story.bodyEn">
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <template x-for="item in $store.aboutPage.story.items" :key="item.id">
+                <div :class="item.theme === 'dark' 
+                    ? 'bg-spu-blue text-white shadow-2xl' 
+                    : 'bg-white text-spu-blue border border-gray-100 shadow-xl shadow-blue-900/5'"
+                    class="group relative p-10 rounded-[2.5rem] transition-all duration-500 hover:-translate-y-2">
+
+                    <h3 class="text-2xl font-bold"
+                        x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
+                    </h3>
+
+                    <div :class="item.theme === 'dark' ? 'bg-white/30' : 'bg-spu-red'" class="mt-4 h-1 w-12"></div>
+
+                    <p class="mt-6 text-lg leading-relaxed italic"
+                        :class="item.theme === 'dark' ? 'text-white/90' : 'text-gray-600'"
+                        x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.story[item.keyAr] : $store.aboutPage.story[item.keyEn]">
+                    </p>
+
+                    <div
+                        class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L1 21h22L12 2zm0 3.45l8.27 14.3H3.73L12 5.45z" />
+                        </svg>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>
