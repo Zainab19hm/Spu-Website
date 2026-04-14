@@ -1,2 +1,12 @@
 {
+    "geminicodeassist.agentDebugMode": true,
+    "geminicodeassist.agentYoloMode": true,
+    "geminicodeassist.codeGenerationPaneViewEnabled": true,
+    "geminicodeassist.rules": "give a comment everywhere you make a change. Provide the most efficient and shortest way to fix code.",
+    "geminicodeassist.project": "", 
+    "geminicodeassist.apiKey": "AIzaSyAEaMG9roLFLtT-qZ34ZRnQisnG7EzGMZw",
+    "geminicodeassist.model": "gemini-2.5-flash-lite",
+    "terminal.integrated.ignoreBracketedPasteMode": false,
+    "notebook.defaultFormatter": "vscode.html-language-features",
+    "editor.defaultFormatter": "vscode.html-language-features"
 }

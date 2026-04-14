@@ -7,9 +7,9 @@ export const researchPageContent = {
         summaryEn: 'SPU research is positioned around practical outcomes: healthier communities, stronger professional training, and knowledge that responds to regional needs.',
         summaryAr: 'يتموضع البحث العلمي في SPU حول نتائج عملية: مجتمعات أكثر صحة، وتأهيل مهني أقوى، ومعرفة تستجيب للاحتياجات الإقليمية.'
     },
-    metrics: [
-        { value: '5+', labelEn: 'Research Priority Areas', labelAr: 'محاور بحثية رئيسية' },
-        { value: '7', labelEn: 'Faculties Contributing', labelAr: 'كليات مشاركة' },
+    metrics: [ // Protected numeric values in metrics
+        { value: '<span translate="no">5+</span>', labelEn: 'Research Priority Areas', labelAr: 'محاور بحثية رئيسية' },
+        { value: '<span translate="no">7</span>', labelEn: 'Faculties Contributing', labelAr: 'كليات مشاركة' },
         { value: 'Applied', labelEn: 'Research Model', labelAr: 'منهجية البحث' },
         { value: 'Regional', labelEn: 'Impact Orientation', labelAr: 'توجه الأثر' }
     ],

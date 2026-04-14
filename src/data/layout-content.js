@@ -84,7 +84,7 @@ export const navigationMenuItems = [
     { id: 6, labelAr: 'البحث العلمي', labelEn: 'Research', page: 'research', hasDropdown: false, url: '/research.html' },
     { id: 7, labelAr: 'الأخبار', labelEn: 'News', page: 'news', hasDropdown: false, url: '/news.html' },
     { id: 8, labelAr: 'تواصل معنا', labelEn: 'Contact', page: 'contact', hasDropdown: false, url: '/contact.html' },
-    
+
 ];
 
 export const footerContent = {
@@ -124,8 +124,8 @@ export const footerContent = {
             },
             {
                 icon: 'fas fa-phone-alt',
-                textEn: '+963 11 9860',
-                textAr: '+963 11 9860',
+                textEn: '<span translate="no">+963 11 9860</span>', // Protected phone number
+                textAr: '<span translate="no">+963 11 9860</span>', // Protected phone number
                 ltr: true
             },
             {
@@ -142,8 +142,8 @@ export const footerContent = {
         mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13346.741280351659!2d36.26129575!3d33.31448835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518f99e3f1e1e1f%3A0xe1e1e1e1e1e1e1e1!2sSyrian%20Private%20University!5e0!3m2!1sen!2ssy!4v1712710000000!5m2!1sen!2ssy'
     },
     bottom: {
-        copyrightEn: '© 2026 Syrian Private University. Excellence in Education.',
-        copyrightAr: '© 2026 الجامعة السورية الخاصة. التميز في التعليم.',
+        copyrightEn: '© <span translate="no">2026</span> Syrian Private University. Excellence in Education.', // Protected year
+        copyrightAr: '© <span translate="no">2026</span> الجامعة السورية الخاصة. التميز في التعليم.', // Protected year
         links: [
             { labelEn: 'Apply Now', labelAr: 'قدّم الآن', url: '/admissions.html' },
             { labelEn: 'Student Portal', labelAr: 'بوابة الطالب', url: 'http://my.spu.edu.sy/ar/login' },

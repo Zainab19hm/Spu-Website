@@ -31,7 +31,7 @@
                     <template x-for="item in $store.footer.contact.items" :key="item.icon + item.textEn">
                         <div class="flex items-start gap-4">
                             <i :class="item.icon" class="mt-1.5 text-spu-red"></i>
-                            <span class="text-[15px] leading-relaxed text-white/80" :class="item.ltr ? 'ltr' : ''" x-text="$store.app.currentLang === 'ar' ? item.textAr : item.textEn"></span>
+                            <span class="text-[15px] leading-relaxed text-white/80" :class="item.ltr ? 'ltr' : ''" x-html="$store.app.currentLang === 'ar' ? item.textAr : item.textEn"></span>
                         </div>
                     </template>
                 </div>
@@ -48,7 +48,7 @@
         <hr class="mb-8 border-white/10">
 
         <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <p class="text-[14px] text-white/50" x-text="$store.app.currentLang === 'ar' ? $store.footer.bottom.copyrightAr : $store.footer.bottom.copyrightEn"></p>
+            <p class="text-[14px] text-white/50" translate="no" x-html="$store.app.currentLang === 'ar' ? $store.footer.bottom.copyrightAr : $store.footer.bottom.copyrightEn"></p>
 
             <div class="flex flex-wrap items-center justify-center gap-6 text-[14px]">
                 <template x-for="link in $store.footer.bottom.links" :key="link.labelEn">

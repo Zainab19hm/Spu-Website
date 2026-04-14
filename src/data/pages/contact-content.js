@@ -26,7 +26,7 @@ export const contactPageContent = {
             icon: 'fas fa-phone-alt',
             titleEn: 'Damascus Office',
             titleAr: 'مكتب دمشق',
-            detail: '+963 11 9860',
+            detail: '<span translate="no">+963 11 9860</span>', // Added translate="no" to preserve number format
             url: 'tel:+963119860'
         }
     ],
@@ -76,8 +76,8 @@ export const contactPageContent = {
         {
             titleEn: 'P.O. Box',
             titleAr: 'صندوق البريد',
-            summaryEn: 'Damascus 36822.',
-            summaryAr: 'دمشق 36822.',
+            summaryEn: 'Damascus <span translate="no">36822</span>.', // Added translate="no" to preserve zip code
+            summaryAr: 'دمشق <span translate="no">36822</span>.', // Added translate="no" to preserve zip code
             url: '#site-footer'
         }
     ]

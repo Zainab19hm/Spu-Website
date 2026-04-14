@@ -32,7 +32,7 @@ function normalizeCalendarEvent(event, index) {
         image: event.image ?? '/images/slider-1.jpeg',
         link: event.link ?? '#',
         dateKey: parsedDate.format('YYYY-MM-DD'),
-        dateText: event.dateText ?? parsedDate.format('MMM D, YYYY')
+        dateText: event.dateText ?? `<span translate="no">${parsedDate.format('MMM D, YYYY')}</span>` // Added translate="no" to default date format
     };
 }
 
@@ -86,10 +86,11 @@ export function createCalendarApp() {
             const appStore = getAppStore();
 
             if (appStore.currentLang === 'ar') {
-                return `${appStore.ui.months.ar[date.month()]} ${date.date()}, ${date.year()}`;
+                // Wrapped numeric parts in translate="no" to prevent conversion to Eastern Arabic numerals
+                return `${appStore.ui.months.ar[date.month()]} <span translate="no">${date.date()}</span>, <span translate="no">${date.year()}</span>`;
             }
 
-            return date.format('MMM D, YYYY');
+            return `<span translate="no">${date.format('MMM D, YYYY')}</span>`;
         },
 
         get calendarDays() {
@@ -104,7 +105,8 @@ export function createCalendarApp() {
 
                 return {
                     date: dateKey,
-                    dayNumber: isCurrentMonth ? currentDay.date() : '',
+                    // Wrap the day number in a span with translate="no"
+                    dayNumber: isCurrentMonth ? `<span translate="no">${currentDay.date()}</span>` : '',
                     isCurrentMonth: isCurrentMonth,
                     hasEvent: isCurrentMonth && (groupedEvents[dateKey] || []).length > 0
                 };

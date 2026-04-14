@@ -12,7 +12,7 @@
         },
         isVisible: false
     }"
-    class="py-7.5 mt-[70px] relative overflow-hidden font-hacen reveal"
+    class="py-7.5 mt-[70px] relative font-hacen reveal"
     style="background-color: #EAF3FF40;"
     x-init="(() => { const observer = new IntersectionObserver(entries => { if (entries[0].isIntersecting) { isVisible = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el); })()">
  
@@ -42,14 +42,13 @@
                 >
                     <template x-for="path in $store.paths.items" :key="path.id">
                         <div
-                            class="reveal-item path-card snap-start w-[292px] h-[380px] hover:cursor-pointer shrink-0 relative rounded-[28px] border border-white/70 bg-white/95 shadow-[0_28px_70px_rgba(20,30,70,0.12)] backdrop-blur-xl transition-all duration-500 ease-out group overflow-hidden flex flex-col p-6"
+                            class="reveal-item path-card snap-start w-[292px] h-[380px] hover:cursor-pointer shrink-0 relative rounded-[28px] border border-white/70 bg-white shadow-[0_15px_35px_rgba(20,30,70,0.06)] backdrop-blur-xl transition-all duration-300 ease-in-out group overflow-hidden flex flex-col p-6"
                             @mouseenter="$store.paths.activePath = path.id"
                             @mouseleave="$store.paths.activePath = null"
                             :class="{
-                                'opacity-40 grayscale-[0.3] scale-95 blur-[0.5px]': $store.paths.activePath !== null && $store.paths.activePath !== path.id,
-                                '!bg-[#1e2652] !text-white z-20 !border-transparent': $store.paths.activePath === path.id,
-                                'bg-white text-gray-800 border-gray-100 shadow-sm': $store.paths.activePath !== path.id,
-                                'opacity-100': $store.paths.activePath === null
+                                'opacity-50 grayscale-[0.2]': $store.paths.activePath !== null && $store.paths.activePath !== path.id,
+                                '!bg-[#1e2652] !text-white z-20 !border-transparent shadow-2xl': $store.paths.activePath === path.id,
+                                'opacity-100 bg-white text-gray-800 border-gray-100': $store.paths.activePath === null || $store.paths.activePath === path.id
                             }"
                         >
                             <div class="absolute inset-x-5 top-5 h-16 rounded-[20px] pointer-events-none bg-gradient-to-r from-spu-red/16 via-white/0 to-spu-blue/12 opacity-0 group-hover:opacity-100 transition duration-500"></div>

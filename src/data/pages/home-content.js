@@ -25,7 +25,8 @@ export const statsItems = [
         value: 20,
         current: 0,
         svgPath: '/images/time.svg',
-        plus: '+',
+        suffixEn: '+',
+        suffixAr: '+',
         accent: '#683695',
         glow: 'rgba(104,54,149,0.22)'
     },
@@ -38,7 +39,6 @@ export const statsItems = [
         value: 7,
         current: 0,
         svgPath: '/images/arcticons_emoji-classical-building.svg',
-        plus: '',
         accent: '#caa949',
         glow: 'rgba(202,169,73,0.24)'
     },
@@ -51,7 +51,8 @@ export const statsItems = [
         value: 8500,
         current: 0,
         svgPath: '/images/people-outline.svg',
-        plus: '+',
+        suffixEn: '+',
+        suffixAr: '+',
         accent: '#2b7db3',
         glow: 'rgba(43,125,179,0.22)'
     },
@@ -64,7 +65,8 @@ export const statsItems = [
         value: 450,
         current: 0,
         svgPath: '/images/flowbite_user-graduate-outline.svg',
-        plus: '+',
+        suffixEn: '+',
+        suffixAr: '+',
         accent: '#bc2428',
         glow: 'rgba(188,36,40,0.22)'
     }
@@ -79,10 +81,10 @@ export const pathItems = [
 ];
 
 export const newsItems = [
-    { id: 1, category: 'Camps', categoryColor: 'bg-[#1e2652]', titleEn: 'Expansion of University Green Spaces', titleAr: 'توسيع المساحات الخضراء في الجامعة', date: 'March 15, 2026', summaryEn: 'New landscaping initiatives are transforming the campus into a greener environment.', summaryAr: 'مبادرات جديدة لتنسيق الحدائق تحول الحرم الجامعي إلى بيئة أكثر خضرة.', image: '/images/unsplash_s9CC2SKySJM.png' },
-    { id: 2, category: 'Admission', categoryColor: 'bg-[#7a1212]', titleEn: 'Early Admission cycle now open', titleAr: 'فتح باب القبول المبكر الآن', date: 'March 10, 2026', summaryEn: 'High school students can now apply for the upcoming fall semester.', summaryAr: 'يمكن لطلاب المدارس الثانوية الآن التقديم للفصل الدراسي الخريف القادم.', image: '/images/unsplash_VckdJzo7ig0.png' },
-    { id: 3, category: 'Events', categoryColor: 'bg-[#1a203d]', titleEn: 'Annual Cultural Festival', titleAr: 'المهرجان الثقافي السنوي', date: 'March 5, 2026', summaryEn: 'Student-led performances showcasing regional arts and heritage.', summaryAr: 'عروض يقدمها الطلاب تعرض الفنون والتراث الإقليمي.', image: '/images/slider-3.jpg' },
-    { id: 4, category: 'Community', categoryColor: 'bg-[#912b2b]', titleEn: 'Community Outreach Partnership', titleAr: 'شراكة التواصل المجتمعي', date: 'March 1, 2026', summaryEn: 'Collaborating with regional partners to support local social growth.', summaryAr: 'التعاون مع الشركاء الإقليميين لدعم النمو الاجتماعي المحلي.', image: '/images/slider-4.jpg' }
+    { id: 1, category: 'Camps', categoryColor: 'bg-[#1e2652]', titleEn: 'Expansion of University Green Spaces', titleAr: 'توسيع المساحات الخضراء في الجامعة', date: 'March <span translate="no">15, 2026</span>', summaryEn: 'New landscaping initiatives are transforming the campus into a greener environment.', summaryAr: 'مبادرات جديدة لتنسيق الحدائق تحول الحرم الجامعي إلى بيئة أكثر خضرة.', image: '/images/unsplash_s9CC2SKySJM.png' }, // Protected date
+    { id: 2, category: 'Admission', categoryColor: 'bg-[#7a1212]', titleEn: 'Early Admission cycle now open', titleAr: 'فتح باب القبول المبكر الآن', date: 'March <span translate="no">10, 2026</span>', summaryEn: 'High school students can now apply for the upcoming fall semester.', summaryAr: 'يمكن لطلاب المدارس الثانوية الآن التقديم للفصل الدراسي الخريف القادم.', image: '/images/unsplash_VckdJzo7ig0.png' },
+    { id: 3, category: 'Events', categoryColor: 'bg-[#1a203d]', titleEn: 'Annual Cultural Festival', titleAr: 'المهرجان الثقافي السنوي', date: 'March <span translate="no">5, 2026</span>', summaryEn: 'Student-led performances showcasing regional arts and heritage.', summaryAr: 'عروض يقدمها الطلاب تعرض الفنون والتراث الإقليمي.', image: '/images/slider-3.jpg' },
+    { id: 4, category: 'Community', categoryColor: 'bg-[#912b2b]', titleEn: 'Community Outreach Partnership', titleAr: 'شراكة التواصل المجتمعي', date: 'March <span translate="no">1, 2026</span>', summaryEn: 'Collaborating with regional partners to support local social growth.', summaryAr: 'التعاون مع الشركاء الإقليميين لدعم النمو الاجتماعي المحلي.', image: '/images/slider-4.jpg' }
 ];
 
 export const researchItems = [
@@ -125,10 +127,10 @@ export const healthcareContent = {
         link: '/faculties.html#faculty-2'
     },
     stats: [
-        { id: 1, labelEn: 'HOSPITAL BEDS', labelAr: 'أسرة المشفى', value: 200, current: 0, suffix: '+' },
-        { id: 2, labelEn: 'SPECIALIST DOCTORS', labelAr: 'أطباء أخصائيين', value: 80, current: 0, suffix: '+' },
-        { id: 3, labelEn: 'DENTAL CHAIRS', labelAr: 'كراسي الأسنان', value: 30, current: 0, suffix: '+' },
-        { id: 4, labelEn: 'PATIENTS ANNUALLY', labelAr: 'مرضى سنوياً', value: 12, current: 0, suffix: 'k+' }
+        { id: 1, labelEn: 'HOSPITAL BEDS', labelAr: 'أسرة المشفى', value: 200, current: 0, suffixEn: '+', suffixAr: '+' }, 
+        { id: 2, labelEn: 'SPECIALIST DOCTORS', labelAr: 'أطباء أخصائيين', value: 80, current: 0, suffixEn: '+', unitEn: '', unitAr: '', suffixAr: '+' },
+        { id: 3, labelEn: 'DENTAL CHAIRS', labelAr: 'كراسي الأسنان', value: 30, current: 0,unitEn: '', unitAr: '', suffixEn: '+', suffixAr: '+' },
+        { id: 4, labelEn: 'PATIENTS ANNUALLY', labelAr: 'مرضى سنوياً', value: 12, current: 0, unitEn: 'k', unitAr: 'ألف', suffixEn: '+', suffixAr: '+' }
     ]
 };
 

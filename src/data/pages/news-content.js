@@ -15,7 +15,7 @@ export const newsPageContent = {
     featured: {
         categoryEn: 'Featured Update',
         categoryAr: 'تحديث مميز',
-        date: 'April 2026',
+        date: 'April <span translate="no">2026</span>', // Protected year in date
         titleEn: 'SPU expands its official digital structure with dedicated research, news, and student life sections.',
         titleAr: 'توسّع SPU بنيتها الرقمية الرسمية بإضافة أقسام مخصصة للبحث والأخبار والحياة الجامعية.',
         summaryEn: 'The new information architecture supports stronger discoverability, clearer navigation, and a better foundation for long-term university publishing.',
@@ -26,7 +26,7 @@ export const newsPageContent = {
         {
             categoryEn: 'Announcements',
             categoryAr: 'إعلانات',
-            date: 'March 2026',
+            date: 'March <span translate="no">2026</span>', // Protected year
             titleEn: 'Orientation session introduces students to the ICPC programming pathway.',
             titleAr: 'جلسة تعريفية تقدم للطلاب مسار المسابقة البرمجية العالمية ICPC.',
             summaryEn: 'A student-facing session highlighted competitive programming opportunities and technical development tracks.',
@@ -36,7 +36,7 @@ export const newsPageContent = {
         {
             categoryEn: 'Student Affairs',
             categoryAr: 'شؤون الطلاب',
-            date: 'March 2026',
+            date: 'March <span translate="no">2026</span>',
             titleEn: 'SPU launches a wider student representation initiative across campus.',
             titleAr: 'إطلاق مبادرة موسعة للتمثيل الطلابي عبر الحرم الجامعي.',
             summaryEn: 'The initiative creates stronger channels between students, academic leadership, and campus decision-making.',
@@ -46,7 +46,7 @@ export const newsPageContent = {
         {
             categoryEn: 'Community',
             categoryAr: 'المجتمع',
-            date: 'March 2026',
+            date: 'March <span translate="no">2026</span>',
             titleEn: 'Community health activities strengthen SPU outreach beyond campus.',
             titleAr: 'أنشطة الصحة المجتمعية تعزز امتداد SPU خارج الحرم الجامعي.',
             summaryEn: 'University-led initiatives continue to connect academic work with public benefit and community presence.',
@@ -56,7 +56,7 @@ export const newsPageContent = {
         {
             categoryEn: 'Events',
             categoryAr: 'فعاليات',
-            date: 'March 2026',
+            date: 'March <span translate="no">2026</span>',
             titleEn: 'Academic events calendar now aligns more clearly with admissions and student life communication.',
             titleAr: 'أصبح تقويم الفعاليات الأكاديمية أكثر ارتباطاً بالتواصل الخاص بالقبول والحياة الجامعية.',
             summaryEn: 'A more structured event model helps students and visitors understand what is happening and when.',

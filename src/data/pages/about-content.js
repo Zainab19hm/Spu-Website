@@ -7,11 +7,11 @@ export const aboutPageContent = {
         summaryEn: 'Syrian Private University brings together modern academic programs, applied learning, and a student experience designed for long-term growth.',
         summaryAr: 'تجمع الجامعة السورية الخاصة بين البرامج الأكاديمية الحديثة، التعلم التطبيقي، وتجربة طلابية مصممة للنمو على المدى الطويل.'
     },
-    metrics: [
-        { value: '2005', labelEn: 'Established', labelAr: 'سنة التأسيس' },
-        { value: '7', labelEn: 'Faculties', labelAr: 'الكليات' },
-        { value: '8500+', labelEn: 'Students', labelAr: 'الطلاب' },
-        { value: '450+', labelEn: 'Graduates', labelAr: 'الخريجون' }
+    metrics: [ // Added translate="no" to preserve numeric values
+        { value: '<span translate="no">2005</span>', labelEn: 'Established', labelAr: 'سنة التأسيس' },
+        { value: '<span translate="no">7</span>', labelEn: 'Faculties', labelAr: 'الكليات' },
+        { value: '<span translate="no">8500+</span>', labelEn: 'Students', labelAr: 'الطلاب' },
+        { value: '<span translate="no">450+</span>', labelEn: 'Graduates', labelAr: 'الخريجون' }
     ],
     story: {
         eyebrowEn: 'Vision and Mission',
@@ -86,40 +86,40 @@ export const aboutPageContent = {
         eyebrowAr: 'رحلتنا عبر الزمن',
         titleEn: 'A legacy of excellence built through determination and vision.',
         titleAr: 'إرث من التميز بني بالعزيمة والرؤية.',
-        summaryEn: 'Since our establishment in 2005, SPU has evolved from a foundational concept into one of the region\'s leading private academic institutions.',
-        summaryAr: 'منذ تأسيسنا في عام 2005، تطورت SPU من مفهوم تأسيسي لتصبح واحدة من المؤسسات الأكاديمية الخاصة الرائدة في المنطقة.'
+        summaryEn: 'Since our establishment in <span translate="no">2005</span>, SPU has evolved from a foundational concept into one of the region\'s leading private academic institutions.', // Protected year
+        summaryAr: 'منذ تأسيسنا في عام <span translate="no">2005</span>، تطورت SPU من مفهوم تأسيسي لتصبح واحدة من المؤسسات الأكاديمية الخاصة الرائدة في المنطقة.' // Protected year
     },
     historyPoints: [
         {
-            year: '2005',
+            year: '<span translate="no">2005</span>', // Protected year
             titleEn: 'Founding Milestone',
             titleAr: 'التأسيس التاريخي',
             descEn: 'SPU was established by Presidential Decree No. 339, marking its beginning as the Syrian International Private University for Science and Technology.',
-            descAr: 'تأسست الجامعة بمرسوم جمهوري رقم 339، لتكون الجامعة السورية الدولية الخاصة للعلوم والتكنولوجيا.'
+            descAr: 'تأسست الجامعة بمرسوم جمهوري رقم <span translate="no">339</span>، لتكون الجامعة السورية الدولية الخاصة للعلوم والتكنولوجيا.' // Protected decree number
         },
         {
-            year: '2009',
+            year: '<span translate="no">2009</span>', // Protected year
             titleEn: 'First Cohort Graduated',
             titleAr: 'تخرج الدفعة الأولى',
             descEn: 'A major milestone reached with the graduation of our first class, sending skilled professionals into the medical and engineering workforces.',
             descAr: 'تحقيق إنجاز كبير بتخرج الدفعة الأولى من الطلاب، ورفد سوق العمل بكوادر طبية وهندسية مؤهلة.'
         },
         {
-            year: '2012',
+            year: '<span translate="no">2012</span>', // Protected year
             titleEn: 'Strategic Rebranding',
             titleAr: 'إعادة العلامة التجارية الاستراتيجية',
-            descEn: 'The university was officially renamed the "Syrian Private University" (SPU) by Decree No. 343, reflecting a broader academic scope.',
-            descAr: 'تم تغيير اسم الجامعة رسمياً إلى "الجامعة السورية الخاصة" بموجب المرسوم رقم 343، ليعكس شمولية الاختصاصات الأكاديمية.'
+            descEn: 'The university was officially renamed the "Syrian Private University" (SPU) by Decree No. <span translate="no">343</span>, reflecting a broader academic scope.',
+            descAr: 'تم تغيير اسم الجامعة رسمياً إلى "الجامعة السورية الخاصة" بموجب المرسوم رقم <span translate="no">343</span>، ليعكس شمولية الاختصاصات الأكاديمية.' // Protected decree number
         },
         {
-            year: '2016',
+            year: '<span translate="no">2016</span>', // Protected year
             titleEn: 'Clinical Excellence Expansion',
             titleAr: 'توسيع التميز السريري',
             descEn: 'Significant development of the SPU Medical Center and dental clinics, enhancing practical training for health science students.',
             descAr: 'تطوير كبير للمركز الطبي التابع للجامعة والعيادات السنية، مما عزز التدريب العملي لطلاب الكليات الطبية.'
         },
         {
-            year: '2023',
+            year: '<span translate="no">2023</span>', // Protected year
             titleEn: 'Digital Transformation',
             titleAr: 'التحول الرقمي',
             descEn: 'Implementation of advanced digital management systems and adaptive learning technologies to meet modern global standards.',

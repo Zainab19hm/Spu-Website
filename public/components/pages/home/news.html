@@ -18,20 +18,21 @@
         <div class="grid grid-cols-1 gap-8 pb-10 md:grid-cols-2 xl:grid-cols-4">
             <template x-for="item in $store.news.items.slice(0, 4)" :key="item.id">
                 <div
-                    class="reveal-item w-full bg-white rounded-[25px] shadow-[0_15px_35px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
+                    class="reveal-item w-full bg-white rounded-[25px] shadow-[0_15px_35px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col group cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
 
-                    <div class="relative h-[210px]">
-                        <img :src="item.image" :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn" class="w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 px-4 py-1 rounded-md text-white text-[11px] font-bold"
+                    <div class="relative h-[210px] overflow-hidden">
+                        <img :src="item.image" :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn" 
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                        <div class="absolute top-4 left-4 px-4 py-1 rounded-md text-white text-[11px] font-bold z-10"
                             :class="item.categoryColor" x-text="item.category"></div>
-                        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-spu-red opacity-80"></div>
+                        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-spu-red opacity-80 z-10 transition-transform duration-500 group-hover:scale-x-110"></div>
                     </div>
 
                     <div class="p-6 text-center flex flex-col flex-1">
                         <h3 class="text-[22px] font-bold text-black mb-1 leading-tight" 
                             x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
 
-                        <p class="text-spu-red text-[15px] mb-3" x-text="item.date"></p>
+                        <p class="text-spu-red text-[15px] mb-3" translate="no" x-html="item.date"></p>
 
                         <p class="text-gray-700 text-[14px] leading-[1.6] line-clamp-3" 
                             x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>

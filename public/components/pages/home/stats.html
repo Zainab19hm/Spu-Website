@@ -44,8 +44,9 @@
 
                         <div class="stats-card__body">
                             <div class="stats-card__value-row">
-                                <span class="stats-card-value" x-text="new Intl.NumberFormat($store.app.currentLang === 'ar' ? 'ar-EG' : 'en-US').format(stat.current)"></span>
-                                <span x-show="stat.plus" class="stats-card-plus" x-text="stat.plus"></span>
+                                <span class="stats-card-value" translate="no" x-text="new Intl.NumberFormat('en-US').format(stat.current)"></span>
+                                <span x-show="stat.unitEn" class="stats-card-value" translate="no" x-text="$store.app.currentLang === 'ar' ? (stat.unitAr || stat.unitEn) : stat.unitEn"></span>
+                                <span x-show="stat.suffixEn" class="stats-card-plus" x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
                             </div>
 
                             <p class="stats-card-label" x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>

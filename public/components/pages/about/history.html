@@ -37,8 +37,8 @@
             <h2 class="mt-6 text-4xl md:text-5xl font-bold text-spu-blue leading-tight"
                 x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn">
             </h2>
-            <p class="mt-6 text-lg text-gray-600 leading-relaxed"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.summaryAr : $store.aboutPage.history.summaryEn">
+            <p class="mt-6 text-lg text-gray-600 leading-relaxed" translate="no"
+                x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.history.summaryAr : $store.aboutPage.history.summaryEn">
             </p>
         </div>
 
@@ -66,14 +66,14 @@
                                 <div class="w-full h-[300px] md:h-[350px] bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-2xl shadow-spu-blue/5 transition-all duration-500 group-hover:-translate-y-2 flex flex-col">
                                     <div class="mb-6">
                                         <span class="inline-block px-4 py-1 rounded-full text-sm font-bold transition-colors duration-300 bg-spu-blue/5 text-spu-blue group-hover:bg-spu-red group-hover:text-white"
-                                              x-text="point.year"></span>
+                                              translate="no" x-html="point.year"></span>
                                     </div>
                                     
                                     <h4 class="text-xl md:text-2xl font-bold text-spu-blue mb-4 group-hover:text-spu-red transition-colors duration-300"
                                         x-text="$store.app.currentLang === 'ar' ? point.titleAr : point.titleEn"></h4>
                                     
                                     <p class="text-gray-500 leading-relaxed text-sm md:text-base line-clamp-4 lg:line-clamp-none overflow-y-auto"
-                                       x-text="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
+                                       x-html="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
                                 </div>
                             </div>
                         </div>

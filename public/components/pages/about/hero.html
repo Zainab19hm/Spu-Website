@@ -35,7 +35,7 @@
                         class="group relative overflow-hidden rounded-3xl border  border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5   backdrop-blur-xl transition-all ">
 
                         <div class="text-4xl  font-black text-white group-hover:scale-110 transition-transform duration-500"
-                            x-text="metric.value"></div>
+                            x-html="metric.value"></div>
 
                         <div class="mt-3 text-[10px] font-bold uppercase tracking-widest text-yellow-500/80"
                             x-text="$store.app.currentLang === 'ar' ? metric.labelAr : metric.labelEn"></div>

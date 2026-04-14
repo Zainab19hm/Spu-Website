@@ -134,8 +134,10 @@
                         :class="index $store.healthcare.stats.length - 1 ? 'lg:border-r lg:border-white/20' : ''">
                         <div class="flex items-baseline mb-2">
                             <span class="text-[48px] lg:text-[64px] font-bold text-white tracking-tight"
-                                x-text="stat.current"></span>
-                            <span class="text-[28px] font-bold text-spu-red ml-1" x-text="stat.suffix"></span>
+                                translate="no" x-text="stat.current"></span>
+                            <span x-show="stat.unitEn" class="text-[48px] lg:text-[64px] font-bold text-white tracking-tight"
+                                translate="no" x-text="$store.app.currentLang === 'ar' ? (stat.unitAr || stat.unitEn) : stat.unitEn"></span>
+                            <span class="text-[38px] font-bold text-spu-red ml-1" translate="no" x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
                         </div>
                         <p class="text-white/70 text-[14px] font-bold tracking-[0.1em] uppercase"
                             x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
