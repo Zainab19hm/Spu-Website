@@ -23,7 +23,7 @@
       "components": [
         "/components/pages/home/hero.html",
         "/components/pages/home/stats.html",
-        "/components/pages/home/honor-panel.html",
+        "/components/pages/home/honor-panel.html", 
         "/components/pages/home/faculties.html",
         "/components/pages/home/paths.html",
         "/components/pages/home/news.html",

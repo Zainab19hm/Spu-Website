@@ -15,6 +15,7 @@ export const heroContent = {
     secondaryBtnEn: 'Visit Campus'
 };
 
+
 export const statsItems = [
     {
         id: 1,

@@ -37,7 +37,7 @@ export function registerHomeStores(Alpine) {
         items: cloneData(newsItems)
     });
 
-    Alpine.store('honorPanel', {
+    Alpine.store('honorPanel', { // ! Initialize the honorPanel store with data from home-content.js
         items: cloneData(honorPanelItems)
     });
 

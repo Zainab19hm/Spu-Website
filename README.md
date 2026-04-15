@@ -40,3 +40,179 @@ Frontend for the Syrian Private University website using `Vite`, `Alpine.js`, an
 - `public/` is source static content, while `dist/` is the compiled production output.
 - Shared layout belongs under `layout/`; page-only fragments belong under `pages/<page-name>/`.
 - `npm run build` automatically runs the fragment root audit first so missing `x-data` roots are caught before shipping.
+
+```
+Spu-Website
+├─ about.html
+├─ admissions.html
+├─ contact.html
+├─ faculties.html
+├─ index.html
+├─ news.html
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ components
+│  │  ├─ layout
+│  │  │  ├─ footer.html
+│  │  │  └─ header.html
+│  │  └─ pages
+│  │     ├─ about
+│  │     │  ├─ hero.html
+│  │     │  ├─ history.html
+│  │     │  ├─ leadership.html
+│  │     │  ├─ overview.html
+│  │     │  └─ quality.html
+│  │     ├─ admissions
+│  │     │  ├─ hero.html
+│  │     │  ├─ process.html
+│  │     │  └─ requirements.html
+│  │     ├─ contact
+│  │     │  ├─ channels.html
+│  │     │  ├─ hero.html
+│  │     │  └─ visit.html
+│  │     ├─ faculties
+│  │     │  ├─ catalog.html
+│  │     │  ├─ hero.html
+│  │     │  └─ support.html
+│  │     ├─ home
+│  │     │  ├─ events.html
+│  │     │  ├─ faculties.html
+│  │     │  ├─ healthcare.html
+│  │     │  ├─ hero.html
+│  │     │  ├─ honor-panel.html
+│  │     │  ├─ news.html
+│  │     │  ├─ paths.html
+│  │     │  ├─ research.html
+│  │     │  └─ stats.html
+│  │     ├─ news
+│  │     │  ├─ archive.html
+│  │     │  ├─ featured.html
+│  │     │  └─ hero.html
+│  │     ├─ research
+│  │     │  ├─ hero.html
+│  │     │  ├─ initiatives.html
+│  │     │  └─ priorities.html
+│  │     └─ student-life
+│  │        ├─ hero.html
+│  │        ├─ highlights.html
+│  │        └─ services.html
+│  ├─ fonts
+│  │  ├─ Hacen Tunisia Bold Regular.ttf
+│  │  └─ Hacen Tunisia Regular.ttf
+│  ├─ images
+│  │  ├─ 1.png
+│  │  ├─ arcticons_emoji-classical-building.svg
+│  │  ├─ bytesize_book.svg
+│  │  ├─ DJI_20251222154016_0010_D copy.jpg
+│  │  ├─ DJI_20251222154530_0015_D copy.jpg
+│  │  ├─ DSC_1015.JPG
+│  │  ├─ DSC_1016.JPG
+│  │  ├─ DSC_1060.jpg
+│  │  ├─ DSC_1066.JPG
+│  │  ├─ DSC_1075.JPG
+│  │  ├─ faculty-admin-sciences-banner.png
+│  │  ├─ faculty-admin-sciences-logo.png
+│  │  ├─ faculty-ai-engineering-banner.png
+│  │  ├─ faculty-ai-engineering-logo.png
+│  │  ├─ faculty-construction-engineering-banner.png
+│  │  ├─ faculty-construction-engineering-logo.png
+│  │  ├─ faculty-dentistry-banner.png
+│  │  ├─ faculty-dentistry-logo.png
+│  │  ├─ faculty-medicine-banner.png
+│  │  ├─ faculty-medicine-logo.png
+│  │  ├─ faculty-petroleum-engineering-banner.png
+│  │  ├─ faculty-petroleum-engineering-logo.png
+│  │  ├─ faculty-pharmacy-banner.png
+│  │  ├─ faculty-pharmacy-logo.png
+│  │  ├─ flowbite_user-graduate-outline.svg
+│  │  ├─ Frame 114.png
+│  │  ├─ Gemini_Generated_Image_c89yjwc89yjwc89y.png
+│  │  ├─ Gemini_Generated_Image_rrcjc2rrcjc2rrcj.png
+│  │  ├─ healthcare-dental.png
+│  │  ├─ healthcare-hospital.png
+│  │  ├─ healthcare-main.png
+│  │  ├─ ic_outline-language.svg
+│  │  ├─ logo copy.png
+│  │  ├─ logo-spu (1).png
+│  │  ├─ logo-spu.png
+│  │  ├─ people-outline.svg
+│  │  ├─ single-logo.png
+│  │  ├─ slider-1.jpeg
+│  │  ├─ slider-2.jpg
+│  │  ├─ slider-3.jpg
+│  │  ├─ slider-4.jpg
+│  │  ├─ SPU LOGO 1.png
+│  │  ├─ SPU LOGO.png
+│  │  ├─ student.svg
+│  │  ├─ time.svg
+│  │  ├─ unsplash_s9CC2SKySJM.png
+│  │  ├─ unsplash_VckdJzo7ig0.png
+│  │  ├─ Vector-3.svg
+│  │  ├─ Vector-4.svg
+│  │  └─ words-logo.png
+│  ├─ robots.txt
+│  ├─ site.webmanifest
+│  └─ sitemap.xml
+├─ README.md
+├─ research.html
+├─ scripts
+│  ├─ audit-fragment-roots.js
+│  ├─ generate-page-shells.js
+│  ├─ inspect-html.js
+│  └─ patch-generator.js
+├─ src
+│  ├─ alpine
+│  │  ├─ pages
+│  │  │  ├─ about-stores.js
+│  │  │  ├─ admissions-stores.js
+│  │  │  ├─ contact-stores.js
+│  │  │  ├─ faculties-page-stores.js
+│  │  │  ├─ home-stores.js
+│  │  │  ├─ news-stores.js
+│  │  │  ├─ research-stores.js
+│  │  │  └─ student-life-stores.js
+│  │  ├─ register-faculty-catalog-store.js
+│  │  ├─ register-layout-stores.js
+│  │  └─ register-stores.js
+│  ├─ config
+│  │  ├─ site-pages.json
+│  │  └─ site-shell.js
+│  ├─ data
+│  │  ├─ domains
+│  │  │  └─ faculties-catalog.js
+│  │  ├─ layout-content.js
+│  │  └─ pages
+│  │     ├─ about-content.js
+│  │     ├─ admissions-content.js
+│  │     ├─ contact-content.js
+│  │     ├─ faculties-content.js
+│  │     ├─ home-content.js
+│  │     ├─ news-content.js
+│  │     ├─ research-content.js
+│  │     └─ student-life-content.js
+│  ├─ features
+│  │  ├─ calendar.js
+│  │  ├─ research-slider.js
+│  │  └─ reveal-sections.js
+│  ├─ lib
+│  │  └─ load-static-components.js
+│  ├─ main.js
+│  ├─ style.css
+│  ├─ styles
+│  │  ├─ foundation.css
+│  │  ├─ heroes.css
+│  │  ├─ home-sections.css
+│  │  ├─ honor-slider.css
+│  │  ├─ layout.css
+│  │  ├─ navigation.css
+│  │  ├─ reveal.css
+│  │  ├─ stats.css
+│  │  └─ utilities.css
+│  └─ utils
+│     ├─ animate-counter.js
+│     └─ clone.js
+├─ student-life.html
+└─ vite.config.js
+
+```

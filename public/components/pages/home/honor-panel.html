@@ -1,168 +1,120 @@
-<section x-data="honorAdvancedSlider()"
-    class="honor-slider-section py-16 bg-[#f8f9fa] font-hacen overflow-hidden relative">
-    <!-- ! Removed redundant x-init to prevent double-initialization -->
-
+<!-- 
+    HONOR & EXCELLENCE PANEL
+    ! Dynamic rotating showcase of university achievements.
+    ! Academic two-column layout with 5s auto-rotation and manual controls.
+-->
+<section x-data="{
+    activeIndex: 0,
+    timer: null,
+    items: [],
+    init() {
+        this.items = $store.honorPanel.items; // ! Connect to home-content data
+        this.startAuto();
+    },
+    startAuto() {
+        this.stopAuto();
+        this.timer = setInterval(() => this.next(), 5000); // ! 5s automatic cycle
+    },
+    stopAuto() {
+        if (this.timer) clearInterval(this.timer);
+    },
+    next() {
+        this.activeIndex = (this.activeIndex + 1) % this.items.length; // ! Rotation: Top -> Left
+    },
+    prev() {
+        this.activeIndex = (this.activeIndex - 1 + this.items.length) % this.items.length;
+    },
+    handleManual(action, val) {
+        this.stopAuto(); // ! Pause auto-move on user click
+        if (action === 'next') this.next();
+        if (action === 'prev') this.prev();
+        if (action === 'goto') this.activeIndex = val;
+        setTimeout(() => this.startAuto(), 8000); // ! Resume auto-rotation after 8s of inactivity
+    },
+    getPos(index) {
+        // ! Mathematical modulo to determine current layout position
+        return (index - this.activeIndex + this.items.length) % this.items.length;
+    }
+}" class="py-16 bg-white font-hacen relative overflow-hidden reveal">
     <div class="container">
-        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div class="reveal">
-                <p class="text-spu-red font-bold tracking-[0.3em] text-xs uppercase mb-3"
-                    x-text="$store.app.currentLang === 'ar' ? 'سجل التميز' : 'Record of Excellence'"></p>
-                <h2 class="text-4xl md:text-5xl font-bold text-spu-blue leading-tight"
-                    x-text="$store.app.currentLang === 'ar' ? 'لوحة الشرف الجامعية' : 'University Honor Panel'"></h2>
-            </div>
+        <!-- Header with Manual Navigation -->
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-[42px] font-bold text-spu-blue">
+                <span x-text="$store.app.currentLang === 'ar' ? 'التكريم والتميز' : 'Honor & Excellence'"></span>
+            </h2>
 
-            <div class="w-48 h-1.5 bg-slate-200 rounded-full overflow-hidden transition-opacity duration-300"
-                :class="hoveredItem ? 'opacity-0' : 'opacity-100'">
-                <div class="h-full bg-spu-red transition-all duration-[5000ms] ease-linear"
-                    :style="{ width: progress + '%' }"></div>
+            <!-- ! Manual Buttons -->
+            <div class="flex items-center gap-3">
+                <button @click="handleManual('prev')" class="slider-nav-btn" aria-label="Previous">
+                    <i class="fas fa-chevron-left text-sm"
+                        :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                </button>
+                <button @click="handleManual('next')" class="slider-nav-btn" aria-label="Next">
+                    <i class="fas fa-chevron-right text-sm"
+                        :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                </button>
             </div>
         </div>
 
-        <div class="relative h-[550px] md:h-[650px] w-full mt-10">
-            <template x-for="(item, index) in allData" :key="item.id">
-                <div class="honor-slide-slot absolute transition-all duration-1000 ease-in-out"
-                    :class="getSlotClass(index)" @mouseenter="isHoverable(index) ? setHover(item) : null"
-                    @mouseleave="clearHover()" @click="isFeatured(item) ? window.location.href = item.link : null">
-                    <!-- ! Added click handler to make featured slide clickable -->
+        <!-- Rotating Grid System -->
+        <div class="relative h-[400px] md:h-[500px] w-full">
+            <template x-for="(item, index) in items" :key="item.id">
+                <div class="absolute transition-all duration-1000 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] rounded-[40px] overflow-hidden group will-change-[width,height,left,top,opacity,transform]"
+                    :class="{
+                        'w-full lg:w-[65%] h-full z-30 left-0 top-0 opacity-100 shadow-2xl scale-100': getPos(index) === 0,
+                        'w-0 lg:w-[32%] h-[48%] z-20 left-0 lg:left-[68%] top-0 opacity-0 lg:opacity-100 scale-95 brightness-90': getPos(index) === 1,
+                        'w-0 lg:w-[32%] h-[48%] z-10 left-0 lg:left-[68%] top-[52%] opacity-0 lg:opacity-100 scale-90 brightness-75': getPos(index) === 2
+                    }">
+                    <!-- Background Image -->
+                    <img :src="item.image"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 will-change-transform">
 
-                    <div
-                        class="relative w-full h-full overflow-hidden rounded-[2.5rem] shadow-2xl group cursor-pointer">
-                        <img :src="item.image"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s]"
-                            :class="isFeatured(item) ? 'scale-110 brightness-110' : 'scale-100 brightness-75'">
+                    <!-- Detail Overlay (Active Card Only) -->
+                    <div x-show="getPos(index) === 0" x-transition:enter="transition ease-out duration-700 delay-400"
+                        x-transition:enter-start="opacity-0 translate-y-12"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/40 to-transparent flex flex-col justify-end p-12 text-white">
 
-                        <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/40 to-transparent transition-opacity duration-700"
-                            :class="isFeatured(item) ? 'opacity-100' : 'opacity-40'">
-                        </div>
+                        <div class="max-w-2xl select-none">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-4 py-1 rounded-full bg-spu-red text-[11px] font-bold uppercase"
+                                    x-text="$store.app.currentLang === 'ar' ? item.badgeAr : item.badgeEn"></span>
+                                <span class="text-white/70 text-sm font-medium"
+                                    x-text="$store.app.currentLang === 'ar' ? item.metaAr : item.metaEn"></span>
+                            </div>
 
-                        <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-white"
-                            x-show="isFeatured(item)" x-transition:enter="transition delay-300 duration-500 ease-out"
-                            x-transition:enter-start="opacity-0 translate-y-10"
-                            x-transition:enter-end="opacity-100 translate-y-0">
-
-                            <span
-                                class="inline-block bg-spu-red px-4 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest mb-4 w-fit"
-                                x-text="$store.app.currentLang === 'ar' ? item.badgeAr : item.badgeEn"></span>
-
-                            <h3 class="text-3xl md:text-5xl font-bold mb-5 leading-tight drop-shadow-lg"
+                            <h3 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight"
                                 x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
 
-                            <p class="text-white/80 max-w-xl text-lg mb-8 line-clamp-2"
+                            <p class="text-lg text-white/80 leading-relaxed mb-8 line-clamp-3"
                                 x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
 
-                            <a :href="item.link" class="flex items-center gap-3 font-bold group/link w-fit">
-                                <span
-                                    class="border-b-2 border-white/30 group-hover/link:border-white transition-colors pb-1"
-                                    x-text="$store.app.currentLang === 'ar' ? 'استكشف الإنجاز' : 'Explore Achievement'"></span>
-                                <i :class="$store.app.currentLang === 'ar' ? 'fa-arrow-left group-hover/link:-translate-x-2' : 'fa-arrow-right group-hover/link:translate-x-2'"
-                                    class="fas transition-transform"></i>
-                                <!-- ! Cleaned up stray character to fix icon rendering -->
+                            <a :href="item.link" class="inline-flex items-center gap-3 font-bold text-white group/link">
+                                <span class="border-b-2 border-spu-red pb-1"
+                                    x-text="$store.app.currentLang === 'ar' ? 'اكتشف التفاصيل' : 'View Details'"></span>
+                                <i class="fas fa-arrow-right transition-transform group-hover/link:translate-x-2"
+                                    :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
                             </a>
                         </div>
                     </div>
+
+                    <!-- Overlay for non-active cards -->
+                    <div x-show="getPos(index) !== 0"
+                        class="absolute inset-0 bg-black/30 hover:bg-black/10 transition-colors cursor-pointer"
+                        @click="handleManual('goto', index)"></div>
                 </div>
             </template>
         </div>
+
+        <!-- ! Manual Progress Indicators (Dots) -->
+        <div class="flex justify-center gap-3 mt-12">
+            <template x-for="(item, index) in items" :key="'dot-'+item.id">
+                <button @click="handleManual('goto', index)" class="h-2 rounded-full transition-all duration-700"
+                    :class="activeIndex === index ? 'w-10 bg-spu-red' : 'w-2 bg-gray-200'"></button>
+            </template>
+        </div>
     </div>
+
+    <!-- Academic Background Detail -->
+    <div class="absolute -right-20 top-1/4 w-96 h-96 bg-spu-blue/5 rounded-full blur-3xl -z-10"></div>
 </section>
-
-<script>
-    function honorAdvancedSlider() {
-        return {
-            allData: [],
-            offset: 0,
-            progress: 0,
-            hoveredItem: null,
-            timer: null,
-
-            init() { 
-                const sync = () => { 
-                    const items = this.$store.honorPanel?.items || [];
-                    if (items.length > 0) {
-                        // Ensure we have enough items (at least 5) to allow smooth rotation across all stages
-                        let dataArr = [...items];
-                        if (dataArr.length < 5) {
-                            dataArr = [...dataArr, ...dataArr.map(i => ({...i, id: 'clone_' + i.id}))];
-                        }
-                        this.allData = dataArr; 
-                        this.offset = 0;
-                        if (!this.timer) this.startTimer(); 
-                    }
-                };
-                sync();
-                this.$watch('$store.honorPanel.items', () => sync());
-            },
-
-            startTimer() {
-                this.stopTimer();
-                this.progress = 0;
-                setTimeout(() => this.progress = 100, 50);
-
-                this.timer = setInterval(() => {
-                    if (!this.hoveredItem) {
-                        this.rotate();
-                    }
-                }, 5000);
-            },
-
-            stopTimer() {
-                if (this.timer) clearInterval(this.timer);
-            },
-
-            rotate() {
-                if (this.allData.length < 2) return;
-                this.progress = 0;
-                this.offset = (this.offset + 1) % this.allData.length;
-                setTimeout(() => this.progress = 100, 50);
-            },
-
-            setHover(item) {
-                this.hoveredItem = item;
-                this.progress = 0;
-            },
-
-            clearHover() {
-                this.hoveredItem = null;
-                this.progress = 0;
-                setTimeout(() => this.progress = 100, 50);
-            },
-
-            isFeatured(item) {
-                if (this.hoveredItem) return item.id === this.hoveredItem.id;
-                if (this.allData.length === 0) return false;
-                const featuredIndex = this.offset % this.allData.length;
-                return item.id === this.allData[featuredIndex].id;
-            },
-            
-            isHoverable(index) {
-                if (this.allData.length === 0) return false;
-                const vIndex = (index - this.offset + this.allData.length) % this.allData.length;
-                return vIndex === 1 || vIndex === 2;
-            },
-
-            getSlotClass(index) {
-                if (!this.allData[index]) return 'slot-hidden';
-                
-                const vIndex = (index - this.offset + this.allData.length) % this.allData.length;
-
-                let baseClass = '';
-                if (vIndex === 0) baseClass = 'slot-featured';
-                else if (vIndex === 1) baseClass = 'slot-top-right';
-                else if (vIndex === 2) baseClass = 'slot-bottom-right';
-                else if (vIndex === this.allData.length - 1) baseClass = 'slot-out-left';
-                else baseClass = 'slot-hidden';
-
-                if (this.hoveredItem) {
-                    if (this.allData[index].id === this.hoveredItem.id) {
-                        return 'slot-featured-active';
-                    }
-                    if (vIndex < 3) {
-                        return baseClass + ' slot-thumbnail-dimmed';
-                    }
-                }
-                
-                return baseClass;
-            }
-        }
-    }
-</script>
