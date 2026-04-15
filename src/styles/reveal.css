@@ -18,5 +18,4 @@
 /* Animate all items simultaneously - no stagger for instant feel */
 .reveal-visible .reveal-item {
     opacity: 1;
-    transition: opacity 0.2s ease-out;
 }
