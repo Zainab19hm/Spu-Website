@@ -80,6 +80,54 @@ export const pathItems = [
     { id: 5, titleAr: 'الأهالي والزوار', titleEn: 'Parents & Visitors', icon: '/images/people-outline.svg', linksAr: ['زيارة الحرم', 'أخبار الجامعة', 'التقويم', 'اتصل بنا'], linksEn: ['Visit Campus', 'University News', 'Calendar', 'Contact Us'], actionAr: 'المزيد من المعلومات', actionEn: 'More Info' }
 ];
 
+export const honorPanelItems = [
+    {
+        id: 1,
+        badgeEn: 'Honor Spotlight',
+        badgeAr: 'المحور المكرّم',
+        metaEn: 'Faculty of Medicine',
+        metaAr: 'كلية الطب',
+        titleEn: 'Clinical simulation excellence presented through a more formal academic showcase.',
+        titleAr: 'تميّز المحاكاة السريرية ضمن عرض أكاديمي أكثر رسمية وأناقة.',
+        summaryEn: 'The Faculty of Medicine can be highlighted here with field photography, concise recognition notes, and a stronger editorial presentation that feels worthy of an official university homepage.',
+        summaryAr: 'يمكن إبراز كلية الطب هنا عبر صور ميدانية وملاحظات تكريم مختصرة وصياغة تحريرية أقوى تليق بواجهة جامعة رسمية.',
+        highlightsEn: ['Official recognition', 'Field photography', 'Academic excellence'],
+        highlightsAr: ['تكريم رسمي', 'تصوير ميداني', 'تميّز أكاديمي'],
+        image: '/images/DSC_1060.jpg',
+        link: '/faculties.html#faculty-1'
+    },
+    {
+        id: 2,
+        badgeEn: 'Research Distinction',
+        badgeAr: 'تميّز بحثي',
+        metaEn: 'Applied AI and Engineering',
+        metaAr: 'الذكاء الاصطناعي والهندسة التطبيقية',
+        titleEn: 'Applied research stories can combine strong imagery with concise institutional context.',
+        titleAr: 'يمكن لقصص البحث التطبيقي أن تجمع بين الصورة القوية والسياق المؤسسي المختصر.',
+        summaryEn: 'This card format supports laboratories, student projects, innovation awards, and any photo-led research announcement without making the section feel generic.',
+        summaryAr: 'يدعم هذا النمط المختبرات والمشاريع الطلابية وجوائز الابتكار وأي إعلان بحثي قائم على الصور من دون أن يبدو القسم عادياً أو مكرراً.',
+        highlightsEn: ['Innovation programs', 'Student projects', 'Research visibility'],
+        highlightsAr: ['برامج الابتكار', 'مشاريع طلابية', 'حضور بحثي'],
+        image: '/images/DSC_1075.JPG',
+        link: '/research.html#research-priorities'
+    },
+    {
+        id: 3,
+        badgeEn: 'Community Leadership',
+        badgeAr: 'قيادة مجتمعية',
+        metaEn: 'Student Affairs and Outreach',
+        metaAr: 'شؤون الطلاب والتواصل المجتمعي',
+        titleEn: 'Community and student-life highlights can sit in the same premium visual system.',
+        titleAr: 'يمكن أن تنتمي إنجازات المجتمع والحياة الجامعية إلى النظام البصري المميز نفسه.',
+        summaryEn: 'The smaller card layout keeps recognition items neat and professional while still leaving space for campus photography, short summaries, and a direct path to the related page.',
+        summaryAr: 'يحافظ تخطيط البطاقة الأصغر على أناقة عناصر التكريم واحترافيتها مع ترك مساحة لصور الحرم والملخصات القصيرة والمسار المباشر إلى الصفحة ذات الصلة.',
+        highlightsEn: ['Campus activity', 'Outreach coverage', 'Official updates'],
+        highlightsAr: ['نشاط جامعي', 'تغطية مجتمعية', 'تحديثات رسمية'],
+        image: '/images/slider-3.jpg',
+        link: '/student-life.html#activities'
+    }
+];
+
 export const newsItems = [
     { id: 1, category: 'Camps', categoryColor: 'bg-[#1e2652]', titleEn: 'Expansion of University Green Spaces', titleAr: 'توسيع المساحات الخضراء في الجامعة', date: 'March <span translate="no">15, 2026</span>', summaryEn: 'New landscaping initiatives are transforming the campus into a greener environment.', summaryAr: 'مبادرات جديدة لتنسيق الحدائق تحول الحرم الجامعي إلى بيئة أكثر خضرة.', image: '/images/unsplash_s9CC2SKySJM.png' }, // Protected date
     { id: 2, category: 'Admission', categoryColor: 'bg-[#7a1212]', titleEn: 'Early Admission cycle now open', titleAr: 'فتح باب القبول المبكر الآن', date: 'March <span translate="no">10, 2026</span>', summaryEn: 'High school students can now apply for the upcoming fall semester.', summaryAr: 'يمكن لطلاب المدارس الثانوية الآن التقديم للفصل الدراسي الخريف القادم.', image: '/images/unsplash_VckdJzo7ig0.png' },
