@@ -6,6 +6,7 @@ import { registerFacultiesPageStores } from './pages/faculties-page-stores.js';
 import { registerAdmissionsStores } from './pages/admissions-stores.js';
 import { registerResearchStores } from './pages/research-stores.js';
 import { registerStudentLifeStores } from './pages/student-life-stores.js';
+import { registerServicesStores } from './pages/services-stores.js';
 import { registerNewsStores } from './pages/news-stores.js';
 import { registerContactStores } from './pages/contact-stores.js';
 
@@ -16,6 +17,7 @@ const pageStoreRegistrars = {
     admissions: registerAdmissionsStores,
     research: registerResearchStores,
     'student-life': registerStudentLifeStores,
+    services: registerServicesStores,
     news: registerNewsStores,
     contact: registerContactStores
 };
