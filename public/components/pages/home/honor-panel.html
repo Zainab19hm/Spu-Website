@@ -1,7 +1,147 @@
-<section x-data="honorPanelApp()" class="py-16 lg:py-20 reveal">
+<section x-data="honorAdvancedSlider()" x-init="init()"
+    class="honor-slider-section py-16 bg-[#f8f9fa] font-hacen overflow-hidden relative">
+
     <div class="container">
-        <h2 class="text-[38px] font-bold text-spu-blue mb-6 text-center lg:text-left">
-            <span x-text="$store.app.currentLang === 'ar' ? 'لوحة الشرف' : 'SPU Honor Panel'"></span>
-        </h2>
+        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="reveal">
+                <p class="text-spu-red font-bold tracking-[0.3em] text-xs uppercase mb-3"
+                    x-text="$store.app.currentLang === 'ar' ? 'سجل التميز' : 'Record of Excellence'"></p>
+                <h2 class="text-4xl md:text-5xl font-bold text-spu-blue leading-tight"
+                    x-text="$store.app.currentLang === 'ar' ? 'لوحة الشرف الجامعية' : 'University Honor Panel'"></h2>
+            </div>
+
+            <div class="w-48 h-1.5 bg-slate-200 rounded-full overflow-hidden transition-opacity duration-300"
+                :class="hoveredItem ? 'opacity-0' : 'opacity-100'">
+                <div class="h-full bg-spu-red transition-all duration-[5000ms] ease-linear"
+                    :style="{ width: progress + '%' }"></div>
+            </div>
+        </div>
+
+        <div class="relative h-[550px] md:h-[650px] w-full mt-10">
+            <template x-for="(item, index) in displayItems" :key="item.id">
+                <div class="honor-slide-slot absolute transition-all duration-1000 ease-in-out"
+                    :class="getSlotClass(index)" @mouseenter="index !== 0 ? setHover(item) : null"
+                    @mouseleave="clearHover()">
+
+                    <div
+                        class="relative w-full h-full overflow-hidden rounded-[2.5rem] shadow-2xl group cursor-pointer">
+                        <img :src="item.image"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s]"
+                            :class="(index === 0 || (hoveredItem && hoveredItem.id === item.id)) ? 'scale-110 brightness-110' : 'scale-100 brightness-75'">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/40 to-transparent transition-opacity duration-700"
+                            :class="(index === 0 || (hoveredItem && hoveredItem.id === item.id)) ? 'opacity-100' : 'opacity-40'">
+                        </div>
+
+                        <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-white"
+                            x-show="isFeatured(item)" x-transition:enter="transition delay-300 duration-500 ease-out"
+                            x-transition:enter-start="opacity-0 translate-y-10"
+                            x-transition:enter-end="opacity-100 translate-y-0">
+
+                            <span
+                                class="inline-block bg-spu-red px-4 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest mb-4 w-fit"
+                                x-text="$store.app.currentLang === 'ar' ? item.badgeAr : item.badgeEn"></span>
+
+                            <h3 class="text-3xl md:text-5xl font-bold mb-5 leading-tight drop-shadow-lg"
+                                x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+
+                            <p class="text-white/80 max-w-xl text-lg mb-8 line-clamp-2"
+                                x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+
+                            <a :href="item.link" class="flex items-center gap-3 font-bold group/link w-fit">
+                                <span
+                                    class="border-b-2 border-white/30 group-hover/link:border-white transition-colors pb-1"
+                                    x-text="$store.app.currentLang === 'ar' ? 'استكشف الإنجاز' : 'Explore Achievement'"></span>
+                                <i
+                                    class="fas fa-arrow-left transition-transform group-hover/link:-translate-x-2 rtl:rotate-0 rotate-180"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
     </div>
 </section>
+
+<script>
+    function honorAdvancedSlider() {
+        return {
+            allData: [],
+            displayItems: [],
+            progress: 0,
+            hoveredItem: null,
+            timer: null,
+
+            init() {
+                // مراقبة اللغة بشكل نشط
+                this.$watch('$store.app.currentLang', () => {
+                    // إجبار Alpine على تحديث الواجهة عند تغيير اللغة
+                    this.updateDisplay();
+                });
+
+                this.allData = [...Alpine.store('honorPanel').items];
+                this.updateDisplay();
+                this.startTimer();
+            },
+
+            updateDisplay() {
+                // تحديث العناصر المعروضة بناءً على الترتيب الحالي
+                this.displayItems = this.allData.slice(0, 3);
+            },
+
+            startTimer() {
+                this.stopTimer();
+                this.progress = 0;
+                setTimeout(() => this.progress = 100, 50);
+
+                this.timer = setInterval(() => {
+                    if (!this.hoveredItem) {
+                        this.rotate();
+                    }
+                }, 5000);
+            },
+
+            stopTimer() {
+                if (this.timer) clearInterval(this.timer);
+            },
+
+            rotate() {
+                this.progress = 0;
+                const first = this.allData.shift();
+                this.allData.push(first);
+                this.updateDisplay();
+                setTimeout(() => this.progress = 100, 50);
+            },
+
+            setHover(item) {
+                this.hoveredItem = item;
+                this.progress = 0;
+            },
+
+            clearHover() {
+                this.hoveredItem = null;
+                this.progress = 0;
+                setTimeout(() => this.progress = 100, 50);
+            },
+
+            isFeatured(item) {
+                if (this.hoveredItem) {
+                    return item.id === this.hoveredItem.id;
+                }
+                return this.displayItems.length > 0 && item.id === this.displayItems[0].id;
+            },
+
+            getSlotClass(index) {
+                if (this.hoveredItem) {
+                    if (this.displayItems[index].id === this.hoveredItem.id) {
+                        return 'slot-featured-active';
+                    }
+                    return 'slot-thumbnail-dimmed';
+                }
+                if (index === 0) return 'slot-featured';
+                if (index === 1) return 'slot-top-right';
+                if (index === 2) return 'slot-bottom-right';
+            }
+        }
+    }
+</script>

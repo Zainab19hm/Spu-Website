@@ -52,7 +52,7 @@ function renderPageShell(page) {
     <title>${escapeAttribute(page.title)}</title>
 </head>
 
-<body data-page="${escapeAttribute(page.name)}">
+<body data-page="${escapeAttribute(page.name)}" data-page-store="${escapeAttribute(page.name)}" data-page-section="${escapeAttribute(page.name)}">
     <div data-layout-slot="header"></div>
     <main data-page-content></main>
     <div data-layout-slot="footer"></div>
