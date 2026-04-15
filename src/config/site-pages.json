@@ -23,6 +23,7 @@
       "components": [
         "/components/pages/home/hero.html",
         "/components/pages/home/stats.html",
+        "/components/pages/home/honor-panel.html",
         "/components/pages/home/faculties.html",
         "/components/pages/home/paths.html",
         "/components/pages/home/news.html",
@@ -132,6 +133,25 @@
         "/components/pages/student-life/hero.html",
         "/components/pages/student-life/services.html",
         "/components/pages/student-life/highlights.html"
+      ]
+    },
+    {
+      "name": "services",
+      "fileName": "services.html",
+      "path": "/services.html",
+      "canonicalPath": "/services.html",
+      "title": "E-Services | Syrian Private University",
+      "description": "Access student portal pathways, electronic services, and protected digital resources through the official SPU services hub.",
+      "keywords": [
+        "SPU e-services",
+        "student portal",
+        "electronic registration",
+        "digital services"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/services/hero.html",
+        "/components/pages/services/access.html"
       ]
     },
     {

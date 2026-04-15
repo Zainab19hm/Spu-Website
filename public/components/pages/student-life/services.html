@@ -20,7 +20,7 @@
             <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-blue/60" x-text="$store.app.currentLang === 'ar' ? 'الوصول الرقمي' : 'Digital Access'"></p>
             <div class="mt-6 grid gap-4">
                 <template x-for="portal in $store.studentLifePage.portals" :key="portal.titleEn">
-                    <a :href="portal.url" class="rounded-[22px] bg-white px-5 py-5 shadow-[0_16px_45px_rgba(20,30,70,0.06)] transition-transform duration-300 hover:-translate-y-1" :target="portal.url.startsWith('http') ? '_blank' : null" :rel="portal.url.startsWith('http') ? 'noreferrer' : null">
+                    <a :href="portal.protected ? '/services.html#portal-access' : portal.url" @click="if (portal.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(portal.url); }" class="rounded-[22px] bg-white px-5 py-5 shadow-[0_16px_45px_rgba(20,30,70,0.06)] transition-transform duration-300 hover:-translate-y-1" :target="!portal.protected && portal.url.startsWith('http') ? '_blank' : null" :rel="!portal.protected && portal.url.startsWith('http') ? 'noreferrer' : null">
                         <h3 class="text-lg font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? portal.titleAr : portal.titleEn"></h3>
                         <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? portal.summaryAr : portal.summaryEn"></p>
                     </a>

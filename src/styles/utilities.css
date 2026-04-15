@@ -29,6 +29,10 @@
     scrollbar-width: none;
 }
 
+[x-cloak] {
+    display: none !important;
+}
+
 [dir="rtl"] .fa-chevron-right,
 [dir="rtl"] .fa-chevron-left,
 [dir="rtl"] .fa-arrow-right,

@@ -1,3 +1,5 @@
+import { portalAccessConfig } from '../domains/portal-access.js';
+
 export const studentLifePageContent = {
     hero: {
         eyebrowEn: 'Student Life',
@@ -38,14 +40,16 @@ export const studentLifePageContent = {
             titleAr: 'بوابة الطالب',
             summaryEn: 'Access student records and core digital services.',
             summaryAr: 'الوصول إلى السجلات الطلابية والخدمات الرقمية الأساسية.',
-            url: 'http://my.spu.edu.sy/ar/login'
+            url: portalAccessConfig.defaultDestination,
+            protected: true
         },
         {
             titleEn: 'Electronic Registration',
             titleAr: 'التسجيل الإلكتروني',
             summaryEn: 'Reach online registration services through the official portal entry point.',
             summaryAr: 'الوصول إلى خدمات التسجيل الإلكتروني عبر بوابة الجامعة الرسمية.',
-            url: 'http://my.spu.edu.sy/ar/login'
+            url: portalAccessConfig.registrationDestination,
+            protected: true
         },
         {
             titleEn: 'Contact Student Affairs',

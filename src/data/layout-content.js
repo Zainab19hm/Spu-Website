@@ -1,3 +1,5 @@
+import { portalAccessConfig } from './domains/portal-access.js';
+
 export const appUi = {
     viewAll: { en: 'View All', ar: 'عرض الكل' },
     learnMore: { en: 'LEARN MORE', ar: 'اعرف المزيد' },
@@ -75,10 +77,10 @@ export const navigationMenuItems = [
         page: 'services',
         hasDropdown: true,
         children: [
-            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: '/services.html#services' },
-            { labelAr: 'التسجيل', labelEn: 'Registration', url: '/services.html#activities' },
-            { labelAr: 'المكتبة', labelEn: 'Library Access', url: '/services.html#calendar' },
-            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: '/services.html#calendar' },
+            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, protected: true },
+            { labelAr: 'التسجيل الإلكتروني', labelEn: 'Registration', url: portalAccessConfig.registrationDestination, protected: true },
+            { labelAr: 'المكتبة', labelEn: 'Library Access', url: '/services.html#library-support' },
+            { labelAr: 'قدّم الآن', labelEn: 'Apply now', url: '/admissions.html' }
         ]
     },
     { id: 6, labelAr: 'البحث العلمي', labelEn: 'Research', page: 'research', hasDropdown: false, url: '/research.html' },
@@ -146,7 +148,7 @@ export const footerContent = {
         copyrightAr: '© <span translate="no">2026</span> الجامعة السورية الخاصة. التميز في التعليم.', // Protected year
         links: [
             { labelEn: 'Apply Now', labelAr: 'قدّم الآن', url: '/admissions.html' },
-            { labelEn: 'Student Portal', labelAr: 'بوابة الطالب', url: 'http://my.spu.edu.sy/ar/login' },
+            { labelEn: 'Student Portal', labelAr: 'بوابة الطالب', url: portalAccessConfig.defaultDestination, protected: true },
             { labelEn: 'Contact SPU', labelAr: 'تواصل مع SPU', url: '/contact.html' }
         ]
     }

@@ -1,6 +1,7 @@
 import {
     healthcareContent,
     heroContent,
+    honorPanelItems,
     newsItems,
     pathItems,
     researchItems,
@@ -30,6 +31,10 @@ export function registerHomeStores(Alpine) {
     Alpine.store('paths', {
         activePath: null,
         items: cloneData(pathItems)
+    });
+
+    Alpine.store('honorPanel', {
+        items: cloneData(honorPanelItems)
     });
 
     Alpine.store('news', {
