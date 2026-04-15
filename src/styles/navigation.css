@@ -109,6 +109,10 @@
         gap: 1.3rem;
     }
 
+    .site-nav-item {
+        position: relative;
+    }
+
     .site-nav-item a {
         position: relative;
         /* padding-bottom: -2px; */
@@ -173,7 +177,7 @@
     .site-nav-dropdown {
         position: absolute;
         top: calc(100% + 0.78rem);
-        /* left: -1rem; */
+        left: -1rem;
         z-index: 60;
         display: grid;
         gap: 0.28rem;
@@ -426,6 +430,8 @@
     [dir='rtl'] .site-nav-dropdown::before {
         left: auto;
         right: 1.7rem;
+        border-left: none;
+        border-right: 1px solid rgba(225, 231, 245, 0.92);
     }
 
     [dir='rtl'] .site-nav-dropdown-link:hover,
