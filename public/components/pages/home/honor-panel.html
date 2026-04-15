@@ -1,5 +1,6 @@
-<section x-data="honorAdvancedSlider()" x-init="init()"
+<section x-data="honorAdvancedSlider()"
     class="honor-slider-section py-16 bg-[#f8f9fa] font-hacen overflow-hidden relative">
+    <!-- ! Removed redundant x-init to prevent double-initialization -->
 
     <div class="container">
         <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -18,19 +19,20 @@
         </div>
 
         <div class="relative h-[550px] md:h-[650px] w-full mt-10">
-            <template x-for="(item, index) in displayItems" :key="item.id">
+            <template x-for="(item, index) in allData" :key="item.id">
                 <div class="honor-slide-slot absolute transition-all duration-1000 ease-in-out"
-                    :class="getSlotClass(index)" @mouseenter="index !== 0 ? setHover(item) : null"
-                    @mouseleave="clearHover()">
+                    :class="getSlotClass(index)" @mouseenter="isHoverable(index) ? setHover(item) : null"
+                    @mouseleave="clearHover()" @click="isFeatured(item) ? window.location.href = item.link : null">
+                    <!-- ! Added click handler to make featured slide clickable -->
 
                     <div
                         class="relative w-full h-full overflow-hidden rounded-[2.5rem] shadow-2xl group cursor-pointer">
                         <img :src="item.image"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s]"
-                            :class="(index === 0 || (hoveredItem && hoveredItem.id === item.id)) ? 'scale-110 brightness-110' : 'scale-100 brightness-75'">
+                            :class="isFeatured(item) ? 'scale-110 brightness-110' : 'scale-100 brightness-75'">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/40 to-transparent transition-opacity duration-700"
-                            :class="(index === 0 || (hoveredItem && hoveredItem.id === item.id)) ? 'opacity-100' : 'opacity-40'">
+                            :class="isFeatured(item) ? 'opacity-100' : 'opacity-40'">
                         </div>
 
                         <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-white"
@@ -52,8 +54,9 @@
                                 <span
                                     class="border-b-2 border-white/30 group-hover/link:border-white transition-colors pb-1"
                                     x-text="$store.app.currentLang === 'ar' ? 'استكشف الإنجاز' : 'Explore Achievement'"></span>
-                                <i
-                                    class="fas fa-arrow-left transition-transform group-hover/link:-translate-x-2 rtl:rotate-0 rotate-180"></i>
+                                <i :class="$store.app.currentLang === 'ar' ? 'fa-arrow-left group-hover/link:-translate-x-2' : 'fa-arrow-right group-hover/link:translate-x-2'"
+                                    class="fas transition-transform"></i>
+                                <!-- ! Cleaned up stray character to fix icon rendering -->
                             </a>
                         </div>
                     </div>
@@ -67,26 +70,27 @@
     function honorAdvancedSlider() {
         return {
             allData: [],
-            displayItems: [],
+            offset: 0,
             progress: 0,
             hoveredItem: null,
             timer: null,
 
-            init() {
-                // مراقبة اللغة بشكل نشط
-                this.$watch('$store.app.currentLang', () => {
-                    // إجبار Alpine على تحديث الواجهة عند تغيير اللغة
-                    this.updateDisplay();
-                });
-
-                this.allData = [...Alpine.store('honorPanel').items];
-                this.updateDisplay();
-                this.startTimer();
-            },
-
-            updateDisplay() {
-                // تحديث العناصر المعروضة بناءً على الترتيب الحالي
-                this.displayItems = this.allData.slice(0, 3);
+            init() { 
+                const sync = () => { 
+                    const items = this.$store.honorPanel?.items || [];
+                    if (items.length > 0) {
+                        // Ensure we have enough items (at least 5) to allow smooth rotation across all stages
+                        let dataArr = [...items];
+                        if (dataArr.length < 5) {
+                            dataArr = [...dataArr, ...dataArr.map(i => ({...i, id: 'clone_' + i.id}))];
+                        }
+                        this.allData = dataArr; 
+                        this.offset = 0;
+                        if (!this.timer) this.startTimer(); 
+                    }
+                };
+                sync();
+                this.$watch('$store.honorPanel.items', () => sync());
             },
 
             startTimer() {
@@ -106,10 +110,9 @@
             },
 
             rotate() {
+                if (this.allData.length < 2) return;
                 this.progress = 0;
-                const first = this.allData.shift();
-                this.allData.push(first);
-                this.updateDisplay();
+                this.offset = (this.offset + 1) % this.allData.length;
                 setTimeout(() => this.progress = 100, 50);
             },
 
@@ -125,22 +128,40 @@
             },
 
             isFeatured(item) {
-                if (this.hoveredItem) {
-                    return item.id === this.hoveredItem.id;
-                }
-                return this.displayItems.length > 0 && item.id === this.displayItems[0].id;
+                if (this.hoveredItem) return item.id === this.hoveredItem.id;
+                if (this.allData.length === 0) return false;
+                const featuredIndex = this.offset % this.allData.length;
+                return item.id === this.allData[featuredIndex].id;
+            },
+            
+            isHoverable(index) {
+                if (this.allData.length === 0) return false;
+                const vIndex = (index - this.offset + this.allData.length) % this.allData.length;
+                return vIndex === 1 || vIndex === 2;
             },
 
             getSlotClass(index) {
+                if (!this.allData[index]) return 'slot-hidden';
+                
+                const vIndex = (index - this.offset + this.allData.length) % this.allData.length;
+
+                let baseClass = '';
+                if (vIndex === 0) baseClass = 'slot-featured';
+                else if (vIndex === 1) baseClass = 'slot-top-right';
+                else if (vIndex === 2) baseClass = 'slot-bottom-right';
+                else if (vIndex === this.allData.length - 1) baseClass = 'slot-out-left';
+                else baseClass = 'slot-hidden';
+
                 if (this.hoveredItem) {
-                    if (this.displayItems[index].id === this.hoveredItem.id) {
+                    if (this.allData[index].id === this.hoveredItem.id) {
                         return 'slot-featured-active';
                     }
-                    return 'slot-thumbnail-dimmed';
+                    if (vIndex < 3) {
+                        return baseClass + ' slot-thumbnail-dimmed';
+                    }
                 }
-                if (index === 0) return 'slot-featured';
-                if (index === 1) return 'slot-top-right';
-                if (index === 2) return 'slot-bottom-right';
+                
+                return baseClass;
             }
         }
     }

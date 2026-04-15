@@ -1,6 +1,7 @@
 import {
     healthcareContent,
     heroContent,
+    honorPanelItems,
     newsItems,
     pathItems,
     researchItems,
@@ -34,6 +35,10 @@ export function registerHomeStores(Alpine) {
 
     Alpine.store('news', {
         items: cloneData(newsItems)
+    });
+
+    Alpine.store('honorPanel', {
+        items: cloneData(honorPanelItems)
     });
 
     // Optimized research store with cached items to reduce reactivity overhead
