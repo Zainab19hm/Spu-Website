@@ -134,37 +134,121 @@
     }
 
     .slider-nav-btn {
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 3rem;
+        height: 3rem;
+        min-width: 3rem;
+        min-height: 3rem;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        border-radius: 0.75rem;
-        border: 1px solid rgba(32,39,89,0.1);
-        background: rgba(255,255,255,0.9);
-        color: #202759;
-        box-shadow: 0 6px 16px rgba(17,26,63,0.08);
-        transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 249, 255, 0.88));
+        color: #1f2758;
+        box-shadow: 0 24px 50px rgba(32, 39, 89, 0.12);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transition: transform 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease, color 0.24s ease;
+        line-height: 0;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .slider-nav-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(circle at 30% 30%, rgba(111, 22, 22, 0.14), transparent 45%);
+        opacity: 0;
+        transition: opacity 0.24s ease;
+        pointer-events: none;
     }
 
     .slider-nav-btn:hover {
-        transform: translateY(-1px);
-        background: rgba(255,255,255,1);
-        color: #202759;
-        box-shadow: 0 10px 20px rgba(17,26,63,0.1);
+        transform: translateY(-3px) scale(1.05);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 241, 241, 0.96));
+        color: var(--color-spu-red);
+        border-color: rgba(111, 22, 22, 0.22);
+        box-shadow: 0 28px 56px rgba(111, 22, 22, 0.18);
+    }
+
+    .slider-nav-btn:hover::before {
+        opacity: 1;
+        background: radial-gradient(circle at 30% 30%, rgba(111, 22, 22, 0.18), transparent 48%);
+    }
+
+    .slider-nav-btn:focus-visible {
+        outline: 2px solid rgba(111, 22, 22, 0.25);
+        outline-offset: 3px;
+    }
+
+    .slider-nav-btn i,
+    .slider-nav-btn svg {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1rem;
+        height: 1rem;
+        transition: transform 0.24s ease, color 0.24s ease;
+        color: inherit;
     }
 
     .slider-nav-btn svg {
-        display: block;
-        transition: transform 0.18s ease;
+        stroke: currentColor;
     }
 
-    .slider-nav-btn:hover svg {
-        transform: translateX(1px);
+    .slider-nav-btn--prev:hover i,
+    .slider-nav-btn--prev:hover svg {
+        transform: translateX(-2px);
     }
 
-    .slider-nav-btn:first-child:hover svg {
-        transform: translateX(-1px);
+    .slider-nav-btn--next:hover i,
+    .slider-nav-btn--next:hover svg {
+        transform: translateX(2px);
+    }
+
+    .slider-nav-btn--prev,
+    .slider-nav-btn--next {
+        font-size: 0;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-header__title {
+        margin: 0;
+        color: #202759;
+    }
+
+    .slider-controls-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.85rem;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.80);
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        box-shadow: 0 20px 40px rgba(32, 39, 89, 0.08);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        max-width: fit-content;
+    }
+
+    .slider-controls-row:hover {
+        transform: translateY(-1px);
+    }
+
+    .slider-controls-row--top {
+        margin-bottom: 1.5rem;
     }
 
     .research-card__action {

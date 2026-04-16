@@ -9,14 +9,14 @@
 
     <div class="container">
         <!-- Header: Title and Navigation Arrows -->
-        <div class="flex items-center justify-between mb-12">
-            <h2 class="text-[42px] font-bold text-spu-blue">
+        <div class="section-header">
+            <h2 class="section-header__title text-[42px] font-bold text-spu-blue">
                 <span x-text="$store.app.currentLang === 'ar' ? 'أبحاث ودراسات' : 'SPU Research'"></span>
             </h2>
 
             <!-- Manual slider controls -->
-            <div class="flex items-center gap-3">
-                <button type="button" @click="slide('left')" class="slider-nav-btn"
+            <div class="slider-controls-row">
+                <button type="button" @click="slide('left')" class="slider-nav-btn slider-nav-btn--prev"
                     :aria-label="$store.app.ui.prev[$store.app.currentLang]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
@@ -24,7 +24,7 @@
                     </svg>
                     <span class="sr-only" x-text="$store.app.ui.prev[$store.app.currentLang]"></span>
                 </button>
-                <button type="button" @click="slide('right')" class="slider-nav-btn"
+                <button type="button" @click="slide('right')" class="slider-nav-btn slider-nav-btn--next"
                     :aria-label="$store.app.ui.next[$store.app.currentLang]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">

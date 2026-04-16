@@ -38,18 +38,18 @@
 }" class="py-16 bg-white font-hacen relative overflow-hidden reveal">
     <div class="container">
         <!-- Header with Manual Navigation -->
-        <div class="flex items-center justify-between mb-12">
-            <h2 class="text-[42px] font-bold text-spu-blue">
+        <div class="section-header">
+            <h2 class="section-header__title text-[42px] font-bold text-spu-blue">
                 <span x-text="$store.app.currentLang === 'ar' ? 'التكريم والتميز' : 'Honor & Excellence'"></span>
             </h2>
 
             <!-- ! Manual Buttons -->
-            <div class="flex items-center gap-3">
-                <button @click="handleManual('prev')" class="slider-nav-btn" aria-label="Previous">
+            <div class="slider-controls-row">
+                <button @click="handleManual('prev')" type="button" class="slider-nav-btn slider-nav-btn--prev" aria-label="Previous">
                     <i class="fas fa-chevron-left text-sm"
                         :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
                 </button>
-                <button @click="handleManual('next')" class="slider-nav-btn" aria-label="Next">
+                <button @click="handleManual('next')" type="button" class="slider-nav-btn slider-nav-btn--next" aria-label="Next">
                     <i class="fas fa-chevron-right text-sm"
                         :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
                 </button>

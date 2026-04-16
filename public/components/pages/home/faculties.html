@@ -35,6 +35,15 @@
             </div>
 
             <div class="flex-1 min-w-0 w-full relative">
+                <div class="slider-controls-row slider-controls-row--top">
+                    <button @click="slideFaculties('left')" type="button" class="slider-nav-btn slider-nav-btn--prev" aria-label="Previous">
+                        <i class="fas fa-chevron-left text-[14px]"></i>
+                    </button>
+                    <button @click="slideFaculties('right')" type="button" class="slider-nav-btn slider-nav-btn--next" aria-label="Next">
+                        <i class="fas fa-chevron-right text-[14px]"></i>
+                    </button>
+                </div>
+
                 <div x-ref="facultiesTrack"
                     class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2 pt-2 pb-5 items-start z-10">
 
@@ -80,13 +89,5 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-4 relative top-[-4px] justify-center lg:justify-end">
-            <button @click="slideFaculties('left')" type="button" class="slider-nav-btn">
-                <i class="fas fa-chevron-left text-[14px]"></i>
-            </button>
-            <button @click="slideFaculties('right')" type="button" class="slider-nav-btn">
-                <i class="fas fa-chevron-right text-[14px]"></i>
-            </button>
-        </div>
     </div>
 </section>

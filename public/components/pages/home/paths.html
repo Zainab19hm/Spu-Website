@@ -36,6 +36,25 @@
             </div>
 
             <div class="flex-1 min-w-0 w-full relative">
+                <div class="slider-controls-row slider-controls-row--top">
+                    <button
+                        type="button"
+                        @click="slidePaths('left')"
+                        class="slider-nav-btn slider-nav-btn--prev"
+                        aria-label="Previous"
+                    >
+                        <i class="fas fa-chevron-left text-sm"></i>
+                    </button>
+                    <button
+                        type="button"
+                        @click="slidePaths('right')"
+                        class="slider-nav-btn slider-nav-btn--next"
+                        aria-label="Next"
+                    >
+                        <i class="fas fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+
                 <div
                     x-ref="pathsTrack"
                     class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2 pt-2 pb-5 items-start z-10"
@@ -92,21 +111,5 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-4 relative top-[-4px] justify-center lg:justify-end">
-            <button
-                type="button"
-                @click="slidePaths('left')"
-                class="slider-nav-btn"
-            >
-                <i class="fas fa-chevron-left text-sm"></i>
-            </button>
-            <button
-                type="button"
-                @click="slidePaths('right')"
-                class="slider-nav-btn"
-            >
-                <i class="fas fa-chevron-right text-sm"></i>
-            </button>
-        </div>
     </div>
 </section>
