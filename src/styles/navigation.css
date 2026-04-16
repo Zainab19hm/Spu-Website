@@ -130,6 +130,13 @@
         font-weight: 800;
         line-height: 1;
         transition: color 0.22s ease;
+        
+        /* Professional Arabic text rendering for navigation */
+        font-feature-settings: inherit;
+        text-rendering: inherit;
+        
+        /* Prevent text breaking in navigation items */
+        word-break: keep-all;
     }
 
     .site-nav-link::after {
