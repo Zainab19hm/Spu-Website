@@ -12,8 +12,15 @@ import { registerContactStores } from './pages/contact-stores.js';
 const pageStoreRegistrars = {
     home: registerHomeStores,
     about: registerAboutStores,
+    'about-leadership': registerAboutStores, // ! Link sub-page to About data
+    'about-history': registerAboutStores, // ! Link sub-page to About data
+    'about-directorates': registerAboutStores, // ! Link sub-page to About data
+    'about-partnerships': registerAboutStores, // ! Link sub-page to About data
     faculties: registerFacultiesPageStores,
     admissions: registerAdmissionsStores,
+    'admissions-requirements': registerAdmissionsStores, // ! Link sub-page to Admissions data
+    'admissions-fees': registerAdmissionsStores, // ! Link sub-page to Admissions data
+    'admissions-process': registerAdmissionsStores, // ! Link sub-page to Admissions data
     research: registerResearchStores,
     'student-life': registerStudentLifeStores,
     news: registerNewsStores,

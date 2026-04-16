@@ -41,9 +41,21 @@ Frontend for the Syrian Private University website using `Vite`, `Alpine.js`, an
 - Shared layout belongs under `layout/`; page-only fragments belong under `pages/<page-name>/`.
 - `npm run build` automatically runs the fragment root audit first so missing `x-data` roots are caught before shipping.
 
+
 ```
 Spu-Website
+├─ about-directorates.html
+├─ about-history.html
+├─ about-leadership.html
+├─ about-partnerships.html
 ├─ about.html
+├─ admissions
+│  ├─ fees
+│  │  └─ index.html
+│  ├─ process
+│  │  └─ index.html
+│  └─ requirements
+│     └─ index.html
 ├─ admissions.html
 ├─ contact.html
 ├─ faculties.html
@@ -58,15 +70,24 @@ Spu-Website
 │  │  │  └─ header.html
 │  │  └─ pages
 │  │     ├─ about
-│  │     │  ├─ hero.html
-│  │     │  ├─ history.html
-│  │     │  ├─ leadership.html
-│  │     │  ├─ overview.html
-│  │     │  └─ quality.html
+│  │     │  ├─ directorates
+│  │     │  │  └─ index.html
+│  │     │  ├─ history
+│  │     │  │  └─ index.html
+│  │     │  ├─ leadership
+│  │     │  │  └─ index.html
+│  │     │  └─ partnerships
+│  │     │     └─ index.html
 │  │     ├─ admissions
+│  │     │  ├─ certificate-filter.html
+│  │     │  ├─ content.html
 │  │     │  ├─ hero.html
+│  │     │  ├─ payment-methods.html
 │  │     │  ├─ process.html
-│  │     │  └─ requirements.html
+│  │     │  ├─ quick-access-cards.html
+│  │     │  ├─ requirements.html
+│  │     │  ├─ stats.html
+│  │     │  └─ tuition-fees-table.html
 │  │     ├─ contact
 │  │     │  ├─ channels.html
 │  │     │  ├─ hero.html
@@ -161,6 +182,7 @@ Spu-Website
 │  ├─ generate-page-shells.js
 │  ├─ inspect-html.js
 │  └─ patch-generator.js
+├─ SPU_Requirements_v5 (Repaired).htmL
 ├─ src
 │  ├─ alpine
 │  │  ├─ pages

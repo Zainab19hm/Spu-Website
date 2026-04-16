@@ -48,10 +48,8 @@
       "ogImage": "/images/logo-spu.png",
       "components": [
         "/components/pages/about/hero.html",
-        "/components/pages/about/overview.html",
-        "/components/pages/about/history.html",
-        "/components/pages/about/quality.html",
-        "/components/pages/about/leadership.html"
+        "/components/pages/about/overview.html", 
+        "/components/pages/about/quality.html"
       ]
     },
     {
@@ -91,8 +89,124 @@
       "ogImage": "/images/logo-spu.png",
       "components": [
         "/components/pages/admissions/hero.html",
-        "/components/pages/admissions/process.html",
-        "/components/pages/admissions/requirements.html"
+        "/components/pages/admissions/quick-access-cards.html", 
+        "/components/pages/admissions/stats.html"
+      ]
+    },
+    {
+      "name": "admissions-requirements",
+      "fileName": "admissions/requirements/index.html", 
+      "path": "/admissions/requirements", 
+      "canonicalPath": "/admissions/requirements", 
+      "title": "Requirements | Admissions | SPU",
+      "description": "Detailed admission requirements and document checklists based on certificate type.",
+      "keywords": ["SPU requirements", "admission documents", "certificate types"],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/admissions/hero.html",
+        "/components/pages/admissions/requirements/certificate-filter.html", 
+        "/components/pages/admissions/requirements/content.html" 
+      ]
+    },
+    {
+      "name": "admissions-fees",
+      "fileName": "admissions/fees/index.html", 
+      "path": "/admissions/fees", 
+      "canonicalPath": "/admissions/fees", 
+      "title": "Tuition Fees | Admissions | SPU",
+      "description": "Tuition fees per credit hour and available payment methods for all faculties.",
+      "keywords": ["SPU fees", "tuition costs", "payment methods"],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/admissions/hero.html",
+        "/components/pages/admissions/fees/tuition-fees-table.html",
+        "/components/pages/admissions/fees/payment-methods.html"
+      ]
+    },
+    {
+      "name": "admissions-process",
+      "fileName": "admissions/process/index.html", 
+      "path": "/admissions/process", 
+      "canonicalPath": "/admissions/process", 
+      "title": "Registration Process | Admissions | SPU",
+      "description": "Step-by-step visual guide for the university registration and enrollment process.",
+      "keywords": ["SPU registration", "enrollment steps", "admissions timeline"],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/admissions/hero.html",
+        "/components/pages/admissions/process/content.html" 
+      ]
+    },
+    {
+      "name": "about-leadership",
+      "fileName": "about/leadership/index.html",
+      "path": "/about/leadership", 
+      "canonicalPath": "/about/leadership",
+      "title": "Leadership | Syrian Private University",
+      "description": "Meet the academic leadership and management of Syrian Private University, guiding our vision and mission.",
+      "keywords": [
+        "SPU leadership",
+        "university management",
+        "academic leaders"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/about/hero.html",
+        "/components/pages/about/leadership/content.html"
+      ]
+    },
+    {
+      "name": "about-history",
+      "fileName": "about/history/index.html",
+      "path": "/about/history",
+      "canonicalPath": "/about/history",
+      "title": "History & Founding | Syrian Private University",
+      "description": "Discover the history and founding milestones of Syrian Private University, from its inception to the present day.",
+      "keywords": [
+        "SPU history",
+        "university founding",
+        "SPU milestones"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/about/hero.html",
+        "/components/pages/about/history/content.html" 
+      ]
+    },
+    {
+      "name": "about-directorates",
+      "fileName": "about/directorates/index.html", 
+      "path": "/about/directorates", 
+      "canonicalPath": "/about/directorates",
+      "title": "Directorates | Syrian Private University",
+      "description": "Explore the central directorates and administrative offices that support the operations and academic mission of Syrian Private University.",
+      "keywords": [
+        "SPU directorates",
+        "university administration",
+        "central offices"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/about/hero.html",
+        "/components/pages/about/directorates/content.html" 
+      ]
+    },
+    {
+      "name": "about-partnerships",
+      "fileName": "about/partnerships/index.html", 
+      "path": "/about/partnerships",
+      "canonicalPath": "/about/partnerships",
+      "title": "Partnerships | Syrian Private University",
+      "description": "View the academic and institutional partnerships of Syrian Private University, fostering collaboration and global connections.",
+      "keywords": [
+        "SPU partnerships",
+        "academic collaboration",
+        "university affiliations"
+      ],
+      "ogImage": "/images/logo-spu.png",
+      "components": [
+        "/components/pages/about/hero.html",
+        "/components/pages/about/partnerships/content.html" 
       ]
     },
     {

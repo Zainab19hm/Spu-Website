@@ -1,0 +1,10 @@
+<section x-data="admissionsStore" class="section-container py-12"> <!-- ! New admissions landing cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <template x-for="fact in content.quickFacts" :key="fact.labelEn">
+            <div class="p-6 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="text-primary-600 font-bold text-xl mb-2" x-text="fact.value"></div>
+                <div class="text-gray-600" x-text="$store.app.isAr ? fact.labelAr : fact.labelEn"></div>
+            </div>
+        </template>
+    </div>
+</section>

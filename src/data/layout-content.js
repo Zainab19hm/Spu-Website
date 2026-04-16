@@ -16,15 +16,17 @@ export const appUi = {
 export const navigationMenuItems = [
     {
         id: 1,
-        labelAr: 'عن الجامعة',
+        labelAr: 'عن الجامعة', // Updated label to reflect dropdown parent
         labelEn: 'About',
         url: '/about.html',
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: 'الرؤية والرسالة', labelEn: 'Vision & Mission', url: '/about.html#vision' },
-            { labelAr: 'الجودة والحوكمة', labelEn: 'Quality & Governance', url: '/about.html#quality' },
-            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about.html#leadership' }
+            { labelAr: 'نظرة عامة', labelEn: 'About Overview', url: '/about.html' }, //  Added landing page link as first option
+            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership' }, //  Clean path mapping
+            { labelAr: 'رحلتنا عبر الزمن', labelEn: 'History & Founding', url: '/about/history' }, //  Clean path mapping
+            { labelAr: 'المديريات المركزية', labelEn: 'Directorates', url: '/about/directorates' }, //  Clean path mapping
+            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: '/about/partnerships' } //  Clean path mapping
         ]
     },
     {
@@ -49,9 +51,10 @@ export const navigationMenuItems = [
         page: 'admissions',
         hasDropdown: true,
         children: [
-            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: '/admissions.html#requirements' },
-            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: '/admissions.html#fees' },
-            { labelAr: 'دعم القبول', labelEn: 'Admissions Support', url: '/contact.html' } // ! Corrected to valid contact.html page
+            { labelAr: 'نظرة عامة', labelEn: 'Admissions Overview', url: '/admissions.html' },
+            { labelAr: 'شروط القبول', labelEn: 'Requirements', url: '/admissions/requirements' }, //  Matches new site-pages.json path
+            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: '/admissions/fees' }, //  Matches new site-pages.json path
+            { labelAr: 'إجراءات التسجيل', labelEn: 'Registration Process', url: '/admissions/process' } // Matches new site-pages.json path
         ]
     },
     {
@@ -64,21 +67,21 @@ export const navigationMenuItems = [
         children: [
             { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: '/student-life.html#services' },
             { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: '/student-life.html#activities' },
-            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: '/student-life.html#highlights' } // ! Changed to valid section ID
+            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: '/student-life.html#highlights' } //  Changed to valid section ID
         ]
     },
     {
         id: 5,
         labelAr: 'الخدمات',
         labelEn: 'E-Services',
-        url: '#', // ! Changed to # because services.html does not exist in site-pages.json
+        url: '#', //  Changed to # because services.html does not exist in site-pages.json
         page: 'services',
         hasDropdown: true,
         children: [
-            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: 'http://my.spu.edu.sy/ar/login' }, // ! Pointed to actual external portal
-            { labelAr: 'التسجيل', labelEn: 'Registration', url: 'http://my.spu.edu.sy/ar/login' }, // ! Pointed to actual external portal
-            { labelAr: 'المكتبة', labelEn: 'Library Access', url: '/student-life.html#services' }, // ! Pointed to existing student life services
-            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: '/admissions.html' }, // ! Pointed to valid admissions page
+            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: 'http://my.spu.edu.sy/ar/login' }, //  Pointed to actual external portal
+            { labelAr: 'التسجيل', labelEn: 'Registration', url: 'http://my.spu.edu.sy/ar/login' }, //  Pointed to actual external portal
+            { labelAr: 'المكتبة', labelEn: 'Library Access', url: '/student-life.html#services' }, //  Pointed to existing student life services
+            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: '/admissions.html' }, //  Pointed to valid admissions page
         ]
     },
     { id: 6, labelAr: 'البحث العلمي', labelEn: 'Research', page: 'research', hasDropdown: false, url: '/research.html' },

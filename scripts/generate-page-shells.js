@@ -67,6 +67,7 @@ function renderPageShell(page) {
 function writePageShells() {
     pages.forEach((page) => {
         const outputPath = path.join(workspaceRoot, page.fileName);
+        fs.mkdirSync(path.dirname(outputPath), { recursive: true }); // ! Ensure parent directories exist before writing file
         fs.writeFileSync(outputPath, renderPageShell(page));
     });
 }
