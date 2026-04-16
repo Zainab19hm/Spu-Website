@@ -18,7 +18,8 @@
                     style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 30px 30px;">
                 </div>
                 <div class="relative z-10 w-full px-6 flex flex-col h-full justify-center text-right">
-                    <h2 class="text-[45px] text-center w-full font-bold leading-tight mb-12 transition-all duration-500">
+                    <h2
+                        class="text-[45px] text-center w-full font-bold leading-tight mb-12 transition-all duration-500">
                         <span x-text="$store.app.currentLang === 'ar' ? 'كلياتنا' : 'Our'"></span>
                         <br>
                         <span class="text-spu-red brightness-150"
@@ -38,8 +39,9 @@
                     class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2 pt-2 pb-5 items-start z-10">
 
                     <template x-for="faculty in $store.faculties.items" :key="faculty.id">
-                        <div @mouseenter="$store.faculties.activeFaculty = faculty.id"
-                            @mouseleave="$store.faculties.activeFaculty = null" :class="{ 
+                        <div :id="'faculty-' + faculty.id" @mouseenter="$store.faculties.activeFaculty = faculty.id" !
+                            // ! Added ID for external anchor links @mouseleave="$store.faculties.activeFaculty = null"
+                            :class="{ 
                                 'opacity-50 grayscale-[0.2]': $store.faculties.activeFaculty !== null && $store.faculties.activeFaculty !== faculty.id,
                                 'opacity-100 scale-[1.02] z-20 shadow-2xl border-transparent': $store.faculties.activeFaculty === faculty.id,
                                 'opacity-100': $store.faculties.activeFaculty === null
@@ -64,7 +66,8 @@
                                 x-html="$store.app.currentLang === 'ar' ? faculty.yearsAr : faculty.yearsEn">
                             </div>
 
-                            <a href="#"
+                            <a :href="'/faculties.html#faculty-' + faculty.id" ! // ! Linked card directly to faculty
+                                section
                                 class="mt-auto mb-6 flex items-center gap-2 text-[13px] font-extrabold transition-all duration-300 group-hover:gap-3"
                                 :style="'color:' + faculty.color">
                                 <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>
@@ -78,12 +81,10 @@
         </div>
 
         <div class="flex items-center gap-4 relative top-[-4px] justify-center lg:justify-end">
-            <button @click="slideFaculties('left')" type="button"
-                class="slider-nav-btn">
+            <button @click="slideFaculties('left')" type="button" class="slider-nav-btn">
                 <i class="fas fa-chevron-left text-[14px]"></i>
             </button>
-            <button @click="slideFaculties('right')" type="button"
-                class="slider-nav-btn">
+            <button @click="slideFaculties('right')" type="button" class="slider-nav-btn">
                 <i class="fas fa-chevron-right text-[14px]"></i>
             </button>
         </div>

@@ -1,99 +1,120 @@
-<section x-data class="honor-panel-shell py-20 font-hacen reveal lg:py-28">
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-spu-blue/18 to-transparent"></div>
+<!-- 
+    HONOR & EXCELLENCE PANEL
+    ! Dynamic rotating showcase of university achievements.
+    ! Academic two-column layout with 5s auto-rotation and manual controls.
+-->
+<section x-data="{
+    activeIndex: 0,
+    timer: null,
+    items: [],
+    init() {
+        this.items = $store.honorPanel.items; // ! Connect to home-content data
+        this.startAuto();
+    },
+    startAuto() {
+        this.stopAuto();
+        this.timer = setInterval(() => this.next(), 5000); // ! 5s automatic cycle
+    },
+    stopAuto() {
+        if (this.timer) clearInterval(this.timer);
+    },
+    next() {
+        this.activeIndex = (this.activeIndex + 1) % this.items.length; // ! Rotation: Top -> Left
+    },
+    prev() {
+        this.activeIndex = (this.activeIndex - 1 + this.items.length) % this.items.length;
+    },
+    handleManual(action, val) {
+        this.stopAuto(); // ! Pause auto-move on user click
+        if (action === 'next') this.next();
+        if (action === 'prev') this.prev();
+        if (action === 'goto') this.activeIndex = val;
+        setTimeout(() => this.startAuto(), 8000); // ! Resume auto-rotation after 8s of inactivity
+    },
+    getPos(index) {
+        // ! Mathematical modulo to determine current layout position
+        return (index - this.activeIndex + this.items.length) % this.items.length;
+    }
+}" class="py-16 bg-white font-hacen relative overflow-hidden reveal">
+    <div class="container">
+        <!-- Header with Manual Navigation -->
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-[42px] font-bold text-spu-blue">
+                <span x-text="$store.app.currentLang === 'ar' ? 'التكريم والتميز' : 'Honor & Excellence'"></span>
+            </h2>
 
-    <div class="container relative z-10">
-        <div class="grid gap-8 xl:grid-cols-[minmax(0,1.18fr)_22rem] xl:items-end">
-            <div class="max-w-4xl">
-                <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'لوحة الشرف' : 'Honor Panel'"></p>
-                <h2 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-5xl" x-text="$store.app.currentLang === 'ar' ? 'عرض بصري رسمي يليق بإنجازات الجامعة وصورها الميدانية' : 'A formal visual showcase worthy of university achievements and field photography'"></h2>
-                <p class="mt-6 max-w-3xl text-[16px] leading-8 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'أعدنا تصميم هذا القسم ليعمل بصورة احترافية مع الصور والملخصات التحريرية وروابط الإنجاز، بحيث يبدو أقرب إلى واجهات الجامعات الرسمية الحديثة.' : 'This section is redesigned to work professionally with photography, editorial summaries, and recognition links, giving it the tone of a modern official university homepage.'"></p>
+            <!-- ! Manual Buttons -->
+            <div class="flex items-center gap-3">
+                <button @click="handleManual('prev')" class="slider-nav-btn" aria-label="Previous">
+                    <i class="fas fa-chevron-left text-sm"
+                        :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                </button>
+                <button @click="handleManual('next')" class="slider-nav-btn" aria-label="Next">
+                    <i class="fas fa-chevron-right text-sm"
+                        :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                </button>
             </div>
-
-            <aside class="rounded-[30px] border border-white/60 bg-spu-blue px-7 py-6 text-white shadow-[0_24px_80px_rgba(20,30,70,0.16)] backdrop-blur-sm">
-                <p class="text-xs font-bold uppercase tracking-[0.32em] text-white/55" x-text="$store.app.currentLang === 'ar' ? 'عرض مؤسسي' : 'Institutional Showcase'"></p>
-                <p class="mt-4 text-[15px] leading-7 text-white/82" x-text="$store.app.currentLang === 'ar' ? 'مناسب للتكريمات الأكاديمية والمشاريع البحثية والصور الرسمية للفعاليات والمبادرات.' : 'Suitable for academic recognition, research highlights, and official photography from events and initiatives.'"></p>
-            </aside>
         </div>
 
-        <div class="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.38fr)_minmax(0,0.92fr)]">
-            <article class="honor-panel-card rounded-[34px] p-4 sm:p-5" x-show="$store.honorPanel.items[0]">
-                <div class="honor-panel-media honor-panel-media--featured">
-                    <template x-if="$store.honorPanel.items[0].image">
-                        <img :src="$store.honorPanel.items[0].image" :alt="$store.app.currentLang === 'ar' ? $store.honorPanel.items[0].titleAr : $store.honorPanel.items[0].titleEn">
-                    </template>
+        <!-- Rotating Grid System -->
+        <div class="relative h-[400px] md:h-[500px] w-full">
+            <template x-for="(item, index) in items" :key="item.id">
+                <div class="absolute transition-all duration-1000 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] rounded-[40px] overflow-hidden group will-change-[width,height,left,top,opacity,transform]"
+                    :class="{
+                        'w-full lg:w-[65%] h-full z-30 left-0 top-0 opacity-100 shadow-2xl scale-100': getPos(index) === 0,
+                        'w-0 lg:w-[32%] h-[48%] z-20 left-0 lg:left-[68%] top-0 opacity-0 lg:opacity-100 scale-95 brightness-90': getPos(index) === 1,
+                        'w-0 lg:w-[32%] h-[48%] z-10 left-0 lg:left-[68%] top-[52%] opacity-0 lg:opacity-100 scale-90 brightness-75': getPos(index) === 2
+                    }">
+                    <!-- Background Image -->
+                    <img :src="item.image"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 will-change-transform">
 
-                    <template x-if="!$store.honorPanel.items[0].image">
-                        <div class="honor-panel-media__placeholder absolute inset-0 flex items-center justify-center">
-                            <span class="honor-panel-placeholder-mark">01</span>
-                        </div>
-                    </template>
+                    <!-- Detail Overlay (Active Card Only) -->
+                    <div x-show="getPos(index) === 0" x-transition:enter="transition ease-out duration-700 delay-400"
+                        x-transition:enter-start="opacity-0 translate-y-12"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/40 to-transparent flex flex-col justify-end p-12 text-white">
 
-                    <div class="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
-                        <div class="flex flex-wrap items-center gap-3">
-                            <span class="inline-flex rounded-full border border-white/14 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-white" x-text="$store.app.currentLang === 'ar' ? $store.honorPanel.items[0].badgeAr : $store.honorPanel.items[0].badgeEn"></span>
-                            <span class="honor-panel-pill honor-panel-pill--light" x-text="$store.app.currentLang === 'ar' ? $store.honorPanel.items[0].metaAr : $store.honorPanel.items[0].metaEn"></span>
-                        </div>
-
-                        <h3 class="mt-4 max-w-3xl text-2xl font-bold leading-tight text-white md:text-3xl" x-text="$store.app.currentLang === 'ar' ? $store.honorPanel.items[0].titleAr : $store.honorPanel.items[0].titleEn"></h3>
-                    </div>
-                </div>
-
-                <div class="px-2 pb-2 pt-6 sm:px-4">
-                    <p class="text-[16px] leading-8 text-slate-600" x-text="$store.app.currentLang === 'ar' ? $store.honorPanel.items[0].summaryAr : $store.honorPanel.items[0].summaryEn"></p>
-
-                    <div class="mt-6 flex flex-wrap gap-3">
-                        <template x-for="highlight in ($store.app.currentLang === 'ar' ? $store.honorPanel.items[0].highlightsAr : $store.honorPanel.items[0].highlightsEn)" :key="highlight">
-                            <span class="honor-panel-pill" x-text="highlight"></span>
-                        </template>
-                    </div>
-
-                    <a :href="$store.honorPanel.items[0].link" class="honor-panel-cta mt-7">
-                        <span x-text="$store.app.currentLang === 'ar' ? 'عرض الإنجاز' : 'View Highlight'"></span>
-                        <i class="fas fa-arrow-right text-[0.72rem]"></i>
-                    </a>
-                </div>
-            </article>
-
-            <div class="grid gap-6">
-                <template x-for="item in $store.honorPanel.items.slice(1)" :key="item.id">
-                    <article class="honor-panel-card rounded-[32px] p-4 sm:p-5">
-                        <div class="grid gap-5 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-start">
-                            <div class="honor-panel-media honor-panel-media--compact">
-                                <template x-if="item.image">
-                                    <img :src="item.image" :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
-                                </template>
-
-                                <template x-if="!item.image">
-                                    <div class="honor-panel-media__placeholder absolute inset-0 flex items-center justify-center">
-                                        <span class="honor-panel-placeholder-mark" x-text="String(item.id).padStart(2, '0')"></span>
-                                    </div>
-                                </template>
-
-                                <div class="absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-4">
-                                    <span class="inline-flex rounded-full bg-white/88 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-spu-blue shadow-sm" x-text="$store.app.currentLang === 'ar' ? item.badgeAr : item.badgeEn"></span>
-                                </div>
+                        <div class="max-w-2xl select-none">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-4 py-1 rounded-full bg-spu-red text-[11px] font-bold uppercase"
+                                    x-text="$store.app.currentLang === 'ar' ? item.badgeAr : item.badgeEn"></span>
+                                <span class="text-white/70 text-sm font-medium"
+                                    x-text="$store.app.currentLang === 'ar' ? item.metaAr : item.metaEn"></span>
                             </div>
 
-                            <div class="flex min-h-full flex-col">
-                                <p class="text-xs font-bold uppercase tracking-[0.28em] text-spu-blue/55" x-text="$store.app.currentLang === 'ar' ? item.metaAr : item.metaEn"></p>
-                                <h3 class="mt-3 text-xl font-bold leading-tight text-spu-blue" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
-                                <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                            <h3 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight"
+                                x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
 
-                                <div class="mt-5 flex flex-wrap gap-2.5">
-                                    <template x-for="highlight in ($store.app.currentLang === 'ar' ? item.highlightsAr : item.highlightsEn)" :key="highlight">
-                                        <span class="honor-panel-pill honor-panel-pill--soft" x-text="highlight"></span>
-                                    </template>
-                                </div>
+                            <p class="text-lg text-white/80 leading-relaxed mb-8 line-clamp-3"
+                                x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
 
-                                <a :href="item.link" class="honor-panel-cta mt-6">
-                                    <span x-text="$store.app.currentLang === 'ar' ? 'عرض الإنجاز' : 'View Highlight'"></span>
-                                    <i class="fas fa-arrow-right text-[0.72rem]"></i>
-                                </a>
-                            </div>
+                            <a :href="item.link" class="inline-flex items-center gap-3 font-bold text-white group/link">
+                                <span class="border-b-2 border-spu-red pb-1"
+                                    x-text="$store.app.currentLang === 'ar' ? 'اكتشف التفاصيل' : 'View Details'"></span>
+                                <i class="fas fa-arrow-right transition-transform group-hover/link:translate-x-2"
+                                    :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                            </a>
                         </div>
-                    </article>
-                </template>
-            </div>
+                    </div>
+
+                    <!-- Overlay for non-active cards -->
+                    <div x-show="getPos(index) !== 0"
+                        class="absolute inset-0 bg-black/30 hover:bg-black/10 transition-colors cursor-pointer"
+                        @click="handleManual('goto', index)"></div>
+                </div>
+            </template>
+        </div>
+
+        <!-- ! Manual Progress Indicators (Dots) -->
+        <div class="flex justify-center gap-3 mt-12">
+            <template x-for="(item, index) in items" :key="'dot-'+item.id">
+                <button @click="handleManual('goto', index)" class="h-2 rounded-full transition-all duration-700"
+                    :class="activeIndex === index ? 'w-10 bg-spu-red' : 'w-2 bg-gray-200'"></button>
+            </template>
         </div>
     </div>
+
+    <!-- Academic Background Detail -->
+    <div class="absolute -right-20 top-1/4 w-96 h-96 bg-spu-blue/5 rounded-full blur-3xl -z-10"></div>
 </section>

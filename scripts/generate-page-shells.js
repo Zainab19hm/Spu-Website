@@ -389,18 +389,10 @@ function renderPageShell(page) {
     <title>${escapeAttribute(page.title)}</title>
 </head>
 
-<body data-page="${escapeAttribute(page.name)}" data-render-mode="prerendered" data-app-ready="loading">
-    ${renderLoadingOverlay()}
-    <div data-layout-slot="header" data-component-ready="true" data-component-source="${escapeAttribute(layoutMarkup.header.source)}">
-${layoutMarkup.header.markup}
-    </div>
-    <main data-page-content data-page-ready="true" data-page-name="${escapeAttribute(page.name)}" data-component-sources="${escapeAttribute(page.components.join(','))}">
-${pageMarkup}
-    </main>
-    <div data-layout-slot="footer" data-component-ready="true" data-component-source="${escapeAttribute(layoutMarkup.footer.source)}">
-${layoutMarkup.footer.markup}
-    </div>
-    ${renderLoadingGuardScript()}
+<body data-page="${escapeAttribute(page.name)}" data-page-store="${escapeAttribute(page.name)}" data-page-section="${escapeAttribute(page.name)}">
+    <div data-layout-slot="header"></div>
+    <main data-page-content></main>
+    <div data-layout-slot="footer"></div>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script type="module" src="/src/main.js"></script>
 </body>

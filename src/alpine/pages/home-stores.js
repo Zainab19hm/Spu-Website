@@ -41,6 +41,10 @@ export function registerHomeStores(Alpine) {
         items: cloneData(newsItems)
     });
 
+    Alpine.store('honorPanel', { // ! Initialize the honorPanel store with data from home-content.js
+        items: cloneData(honorPanelItems)
+    });
+
     // Optimized research store with cached items to reduce reactivity overhead
     Alpine.store('research', {
         _items: cloneData(researchItems),

@@ -15,6 +15,7 @@ export const heroContent = {
     secondaryBtnEn: 'Visit Campus'
 };
 
+
 export const statsItems = [
     {
         id: 1,
@@ -175,9 +176,9 @@ export const healthcareContent = {
         link: '/faculties.html#faculty-2'
     },
     stats: [
-        { id: 1, labelEn: 'HOSPITAL BEDS', labelAr: 'أسرة المشفى', value: 200, current: 0, suffixEn: '+', suffixAr: '+' }, 
+        { id: 1, labelEn: 'HOSPITAL BEDS', labelAr: 'أسرة المشفى', value: 200, current: 0, suffixEn: '+', suffixAr: '+' },
         { id: 2, labelEn: 'SPECIALIST DOCTORS', labelAr: 'أطباء أخصائيين', value: 80, current: 0, suffixEn: '+', unitEn: '', unitAr: '', suffixAr: '+' },
-        { id: 3, labelEn: 'DENTAL CHAIRS', labelAr: 'كراسي الأسنان', value: 30, current: 0,unitEn: '', unitAr: '', suffixEn: '+', suffixAr: '+' },
+        { id: 3, labelEn: 'DENTAL CHAIRS', labelAr: 'كراسي الأسنان', value: 30, current: 0, unitEn: '', unitAr: '', suffixEn: '+', suffixAr: '+' },
         { id: 4, labelEn: 'PATIENTS ANNUALLY', labelAr: 'مرضى سنوياً', value: 12, current: 0, unitEn: 'k', unitAr: 'ألف', suffixEn: '+', suffixAr: '+' }
     ]
 };
