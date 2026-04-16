@@ -29,7 +29,8 @@
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
                         <i
-                            class="fas fa-arrow-right text-[10px] transition-transform group-hover/btn:translate-x-1"></i>
+                            :class="[$store.app.currentLang === 'ar' ? 'fas fa-arrow-left' : 'fas fa-arrow-right', $store.app.currentLang === 'ar' ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1']"
+                            class="text-[10px] opacity-90 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -37,10 +38,10 @@
             <div class="flex-1 min-w-0 w-full relative">
                 <div class="slider-controls-row slider-controls-row--top">
                     <button @click="slideFaculties('left')" type="button" class="slider-nav-btn slider-nav-btn--prev" aria-label="Previous">
-                        <i class="fas fa-chevron-left text-[14px]"></i>
+                        <i :class="$store.app.currentLang === 'ar' ? 'fas fa-chevron-right' : 'fas fa-chevron-left'" class="text-[14px]"></i>
                     </button>
                     <button @click="slideFaculties('right')" type="button" class="slider-nav-btn slider-nav-btn--next" aria-label="Next">
-                        <i class="fas fa-chevron-right text-[14px]"></i>
+                        <i :class="$store.app.currentLang === 'ar' ? 'fas fa-chevron-left' : 'fas fa-chevron-right'" class="text-[14px]"></i>
                     </button>
                 </div>
 
@@ -81,7 +82,8 @@
                                 :style="'color:' + faculty.color">
                                 <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>
                                 <i
-                                    class="fas fa-arrow-right text-[10px] opacity-50 group-hover:opacity-100 transition-transform group-hover:translate-x-1"></i>
+                                    :class="[$store.app.currentLang === 'ar' ? 'fas fa-arrow-left' : 'fas fa-arrow-right', $store.app.currentLang === 'ar' ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1']"
+                                    class="text-[10px] opacity-50 group-hover:opacity-100 transition-transform"></i>
                             </a>
                         </div>
                     </template>

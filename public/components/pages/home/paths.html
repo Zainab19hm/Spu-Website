@@ -43,7 +43,7 @@
                         class="slider-nav-btn slider-nav-btn--prev"
                         aria-label="Previous"
                     >
-                        <i class="fas fa-chevron-left text-sm"></i>
+                        <i :class="$store.app.currentLang === 'ar' ? 'fas fa-chevron-right' : 'fas fa-chevron-left'" class="text-sm"></i>
                     </button>
                     <button
                         type="button"
@@ -51,7 +51,7 @@
                         class="slider-nav-btn slider-nav-btn--next"
                         aria-label="Next"
                     >
-                        <i class="fas fa-chevron-right text-sm"></i>
+                        <i :class="$store.app.currentLang === 'ar' ? 'fas fa-chevron-left' : 'fas fa-chevron-right'" class="text-sm"></i>
                     </button>
                 </div>
 
@@ -67,7 +67,9 @@
                             :class="{
                                 'opacity-50 grayscale-[0.2]': $store.paths.activePath !== null && $store.paths.activePath !== path.id,
                                 '!bg-[#1e2652] !text-white z-20 !border-transparent shadow-2xl': $store.paths.activePath === path.id,
-                                'opacity-100 bg-white text-gray-800 border-gray-100': $store.paths.activePath === null || $store.paths.activePath === path.id
+                                'opacity-100 bg-white text-gray-800 border-gray-100': $store.paths.activePath === null || $store.paths.activePath === path.id,
+                                'text-right': $store.app.currentLang === 'ar',
+                                'text-left': $store.app.currentLang === 'en'
                             }"
                         >
                             <div class="absolute inset-x-5 top-5 h-16 rounded-[20px] pointer-events-none bg-gradient-to-r from-spu-blue/8 via-white/90 to-spu-blue/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
@@ -100,10 +102,10 @@
 
                             <div
                                 class="path-card-footer mt-auto flex items-center justify-between gap-3 text-[13px] font-semibold transition-all"
-                                :class="$store.paths.activePath === path.id ? 'text-blue-300' : 'text-spu-blue'"
+                                :class="[$store.paths.activePath === path.id ? 'text-blue-300' : 'text-spu-blue', $store.app.currentLang === 'ar' ? 'flex-row-reverse' : '']"
                             >
                                 <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>
-                                <i class="fas fa-arrow-right text-[12px] transition-transform group-hover:translate-x-2"></i>
+                                <i :class="$store.app.currentLang === 'ar' ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="text-[12px]"></i>
                             </div>
                         </div>
                     </template>
