@@ -1,145 +1,128 @@
-<!-- 
-    HEALTHCARE FACILITIES SECTION
-    Includes content cards for Hospital/Dental and a scrolling-stats banner 
--->
 <section x-data="{
         hasCounted: false,
-        isVisible: false,
-        // Trigger counter animation once
+        // وظيفة لتشغيل العداد مرة واحدة فقط عند الظهور
         runCount() {
             if (this.hasCounted) return;
             this.hasCounted = true;
-            this.$store.healthcare.startCounting();
-        },
-        // Initialize IntersectionObserver to detect when user scrolls to the stats
-        init() {
-            const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    this.runCount();
-                    observer.disconnect(); // Stop observing after animation starts
-                }
-            }, { threshold: 0.1 });
-            observer.observe(this.$refs.statsBanner);
+            if (this.$store.healthcare && this.$store.healthcare.startCounting) {
+                this.$store.healthcare.startCounting();
+            }
         }
-    }" class="py-10 bg-section font-hacen overflow-hidden reveal"
-    x-init="(() => { const observer = new IntersectionObserver(entries => { if (entries[0].isIntersecting) { isVisible = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el); })()">
+    }" x-init="() => {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                runCount();
+                observer.disconnect();
+            }
+        }, { threshold: 0.15 });
+        observer.observe($el);
+    }" class="py-16 bg-slate-50 font-hacen overflow-hidden reveal">
 
     <div class="container">
-        <!-- Section Title with branding 'U' -->
-        <h2 class="text-[52px] font-bold text-spu-blue mb-6 text-center lg:text-left">
+        <h2 class="text-4xl lg:text-5xl font-bold text-spu-blue mb-10 ">
             <span
                 x-text="$store.app.currentLang === 'ar' ? 'المرافق الطبية والخدمية' : 'SPU Healthcare Facilities'"></span>
         </h2>
 
-        <!-- Main Facility Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
 
-            <!-- Large Focus Card (Left) -->
             <div
-                class="lg:col-span-7 bg-white rounded-[16px] shadow-xl overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-500">
-                <div class="h-[320px] overflow-hidden">
-                    <img :src="$store.healthcare.mainCard.image" alt="Healthcare Staff"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                class="lg:col-span-7 bg-white rounded-[2rem] shadow-xl overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-500">
+                <div class="h-[350px] overflow-hidden relative">
+                    <img :src="$store.healthcare.mainCard.image"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                <div class="px-4 py-2 flex-1 flex flex-col justify-center">
+                <div class="p-8 flex-1 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-[24px] font-bold text-spu-blue mb-2"
+                        <h3 class="text-2xl font-bold text-spu-blue mb-4"
                             x-text="$store.app.currentLang === 'ar' ? $store.healthcare.mainCard.titleAr : $store.healthcare.mainCard.titleEn">
                         </h3>
-                        <p class="text-gray-600 text-[15px] leading-relaxed mb-2"
+                        <p class="text-gray-600 leading-relaxed mb-6"
                             x-text="$store.app.currentLang === 'ar' ? $store.healthcare.mainCard.descriptionAr : $store.healthcare.mainCard.descriptionEn">
                         </p>
 
-                        <!-- Feature List with localized features from store -->
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                             <template
                                 x-for="feature in ($store.app.currentLang === 'ar' ? $store.healthcare.mainCard.featuresAr : $store.healthcare.mainCard.featuresEn)"
                                 :key="feature">
                                 <li class="flex items-center gap-3">
                                     <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
-                                        <i class="fas fa-check text-green-600 text-[12px]"></i>
+                                        <i class="fas fa-check text-green-600 text-[10px]"></i>
                                     </div>
-                                    <span class="text-spu-blue font-medium" x-text="feature"></span>
+                                    <span class="text-spu-blue font-medium text-sm" x-text="feature"></span>
                                 </li>
                             </template>
                         </ul>
                     </div>
 
-                    <!-- Primary Action Button -->
-                    <div class="mt-2 text-right">
-                        <a :href="$store.healthcare.mainCard.link"
-                            class="inline-flex items-center justify-center px-8 py-2 bg-spu-blue text-white rounded-[12px] font-bold hover:bg-opacity-90 transition-all">
-                            <span
-                                x-text="$store.app.currentLang === 'ar' ? $store.healthcare.mainCard.actionAr : $store.healthcare.mainCard.actionEn"></span>
-                        </a>
-                    </div>
+                    <a :href="$store.healthcare.mainCard.link"
+                        class="inline-flex items-center justify-center px-10 py-3 bg-spu-blue text-white rounded-xl font-bold hover:bg-spu-red transition-all self-start">
+                        <span
+                            x-text="$store.app.currentLang === 'ar' ? $store.healthcare.mainCard.actionAr : $store.healthcare.mainCard.actionEn"></span>
+                    </a>
                 </div>
             </div>
 
-            <!-- Side Facilities (Stacked) -->
-            <div class="lg:col-span-5 flex flex-col gap-6">
-
-                <!-- Hospital Card -->
+            <div class="lg:col-span-5 flex flex-col gap-8">
                 <div
-                    class="bg-white rounded-[25px] shadow-lg overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-300">
-                    <div class="h-[200px] overflow-hidden">
-                        <img :src="$store.healthcare.hospitalCard.image" alt="SPU Hospital"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    class="bg-white rounded-[2rem] shadow-lg overflow-hidden flex flex-col h-1/2 group hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img :src="$store.healthcare.hospitalCard.image"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
-                    <div class="px-5 py-2 flex flex-col h-full justify-center">
-                        <h4 class="text-[20px] font-bold text-spu-blue mb-2"
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-spu-blue mb-2"
                             x-text="$store.app.currentLang === 'ar' ? $store.healthcare.hospitalCard.titleAr : $store.healthcare.hospitalCard.titleEn">
                         </h4>
-                        <p class="text-gray-500 text-[14px] line-clamp-2"
+                        <p class="text-gray-500 text-sm line-clamp-2"
                             x-text="$store.app.currentLang === 'ar' ? $store.healthcare.hospitalCard.descriptionAr : $store.healthcare.hospitalCard.descriptionEn">
                         </p>
                     </div>
                 </div>
 
-                <!-- Dental Card -->
                 <div
-                    class="bg-white rounded-[25px] shadow-lg overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-300">
-                    <div class="h-[200px] overflow-hidden">
-                        <img :src="$store.healthcare.dentalCard.image" alt="SPU Dental"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    class="bg-white rounded-[2rem] shadow-lg overflow-hidden flex flex-col h-1/2 group hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img :src="$store.healthcare.dentalCard.image"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
-                    <div class="px-5 flex flex-col h-full py-2 justify-center">
-                        <h4 class="text-[20px] font-bold text-spu-blue mb-2"
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-spu-blue mb-2"
                             x-text="$store.app.currentLang === 'ar' ? $store.healthcare.dentalCard.titleAr : $store.healthcare.dentalCard.titleEn">
                         </h4>
-                        <p class="text-gray-500 text-[14px] mb-4 line-clamp-2"
-                            x-text="$store.app.currentLang === 'ar' ? $store.healthcare.dentalCard.descriptionAr : $store.healthcare.dentalCard.descriptionEn">
-                        </p>
                         <a :href="$store.healthcare.dentalCard.link"
-                            class="text-spu-blue font-bold text-[14px] flex items-center gap-2 group-hover:text-spu-red transition-colors">
+                            class="text-spu-blue font-bold text-sm flex items-center gap-2 hover:text-spu-red transition-colors mt-2">
                             <span
                                 x-text="$store.app.currentLang === 'ar' ? $store.healthcare.dentalCard.linkTextAr : $store.healthcare.dentalCard.linkTextEn"></span>
-                            <i class="fas fa-chevron-right text-[10px]"></i>
+                            <i class="fas fa-chevron-left rtl:block hidden text-[10px]"></i>
+                            <i class="fas fa-chevron-right ltr:block hidden text-[10px]"></i>
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
 
-        <!-- Animated Statistics Banner -->
-        <div x-ref="statsBanner" class="bg-spu-blue rounded-[25px] py-8 px-8 shadow-2xl relative overflow-hidden">
-            <div class="absolute inset-0 opacity-5 pointer-events-none"
-                style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;">
+        <div class="bg-spu-blue rounded-[2.5rem] py-12 px-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none"
+                style="background-image: radial-gradient(circle, #fff 1.5px, transparent 1.5px); background-size: 30px 30px;">
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
                 <template x-for="(stat, index) in $store.healthcare.stats" :key="stat.id">
                     <div class="flex flex-col items-center justify-center text-center px-4"
-                        :class="index $store.healthcare.stats.length - 1 ? 'lg:border-r lg:border-white/20' : ''">
-                        <div class="flex items-baseline mb-2">
-                            <span class="text-[48px] lg:text-[64px] font-bold text-white tracking-tight"
-                                translate="no" x-text="stat.current"></span>
-                            <span x-show="stat.unitEn" class="text-[48px] lg:text-[64px] font-bold text-white tracking-tight"
-                                translate="no" x-text="$store.app.currentLang === 'ar' ? (stat.unitAr || stat.unitEn) : stat.unitEn"></span>
-                            <span class="text-[38px] font-bold text-spu-red ml-1" translate="no" x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
+                        :class="index !== ($store.healthcare.stats.length - 1) ? 'lg:border-r lg:border-white/20' : ''">
+                        <div class="flex items-baseline mb-3">
+                            <span class="text-5xl lg:text-6xl font-bold text-white tracking-tighter" translate="no"
+                                x-text="stat.current"></span>
+
+                            <span class="text-4xl lg:text-5xl font-bold text-white/90 ml-1" x-show="stat.unitEn"
+                                x-text="$store.app.currentLang === 'ar' ? (stat.unitAr || stat.unitEn) : stat.unitEn"></span>
+
+                            <span class="text-3xl font-bold text-spu-red ml-1" translate="no"
+                                x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
                         </div>
-                        <p class="text-white/70 text-[14px] font-bold tracking-[0.1em] uppercase"
+                        <p class="text-white/60 text-xs font-bold tracking-widest uppercase"
                             x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
                     </div>
                 </template>

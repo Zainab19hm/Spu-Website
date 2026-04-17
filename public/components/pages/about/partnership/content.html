@@ -1,0 +1,36 @@
+<section class="py-12 px-6 bg-slate-50/50 rounded-[3rem] border border-slate-100 shadow-inner">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-16">
+            <p class="text-sm font-bold uppercase tracking-widest text-spu-red"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.eyebrowAr : $store.aboutPage.partnerships.eyebrowEn">
+            </p>
+            <h1 class="mt-4 text-4xl md:text-5xl font-bold text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn">
+            </h1>
+            <div class="mt-6 h-1 w-24 bg-spu-red mx-auto rounded-full"></div>
+            <p class="mt-8 max-w-2xl mx-auto text-xl text-slate-600 leading-relaxed"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.summaryAr : $store.aboutPage.partnerships.summaryEn">
+            </p>
+        </header>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="partner in $store.aboutPage.partnerships.list" :key="partner.nameEn">
+                <div class="flex items-center gap-6 p-8 rounded-3xl bg-white border border-slate-100 shadow-lg group transition-all duration-500 hover:shadow-2xl hover:border-spu-blue/20">
+                    <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-spu-blue transition-colors duration-500 group-hover:bg-spu-blue group-hover:text-white">
+                        <i class="fas fa-handshake text-2xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-spu-blue"
+                          x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></span>
+                </div>
+            </template>
+        </div>
+
+        <div class="mt-20 pt-10 border-t border-slate-100 text-center">
+            <a href="/about.html"
+                class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white border border-slate-200 text-spu-blue font-bold transition-all hover:bg-slate-50 hover:shadow-lg">
+                <i class="fas fa-arrow-right rtl:rotate-180 rotate-0"></i>
+                <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
+            </a>
+        </div>
+    </div>
+</section>

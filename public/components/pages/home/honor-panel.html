@@ -1,104 +1,100 @@
-<!-- 
-    HONOR & EXCELLENCE PANEL
-    ! Dynamic rotating showcase of university achievements.
-    ! Academic two-column layout with 5s auto-rotation and manual controls.
--->
 <section x-data="{
     activeIndex: 0,
     timer: null,
     items: [],
     init() {
-        this.items = $store.honorPanel.items; // ! Connect to home-content data
+        this.items = $store.honorPanel.items || [];
         this.startAuto();
     },
     startAuto() {
         this.stopAuto();
-        this.timer = setInterval(() => this.next(), 5000); // ! 5s automatic cycle
+        this.timer = setInterval(() => this.next(), 5000);
     },
     stopAuto() {
         if (this.timer) clearInterval(this.timer);
     },
     next() {
-        this.activeIndex = (this.activeIndex + 1) % this.items.length; // ! Rotation: Top -> Left
+        if(this.items.length > 0) {
+            this.activeIndex = (this.activeIndex + 1) % this.items.length;
+        }
     },
     prev() {
-        this.activeIndex = (this.activeIndex - 1 + this.items.length) % this.items.length;
+        if(this.items.length > 0) {
+            this.activeIndex = (this.activeIndex - 1 + this.items.length) % this.items.length;
+        }
     },
     handleManual(action, val) {
-        this.stopAuto(); // ! Pause auto-move on user click
+        this.stopAuto();
         if (action === 'next') this.next();
         if (action === 'prev') this.prev();
         if (action === 'goto') this.activeIndex = val;
-        setTimeout(() => this.startAuto(), 8000); // ! Resume auto-rotation after 8s of inactivity
+        setTimeout(() => this.startAuto(), 8000);
     },
     getPos(index) {
-        // ! Mathematical modulo to determine current layout position
+        if(!this.items.length) return 0;
         return (index - this.activeIndex + this.items.length) % this.items.length;
     }
 }" class="py-16 bg-white font-hacen relative overflow-hidden reveal">
-    <div class="container">
-        <!-- Header with Manual Navigation -->
-        <div class="section-header">
-            <h2 class="section-header__title text-[42px] font-bold text-spu-blue">
-                <span x-text="$store.app.currentLang === 'ar' ? 'التكريم والتميز' : 'Honor & Excellence'"></span>
-            </h2>
+    <div class="container ">
+        <div class="flex items-end justify-between mb-12">
+            <div>
+                <p class="text-spu-red font-bold tracking-widest text-xs uppercase mb-2"
+                    x-text="$store.app.currentLang === 'ar' ? 'سجل التميز' : 'Honor Board'"></p>
+                <h2 class="text-3xl lg:text-4xl font-bold text-spu-blue">
+                    <span x-text="$store.app.currentLang === 'ar' ? 'التكريم والتميز' : 'Honor & Excellence'"></span>
+                </h2>
+            </div>
 
-            <!-- ! Manual Buttons -->
-            <div class="slider-controls-row">
-                <button @click="handleManual('prev')" type="button" class="slider-nav-btn slider-nav-btn--prev" aria-label="Previous">
+            <div class="flex gap-3">
+                <button @click="handleManual('prev')" type="button"
+                    class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-spu-blue hover:text-white transition-all">
                     <i class="fas fa-chevron-left text-sm"
                         :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
                 </button>
-                <button @click="handleManual('next')" type="button" class="slider-nav-btn slider-nav-btn--next" aria-label="Next">
+                <button @click="handleManual('next')" type="button"
+                    class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-spu-blue hover:text-white transition-all">
                     <i class="fas fa-chevron-right text-sm"
                         :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Rotating Grid System -->
-        <div class="relative h-[400px] md:h-[500px] w-full">
+        <div class="relative h-[500px] w-full">
             <template x-for="(item, index) in items" :key="item.id">
-                <div class="absolute transition-all duration-1000 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] rounded-[40px] overflow-hidden group will-change-[width,height,left,top,opacity,transform]"
+                <div class="absolute transition-all duration-1000 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] rounded-[40px] overflow-hidden group"
                     :class="{
                         'w-full lg:w-[65%] h-full z-30 left-0 top-0 opacity-100 shadow-2xl scale-100': getPos(index) === 0,
                         'w-0 lg:w-[32%] h-[48%] z-20 left-0 lg:left-[68%] top-0 opacity-0 lg:opacity-100 scale-95 brightness-90': getPos(index) === 1,
                         'w-0 lg:w-[32%] h-[48%] z-10 left-0 lg:left-[68%] top-[52%] opacity-0 lg:opacity-100 scale-90 brightness-75': getPos(index) === 2
                     }">
-                    <!-- Background Image -->
-                    <img :src="item.image"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 will-change-transform">
 
-                    <!-- Detail Overlay (Active Card Only) -->
+                    <img :src="item.image"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110">
+
                     <div x-show="getPos(index) === 0" x-transition:enter="transition ease-out duration-700 delay-400"
                         x-transition:enter-start="opacity-0 translate-y-12"
                         x-transition:enter-end="opacity-100 translate-y-0"
-                        class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/40 to-transparent flex flex-col justify-end p-12 text-white">
+                        class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/40 to-transparent flex flex-col justify-end p-10 text-white">
 
-                        <div class="max-w-2xl select-none">
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="px-4 py-1 rounded-full bg-spu-red text-[11px] font-bold uppercase"
-                                    x-text="$store.app.currentLang === 'ar' ? item.badgeAr : item.badgeEn"></span>
-                                <span class="text-white/70 text-sm font-medium"
-                                    x-text="$store.app.currentLang === 'ar' ? item.metaAr : item.metaEn"></span>
-                            </div>
-
-                            <h3 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight"
-                                x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
-
-                            <p class="text-lg text-white/80 leading-relaxed mb-8 line-clamp-3"
-                                x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
-
-                            <a :href="item.link" class="inline-flex items-center gap-3 font-bold text-white group/link">
-                                <span class="border-b-2 border-spu-red pb-1"
-                                    x-text="$store.app.currentLang === 'ar' ? 'اكتشف التفاصيل' : 'View Details'"></span>
-                                <i class="fas fa-arrow-right transition-transform group-hover/link:translate-x-2"
-                                    :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
-                            </a>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-4 py-1 rounded-full bg-spu-red text-[10px] font-bold uppercase"
+                                x-text="$store.app.currentLang === 'ar' ? item.badgeAr : item.badgeEn"></span>
+                            <span class="text-white/70 text-sm"
+                                x-text="$store.app.currentLang === 'ar' ? item.metaAr : item.metaEn"></span>
                         </div>
+                        <h3 class="text-2xl lg:text-4xl font-bold mb-4"
+                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                        <p class="text-white/80 leading-relaxed mb-6 line-clamp-2"
+                            x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+
+                        <a :href="item.link" class="inline-flex items-center gap-3 font-bold group/link">
+                            <span class="border-b-2 border-spu-red pb-1"
+                                x-text="$store.app.currentLang === 'ar' ? 'اكتشف التفاصيل' : 'View Details'"></span>
+                            <i class="fas fa-arrow-right transition-transform group-hover/link:translate-x-2"
+                                :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                        </a>
                     </div>
 
-                    <!-- Overlay for non-active cards -->
                     <div x-show="getPos(index) !== 0"
                         class="absolute inset-0 bg-black/30 hover:bg-black/10 transition-colors cursor-pointer"
                         @click="handleManual('goto', index)"></div>
@@ -106,15 +102,11 @@
             </template>
         </div>
 
-        <!-- ! Manual Progress Indicators (Dots) -->
-        <div class="flex justify-center gap-3 mt-12">
+        <div class="flex justify-center gap-3 mt-10">
             <template x-for="(item, index) in items" :key="'dot-'+item.id">
                 <button @click="handleManual('goto', index)" class="h-2 rounded-full transition-all duration-700"
-                    :class="activeIndex === index ? 'w-10 bg-spu-red' : 'w-2 bg-gray-200'"></button>
+                    :class="activeIndex === index ? 'w-10 bg-spu-red' : 'w-2 bg-slate-200'"></button>
             </template>
         </div>
     </div>
-
-    <!-- Academic Background Detail -->
-    <div class="absolute -right-20 top-1/4 w-96 h-96 bg-spu-blue/5 rounded-full blur-3xl -z-10"></div>
 </section>

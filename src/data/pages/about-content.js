@@ -1,8 +1,8 @@
 export const aboutPageContent = {
     hero: {
-        eyebrowEn: 'About SPU',
-        eyebrowAr: 'عن الجامعة',
-        titleEn: 'A university shaped around academic rigor, professional confidence, and regional impact.',
+        eyebrowEn: 'About SPU', // ! Restored missing eyebrow
+        eyebrowAr: 'عن الجامعة', // ! Restored missing eyebrow
+        titleEn: 'A university shaped around academic rigor, professional confidence, and regional impact.', // ! Restored missing title
         titleAr: 'جامعة تتشكل حول الصرامة الأكاديمية، الثقة المهنية، والأثر الإقليمي.',
         summaryEn: 'Syrian Private University brings together modern academic programs, applied learning, and a student experience designed for long-term growth.',
         summaryAr: 'تجمع الجامعة السورية الخاصة بين البرامج الأكاديمية الحديثة، التعلم التطبيقي، وتجربة طلابية مصممة للنمو على المدى الطويل.'
@@ -81,51 +81,72 @@ export const aboutPageContent = {
         roleEn: 'Academic leadership focused on quality and long-term impact.',
         roleAr: 'قيادة أكاديمية تركز على الجودة والأثر طويل المدى.'
     },
-    history: {
+    leadershipMembers: [ // ! Added specific data for the leadership page
+        {
+            nameEn: 'Dr. Abdul Razzaq Sheikh Issa',
+            nameAr: 'د. عبد الرزاق شيخ عيسى',
+            roleEn: 'President of the University',
+            roleAr: 'رئيس الجامعة',
+            image: '/images/1.png'
+        }
+    ],
+    history: { // ! Restored history section for history/content.html
         eyebrowEn: 'Our Journey',
         eyebrowAr: 'رحلتنا عبر الزمن',
         titleEn: 'A legacy of excellence built through determination and vision.',
         titleAr: 'إرث من التميز بني بالعزيمة والرؤية.',
-        summaryEn: 'Since our establishment in <span translate="no">2005</span>, SPU has evolved from a foundational concept into one of the region\'s leading private academic institutions.', // Protected year
-        summaryAr: 'منذ تأسيسنا في عام <span translate="no">2005</span>، تطورت SPU من مفهوم تأسيسي لتصبح واحدة من المؤسسات الأكاديمية الخاصة الرائدة في المنطقة.' // Protected year
+        summaryEn: 'Since our establishment in <span translate="no">2005</span>, SPU has evolved from a foundational concept into one of the region\'s leading private academic institutions.',
+        summaryAr: 'منذ تأسيسنا في عام <span translate="no">2005</span>، تطورت SPU من مفهوم تأسيسي لتصبح واحدة من المؤسسات الأكاديمية الخاصة الرائدة في المنطقة.'
     },
-    historyPoints: [
+    historyPoints: [ // ! Timeline data for history page
         {
-            year: '<span translate="no">2005</span>', // Protected year
+            year: '2005',
             titleEn: 'Founding Milestone',
             titleAr: 'التأسيس التاريخي',
-            descEn: 'SPU was established by Presidential Decree No. 339, marking its beginning as the Syrian International Private University for Science and Technology.',
-            descAr: 'تأسست الجامعة بمرسوم جمهوري رقم <span translate="no">339</span>، لتكون الجامعة السورية الدولية الخاصة للعلوم والتكنولوجيا.' // Protected decree number
-        },
-        {
-            year: '<span translate="no">2009</span>', // Protected year
-            titleEn: 'First Cohort Graduated',
-            titleAr: 'تخرج الدفعة الأولى',
-            descEn: 'A major milestone reached with the graduation of our first class, sending skilled professionals into the medical and engineering workforces.',
-            descAr: 'تحقيق إنجاز كبير بتخرج الدفعة الأولى من الطلاب، ورفد سوق العمل بكوادر طبية وهندسية مؤهلة.'
-        },
-        {
-            year: '<span translate="no">2012</span>', // Protected year
-            titleEn: 'Strategic Rebranding',
-            titleAr: 'إعادة العلامة التجارية الاستراتيجية',
-            descEn: 'The university was officially renamed the "Syrian Private University" (SPU) by Decree No. <span translate="no">343</span>, reflecting a broader academic scope.',
-            descAr: 'تم تغيير اسم الجامعة رسمياً إلى "الجامعة السورية الخاصة" بموجب المرسوم رقم <span translate="no">343</span>، ليعكس شمولية الاختصاصات الأكاديمية.' // Protected decree number
-        },
-        {
-            year: '<span translate="no">2016</span>', // Protected year
-            titleEn: 'Clinical Excellence Expansion',
-            titleAr: 'توسيع التميز السريري',
-            descEn: 'Significant development of the SPU Medical Center and dental clinics, enhancing practical training for health science students.',
-            descAr: 'تطوير كبير للمركز الطبي التابع للجامعة والعيادات السنية، مما عزز التدريب العملي لطلاب الكليات الطبية.'
-        },
-        {
-            year: '<span translate="no">2023</span>', // Protected year
-            titleEn: 'Digital Transformation',
-            titleAr: 'التحول الرقمي',
-            descEn: 'Implementation of advanced digital management systems and adaptive learning technologies to meet modern global standards.',
-            descAr: 'اعتماد أنظمة إدارة رقمية متطورة وتقنيات التعلم التكيفي لتلبية المعايير العالمية الحديثة.'
+            descEn: 'SPU was established by Presidential Decree No. 339.',
+            descAr: 'تأسست الجامعة بمرسوم جمهوري رقم 339.'
         }
     ],
+    directorates: {
+        eyebrowEn: 'Administrative Support',
+        eyebrowAr: 'الدعم الإداري',
+        titleEn: 'Specialized directorates ensuring operational excellence and student success.',
+        titleAr: 'مديريات متخصصة تضمن التميز التشغيلي ونجاح الطلاب.',
+        items: [
+            {
+                titleEn: 'Scientific Research Directorate',
+                titleAr: 'مديرية البحث العلمي',
+                summaryEn: 'Managing research initiatives, publication support, and academic partnerships.',
+                summaryAr: 'إدارة مبادرات البحث ودعم النشر والشراكات الأكاديمية.'
+            },
+            {
+                titleEn: 'Student Affairs Directorate',
+                titleAr: 'مديرية شؤون الطلاب',
+                summaryEn: 'Overseeing student records, activities, and campus life experience.',
+                summaryAr: 'الإشراف على سجلات الطلاب والأنشطة وتجربة الحياة الجامعية.'
+            },
+            {
+                titleEn: 'Information Technology Directorate',
+                titleAr: 'مديرية تقانة المعلومات',
+                summaryEn: 'Maintaining digital infrastructure, portal services, and campus connectivity.',
+                summaryAr: 'صيانة البنية التحتية الرقمية وخدمات البوابة والاتصال داخل الحرم.'
+            }
+        ]
+    },
+    partnerships: {
+        eyebrowEn: 'Global Network',
+        eyebrowAr: 'شبكة عالمية',
+        titleEn: 'Collaborating with leading institutions to expand academic and professional horizons.',
+        titleAr: 'التعاون مع مؤسسات رائدة لتوسيع الآفاق الأكاديمية والمهنية.',
+        summaryEn: 'SPU maintains strategic partnerships with hospitals, technology firms, and international universities.',
+        summaryAr: 'تقيم SPU شراكات استراتيجية مع المشافي وشركات التكنولوجيا والجامعات الدولية.',
+        list: [
+            { nameEn: 'Clinical Training Hospitals', nameAr: 'مشافي التدريب السريري' },
+            { nameEn: 'Regional Academic Alliances', nameAr: 'التحالفات الأكاديمية الإقليمية' },
+            { nameEn: 'Professional Industry Partners', nameAr: 'شركاء القطاع المهني' }
+        ]
+    },
+
     highlights: [
         {
             titleEn: 'Applied Learning Environment',
@@ -150,6 +171,38 @@ export const aboutPageContent = {
             titleAr: 'صلة إقليمية مباشرة',
             summaryEn: 'Academic planning is aligned with community needs and long-term workforce demand.',
             summaryAr: 'يرتبط التخطيط الأكاديمي باحتياجات المجتمع ومتطلبات سوق العمل على المدى الطويل.'
+        }
+    ],
+
+    // ... التكملة بعد قسم highlights
+    subPages: [ // ! تم توحيد المعرفات لتطابق مجلدات المحتوى
+        {
+            id: 'history',
+            titleAr: 'تاريخ الجامعة',
+            titleEn: 'History',
+            icon: 'fas fa-history',
+            link: '/about/history/content.html'
+        },
+        {
+            id: 'leadership',
+            titleAr: 'مجلس الجامعة',
+            titleEn: 'Leadership',
+            icon: 'fas fa-users',
+            link: '/about/leadership/content.html'
+        },
+        {
+            id: 'directorates',
+            titleAr: 'المديريات',
+            titleEn: 'Directorates',
+            icon: 'fas fa-sitemap',
+            link: '/about/directorates/content.html'
+        },
+        {
+            id: 'partnership',
+            titleAr: 'الشراكات',
+            titleEn: 'Partnerships',
+            icon: 'fas fa-handshake',
+            link: '/about/partnership/content.html'
         }
     ]
 };

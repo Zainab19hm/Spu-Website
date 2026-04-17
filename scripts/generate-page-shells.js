@@ -340,22 +340,10 @@ function renderLoadingGuardScript() {
     </script>`;
 }
 
-function renderLayoutMarkup() {
-    return Object.fromEntries(
-        Object.entries(layout).map(([slot, source]) => [slot, { source, markup: readFragment(source) }])
-    );
-}
-
-function renderPageMarkup(page) {
-    return page.components.map((source) => readFragment(source)).join('\n');
-}
-
 function renderPageShell(page) {
     const canonicalUrl = normalizeCanonical(page.canonicalPath || page.path);
     const ogImage = `${siteOrigin}${encodeURI(page.ogImage)}`;
     const keywords = Array.isArray(page.keywords) ? page.keywords.join(', ') : '';
-    const layoutMarkup = renderLayoutMarkup();
-    const pageMarkup = renderPageMarkup(page);
 
     return `<!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -391,7 +379,7 @@ function renderPageShell(page) {
 
 <body data-page="${escapeAttribute(page.name)}" data-page-store="${escapeAttribute(page.name)}" data-page-section="${escapeAttribute(page.name)}">
     <div data-layout-slot="header"></div>
-    <main data-page-content></main>
+    <main data-page-content x-data></main>
     <div data-layout-slot="footer"></div>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script type="module" src="/src/main.js"></script>
@@ -404,6 +392,7 @@ function renderPageShell(page) {
 function writePageShells() {
     pages.forEach((page) => {
         const outputPath = path.join(workspaceRoot, page.fileName);
+        fs.mkdirSync(path.dirname(outputPath), { recursive: true });
         fs.writeFileSync(outputPath, renderPageShell(page));
     });
 }

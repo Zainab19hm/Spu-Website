@@ -1,7 +1,7 @@
-<section id="vision" x-data class="relative py-24 overflow-hidden bg-white font-hacen">
+<section id="about-dynamic-section" x-data class="relative py-24 overflow-hidden bg-white font-hacen">
     <div class="absolute inset-0 -skew-y-3 origin-right transform translate-y-20"></div>
 
-    <div class="container relative  z-10 ">
+    <div class="container relative z-10">
         <div class="mb-16 max-w-4xl mx-auto text-center text-cyan-50">
             <p class="text-sm font-bold uppercase tracking-widest text-spu-red"
                 x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.story.eyebrowAr : $store.aboutPage.story.eyebrowEn">
@@ -14,11 +14,11 @@
             </p>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 ">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
             <template x-for="item in $store.aboutPage.story.items" :key="item.id">
                 <div :class="item.theme === 'dark' 
-                    ? 'bg-spu-blue text-white shadow-2xl' 
-                    : 'bg-white text-spu-blue border border-gray-100 shadow-xl shadow-blue-900/5'"
+                ? 'bg-spu-blue text-white shadow-2xl' 
+                : 'bg-white text-spu-blue border border-gray-100 shadow-xl shadow-blue-900/5'"
                     class="group relative p-10 rounded-[2.5rem] transition-all duration-500 hover:-translate-y-2">
 
                     <h3 class="text-2xl font-bold"
@@ -34,12 +34,11 @@
 
                     <div
                         class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2L1 21h22L12 2zm0 3.45l8.27 14.3H3.73L12 5.45z" />
-                        </svg>
+                        <i class="fas fa-quote-right text-4xl"></i>
                     </div>
                 </div>
             </template>
         </div>
+
     </div>
 </section>

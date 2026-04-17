@@ -1,0 +1,39 @@
+<section class="py-12 px-6 bg-slate-50/50 rounded-[3rem] border border-slate-100 shadow-inner">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-16">
+            <p class="text-sm font-bold uppercase tracking-widest text-spu-red"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.eyebrowAr : $store.aboutPage.leadership.eyebrowEn">
+            </p>
+            <h1 class="mt-4 text-4xl md:text-5xl font-bold text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.nameAr : $store.aboutPage.leadership.nameEn">
+            </h1>
+            <div class="mt-6 h-1 w-24 bg-spu-red mx-auto rounded-full"></div>
+            <p class="mt-8 max-w-2xl mx-auto text-lg text-slate-600 italic leading-relaxed"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.quoteAr : $store.aboutPage.leadership.quoteEn">
+            </p>
+        </header>
+
+        <div class="max-w-md mx-auto">
+            <template x-for="member in $store.aboutPage.leadershipMembers" :key="member.nameEn">
+                <div class="text-center group">
+                    <div
+                        class="relative w-64 h-64 mx-auto mb-8 rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                        <img :src="member.image" :alt="member.nameEn" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold text-spu-blue mb-2"
+                        x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
+                    <p class="text-spu-red font-bold uppercase tracking-widest text-sm"
+                        x-text="$store.app.currentLang === 'ar' ? member.roleAr : member.roleEn"></p>
+                </div>
+            </template>
+        </div>
+
+        <div class="mt-20 pt-10 border-t border-slate-100 text-center">
+            <a href="/about.html"
+                class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white border border-slate-200 text-spu-blue font-bold transition-all hover:bg-slate-50 hover:shadow-lg">
+                <i class="fas fa-arrow-right rtl:rotate-180 rotate-0"></i>
+                <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
+            </a>
+        </div>
+    </div>
+</section>

@@ -24,9 +24,11 @@ export const navigationMenuItems = [
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: 'الرؤية والرسالة', labelEn: 'Vision & Mission', url: '/about.html#vision' },
-            { labelAr: 'الجودة والحوكمة', labelEn: 'Quality & Governance', url: '/about.html#quality' },
-            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about.html#leadership' }
+            { labelAr: 'نظرة عامة', labelEn: 'Overview', url: '/about.html' },
+            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership/content.html' },
+            { labelAr: 'تاريخنا', labelEn: 'Our History', url: '/about/history/content.html' },
+            { labelAr: 'المديريات', labelEn: 'Directorates', url: '/about/directorates/content.html' },
+            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: '/about/partnership/content.html' }
         ]
     },
     {
@@ -53,7 +55,7 @@ export const navigationMenuItems = [
         children: [
             { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: '/admissions.html#requirements' },
             { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: '/admissions.html#fees' },
-            { labelAr: 'دعم القبول', labelEn: 'Admissions Support', url: '/contact.html' } // ! Corrected to valid contact.html page
+            { labelAr: 'دعم القبول', labelEn: 'Admissions Support', url: '/contact.html' }
         ]
     },
     {
@@ -66,21 +68,21 @@ export const navigationMenuItems = [
         children: [
             { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: '/student-life.html#services' },
             { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: '/student-life.html#activities' },
-            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: '/student-life.html#highlights' } // ! Changed to valid section ID
+            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: '/student-life.html#highlights' }
         ]
     },
     {
         id: 5,
         labelAr: 'الخدمات',
         labelEn: 'E-Services',
-        url: '#', // ! Changed to # because services.html does not exist in site-pages.json
+        url: '/services.html',
         page: 'services',
         hasDropdown: true,
         children: [
-            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: 'http://my.spu.edu.sy/ar/login' }, // ! Pointed to actual external portal
-            { labelAr: 'التسجيل', labelEn: 'Registration', url: 'http://my.spu.edu.sy/ar/login' }, // ! Pointed to actual external portal
-            { labelAr: 'المكتبة', labelEn: 'Library Access', url: '/student-life.html#services' }, // ! Pointed to existing student life services
-            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: '/admissions.html' }, // ! Pointed to valid admissions page
+            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: 'http://my.spu.edu.sy/ar/login' },
+            { labelAr: 'التسجيل', labelEn: 'Registration', url: 'http://my.spu.edu.sy/ar/login' },
+            { labelAr: 'المكتبة', labelEn: 'Library Access', url: '/student-life.html#services' },
+            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: '/admissions.html' },
         ]
     },
     { id: 6, labelAr: 'البحث العلمي', labelEn: 'Research', page: 'research', hasDropdown: false, url: '/research.html' },

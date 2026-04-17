@@ -40,6 +40,11 @@ Frontend for the Syrian Private University website using `Vite`, `Alpine.js`, an
 - `public/` is source static content, while `dist/` is the compiled production output.
 - Shared layout belongs under `layout/`; page-only fragments belong under `pages/<page-name>/`.
 - `npm run build` automatically runs the fragment root audit first so missing `x-data` roots are caught before shipping.
+- The page registry in `site-pages.json` is the single source of truth for page metadata and structure. Update it when adding new pages or modifying existing ones.
+
+
+
+
 
 ```
 Spu-Website
@@ -58,11 +63,16 @@ Spu-Website
 │  │  │  └─ header.html
 │  │  └─ pages
 │  │     ├─ about
+│  │     │  ├─ directorates
+│  │     │  │  └─ content.html
 │  │     │  ├─ hero.html
-│  │     │  ├─ history.html
-│  │     │  ├─ leadership.html
+│  │     │  ├─ history
+│  │     │  │  └─ content.html
+│  │     │  ├─ leadership
+│  │     │  │  └─ content.html
 │  │     │  ├─ overview.html
-│  │     │  └─ quality.html
+│  │     │  └─ partnership
+│  │     │     └─ content.html
 │  │     ├─ admissions
 │  │     │  ├─ hero.html
 │  │     │  ├─ process.html
@@ -93,6 +103,9 @@ Spu-Website
 │  │     │  ├─ hero.html
 │  │     │  ├─ initiatives.html
 │  │     │  └─ priorities.html
+│  │     ├─ services
+│  │     │  ├─ access.html
+│  │     │  └─ hero.html
 │  │     └─ student-life
 │  │        ├─ hero.html
 │  │        ├─ highlights.html
@@ -161,6 +174,7 @@ Spu-Website
 │  ├─ generate-page-shells.js
 │  ├─ inspect-html.js
 │  └─ patch-generator.js
+├─ services.html
 ├─ src
 │  ├─ alpine
 │  │  ├─ pages
@@ -171,6 +185,7 @@ Spu-Website
 │  │  │  ├─ home-stores.js
 │  │  │  ├─ news-stores.js
 │  │  │  ├─ research-stores.js
+│  │  │  ├─ services-stores.js
 │  │  │  └─ student-life-stores.js
 │  │  ├─ register-faculty-catalog-store.js
 │  │  ├─ register-layout-stores.js
@@ -180,7 +195,8 @@ Spu-Website
 │  │  └─ site-shell.js
 │  ├─ data
 │  │  ├─ domains
-│  │  │  └─ faculties-catalog.js
+│  │  │  ├─ faculties-catalog.js
+│  │  │  └─ portal-access.js
 │  │  ├─ layout-content.js
 │  │  └─ pages
 │  │     ├─ about-content.js
@@ -190,6 +206,7 @@ Spu-Website
 │  │     ├─ home-content.js
 │  │     ├─ news-content.js
 │  │     ├─ research-content.js
+│  │     ├─ services-content.js
 │  │     └─ student-life-content.js
 │  ├─ features
 │  │  ├─ calendar.js

@@ -13,6 +13,10 @@ import { registerContactStores } from './pages/contact-stores.js';
 const pageStoreRegistrars = {
     home: registerHomeStores,
     about: registerAboutStores,
+    'about-history': registerAboutStores,
+    'about-leadership': registerAboutStores,
+    'about-directorates': registerAboutStores,
+    'about-partnership': registerAboutStores,
     faculties: registerFacultiesPageStores,
     admissions: registerAdmissionsStores,
     research: registerResearchStores,
