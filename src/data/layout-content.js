@@ -24,7 +24,6 @@ export const navigationMenuItems = [
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: 'نظرة عامة', labelEn: 'Overview', url: '/about.html' },
             { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership/content.html' },
             { labelAr: 'تاريخنا', labelEn: 'Our History', url: '/about/history/content.html' },
             { labelAr: 'المديريات', labelEn: 'Directorates', url: '/about/directorates/content.html' },

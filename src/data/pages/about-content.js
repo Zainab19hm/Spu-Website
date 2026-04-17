@@ -162,16 +162,19 @@ export const aboutPageContent = {
         ]
     },
     partnerships: {
-        eyebrowEn: 'Global Network',
-        eyebrowAr: 'شبكة عالمية',
-        titleEn: 'Collaborating with leading institutions to expand academic and professional horizons.',
-        titleAr: 'التعاون مع مؤسسات رائدة لتوسيع الآفاق الأكاديمية والمهنية.',
-        summaryEn: 'SPU maintains strategic partnerships with hospitals, technology firms, and international universities.',
-        summaryAr: 'تقيم SPU شراكات استراتيجية مع المشافي وشركات التكنولوجيا والجامعات الدولية.',
+        eyebrowAr: 'شبكة علاقاتنا',
+        eyebrowEn: 'OUR NETWORK',
+        titleAr: 'الشراكات والاتفاقيات الدولية',
+        titleEn: 'Global Partnerships & Agreements',
+        summaryAr: 'تفتخر الجامعة السورية الخاصة بشبكة واسعة من الشراكات الأكاديمية مع مؤسسات تعليمية مرموقة محلياً وعالمياً لتبادل الخبرات وتعزيز جودة التعليم.',
+        summaryEn: 'SPU takes pride in a wide network of academic partnerships with prestigious local and international educational institutions.',
         list: [
-            { nameEn: 'Clinical Training Hospitals', nameAr: 'مشافي التدريب السريري' },
-            { nameEn: 'Regional Academic Alliances', nameAr: 'التحالفات الأكاديمية الإقليمية' },
-            { nameEn: 'Professional Industry Partners', nameAr: 'شركاء القطاع المهني' }
+            { nameAr: 'منظمة الصحة العالمية', nameEn: 'World Health Organization' },
+            { nameAr: 'جامعة دمشق', nameEn: 'Damascus University' },
+            { nameAr: 'نقابة المهندسين السوريين', nameEn: 'Order of Syrian Engineers' },
+            { nameAr: 'اتحاد الجامعات العربية', nameEn: 'Association of Arab Universities' },
+            { nameAr: 'منصة كورسيرا للتعليم', nameEn: 'Coursera for Campus' },
+            { nameAr: 'مشفى دمشق (المجتهد)', nameEn: 'Damascus Hospital' }
         ]
     },
 
