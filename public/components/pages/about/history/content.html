@@ -1,47 +1,84 @@
-<section class="py-12 px-6 bg-slate-50/50 rounded-[3rem] border border-slate-100 shadow-inner">
-    <div class="max-w-4xl mx-auto">
-        <header class="text-center mb-16">
-            <p class="text-sm font-bold uppercase tracking-widest text-spu-red"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.eyebrowAr : $store.aboutPage.history.eyebrowEn">
-            </p>
-            <h1 class="mt-4 text-4xl md:text-5xl font-bold text-spu-blue"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn">
-            </h1>
-            <div class="mt-6 h-1 w-24 bg-spu-red mx-auto rounded-full"></div>
+<section class="relative py-24 overflow-hidden bg-white font-hacen">
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] z-0">
+        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 L100 0 L100 100 Z" fill="#202759"></path>
+        </svg>
+    </div>
+
+    <div class="container relative z-10 max-w-5xl mx-auto mt-10 px-6">
+        <header class="text-center mb-24 relative">
+            <div class="inline-block">
+                <p class="text-xs font-black uppercase tracking-[0.4em] text-spu-red mb-4"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.eyebrowAr : $store.aboutPage.history.eyebrowEn">
+                </p>
+                <h1 class="text-2xl md:text-5xl font-bold text-spu-blue leading-tight"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn">
+                </h1>
+                <div class="mt-8 flex justify-center items-center gap-4">
+                    <div class="h-[2px] w-12 bg-gradient-to-r from-transparent to-spu-red"></div>
+                    <div class="w-3 h-3 rounded-full border-2 border-spu-red"></div>
+                    <div class="h-[2px] w-12 bg-gradient-to-l from-transparent to-spu-red"></div>
+                </div>
+            </div>
         </header>
+        <div class="relative max-w-6xl mx-auto px-6 py-24">
+            <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1px] bg-slate-200 hidden md:block"></div>
 
-        <div class="relative">
-            <div class="absolute right-1/2 translate-x-1/2 top-0 bottom-0 w-px bg-slate-200 hidden md:block"></div>
-
-            <div class="space-y-12 relative z-10">
+            <div class="relative space-y-16 md:space-y-0">
                 <template x-for="(point, index) in $store.aboutPage.historyPoints" :key="index">
-                    <div class="flex flex-col md:flex-row items-center gap-8"
-                        :class="index % 2 === 0 ? 'md:flex-row-reverse' : ''">
-                        <div class="flex-1 text-center" :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'">
-                            <span class="inline-block px-4 py-1 rounded-full bg-spu-blue text-white text-sm font-bold mb-4"
-                                x-text="point.year"></span>
-                            <h3 class="text-2xl font-bold text-spu-blue mb-4"
-                                x-text="$store.app.currentLang === 'ar' ? point.titleAr : point.titleEn"></h3>
-                            <p class="text-slate-600 leading-relaxed"
-                                x-text="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
+                    <div class="relative flex flex-col md:flex-row items-center"
+                        :class="index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'">
+
+                        <div class="w-full md:w-1/2 flex"
+                            :class="index % 2 === 0 ? 'justify-end md:pr-20' : 'justify-start md:pl-20'">
+
+                            <div class="group relative p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(32,39,89,0.1)] transition-all duration-500 w-full max-w-lg"
+                                :class="index % 2 === 0 ? 'text-right' : 'text-left'">
+
+                                <span
+                                    class="absolute top-4 text-5xl font-black text-slate-50 transition-colors duration-500 group-hover:text-spu-blue/5"
+                                    :class="index % 2 === 0 ? 'left-6' : 'right-6'" x-text="point.year"></span>
+
+                                <div class="relative z-10">
+                                    <div class="flex items-center gap-3 mb-4"
+                                        :class="index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'">
+                                        <span class="px-3 py-1 rounded-md bg-spu-red/10 text-spu-red text-xs font-bold"
+                                            x-text="point.year"></span>
+                                        <div class="h-px w-8 bg-slate-200"></div>
+                                    </div>
+
+                                    <h3 class="text-2xl font-bold text-spu-blue mb-3 group-hover:text-spu-red transition-colors"
+                                        x-text="$store.app.currentLang === 'ar' ? point.titleAr : point.titleEn"></h3>
+                                    <p class="text-slate-500 leading-relaxed text-base"
+                                        x-text="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
+                                </div>
+                            </div>
                         </div>
 
                         <div
-                            class="w-12 h-12 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center text-spu-red shadow-sm z-20">
-                            <i class="fas fa-circle text-[10px]"></i>
+                            class="hidden md:flex absolute left-1/2 -translate-x-1/2 z-20 w-12 h-12 items-center justify-center">
+                            <div class="absolute w-full h-full rounded-full border border-slate-100 bg-white shadow-sm">
+                            </div>
+                            <div class="w-3 h-3 rounded-full transition-all duration-500 bg-slate-300"
+                                :class="index === $store.aboutPage.historyPoints.length - 1 ? 'bg-spu-red' : 'group-hover:bg-spu-blue'">
+                            </div>
                         </div>
 
-                        <div class="flex-1 hidden md:block"></div>
+                        <div class="flex-1 hidden md:block md:h-32"></div>
                     </div>
                 </template>
             </div>
         </div>
-
-        <div class="mt-20 pt-10 border-t border-slate-100 text-center">
+        <div class="mt-32 text-center">
             <a href="/about.html"
-                class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white border border-slate-200 text-spu-blue font-bold transition-all hover:bg-slate-50 hover:shadow-lg">
-                <i class="fas fa-arrow-right rtl:rotate-180 rotate-0"></i>
-                <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
+                class="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-spu-blue text-white font-bold transition-all hover:scale-105 hover:shadow-[0_20px_40px_rgba(32,39,89,0.3)] overflow-hidden">
+                <div
+                    class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+                </div>
+
+                <i class="fas fa-chevron-right rtl:rotate-180 transition-transform group-hover:-translate-x-1"></i>
+                <span class="relative z-10"
+                    x-text="$store.app.currentLang === 'ar' ? 'العودة لنظرة عامة' : 'Return to Overview'"></span>
             </a>
         </div>
     </div>

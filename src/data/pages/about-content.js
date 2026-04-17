@@ -101,12 +101,40 @@ export const aboutPageContent = {
     historyPoints: [ // ! Timeline data for history page
         {
             year: '2005',
-            titleEn: 'Founding Milestone',
-            titleAr: 'التأسيس التاريخي',
-            descEn: 'SPU was established by Presidential Decree No. 339.',
-            descAr: 'تأسست الجامعة بمرسوم جمهوري رقم 339.'
-        }
-    ],
+            titleAr: 'تأسيس الصرح الأكاديمي',
+            titleEn: 'Foundation of SPU',
+            descAr: 'صدور المرسوم التشريعي رقم 339 القاضي بتأسيس الجامعة السورية الخاصة كمنارة للعلم والمعرفة في قلب سوريا.',
+                descEn: 'Presidential Decree No. 339 was issued, establishing SPU as a beacon of knowledge in the heart of Syria.'
+            },
+            {
+                year: '2008',
+                titleAr: 'انطلاقة كليات العلوم الطبية',
+                titleEn: 'Medical Sciences Launch',
+                descAr: 'بدء استقبال الطلاب في كليات الطب البشري وطب الأسنان والصيدلة مع تجهيز أحدث المخابر المتخصصة.',
+                descEn: 'Opening admissions for Medicine, Dentistry, and Pharmacy with state-of-the-art specialized laboratories.'
+            },
+            {
+                year: '2015',
+                titleAr: 'عشر سنوات من العطاء',
+                titleEn: 'A Decade of Excellence',
+                descAr: 'الاحتفال بمرور عشرة أعوام على التأسيس مع تخريج دفعات رفدت سوق العمل بنخبة من الكفاءات العلمية.',
+                descEn: 'Celebrating 10 years of founding, providing the labor market with top-tier scientific competencies.'
+            },
+            {
+                year: '2020',
+                titleAr: 'الريادة في البحث العلمي',
+                titleEn: 'Scientific Research Leadership',
+                descAr: 'تصدر الجامعة للمراكز الأولى بين الجامعات الخاصة في النشر العلمي في المجلات العالمية المرموقة.',
+                descEn: 'Ranking first among private universities in scientific publications within prestigious international journals.'
+            },
+            {
+                year: '2026',
+                titleAr: 'عصر التحول الذكي',
+                titleEn: 'The Smart Transformation Era',
+                descAr: 'إطلاق الاستراتيجية الرقمية الجديدة وتوسيع كليات الهندسة لتشمل علوم الذكاء الاصطناعي والروبوت.',
+                descEn: 'Launching the new digital strategy and expanding Engineering faculties to include AI and Robotics.'
+            }
+        ],
     directorates: {
         eyebrowEn: 'Administrative Support',
         eyebrowAr: 'الدعم الإداري',
