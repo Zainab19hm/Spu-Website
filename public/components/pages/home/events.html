@@ -26,7 +26,7 @@
                             <a :href="selectedEvent.link || '#'"
                                 class="inline-flex w-fit items-center gap-2 text-[18px] font-bold text-[#1e2652] transition hover:text-spu-red">
                                 <span x-text="$store.app.ui.exploreDetails[$store.app.currentLang]"></span>
-                                <i class="fas fa-chevron-right text-[11px]"></i>
+                                <img src="/images/icon-chevron-right-outline.svg" class="w-2.5 h-2.5 rtl:rotate-180" alt="Details">
                             </a>
 
                             <div class="mt-auto pt-5">
@@ -68,11 +68,11 @@
                     <div class="flex items-center gap-2 text-[#111111]">
                         <button type="button" @click="prevMonth()"
                             class="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-gray-100">
-                            <i class="fas fa-chevron-left text-[15px]"></i>
+                            <img src="/images/icon-chevron-left-outline.svg" class="w-4 h-4" alt="Prev">
                         </button>
                         <button type="button" @click="nextMonth()"
                             class="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-gray-100">
-                            <i class="fas fa-chevron-right text-[15px]"></i>
+                            <img src="/images/icon-chevron-right-outline.svg" class="w-4 h-4" alt="Next">
                         </button>
                     </div>
                 </div>

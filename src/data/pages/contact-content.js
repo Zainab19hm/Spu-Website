@@ -9,21 +9,21 @@ export const contactPageContent = {
     },
     channels: [
         {
-            icon: 'fas fa-envelope',
+            icon: '/images/icon-envelope-outline.svg',
             titleEn: 'General Email',
             titleAr: 'البريد العام',
             detail: 'info@spu.edu.sy',
             url: 'mailto:info@spu.edu.sy'
         },
         {
-            icon: 'fas fa-user-graduate',
+            icon: '/images/icon-user-graduate-outline.svg',
             titleEn: 'Admissions Support',
             titleAr: 'دعم القبول',
             detail: 'admissions@spu.edu.sy',
             url: 'mailto:admissions@spu.edu.sy'
         },
         {
-            icon: 'fas fa-phone-alt',
+            icon: '/images/icon-phone-outline.svg',
             titleEn: 'Damascus Office',
             titleAr: 'مكتب دمشق',
             detail: '<span translate="no">+963 11 9860</span>', // Added translate="no" to preserve number format

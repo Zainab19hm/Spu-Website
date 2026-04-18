@@ -47,14 +47,12 @@
 
             <div class="flex gap-3">
                 <button @click="handleManual('prev')" type="button"
-                    class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-spu-blue hover:text-white transition-all">
-                    <i class="fas fa-chevron-left text-sm"
-                        :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                    class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all">
+                    <img src="/images/icon-chevron-left-outline.svg" class="w-4 h-4" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''" alt="Prev">
                 </button>
                 <button @click="handleManual('next')" type="button"
-                    class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-spu-blue hover:text-white transition-all">
-                    <i class="fas fa-chevron-right text-sm"
-                        :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                    class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all">
+                    <img src="/images/icon-chevron-right-outline.svg" class="w-4 h-4" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''" alt="Next">
                 </button>
             </div>
         </div>
@@ -90,8 +88,7 @@
                         <a :href="item.link" class="inline-flex items-center gap-3 font-bold group/link">
                             <span class="border-b-2 border-spu-red pb-1"
                                 x-text="$store.app.currentLang === 'ar' ? 'اكتشف التفاصيل' : 'View Details'"></span>
-                            <i class="fas fa-arrow-right transition-transform group-hover/link:translate-x-2"
-                                :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                            <img src="/images/icon-arrow-right-outline.svg" class="w-4 h-4 brightness-0 invert transition-transform group-hover/link:translate-x-2" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''" alt="Details">
                         </a>
                     </div>
 

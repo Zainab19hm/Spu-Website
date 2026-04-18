@@ -19,8 +19,8 @@
 
                         <div class="relative z-10">
                             <div
-                                class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-spu-blue transition-all duration-500 group-hover:bg-spu-blue group-hover:text-white  mb-6 shadow-inner">
-                                <i :class="sub.icon" class="text-xl"></i>
+                                class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center transition-all duration-500 group-hover:bg-spu-blue  mb-6 shadow-inner">
+                                <img :src="sub.icon" class="w-7 h-7 group-hover:brightness-0 group-hover:invert transition-all" :alt="sub.titleEn">
                             </div>
 
                             <h4 class="text-lg font-bold text-spu-blue transition-colors duration-300 group-hover:text-spu-red"
@@ -30,7 +30,7 @@
                                 class="mt-4 flex items-center gap-2 text-sm font-bold text-slate-400 opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
                                 <span
                                     x-text="$store.app.currentLang === 'ar' ? 'اكتشف القسم' : 'Discover Section'"></span>
-                                <i class="fas fa-arrow-left rtl:rotate-0 rotate-180"></i>
+                                <img src="/images/icon-arrow-left-outline.svg" class="w-4 h-4 rtl:rotate-0 rotate-180" alt="Arrow">
                             </div>
                         </div>
 

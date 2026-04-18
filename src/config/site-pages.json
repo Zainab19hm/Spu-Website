@@ -7,6 +7,18 @@
     {
       "name": "home",
       "fileName": "index.html",
+      "path": "/index.html",
+      "canonicalPath": "/",
+      "title": "الجامعة السورية الخاصة | SPU - Home",
+      "description": "الموقع الرسمي للجامعة السورية الخاصة (SPU). استكشف الكليات، شروط القبول، البحث العلمي، والحياة الطلابية في واحدة من أعرق الجامعات الخاصة في سوريا.",
+      "keywords": [
+        "Syrian Private University",
+        "SPU",
+        "الجامعة السورية الخاصة",
+        "Admissions",
+        "Faculties"
+      ],
+      "ogImage": "/images/logo-spu.png",
       "components": [
         "/components/pages/home/hero.html",
         "/components/pages/home/stats.html",
@@ -82,7 +94,7 @@
     {
       "name": "faculties",
       "fileName": "faculties.html",
-      "components": [] 
+      "components": []
     },
     {
       "name": "admissions",

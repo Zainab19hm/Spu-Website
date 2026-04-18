@@ -70,9 +70,9 @@ export const admissionsPageContent = {
         summaryEn: 'For exact requirements and deadlines, students should contact the admissions office directly.',
         summaryAr: 'للحصول على المتطلبات الدقيقة والمواعيد النهائية، يجب التواصل مباشرة مع مكتب القبول.',
         items: [
-            { icon: 'fas fa-envelope', text: 'admissions@spu.edu.sy' },
-            { icon: 'fas fa-phone-alt', text: '<span translate="no">+963 11 9876</span>' }, // Protected phone number
-            { icon: 'fas fa-map-marker-alt', text: 'Main Campus, Damascus-Daraa Highway' }
+            { icon: '/images/icon-envelope-outline.svg', text: 'admissions@spu.edu.sy' },
+            { icon: '/images/icon-phone-outline.svg', text: '<span translate="no">+963 11 9876</span>' }, // Protected phone number
+            { icon: '/images/icon-map-outline.svg', text: 'Main Campus, Damascus-Daraa Highway' }
         ]
     }
 };

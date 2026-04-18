@@ -1,12 +1,18 @@
 export const aboutPageContent = {
-    hero: {
-        eyebrowEn: 'About SPU', // ! Restored missing eyebrow
-        eyebrowAr: 'عن الجامعة', // ! Restored missing eyebrow
-        titleEn: 'A university shaped around academic rigor, professional confidence, and regional impact.', // ! Restored missing title
-        titleAr: 'جامعة تتشكل حول الصرامة الأكاديمية، الثقة المهنية، والأثر الإقليمي.',
-        summaryEn: 'Syrian Private University brings together modern academic programs, applied learning, and a student experience designed for long-term growth.',
-        summaryAr: 'تجمع الجامعة السورية الخاصة بين البرامج الأكاديمية الحديثة، التعلم التطبيقي، وتجربة طلابية مصممة للنمو على المدى الطويل.'
+    hero: { // ! Renamed for project-wide consistency with other pages
+        image1: '/images/about-hero-1.jpg', // المربع الخلفي الكبير
+        image2: '/images/about-hero-2.jpg', // المربع الصغير الإضافي
+        image: '/images/about-hero-1.jpg', // ! Added missing image property
+        badgeAr: 'نبذة عن SPU',
+        badgeEn: 'ABOUT SPU',
+        titleAr: 'جامعة رائدة تقدم تعليماً حديثاً وعالي الجودة يجهز الطلاب لنجاح مستقبلي.',
+        titleEn: 'Syrian Private University offers modern, high-quality education that prepares students for future success.',
+        quoteAr: 'نسعى دائماً لتقديم الأفضل لطلابنا من خلال بيئة تعليمية متكاملة.', // ! Added missing quote data
+        quoteEn: 'We always strive to provide the best for our students through an integrated educational environment.', // ! Added missing quote data
+        descriptionAr: 'تأسست الجامعة السورية الخاصة لتكون منارة للعلم والمعرفة، وتوفر لطلابها كافة السبل للنجاح الأكاديمي والمهني.', // ! Added missing description
+        descriptionEn: 'Syrian Private University was established to be a beacon of science and knowledge, providing students with all means for academic and professional success.' // ! Added missing description
     },
+
     metrics: [ // Added translate="no" to preserve numeric values
         { value: '<span translate="no">2005</span>', labelEn: 'Established', labelAr: 'سنة التأسيس' },
         { value: '<span translate="no">7</span>', labelEn: 'Faculties', labelAr: 'الكليات' },
@@ -14,35 +20,67 @@ export const aboutPageContent = {
         { value: '<span translate="no">450+</span>', labelEn: 'Graduates', labelAr: 'الخريجون' }
     ],
     story: {
-        eyebrowEn: 'Vision and Mission',
-        eyebrowAr: 'الرؤية والرسالة',
-        titleEn: 'Building a university experience that is practical, ambitious, and student-centered.',
-        titleAr: 'بناء تجربة جامعية عملية وطموحة ومتمحورة حول الطالب.',
-        bodyEn: 'SPU was designed to connect academic excellence with real career readiness. The university combines strong faculty guidance, industry-relevant programs, and an environment that encourages leadership and responsibility.',
-        bodyAr: 'صُممت SPU لربط التميز الأكاديمي بالجاهزية المهنية الفعلية. تجمع الجامعة بين توجيه أكاديمي قوي، وبرامج مرتبطة بسوق العمل، وبيئة تشجع القيادة والمسؤولية.',
-        visionEn: 'To be a leading private university in the region for applied learning, innovation, and responsible leadership.',
-        visionAr: 'أن تكون جامعة خاصة رائدة في المنطقة في التعلم التطبيقي والابتكار والقيادة المسؤولة.',
-        missionEn: 'To prepare graduates with strong academic foundations, practical experience, and the confidence to contribute to their communities and professions.',
-        missionAr: 'إعداد خريجين يمتلكون أساساً أكاديمياً قوياً، وخبرة عملية، وثقة للمساهمة في مجتمعاتهم ومهنهم.',
+        eyebrowAr: 'رؤيتنا ورسالتنا',
+        eyebrowEn: 'OUR VISION & MISSION',
+        titleAr: 'نصنع التميز الأكاديمي',
+        titleEn: 'Crafting Academic Excellence',
         items: [
             {
-                id: 'vision',
+                id: 1,
                 titleAr: 'رؤيتنا',
                 titleEn: 'Our Vision',
-                keyAr: 'visionAr', // اسم المفتاح في كائن story
-                keyEn: 'visionEn',
-                theme: 'light'
+                keyAr: 'visionAr',
+                keyEn: 'visionEn'
             },
             {
-                id: 'mission',
+                id: 2,
                 titleAr: 'رسالتنا',
                 titleEn: 'Our Mission',
                 keyAr: 'missionAr',
-                keyEn: 'missionEn',
-                theme: 'dark'
+                keyEn: 'missionEn'
             }
-        ]
+        ],
+        visionAr: 'أن نكون جامعة رائدة تنهض بالتعليم الحديث وتستجيب للاحتياجات المتطورة للمجتمع وسوق العمل.',
+        visionEn: 'To be a leading university that advances modern education and responds to the evolving needs of society and the job market.',
+        missionAr: 'تقديم برامج أكاديمية حديثة عالية الجودة تزود الطلاب بالمعرفة والمهارات والقيم اللازمة للنجاح المهني والابتكار والتأثير المجتمعي.',
+        missionEn: 'To provide high-quality, modern academic programs that equip students with the knowledge, skills, and values needed for professional success, innovation, and community impact.'
     },
+
+    // الإحصائيات (التي ستتحرك وتعد من 0)
+    quickStats: [
+        {
+            id: 'papers',
+            icon: '/images/icon-file-outline.svg',
+            current: 0,
+            value: 460,
+            labelAr: 'أوراق بحثية',
+            labelEn: 'RESEARCH PAPERS'
+        },
+        {
+            id: 'departments',
+            icon: '/images/icon-sitemap-outline.svg',
+            current: 0,
+            value: 21,
+            labelAr: 'الأقسام',
+            labelEn: 'DEPARTMENTS'
+        },
+        {
+            id: 'awards',
+            icon: '/images/icon-award-outline.svg',
+            current: 0,
+            value: 18,
+            labelAr: 'جوائز أكاديمية',
+            labelEn: 'ACADEMIC AWARDS'
+        },
+        {
+            id: 'experience',
+            icon: '/images/icon-check-circle-outline.svg',
+            current: 0,
+            value: 50,
+            labelAr: 'سنوات من التميز',
+            labelEn: 'YEARS EXCELLENCE'
+        }
+    ],
     quality: {
         eyebrowEn: 'Quality and Governance',
         eyebrowAr: 'الجودة والحوكمة',
@@ -104,37 +142,37 @@ export const aboutPageContent = {
             titleAr: 'تأسيس الصرح الأكاديمي',
             titleEn: 'Foundation of SPU',
             descAr: 'صدور المرسوم التشريعي رقم 339 القاضي بتأسيس الجامعة السورية الخاصة كمنارة للعلم والمعرفة في قلب سوريا.',
-                descEn: 'Presidential Decree No. 339 was issued, establishing SPU as a beacon of knowledge in the heart of Syria.'
-            },
-            {
-                year: '2008',
-                titleAr: 'انطلاقة كليات العلوم الطبية',
-                titleEn: 'Medical Sciences Launch',
-                descAr: 'بدء استقبال الطلاب في كليات الطب البشري وطب الأسنان والصيدلة مع تجهيز أحدث المخابر المتخصصة.',
-                descEn: 'Opening admissions for Medicine, Dentistry, and Pharmacy with state-of-the-art specialized laboratories.'
-            },
-            {
-                year: '2015',
-                titleAr: 'عشر سنوات من العطاء',
-                titleEn: 'A Decade of Excellence',
-                descAr: 'الاحتفال بمرور عشرة أعوام على التأسيس مع تخريج دفعات رفدت سوق العمل بنخبة من الكفاءات العلمية.',
-                descEn: 'Celebrating 10 years of founding, providing the labor market with top-tier scientific competencies.'
-            },
-            {
-                year: '2020',
-                titleAr: 'الريادة في البحث العلمي',
-                titleEn: 'Scientific Research Leadership',
-                descAr: 'تصدر الجامعة للمراكز الأولى بين الجامعات الخاصة في النشر العلمي في المجلات العالمية المرموقة.',
-                descEn: 'Ranking first among private universities in scientific publications within prestigious international journals.'
-            },
-            {
-                year: '2026',
-                titleAr: 'عصر التحول الذكي',
-                titleEn: 'The Smart Transformation Era',
-                descAr: 'إطلاق الاستراتيجية الرقمية الجديدة وتوسيع كليات الهندسة لتشمل علوم الذكاء الاصطناعي والروبوت.',
-                descEn: 'Launching the new digital strategy and expanding Engineering faculties to include AI and Robotics.'
-            }
-        ],
+            descEn: 'Presidential Decree No. 339 was issued, establishing SPU as a beacon of knowledge in the heart of Syria.' // ! Fixed indentation
+        },
+        {
+            year: '2008',
+            titleAr: 'انطلاقة كليات العلوم الطبية',
+            titleEn: 'Medical Sciences Launch',
+            descAr: 'بدء استقبال الطلاب في كليات الطب البشري وطب الأسنان والصيدلة مع تجهيز أحدث المخابر المتخصصة.',
+            descEn: 'Opening admissions for Medicine, Dentistry, and Pharmacy with state-of-the-art specialized laboratories.'
+        },
+        {
+            year: '2015',
+            titleAr: 'عشر سنوات من العطاء',
+            titleEn: 'A Decade of Excellence',
+            descAr: 'الاحتفال بمرور عشرة أعوام على التأسيس مع تخريج دفعات رفدت سوق العمل بنخبة من الكفاءات العلمية.',
+            descEn: 'Celebrating 10 years of founding, providing the market with top-tier scientific competencies.'
+        },
+        {
+            year: '2020',
+            titleAr: 'الريادة في البحث العلمي',
+            titleEn: 'Scientific Research Leadership',
+            descAr: 'تصدر الجامعة للمراكز الأولى بين الجامعات الخاصة في النشر العلمي في المجلات العالمية المرموقة.',
+            descEn: 'Ranking first among private universities in scientific publications within prestigious international journals.'
+        },
+        {
+            year: '2026',
+            titleAr: 'عصر التحول الذكي',
+            titleEn: 'The Smart Transformation Era',
+            descAr: 'إطلاق الاستراتيجية الرقمية الجديدة وتوسيع كليات الهندسة لتشمل علوم الذكاء الاصطناعي والروبوت.',
+            descEn: 'Launching the new digital strategy and expanding Engineering faculties to include AI and Robotics.'
+        }
+    ],
     directorates: {
         eyebrowEn: 'Administrative Support',
         eyebrowAr: 'الدعم الإداري',
@@ -205,35 +243,35 @@ export const aboutPageContent = {
         }
     ],
 
-    // ... التكملة بعد قسم highlights
-    subPages: [ // ! تم توحيد المعرفات لتطابق مجلدات المحتوى
+    subPages: [ // ! Removed messy placeholder comment and kept unified IDs
         {
             id: 'history',
             titleAr: 'تاريخ الجامعة',
             titleEn: 'History',
-            icon: 'fas fa-history',
+            icon: '/images/icon-history-outline.svg',
             link: '/about/history/content.html'
         },
         {
             id: 'leadership',
             titleAr: 'مجلس الجامعة',
             titleEn: 'Leadership',
-            icon: 'fas fa-users',
+            icon: '/images/icon-users-outline.svg',
             link: '/about/leadership/content.html'
         },
         {
             id: 'directorates',
             titleAr: 'المديريات',
             titleEn: 'Directorates',
-            icon: 'fas fa-sitemap',
+            icon: '/images/icon-sitemap-outline.svg',
             link: '/about/directorates/content.html'
         },
         {
             id: 'partnership',
             titleAr: 'الشراكات',
             titleEn: 'Partnerships',
-            icon: 'fas fa-handshake',
+            icon: '/images/icon-handshake-outline.svg',
             link: '/about/partnership/content.html'
         }
     ]
+
 };

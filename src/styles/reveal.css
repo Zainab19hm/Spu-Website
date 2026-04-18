@@ -19,3 +19,52 @@
 .reveal-visible .reveal-item {
     opacity: 1;
 }
+
+ .reveal-card {
+     opacity: 0;
+     transform: translateY(40px);
+     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+     /* حركة بطيئة وناعمة */
+     will-change: transform, opacity;
+ }
+
+ /* الحالة عند التفعيل: تظهر وتعود لمكانها */
+ .reveal-card.active {
+     opacity: 1;
+     transform: translateY(0);
+ }
+
+ /* الحركة من اليسار (للصورة) */
+ .reveal-left {
+     opacity: 0;
+     transform: translateX(-100px);
+     /* تبدأ خارج الشاشة من اليسار */
+     transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .reveal-left.active {
+     opacity: 1;
+     transform: translateX(0);
+ }
+
+ /* الحركة من اليمين (للنص) */
+ .reveal-right {
+     opacity: 0;
+     transform: translateX(100px);
+     /* تبدأ خارج الشاشة من اليمين */
+     transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .reveal-right.active {
+     opacity: 1;
+     transform: translateX(0);
+ }
+
+ /* في الشاشات الصغيرة، نلغي الحركة الجانبية القوية لتجنب مشاكل العرض */
+ @media (max-width: 768px) {
+
+     .reveal-left,
+     .reveal-right {
+         transform: translateY(30px) !important;
+     }
+ }

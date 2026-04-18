@@ -30,7 +30,7 @@
                     <a href="#"
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.explore[$store.app.currentLang]"></span>
-                        <i class="fas fa-arrow-right text-[10px] transition-transform group-hover/btn:translate-x-1"></i>
+                        <img src="/images/icon-arrow-right-outline.svg" class="w-2.5 h-2.5 transition-transform group-hover/btn:translate-x-1" alt="Explore">
                     </a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                         class="slider-nav-btn slider-nav-btn--prev"
                         aria-label="Previous"
                     >
-                        <i :class="$store.app.currentLang === 'ar' ? 'fas fa-chevron-right' : 'fas fa-chevron-left'" class="text-sm"></i>
+                        <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-right-outline.svg' : '/images/icon-chevron-left-outline.svg'" class="w-3.5 h-3.5" alt="Prev">
                     </button>
                     <button
                         type="button"
@@ -51,7 +51,7 @@
                         class="slider-nav-btn slider-nav-btn--next"
                         aria-label="Next"
                     >
-                        <i :class="$store.app.currentLang === 'ar' ? 'fas fa-chevron-left' : 'fas fa-chevron-right'" class="text-sm"></i>
+                        <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-left-outline.svg' : '/images/icon-chevron-right-outline.svg'" class="w-3.5 h-3.5" alt="Next">
                     </button>
                 </div>
 
@@ -105,7 +105,7 @@
                                 :class="[$store.paths.activePath === path.id ? 'text-blue-300' : 'text-spu-blue', $store.app.currentLang === 'ar' ? 'flex-row-reverse' : '']"
                             >
                                 <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>
-                                <i :class="$store.app.currentLang === 'ar' ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="text-[12px]"></i>
+                                <img :src="$store.app.currentLang === 'ar' ? '/images/icon-arrow-left-outline.svg' : '/images/icon-arrow-right-outline.svg'" class="w-3 h-3" alt="Arrow">
                             </div>
                         </div>
                     </template>

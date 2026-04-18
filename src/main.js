@@ -10,6 +10,7 @@ window.Alpine = Alpine;
 window.calendarApp = createCalendarApp;
 window.researchSlider = createResearchSlider;
 window.initRevealSections = initRevealSections;
+window.observeElement = observeElement;
 
 const pageName = document.body?.dataset.page || 'home';
 
@@ -115,4 +116,13 @@ if (document.readyState === 'loading') {
     }, { once: true });
 } else {
     void bootstrap();
+}
+function observeElement(el) {
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            el.classList.add('active');
+            observer.disconnect();
+        }
+    }, { threshold: 0.1 });
+    observer.observe(el);
 }
