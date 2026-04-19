@@ -1,85 +1,232 @@
-<section class="relative py-24 overflow-hidden bg-white font-hacen">
-    <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] z-0">
-        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0 100 L100 0 L100 100 Z" fill="#202759"></path>
-        </svg>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+    .spu-history-slider {
+        position: relative;
+        padding: 4rem 0;
+    }
+
+    /* Core Slide Transitions */
+    .spu-history-slider .swiper-slide {
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        filter: blur(4px);
+        transform: scale(0.7);
+        opacity: 0.4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spu-history-slider .swiper-slide-active {
+        filter: blur(0);
+        transform: scale(1);
+        opacity: 1;
+        z-index: 20;
+    }
+
+    /* Academic Card Styling */
+    .history-card {
+        background: white;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 2.5rem;
+        padding: 3rem;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    /* Large Watermark Text */
+    .year-watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12rem;
+        font-weight: 900;
+        color: rgba(32, 39, 89, 0.03);
+        pointer-events: none;
+        user-select: none;
+        z-index: 1;
+        line-height: 1;
+    }
+
+    /* Progress Line at Bottom */
+    .timeline-progress-container {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 2px;
+        background: rgba(32, 39, 89, 0.05);
+        z-index: 5;
+    }
+
+    .timeline-progress-active {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: #6f1616; /* SPU Red */
+        width: 0%;
+        transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Swiper Pagination Overrides */
+    .history-pagination {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .history-pagination .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #cbd5e1;
+        opacity: 1;
+        transition: all 0.3s ease;
+        border-radius: 999px;
+    }
+
+    .history-pagination .swiper-pagination-bullet-active {
+        width: 32px;
+        background: #6f1616;
+    }
+
+    @media (max-width: 768px) {
+        .year-watermark { font-size: 8rem; }
+        .history-card { padding: 2rem; max-width: 320px; }
+    }
+</style>
+
+<section id="history-section" 
+         class="relative py-24 overflow-hidden bg-white font-hacen mt-10" 
+         x-data="{ activeIndex: 0 }"
+         x-init="
+            const loadRes = (id, type, url) => new Promise(res => {
+                if (document.getElementById(id)) return res();
+                const el = document.createElement(type === 'script' ? 'script' : 'link');
+                el.id = id;
+                if (type === 'script') { el.src = url; } 
+                else { el.rel = 'stylesheet'; el.href = url; }
+                el.onload = res;
+                document.head.appendChild(el);
+            });
+
+            Promise.all([
+                loadRes('swiper-css', 'link', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css'),
+                loadRes('swiper-js', 'script', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js')
+            ]).then(() => {
+                let retryCount = 0;
+                const init = () => {
+                    const historyPoints = $store.aboutPage.historyPoints || [];
+                    const slides = $el.querySelectorAll('.swiper-slide');
+                    
+                    if ((historyPoints.length === 0 || slides.length === 0) && retryCount < 20) {
+                        retryCount++;
+                        setTimeout(init, 150);
+                        return;
+                    }
+
+                    const latestIndex = historyPoints.length > 0 ? historyPoints.length - 1 : 0;
+                    
+                    new Swiper($el.querySelector('.historySwiper'), {
+                        loop: true,
+                        centeredSlides: true,
+                        grabCursor: true,
+                        slidesPerView: 'auto',
+                        initialSlide: latestIndex,
+                        speed: 1000,
+                        effect: 'creative',
+                        creativeEffect: {
+                            limitProgress: 2,
+                            prev: {
+                                shadow: true,
+                                translate: ['-80%', 0, -400],
+                                rotate: [0, 60, 0],
+                                scale: 0.8,
+                                opacity: 0.4
+                            },
+                            next: {
+                                shadow: true,
+                                translate: ['80%', 0, -400],
+                                rotate: [0, -60, 0],
+                                scale: 0.8,
+                                opacity: 0.4
+                            }
+                        },
+                        pagination: { el: '.history-pagination', clickable: true },
+                        keyboard: { enabled: true, onlyInViewport: true },
+                        mousewheel: { forceToAxis: true },
+                        on: {
+                            init: function() {
+                                setTimeout(() => { this.slideToLoop(latestIndex, 0); }, 100);
+                            },
+                            slideChange: function() {
+                                activeIndex = this.realIndex;
+                            }
+                        }
+                    });
+                };
+                init();
+            });
+         ">
+    <!-- Section Header -->
+    <div class="container relative z-10 mx-auto px-6 mb-12 text-center">
+        <div class="inline-flex items-center gap-3 mb-4">
+            <div class="h-[2px] w-8 bg-spu-red"></div>
+            <span class="text-spu-red font-black tracking-widest text-xs uppercase"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.eyebrowAr : $store.aboutPage.history.eyebrowEn"></span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black text-spu-blue tracking-tighter"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn"></h2>
+        <p class="mt-6 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed"
+            x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.history.summaryAr : $store.aboutPage.history.summaryEn"></p>
     </div>
 
-    <div class="container relative z-10 max-w-5xl mx-auto mt-10 px-6">
-        <header class="text-center mb-24 relative">
-            <div class="inline-block">
-                <p class="text-xs font-black uppercase tracking-[0.4em] text-spu-red mb-4"
-                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.eyebrowAr : $store.aboutPage.history.eyebrowEn">
-                </p>
-                <h1 class="text-2xl md:text-5xl font-bold text-spu-blue leading-tight"
-                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn">
-                </h1>
-                <div class="mt-8 flex justify-center items-center gap-4">
-                    <div class="h-[2px] w-12 bg-gradient-to-r from-transparent to-spu-red"></div>
-                    <div class="w-3 h-3 rounded-full border-2 border-spu-red"></div>
-                    <div class="h-[2px] w-12 bg-gradient-to-l from-transparent to-spu-red"></div>
-                </div>
-            </div>
-        </header>
-        <div class="relative max-w-6xl mx-auto px-6 py-24">
-            <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1px] bg-slate-200 hidden md:block"></div>
-
-            <div class="relative space-y-16 md:space-y-0">
+    <!-- Swiper Slider -->
+    <div class="spu-history-slider" style="perspective: 1200px;">
+        <div class="swiper historySwiper" style="overflow: visible;">
+            <div class="swiper-wrapper py-20" style="transform-style: preserve-3d;">
                 <template x-for="(point, index) in $store.aboutPage.historyPoints" :key="index">
-                    <div class="relative flex flex-col md:flex-row items-center"
-                        :class="index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'">
-
-                        <div class="w-full md:w-1/2 flex"
-                            :class="index % 2 === 0 ? 'justify-end md:pr-20' : 'justify-start md:pl-20'">
-
-                            <div class="group relative p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(32,39,89,0.1)] transition-all duration-500 w-full max-w-lg"
-                                :class="index % 2 === 0 ? 'text-right' : 'text-left'">
-
-                                <span
-                                    class="absolute top-4 text-5xl font-black text-slate-50 transition-colors duration-500 group-hover:text-spu-blue/5"
-                                    :class="index % 2 === 0 ? 'left-6' : 'right-6'" x-text="point.year"></span>
-
-                                <div class="relative z-10">
-                                    <div class="flex items-center gap-3 mb-4"
-                                        :class="index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'">
-                                        <span class="px-3 py-1 rounded-md bg-spu-red/10 text-spu-red text-xs font-bold"
-                                            x-text="point.year"></span>
-                                        <div class="h-px w-8 bg-slate-200"></div>
-                                    </div>
-
-                                    <h3 class="text-2xl font-bold text-spu-blue mb-3 group-hover:text-spu-red transition-colors"
-                                        x-text="$store.app.currentLang === 'ar' ? point.titleAr : point.titleEn"></h3>
-                                    <p class="text-slate-500 leading-relaxed text-base"
-                                        x-text="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
-                                </div>
+                    <div class="swiper-slide" style="transform-style: preserve-3d;">
+                        <div class="history-card transition-all duration-700" 
+                             :class="activeIndex === index ? 'filter-none opacity-100' : 'blur-[2px] opacity-60'">
+                            <!-- Background Watermark -->
+                            <div class="year-watermark" x-text="point.year"></div>
+                            
+                            <!-- Content -->
+                            <div class="relative z-10">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-slate-100 text-spu-red font-black text-xl mb-6 shadow-sm"
+                                    x-text="point.year"></div>
+                                
+                                <h3 class="text-2xl font-bold text-spu-blue mb-4 tracking-tight"
+                                    x-text="$store.app.currentLang === 'ar' ? point.titleAr : point.titleEn"></h3>
+                                
+                                <p class="text-slate-500 text-base leading-relaxed"
+                                    x-text="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
                             </div>
                         </div>
-
-                        <div
-                            class="hidden md:flex absolute left-1/2 -translate-x-1/2 z-20 w-12 h-12 items-center justify-center">
-                            <div class="absolute w-full h-full rounded-full border border-slate-100 bg-white shadow-sm">
-                            </div>
-                            <div class="w-3 h-3 rounded-full transition-all duration-500 bg-slate-300"
-                                :class="index === $store.aboutPage.historyPoints.length - 1 ? 'bg-spu-red' : 'group-hover:bg-spu-blue'">
-                            </div>
-                        </div>
-
-                        <div class="flex-1 hidden md:block md:h-32"></div>
                     </div>
                 </template>
             </div>
-        </div>
-        <div class="mt-32 text-center">
-            <a href="/about.html"
-                class="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-spu-blue text-white font-bold transition-all hover:scale-105 hover:shadow-[0_20px_40px_rgba(32,39,89,0.3)] overflow-hidden">
-                <div
-                    class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
-                </div>
+            
+            <!-- Dynamic Progress Line -->
+            <div class="timeline-progress-container hidden md:block">
+                <div class="timeline-progress-active" 
+                     :style="`width: ${((activeIndex + 1) / $store.aboutPage.historyPoints.length) * 100}%`"
+                ></div>
+            </div>
 
-                <img src="/images/icon-chevron-right-outline.svg" class="w-4 h-4 brightness-0 invert rtl:rotate-180 transition-transform group-hover:-translate-x-1" alt="Return">
-                <span class="relative z-10"
-                    x-text="$store.app.currentLang === 'ar' ? 'العودة لنظرة عامة' : 'Return to Overview'"></span>
-            </a>
+            <!-- Pagination -->
+            <div class="history-pagination"></div>
         </div>
     </div>
 </section>
+
+

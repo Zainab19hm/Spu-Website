@@ -332,7 +332,6 @@
 
     .research-card__action:hover {
         color: #17214d;
-        text-decoration: underline;
     }
 
     .research-card__action svg {

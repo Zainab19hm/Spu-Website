@@ -44,10 +44,28 @@ export function createCalendarApp() {
         viewDate: dayjs().startOf('month'),
         selectedDate: dayjs().format('YYYY-MM-DD'),
         activeEventIndex: 0,
+        carouselTimer: null, // ! State for the dynamic carousel timer
 
         init() {
             const incomingEvents = Array.isArray(window.spuEventsData) ? window.spuEventsData : mockCalendarEvents;
             this.setEvents(incomingEvents);
+        },
+
+        // ! Logic to handle dynamic carousel movement
+        startCarousel() {
+            this.stopCarousel();
+            if (this.selectedDateEvents.length > 1) {
+                this.carouselTimer = setInterval(() => {
+                    this.activeEventIndex = (this.activeEventIndex + 1) % this.selectedDateEvents.length;
+                }, 5000); // 5 second rotation
+            }
+        },
+
+        stopCarousel() {
+            if (this.carouselTimer) {
+                clearInterval(this.carouselTimer);
+                this.carouselTimer = null;
+            }
         },
 
         setEvents(events = []) {
@@ -60,6 +78,7 @@ export function createCalendarApp() {
             this.selectedDate = initialDate;
             this.viewDate = dayjs(initialDate).startOf('month');
             this.activeEventIndex = 0;
+            this.startCarousel(); // ! Initialize carousel on load
         },
 
         get eventsByDate() {
@@ -116,6 +135,7 @@ export function createCalendarApp() {
         selectDate(date) {
             this.selectedDate = date;
             this.activeEventIndex = 0;
+            this.startCarousel(); // ! Restart carousel timer on date change
 
             if (!dayjs(date).isSame(this.viewDate, 'month')) {
                 this.viewDate = dayjs(date).startOf('month');
@@ -124,6 +144,7 @@ export function createCalendarApp() {
 
         selectEvent(index) {
             this.activeEventIndex = index;
+            this.startCarousel(); // ! Restart timer on manual selection
         },
 
         changeMonth(step) {

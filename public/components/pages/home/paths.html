@@ -12,7 +12,7 @@
         },
         isVisible: false
     }"
-    class="py-7.5 mt-[70px] relative font-hacen reveal"
+    class="py-8 mt-[70px] relative font-hacen reveal"
     style="background-color: #EAF3FF40;"
     x-init="(() => { const observer = new IntersectionObserver(entries => { if (entries[0].isIntersecting) { isVisible = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el); })()">
  
@@ -25,22 +25,22 @@
                     <h2 class="text-[45px] text-center w-full font-bold leading-tight mb-12 transition-all duration-500">
                         <span x-text="$store.app.currentLang === 'ar' ? 'اختر' : 'Choose'"></span>
                         <br>
-                        <span class="text-spu-red brightness-150" x-text="$store.app.currentLang === 'ar' ? 'مسارك' : 'Your Path'"></span>
+                        <span class="text-white" x-text="$store.app.currentLang === 'ar' ? 'مسارك' : 'Your Path'"></span>
                     </h2>
                     <a href="#"
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.explore[$store.app.currentLang]"></span>
-                        <img src="/images/icon-arrow-right-outline.svg" class="w-2.5 h-2.5 transition-transform group-hover/btn:translate-x-1" alt="Explore">
+                        <img src="/images/icon-arrow-right-outline.svg" class="w-2.5 h-2.5 mt-2 transition-transform group-hover/btn:translate-x-1" alt="Explore">
                     </a>
                 </div>
             </div>
 
             <div class="flex-1 min-w-0 w-full relative">
-                <div class="slider-controls-row slider-controls-row--top">
+                <div class="flex gap-3 absolute -top-14 z-50 right-0">
                     <button
                         type="button"
                         @click="slidePaths('left')"
-                        class="slider-nav-btn slider-nav-btn--prev"
+                        class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                         aria-label="Previous"
                     >
                         <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-right-outline.svg' : '/images/icon-chevron-left-outline.svg'" class="w-3.5 h-3.5" alt="Prev">
@@ -48,7 +48,7 @@
                     <button
                         type="button"
                         @click="slidePaths('right')"
-                        class="slider-nav-btn slider-nav-btn--next"
+                        class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                         aria-label="Next"
                     >
                         <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-left-outline.svg' : '/images/icon-chevron-right-outline.svg'" class="w-3.5 h-3.5" alt="Next">

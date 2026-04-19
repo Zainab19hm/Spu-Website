@@ -199,23 +199,65 @@ export const aboutPageContent = {
             }
         ]
     },
+    // partnerships: {
+    //     eyebrowAr: 'شبكة علاقاتنا',
+    //     eyebrowEn: 'OUR NETWORK',
+    //     titleAr: 'الشراكات والاتفاقيات الدولية',
+    //     titleEn: 'Global Partnerships & Agreements',
+    //     summaryAr: 'تفتخر الجامعة السورية الخاصة بشبكة واسعة من الشراكات الأكاديمية مع مؤسسات تعليمية مرموقة محلياً وعالمياً لتبادل الخبرات وتعزيز جودة التعليم.',
+    //     summaryEn: 'SPU takes pride in a wide network of academic partnerships with prestigious local and international educational institutions.',
+    //     list: [
+    //         { nameAr: 'منظمة الصحة العالمية', nameEn: 'World Health Organization' },
+    //         { nameAr: 'جامعة دمشق', nameEn: 'Damascus University' },
+    //         { nameAr: 'نقابة المهندسين السوريين', nameEn: 'Order of Syrian Engineers' },
+    //         { nameAr: 'اتحاد الجامعات العربية', nameEn: 'Association of Arab Universities' },
+    //         { nameAr: 'منصة كورسيرا للتعليم', nameEn: 'Coursera for Campus' },
+    //         { nameAr: 'مشفى دمشق (المجتهد)', nameEn: 'Damascus Hospital' }
+    //     ]
+    // },
+
+
     partnerships: {
-        eyebrowAr: 'شبكة علاقاتنا',
-        eyebrowEn: 'OUR NETWORK',
-        titleAr: 'الشراكات والاتفاقيات الدولية',
-        titleEn: 'Global Partnerships & Agreements',
-        summaryAr: 'تفتخر الجامعة السورية الخاصة بشبكة واسعة من الشراكات الأكاديمية مع مؤسسات تعليمية مرموقة محلياً وعالمياً لتبادل الخبرات وتعزيز جودة التعليم.',
-        summaryEn: 'SPU takes pride in a wide network of academic partnerships with prestigious local and international educational institutions.',
+        eyebrowAr: 'شبكة التميز العالمي',
+        eyebrowEn: 'GLOBAL EXCELLENCE NETWORK',
+        titleAr: 'شركاؤنا في النجاح',
+        titleEn: 'Our Partners in Success',
+        summaryAr: 'تتبنى الجامعة السورية الخاصة استراتيجية الانفتاح العلمي من خلال عقد اتفاقيات تعاون مع كبرى المنظمات والجامعات لضمان مستقبل أكاديمي مرموق لطلابنا.',
+        summaryEn: 'SPU adopts a strategy of scientific openness by concluding cooperation agreements with major organizations and universities to ensure a prestigious academic future.',
+        // النص الإضافي تحت العنوان
+        subTextAr: 'نعمل يداً بيد مع مؤسسات رائدة عالمياً لنقل المعرفة وتطوير المهارات السريرية والتقنية.',
+        subTextEn: 'We work hand-in-hand with leading global institutions to transfer knowledge and develop clinical and technical skills.',
+
         list: [
-            { nameAr: 'منظمة الصحة العالمية', nameEn: 'World Health Organization' },
-            { nameAr: 'جامعة دمشق', nameEn: 'Damascus University' },
-            { nameAr: 'نقابة المهندسين السوريين', nameEn: 'Order of Syrian Engineers' },
-            { nameAr: 'اتحاد الجامعات العربية', nameEn: 'Association of Arab Universities' },
-            { nameAr: 'منصة كورسيرا للتعليم', nameEn: 'Coursera for Campus' },
-            { nameAr: 'مشفى دمشق (المجتهد)', nameEn: 'Damascus Hospital' }
+            {
+                nameAr: 'منظمة الصحة العالمية',
+                nameEn: 'World Health Organization',
+                logo: '/images/world-health.png',
+                newsLink: '/news-detail.html?id=who-cooperation',
+                website: 'https://www.who.int',
+                descAr: 'تعاون استراتيجي لتعزيز المعايير الطبية التعليمية.',
+                descEn: 'Strategic cooperation to enhance educational medical standards.'
+            },
+            {
+                nameAr: 'اتحاد الجامعات العربية',
+                nameEn: 'Association of Arab Universities',
+                logo: '/images/arab-uni.png',
+                newsLink: '/news-detail.html?id=aaru-membership',
+                website: 'http://www.aaru.edu.jo',                descAr: 'عضوية فاعلة لتبادل الخبرات الأكاديمية العربية.',
+                descEn: 'Active membership for exchanging Arab academic expertise.'
+            },
+            {
+                nameAr: 'منصة كورسيرا العالمية',
+                nameEn: 'Coursera for Campus',
+                logo: '/images/corsera.png',
+                newsLink: '/news-detail.html?id=coursera-spu',
+                website: 'https://www.coursera.org',
+                descAr: 'توفير مسارات تعليمية رقمية معتمدة دولياً.',
+                descEn: 'Providing internationally accredited digital learning paths.'
+            }
+            // يمكن إضافة المزيد هنا...
         ]
     },
-
     highlights: [
         {
             titleEn: 'Applied Learning Environment',

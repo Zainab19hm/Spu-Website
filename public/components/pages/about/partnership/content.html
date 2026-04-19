@@ -1,9 +1,8 @@
 <section class="relative py-24 overflow-hidden bg-white font-hacen">
-    <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
-        style="background-image: radial-gradient(#202759 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none z-0"></div>
 
     <div class="container relative z-10 max-w-6xl mx-auto px-6">
-        <header class="text-center mb-20 mt-10">
+        <header class="text-center mb-20 mt-10 reveal" x-init="observeElement($el)">
             <div class="inline-block">
                 <p class="text-xs font-black uppercase tracking-[0.4em] text-spu-red mb-4"
                     x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.eyebrowAr : $store.aboutPage.partnerships.eyebrowEn">
@@ -11,47 +10,63 @@
                 <h1 class="text-4xl md:text-5xl font-bold text-spu-blue leading-tight"
                     x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn">
                 </h1>
+                <p class="mt-4 text-spu-blue/60 font-medium max-w-xl mx-auto"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.subTextAr : $store.aboutPage.partnerships.subTextEn">
+                </p>
+
                 <div class="mt-6 flex justify-center items-center gap-3">
                     <div class="h-1.5 w-1.5 rounded-full bg-spu-red"></div>
                     <div class="h-px w-20 bg-gradient-to-r from-transparent via-spu-red to-transparent"></div>
                     <div class="h-1.5 w-1.5 rounded-full bg-spu-red"></div>
                 </div>
             </div>
-            <p class="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-slate-500 leading-relaxed font-medium"
+            <p class="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-slate-500 leading-relaxed"
                 x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.summaryAr : $store.aboutPage.partnerships.summaryEn">
             </p>
         </header>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <template x-for="(partner, index) in $store.aboutPage.partnerships.list" :key="index">
-                <div
-                    class="group relative flex items-center gap-5 p-6 rounded-[2rem] bg-white border border-slate-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(32,39,89,0.12)] hover:border-spu-blue/10 hover:-translate-y-2 overflow-hidden">
+                <a :href="partner.newsLink"
+                    class="group relative block rounded-[2.5rem] bg-white border border-slate-100 p-4 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(32,39,89,0.15)] hover:-translate-y-3 reveal-bottom"
+                    :style="'transition-delay: ' + (index * 150) + 'ms'" x-init="observeElement($el)">
 
                     <div
-                        class="absolute -right-6 -bottom-6 w-24 h-24 bg-spu-blue/[0.03] rounded-full transition-transform duration-700 group-hover:scale-[2.5]">
+                        class="relative h-52 w-full rounded-[2rem] overflow-hidden bg-slate-50 mb-6 border border-slate-50/50">
+                        <img :src="partner.logo"
+                            class="w-full h-full object-contain p-10 transition-transform duration-700 group-hover:scale-110"
+                            :alt="partner.nameEn">
                     </div>
 
-                    <div
-                        class="relative z-10 w-14 h-14 shrink-0 rounded-2xl bg-slate-50 flex items-center justify-center transition-all duration-500 group-hover:bg-spu-blue/10 group-hover:shadow-lg group-hover:shadow-spu-blue/10">
-                        <img src="/images/icon-university-outline.svg" class="w-6 h-6" alt="University">
-                    </div>
+                    <div class="px-4 pb-4">
+                        <h3 class="text-xl font-bold text-spu-blue group-hover:text-spu-red transition-colors duration-300"
+                            x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
 
-                    <div class="relative z-10 flex flex-col">
-                        <span
-                            class="text-lg font-bold text-spu-blue group-hover:text-spu-red transition-colors duration-300"
-                            x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></span>
-                        <div class="mt-1 w-0 h-0.5 bg-spu-red/30 transition-all duration-500 group-hover:w-full"></div>
+                        <p class="mt-3 text-sm text-slate-500 leading-relaxed line-clamp-2"
+                            x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
+
+                        <div
+                            class="mt-6 flex items-center gap-2 text-spu-red text-xs font-bold uppercase tracking-wider opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                            <span
+                                x-text="$store.app.currentLang === 'ar' ? 'اقرأ تفاصيل الخبر' : 'Read Full Story'"></span>
+                            <i class="fas fa-arrow-right rtl:rotate-180"></i>
+                        </div>
                     </div>
-                </div>
+                </a>
             </template>
         </div>
+        <div
+            class="px-5 text-center  mt-10  py-3 w-fit rounded-[8px] bg-spu-blue text-white mx-auto hover:bg-spu-red transition-colors duration-300  cursor-pointer">
+            view more</div>
 
         <div class="mt-24 pt-10 border-t border-slate-100 flex justify-center">
             <a href="/about.html"
                 class="group relative inline-flex items-center gap-4 px-10 py-4 rounded-full bg-white border border-slate-200 text-spu-blue font-bold transition-all duration-300 hover:border-spu-blue hover:bg-slate-50 shadow-sm hover:shadow-xl">
-                <img src="/images/icon-chevron-right-outline.svg" class="w-4 h-4 rtl:rotate-180 transition-transform group-hover:-translate-x-1" alt="Back">
+                <img src="/images/icon-chevron-right-outline.svg"
+                    class="w-4 h-4 rtl:rotate-180 transition-transform group-hover:-translate-x-1" alt="Back">
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
             </a>
         </div>
+
     </div>
 </section>

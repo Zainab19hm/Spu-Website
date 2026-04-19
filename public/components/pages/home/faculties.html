@@ -8,7 +8,7 @@
             const step = Math.round(cardWidth + gap);
             track.scrollBy({ left: direction === 'right' ? step : -step, behavior: 'smooth' });
         }
-    }" class="mt-[120px] bg-white font-hacen relative overflow-hidden">
+    }" class="mt-[120px] bg-white font-hacen relative ">
     <div class="container relative">
         <div class="flex flex-col md:flex-row items-center gap-[52px] relative">
 
@@ -22,31 +22,31 @@
                         class="text-[45px] text-center w-full font-bold leading-tight mb-12 transition-all duration-500">
                         <span x-text="$store.app.currentLang === 'ar' ? 'كلياتنا' : 'Our'"></span>
                         <br>
-                        <span class="text-spu-red brightness-150"
+                        <span class="text-white"
                             x-text="$store.app.currentLang === 'ar' ? 'الجامعية' : 'Faculties'"></span>
                     </h2>
                     <a href="/faculties.html"
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
-                        <img :src="$store.app.currentLang === 'ar' ? '/images/icon-arrow-left-outline.svg' : '/images/icon-arrow-right-outline.svg'" class="w-2.5 h-2.5 transition-transform group-hover:translate-x-1" alt="View All">
+                        <img :src="$store.app.currentLang === 'ar' ? '/images/icon-arrow-left-outline.svg' : '/images/icon-arrow-right-outline.svg'" class="w-2.5 h-2.5 mt-1 transition-transform group-hover:translate-x-1" alt="View All">
                     </a>
                 </div>
             </div>
 
             <div class="flex-1 min-w-0 w-full relative">
-                <div class="slider-controls-row slider-controls-row--top">
-                    <button @click="slideFaculties('left')" type="button" class="slider-nav-btn slider-nav-btn--prev"
+                <div class="flex gap-3 absolute -top-16 z-50 right-0">
+                    <button @click="slideFaculties('left')" type="button" class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                         aria-label="Previous">
                         <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-right-outline.svg' : '/images/icon-chevron-left-outline.svg'" class="w-3.5 h-3.5" alt="Prev">
                     </button>
-                    <button @click="slideFaculties('right')" type="button" class="slider-nav-btn slider-nav-btn--next"
+                    <button @click="slideFaculties('right')" type="button" class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                         aria-label="Next">
                         <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-left-outline.svg' : '/images/icon-chevron-right-outline.svg'" class="w-3.5 h-3.5" alt="Next">
                     </button>
                 </div>
 
                 <div x-ref="facultiesTrack"
-                    class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2 pt-2 pb-5 items-start z-10">
+                    class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2  pb-5 items-start z-10">
 
                     <template x-for="faculty in $store.faculties.items" :key="faculty.id">
                         <div :id="'faculty-' + faculty.id" @mouseenter="$store.faculties.activeFaculty = faculty.id" !
@@ -71,7 +71,7 @@
                                     x-text="$store.app.currentLang === 'ar' ? faculty.nameAr : faculty.nameEn"></h3>
                             </div>
 
-                            <div class="px-6 py-1.5 rounded-full text-white font-bold text-[12px] mb-6 shadow-sm transition-transform duration-300 group-hover:scale-105"
+                            <div class="px-10 py-2.5 rounded-[8px] text-white font-bold text-[12px] mb-6 shadow-sm transition-transform duration-300 group-hover:scale-105"
                                 :style="'background-color:' + faculty.color"
                                 x-html="$store.app.currentLang === 'ar' ? faculty.yearsAr : faculty.yearsEn">
                             </div>
