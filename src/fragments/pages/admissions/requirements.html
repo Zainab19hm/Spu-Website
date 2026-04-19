@@ -37,7 +37,7 @@
                     <template x-for="item in $store.admissionsPage.contact.items" :key="item.text">
                         <div class="flex items-center gap-4 rounded-[20px] bg-section px-5 py-4 text-spu-blue">
                             <i :class="item.icon"></i>
-                            <span class="text-[15px] font-medium" x-text="item.text"></span>
+                            <span class="text-[15px] font-medium" x-html="item.text"></span>
                         </div>
                     </template>
                 </div>

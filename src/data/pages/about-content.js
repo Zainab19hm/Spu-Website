@@ -1,13 +1,15 @@
+import { siteRoutes } from '../../config/site-routes.js';
+
 export const aboutPageContent = {
     hero: {
-        eyebrowEn: 'About SPU', // ! Restored missing eyebrow
-        eyebrowAr: 'عن الجامعة', // ! Restored missing eyebrow
-        titleEn: 'A university shaped around academic rigor, professional confidence, and regional impact.', // ! Restored missing title
+        eyebrowEn: 'About SPU',
+        eyebrowAr: 'عن الجامعة',
+        titleEn: 'A university shaped around academic rigor, professional confidence, and regional impact.',
         titleAr: 'جامعة تتشكل حول الصرامة الأكاديمية، الثقة المهنية، والأثر الإقليمي.',
         summaryEn: 'Syrian Private University brings together modern academic programs, applied learning, and a student experience designed for long-term growth.',
         summaryAr: 'تجمع الجامعة السورية الخاصة بين البرامج الأكاديمية الحديثة، التعلم التطبيقي، وتجربة طلابية مصممة للنمو على المدى الطويل.'
     },
-    metrics: [ // Added translate="no" to preserve numeric values
+    metrics: [
         { value: '<span translate="no">2005</span>', labelEn: 'Established', labelAr: 'سنة التأسيس' },
         { value: '<span translate="no">7</span>', labelEn: 'Faculties', labelAr: 'الكليات' },
         { value: '<span translate="no">8500+</span>', labelEn: 'Students', labelAr: 'الطلاب' },
@@ -81,16 +83,16 @@ export const aboutPageContent = {
         roleEn: 'Academic leadership focused on quality and long-term impact.',
         roleAr: 'قيادة أكاديمية تركز على الجودة والأثر طويل المدى.'
     },
-    leadershipMembers: [ // ! Added specific data for the leadership page
+    leadershipMembers: [
         {
             nameEn: 'Dr. Abdul Razzaq Sheikh Issa',
             nameAr: 'د. عبد الرزاق شيخ عيسى',
             roleEn: 'President of the University',
             roleAr: 'رئيس الجامعة',
-            image: '/images/1.png'
+            image: '/images/about-president-dr-abdul-razzaq-sheikh-issa.webp'
         }
     ],
-    history: { // ! Restored history section for history/content.html
+    history: {
         eyebrowEn: 'Our Journey',
         eyebrowAr: 'رحلتنا عبر الزمن',
         titleEn: 'A legacy of excellence built through determination and vision.',
@@ -98,7 +100,7 @@ export const aboutPageContent = {
         summaryEn: 'Since our establishment in <span translate="no">2005</span>, SPU has evolved from a foundational concept into one of the region\'s leading private academic institutions.',
         summaryAr: 'منذ تأسيسنا في عام <span translate="no">2005</span>، تطورت SPU من مفهوم تأسيسي لتصبح واحدة من المؤسسات الأكاديمية الخاصة الرائدة في المنطقة.'
     },
-    historyPoints: [ // ! Timeline data for history page
+    historyPoints: [
         {
             year: '2005',
             titleAr: 'تأسيس الصرح الأكاديمي',
@@ -204,36 +206,34 @@ export const aboutPageContent = {
             summaryAr: 'يرتبط التخطيط الأكاديمي باحتياجات المجتمع ومتطلبات سوق العمل على المدى الطويل.'
         }
     ],
-
-    // ... التكملة بعد قسم highlights
-    subPages: [ // ! تم توحيد المعرفات لتطابق مجلدات المحتوى
+    subPages: [
         {
             id: 'history',
             titleAr: 'تاريخ الجامعة',
             titleEn: 'History',
             icon: 'fas fa-history',
-            link: '/about/history/content.html'
+            link: siteRoutes.aboutHistory
         },
         {
             id: 'leadership',
             titleAr: 'مجلس الجامعة',
             titleEn: 'Leadership',
             icon: 'fas fa-users',
-            link: '/about/leadership/content.html'
+            link: siteRoutes.aboutLeadership
         },
         {
             id: 'directorates',
             titleAr: 'المديريات',
             titleEn: 'Directorates',
             icon: 'fas fa-sitemap',
-            link: '/about/directorates/content.html'
+            link: siteRoutes.aboutDirectorates
         },
         {
             id: 'partnership',
             titleAr: 'الشراكات',
             titleEn: 'Partnerships',
             icon: 'fas fa-handshake',
-            link: '/about/partnership/content.html'
+            link: siteRoutes.aboutPartnership
         }
     ]
 };

@@ -35,7 +35,7 @@
 
             <div class="site-nav-shell__main">
                 <a href="/" aria-label="Syrian Private University home" class="site-nav-brand">
-                    <img src="/images/logo-spu.png" alt="Syrian Private University logo" class="h-auto w-[9.25rem] sm:w-[11rem] xl:w-[13.5rem]">
+                    <img src="/images/logo-spu.png" alt="Syrian Private University logo" decoding="async" fetchpriority="high" class="h-auto w-[9.25rem] sm:w-[11rem] xl:w-[13.5rem]">
                 </a>
 
                 <nav class="hidden flex-1 justify-center lg:flex" aria-label="Primary navigation">
@@ -54,7 +54,7 @@
 
                                 <div x-show="item.hasDropdown && openMenu === item.id" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 -translate-y-3 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-2 scale-95" style="display: none;" class="site-nav-dropdown">
                                     <template x-for="child in item.children" :key="child.url">
-                                        <a :href="child.protected ? '/services.html#portal-access' : child.url" @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }" class="site-nav-dropdown-link" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                        <a :href="child.protected ? $store.auth.servicesHubPath : child.url" @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }" class="site-nav-dropdown-link" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
                                     </template>
                                 </div>
                             </li>
@@ -65,7 +65,7 @@
                 <div class="site-nav-actions">
                    
                     <button type="button" @click="$store.app.setLang($store.app.currentLang === 'en' ? 'ar' : 'en')" class="site-nav-lang">
-                        <img src="/images/ic_outline-language.svg" alt="Language" class="h-[1.05rem] w-[1.05rem]">
+                        <img src="/images/icon-language.svg" alt="Language" decoding="async" class="h-[1.05rem] w-[1.05rem]">
                         <span x-text="$store.app.currentLang === 'ar' ? 'English' : 'العربية'"></span>
                     </button>
 
@@ -91,7 +91,7 @@
 
                             <div x-show="item.hasDropdown && openMenu === item.id" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" style="display: none;" class="site-nav-mobile-children">
                                 <template x-for="child in item.children" :key="`mobile-${child.url}`">
-                                    <a :href="child.protected ? '/services.html#portal-access' : child.url" @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null" class="site-nav-mobile-child" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                    <a :href="child.protected ? $store.auth.servicesHubPath : child.url" @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null" class="site-nav-mobile-child" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
                                 </template>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                 <div class="text-center group">
                     <div
                         class="relative w-64 h-64 mx-auto mb-8 rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                        <img :src="member.image" :alt="member.nameEn" class="w-full h-full object-cover">
+                        <img :src="member.image" :alt="member.nameEn" loading="lazy" decoding="async" class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-2xl font-bold text-spu-blue mb-2"
                         x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
@@ -241,7 +241,7 @@
 
             <div class="flex flex-wrap items-center justify-center gap-6 text-[14px]">
                 <template x-for="link in $store.footer.bottom.links" :key="link.labelEn">
-                    <a :href="link.protected ? '/services.html#portal-access' : link.url" @click="if (link.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(link.url); }" class="text-white/50 transition-colors hover:text-white" :target="!link.protected && link.url.startsWith('http') ? '_blank' : null" :rel="!link.protected && link.url.startsWith('http') ? 'noreferrer' : null" x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></a>
+                    <a :href="link.protected ? $store.auth.servicesHubPath : link.url" @click="if (link.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(link.url); }" class="text-white/50 transition-colors hover:text-white" :target="!link.protected && link.url.startsWith('http') ? '_blank' : null" :rel="!link.protected && link.url.startsWith('http') ? 'noreferrer' : null" x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></a>
                 </template>
             </div>
         </div>

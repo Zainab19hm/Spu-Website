@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const componentsRoot = path.join(__dirname, '..', 'public', 'components');
+const fragmentsRoot = path.join(__dirname, '..', 'src', 'fragments');
+const layoutRoot = path.join(fragmentsRoot, 'layout');
 
 function getHtmlFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -27,7 +28,11 @@ function hasAlpineRoot(tag) {
   return /\bx-data\b/.test(tag);
 }
 
-const htmlFiles = getHtmlFiles(componentsRoot);
+function isLayoutFragment(filePath) {
+  return filePath.startsWith(layoutRoot);
+}
+
+const htmlFiles = getHtmlFiles(fragmentsRoot);
 const failures = [];
 
 for (const filePath of htmlFiles) {
@@ -39,15 +44,15 @@ for (const filePath of htmlFiles) {
     continue;
   }
 
-  if (!hasAlpineRoot(rootTag)) {
-    failures.push(`${filePath} -> root element is missing x-data`);
+  if (isLayoutFragment(filePath) && !hasAlpineRoot(rootTag)) {
+    failures.push(`${filePath} -> layout root is missing x-data`);
   }
 }
 
 if (failures.length > 0) {
-  console.error('Fragment root audit failed:\n');
+  console.error('Fragment audit failed:\n');
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
 
-console.log(`Fragment root audit passed for ${htmlFiles.length} component files.`);
+console.log(`Fragment audit passed for ${htmlFiles.length} fragment files.`);

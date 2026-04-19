@@ -9,7 +9,7 @@
             </h2>
 
             <div class="flex items-center gap-6">
-                <a href="/news.html" ! Fixed View All link to navigate to news page
+                <a href="/news.html"
                     class="bg-[#1e2652] text-white px-6 py-2 rounded-md text-sm font-bold flex items-center gap-3 hover:bg-opacity-90 transition-all">
                     <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
                     <i class="fas fa-chevron-right text-[10px]"></i>
@@ -23,7 +23,7 @@
                     class="reveal-item w-full bg-white rounded-[25px] shadow-[0_15px_35px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col group cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
 
                     <div class="relative h-[210px] overflow-hidden">
-                        <img :src="item.image" :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"
+                        <img :src="item.image" :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn" loading="lazy" decoding="async"
                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                         <div class="absolute top-4 left-4 px-4 py-1 rounded-md text-white text-[11px] font-bold z-10"
                             :class="item.categoryColor" x-text="item.category"></div>

@@ -9,7 +9,7 @@
                 <template x-if="selectedEvent">
                     <article class="flex min-h-[440px] flex-col">
                         <div class="relative h-[220px] overflow-hidden md:h-[250px]">
-                            <img :src="selectedEvent.image"
+                            <img :src="selectedEvent.image" loading="lazy" decoding="async"
                                 :alt="$store.app.currentLang === 'ar' ? selectedEvent.titleAr : selectedEvent.titleEn"
                                 class="h-full w-full object-cover">
                             <div class="absolute inset-x-6 top-6 w-fit rounded-[10px] bg-[#27316d] px-7 py-2 text-[15px] font-bold text-white"

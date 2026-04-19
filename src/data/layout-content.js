@@ -1,4 +1,5 @@
 import { portalAccessConfig } from './domains/portal-access.js';
+import { siteRoutes, withHash } from '../config/site-routes.js';
 
 export const appUi = {
     viewAll: { en: 'View All', ar: 'عرض الكل' },
@@ -20,73 +21,73 @@ export const navigationMenuItems = [
         id: 1,
         labelAr: 'عن الجامعة',
         labelEn: 'About',
-        url: '/about.html',
+        url: siteRoutes.about,
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership/content.html' },
-            { labelAr: 'تاريخنا', labelEn: 'Our History', url: '/about/history/content.html' },
-            { labelAr: 'المديريات', labelEn: 'Directorates', url: '/about/directorates/content.html' },
-            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: '/about/partnership/content.html' }
+            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: siteRoutes.aboutLeadership },
+            { labelAr: 'تاريخنا', labelEn: 'Our History', url: siteRoutes.aboutHistory },
+            { labelAr: 'المديريات', labelEn: 'Directorates', url: siteRoutes.aboutDirectorates },
+            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: siteRoutes.aboutPartnership }
         ]
     },
     {
         id: 2,
         labelAr: 'الكليات',
         labelEn: 'Faculties',
-        url: '/faculties.html',
+        url: siteRoutes.faculties,
         page: 'faculties',
         hasDropdown: true,
         children: [
-            { labelAr: 'الطب', labelEn: 'Medicine', url: '/faculties.html#faculty-1' },
-            { labelAr: 'طب الأسنان', labelEn: 'Dentistry', url: '/faculties.html#faculty-2' },
-            { labelAr: 'الصيدلة', labelEn: 'Pharmacy', url: '/faculties.html#faculty-3' },
-            { labelAr: 'هندسة الذكاء الاصطناعي', labelEn: 'AI Engineering', url: '/faculties.html#faculty-4' }
+            { labelAr: 'الطب', labelEn: 'Medicine', url: withHash(siteRoutes.faculties, 'faculty-1') },
+            { labelAr: 'طب الأسنان', labelEn: 'Dentistry', url: withHash(siteRoutes.faculties, 'faculty-2') },
+            { labelAr: 'الصيدلة', labelEn: 'Pharmacy', url: withHash(siteRoutes.faculties, 'faculty-3') },
+            { labelAr: 'هندسة الذكاء الاصطناعي', labelEn: 'AI Engineering', url: withHash(siteRoutes.faculties, 'faculty-4') }
         ]
     },
     {
         id: 3,
         labelAr: 'القبول والتسجيل',
         labelEn: 'Admissions',
-        url: '/admissions.html',
+        url: siteRoutes.admissions,
         page: 'admissions',
         hasDropdown: true,
         children: [
-            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: '/admissions.html#requirements' },
-            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: '/admissions.html#fees' },
-            { labelAr: 'دعم القبول', labelEn: 'Admissions Support', url: '/contact.html' }
+            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: withHash(siteRoutes.admissions, 'requirements') },
+            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: withHash(siteRoutes.admissions, 'fees') },
+            { labelAr: 'دعم القبول', labelEn: 'Admissions Support', url: siteRoutes.contact }
         ]
     },
     {
         id: 4,
         labelAr: 'الحياة الجامعية',
         labelEn: 'Student Life',
-        url: '/student-life.html',
+        url: siteRoutes.studentLife,
         page: 'student-life',
         hasDropdown: true,
         children: [
-            { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: '/student-life.html#services' },
-            { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: '/student-life.html#activities' },
-            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: '/student-life.html#highlights' }
+            { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: withHash(siteRoutes.studentLife, 'services') },
+            { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
+            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: withHash(siteRoutes.studentLife, 'calendar') }
         ]
     },
     {
         id: 5,
         labelAr: 'الخدمات',
         labelEn: 'E-Services',
-        url: '/services.html',
+        url: siteRoutes.services,
         page: 'services',
         hasDropdown: true,
         children: [
-            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: 'http://my.spu.edu.sy/ar/login' },
-            { labelAr: 'التسجيل', labelEn: 'Registration', url: 'http://my.spu.edu.sy/ar/login' },
-            { labelAr: 'المكتبة', labelEn: 'Library Access', url: '/student-life.html#services' },
-            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: '/admissions.html' },
+            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, protected: true },
+            { labelAr: 'التسجيل', labelEn: 'Registration', url: portalAccessConfig.registrationDestination, protected: true },
+            { labelAr: 'المكتبة', labelEn: 'Library Access', url: withHash(siteRoutes.studentLife, 'services') },
+            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: siteRoutes.admissions },
         ]
     },
-    { id: 6, labelAr: 'البحث العلمي', labelEn: 'Research', page: 'research', hasDropdown: false, url: '/research.html' },
-    { id: 7, labelAr: 'الأخبار', labelEn: 'News', page: 'news', hasDropdown: false, url: '/news.html' },
-    { id: 8, labelAr: 'تواصل معنا', labelEn: 'Contact', page: 'contact', hasDropdown: false, url: '/contact.html' },
+    { id: 6, labelAr: 'البحث العلمي', labelEn: 'Research', page: 'research', hasDropdown: false, url: siteRoutes.research },
+    { id: 7, labelAr: 'الأخبار', labelEn: 'News', page: 'news', hasDropdown: false, url: siteRoutes.news },
+    { id: 8, labelAr: 'تواصل معنا', labelEn: 'Contact', page: 'contact', hasDropdown: false, url: siteRoutes.contact },
 
 ];
 
@@ -108,12 +109,12 @@ export const footerContent = {
         titleEn: 'EXPLORE SPU',
         titleAr: 'استكشف SPU',
         links: [
-            { labelEn: 'About SPU', labelAr: 'عن الجامعة', url: '/about.html' },
-            { labelEn: 'Faculties', labelAr: 'الكليات', url: '/faculties.html' },
-            { labelEn: 'Admissions', labelAr: 'القبول والتسجيل', url: '/admissions.html' },
-            { labelEn: 'Research', labelAr: 'البحث العلمي', url: '/research.html' },
-            { labelEn: 'Student Life', labelAr: 'الحياة الجامعية', url: '/student-life.html' },
-            { labelEn: 'News', labelAr: 'الأخبار', url: '/news.html' }
+            { labelEn: 'About SPU', labelAr: 'عن الجامعة', url: siteRoutes.about },
+            { labelEn: 'Faculties', labelAr: 'الكليات', url: siteRoutes.faculties },
+            { labelEn: 'Admissions', labelAr: 'القبول والتسجيل', url: siteRoutes.admissions },
+            { labelEn: 'Research', labelAr: 'البحث العلمي', url: siteRoutes.research },
+            { labelEn: 'Student Life', labelAr: 'الحياة الجامعية', url: siteRoutes.studentLife },
+            { labelEn: 'News', labelAr: 'الأخبار', url: siteRoutes.news }
         ]
     },
     contact: {
@@ -127,8 +128,8 @@ export const footerContent = {
             },
             {
                 icon: 'fas fa-phone-alt',
-                textEn: '<span translate="no">+963 11 9860</span>', // Protected phone number
-                textAr: '<span translate="no">+963 11 9860</span>', // Protected phone number
+                textEn: '<span translate="no">+963 11 9860</span>',
+                textAr: '<span translate="no">+963 11 9860</span>',
                 ltr: true
             },
             {
@@ -145,12 +146,12 @@ export const footerContent = {
         mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13346.741280351659!2d36.26129575!3d33.31448835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518f99e3f1e1e1f%3A0xe1e1e1e1e1e1e1e1!2sSyrian%20Private%20University!5e0!3m2!1sen!2ssy!4v1712710000000!5m2!1sen!2ssy'
     },
     bottom: {
-        copyrightEn: '© <span translate="no">2026</span> Syrian Private University. Excellence in Education.', // Protected year
-        copyrightAr: '© <span translate="no">2026</span> الجامعة السورية الخاصة. التميز في التعليم.', // Protected year
+        copyrightEn: '© <span translate="no">2026</span> Syrian Private University. Excellence in Education.',
+        copyrightAr: '© <span translate="no">2026</span> الجامعة السورية الخاصة. التميز في التعليم.',
         links: [
-            { labelEn: 'Apply Now', labelAr: 'قدّم الآن', url: '/admissions.html' },
+            { labelEn: 'Apply Now', labelAr: 'قدّم الآن', url: siteRoutes.admissions },
             { labelEn: 'Student Portal', labelAr: 'بوابة الطالب', url: portalAccessConfig.defaultDestination, protected: true },
-            { labelEn: 'Contact SPU', labelAr: 'تواصل مع SPU', url: '/contact.html' }
+            { labelEn: 'Contact SPU', labelAr: 'تواصل مع SPU', url: siteRoutes.contact }
         ]
     }
 };

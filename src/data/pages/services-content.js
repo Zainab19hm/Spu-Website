@@ -1,4 +1,5 @@
 import { portalAccessConfig } from '../domains/portal-access.js';
+import { siteRoutes, withHash } from '../../config/site-routes.js';
 
 export const servicesPageContent = {
     hero: {
@@ -67,7 +68,7 @@ export const servicesPageContent = {
             titleAr: 'المكتبة والدعم الأكاديمي',
             summaryEn: 'Review student-facing academic support information and campus services.',
             summaryAr: 'راجع معلومات الدعم الأكاديمي الموجهة للطلبة وخدمات الحرم الجامعي.',
-            url: '/student-life.html#services'
+            url: withHash(siteRoutes.studentLife, 'services')
         },
         {
             id: 4,
@@ -75,7 +76,7 @@ export const servicesPageContent = {
             titleAr: 'دعم شؤون الطلاب',
             summaryEn: 'Reach the university team directly if you need a manual handoff or service recovery.',
             summaryAr: 'تواصل مباشرة مع فريق الجامعة إذا كنت تحتاج إلى تحويل يدوي أو استعادة الخدمة.',
-            url: '/contact.html#admissions-support'
+            url: withHash(siteRoutes.contact, 'admissions-support')
         }
     ]
 };

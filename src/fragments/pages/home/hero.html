@@ -1,7 +1,7 @@
 <section x-data="{ heroVisible: false }" x-init="heroVisible = true" class="home-hero relative overflow-hidden font-hacen bg-spu-blue text-white z-10">
     <template x-for="(img, index) in $store.hero.images" :key="index">
         <div x-show="$store.hero.currentIndex === index" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform scale-105" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0">
-            <img :src="img" alt="" aria-hidden="true" class="h-full w-full object-cover">
+            <img :src="img" :loading="index === 0 ? 'eager' : 'lazy'" :fetchpriority="index === 0 ? 'high' : 'low'" decoding="async" alt="" aria-hidden="true" class="h-full w-full object-cover">
         </div>
     </template>
 

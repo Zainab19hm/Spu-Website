@@ -52,8 +52,7 @@
                     class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2 pt-2 pb-5 items-start z-10">
 
                     <template x-for="faculty in $store.faculties.items" :key="faculty.id">
-                        <div :id="'faculty-' + faculty.id" @mouseenter="$store.faculties.activeFaculty = faculty.id" !
-                            Added ID for external anchor links @mouseleave="$store.faculties.activeFaculty = null"
+                        <div :id="'faculty-' + faculty.id" @mouseenter="$store.faculties.activeFaculty = faculty.id" @mouseleave="$store.faculties.activeFaculty = null"
                             :class="{ 
                                 'opacity-50 grayscale-[0.2]': $store.faculties.activeFaculty !== null && $store.faculties.activeFaculty !== faculty.id,
                                 'opacity-100 scale-[1.02] z-20 shadow-2xl border-transparent': $store.faculties.activeFaculty === faculty.id,
@@ -65,7 +64,7 @@
                                 :style="'background-color:' + faculty.color"></div>
 
                             <div class="relative w-[160px] h-[160px] mt-6 mb-4 flex items-center justify-center">
-                                <img :src="faculty.logo" :class="faculty.imgClass"
+                                <img :src="faculty.logo" loading="lazy" decoding="async" :class="faculty.imgClass"
                                     class="relative z-10 w-[110px] h-[110px] object-contain transition-transform duration-500 ">
                             </div>
 
@@ -79,7 +78,7 @@
                                 x-html="$store.app.currentLang === 'ar' ? faculty.yearsAr : faculty.yearsEn">
                             </div>
 
-                            <a :href="'/faculties.html#faculty-' + faculty.id" ! Linked card directly to faculty section
+                            <a :href="'/faculties.html#faculty-' + faculty.id"
                                 class="mt-auto mb-6 flex items-center gap-2 text-[13px] font-extrabold transition-all duration-300 group-hover:gap-3"
                                 :style="'color:' + faculty.color">
                                 <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>

@@ -1,5 +1,6 @@
 import { appUi, navigationMenuItems, footerContent } from '../data/layout-content.js';
 import { portalAccessConfig } from '../data/domains/portal-access.js';
+import { siteRoutes } from '../config/site-routes.js';
 import { cloneData } from '../utils/clone.js';
 
 const portalSessionStorageKey = 'spu.portal.session';
@@ -56,7 +57,7 @@ function readReturnDestination() {
 
 function buildProtectedRoute(destination) {
     const next = destination || portalAccessConfig.defaultDestination;
-    const servicesUrl = new URL('/services.html', window.location.origin);
+    const servicesUrl = new URL(siteRoutes.services, window.location.origin);
     servicesUrl.searchParams.set('returnTo', next);
     servicesUrl.hash = 'portal-access';
     return `${servicesUrl.pathname}${servicesUrl.search}${servicesUrl.hash}`;

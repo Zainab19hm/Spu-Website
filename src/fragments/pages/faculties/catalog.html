@@ -13,7 +13,7 @@
                             <span class="inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.24em] text-white" :style="`background-color:${faculty.color}`" x-html="$store.app.currentLang === 'ar' ? faculty.yearsAr : faculty.yearsEn"></span>
                             <h3 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? faculty.nameAr : faculty.nameEn"></h3>
                         </div>
-                        <img :src="faculty.logo" :alt="$store.app.currentLang === 'ar' ? faculty.nameAr : faculty.nameEn" class="h-18 w-18 object-contain" :class="faculty.imgClass || ''">
+                        <img :src="faculty.logo" :alt="$store.app.currentLang === 'ar' ? faculty.nameAr : faculty.nameEn" loading="lazy" decoding="async" class="h-18 w-18 object-contain" :class="faculty.imgClass || ''">
                     </div>
 
                     <p class="mt-6 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? faculty.summaryAr : faculty.summaryEn"></p>

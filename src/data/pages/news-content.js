@@ -15,7 +15,7 @@ export const newsPageContent = {
     featured: {
         categoryEn: 'Featured Update',
         categoryAr: 'تحديث مميز',
-        date: 'April <span translate="no">2026</span>', // Protected year in date
+        date: 'April <span translate="no">2026</span>',
         titleEn: 'SPU expands its official digital structure with dedicated research, news, and student life sections.',
         titleAr: 'توسّع SPU بنيتها الرقمية الرسمية بإضافة أقسام مخصصة للبحث والأخبار والحياة الجامعية.',
         summaryEn: 'The new information architecture supports stronger discoverability, clearer navigation, and a better foundation for long-term university publishing.',
@@ -26,7 +26,7 @@ export const newsPageContent = {
         {
             categoryEn: 'Announcements',
             categoryAr: 'إعلانات',
-            date: 'March <span translate="no">2026</span>', // Protected year
+            date: 'March <span translate="no">2026</span>',
             titleEn: 'Orientation session introduces students to the ICPC programming pathway.',
             titleAr: 'جلسة تعريفية تقدم للطلاب مسار المسابقة البرمجية العالمية ICPC.',
             summaryEn: 'A student-facing session highlighted competitive programming opportunities and technical development tracks.',
@@ -51,7 +51,7 @@ export const newsPageContent = {
             titleAr: 'أنشطة الصحة المجتمعية تعزز امتداد SPU خارج الحرم الجامعي.',
             summaryEn: 'University-led initiatives continue to connect academic work with public benefit and community presence.',
             summaryAr: 'تواصل المبادرات التي تقودها الجامعة ربط العمل الأكاديمي بالفائدة العامة والحضور المجتمعي.',
-            image: '/images/healthcare-main.png'
+        image: '/images/healthcare-main.webp'
         },
         {
             categoryEn: 'Events',
@@ -61,7 +61,7 @@ export const newsPageContent = {
             titleAr: 'أصبح تقويم الفعاليات الأكاديمية أكثر ارتباطاً بالتواصل الخاص بالقبول والحياة الجامعية.',
             summaryEn: 'A more structured event model helps students and visitors understand what is happening and when.',
             summaryAr: 'يساعد نموذج فعاليات أكثر تنظيماً الطلاب والزوار على معرفة ما يحدث ومتى.',
-            image: '/images/unsplash_VckdJzo7ig0.png'
+            image: '/images/campus-feature-02.webp'
         }
     ],
     newsroom: {

@@ -1,35 +1,32 @@
 import { registerLayoutStores } from './register-layout-stores.js';
-import { registerFacultyCatalogStore } from './register-faculty-catalog-store.js';
-import { registerHomeStores } from './pages/home-stores.js';
-import { registerAboutStores } from './pages/about-stores.js';
-import { registerFacultiesPageStores } from './pages/faculties-page-stores.js';
-import { registerAdmissionsStores } from './pages/admissions-stores.js';
-import { registerResearchStores } from './pages/research-stores.js';
-import { registerStudentLifeStores } from './pages/student-life-stores.js';
-import { registerServicesStores } from './pages/services-stores.js';
-import { registerNewsStores } from './pages/news-stores.js';
-import { registerContactStores } from './pages/contact-stores.js';
 
-const pageStoreRegistrars = {
-    home: registerHomeStores,
-    about: registerAboutStores,
-    'about-history': registerAboutStores,
-    'about-leadership': registerAboutStores,
-    'about-directorates': registerAboutStores,
-    'about-partnership': registerAboutStores,
-    faculties: registerFacultiesPageStores,
-    admissions: registerAdmissionsStores,
-    research: registerResearchStores,
-    'student-life': registerStudentLifeStores,
-    services: registerServicesStores,
-    news: registerNewsStores,
-    contact: registerContactStores
+const pageStoreLoaders = {
+    home: () => import('./pages/home-stores.js').then((module) => module.registerHomeStores),
+    about: () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'about-history': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'about-leadership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'about-directorates': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'about-partnership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    faculties: () => import('./pages/faculties-page-stores.js').then((module) => module.registerFacultiesPageStores),
+    admissions: () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    research: () => import('./pages/research-stores.js').then((module) => module.registerResearchStores),
+    'student-life': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
+    services: () => import('./pages/services-stores.js').then((module) => module.registerServicesStores),
+    news: () => import('./pages/news-stores.js').then((module) => module.registerNewsStores),
+    contact: () => import('./pages/contact-stores.js').then((module) => module.registerContactStores)
 };
 
-export function registerStores(Alpine, { pageName = 'home' } = {}) {
-    registerLayoutStores(Alpine, { pageName });
-    registerFacultyCatalogStore(Alpine);
+const pagesUsingFacultyCatalog = new Set(['home', 'faculties']);
 
-    const registerPageStores = pageStoreRegistrars[pageName] || pageStoreRegistrars.home;
+export async function registerStores(Alpine, { pageName = 'home' } = {}) {
+    registerLayoutStores(Alpine, { pageName });
+
+    if (pagesUsingFacultyCatalog.has(pageName)) {
+        const { registerFacultyCatalogStore } = await import('./register-faculty-catalog-store.js');
+        registerFacultyCatalogStore(Alpine);
+    }
+
+    const loadPageStoreRegistrar = pageStoreLoaders[pageName] || pageStoreLoaders.home;
+    const registerPageStores = await loadPageStoreRegistrar();
     registerPageStores(Alpine);
 }

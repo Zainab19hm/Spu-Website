@@ -16,7 +16,7 @@ export function registerHomeStores(Alpine) {
         ...heroContent,
         init() {
             setInterval(() => {
-                if (this.images?.length) { // ! Added safety check for image array
+                if (this.images?.length) {
                     this.currentIndex = (this.currentIndex + 1) % this.images.length;
                 }
             }, 5000);
@@ -26,7 +26,7 @@ export function registerHomeStores(Alpine) {
     Alpine.store('stats', {
         items: cloneData(statsItems),
         startCounting() {
-            (this.items || []).forEach((item) => animateCounter(item)); // ! Added safety check for iteration
+            (this.items || []).forEach((item) => animateCounter(item));
         }
     });
 
@@ -43,15 +43,14 @@ export function registerHomeStores(Alpine) {
         items: cloneData(newsItems)
     });
 
-    // Simplified research store to ensure direct items access and resolve ReferenceErrors // !
     Alpine.store('research', {
-        items: cloneData(researchItems) 
+        items: cloneData(researchItems)
     });
 
     Alpine.store('healthcare', {
         ...cloneData(healthcareContent),
         startCounting() {
-            (this.stats || []).forEach((stat) => animateCounter(stat)); // ! Added safety check for healthcare stats
+            (this.stats || []).forEach((stat) => animateCounter(stat));
         }
     });
 }

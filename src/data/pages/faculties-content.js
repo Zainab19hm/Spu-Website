@@ -7,7 +7,7 @@ export const facultiesPageContent = {
         summaryEn: 'SPU faculties are organized to give students academic depth, practical exposure, and a professional route into their field.',
         summaryAr: 'تم تنظيم كليات SPU لتمنح الطلاب عمقاً أكاديمياً، وخبرة عملية، ومساراً مهنياً واضحاً داخل تخصصاتهم.'
     },
-    metrics: [ // Protected numeric values
+    metrics: [
         { value: '<span translate="no">7</span>', labelEn: 'Specialized Faculties', labelAr: 'كليات متخصصة' },
         { value: '<span translate="no">4-6</span>', labelEn: 'Years of Study', labelAr: 'سنوات الدراسة' },
         { value: "Applied", labelEn: 'Learning Model', labelAr: 'نمط التعلم' }

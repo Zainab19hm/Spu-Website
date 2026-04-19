@@ -11,7 +11,7 @@
             <template x-for="channel in $store.contactPage.channels" :key="channel.titleEn">
                 <article class="rounded-[24px] border border-white/12 bg-white/10 p-5 backdrop-blur-md shadow-[0_24px_70px_rgba(8,15,42,0.18)]">
                     <p class="text-xs font-bold uppercase tracking-[0.2em] text-white/60" x-text="$store.app.currentLang === 'ar' ? channel.titleAr : channel.titleEn"></p>
-                    <p class="mt-3 text-lg font-bold text-white" x-text="channel.detail"></p>
+                    <p class="mt-3 text-lg font-bold text-white" x-html="channel.detail"></p>
                 </article>
             </template>
         </div>

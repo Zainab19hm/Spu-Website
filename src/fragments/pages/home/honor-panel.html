@@ -68,7 +68,7 @@
                         'w-0 lg:w-[32%] h-[48%] z-10 left-0 lg:left-[68%] top-[52%] opacity-0 lg:opacity-100 scale-90 brightness-75': getPos(index) === 2
                     }">
 
-                    <img :src="item.image"
+                    <img :src="item.image" loading="lazy" decoding="async"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110">
 
                     <div x-show="getPos(index) === 0" x-transition:enter="transition ease-out duration-700 delay-400"

@@ -17,7 +17,4 @@ export default defineConfig({
       input,
     },
   },
-  server: {
-    allowedHosts: ['justiceless-subpreputial-brooklynn.ngrok-free.dev']
-  }
 });

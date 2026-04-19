@@ -14,28 +14,28 @@ export const admissionsPageContent = {
     ],
     steps: [
         {
-            number: '<span translate="no">01</span>', // Protected step number
+            number: '<span translate="no">01</span>',
             titleEn: 'Explore the Right Program',
             titleAr: 'استكشف البرنامج المناسب',
             summaryEn: 'Review faculties, study duration, and the type of learning environment that matches your goals.',
             summaryAr: 'راجع الكليات، مدة الدراسة، ونمط التعلم الذي يناسب أهدافك.'
         },
         {
-            number: '<span translate="no">02</span>', // Protected step number
+            number: '<span translate="no">02</span>',
             titleEn: 'Prepare the Required Documents',
             titleAr: 'جهّز الوثائق المطلوبة',
             summaryEn: 'Collect academic records, identity documents, and any program-specific requirements before submission.',
             summaryAr: 'اجمع السجلات الأكاديمية، والوثائق الشخصية، وأي متطلبات خاصة بالبرنامج قبل التقديم.'
         },
         {
-            number: '<span translate="no">03</span>', // Protected step number
+            number: '<span translate="no">03</span>',
             titleEn: 'Submit and Confirm Review',
             titleAr: 'قدّم الطلب وأكّد المراجعة',
             summaryEn: 'Complete the submission path and stay in contact with the admissions office during review.',
             summaryAr: 'أكمل مسار التقديم وابقَ على تواصل مع مكتب القبول خلال مرحلة المراجعة.'
         },
         {
-            number: '<span translate="no">04</span>', // Protected step number
+            number: '<span translate="no">04</span>',
             titleEn: 'Complete Enrollment',
             titleAr: 'استكمل التسجيل',
             summaryEn: 'Once accepted, finalize fees, onboarding details, and your first academic steps.',
@@ -71,7 +71,7 @@ export const admissionsPageContent = {
         summaryAr: 'للحصول على المتطلبات الدقيقة والمواعيد النهائية، يجب التواصل مباشرة مع مكتب القبول.',
         items: [
             { icon: 'fas fa-envelope', text: 'admissions@spu.edu.sy' },
-            { icon: 'fas fa-phone-alt', text: '<span translate="no">+963 11 9876</span>' }, // Protected phone number
+            { icon: 'fas fa-phone-alt', text: '<span translate="no">+963 11 9876</span>' },
             { icon: 'fas fa-map-marker-alt', text: 'Main Campus, Damascus-Daraa Highway' }
         ]
     }

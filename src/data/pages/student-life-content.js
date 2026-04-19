@@ -1,4 +1,5 @@
 import { portalAccessConfig } from '../domains/portal-access.js';
+import { siteRoutes, withHash } from '../../config/site-routes.js';
 
 export const studentLifePageContent = {
     hero: {
@@ -56,7 +57,7 @@ export const studentLifePageContent = {
             titleAr: 'التواصل مع شؤون الطلاب',
             summaryEn: 'Get direct guidance for support needs, schedules, and student services.',
             summaryAr: 'الحصول على إرشاد مباشر لاحتياجات الدعم والجداول والخدمات الطلابية.',
-            url: '/contact.html#admissions-support'
+            url: withHash(siteRoutes.contact, 'admissions-support')
         }
     ],
     activities: {

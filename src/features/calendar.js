@@ -1,21 +1,13 @@
+import dayjs from 'dayjs';
 import { mockCalendarEvents } from '../data/pages/home-content.js';
 
 const CALENDAR_GRID_DAYS = 35;
-
-function getDayjs() {
-    if (!window.dayjs) {
-        throw new Error('dayjs must be loaded before the calendar is initialized.');
-    }
-
-    return window.dayjs;
-}
 
 function getAppStore() {
     return window.Alpine.store('app');
 }
 
 function normalizeCalendarEvent(event, index) {
-    const dayjs = getDayjs();
     const parsedDate = dayjs(event.date);
 
     if (!parsedDate.isValid()) {
@@ -32,13 +24,11 @@ function normalizeCalendarEvent(event, index) {
         image: event.image ?? '/images/slider-1.jpeg',
         link: event.link ?? '#',
         dateKey: parsedDate.format('YYYY-MM-DD'),
-        dateText: event.dateText ?? `<span translate="no">${parsedDate.format('MMM D, YYYY')}</span>` // Added translate="no" to default date format
+        dateText: event.dateText ?? `<span translate="no">${parsedDate.format('MMM D, YYYY')}</span>`
     };
 }
 
 export function createCalendarApp() {
-    const dayjs = getDayjs();
-
     return {
         rawEvents: [],
         viewDate: dayjs().startOf('month'),

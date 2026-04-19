@@ -1,3 +1,5 @@
+import { siteRoutes } from '../../config/site-routes.js';
+
 export const contactPageContent = {
     hero: {
         eyebrowEn: 'Contact SPU',
@@ -26,7 +28,7 @@ export const contactPageContent = {
             icon: 'fas fa-phone-alt',
             titleEn: 'Damascus Office',
             titleAr: 'مكتب دمشق',
-            detail: '<span translate="no">+963 11 9860</span>', // Added translate="no" to preserve number format
+            detail: '<span translate="no">+963 11 9860</span>',
             url: 'tel:+963119860'
         }
     ],
@@ -64,20 +66,20 @@ export const contactPageContent = {
             titleAr: 'استفسارات القبول',
             summaryEn: 'Use the admissions route for requirements, tuition guidance, and enrollment timelines.',
             summaryAr: 'استخدم مسار القبول للاستفسار عن المتطلبات والرسوم والجداول الزمنية للتسجيل.',
-            url: '/admissions.html'
+            url: siteRoutes.admissions
         },
         {
             titleEn: 'Student Affairs Support',
             titleAr: 'دعم شؤون الطلاب',
             summaryEn: 'Reach the student-services path for daily academic support and campus-life questions.',
             summaryAr: 'انتقل إلى مسار الخدمات الطلابية للدعم الأكاديمي اليومي وأسئلة الحياة الجامعية.',
-            url: '/student-life.html'
+            url: siteRoutes.studentLife
         },
         {
             titleEn: 'P.O. Box',
             titleAr: 'صندوق البريد',
-            summaryEn: 'Damascus <span translate="no">36822</span>.', // Added translate="no" to preserve zip code
-            summaryAr: 'دمشق <span translate="no">36822</span>.', // Added translate="no" to preserve zip code
+            summaryEn: 'Damascus <span translate="no">36822</span>.',
+            summaryAr: 'دمشق <span translate="no">36822</span>.',
             url: '#site-footer'
         }
     ]

@@ -1,118 +1,253 @@
 {
+  "site": {
+    "origin": "https://spu.edu.sy",
+    "name": "Syrian Private University",
+    "shortName": "SPU",
+    "defaultOgImage": "/images/logo-spu.png",
+    "manifestIcon": "/images/single-logo.png",
+    "themeColor": "#202759"
+  },
   "layout": {
-    "header": "/components/layout/header.html",
-    "footer": "/components/layout/footer.html"
+    "header": "layout/header.html",
+    "footer": "layout/footer.html"
   },
   "pages": [
     {
       "name": "home",
       "fileName": "index.html",
-      "components": [
-        "/components/pages/home/hero.html",
-        "/components/pages/home/stats.html",
-        "/components/pages/home/honor-panel.html",
-        "/components/pages/home/faculties.html",
-        "/components/pages/home/paths.html",
-        "/components/pages/home/research.html",
-        "/components/pages/home/news.html",
-        "/components/pages/home/events.html",
-        "/components/pages/home/healthcare.html"
+      "route": "/",
+      "title": "Syrian Private University | Official Website",
+      "description": "Syrian Private University offers accredited faculties, admissions guidance, research, student life, and official campus updates from Damascus.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "Syrian Private University",
+        "SPU Damascus",
+        "university in Damascus",
+        "higher education Syria"
+      ],
+      "fragments": [
+        "pages/home/hero.html",
+        "pages/home/stats.html",
+        "pages/home/honor-panel.html",
+        "pages/home/faculties.html",
+        "pages/home/paths.html",
+        "pages/home/research.html",
+        "pages/home/news.html",
+        "pages/home/events.html",
+        "pages/home/healthcare.html"
       ]
     },
     {
       "name": "about",
       "fileName": "about.html",
+      "route": "/about.html",
       "title": "About SPU | Syrian Private University",
-      "description": "Learn about the mission, vision, and leadership of Syrian Private University.",
+      "description": "Learn about the mission, governance, history, and institutional direction of Syrian Private University.",
       "ogImage": "/images/logo-spu.png",
-      "components": [
-        "/components/pages/about/hero.html",
-        "/components/pages/about/overview.html",
-        "/components/pages/about/navigation.html"
+      "keywords": [
+        "about SPU",
+        "Syrian Private University history",
+        "SPU leadership",
+        "SPU governance"
+      ],
+      "fragments": [
+        "pages/about/hero.html",
+        "pages/about/overview.html",
+        "pages/about/navigation.html"
       ]
     },
     {
       "name": "about-history",
       "fileName": "about/history/content.html",
-      "path": "/about/history/content.html",
+      "route": "/about/history/content.html",
       "title": "History | Syrian Private University",
-      "description": "Our journey since 2005.",
+      "description": "Follow the development of Syrian Private University from its founding through its current academic growth.",
       "ogImage": "/images/logo-spu.png",
-      "components": [
-        "/components/pages/about/history/content.html",
-        "/components/pages/about/navigation.html"
+      "keywords": [
+        "SPU history",
+        "Syrian Private University timeline",
+        "SPU foundation"
+      ],
+      "fragments": [
+        "pages/about/history/content.html",
+        "pages/about/navigation.html"
       ]
     },
     {
       "name": "about-leadership",
       "fileName": "about/leadership/content.html",
-      "path": "/about/leadership/content.html",
+      "route": "/about/leadership/content.html",
       "title": "Leadership | Syrian Private University",
-      "description": "University leadership and governance.",
+      "description": "Explore the university presidency and leadership direction guiding Syrian Private University.",
       "ogImage": "/images/logo-spu.png",
-      "components": [
-        "/components/pages/about/leadership/content.html",
-        "/components/pages/about/navigation.html"
+      "keywords": [
+        "SPU leadership",
+        "Syrian Private University presidency",
+        "SPU governance"
+      ],
+      "fragments": [
+        "pages/about/leadership/content.html",
+        "pages/about/navigation.html"
       ]
     },
     {
       "name": "about-directorates",
       "fileName": "about/directorates/content.html",
-      "path": "/about/directorates/content.html",
+      "route": "/about/directorates/content.html",
       "title": "Directorates | Syrian Private University",
-      "description": "Administrative directorates.",
+      "description": "Review the administrative directorates supporting academic operations and student services at SPU.",
       "ogImage": "/images/logo-spu.png",
-      "components": [
-        "/components/pages/about/directorates/content.html",
-        "/components/pages/about/navigation.html"
+      "keywords": [
+        "SPU directorates",
+        "SPU administration",
+        "Syrian Private University offices"
+      ],
+      "fragments": [
+        "pages/about/directorates/content.html",
+        "pages/about/navigation.html"
       ]
     },
     {
       "name": "about-partnership",
       "fileName": "about/partnership/content.html",
-      "path": "/about/partnership/content.html",
+      "route": "/about/partnership/content.html",
       "title": "Partnerships | Syrian Private University",
-      "description": "Global network and institutional partnerships.",
+      "description": "See the academic and institutional partnerships that extend Syrian Private University's reach.",
       "ogImage": "/images/logo-spu.png",
-      "components": [
-        "/components/pages/about/partnership/content.html",
-        "/components/pages/about/navigation.html"
+      "keywords": [
+        "SPU partnerships",
+        "Syrian Private University network",
+        "SPU agreements"
+      ],
+      "fragments": [
+        "pages/about/partnership/content.html",
+        "pages/about/navigation.html"
       ]
     },
     {
       "name": "faculties",
       "fileName": "faculties.html",
-      "components": [] 
+      "route": "/faculties.html",
+      "title": "Faculties | Syrian Private University",
+      "description": "Explore SPU faculties, study pathways, and the academic structure behind the university's core programs.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU faculties",
+        "Syrian Private University programs",
+        "SPU colleges"
+      ],
+      "fragments": [
+        "pages/faculties/hero.html",
+        "pages/faculties/catalog.html",
+        "pages/faculties/support.html"
+      ]
     },
     {
       "name": "admissions",
       "fileName": "admissions.html",
-      "components": []
+      "route": "/admissions.html",
+      "title": "Admissions | Syrian Private University",
+      "description": "Understand SPU admission requirements, application steps, tuition guidance, and enrollment support.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU admissions",
+        "Syrian Private University application",
+        "SPU enrollment"
+      ],
+      "fragments": [
+        "pages/admissions/hero.html",
+        "pages/admissions/process.html",
+        "pages/admissions/requirements.html"
+      ]
     },
     {
       "name": "research",
       "fileName": "research.html",
-      "components": []
+      "route": "/research.html",
+      "title": "Research | Syrian Private University",
+      "description": "Discover SPU research priorities, applied initiatives, and faculty-led work with clinical and technical impact.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU research",
+        "Syrian Private University research",
+        "applied research Damascus"
+      ],
+      "fragments": [
+        "pages/research/hero.html",
+        "pages/research/priorities.html",
+        "pages/research/initiatives.html"
+      ]
     },
     {
       "name": "student-life",
       "fileName": "student-life.html",
-      "components": []
+      "route": "/student-life.html",
+      "title": "Student Life | Syrian Private University",
+      "description": "Find student services, campus activities, academic guidance, and digital access paths at SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU student life",
+        "SPU campus services",
+        "Syrian Private University students"
+      ],
+      "fragments": [
+        "pages/student-life/hero.html",
+        "pages/student-life/services.html",
+        "pages/student-life/highlights.html"
+      ]
     },
     {
       "name": "services",
       "fileName": "services.html",
-      "components": []
+      "route": "/services.html",
+      "title": "E-Services | Syrian Private University",
+      "description": "Access official SPU digital services, portal entry points, and protected student support pathways.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU services",
+        "SPU portal",
+        "Syrian Private University e-services"
+      ],
+      "fragments": [
+        "pages/services/hero.html",
+        "pages/services/access.html"
+      ]
     },
     {
       "name": "news",
       "fileName": "news.html",
-      "components": []
+      "route": "/news.html",
+      "title": "News | Syrian Private University",
+      "description": "Read official SPU announcements, academic stories, newsroom updates, and campus coverage.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU news",
+        "Syrian Private University announcements",
+        "SPU newsroom"
+      ],
+      "fragments": [
+        "pages/news/hero.html",
+        "pages/news/featured.html",
+        "pages/news/archive.html"
+      ]
     },
     {
       "name": "contact",
       "fileName": "contact.html",
-      "components": []
+      "route": "/contact.html",
+      "title": "Contact | Syrian Private University",
+      "description": "Reach SPU through official contact channels for admissions, student affairs, university offices, and campus visits.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "contact SPU",
+        "Syrian Private University contact",
+        "SPU admissions office"
+      ],
+      "fragments": [
+        "pages/contact/hero.html",
+        "pages/contact/channels.html",
+        "pages/contact/visit.html"
+      ]
     }
   ]
 }

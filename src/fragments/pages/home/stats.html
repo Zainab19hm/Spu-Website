@@ -36,7 +36,7 @@
                     <article class="stats-card" :style="`--card-accent: ${stat.accent};`">
                         <div class="stats-card__top">
                             <div class="stats-icon-badge">
-                                <img :src="stat.svgPath" :alt="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn" class="h-7 w-7 object-contain sm:h-8 sm:w-8">
+                                <img :src="stat.svgPath" :alt="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn" loading="lazy" decoding="async" class="h-7 w-7 object-contain sm:h-8 sm:w-8">
                             </div>
 
                             <!-- <span class="stats-card__eyebrow" x-text="$store.app.currentLang === 'ar' ? 'مؤشر مؤسسي' : 'Institutional Snapshot'"></span> -->
