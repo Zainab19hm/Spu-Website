@@ -78,7 +78,6 @@ export const pathItems = [
     { id: 2, titleAr: 'الطلاب الحاليون', titleEn: 'Current Students', icon: '/images/icon-globe-outline.svg', linksAr: ['بوابات الدخول', 'الجداول', 'الخدمات', 'المصادر الأكاديمية'], linksEn: ['Access portals', 'Schedules', 'Services', 'Academic resources'], actionAr: 'عرض المصادر', actionEn: 'View Student Resources' },
     { id: 3, titleAr: 'الكادر التدريسي والمنظومة', titleEn: 'Faculty & Staff', icon: '/images/icon-sitemap-outline.svg', linksAr: ['أدوات التدريس', 'السياسات', 'الأنظمة', 'الخدمات الداخلية'], linksEn: ['Find teaching tools', 'Policies', 'Systems', 'Internal services'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
     { id: 4, titleAr: 'الخريجون', titleEn: 'Alumni', icon: '/images/icon-user-graduate-outline.svg', linksAr: ['خدمات الخريجين', 'الشبكة', 'الفعاليات', 'التوظيف'], linksEn: ['Alumni Services', 'Network', 'Events', 'Career'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
-    { id: 5, titleAr: 'الأهالي والزوار', titleEn: 'Parents & Visitors', icon: '/images/icon-users-outline.svg', linksAr: ['زيارة الحرم', 'أخبار الجامعة', 'التقويم', 'اتصل بنا'], linksEn: ['Visit Campus', 'University News', 'Calendar', 'Contact Us'], actionAr: 'المزيد من المعلومات', actionEn: 'More Info' }
 ];
 
 export const honorPanelItems = [
