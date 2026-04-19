@@ -1,235 +1,241 @@
+<!-- AUTO-GENERATED FILE. DO NOT EDIT. Source: scripts/generate-page-shells.js -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="undefined">
-    <meta name="keywords" content="">
-    <meta name="theme-color" content="#202759">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Syrian Private University">
-    <meta property="og:title" content="undefined">
-    <meta property="og:description" content="undefined">
-    <meta property="og:url" content="https://spu.edu.syundefined">
-    <meta property="og:image" content="https://spu.edu.syundefined">
-    <meta property="og:locale" content="en_US">
-    <meta name="robots" content="index, follow">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="undefined">
-    <meta name="twitter:description" content="undefined">
-    <meta name="twitter:image" content="https://spu.edu.syundefined">
-    <link rel="canonical" href="https://spu.edu.syundefined">
-    <link rel="icon" href="/images/single-logo.png" type="image/png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body[data-app-ready="loading"] > [data-layout-slot],
-        body[data-app-ready="loading"] > main[data-page-content] {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        body[data-app-ready="fallback"] > [data-layout-slot],
-        body[data-app-ready="fallback"] > main[data-page-content],
-        body[data-app-ready="true"] > [data-layout-slot],
-        body[data-app-ready="true"] > main[data-page-content],
-        body[data-app-ready="false"] > [data-layout-slot],
-        body[data-app-ready="false"] > main[data-page-content] {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #spu-loading-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            background: linear-gradient(180deg, rgba(32, 39, 89, 0.96) 0%, rgba(111, 22, 22, 0.93) 100%);
-            color: #ffffff;
-            opacity: 1;
-            visibility: visible;
-            pointer-events: all;
-            transition: opacity 0.36s ease, visibility 0.36s ease;
-        }
-
-        #spu-loading-overlay.spu-loading-screen--hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .spu-loading-screen {
-            width: min(100%, 560px);
-            padding: 2.25rem 2rem;
-            border-radius: 2rem;
-            background: rgba(8, 11, 28, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 42px 120px rgba(0, 0, 0, 0.32);
-            backdrop-filter: blur(24px);
-        }
-
-        .spu-loading-brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .spu-loading-logo-wrapper {
-            width: 4.4rem;
-            height: 4.4rem;
-            padding: 0.8rem;
-            border-radius: 1.3rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .spu-loading-logo {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .spu-loading-copy {
-            min-width: 0;
-        }
-
-        .spu-loading-eyebrow {
-            margin: 0;
-            font-size: 0.75rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.72);
-            font-weight: 700;
-        }
-
-        .spu-loading-title {
-            margin: 0.35rem 0 0;
-            font-size: clamp(1.8rem, 2.5vw, 2.3rem);
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            color: #ffffff;
-            font-weight: 800;
-        }
-
-        .spu-loading-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-        }
-
-        .spu-loading-indicator span {
-            width: 0.85rem;
-            height: 0.85rem;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.68);
-            opacity: 0.7;
-            animation: spuLoadingPulse 1.1s ease-in-out infinite;
-        }
-
-        .spu-loading-indicator span:nth-child(2) {
-            animation-delay: 0.15s;
-        }
-
-        .spu-loading-indicator span:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .spu-loading-help {
-            margin-top: 1.5rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: none;
-        }
-
-        .spu-loading-help[data-visible="true"] {
-            display: block;
-        }
-
-        .spu-loading-help p {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.82);
-            line-height: 1.7;
-            font-size: 0.97rem;
-        }
-
-        .spu-loading-help code {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            font-size: 0.9em;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.1rem 0.35rem;
-            border-radius: 0.4rem;
-        }
-
-        .spu-loading-actions {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .spu-loading-action {
-            appearance: none;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.08);
-            color: #ffffff;
-            font: inherit;
-            font-weight: 700;
-            padding: 0.78rem 1rem;
-            border-radius: 999px;
-            cursor: pointer;
-        }
-
-        .spu-loading-action--primary {
-            background: #ffffff;
-            color: #202759;
-        }
-
-        @keyframes spuLoadingPulse {
-            0%, 100% {
-                transform: scale(0.92);
-                opacity: 0.65;
-            }
-            50% {
-                transform: scale(1.16);
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .spu-loading-screen {
-                padding: 1.5rem;
-                border-radius: 1.5rem;
-            }
-
-            .spu-loading-brand {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollegeOrUniversity","@id":"https://spu.edu.sy/#organization","name":"Syrian Private University","url":"https://spu.edu.sy","logo":"https://spu.edu.sy/images/single-logo.png","image":"https://spu.edu.syundefined","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"sameAs":["https://www.facebook.com/SPUpage.sy/?ref=bookmarks","https://www.instagram.com/spu_syrian_private_university/","https://telegram.me/SPUchannel","https://www.youtube.com/channel/UCaoshcqsl9_fx7WVYgEZI5A"]},{"@type":"WebSite","@id":"https://spu.edu.sy/#website","url":"https://spu.edu.sy","name":"Syrian Private University","inLanguage":["en","ar"],"publisher":{"@id":"https://spu.edu.sy/#organization"}},{"@type":"WebPage","@id":"https://spu.edu.syundefined#webpage","url":"https://spu.edu.syundefined","isPartOf":{"@id":"https://spu.edu.sy/#website"},"about":{"@id":"https://spu.edu.sy/#organization"},"primaryImageOfPage":"https://spu.edu.syundefined","inLanguage":"en"}]}</script>
-    <title>undefined</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find student services, campus activities, academic guidance, and digital access paths at SPU.">
+  <meta name="keywords" content="SPU student life, SPU campus services, Syrian Private University students">
+  <meta name="theme-color" content="#202759">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Syrian Private University">
+  <meta property="og:title" content="Student Life | Syrian Private University">
+  <meta property="og:description" content="Find student services, campus activities, academic guidance, and digital access paths at SPU.">
+  <meta property="og:url" content="https://spu.edu.sy/student-life.html">
+  <meta property="og:image" content="https://spu.edu.sy/images/logo-spu.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="robots" content="index, follow">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Student Life | Syrian Private University">
+  <meta name="twitter:description" content="Find student services, campus activities, academic guidance, and digital access paths at SPU.">
+  <meta name="twitter:image" content="https://spu.edu.sy/images/logo-spu.png">
+  <link rel="canonical" href="https://spu.edu.sy/student-life.html">
+  <link rel="icon" href="/images/single-logo.png" type="image/png">
+  <link rel="manifest" href="/site.webmanifest">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollegeOrUniversity","@id":"https://spu.edu.sy/#organization","name":"Syrian Private University","url":"https://spu.edu.sy","logo":"https://spu.edu.sy/images/single-logo.png","image":"https://spu.edu.sy/images/logo-spu.png","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"sameAs":["https://www.facebook.com/SPUpage.sy/?ref=bookmarks","https://www.instagram.com/spu_syrian_private_university/","https://telegram.me/SPUchannel","https://www.youtube.com/channel/UCaoshcqsl9_fx7WVYgEZI5A"]},{"@type":"WebSite","@id":"https://spu.edu.sy/#website","url":"https://spu.edu.sy","name":"Syrian Private University","inLanguage":["en","ar"],"publisher":{"@id":"https://spu.edu.sy/#organization"}},{"@type":"WebPage","@id":"https://spu.edu.sy/student-life.html#webpage","url":"https://spu.edu.sy/student-life.html","name":"Student Life | Syrian Private University","description":"Find student services, campus activities, academic guidance, and digital access paths at SPU.","isPartOf":{"@id":"https://spu.edu.sy/#website"},"about":{"@id":"https://spu.edu.sy/#organization"},"primaryImageOfPage":"https://spu.edu.sy/images/logo-spu.png","inLanguage":"en"}]}</script>
+  <title>Student Life | Syrian Private University</title>
 </head>
+<body data-page="student-life" data-page-store="student-life" data-page-section="student-life" data-route="/student-life.html">
+  <header x-data="{ openMenu: null, stickyNav: false, mobileNav: false }" @keydown.escape.window="mobileNav = false; openMenu = null" @click.outside="openMenu = null; if (window.innerWidth < 1024) { mobileNav = false; }" @scroll.window="stickyNav = window.scrollY > 40" class="fixed inset-x-0 top-0 z-50 w-full font-hacen">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-950/28 via-slate-900/10 to-transparent"></div>
 
-<body data-page="student-life" data-page-store="student-life" data-page-section="student-life">
-    <div data-layout-slot="header"></div>
-    <main data-page-content x-data></main>
-    <div data-layout-slot="footer"></div>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script type="module" src="/src/main.js"></script>
+    <div class="container pt-2 sm:pt-4">
+        <div class="site-nav-shell" :class="stickyNav ? 'site-nav-shell--sticky' : ''">
+            
+
+            <div class="site-nav-shell__main">
+                <a href="/" aria-label="Syrian Private University home" class="site-nav-brand">
+                    <img src="/images/logo-spu.png" alt="Syrian Private University logo" class="h-auto w-[9.25rem] sm:w-[11rem] xl:w-[13.5rem]">
+                </a>
+
+                <nav class="hidden flex-1 justify-center lg:flex" aria-label="Primary navigation">
+                    <ul class="site-nav-list">
+                        <template x-for="item in $store.navigation.menuItems" :key="item.id">
+                            <li class="site-nav-item" @mouseenter="openMenu = item.hasDropdown ? item.id : null" @mouseleave="openMenu = null">
+                                <a :href="item.url || '#'" class="site-nav-link" :class="item.page === $store.app.currentPage ? 'site-nav-link--active' : ''" :aria-current="item.page === $store.app.currentPage ? 'page' : null">
+                                    <span x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></span>
+
+                                    <template x-if="item.hasDropdown">
+                                        <svg class="site-nav-link__chevron" :class="openMenu === item.id ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="m5 7.5 5 5 5-5"></path>
+                                        </svg>
+                                    </template>
+                                </a>
+
+                                <div x-show="item.hasDropdown && openMenu === item.id" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 -translate-y-3 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 -translate-y-2 scale-95" style="display: none;" class="site-nav-dropdown">
+                                    <template x-for="child in item.children" :key="child.url">
+                                        <a :href="child.protected ? '/services.html#portal-access' : child.url" @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }" class="site-nav-dropdown-link" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                    </template>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </nav>
+
+                <div class="site-nav-actions">
+                   
+                    <button type="button" @click="$store.app.setLang($store.app.currentLang === 'en' ? 'ar' : 'en')" class="site-nav-lang">
+                        <img src="/images/ic_outline-language.svg" alt="Language" class="h-[1.05rem] w-[1.05rem]">
+                        <span x-text="$store.app.currentLang === 'ar' ? 'English' : 'العربية'"></span>
+                    </button>
+
+                    <button type="button" @click="mobileNav = !mobileNav; if (!mobileNav) { openMenu = null; }" aria-label="Toggle navigation" class="site-nav-menu-btn lg:hidden">
+                        <i class="fas text-sm" :class="mobileNav ? 'fa-times' : 'fa-bars'"></i>
+                    </button>
+                </div>
+            </div>
+           
+
+            <div x-show="mobileNav" x-transition:enter="transition duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-3" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition duration-180 ease-in" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" style="display: none;" class="site-nav-mobile-panel lg:hidden">
+                
+                <div class="site-nav-mobile-list">
+                    <template x-for="item in $store.navigation.menuItems" :key="`mobile-${item.id}`">
+                        <div class="site-nav-mobile-card">
+                            <div class="site-nav-mobile-row">
+                                <a :href="item.url || '#'" @click="mobileNav = false; openMenu = null" class="site-nav-mobile-link" :class="item.page === $store.app.currentPage ? 'site-nav-mobile-link--active' : ''" x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></a>
+
+                                <button x-show="item.hasDropdown" type="button" @click.prevent="openMenu = openMenu === item.id ? null : item.id" aria-label="Toggle submenu" class="site-nav-mobile-toggle">
+                                    <i class="fas fa-chevron-down text-[11px] transition-transform duration-200" :class="openMenu === item.id ? 'rotate-180' : ''"></i>
+                                </button>
+                            </div>
+
+                            <div x-show="item.hasDropdown && openMenu === item.id" x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition duration-150 ease-in" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" style="display: none;" class="site-nav-mobile-children">
+                                <template x-for="child in item.children" :key="`mobile-${child.url}`">
+                                    <a :href="child.protected ? '/services.html#portal-access' : child.url" @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null" class="site-nav-mobile-child" x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+  <main data-page-content x-data data-page-name="student-life">
+<section x-data class="page-hero relative overflow-hidden bg-spu-blue text-white font-hacen">
+    <div class="absolute inset-0 opacity-60" style="background: radial-gradient(circle at top right, rgba(202,169,73,0.28), transparent 42%), radial-gradient(circle at bottom left, rgba(43,125,179,0.24), transparent 34%);"></div>
+    <div class="container relative z-10 grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/60" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.hero.eyebrowAr : $store.studentLifePage.hero.eyebrowEn"></p>
+            <h1 class="mt-6 text-4xl font-bold leading-tight md:text-5xl xl:text-6xl" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.hero.titleAr : $store.studentLifePage.hero.titleEn"></h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/78" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.hero.summaryAr : $store.studentLifePage.hero.summaryEn"></p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <template x-for="metric in $store.studentLifePage.metrics" :key="metric.labelEn">
+                <article class="rounded-[24px] border border-white/12 bg-white/10 p-5 backdrop-blur-md shadow-[0_24px_70px_rgba(8,15,42,0.18)]">
+                    <p class="text-2xl font-bold text-white" x-html="metric.value"></p>
+                    <p class="mt-2 text-xs uppercase tracking-[0.2em] text-white/62" x-text="$store.app.currentLang === 'ar' ? metric.labelAr : metric.labelEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>
+<section id="services" x-data class="bg-white py-20 font-hacen lg:py-24">
+    <div class="container grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+            <div class="max-w-3xl">
+                <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الخدمات والدعم' : 'Services and Support'"></p>
+                <h2 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'مركز أوضح لما يحتاجه الطالب خلال العام' : 'A clearer home for what students need throughout the year'"></h2>
+            </div>
+
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+                <template x-for="item in $store.studentLifePage.services" :key="item.titleEn">
+                    <article class="rounded-[28px] border border-slate-200/80 bg-white p-7 shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
+                        <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                        <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                    </article>
+                </template>
+            </div>
+        </div>
+
+        <div class="rounded-[32px] bg-section p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)] lg:p-10">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-blue/60" x-text="$store.app.currentLang === 'ar' ? 'الوصول الرقمي' : 'Digital Access'"></p>
+            <div class="mt-6 grid gap-4">
+                <template x-for="portal in $store.studentLifePage.portals" :key="portal.titleEn">
+                    <a :href="portal.protected ? '/services.html#portal-access' : portal.url" @click="if (portal.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(portal.url); }" class="rounded-[22px] bg-white px-5 py-5 shadow-[0_16px_45px_rgba(20,30,70,0.06)] transition-transform duration-300 hover:-translate-y-1" :target="!portal.protected && portal.url.startsWith('http') ? '_blank' : null" :rel="!portal.protected && portal.url.startsWith('http') ? 'noreferrer' : null">
+                        <h3 class="text-lg font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? portal.titleAr : portal.titleEn"></h3>
+                        <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? portal.summaryAr : portal.summaryEn"></p>
+                    </a>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="activities" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <article class="rounded-[32px] bg-spu-blue p-10 text-white shadow-[0_28px_80px_rgba(20,30,70,0.18)] lg:p-12">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/55" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.activities.eyebrowAr : $store.studentLifePage.activities.eyebrowEn"></p>
+            <h2 class="mt-5 text-3xl font-bold leading-tight md:text-4xl" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.activities.titleAr : $store.studentLifePage.activities.titleEn"></h2>
+            <p class="mt-6 text-[16px] leading-8 text-white/80" x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.activities.summaryAr : $store.studentLifePage.activities.summaryEn"></p>
+
+            <div id="calendar" class="mt-8 rounded-[24px] border border-white/12 bg-white/8 p-6 backdrop-blur-sm">
+                <p class="text-xs font-bold uppercase tracking-[0.24em] text-white/55" x-text="$store.app.currentLang === 'ar' ? 'التقويم الأكاديمي' : 'Academic Calendar'"></p>
+                <p class="mt-3 text-[15px] leading-7 text-white/85" x-text="$store.app.currentLang === 'ar' ? 'يمكن أن يتوسع هذا القسم لاحقاً إلى جداول فصلية كاملة ومواعيد امتحانية رسمية.' : 'This section can later expand into full semester schedules and official exam dates.'"></p>
+            </div>
+        </article>
+
+        <div class="grid gap-5 md:grid-cols-3">
+            <template x-for="item in $store.studentLifePage.activityCards" :key="item.titleEn">
+                <article class="rounded-[28px] bg-white p-7 shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
+                    <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                    <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>
+  </main>
+  <footer id="site-footer" x-data class="overflow-hidden bg-spu-blue pt-16 pb-8 font-hacen text-white">
+    <div class="container">
+        <div class="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12">
+            <div class="flex flex-col items-start lg:col-span-4">
+                <h2 class="mb-6 text-[24px] font-bold uppercase leading-tight tracking-wider" x-text="$store.app.currentLang === 'ar' ? $store.footer.identity.titleAr : $store.footer.identity.titleEn"></h2>
+                <p class="mb-8 max-w-[320px] text-[16px] leading-[1.6] text-white/70" x-text="$store.app.currentLang === 'ar' ? $store.footer.identity.missionAr : $store.footer.identity.missionEn"></p>
+
+                <div class="flex items-center gap-6 text-[22px]">
+                    <template x-for="social in $store.footer.identity.socials" :key="social.icon">
+                        <a :href="social.url" target="_blank" rel="noreferrer" class="text-white/80 transition-all hover:scale-110 hover:text-spu-red">
+                            <i :class="social.icon"></i>
+                        </a>
+                    </template>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h3 class="mb-8 text-[18px] font-bold uppercase tracking-widest text-white/50" x-text="$store.app.currentLang === 'ar' ? $store.footer.resources.titleAr : $store.footer.resources.titleEn"></h3>
+                <ul class="flex flex-col gap-4">
+                    <template x-for="link in $store.footer.resources.links" :key="link.labelEn">
+                        <li>
+                            <a :href="link.url" class="text-[16px] text-white/80 transition-colors hover:text-white" x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-3">
+                <h3 class="mb-8 text-[18px] font-bold uppercase tracking-widest text-white/50" x-text="$store.app.currentLang === 'ar' ? $store.footer.contact.titleAr : $store.footer.contact.titleEn"></h3>
+                <div class="flex flex-col gap-6">
+                    <template x-for="item in $store.footer.contact.items" :key="item.icon + item.textEn">
+                        <div class="flex items-start gap-4">
+                            <i :class="item.icon" class="mt-1.5 text-spu-red"></i>
+                            <span class="text-[15px] leading-relaxed text-white/80" :class="item.ltr ? 'ltr' : ''" x-html="$store.app.currentLang === 'ar' ? item.textAr : item.textEn"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-start lg:col-span-3 lg:items-end">
+                <h3 class="mb-8 w-full text-left text-[18px] font-bold uppercase tracking-widest text-white/50" :class="$store.app.currentLang === 'ar' ? 'lg:text-right' : 'lg:text-left'" x-text="$store.app.currentLang === 'ar' ? $store.footer.location.titleAr : $store.footer.location.titleEn"></h3>
+                <div class="group h-[180px] w-full overflow-hidden rounded-[12px] border border-white/10 shadow-2xl">
+                    <iframe :src="$store.footer.location.mapUrl" class="h-full w-full grayscale-[0.3] opacity-80 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mb-8 border-white/10">
+
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <p class="text-[14px] text-white/50" translate="no" x-html="$store.app.currentLang === 'ar' ? $store.footer.bottom.copyrightAr : $store.footer.bottom.copyrightEn"></p>
+
+            <div class="flex flex-wrap items-center justify-center gap-6 text-[14px]">
+                <template x-for="link in $store.footer.bottom.links" :key="link.labelEn">
+                    <a :href="link.protected ? '/services.html#portal-access' : link.url" @click="if (link.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(link.url); }" class="text-white/50 transition-colors hover:text-white" :target="!link.protected && link.url.startsWith('http') ? '_blank' : null" :rel="!link.protected && link.url.startsWith('http') ? 'noreferrer' : null" x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></a>
+                </template>
+            </div>
+        </div>
+    </div>
+</footer>
+  <script type="module" src="/src/main.js"></script>
 </body>
-
 </html>
