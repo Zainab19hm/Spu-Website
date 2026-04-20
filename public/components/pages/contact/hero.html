@@ -1,0 +1,19 @@
+<section x-data class="page-hero relative overflow-hidden bg-spu-blue text-white font-hacen">
+    <div class="absolute inset-0 opacity-60" style="background: radial-gradient(circle at top right, rgba(202,169,73,0.28), transparent 42%), radial-gradient(circle at bottom left, rgba(43,125,179,0.24), transparent 34%);"></div>
+    <div class="container relative z-10 grid items-end gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/60" x-text="$store.app.currentLang === 'ar' ? $store.contactPage.hero.eyebrowAr : $store.contactPage.hero.eyebrowEn"></p>
+            <h1 class="mt-6 text-4xl font-bold leading-tight md:text-5xl xl:text-6xl" x-text="$store.app.currentLang === 'ar' ? $store.contactPage.hero.titleAr : $store.contactPage.hero.titleEn"></h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/78" x-text="$store.app.currentLang === 'ar' ? $store.contactPage.hero.summaryAr : $store.contactPage.hero.summaryEn"></p>
+        </div>
+
+        <div class="grid gap-4">
+            <template x-for="channel in $store.contactPage.channels" :key="channel.titleEn">
+                <article class="rounded-[24px] border border-white/12 bg-white/10 p-5 backdrop-blur-md shadow-[0_24px_70px_rgba(8,15,42,0.18)]">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-white/60" x-text="$store.app.currentLang === 'ar' ? channel.titleAr : channel.titleEn"></p>
+                    <p class="mt-3 text-lg font-bold text-white" x-text="channel.detail"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>
