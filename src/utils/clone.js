@@ -77,6 +77,5 @@ export function normalizeContentData(value) {
 }
 
 export function cloneData(value) {
-    return JSON.parse(JSON.stringify(value));
     return normalizeContentData(JSON.parse(JSON.stringify(value)));
 }
