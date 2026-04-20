@@ -28,7 +28,6 @@
                     x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.summaryAr : $store.aboutPage.hero.summaryEn">
                 </p>
             </div>
-            <!-- !right boxes -->
             <div class="lg:col-span-5  lg:-mb-20 grid grid-cols-2 gap-4 relative">
                 <template x-for="(metric, index) in $store.aboutPage.metrics" :key="metric.labelEn">
                     <div :class="index % 2 !== 0 ? 'mt-4' : ''"
