@@ -184,9 +184,19 @@ function validateAssetReferences() {
     }
   });
 
-  if (failures.length > 0) {
-    throw new Error(`Asset validation failed:\n- ${failures.join('\n- ')}`);
+  if (failures.length === 0) {
+    return;
   }
+
+  if (process.env.SPU_ALLOW_MISSING_ASSETS === '1') {
+    console.warn(
+      `Asset validation warnings (${failures.length}):\n- ${failures.join('\n- ')}\n`
+        + 'Continuing because SPU_ALLOW_MISSING_ASSETS=1.'
+    );
+    return;
+  }
+
+  throw new Error(`Asset validation failed:\n- ${failures.join('\n- ')}`);
 }
 
 function main() {
