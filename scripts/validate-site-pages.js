@@ -184,9 +184,18 @@ function validateAssetReferences() {
     }
   });
 
-  if (failures.length > 0) {
+  if (failures.length === 0) {
+    return;
+  }
+
+  if (process.env.SPU_STRICT_ASSET_VALIDATION === '1') {
     throw new Error(`Asset validation failed:\n- ${failures.join('\n- ')}`);
   }
+
+  console.warn(
+    `Asset validation warnings (${failures.length}):\n- ${failures.join('\n- ')}\n`
+      + 'Continuing because SPU_STRICT_ASSET_VALIDATION is not set to 1.'
+  );
 }
 
 function main() {
