@@ -188,15 +188,14 @@ function validateAssetReferences() {
     return;
   }
 
-  if (process.env.SPU_ALLOW_MISSING_ASSETS === '1') {
-    console.warn(
-      `Asset validation warnings (${failures.length}):\n- ${failures.join('\n- ')}\n`
-        + 'Continuing because SPU_ALLOW_MISSING_ASSETS=1.'
-    );
-    return;
+  if (process.env.SPU_STRICT_ASSET_VALIDATION === '1') {
+    throw new Error(`Asset validation failed:\n- ${failures.join('\n- ')}`);
   }
 
-  throw new Error(`Asset validation failed:\n- ${failures.join('\n- ')}`);
+  console.warn(
+    `Asset validation warnings (${failures.length}):\n- ${failures.join('\n- ')}\n`
+      + 'Continuing because SPU_STRICT_ASSET_VALIDATION is not set to 1.'
+  );
 }
 
 function main() {

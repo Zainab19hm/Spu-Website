@@ -1,0 +1,20 @@
+<section x-data class="relative overflow-hidden bg-spu-blue py-24 font-hacen text-white lg:py-28">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(188,36,40,0.18),transparent_32%)]" aria-hidden="true"></div>
+
+    <div class="container relative z-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/60" x-text="$store.app.currentLang === 'ar' ? $store.servicesPage.hero.eyebrowAr : $store.servicesPage.hero.eyebrowEn"></p>
+            <h1 class="mt-6 text-4xl font-bold leading-tight md:text-5xl xl:text-6xl" x-text="$store.app.currentLang === 'ar' ? $store.servicesPage.hero.titleAr : $store.servicesPage.hero.titleEn"></h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/78" x-text="$store.app.currentLang === 'ar' ? $store.servicesPage.hero.summaryAr : $store.servicesPage.hero.summaryEn"></p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+            <template x-for="metric in $store.servicesPage.metrics" :key="metric.labelEn">
+                <article class="rounded-[24px] border border-white/10 bg-white/8 px-6 py-5 backdrop-blur-sm">
+                    <p class="text-2xl font-bold text-white" x-html="metric.value"></p>
+                    <p class="mt-2 text-xs uppercase tracking-[0.2em] text-white/62" x-text="$store.app.currentLang === 'ar' ? metric.labelAr : metric.labelEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

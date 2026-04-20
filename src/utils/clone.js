@@ -21,26 +21,7 @@ const LEGACY_ASSET_ALIASES = Object.freeze({
     'images/logo-variant-copy.png': '/images/logo-spu.png',
     'images/logo-spu-uppercase-01.png': '/images/logo-spu.png',
     'images/logo-spu-uppercase-02.png': '/images/logo-spu.png',
-    'images/logo-spu-variant.png': '/images/logo-spu.png',
-    'images/arcticons_emoji-classical-building.svg': '/images/icon-academic-faculties.svg',
-    'images/bytesize_book.svg': '/images/icon-prospective-students.svg',
-    'images/flowbite_user-graduate-outline.svg': '/images/icon-graduates.svg',
-    'images/people-outline.svg': '/images/icon-community.svg',
-    'images/student.svg': '/images/icon-alumni.svg',
-    'images/time.svg': '/images/icon-time.svg',
-    'images/vector-3.svg': '/images/icon-current-students.svg',
-    'images/vector-4.svg': '/images/icon-faculty-staff.svg',
-    'images/ic_outline-language.svg': '/images/icon-language.svg',
-    'images/faculty-medicine-logo.png': '/images/faculty-medicine-logo.webp',
-    'images/faculty-dentistry-logo.png': '/images/faculty-dentistry-logo.webp',
-    'images/faculty-pharmacy-logo.png': '/images/faculty-pharmacy-logo.webp',
-    'images/faculty-ai-engineering-logo.png': '/images/faculty-ai-engineering-logo.webp',
-    'images/faculty-construction-engineering-logo.png': '/images/faculty-construction-engineering-logo.webp',
-    'images/faculty-petroleum-engineering-logo.png': '/images/faculty-petroleum-engineering-logo.webp',
-    'images/faculty-admin-sciences-logo.png': '/images/faculty-admin-sciences-logo.webp',
-    'images/healthcare-main.png': '/images/healthcare-main.webp',
-    'images/healthcare-hospital.png': '/images/healthcare-hospital.webp',
-    'images/healthcare-dental.png': '/images/healthcare-dental.webp'
+    'images/logo-spu-variant.png': '/images/logo-spu.png'
 });
 
 const LEGACY_ROUTE_ALIASES = Object.freeze({
@@ -58,16 +39,6 @@ const LEGACY_ROUTE_ALIASES = Object.freeze({
 
 function normalizeString(value) {
     if (typeof value !== 'string') {
-        return value;
-    }
-
-    const looksLikePathOrRoute = value.startsWith('/')
-        || value.startsWith('./')
-        || value.startsWith('../')
-        || value.includes('/')
-        || value.endsWith('.html');
-
-    if (!looksLikePathOrRoute) {
         return value;
     }
 
