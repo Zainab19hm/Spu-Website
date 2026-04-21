@@ -1,10 +1,9 @@
-<section id="about-dynamic-section" x-data class="relative py-24 overflow-hidden bg-white font-hacen">
+<section id="about-dynamic-section" x-cloak x-data class="relative py-24 overflow-hidden bg-white font-hacen">
     <div class="container relative z-10 mt-14">
 
         <div class="flex flex-col lg:flex-row justify-between items-start gap-10">
             <h2 class="text-5xl md:text-7xl mb-5 font-black text-spu-blue tracking-tighter uppercase"
-                x-init="if($store.app.currentLang === 'en') { $el.innerHTML = 'ABOUT SP<span class=\'text-spu-red\'>U</span>'; }">
-                <span x-show="$store.app.currentLang === 'ar'" x-text="'عن الجامعة'"></span>
+                x-html="$store.app.currentLang === 'en' ? 'ABOUT SP&lt;span class=&quot;text-spu-red&quot;&gt;U&lt;/span&gt;' : 'عن الجامعة'">
             </h2>
         </div>
 
@@ -85,8 +84,7 @@
                 </div>
             </div>
         </div>
-
-     <!-- Closing main container for grid -->
+    </div>
 
     <!-- ! Stats Section: Full width dark bar -->
     <div x-data="{ hasCounted: false }"

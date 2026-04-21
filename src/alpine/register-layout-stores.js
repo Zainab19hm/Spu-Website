@@ -8,17 +8,13 @@ const portalSessionStorageKey = 'spu.portal.session';
 function readLocalStorageValue(key, fallback = '') {
     try {
         return localStorage.getItem(key) ?? fallback;
-    } catch {
-        return fallback;
-    }
+    } catch { return fallback; } // !
 }
 
 function writeLocalStorageValue(key, value) {
     try {
         localStorage.setItem(key, value);
-    } catch {
-        // Ignore storage failures so the app can still render.
-    }
+    } catch { } // !
 }
 
 function applyLanguage(lang) {
@@ -42,9 +38,7 @@ function writePortalSession(session) {
         }
 
         localStorage.setItem(portalSessionStorageKey, JSON.stringify(session));
-    } catch {
-        // Ignore storage failures so the app can still render.
-    }
+    } catch { } // !
 }
 
 function readReturnDestination() {

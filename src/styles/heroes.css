@@ -29,7 +29,7 @@
     }
 
     .home-hero__overlay {
-        background:#20275976;
+        background: rgba(32, 39, 89, 0.463);
     }
 
     .home-hero__ambient {
@@ -40,12 +40,12 @@
     }
 
     .home-hero__inner {
-            display: grid;
-                align-items: end;
-                gap: 2rem;
-                min-height: clamp(46rem, 100vh, 58rem);
-                padding-bottom: clamp(13rem, 22vw, 10rem);
-                padding-top: clamp(16rem, 8vw, 16rem);
+        display: grid;
+        align-items: end;
+        gap: 2rem;
+        min-height: clamp(46rem, 100vh, 58rem);
+        padding-bottom: clamp(13rem, 22vw, 10rem);
+        padding-top: clamp(16rem, 8vw, 16rem);
     }
 
     .home-hero__content {

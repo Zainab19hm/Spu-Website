@@ -1,4 +1,4 @@
-<section id="home-news"
+<section id="home-news" x-cloak
     x-data="{ visible: false, init() { const observer = new IntersectionObserver(entries => { if (entries[0].isIntersecting) { this.visible = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe(this.$el); } }"
     class="py-7.5 mt-[70px] bg-white font-hacen overflow-hidden reveal">
     <div class="container">

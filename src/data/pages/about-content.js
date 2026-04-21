@@ -7,13 +7,28 @@ export const aboutPageContent = {
         titleEn: 'A university shaped around academic rigor, professional confidence, and regional impact.',
         titleAr: 'جامعة تتشكل حول الصرامة الأكاديمية، الثقة المهنية، والأثر الإقليمي.',
         summaryEn: 'Syrian Private University brings together modern academic programs, applied learning, and a student experience designed for long-term growth.',
-        summaryAr: 'تجمع الجامعة السورية الخاصة بين البرامج الأكاديمية الحديثة، التعلم التطبيقي، وتجربة طلابية مصممة للنمو على المدى الطويل.'
+        summaryAr: 'تجمع الجامعة السورية الخاصة بين البرامج الأكاديمية الحديثة، التعلم التطبيقي، وتجربة طلابية مصممة للنمو على المدى الطويل.',
+        image1: '/images/about-hero-1.jpg',
+        image2: '/images/about-hero-2.jpg',
+        image: '/images/DSC_1060.jpg',
+        badgeEn: 'SINCE 2005',
+        badgeAr: 'منذ 2005',
+        quoteEn: 'Our role is not only to teach knowledge, but to shape graduates who think clearly, act responsibly, and lead with purpose.',
+        quoteAr: 'دورنا لا يقتصر على تعليم المعرفة، بل على إعداد خريجين يفكرون بوضوح، ويتصرفون بمسؤولية، ويقودون بهدف.',
+        descriptionEn: 'From its founding, SPU has built a reputation for connecting classroom learning to professional outcomes, creating a university experience that prepares students for the challenges ahead.',
+        descriptionAr: 'منذ تأسيسها، بنيت SPU سمعة في ربط التعلم الصفي بالنتائج المهنية، وخلق تجربة جامعية تعد الطلاب للتحديات القادمة.'
     },
     metrics: [
         { value: '<span translate="no">2005</span>', labelEn: 'Established', labelAr: 'سنة التأسيس' },
         { value: '<span translate="no">7</span>', labelEn: 'Faculties', labelAr: 'الكليات' },
         { value: '<span translate="no">8500+</span>', labelEn: 'Students', labelAr: 'الطلاب' },
         { value: '<span translate="no">450+</span>', labelEn: 'Graduates', labelAr: 'الخريجون' }
+    ],
+    quickStats: [
+        { id: 'established', icon: '/images/icon-history-outline.svg', current: 0, target: 20, labelEn: 'Years Since Founding', labelAr: 'عاماً منذ التأسيس' },
+        { id: 'students', icon: '/images/icon-user-graduate-outline.svg', current: 0, target: 8500, labelEn: 'Students Enrolled', labelAr: 'طالب مسجل' },
+        { id: 'faculties', icon: '/images/icon-university-outline.svg', current: 0, target: 7, labelEn: 'Faculties', labelAr: 'كلية' },
+        { id: 'papers', icon: '/images/icon-book-outline.svg', current: 0, target: 150, labelEn: 'Published Research', labelAr: 'بحث منشور' }
     ],
     story: {
         eyebrowEn: 'Vision and Mission',
@@ -89,7 +104,7 @@ export const aboutPageContent = {
             nameAr: 'د. عبد الرزاق شيخ عيسى',
             roleEn: 'President of the University',
             roleAr: 'رئيس الجامعة',
-            image: '/images/about-president-dr-abdul-razzaq-sheikh-issa.webp'
+            image: '/images/about-hero-1.jpg'
         }
     ],
     history: {
@@ -168,15 +183,59 @@ export const aboutPageContent = {
         eyebrowEn: 'OUR NETWORK',
         titleAr: 'الشراكات والاتفاقيات الدولية',
         titleEn: 'Global Partnerships & Agreements',
+        subTextAr: 'تفتخر الجامعة بشراكاتها الأكاديمية مع مؤسسات تعليمية مرموقة حول العالم',
+        subTextEn: 'SPU takes pride in its academic partnerships with prestigious institutions around the world',
         summaryAr: 'تفتخر الجامعة السورية الخاصة بشبكة واسعة من الشراكات الأكاديمية مع مؤسسات تعليمية مرموقة محلياً وعالمياً لتبادل الخبرات وتعزيز جودة التعليم.',
         summaryEn: 'SPU takes pride in a wide network of academic partnerships with prestigious local and international educational institutions.',
         list: [
-            { nameAr: 'منظمة الصحة العالمية', nameEn: 'World Health Organization' },
-            { nameAr: 'جامعة دمشق', nameEn: 'Damascus University' },
-            { nameAr: 'نقابة المهندسين السوريين', nameEn: 'Order of Syrian Engineers' },
-            { nameAr: 'اتحاد الجامعات العربية', nameEn: 'Association of Arab Universities' },
-            { nameAr: 'منصة كورسيرا للتعليم', nameEn: 'Coursera for Campus' },
-            { nameAr: 'مشفى دمشق (المجتهد)', nameEn: 'Damascus Hospital' }
+            {
+                nameAr: 'منظمة الصحة العالمية',
+                nameEn: 'World Health Organization',
+                logo: '/images/world-health.png',
+                newsLink: '/news.html',
+                descAr: 'تعاون في مجالات الصحة العامة والتعليم الطبي',
+                descEn: 'Collaboration in public health and medical education'
+            },
+            {
+                nameAr: 'جامعة دمشق',
+                nameEn: 'Damascus University',
+                logo: '/images/arab-uni.png',
+                newsLink: '/news.html',
+                descAr: 'شراكة أكاديمية لتبادل الخبرات والبرامج',
+                descEn: 'Academic partnership for exchanging expertise and programs'
+            },
+            {
+                nameAr: 'نقابة المهندسين السوريين',
+                nameEn: 'Order of Syrian Engineers',
+                logo: '/images/people-outline.svg',
+                newsLink: '/news.html',
+                descAr: 'تعاون لتطوير مهارات الهندسة والبحث العلمي',
+                descEn: 'Collaboration for developing engineering skills and scientific research'
+            },
+            {
+                nameAr: 'اتحاد الجامعات العربية',
+                nameEn: 'Association of Arab Universities',
+                logo: '/images/arab-uni.png',
+                newsLink: '/news.html',
+                descAr: 'عضوية فاعلة في اتحاد الجامعات العربية لتعزيز التعليم العالي',
+                descEn: 'Active membership in the Association of Arab Universities'
+            },
+            {
+                nameAr: 'منصة كورسيرا للتعليم',
+                nameEn: 'Coursera for Campus',
+                logo: '/images/corsera.png',
+                newsLink: '/news.html',
+                descAr: 'توفير منصات التعلم الإلكتروني للطلاب والباحثين',
+                descEn: 'Providing e-learning platforms for students and researchers'
+            },
+            {
+                nameAr: 'مشفى دمشق (المجتهد)',
+                nameEn: 'Damascus Hospital',
+                logo: '/images/icon-university-outline.svg',
+                newsLink: '/news.html',
+                descAr: 'شراكة سريرية لتدريب طلاب الطب والصيدلة',
+                descEn: 'Clinical partnership for training medicine and pharmacy students'
+            }
         ]
     },
 

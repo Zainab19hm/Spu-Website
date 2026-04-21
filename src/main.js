@@ -2,10 +2,13 @@ import './style.css';
 import Alpine from 'alpinejs';
 import { registerStores } from './alpine/register-stores.js';
 import { siteRoutes } from './config/site-routes.js';
-import { startFontAwesome } from './features/font-awesome.js';
+import { reconcileFontAwesomeIcons, startFontAwesome } from './features/font-awesome.js';
 import { initRevealSections, observeRevealSections } from './features/reveal-sections.js';
+import { observeElement } from './features/reveal-sections.js';
+import { initPageLoader } from './loader/page-loader.js';
 
 window.Alpine = Alpine;
+window.observeElement = observeElement;
 
 const pageName = document.body?.dataset.page || 'home';
 
@@ -54,9 +57,11 @@ function renderBootstrapFailure() {
 async function bootstrap() {
   try {
     startFontAwesome();
+    await initPageLoader(pageName);
     await registerPageFeatureGlobals();
     await registerStores(Alpine, { pageName });
     Alpine.start();
+    reconcileFontAwesomeIcons();
     initRevealSections();
     observeRevealSections();
     document.body.dataset.appReady = 'true';

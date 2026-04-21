@@ -51,7 +51,7 @@ export const newsPageContent = {
             titleAr: 'أنشطة الصحة المجتمعية تعزز امتداد SPU خارج الحرم الجامعي.',
             summaryEn: 'University-led initiatives continue to connect academic work with public benefit and community presence.',
             summaryAr: 'تواصل المبادرات التي تقودها الجامعة ربط العمل الأكاديمي بالفائدة العامة والحضور المجتمعي.',
-        image: '/images/healthcare-main.webp'
+            image: '/images/healthcare-main.png'
         },
         {
             categoryEn: 'Events',
@@ -61,7 +61,7 @@ export const newsPageContent = {
             titleAr: 'أصبح تقويم الفعاليات الأكاديمية أكثر ارتباطاً بالتواصل الخاص بالقبول والحياة الجامعية.',
             summaryEn: 'A more structured event model helps students and visitors understand what is happening and when.',
             summaryAr: 'يساعد نموذج فعاليات أكثر تنظيماً الطلاب والزوار على معرفة ما يحدث ومتى.',
-            image: '/images/campus-feature-02.webp'
+            image: '/images/slider-2.jpg'
         }
     ],
     newsroom: {

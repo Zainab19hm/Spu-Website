@@ -66,3 +66,8 @@ export function startFontAwesome() {
     dom.watch();
     isWatching = true;
 }
+
+/** Run after Alpine/DOM updates so `<i class="fas …">` inside `x-for` / injected fragments become SVG. */
+export function reconcileFontAwesomeIcons() {
+    dom.i2svg();
+}

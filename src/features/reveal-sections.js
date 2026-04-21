@@ -1,5 +1,20 @@
 let revealObserver;
 
+export function observeElement(el) {
+    if (!el || el.classList.contains('reveal-visible') || el.classList.contains('active')) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible', 'active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(el);
+}
+
 export function initRevealSections(root = document) {
     if (!revealObserver) {
         revealObserver = new IntersectionObserver((entries) => {
@@ -8,18 +23,17 @@ export function initRevealSections(root = document) {
                     return;
                 }
 
-                // Use requestAnimationFrame to batch DOM updates and avoid layout thrashing
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         entry.target.classList.add('reveal-visible');
-                    });
+                    }); 
                 });
-                
+
                 revealObserver.unobserve(entry.target);
             });
         }, { 
-            threshold: 0.05, // Lower threshold for earlier trigger
-            rootMargin: '100px 0px' // Start animation well before element is visible
+            threshold: 0.05,
+            rootMargin: '100px 0px'
         });
     }
 
@@ -35,16 +49,15 @@ export function initRevealSections(root = document) {
 
 export function observeRevealSections(root = document.body) {
     const mutationObserver = new MutationObserver((mutations) => {
-        const hasNewElements = mutations.some((mutation) => 
+        const hasNewElements = mutations.some((mutation) =>
             Array.from(mutation.addedNodes).some((node) => node.nodeType === 1)
         );
 
         if (hasNewElements) {
-            // Defer initialization to avoid blocking main thread
             requestAnimationFrame(() => initRevealSections());
         }
     });
-
+    // !
     mutationObserver.observe(root, { childList: true, subtree: true });
     return mutationObserver;
 }

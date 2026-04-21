@@ -25,10 +25,10 @@ export const navigationMenuItems = [
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: siteRoutes.aboutLeadership },
-            { labelAr: 'تاريخنا', labelEn: 'Our History', url: siteRoutes.aboutHistory },
-            { labelAr: 'المديريات', labelEn: 'Directorates', url: siteRoutes.aboutDirectorates },
-            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: siteRoutes.aboutPartnership }
+            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership.html' },
+            { labelAr: 'تاريخنا', labelEn: 'Our History', url: '/about/history.html' },
+            { labelAr: 'المديريات', labelEn: 'Directorates', url: '/about/directorates.html' },
+            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: '/about/partnership.html' }
         ]
     },
     {

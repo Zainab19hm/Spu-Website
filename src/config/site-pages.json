@@ -58,8 +58,8 @@
     },
     {
       "name": "about-history",
-      "fileName": "about/history/content.html",
-      "route": "/about/history/content.html",
+      "fileName": "about/history.html",
+      "route": "/about/history.html",
       "title": "History | Syrian Private University",
       "description": "Follow the development of Syrian Private University from its founding through its current academic growth.",
       "ogImage": "/images/logo-spu.png",
@@ -75,8 +75,8 @@
     },
     {
       "name": "about-leadership",
-      "fileName": "about/leadership/content.html",
-      "route": "/about/leadership/content.html",
+      "fileName": "about/leadership.html",
+      "route": "/about/leadership.html",
       "title": "Leadership | Syrian Private University",
       "description": "Explore the university presidency and leadership direction guiding Syrian Private University.",
       "ogImage": "/images/logo-spu.png",
@@ -92,8 +92,8 @@
     },
     {
       "name": "about-directorates",
-      "fileName": "about/directorates/content.html",
-      "route": "/about/directorates/content.html",
+      "fileName": "about/directorates.html",
+      "route": "/about/directorates.html",
       "title": "Directorates | Syrian Private University",
       "description": "Review the administrative directorates supporting academic operations and student services at SPU.",
       "ogImage": "/images/logo-spu.png",
@@ -109,8 +109,8 @@
     },
     {
       "name": "about-partnership",
-      "fileName": "about/partnership/content.html",
-      "route": "/about/partnership/content.html",
+      "fileName": "about/partnership.html",
+      "route": "/about/partnership.html",
       "title": "Partnerships | Syrian Private University",
       "description": "See the academic and institutional partnerships that extend Syrian Private University's reach.",
       "ogImage": "/images/logo-spu.png",

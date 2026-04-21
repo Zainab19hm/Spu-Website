@@ -103,10 +103,13 @@
         flex-shrink: 0;
     }
 
-    .site-nav-list {
-        display: flex;
-        align-items: center;
-        gap: 1.3rem;
+    /* Keep desktop nav flex rules scoped to lg+ so they never compete with Tailwind `hidden` on <nav> for small viewports. */
+    @media (min-width: 1024px) {
+        .site-nav-list {
+            display: flex;
+            align-items: center;
+            gap: 1.3rem;
+        }
     }
 
     .site-nav-item {
@@ -418,11 +421,16 @@
     [dir='rtl'] .site-nav-shell__meta,
     [dir='rtl'] .site-nav-shell__main,
     [dir='rtl'] .site-nav-meta-group,
-    [dir='rtl'] .site-nav-list,
     [dir='rtl'] .site-nav-actions,
     [dir='rtl'] .site-nav-mobile-utility-row,
     [dir='rtl'] .site-nav-mobile-row {
         flex-direction: row-reverse;
+    }
+
+    @media (min-width: 1024px) {
+        [dir='rtl'] .site-nav-list {
+            flex-direction: row-reverse;
+        }
     }
 
     [dir='rtl'] .site-nav-link::after {

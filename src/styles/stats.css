@@ -70,7 +70,7 @@
         min-height: 17.5rem;
         border: 1px solid #eee;
         border-radius: 1.65rem;
-        background:white ;
+        background: white;
         box-shadow: 1px 7px 6px 2px #eeeeeed0;
         padding: 2rem;
         transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.32s ease, box-shadow 0.32s ease, background-color 0.32s ease;
@@ -102,6 +102,11 @@
         height: 1.9rem;
         object-fit: contain;
         opacity: 0.98;
+    }
+
+    /* Award icon uses currentColor in SVG; as <img> it renders dark — invert for contrast on navy badge. */
+    .stats-icon-badge img[src$='icon-award-outline.svg'] {
+        filter: brightness(0) invert(1);
     }
 
     .stats-card__eyebrow {
@@ -221,12 +226,12 @@
             padding-bottom: 2.5rem;
         }
     }
-}
 
-@media (prefers-reduced-motion: reduce) {
-    .stats-card,
-    .stats-icon-badge,
-    .stats-card-line {
-        transition: none;
+    @media (prefers-reduced-motion: reduce) {
+        .stats-card,
+        .stats-icon-badge,
+        .stats-card-line {
+            transition: none;
+        }
     }
 }

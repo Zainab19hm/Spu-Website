@@ -1,4 +1,4 @@
-<section class="relative py-24 overflow-hidden bg-white font-hacen">
+<section x-cloak class="relative py-24 overflow-hidden bg-white font-hacen">
     <div class="absolute inset-0 opacity-[0.05] pointer-events-none z-0"></div>
 
     <div class="container relative z-10 max-w-6xl mx-auto px-6">
@@ -55,9 +55,11 @@
                 </a>
             </template>
         </div>
-        <div
-            class="px-5 text-center  mt-10  py-3 w-fit rounded-[8px] bg-spu-blue text-white mx-auto hover:bg-spu-red transition-colors duration-300  cursor-pointer">
-            view more</div>
+        <a href="/news.html"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-spu-blue text-white hover:bg-spu-red transition-colors duration-300 font-bold text-sm uppercase tracking-wider mx-auto">
+            <span x-text="$store.app.currentLang === 'ar' ? 'عرض المزيد' : 'View More'"></span>
+            <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
+        </a>
 
         <div class="mt-24 pt-10 border-t border-slate-100 flex justify-center">
             <a href="/about.html"

@@ -76,8 +76,7 @@ export function createCalendarApp() {
             const appStore = getAppStore();
 
             if (appStore.currentLang === 'ar') {
-                // Wrapped numeric parts in translate="no" to prevent conversion to Eastern Arabic numerals
-                return `${appStore.ui.months.ar[date.month()]} <span translate="no">${date.date()}</span>, <span translate="no">${date.year()}</span>`;
+                return `${appStore.ui.months.ar[date.month()]} <span translate="no">${date.date()}</span>, <span translate="no">${date.year()}</span>`; // !
             }
 
             return `<span translate="no">${date.format('MMM D, YYYY')}</span>`;
@@ -95,8 +94,7 @@ export function createCalendarApp() {
 
                 return {
                     date: dateKey,
-                    // Wrap the day number in a span with translate="no"
-                    dayNumber: isCurrentMonth ? `<span translate="no">${currentDay.date()}</span>` : '',
+                    dayNumber: isCurrentMonth ? `<span translate="no">${currentDay.date()}</span>` : '', // !
                     isCurrentMonth: isCurrentMonth,
                     hasEvent: isCurrentMonth && (groupedEvents[dateKey] || []).length > 0
                 };
