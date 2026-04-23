@@ -47,8 +47,9 @@
                     <!-- Content Image with Category Tag -->
                     <div class="relative h-[50%] overflow-hidden bg-gray-100">
                         <img :src="item.image" :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"
-                            loading="lazy" decoding="async" width="289" height="174" class="w-full h-full object-cover"
+                            loading="lazy" decoding="async" width="289" height="174" class="w-full h-full object-cover object-center"
                             style="transform: translateZ(0);">
+                        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/10 via-transparent to-transparent pointer-events-none"></div>
                         <div class="absolute top-4 left-4 px-4 py-1.5 rounded-lg text-white text-[11px] font-bold"
                             :style="'background-color:' + item.tagColor" x-text="item.category"></div>
                     </div>

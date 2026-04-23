@@ -1,16 +1,54 @@
-import './style.css';
 import Alpine from 'alpinejs';
 import { registerStores } from './alpine/register-stores.js';
 import { siteRoutes } from './config/site-routes.js';
 import { reconcileFontAwesomeIcons, startFontAwesome } from './features/font-awesome.js';
-import { initRevealSections, observeRevealSections } from './features/reveal-sections.js';
-import { observeElement } from './features/reveal-sections.js';
+import { initRevealSections, observeElement, observeRevealSections } from './features/reveal-sections.js';
 import { initPageLoader } from './loader/page-loader.js';
+import './style.css';
 
 window.Alpine = Alpine;
 window.observeElement = observeElement;
 
 const pageName = document.body?.dataset.page || 'home';
+
+function revealCloakedContent() {
+  document.documentElement.removeAttribute('data-app-boot');
+
+  if (typeof window.__SPU_REVEAL_CLOAKED === 'function') {
+    window.__SPU_REVEAL_CLOAKED();
+    return;
+  }
+
+  document.querySelectorAll('[x-cloak]').forEach((element) => {
+    element.removeAttribute('x-cloak');
+    element.style.removeProperty('display');
+  });
+}
+
+function setAppReadyState(state) {
+  if (!document.body) {
+    return;
+  }
+
+  document.body.dataset.appReady = state;
+
+  if (state === 'true') {
+    document.documentElement.removeAttribute('data-app-boot');
+    return;
+  }
+
+  if (typeof window.__SPU_SET_BOOT_STAGE === 'function') {
+    if (state === 'false') {
+      window.__SPU_SET_BOOT_STAGE('error', 'Interactive features are temporarily unavailable. Please reload the page.');
+      return;
+    }
+
+    window.__SPU_SET_BOOT_STAGE('pending', 'Preparing the page...');
+    return;
+  }
+
+  document.documentElement.setAttribute('data-app-boot', state === 'false' ? 'error' : 'pending');
+}
 
 async function registerPageFeatureGlobals() {
   if (pageName !== 'home') {
@@ -27,6 +65,11 @@ async function registerPageFeatureGlobals() {
 }
 
 function renderBootstrapFailure() {
+  if (typeof window.__SPU_SET_BOOT_STAGE === 'function') {
+    window.__SPU_SET_BOOT_STAGE('error', 'Interactive features are temporarily unavailable. Please reload the page or contact SPU if the issue continues.');
+    return;
+  }
+
   if (document.querySelector('[data-app-alert="bootstrap"]')) {
     return;
   }
@@ -56,17 +99,20 @@ function renderBootstrapFailure() {
 
 async function bootstrap() {
   try {
+    setAppReadyState('pending');
     startFontAwesome();
     await initPageLoader(pageName);
-    await registerPageFeatureGlobals();
-    await registerStores(Alpine, { pageName });
+    await Promise.all([
+      registerPageFeatureGlobals(),
+      registerStores(Alpine, { pageName })
+    ]);
     Alpine.start();
     reconcileFontAwesomeIcons();
     initRevealSections();
     observeRevealSections();
-    document.body.dataset.appReady = 'true';
+    setAppReadyState('true');
   } catch (error) {
-    document.body.dataset.appReady = 'false';
+    setAppReadyState('false');
     renderBootstrapFailure();
     console.error('Application bootstrap failed.', error);
   }

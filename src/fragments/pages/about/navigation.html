@@ -19,8 +19,13 @@
 
                         <div class="relative z-10 mx-auto">
                             <div
-                                class="w-14 h-14 mx-auto rounded-2xl bg-slate-50 flex items-center justify-center transition-all duration-500 group-hover:bg-spu-blue  mb-6 shadow-inner">
-                                <img :src="sub.icon" class="w-7 h-7 group-hover:brightness-0 group-hover:invert transition-all" :alt="sub.titleEn">
+                                class="w-14 h-14 mx-auto rounded-2xl bg-slate-50 flex items-center justify-center transition-all duration-500 group-hover:bg-spu-blue mb-6 shadow-inner">
+                                <template x-if="sub.icon.startsWith('fa')">
+                                    <i :class="sub.icon + ' text-[1.25rem] transition-all duration-500 group-hover:text-white'" aria-hidden="true"></i>
+                                </template>
+                                <template x-if="!sub.icon.startsWith('fa')">
+                                    <img :src="sub.icon" class="w-7 h-7 group-hover:brightness-0 group-hover:invert transition-all" :alt="sub.titleEn">
+                                </template>
                             </div>
 
                             <h4 class="text-lg font-bold text-spu-blue transition-colors duration-300 group-hover:text-spu-red"

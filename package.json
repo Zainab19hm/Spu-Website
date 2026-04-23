@@ -6,6 +6,8 @@
   "scripts": {
     "validate:pages": "node scripts/validate-site-pages.js",
     "optimize:images": "node scripts/optimize-images.js",
+    "optimize:all-images": "node scripts/optimize-all-images.js",
+    "generate:research-images": "node scripts/generate-research-images.js",
     "generate:pages": "node scripts/generate-page-shells.js",
     "predev": "npm run validate:pages && npm run generate:pages",
     "dev": "vite",

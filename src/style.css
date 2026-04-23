@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
-[x-cloak] { display: none !important; }
+html[data-app-boot="pending"] body > header,
+html[data-app-boot="pending"] body > main,
+html[data-app-boot="pending"] body > footer {
+  visibility: hidden;
+}
+
+[x-cloak] {
+  display: none !important;
+}
 
 @import "./styles/foundation.css";
 @import "./styles/layout.css";

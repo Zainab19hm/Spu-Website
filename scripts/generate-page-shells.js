@@ -144,6 +144,207 @@ function renderStructuredData(site, page, canonicalUrl, ogImage) {
   return `<script type="application/ld+json">${escapeJson(structuredData)}</script>`;
 }
 
+function renderBootGuardScript() {
+  return `<script>(function () {
+  document.documentElement.setAttribute('data-app-boot', 'pending');
+
+  function setBootStage(stage, message) {
+    if (stage) {
+      document.documentElement.setAttribute('data-app-boot', stage);
+    } else {
+      document.documentElement.removeAttribute('data-app-boot');
+    }
+
+    if (!message) {
+      return;
+    }
+
+    var status = document.querySelector('[data-app-boot-status]');
+
+    if (status) {
+      status.textContent = message;
+    }
+  }
+
+  function revealCloakedContent() {
+    setBootStage(null);
+    var cloaked = document.querySelectorAll('[x-cloak]');
+
+    for (var i = 0; i < cloaked.length; i += 1) {
+      cloaked[i].removeAttribute('x-cloak');
+      cloaked[i].style.removeProperty('display');
+    }
+  }
+
+  window.__SPU_SET_BOOT_STAGE = setBootStage;
+  window.__SPU_REVEAL_CLOAKED = revealCloakedContent;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    window.setTimeout(function () {
+      if (!document.body || document.body.dataset.appReady === 'true') {
+        return;
+      }
+
+      setBootStage('slow', 'Loading the official SPU website...');
+    }, 1200);
+
+    window.setTimeout(function () {
+      if (!document.body || document.body.dataset.appReady === 'true') {
+        return;
+      }
+
+      setBootStage('error', 'The page is taking longer than expected. You can wait a moment or reload it.');
+    }, 8000);
+  }, { once: true });
+})();</script>`;
+}
+
+function renderBootGuardStyles() {
+  return `<style>
+  html[data-app-boot="pending"] body > header,
+  html[data-app-boot="pending"] body > main,
+  html[data-app-boot="pending"] body > footer,
+  html[data-app-boot="slow"] body > header,
+  html[data-app-boot="slow"] body > main,
+  html[data-app-boot="slow"] body > footer,
+  html[data-app-boot="error"] body > header,
+  html[data-app-boot="error"] body > main,
+  html[data-app-boot="error"] body > footer {
+    visibility: hidden;
+  }
+
+  [data-app-boot-screen] {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+      radial-gradient(circle at top, rgba(32, 39, 89, 0.08), transparent 36%),
+      linear-gradient(180deg, #ffffff 0%, #f6f8fc 100%);
+  }
+
+  html[data-app-boot="pending"] [data-app-boot-screen],
+  html[data-app-boot="slow"] [data-app-boot-screen],
+  html[data-app-boot="error"] [data-app-boot-screen] {
+    display: flex;
+  }
+
+  .app-boot-screen__panel {
+    width: min(100%, 560px);
+    border: 1px solid rgba(32, 39, 89, 0.08);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+    padding: 32px 28px;
+    text-align: center;
+    color: #202759;
+  }
+
+  .app-boot-screen__logo {
+    width: min(100%, 260px);
+    height: auto;
+    margin: 0 auto 20px;
+    display: block;
+  }
+
+  .app-boot-screen__eyebrow {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #6f1616;
+  }
+
+  .app-boot-screen__title {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .app-boot-screen__status {
+    margin: 12px 0 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: rgba(32, 39, 89, 0.78);
+  }
+
+  .app-boot-screen__progress {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 6px;
+    margin-top: 24px;
+    border-radius: 999px;
+    background: rgba(32, 39, 89, 0.1);
+  }
+
+  .app-boot-screen__progress span {
+    display: block;
+    width: 38%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #202759 0%, #6f1616 100%);
+    animation: spuBootProgress 1.15s ease-in-out infinite;
+  }
+
+  .app-boot-screen__action {
+    display: none;
+    margin: 22px auto 0;
+    border: 0;
+    border-radius: 999px;
+    background: #202759;
+    color: #ffffff;
+    padding: 12px 22px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  html[data-app-boot="error"] .app-boot-screen__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  html[data-app-boot="error"] .app-boot-screen__progress span {
+    width: 100%;
+    animation: none;
+  }
+
+  @keyframes spuBootProgress {
+    0% {
+      transform: translateX(-120%);
+    }
+
+    100% {
+      transform: translateX(320%);
+    }
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+  </style>`;
+}
+
+function renderBootScreen(site) {
+  return `<div data-app-boot-screen role="status" aria-live="polite" aria-busy="true">
+    <div class="app-boot-screen__panel">
+      <img src="${escapeAttribute(site.defaultOgImage)}" alt="${escapeAttribute(site.name)}" class="app-boot-screen__logo">
+      <p class="app-boot-screen__eyebrow">Official Website</p>
+      <p class="app-boot-screen__title">${escapeAttribute(site.name)}</p>
+      <p class="app-boot-screen__status" data-app-boot-status>Preparing the page...</p>
+      <div class="app-boot-screen__progress" aria-hidden="true"><span></span></div>
+      <button type="button" class="app-boot-screen__action" onclick="window.location.reload()">Reload page</button>
+    </div>
+  </div>`;
+}
+
 function loadSiteRegistry() {
   const siteRegistry = readJson(registryPath);
   const site = siteRegistry.site || {};
@@ -237,10 +438,13 @@ function renderPageShell(site, layout, page) {
   <link rel="canonical" href="${escapeAttribute(canonicalUrl)}">
   <link rel="icon" href="${escapeAttribute(site.manifestIcon)}" type="image/png">
   <link rel="manifest" href="/site.webmanifest">
+  ${renderBootGuardStyles()}
+  ${renderBootGuardScript()}
   ${renderStructuredData(site, page, canonicalUrl, ogImage)}
   <title>${escapeAttribute(page.title)}</title>
 </head>
 <body data-page="${escapeAttribute(page.name)}" data-page-store="${escapeAttribute(page.name)}" data-page-section="${escapeAttribute(page.name)}" data-route="${escapeAttribute(page.route)}">
+  ${renderBootScreen(site)}
   ${headerMarkup}
   <main data-page-content x-data data-page-name="${escapeAttribute(page.name)}">
 ${pageMarkup}

@@ -3,6 +3,30 @@ import sitePages from '../config/site-pages.json';
 const layout = sitePages.layout;
 const pages = sitePages.pages;
 
+function hasRenderableMarkup(selector) {
+    const element = document.querySelector(selector);
+
+    if (!element) {
+        return false;
+    }
+
+    return element.children.length > 0 || element.innerHTML.trim().length > 0;
+}
+
+function hasGeneratedPageShell(pageName) {
+    const pageRoot = document.querySelector('main[data-page-content]');
+
+    if (!pageRoot || document.body?.dataset.page !== pageName) {
+        return false;
+    }
+
+    return [
+        hasRenderableMarkup('header'),
+        hasRenderableMarkup('footer'),
+        pageRoot.children.length > 0 || pageRoot.innerHTML.trim().length > 0
+    ].every(Boolean);
+}
+
 async function fetchFragment(path) {
     const response = await fetch(`/src/fragments/${path}`);
     if (!response.ok) {
@@ -35,6 +59,10 @@ async function injectFragment(selector, html) {
 }
 
 export async function loadPageFragments(pageName) {
+    if (hasGeneratedPageShell(pageName)) {
+        return;
+    }
+
     const pageConfig = pages.find(p => p.name === pageName);
 
     if (!pageConfig) {
