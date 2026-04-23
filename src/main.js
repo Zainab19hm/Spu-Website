@@ -11,20 +11,6 @@ window.observeElement = observeElement;
 
 const pageName = document.body?.dataset.page || 'home';
 
-function revealCloakedContent() {
-  document.documentElement.removeAttribute('data-app-boot');
-
-  if (typeof window.__SPU_REVEAL_CLOAKED === 'function') {
-    window.__SPU_REVEAL_CLOAKED();
-    return;
-  }
-
-  document.querySelectorAll('[x-cloak]').forEach((element) => {
-    element.removeAttribute('x-cloak');
-    element.style.removeProperty('display');
-  });
-}
-
 function setAppReadyState(state) {
   if (!document.body) {
     return;
@@ -107,10 +93,13 @@ async function bootstrap() {
       registerStores(Alpine, { pageName })
     ]);
     Alpine.start();
-    reconcileFontAwesomeIcons();
-    initRevealSections();
-    observeRevealSections();
     setAppReadyState('true');
+
+    requestAnimationFrame(() => {
+      reconcileFontAwesomeIcons();
+      initRevealSections();
+      observeRevealSections();
+    });
   } catch (error) {
     setAppReadyState('false');
     renderBootstrapFailure();

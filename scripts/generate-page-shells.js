@@ -144,6 +144,42 @@ function renderStructuredData(site, page, canonicalUrl, ogImage) {
   return `<script type="application/ld+json">${escapeJson(structuredData)}</script>`;
 }
 
+const pageWarmupModules = {
+  home: [
+    '/src/alpine/pages/home-stores.js',
+    '/src/alpine/register-faculty-catalog-store.js',
+    '/src/features/calendar.js',
+    '/src/features/research-slider.js'
+  ],
+  about: ['/src/alpine/pages/about-stores.js'],
+  'about-history': ['/src/alpine/pages/about-stores.js'],
+  'about-leadership': ['/src/alpine/pages/about-stores.js'],
+  'about-directorates': ['/src/alpine/pages/about-stores.js'],
+  'about-partnership': ['/src/alpine/pages/about-stores.js'],
+  faculties: [
+    '/src/alpine/pages/faculties-page-stores.js',
+    '/src/alpine/register-faculty-catalog-store.js'
+  ],
+  admissions: ['/src/alpine/pages/admissions-stores.js'],
+  research: ['/src/alpine/pages/research-stores.js'],
+  'student-life': ['/src/alpine/pages/student-life-stores.js'],
+  services: ['/src/alpine/pages/services-stores.js'],
+  news: ['/src/alpine/pages/news-stores.js'],
+  contact: ['/src/alpine/pages/contact-stores.js']
+};
+
+function renderWarmupScript(pageName) {
+  const modulePaths = pageWarmupModules[pageName] || [];
+
+  if (!modulePaths.length) {
+    return '';
+  }
+
+  return `<script type="module">
+${modulePaths.map((modulePath) => `  import '${modulePath}';`).join('\n')}
+</script>`;
+}
+
 function renderBootGuardScript() {
   return `<script>(function () {
   document.documentElement.setAttribute('data-app-boot', 'pending');
@@ -186,7 +222,7 @@ function renderBootGuardScript() {
       }
 
       setBootStage('slow', 'Loading the official SPU website...');
-    }, 1200);
+    }, 360);
 
     window.setTimeout(function () {
       if (!document.body || document.body.dataset.appReady === 'true') {
@@ -194,13 +230,19 @@ function renderBootGuardScript() {
       }
 
       setBootStage('error', 'The page is taking longer than expected. You can wait a moment or reload it.');
-    }, 8000);
+    }, 10000);
   }, { once: true });
 })();</script>`;
 }
 
 function renderBootGuardStyles() {
   return `<style>
+  body > header,
+  body > main,
+  body > footer {
+    transition: opacity 220ms ease;
+  }
+
   html[data-app-boot="pending"] body > header,
   html[data-app-boot="pending"] body > main,
   html[data-app-boot="pending"] body > footer,
@@ -210,26 +252,34 @@ function renderBootGuardStyles() {
   html[data-app-boot="error"] body > header,
   html[data-app-boot="error"] body > main,
   html[data-app-boot="error"] body > footer {
-    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
   }
 
   [data-app-boot-screen] {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     background:
       radial-gradient(circle at top, rgba(32, 39, 89, 0.08), transparent 36%),
       linear-gradient(180deg, #ffffff 0%, #f6f8fc 100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 180ms ease, visibility 0s linear 180ms;
   }
 
-  html[data-app-boot="pending"] [data-app-boot-screen],
   html[data-app-boot="slow"] [data-app-boot-screen],
   html[data-app-boot="error"] [data-app-boot-screen] {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
   }
 
   .app-boot-screen__panel {
@@ -238,9 +288,19 @@ function renderBootGuardStyles() {
     border-radius: 28px;
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+    backdrop-filter: blur(12px);
     padding: 32px 28px;
     text-align: center;
     color: #202759;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  html[data-app-boot="slow"] .app-boot-screen__panel,
+  html[data-app-boot="error"] .app-boot-screen__panel {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .app-boot-screen__logo {
@@ -440,6 +500,7 @@ function renderPageShell(site, layout, page) {
   <link rel="manifest" href="/site.webmanifest">
   ${renderBootGuardStyles()}
   ${renderBootGuardScript()}
+  ${renderWarmupScript(page.name)}
   ${renderStructuredData(site, page, canonicalUrl, ogImage)}
   <title>${escapeAttribute(page.title)}</title>
 </head>
