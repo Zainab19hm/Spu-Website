@@ -29,6 +29,9 @@ function hasAlpineRoot(tag) {
 }
 
 function isLayoutFragment(filePath) {
+  if (filePath.endsWith('head.html') || filePath.endsWith('boot-screen.html')) {
+    return false; // These are static layout shells, not Alpine components
+  }
   return filePath.startsWith(layoutRoot);
 }
 

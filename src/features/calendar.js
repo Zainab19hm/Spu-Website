@@ -129,6 +129,46 @@ export function createCalendarApp() {
 
         nextMonth() {
             this.changeMonth(1);
+        },
+        activeEventIndex: 0,
+        carouselInterval: null,
+        // ... your other properties (selectedDate, viewDate, etc.)
+
+        startCarousel() {
+            // Only start if there's more than one event for the selected date
+            if (this.selectedDateEvents.length <= 1) return;
+
+            this.stopCarousel(); // Clear any existing intervals first
+            this.carouselInterval = setInterval(() => {
+                this.nextEvent();
+            }, 5000); // Change slide every 5 seconds
+        },
+
+        stopCarousel() {
+            if (this.carouselInterval) {
+                clearInterval(this.carouselInterval);
+                this.carouselInterval = null;
+            }
+        },
+
+        nextEvent() {
+            if (this.selectedDateEvents.length > 0) {
+                this.activeEventIndex = (this.activeEventIndex + 1) % this.selectedDateEvents.length;
+            }
+        },
+
+        selectEvent(index) {
+            this.activeEventIndex = index;
+            // Optional: Restart timer when user manually clicks a dot
+            this.startCarousel();
+        },
+
+        // Watcher or logic inside selectDate to reset index
+        selectDate(date) {
+            this.selectedDate = date;
+            this.activeEventIndex = 0; // Reset to first event of the new day
+            this.startCarousel();
         }
     };
+    
 }

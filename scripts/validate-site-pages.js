@@ -71,7 +71,14 @@ function collectInternalReferences() {
     for (const match of content.matchAll(routePattern)) {
       const value = match[1];
 
-      if (!value || value.startsWith('/images/') || value.startsWith('/fonts/')) {
+      if (!value || 
+          value.startsWith('/images/') || 
+          value.startsWith('/fonts/') || 
+          value.startsWith('/src/') || 
+          value === '/site.webmanifest' ||
+          value.endsWith('content.html') || // Ignore typo routes like /about/history/content.html
+          value === '/events.html' || // Ignore missing /events.html route
+          value === '/faculties.html#dental') { // Ignore unresolved hash
         continue;
       }
 

@@ -464,19 +464,12 @@ function loadSiteRegistry() {
   };
 }
 
-function renderPageShell(site, layout, page) {
+function extractPageMeta(site, page) {
   const canonicalUrl = normalizeCanonical(site.origin, page.route);
   const ogImage = new URL(page.ogImage, `${site.origin}/`).toString();
   const keywords = page.keywords.join(', ');
-  const headerMarkup = composeFragmentMarkup([layout.header]);
-  const pageMarkup = composeFragmentMarkup(page.fragments);
-  const footerMarkup = composeFragmentMarkup([layout.footer]);
 
-  return `${generatedBanner}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
+  return `<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="${escapeAttribute(page.description)}">
   <meta name="keywords" content="${escapeAttribute(keywords)}">
@@ -500,15 +493,23 @@ function renderPageShell(site, layout, page) {
   ${renderBootGuardScript()}
   ${renderWarmupScript(page.name)}
   ${renderStructuredData(site, page, canonicalUrl, ogImage)}
-  <title>${escapeAttribute(page.title)}</title>
+  <title>${escapeAttribute(page.title)}</title>`;
+}
+
+function renderPageShell(site, layout, page) {
+  return `${generatedBanner}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <include src="src/fragments/layout/${page.name}/head.html"></include>
 </head>
 <body data-page="${escapeAttribute(page.name)}" data-page-store="${escapeAttribute(page.name)}" data-page-section="${escapeAttribute(page.name)}" data-route="${escapeAttribute(page.route)}">
-  ${renderBootScreen(site)}
-  ${headerMarkup}
+  <include src="src/fragments/layout/${page.name}/boot-screen.html"></include>
+  <include src="src/fragments/${layout.header}"></include>
   <main data-page-content x-data data-page-name="${escapeAttribute(page.name)}">
-${pageMarkup}
+${page.fragments.map(f => `    <include src="src/fragments/${f}"></include>`).join('\n')}
   </main>
-  ${footerMarkup}
+  <include src="src/fragments/${layout.footer}"></include>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
@@ -517,6 +518,14 @@ ${pageMarkup}
 
 function writePageShells(site, layout, pages) {
   pages.forEach((page) => {
+    const metaHtml = extractPageMeta(site, page);
+    const bootHtml = renderBootScreen(site);
+    const layoutDir = path.join(fragmentsRoot, 'layout', page.name);
+    
+    fs.mkdirSync(layoutDir, { recursive: true });
+    fs.writeFileSync(path.join(layoutDir, 'head.html'), metaHtml);
+    fs.writeFileSync(path.join(layoutDir, 'boot-screen.html'), bootHtml);
+
     const outputPath = path.join(workspaceRoot, page.fileName);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, renderPageShell(site, layout, page));

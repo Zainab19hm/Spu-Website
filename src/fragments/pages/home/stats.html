@@ -2,8 +2,7 @@
     MAIN UNIVERSITY STATISTICS
     Horizontal banner with animated numeric counters
 -->
-<section id="hero-next"
-    x-data="{
+<section id="hero-next" x-data="{
         hasCounted: false,
         runCount() {
             if (this.hasCounted) return;
@@ -26,9 +25,7 @@
                 observer.disconnect();
             }
         }
-    }"
-    class="stats-section relative z-20 w-full overflow-hidden font-hacen reveal scroll-mt-24"
-    x-init="init()">
+    }" class="stats-section relative z-20 w-full overflow-hidden font-hacen reveal scroll-mt-24" x-init="init()">
     <div class="container">
         <div class="stats-shell reveal-item">
             <div class="stats-shell__grid">
@@ -36,7 +33,9 @@
                     <article class="stats-card" :style="`--card-accent: ${stat.accent};`">
                         <div class="stats-card__top">
                             <div class="stats-icon-badge">
-                                <img :src="stat.svgPath" :alt="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn" loading="lazy" decoding="async" class="h-7 w-7 object-contain sm:h-8 sm:w-8">
+                                <img :src="stat.svgPath"
+                                    :alt="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"
+                                    class="h-7 w-7 object-contain sm:h-8 sm:w-8">
                             </div>
 
                             <!-- <span class="stats-card__eyebrow" x-text="$store.app.currentLang === 'ar' ? 'مؤشر مؤسسي' : 'Institutional Snapshot'"></span> -->
@@ -44,13 +43,18 @@
 
                         <div class="stats-card__body">
                             <div class="stats-card__value-row">
-                                <span class="stats-card-value" translate="no" x-text="new Intl.NumberFormat('en-US').format(stat.current)"></span>
-                                <span x-show="stat.unitEn" class="stats-card-value" translate="no" x-text="$store.app.currentLang === 'ar' ? (stat.unitAr || stat.unitEn) : stat.unitEn"></span>
-                                <span x-show="stat.suffixEn" class="stats-card-plus" x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
+                                <span class="stats-card-value" translate="no"
+                                    x-text="new Intl.NumberFormat('en-US').format(stat.current)"></span>
+                                <span x-show="stat.unitEn" class="stats-card-value" translate="no"
+                                    x-text="$store.app.currentLang === 'ar' ? (stat.unitAr || stat.unitEn) : stat.unitEn"></span>
+                                <span x-show="stat.suffixEn" class="stats-card-plus"
+                                    x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
                             </div>
 
-                            <p class="stats-card-label" x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
-                            <p class="stats-card-summary" x-text="$store.app.currentLang === 'ar' ? stat.summaryAr : stat.summaryEn"></p>
+                            <p class="stats-card-label"
+                                x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
+                            <p class="stats-card-summary"
+                                x-text="$store.app.currentLang === 'ar' ? stat.summaryAr : stat.summaryEn"></p>
                         </div>
 
                         <span class="stats-card-line" aria-hidden="true"></span>

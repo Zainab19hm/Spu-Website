@@ -51,7 +51,6 @@
         "SPU governance"
       ],
       "fragments": [
-        "pages/about/hero.html",
         "pages/about/overview.html",
         "pages/about/navigation.html"
       ]
