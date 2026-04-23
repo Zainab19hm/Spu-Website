@@ -215,23 +215,21 @@ function renderBootGuardScript() {
   window.__SPU_SET_BOOT_STAGE = setBootStage;
   window.__SPU_REVEAL_CLOAKED = revealCloakedContent;
 
-  document.addEventListener('DOMContentLoaded', function () {
-    window.setTimeout(function () {
-      if (!document.body || document.body.dataset.appReady === 'true') {
-        return;
-      }
+  window.setTimeout(function () {
+    if (document.body && document.body.dataset.appReady === 'true') {
+      return;
+    }
 
-      setBootStage('slow', 'Loading the official SPU website...');
-    }, 360);
+    setBootStage('slow', 'Loading the official SPU website...');
+  }, 360);
 
-    window.setTimeout(function () {
-      if (!document.body || document.body.dataset.appReady === 'true') {
-        return;
-      }
+  window.setTimeout(function () {
+    if (document.body && document.body.dataset.appReady === 'true') {
+      return;
+    }
 
-      setBootStage('error', 'The page is taking longer than expected. You can wait a moment or reload it.');
-    }, 10000);
-  }, { once: true });
+    setBootStage('error', 'The page is taking longer than expected. You can wait a moment or reload it.');
+  }, 10000);
 })();</script>`;
 }
 
