@@ -4,13 +4,15 @@
 <head>
   <include src="src/fragments/layout/faculties/head.html"></include>
 </head>
-<body data-page="faculties" data-page-store="faculties" data-page-section="faculties" data-route="/faculties.html">
+<body data-page="faculties" data-page-store="faculties" data-page-section="faculties" data-route="/faculty.html">
   <include src="src/fragments/layout/faculties/boot-screen.html"></include>
   <include src="src/fragments/layout/header.html"></include>
   <main data-page-content x-data data-page-name="faculties">
     <include src="src/fragments/pages/faculties/hero.html"></include>
-    <include src="src/fragments/pages/faculties/catalog.html"></include>
-    <include src="src/fragments/pages/faculties/support.html"></include>
+    <include src="src/fragments/pages/faculties/content.html"></include>
+    <include src="src/fragments/pages/faculties/dean.html"></include>
+    <include src="src/fragments/pages/faculties/stats.html"></include>
+    <include src="src/fragments/pages/faculties/highlights.html"></include>
   </main>
   <include src="src/fragments/layout/footer.html"></include>
   <script type="module" src="/src/main.js"></script>

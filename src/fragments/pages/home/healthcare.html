@@ -106,9 +106,6 @@
         </div>
 
         <div class="bg-spu-blue rounded-[8px] py-12 px-8 shadow-2xl relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10 pointer-events-none"
-                style="background-image: radial-gradient(circle, #fff 1.5px, transparent 1.5px); background-size: 30px 30px;">
-            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
                 <template x-for="(stat, index) in $store.healthcare.stats" :key="stat.id">
@@ -124,7 +121,7 @@
                             <span class="text-3xl font-bold text-spu-red ml-1" translate="no"
                                 x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
                         </div>
-                        <p class="text-white/60 text-xs font-bold tracking-widest uppercase"
+                        <p class="text-[#799DD6] text-xs font-bold tracking-widest uppercase"
                             x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
                     </div>
                 </template>

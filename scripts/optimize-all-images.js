@@ -53,6 +53,31 @@ const optimizationJobs = [
       { source: 'slider-3.jpg', output: 'slider-3.webp', width: 1920, quality: 80 },
       { source: 'slider-4.jpg', output: 'slider-4.webp', width: 1920, quality: 80 }
     ]
+  },
+
+  // Large photos and illustrations (home / about content)
+  {
+    category: 'Large content images',
+    jobs: [
+      { source: 'unsplash_VckdJzo7ig0.png', output: 'unsplash_VckdJzo7ig0.webp', width: 1280, quality: 78 },
+      { source: 'unsplash_s9CC2SKySJM.png', output: 'unsplash_s9CC2SKySJM.webp', width: 1280, quality: 78 },
+      { source: 'DSC_1060.jpg', output: 'dsc-1060.webp', width: 1280, quality: 78 },
+      { source: 'DSC_1075.JPG', output: 'dsc-1075.webp', width: 1280, quality: 78 },
+      {
+        source: 'Gemini_Generated_Image_c89yjwc89yjwc89y.png',
+        output: 'Gemini_Generated_Image_c89yjwc89yjwc89y.webp',
+        width: 1280,
+        quality: 78
+      },
+      {
+        source: 'Gemini_Generated_Image_rrcjc2rrcjc2rrcj.png',
+        output: 'Gemini_Generated_Image_rrcjc2rrcjc2rrcj.webp',
+        width: 1280,
+        quality: 78
+      },
+      { source: 'Frame 114.png', output: 'frame-114.webp', width: 1280, quality: 78 },
+      { source: '1.png', output: 'about-highlight-1.webp', width: 1280, quality: 78 }
+    ]
   }
 ];
 
@@ -61,8 +86,17 @@ async function optimizeImage({ source, output, width, quality }) {
   const outputPath = path.join(publicImages, output);
 
   try {
-    // Check if source exists
-    await fs.access(sourcePath);
+    try {
+      await fs.access(sourcePath);
+    } catch {
+      return {
+        success: true,
+        skipped: true,
+        source,
+        output,
+        message: 'source missing (already migrated or removed)'
+      };
+    }
 
     // Load image
     const image = sharp(sourcePath);
@@ -127,8 +161,12 @@ async function optimizeAllImages() {
       allResults.push(result);
 
       if (result.success) {
-        const sizeMB = (result.newSize / 1024 / 1024).toFixed(2);
-        console.log(` ✅ ${sizeMB}MB (-${result.reduction}%)`);
+        if (result.skipped) {
+          console.log(` ⏭ skipped`);
+        } else {
+          const sizeMB = (result.newSize / 1024 / 1024).toFixed(2);
+          console.log(` ✅ ${sizeMB}MB (-${result.reduction}%)`);
+        }
       } else {
         console.log(` ❌ ${result.error}`);
       }
@@ -141,15 +179,19 @@ async function optimizeAllImages() {
   console.log('='.repeat(70));
   console.log('\n📊 Optimization Summary:\n');
 
-  const successful = allResults.filter(r => r.success);
-  const failed = allResults.filter(r => !r.success);
+  const processed = allResults.filter((r) => r.success && !r.skipped);
+  const skipped = allResults.filter((r) => r.skipped);
+  const failed = allResults.filter((r) => !r.success);
 
-  console.log(`✅ Successful: ${successful.length}/${allResults.length}`);
+  console.log(`✅ Processed: ${processed.length}/${allResults.length}`);
+  if (skipped.length > 0) {
+    console.log(`⏭ Skipped (no source): ${skipped.length}`);
+  }
   console.log(`❌ Failed: ${failed.length}/${allResults.length}`);
 
-  if (successful.length > 0) {
-    const totalOriginal = successful.reduce((sum, r) => sum + r.originalSize, 0);
-    const totalNew = successful.reduce((sum, r) => sum + r.newSize, 0);
+  if (processed.length > 0) {
+    const totalOriginal = processed.reduce((sum, r) => sum + r.originalSize, 0);
+    const totalNew = processed.reduce((sum, r) => sum + r.newSize, 0);
     const totalReduction = ((1 - totalNew / totalOriginal) * 100).toFixed(1);
     const savedMB = ((totalOriginal - totalNew) / 1024 / 1024).toFixed(2);
 
@@ -165,7 +207,7 @@ async function optimizeAllImages() {
 
   console.log('\n✨ Image optimization complete!\n');
 
-  return { successful: successful.length, failed: failed.length };
+  return { successful: processed.length, failed: failed.length };
 }
 
 // Run if called directly

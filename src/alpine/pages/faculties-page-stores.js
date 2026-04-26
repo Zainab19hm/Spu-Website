@@ -1,6 +1,33 @@
-import { facultiesPageContent } from '../../data/pages/faculties-content.js';
-import { cloneData } from '../../utils/clone.js';
+import { facultiesCatalog } from '../../data/domains/faculties-catalog.js';
 
-export function registerFacultiesPageStores(Alpine) {
-    Alpine.store('facultiesPage', cloneData(facultiesPageContent));
-}
+// تعديل: التصدير باستخدام اسم مسمى ليطابق ملف التسجيل
+export const registerFacultiesPageStores = (Alpine) => {
+    Alpine.store('facultiesPage', {
+        currentFaculty: null,
+        loading: true,
+
+        init() {
+            this.loadFacultyData();
+            window.addEventListener('popstate', () => this.loadFacultyData());
+        },
+
+        loadFacultyData() {
+            this.loading = true;
+            const urlParams = new URLSearchParams(window.location.search);
+            const facultyId = urlParams.get('id');
+
+            if (!facultyId) {
+                this.currentFaculty = facultiesCatalog.list[0];
+            } else {
+                const data = facultiesCatalog.list.find(f => f.id === facultyId);
+                if (data) {
+                    this.currentFaculty = data;
+                } else {
+                    console.error("Faculty not found:", facultyId);
+                    window.location.href = '../index.html';
+                }
+            }
+            this.loading = false;
+        }
+    });
+};

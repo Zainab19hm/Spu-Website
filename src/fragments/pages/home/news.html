@@ -8,7 +8,7 @@
                 <span x-text="$store.app.currentLang === 'ar' ? 'أخبار الجامعة' : 'SPU News'"></span>
             </h2>
 
-            <div class="flex items-center absolute top-4.5 right-0 gap-6">
+            <div class="flex items-center absolute top-4.5 gap-6" :style="$store.app.currentLang === 'ar' ? 'left:0' : 'right:0' "">
                 <a href="/news.html" ! Fixed View All link to navigate to news page
                     class="bg-[#1e2652] text-white w-[195px] h-[40px] text-center justify-center rounded-[12px] text-sm font-bold flex items-center gap-3 hover:bg-opacity-90 transition-all">
                     <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="p-6 text-center flex flex-col flex-1">
-                        <h3 class="text-[22px] font-bold text-black mb-1 leading-tight"
+                        <h3 class="text-[22px] font-bold text-[#1B1B1F] mb-1 leading-tight"
                             x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
 
                         <p class="text-spu-red text-[15px] mb-3" translate="no" x-html="item.date"></p>

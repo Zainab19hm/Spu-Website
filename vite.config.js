@@ -44,4 +44,9 @@ export default defineConfig({
       input,
     },
   },
+  server: {
+    allowedHosts: [
+      'viable-image-enjoying.ngrok-free.dev'
+    ]
+  }
 });

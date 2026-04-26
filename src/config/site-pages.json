@@ -125,8 +125,8 @@
     },
     {
       "name": "faculties",
-      "fileName": "faculties.html",
-      "route": "/faculties.html",
+      "fileName": "faculty.html",
+      "route": "/faculty.html",
       "title": "Faculties | Syrian Private University",
       "description": "Explore SPU faculties, study pathways, and the academic structure behind the university's core programs.",
       "ogImage": "/images/logo-spu.png",
@@ -137,8 +137,10 @@
       ],
       "fragments": [
         "pages/faculties/hero.html",
-        "pages/faculties/catalog.html",
-        "pages/faculties/support.html"
+        "pages/faculties/content.html",
+        "pages/faculties/dean.html",
+        "pages/faculties/stats.html",
+        "pages/faculties/highlights.html"
       ]
     },
     {

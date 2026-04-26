@@ -20,7 +20,7 @@ export const newsPageContent = {
         titleAr: 'توسّع SPU بنيتها الرقمية الرسمية بإضافة أقسام مخصصة للبحث والأخبار والحياة الجامعية.',
         summaryEn: 'The new information architecture supports stronger discoverability, clearer navigation, and a better foundation for long-term university publishing.',
         summaryAr: 'تدعم البنية المعلوماتية الجديدة قابلية اكتشاف أفضل، وتنقلاً أوضح، وأساساً أقوى للنشر الجامعي طويل الأمد.',
-        image: '/images/slider-4.jpg'
+        image: '/images/slider-4.webp'
     },
     stories: [
         {
@@ -31,7 +31,7 @@ export const newsPageContent = {
             titleAr: 'جلسة تعريفية تقدم للطلاب مسار المسابقة البرمجية العالمية ICPC.',
             summaryEn: 'A student-facing session highlighted competitive programming opportunities and technical development tracks.',
             summaryAr: 'سلطت جلسة موجهة للطلاب الضوء على فرص البرمجة التنافسية ومسارات التطور التقني.',
-            image: '/images/slider-2.jpg'
+            image: '/images/slider-2.webp'
         },
         {
             categoryEn: 'Student Affairs',
@@ -41,7 +41,7 @@ export const newsPageContent = {
             titleAr: 'إطلاق مبادرة موسعة للتمثيل الطلابي عبر الحرم الجامعي.',
             summaryEn: 'The initiative creates stronger channels between students, academic leadership, and campus decision-making.',
             summaryAr: 'تُنشئ المبادرة قنوات أقوى بين الطلاب والقيادة الأكاديمية واتخاذ القرار في الحرم الجامعي.',
-            image: '/images/slider-3.jpg'
+            image: '/images/slider-3.webp'
         },
         {
             categoryEn: 'Community',
@@ -51,7 +51,7 @@ export const newsPageContent = {
             titleAr: 'أنشطة الصحة المجتمعية تعزز امتداد SPU خارج الحرم الجامعي.',
             summaryEn: 'University-led initiatives continue to connect academic work with public benefit and community presence.',
             summaryAr: 'تواصل المبادرات التي تقودها الجامعة ربط العمل الأكاديمي بالفائدة العامة والحضور المجتمعي.',
-            image: '/images/healthcare-main.png'
+            image: '/images/healthcare-main.webp'
         },
         {
             categoryEn: 'Events',
@@ -61,7 +61,7 @@ export const newsPageContent = {
             titleAr: 'أصبح تقويم الفعاليات الأكاديمية أكثر ارتباطاً بالتواصل الخاص بالقبول والحياة الجامعية.',
             summaryEn: 'A more structured event model helps students and visitors understand what is happening and when.',
             summaryAr: 'يساعد نموذج فعاليات أكثر تنظيماً الطلاب والزوار على معرفة ما يحدث ومتى.',
-            image: '/images/slider-2.jpg'
+            image: '/images/slider-2.webp'
         }
     ],
     newsroom: {

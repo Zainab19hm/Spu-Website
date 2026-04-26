@@ -31,18 +31,21 @@ export const navigationMenuItems = [
             { labelAr: 'الشراكات', labelEn: 'Partnerships', url: '/about/partnership.html' }
         ]
     },
+
     {
         id: 2,
         labelAr: 'الكليات',
         labelEn: 'Faculties',
-        url: siteRoutes.faculties,
         page: 'faculties',
         hasDropdown: true,
         children: [
-            { labelAr: 'الطب', labelEn: 'Medicine', url: withHash(siteRoutes.faculties, 'faculty-1') },
-            { labelAr: 'طب الأسنان', labelEn: 'Dentistry', url: withHash(siteRoutes.faculties, 'faculty-2') },
-            { labelAr: 'الصيدلة', labelEn: 'Pharmacy', url: withHash(siteRoutes.faculties, 'faculty-3') },
-            { labelAr: 'هندسة الذكاء الاصطناعي', labelEn: 'AI Engineering', url: withHash(siteRoutes.faculties, 'faculty-4') }
+            { labelAr: 'كلية الطب البشري', labelEn: 'Medicine', url: '/faculty.html?id=medicine' },
+            { labelAr: 'كلية طب الأسنان', labelEn: 'Dentistry', url: '/faculty.html?id=dentistry' },
+            { labelAr: 'كلية الصيدلة', labelEn: 'Pharmacy', url: '/faculty.html?id=pharmacy' },
+            { labelAr: 'كلية هندسة الذكاء الاصطناعي', labelEn: 'AI Engineering', url: '/faculty.html?id=ai-engineering' },
+            { labelAr: 'كلية هندسة البناء  ', labelEn: 'Construction Engineering', url: '/faculty.html?id=Construction' },
+            { labelAr: 'كلية هندسة البترول', labelEn: 'Petroleum Engineering', url: '/faculty.html?id=petroleum' },
+            { labelAr: 'كلية إدارة الأعمال', labelEn: 'Business Administration', url: '/faculty.html?id=business' }
         ]
     },
     {

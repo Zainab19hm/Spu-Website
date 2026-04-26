@@ -88,7 +88,7 @@
         padding: 0.95rem 1rem;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1535px) {
         .site-nav-shell__main {
             padding: 0.95rem 1rem;
             align-items: center;
@@ -102,11 +102,17 @@
         flex-shrink: 0;
     }
 
-    /* Keep desktop nav flex rules scoped to lg+ so they never compete with Tailwind `hidden` on <nav> for small viewports. */
-    @media (min-width: 1024px) {
+    /* Match Tailwind `2xl:` — full horizontal nav from 1536px; below that use the drawer (long AR/EN labels). */
+    @media (min-width: 1536px) {
         .site-nav-list {
             display: flex;
             align-items: center;
+            gap: 1.05rem;
+        }
+    }
+
+    @media (min-width: 1680px) {
+        .site-nav-list {
             gap: 1.3rem;
         }
     }
@@ -426,11 +432,7 @@
         flex-direction: row-reverse;
     }
 
-    @media (min-width: 1024px) {
-        [dir='rtl'] .site-nav-list {
-            flex-direction: row-reverse;
-        }
-    }
+    /* Do not row-reverse .site-nav-list in RTL: DOM order is About→…→Contact; RTL flex already places first item at inline-start (right). */
 
     [dir='rtl'] .site-nav-link::after {
         transform-origin: right center;
@@ -465,7 +467,7 @@
         }
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1536px) {
         .site-nav-shell__main {
             gap: 1.5rem;
             padding: 1rem 1.25rem 1.05rem;

@@ -10,28 +10,28 @@
     <div class="container">
         <!-- Header: Title and Navigation Arrows -->
         <div class="section-header relative">
-            <h2 class="section-header__title text-[42px] font-bold text-spu-blue">
+            <h2 class="section-header__title text-[42px] font-bold text-spu-blue"
+                :style="$store.app.currentLang === 'ar' ? 'text-align:right' : 'text-align:left'">
                 <span x-text="$store.app.currentLang === 'ar' ? 'أبحاث ودراسات' : 'SPU Research'"></span>
             </h2>
 
             <!-- Manual slider controls -->
-            <div class="flex gap-3 absolute -top-0 z-50 right-0">
+            <div class="flex gap-3 absolute top-0 z-50 "
+                :style="$store.app.currentLang === 'ar' ? 'left:0' : 'right:0' ">
                 <button type="button" @click="slide('left')"
                     class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                     :aria-label="$store.app.ui.prev[$store.app.currentLang]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                        <path d="M15.5 18.5L8.5 12l7-6.5" />
-                    </svg>
+                    <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-right-outline.svg' : '/images/icon-chevron-left-outline.svg'"
+                        class="w-3.5 h-3.5" alt="Prev">
                     <span class="sr-only" x-text="$store.app.ui.prev[$store.app.currentLang]"></span>
                 </button>
+
+                
                 <button type="button" @click="slide('right')"
                     class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                     :aria-label="$store.app.ui.next[$store.app.currentLang]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                        <path d="M8.5 18.5L15.5 12l-7-6.5" />
-                    </svg>
+                    <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-left-outline.svg' : '/images/icon-chevron-right-outline.svg'"
+                        class="w-3.5 h-3.5" alt="Next">
                     <span class="sr-only" x-text="$store.app.ui.next[$store.app.currentLang]"></span>
                 </button>
             </div>

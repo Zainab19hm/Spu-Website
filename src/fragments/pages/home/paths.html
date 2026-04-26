@@ -10,7 +10,7 @@
             track.scrollBy({ left: direction === 'right' ? step : -step, behavior: 'smooth' });
         },
         isVisible: false
-    }" class="py-8 mt-[70px] relative font-hacen reveal" style="background-color: #EAF3FF40;"
+    }" class="py-8 mt-[150px] relative font-hacen reveal" style="background-color: #EAF3FF40;"
     x-init="(() => { const observer = new IntersectionObserver(entries => { if (entries[0].isIntersecting) { isVisible = true; observer.disconnect(); } }, { threshold: 0.15 }); observer.observe($el); })()">
 
     <div class="container relative">
@@ -39,7 +39,7 @@
             </div>
 
             <div class="flex-1 min-w-0 w-full relative">
-                <div class="flex gap-3 absolute -top-14 z-50 right-0">
+                <div class="flex gap-3 absolute -top-26 z-50 " :style="$store.app.currentLang === 'ar' ? 'left-0' : 'right-0'">
                     <button type="button" @click="slidePaths('left')"
                         class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                         aria-label="Previous">
@@ -62,7 +62,7 @@
                             :class="{
                                 'opacity-50 grayscale-[0.2]': $store.paths.activePath !== null && $store.paths.activePath !== path.id,
                                 'z-20 shadow-2xl': $store.paths.activePath === path.id
-                            }" <!-- Front Layer: Initial State (Icon + Title) -->
+                            }" >
                             <div class="absolute inset-0 bg-white flex flex-col items-center justify-center p-8 transition-transform duration-500 ease-in-out group-hover:-translate-y-full"
                                 :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
 

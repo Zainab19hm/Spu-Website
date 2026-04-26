@@ -1,8 +1,8 @@
 export const aboutPageContent = {
     hero: { // ! Renamed for project-wide consistency with other pages
-        image1: '/images/about-hero-1.jpg', // المربع الخلفي الكبير
-        image2: '/images/about-hero-2.jpg', // المربع الصغير الإضافي
-        image: '/images/about-hero-1.jpg', // ! Added missing image property
+        image1: '/images/about-hero-1.webp', // المربع الخلفي الكبير
+        image2: '/images/about-hero-2.webp', // المربع الصغير الإضافي
+        image: '/images/about-hero-1.webp', // ! Added missing image property
         badgeAr: 'نبذة عن SPU',
         badgeEn: 'ABOUT SPU',
         titleAr: 'جامعة رائدة تقدم تعليماً حديثاً وعالي الجودة يجهز الطلاب لنجاح مستقبلي.',
@@ -125,7 +125,7 @@ export const aboutPageContent = {
             nameAr: 'د. عبد الرزاق شيخ عيسى',
             roleEn: 'President of the University',
             roleAr: 'رئيس الجامعة',
-            image: '/images/1.png'
+            image: '/images/about-highlight-1.webp'
         }
     ],
     history: { // ! Restored history section for history/content.html

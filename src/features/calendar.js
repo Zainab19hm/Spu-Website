@@ -21,7 +21,7 @@ function normalizeCalendarEvent(event, index) {
         titleAr: event.titleAr ?? event.title ?? 'حدث بدون عنوان',
         descriptionEn: event.descriptionEn ?? event.description ?? '',
         descriptionAr: event.descriptionAr ?? event.description ?? '',
-        image: event.image ?? '/images/slider-1.jpeg',
+        image: event.image ?? '/images/slider-1.webp',
         link: event.link ?? '#',
         dateKey: parsedDate.format('YYYY-MM-DD'),
         dateText: event.dateText ?? `<span translate="no">${parsedDate.format('MMM D, YYYY')}</span>`
