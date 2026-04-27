@@ -12,14 +12,14 @@
 
             <div class="w-full lg:w-[27%] relative top-5">
                 <div class="relative w-full aspect-square">
-                    <div class="absolute top-3 left-0 w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px] overflow-hidden reveal-left"
-                        x-init="observeElement($el)">
+                    <div class="absolute top-3  w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px] overflow-hidden reveal-left"
+                        x-init="observeElement($el)" :style="$store.app,currentLang === 'ar' ? 'right:0px' : 'left:0px'">
                         <img :src="$store.facultiesPage.currentFaculty?.image_1" class="w-full h-full object-cover"
                             alt="Faculty Header">
                     </div>
                        
-                    <div class="absolute top-[155px] left-[122px] w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px]   overflow-hidden  border-[10px] border-white z-10 reveal-right"
-                        x-init="observeElement($el)">
+                    <div class="absolute top-[155px] w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px]   overflow-hidden  border-[10px] border-white z-10 reveal-right"
+                        x-init="observeElement($el)" :style=" $store.app.currentLang === 'ar' ? 'right :122px' : 'left:122px'  ">
                         <img :src="$store.facultiesPage.currentFaculty?.image_2" class="w-full h-full object-cover"
                             alt="Faculty Dean">
                     </div>

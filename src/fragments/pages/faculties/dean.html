@@ -12,8 +12,8 @@
                 <div class="relative group">
                     <div class="relative overflow-hidden">
                         <img :src="$store.facultiesPage.currentFaculty?.dean?.image"
-                            class="w-full object-top">
-                        <div class="absolute bottom-[30%]  bg-white shadow-2xl shadow-black/10 rounded-md text-[#1e2652] w-fit px-6 py-4 text-center " :style="$store.app.currentLang === 'ar' ? 'left: 2rem;' : 'right: 2rem;'">
+                            class="w-full object-cover scale-[0.9]">
+                        <div class="absolute bottom-[25%]  bg-white shadow-2xl shadow-black/10 rounded-md text-[#1e2652] w-fit px-6 py-4 text-center " :style="$store.app.currentLang === 'ar' ? 'left: 2rem;' : 'right: 2rem;'">
                             <h5 class="text-[24px] font-bold" x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.nameAr : $store.facultiesPage.currentFaculty?.dean?.nameEn"></h5>
                             <p class="text-[16px] font-normal" x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.roleAr : $store.facultiesPage.currentFaculty?.dean?.roleEn"></p>
                         </div>
