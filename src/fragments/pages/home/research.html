@@ -10,8 +10,8 @@
     <div class="container">
         <!-- Header: Title and Navigation Arrows -->
         <div class="section-header relative">
-            <h2 class="section-header__title text-[42px] font-bold text-spu-blue"
-                :style="$store.app.currentLang === 'ar' ? 'text-align:right' : 'text-align:left'">
+            <h2 class="section-header__title text-[42px] font-bold text-spu-blue flex items-center gap-4"
+                :style="$store.app.currentLang === 'ar' ? 'flex-direction: row-reverse; text-align:right' : 'text-align:left'">
                 <span x-text="$store.app.currentLang === 'ar' ? 'أبحاث ودراسات' : 'SPU Research'"></span>
             </h2>
 

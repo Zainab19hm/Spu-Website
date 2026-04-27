@@ -147,29 +147,8 @@
         word-break: keep-all;
     }
 
-    .site-nav-link::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0.52rem;
-        height: 2px;
-        border-radius: 9999px;
-        background: linear-gradient(90deg, #202759 0%, #6f1616 100%);
-        opacity: 0;
-        transform: scaleX(0.35);
-        transform-origin: left center;
-        transition: transform 0.22s ease, opacity 0.22s ease;
-    }
-
     .site-nav-link:hover {
         color: #202759;
-    }
-
-    .site-nav-link:hover::after,
-    .site-nav-link--active::after {
-        opacity: 1;
-        transform: scaleX(1);
     }
 
     .site-nav-link--active,

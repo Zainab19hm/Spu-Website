@@ -25,7 +25,7 @@ export const statsItems = [
         summaryEn: 'A sustained institutional journey in higher education and modern academic development.',
         value: 20,
         current: 0,
-        svgPath: '/images/time.svg',
+        svgPath: '/images/icons/years.svg',
         suffixEn: '+',
         suffixAr: '+',
         accent: '#683695',
@@ -33,13 +33,15 @@ export const statsItems = [
     },
     {
         id: 2,
-        labelAr: 'كليات أكاديمية',
-        labelEn: 'Academic Faculties',
-        summaryAr: 'تخصصات معتمدة تشمل المسارات الطبية والصحية والهندسية والإدارية.',
-        summaryEn: 'Accredited academic faculties spanning medical, health, engineering, and professional pathways.',
-        value: 7,
+        labelAr: 'الابحاث العلمية المنشورة',
+        labelEn: 'Published Scientific Research',
+        summaryAr: 'عدد الأبحاث العلمية المنشورة من قبل أعضاء الكلية.',
+        summaryEn: 'Number of scientific research papers published by faculty members.',
+        value: 6500,
         current: 0,
-        svgPath: '/images/arcticons_emoji-classical-building.svg',
+        suffixEn: '+',
+        suffixAr: '+',
+        svgPath: '/images/icons/file.svg',
         accent: '#caa949',
         glow: 'rgba(202,169,73,0.24)'
     },
@@ -51,7 +53,7 @@ export const statsItems = [
         summaryEn: 'An active student body across university programs and applied training on campus.',
         value: 8500,
         current: 0,
-        svgPath: '/images/people-outline.svg',
+        svgPath: '/images/student.svg',
         suffixEn: '+',
         suffixAr: '+',
         accent: '#2b7db3',
@@ -65,7 +67,7 @@ export const statsItems = [
         summaryEn: 'Graduates progressing into professional practice and advanced study across their fields.',
         value: 450,
         current: 0,
-        svgPath: '/images/flowbite_user-graduate-outline.svg',
+        svgPath: '/images/icons/users.svg',
         suffixEn: '+',
         suffixAr: '+',
         accent: '#bc2428',
@@ -74,10 +76,10 @@ export const statsItems = [
 ];
 
 export const pathItems = [
-    { id: 1, titleAr: 'الطلاب المستجدون', titleEn: 'Prospective Students', icon: '/images/icon-book-outline.svg', linksAr: ['استكشاف البرامج', 'القبول', 'المنح الدراسية', 'الحياة الجامعية'], linksEn: ['Explore programs', 'Admission', 'Scholarships', 'Campus life'], actionAr: 'استكشاف القبول', actionEn: 'Explore Admissions' },
-    { id: 2, titleAr: 'الطلاب الحاليون', titleEn: 'Current Students', icon: '/images/icon-globe-outline.svg', linksAr: ['بوابات الدخول', 'الجداول', 'الخدمات', 'المصادر الأكاديمية'], linksEn: ['Access portals', 'Schedules', 'Services', 'Academic resources'], actionAr: 'عرض المصادر', actionEn: 'View Student Resources' },
-    { id: 3, titleAr: 'الكادر التدريسي والمنظومة', titleEn: 'Faculty & Staff', icon: '/images/icon-sitemap-outline.svg', linksAr: ['أدوات التدريس', 'السياسات', 'الأنظمة', 'الخدمات الداخلية'], linksEn: ['Find teaching tools', 'Policies', 'Systems', 'Internal services'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
-    { id: 4, titleAr: 'الخريجون', titleEn: 'Alumni', icon: '/images/icon-user-graduate-outline.svg', linksAr: ['خدمات الخريجين', 'الشبكة', 'الفعاليات', 'التوظيف'], linksEn: ['Alumni Services', 'Network', 'Events', 'Career'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
+    { id: 1, titleAr: 'الطلاب المستجدون', titleEn: 'Prospective Students', icon: '/images/icons/book.svg', linksAr: ['استكشاف البرامج', 'القبول', 'المنح الدراسية', 'الحياة الجامعية'], linksEn: ['Explore programs', 'Admission', 'Scholarships', 'Campus life'], actionAr: 'استكشاف القبول', actionEn: 'Explore Admissions' },
+    { id: 2, titleAr: 'الطلاب الحاليون', titleEn: 'Current Students', icon: '/images/icons/globe.svg', linksAr: ['بوابات الدخول', 'الجداول', 'الخدمات', 'المصادر الأكاديمية'], linksEn: ['Access portals', 'Schedules', 'Services', 'Academic resources'], actionAr: 'عرض المصادر', actionEn: 'View Student Resources' },
+    { id: 3, titleAr: 'الكادر التدريسي والمنظومة', titleEn: 'Faculty & Staff', icon: '/images/icons/sitemap.svg', linksAr: ['أدوات التدريس', 'السياسات', 'الأنظمة', 'الخدمات الداخلية'], linksEn: ['Find teaching tools', 'Policies', 'Systems', 'Internal services'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
+    { id: 4, titleAr: 'الخريجون', titleEn: 'Alumni', icon: '/images/icons/users.svg', linksAr: ['خدمات الخريجين', 'الشبكة', 'الفعاليات', 'التوظيف'], linksEn: ['Alumni Services', 'Network', 'Events', 'Career'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
 ];
 
 export const honorPanelItems = [

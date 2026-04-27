@@ -50,7 +50,7 @@ export const aboutPageContent = {
     quickStats: [
         {
             id: 'papers',
-            icon: '/images/icon-file-outline.svg',
+            icon: '/images/stats/research.svg',
             current: 0,
             value: 460,
             labelAr: 'أوراق بحثية',
@@ -58,7 +58,7 @@ export const aboutPageContent = {
         },
         {
             id: 'departments',
-            icon: '/images/icon-sitemap-outline.svg',
+            icon: '/images/stats/dept.svg',
             current: 0,
             value: 21,
             labelAr: 'الأقسام',
@@ -66,7 +66,7 @@ export const aboutPageContent = {
         },
         {
             id: 'awards',
-            icon: '/images/icon-award-outline.svg',
+            icon: '/images/stats/award.svg',
             current: 0,
             value: 18,
             labelAr: 'جوائز أكاديمية',
@@ -74,7 +74,7 @@ export const aboutPageContent = {
         },
         {
             id: 'experience',
-            icon: '/images/icon-check-circle-outline.svg',
+            icon: '/images/stats/history.svg',
             current: 0,
             value: 50,
             labelAr: 'سنوات من التميز',
@@ -290,28 +290,28 @@ export const aboutPageContent = {
             id: 'history',
             titleAr: 'تاريخ الجامعة',
             titleEn: 'History',
-            icon: '/images/icon-history-outline.svg',
+            icon: '/images/stats/history.svg',
             link: '/about/history/content.html'
         },
         {
             id: 'leadership',
             titleAr: 'مجلس الجامعة',
             titleEn: 'Leadership',
-            icon: '/images/icon-users-outline.svg',
+            icon: '/images/stats/users.svg',
             link: '/about/leadership/content.html'
         },
         {
             id: 'directorates',
             titleAr: 'المديريات',
             titleEn: 'Directorates',
-            icon: '/images/icon-sitemap-outline.svg',
+            icon: '/images/stats/sitemap.svg',
             link: '/about/directorates/content.html'
         },
         {
             id: 'partnership',
             titleAr: 'الشراكات',
             titleEn: 'Partnerships',
-            icon: '/images/icon-handshake-outline.svg',
+            icon: '/images/stats/handshake.svg',
             link: '/about/partnership/content.html'
         }
     ]

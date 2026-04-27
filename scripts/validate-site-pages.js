@@ -142,6 +142,11 @@ function validateInternalReferences(pages) {
 
       const hash = value.slice(1);
 
+      // Allow dynamic anchors used in faculties page navigation
+      if (['overview', 'dean', 'stats', 'events', 'highlights'].includes(hash)) {
+        return;
+      }
+
       if (!sharedIds.has(hash)) {
         failures.push(`${filePath} -> unknown local anchor '${value}'`);
       }

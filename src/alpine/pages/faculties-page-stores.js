@@ -24,7 +24,7 @@ export const registerFacultiesPageStores = (Alpine) => {
                     this.currentFaculty = data;
                 } else {
                     console.error("Faculty not found:", facultyId);
-                    window.location.href = '../index.html';
+                    window.location.href = './index.html';
                 }
             }
             this.loading = false;

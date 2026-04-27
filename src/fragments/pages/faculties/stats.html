@@ -1,13 +1,13 @@
-<!-- <section class="relative z-20 -mt-16" x-data>
-    <div class="container mx-auto px-6">
-        <div class="bg-spu-blue rounded-3xl shadow-2xl overflow-hidden border border-white/10">
-            <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10 rtl:divide-x-reverse">
+<section id="stats" class="relative z-20 mt-20" x-data>
+    <div class="bg-spu-blue ">
+        <div class="  container ">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <template x-for="stat in $store.facultiesPage.currentFaculty?.stats" :key="stat.id">
-                    <div class="p-8 md:p-10 text-center group hover:bg-white/5 transition-colors">
+                    <div class="p-8 md:p-10 text-center">
                         <div class="mb-4 flex justify-center">
                             <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <i :class="stat.icon" class="text-xl text-spu-red"></i>
+                                class="text-[43px]">
+                                <img :src="stat.icon" class="w-10 h-10 brightness-0 text-white invert" alt="stat icon">
                             </div>
                         </div>
                         <div class="text-3xl font-black text-white mb-1" x-text="stat.value"></div>
@@ -18,4 +18,5 @@
             </div>
         </div>
     </div>
-</section> -->
+</section>
+

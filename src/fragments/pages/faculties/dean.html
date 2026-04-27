@@ -1,35 +1,31 @@
-<section class="md:mt-[200px] bg-white overflow-hidden" x-data="{ 
+<section id="dean" class="md:mt-[200px] relative overflow-hidden bg-section" x-data="{ 
         get facultyColor() { 
             const color = $store.facultiesPage.currentFaculty?.color || '1e2652';
             return color.startsWith('#') ? color : '#' + color;
         }
     }">
-    <div class="container">
-        <div class="flex flex-col lg:flex-row items-center gap-16 h-[80vh] lg:gap-24">
+    <div class="bg-white w-full md:h-[70px] absolute top-0 left-0 z-10"></div>
+    <div class="container relative z-20">
+        <div class="flex flex-col lg:flex-row items-center  gap-16 h-[80vh] lg:gap-24">
 
-            <div class="w-full lg:w-1/2 reveal-left relative" x-init="observeElement($el)">
+            <div class="w-full lg:w-1/2  relative" x-init="observeElement($el)">
                 <div class="relative group">
-                    <div class="relative overflow-hidden shadow-2xl">
+                    <div class="relative overflow-hidden">
                         <img :src="$store.facultiesPage.currentFaculty?.dean?.image"
-                            class="w-full aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-110">
-                        <div class="absolute bottom-2 left-6 right-6 p-6 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border-b-4"
-                            :style="`border-color: ${facultyColor}`">
-                            <h4 class="text-slate-900 font-bold text-xl mb-1"
-                                x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.nameAr : $store.facultiesPage.currentFaculty?.dean?.nameEn">
-                            </h4>
-                            <p class="text-slate-500 text-xs font-bold uppercase tracking-widest"
-                                x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.roleAr : $store.facultiesPage.currentFaculty?.dean?.roleEn">
-                            </p>
+                            class="w-full object-top">
+                        <div class="absolute bottom-[30%]  bg-white shadow-2xl shadow-black/10 rounded-md text-[#1e2652] w-fit px-6 py-4 text-center " :style="$store.app.currentLang === 'ar' ? 'left: 2rem;' : 'right: 2rem;'">
+                            <h5 class="text-[24px] font-bold" x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.nameAr : $store.facultiesPage.currentFaculty?.dean?.nameEn"></h5>
+                            <p class="text-[16px] font-normal" x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.roleAr : $store.facultiesPage.currentFaculty?.dean?.roleEn"></p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/2 reveal-right" x-init="observeElement($el)">
+            <div class="w-full lg:w-1/2 reveal-right relative " x-init="observeElement($el)">
 
-                <div class="inline-flex items-center gap-3 mb-6">
+                <div class="inline-flex items-center absolute -top-36  gap-3 mb-6" :style="`$store.app.currentLang === 'ar' ? 'right: 2rem;' : 'left: 2rem;'`">
                     <div class="h-px w-10" :style="`background-color: ${facultyColor}`"></div>
-                    <span class="font-black text-[10px] uppercase tracking-[0.4em]" :style="`color: ${facultyColor}`"
+                    <span class="font-black text-[12px] uppercase tracking-[0.4em]" :style="`color: ${facultyColor}`"
                         x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.sectionLabelAr : $store.facultiesPage.currentFaculty?.dean?.sectionLabelEn">
                     </span>
                 </div>
@@ -43,26 +39,15 @@
                 </h2>
 
                 <div class="space-y-6 mb-10">
-                    <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-medium italic border-l-4 pl-6"
-                        :style="`border-color: ${facultyColor}22`"
+                    <p class="text-lg md:text-2xl text-[#475467] leading-relaxed font-normal " 
                         x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.messageAr : $store.facultiesPage.currentFaculty?.dean?.messageEn">
                     </p>
                 </div>
 
-                <div class="flex items-center">
-                    <a href="#" class="inline-flex items-center gap-4 group font-bold">
-                        <span class="text-sm uppercase tracking-widest border-b-2 transition-all duration-300"
-                            :style="`color: ${facultyColor}; border-color: ${facultyColor}33;`"
-                            @mouseenter="$el.style.borderColor = facultyColor"
-                            @mouseleave="$el.style.borderColor = facultyColor + '33'"
-                            x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.ctaAr : $store.facultiesPage.currentFaculty?.dean?.ctaEn">
-                        </span>
-                        <i class="fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-2 rtl:rotate-180"
-                            :style="`color: ${facultyColor}`"></i>
-                    </a>
-                </div>
-            </div>
+
+            </div> 
 
         </div>
     </div>
+    <div class="bg-white w-full md:h-[70px] absolute bottom-0 left-0 z-10"></div>
 </section>

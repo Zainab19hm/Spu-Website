@@ -140,6 +140,7 @@
         "pages/faculties/content.html",
         "pages/faculties/dean.html",
         "pages/faculties/stats.html",
+        "pages/faculties/additional.html",
         "pages/faculties/highlights.html"
       ]
     },

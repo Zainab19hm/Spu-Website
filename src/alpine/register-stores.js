@@ -7,7 +7,16 @@ const pageStoreLoaders = {
     'about-leadership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorates': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-partnership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
-    faculties: () => import('./pages/faculties-page-stores.js').then((module) => module.registerFacultiesPageStores),
+    faculties: async () => {
+        const [pageModule, customModule] = await Promise.all([
+            import('./pages/faculties-page-stores.js'),
+            import('./pages/faculties-store.js'),
+        ]);
+        return (Alpine) => {
+            pageModule.registerFacultiesPageStores(Alpine);
+            customModule.registerFacultiesStore(Alpine);
+        };
+    },
     admissions: () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
     research: () => import('./pages/research-stores.js').then((module) => module.registerResearchStores),
     'student-life': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
