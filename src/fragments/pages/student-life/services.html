@@ -1,45 +1,82 @@
-<!-- Campus Services vertical timeline -->
-<section id="services" x-data class="pt-24 pb-8 font-hacen">
+<!-- Campus Services — scroll-reveal alternating sections -->
+<section id="services" x-data="{ 
+    revealed: new Set(),
+    initReveal() {
+        this.$nextTick(() => {
+            this.$root.querySelectorAll('[data-reveal]').forEach(el => {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2, rootMargin: '0px' });
+                obs.observe(el);
+            });
+        });
+    }
+}" x-init="initReveal()" class="pt-24 pb-8 font-hacen">
     <span id="health" class="invisible absolute -mt-24"></span>
     <span id="activities" class="invisible absolute -mt-24"></span>
 
+    <style>
+        [data-reveal] { opacity: 0; transform: translateY(48px); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+        [data-reveal="left"] { transform: translateX(-60px) translateY(0); }
+        [data-reveal="left"].is-visible { transform: translateX(0) translateY(0); }
+        [data-reveal="right"] { transform: translateX(60px) translateY(0); }
+        [data-reveal="right"].is-visible { transform: translateX(0) translateY(0); }
+        @media (prefers-reduced-motion: reduce) {
+            [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+    </style>
+
     <div class="relative">
-        <!-- Center vertical line (visible on lg+) -->
-        <div class="absolute left-1/2 top-0 bottom-0 hidden w-px -translate-x-1/2 bg-slate-300/60 lg:block" aria-hidden="true"></div>
+        <!-- Center vertical line (desktop) -->
+        <div class="absolute left-1/2 top-0 bottom-0 hidden w-px -translate-x-1/2 bg-slate-200/60 lg:block" aria-hidden="true"></div>
 
         <template x-for="(service, idx) in $store.studentLifePage.services" :key="service.titleEn">
             <div class="relative" :class="idx % 2 !== 0 ? 'bg-section' : ''">
-                <!-- Timeline dot (visible on lg+) -->
-                <div class="absolute left-1/2 top-1/2 z-10 hidden h-[23px] w-[23px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] lg:block"
-                     :class="idx === 0 ? 'border-spu-blue bg-spu-blue' : 'border-slate-400 bg-white'"
+                <!-- Timeline dot -->
+                <div class="absolute left-1/2 top-1/2 z-10 hidden h-[18px] w-[18px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-white shadow-md lg:block"
+                     :class="idx === 0 ? 'bg-spu-blue' : 'bg-slate-300'"
                      aria-hidden="true"></div>
 
-                <div class="container py-12 lg:py-16">
-                    <div class="flex flex-col items-center gap-10 lg:gap-[259px]"
+                <div class="container py-16 lg:py-24">
+                    <div class="flex flex-col items-center gap-10 lg:gap-20"
                          :class="service.imagePosition === 'right' ? 'lg:flex-row' : 'lg:flex-row-reverse'">
 
                         <!-- Text column -->
-                        <div class="flex-1 min-w-0">
-                            <div class="max-w-[530px]" :class="service.imagePosition === 'right' ? '' : 'lg:ml-auto'">
-                                <p class="text-5xl font-bold tracking-tight text-spu-blue/20"
+                        <div class="flex-1 min-w-0"
+                             :data-reveal="service.imagePosition === 'right' ? 'left' : 'right'">
+                            <div class="max-w-[530px]"
+                                 :class="service.imagePosition === 'left' ? 'lg:ms-auto' : ''">
+                                <!-- Number -->
+                                <p class="text-6xl font-bold tracking-tight text-spu-blue/10"
                                    x-text="service.number"></p>
-                                <h3 class="mt-2 text-[32px] font-bold leading-tight tracking-tight text-[#091144]"
+                                <!-- Title -->
+                                <h3 class="mt-2 text-[32px] font-bold leading-tight tracking-tight text-spu-blue"
                                     x-text="$store.app.currentLang === 'ar' ? service.titleAr : service.titleEn"></h3>
-                                <p class="mt-4 max-w-[550px] text-[22px] leading-6 text-[#46464f]"
+                                <!-- Description -->
+                                <p class="mt-4 max-w-[500px] text-lg leading-relaxed text-slate-500"
+                                   :class="service.imagePosition === 'left' ? 'lg:ms-auto' : ''"
                                    x-text="$store.app.currentLang === 'ar' ? service.summaryAr : service.summaryEn"></p>
-                                <a href="#" class="mt-6 inline-flex items-center gap-1 text-base font-semibold text-spu-red transition hover:opacity-80">
+                                <!-- Link -->
+                                <a href="#" class="group mt-6 inline-flex items-center gap-2 text-base font-bold text-spu-red transition hover:opacity-80">
                                     <span x-text="$store.app.currentLang === 'ar' ? service.linkAr : service.linkEn"></span>
-                                    <i class="fas fa-arrow-right text-sm" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                                    <i class="fas fa-arrow-right text-sm transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1"></i>
                                 </a>
                             </div>
                         </div>
 
                         <!-- Image column -->
-                        <div class="w-full shrink-0 lg:w-[505px]">
-                            <div class="overflow-hidden border border-slate-300 shadow-sm">
+                        <div class="w-full shrink-0 lg:w-[480px]"
+                             :data-reveal="service.imagePosition === 'right' ? 'right' : 'left'">
+                            <div class="overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-transform duration-700 hover:scale-[1.02]">
                                 <img :src="service.image"
                                      :alt="$store.app.currentLang === 'ar' ? service.titleAr : service.titleEn"
-                                     class="h-[337px] w-full object-cover">
+                                     class="h-[340px] w-full object-cover">
                             </div>
                         </div>
                     </div>
