@@ -1,31 +1,50 @@
-<section id="services" x-data class="bg-white py-20 font-hacen lg:py-24">
-    <div class="container grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-            <div class="max-w-3xl">
-                <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الخدمات والدعم' : 'Services and Support'"></p>
-                <h2 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'مركز أوضح لما يحتاجه الطالب خلال العام' : 'A clearer home for what students need throughout the year'"></h2>
-            </div>
+<!-- Campus Services vertical timeline -->
+<section id="services" x-data class="pt-24 pb-8 font-hacen">
+    <span id="health" class="invisible absolute -mt-24"></span>
+    <span id="activities" class="invisible absolute -mt-24"></span>
 
-            <div class="mt-10 grid gap-6 md:grid-cols-3">
-                <template x-for="item in $store.studentLifePage.services" :key="item.titleEn">
-                    <article class="rounded-[28px] border border-slate-200/80 bg-white p-7 shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
-                        <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
-                        <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
-                    </article>
-                </template>
-            </div>
-        </div>
+    <div class="relative">
+        <!-- Center vertical line (visible on lg+) -->
+        <div class="absolute left-1/2 top-0 bottom-0 hidden w-px -translate-x-1/2 bg-slate-300/60 lg:block" aria-hidden="true"></div>
 
-        <div class="rounded-[32px] bg-section p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)] lg:p-10">
-            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-blue/60" x-text="$store.app.currentLang === 'ar' ? 'الوصول الرقمي' : 'Digital Access'"></p>
-            <div class="mt-6 grid gap-4">
-                <template x-for="portal in $store.studentLifePage.portals" :key="portal.titleEn">
-                    <a :href="portal.protected ? $store.auth.servicesHubPath : portal.url" @click="if (portal.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(portal.url); }" class="rounded-[22px] bg-white px-5 py-5 shadow-[0_16px_45px_rgba(20,30,70,0.06)] transition-transform duration-300 hover:-translate-y-1" :target="!portal.protected && portal.url.startsWith('http') ? '_blank' : null" :rel="!portal.protected && portal.url.startsWith('http') ? 'noreferrer' : null">
-                        <h3 class="text-lg font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? portal.titleAr : portal.titleEn"></h3>
-                        <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? portal.summaryAr : portal.summaryEn"></p>
-                    </a>
-                </template>
+        <template x-for="(service, idx) in $store.studentLifePage.services" :key="service.titleEn">
+            <div class="relative" :class="idx % 2 !== 0 ? 'bg-section' : ''">
+                <!-- Timeline dot (visible on lg+) -->
+                <div class="absolute left-1/2 top-1/2 z-10 hidden h-[23px] w-[23px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] lg:block"
+                     :class="idx === 0 ? 'border-spu-blue bg-spu-blue' : 'border-slate-400 bg-white'"
+                     aria-hidden="true"></div>
+
+                <div class="container py-12 lg:py-16">
+                    <div class="flex flex-col items-center gap-10 lg:gap-[259px]"
+                         :class="service.imagePosition === 'right' ? 'lg:flex-row' : 'lg:flex-row-reverse'">
+
+                        <!-- Text column -->
+                        <div class="flex-1 min-w-0">
+                            <div class="max-w-[530px]" :class="service.imagePosition === 'right' ? '' : 'lg:ml-auto'">
+                                <p class="text-5xl font-bold tracking-tight text-spu-blue/20"
+                                   x-text="service.number"></p>
+                                <h3 class="mt-2 text-[32px] font-bold leading-tight tracking-tight text-[#091144]"
+                                    x-text="$store.app.currentLang === 'ar' ? service.titleAr : service.titleEn"></h3>
+                                <p class="mt-4 max-w-[550px] text-[22px] leading-6 text-[#46464f]"
+                                   x-text="$store.app.currentLang === 'ar' ? service.summaryAr : service.summaryEn"></p>
+                                <a href="#" class="mt-6 inline-flex items-center gap-1 text-base font-semibold text-spu-red transition hover:opacity-80">
+                                    <span x-text="$store.app.currentLang === 'ar' ? service.linkAr : service.linkEn"></span>
+                                    <i class="fas fa-arrow-right text-sm" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Image column -->
+                        <div class="w-full shrink-0 lg:w-[505px]">
+                            <div class="overflow-hidden border border-slate-300 shadow-sm">
+                                <img :src="service.image"
+                                     :alt="$store.app.currentLang === 'ar' ? service.titleAr : service.titleEn"
+                                     class="h-[337px] w-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </template>
     </div>
 </section>

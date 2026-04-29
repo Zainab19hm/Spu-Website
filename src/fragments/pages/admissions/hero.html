@@ -1,19 +1,70 @@
-<section x-data class="page-hero relative overflow-hidden bg-spu-blue text-white font-hacen">
-    <div class="absolute inset-0 opacity-60" style="background: radial-gradient(circle at top right, rgba(202,169,73,0.26), transparent 38%), radial-gradient(circle at bottom left, rgba(43,125,179,0.22), transparent 34%);"></div>
-    <div class="container relative z-10 grid items-end gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-        <div class="max-w-3xl">
-            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/60" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.eyebrowAr : $store.admissionsPage.hero.eyebrowEn"></p>
-            <h1 class="mt-6 text-4xl leading-tight font-bold md:text-5xl xl:text-6xl" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.titleAr : $store.admissionsPage.hero.titleEn"></h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/78" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.summaryAr : $store.admissionsPage.hero.summaryEn"></p>
+<!-- Admissions Hero: split layout with image composition -->
+<section x-data class="relative overflow-hidden bg-section font-hacen">
+    <div class="container relative z-10 grid items-start gap-10 pb-32 pt-44 lg:grid-cols-[1fr_1.2fr] lg:pt-48 lg:pb-40">
+
+        <!-- Left column: text content -->
+        <div class="flex flex-col gap-10 pt-4">
+            <h1 class="text-[50px] font-bold leading-[1.06] tracking-[-0.96px] text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.titleAr : $store.admissionsPage.hero.titleEn">
+            </h1>
+
+            <p class="max-w-[580px] text-[30px] font-bold leading-[37px] text-[#46464f]"
+               x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.summaryAr : $store.admissionsPage.hero.summaryEn">
+            </p>
+
+            <!-- CTA buttons -->
+            <div class="flex flex-wrap items-center gap-[23px]">
+                <a href="#"
+                   class="inline-flex h-[54px] items-center justify-center rounded-[6px] bg-spu-red px-8 text-xs font-bold uppercase tracking-[1.2px] text-white transition hover:opacity-90"
+                   x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.ctaPrimaryAr : $store.admissionsPage.hero.ctaPrimaryEn">
+                </a>
+                <a href="#"
+                   class="inline-flex h-[54px] items-center justify-center rounded-[6px] border border-[#c7c5d0] bg-white px-8 text-xs font-bold uppercase tracking-[1.2px] text-spu-blue transition hover:bg-slate-50"
+                   x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.ctaSecondaryAr : $store.admissionsPage.hero.ctaSecondaryEn">
+                </a>
+            </div>
+
+            <!-- Document checklist -->
+            <div class="flex flex-col gap-5 pt-2">
+                <template x-for="item in $store.admissionsPage.hero.checklistItems" :key="item.titleEn">
+                    <div class="flex items-start gap-4">
+                        <span class="mt-0.5 shrink-0 text-spu-blue"><i class="fas fa-check-circle text-[25px]"></i></span>
+                        <div class="flex flex-col gap-1">
+                            <h4 class="text-lg font-bold leading-7 text-[#1b1b1f]"
+                                x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                            <p class="text-sm leading-5 text-[#46464f]"
+                               x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-            <template x-for="item in $store.admissionsPage.quickFacts" :key="item.labelEn">
-                <article class="rounded-[26px] border border-white/12 bg-white/10 p-6 backdrop-blur-md">
-                    <p class="text-xl font-bold text-white" x-html="item.value"></p>
-                    <p class="mt-2 text-sm uppercase tracking-[0.2em] text-white/62" x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></p>
-                </article>
-            </template>
+        <!-- Right column: image composition -->
+        <div class="relative hidden h-[649px] lg:block">
+            <!-- Main campus image (top-right) -->
+            <div class="absolute right-0 top-0 h-[480px] w-[75%] overflow-hidden rounded shadow-sm">
+                <img :src="$store.admissionsPage.hero.images.campus"
+                     alt="SPU Campus architecture"
+                     class="h-full w-full object-cover">
+                <div class="absolute inset-0 bg-spu-blue/40"></div>
+            </div>
+
+            <!-- Students image (bottom-left, overlapping) -->
+            <div class="absolute bottom-0 left-0 h-[358px] w-[56%] overflow-hidden">
+                <img :src="$store.admissionsPage.hero.images.students"
+                     alt="SPU students collaborating"
+                     class="h-full w-full object-cover">
+                <div class="absolute inset-0 bg-spu-blue/40"></div>
+            </div>
+
+            <!-- Status badge (bottom-right, overlapping images) -->
+            <div class="absolute bottom-[10%] right-[6%] w-[250px] rounded bg-spu-blue px-6 pb-6 pt-[77px] text-white shadow-sm">
+                <p class="text-xs font-bold uppercase tracking-[0.96px] opacity-80"
+                   x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.badgeLabelAr : $store.admissionsPage.hero.badgeLabelEn"></p>
+                <p class="mt-3 text-2xl font-bold leading-[31.2px]"
+                   x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.hero.badgeValueAr : $store.admissionsPage.hero.badgeValueEn"></p>
+            </div>
         </div>
     </div>
 </section>

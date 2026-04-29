@@ -194,8 +194,7 @@
       ],
       "fragments": [
         "pages/student-life/hero.html",
-        "pages/student-life/services.html",
-        "pages/student-life/highlights.html"
+        "pages/student-life/services.html"
       ]
     },
     {

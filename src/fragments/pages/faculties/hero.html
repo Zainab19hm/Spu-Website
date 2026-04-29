@@ -1,52 +1,120 @@
-<section class="relative h-[70vh] md:h-[100vh] flex items-center " x-data>
-    <!-- <script>
-        window.hexToRgba = function (hex, alpha) {
-            hex = hex.replace('#', '');
-            if (hex.length === 3) {
-                hex = hex.split('').map(x => x + x).join('');
-            }
-            const num = parseInt(hex, 16);
-            const r = (num >> 16) & 255;
-            const g = (num >> 8) & 255;
-            const b = num & 255;
-            return `rgba(${r},${g},${b},${alpha})`;
-        }
-    </script> -->
+<!-- ═══════════════════════════════════════════════════════════════════
+     Faculty Hero — cinematic, dynamic, premium
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="relative flex min-h-[92vh] flex-col justify-center overflow-hidden font-hacen"
+         x-data="{ heroReady: false }"
+         x-init="$nextTick(() => { setTimeout(() => heroReady = true, 80) })">
+
+    <!-- ── 1. Background image with Ken Burns zoom ── -->
     <img :src="$store.facultiesPage.currentFaculty?.heroImage"
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms]"
-        :class="$store.facultiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">
+         alt=""
+         aria-hidden="true"
+         class="faculty-hero__image absolute inset-0 h-full w-full object-cover"
+         :class="$store.facultiesPage.loading
+             ? 'faculty-hero__image--loading'
+             : 'faculty-hero__image--ready'">
 
-    <!-- <div :style="`background: linear-gradient(${$store.app.currentLang === 'ar' ? '270deg' : '90deg'},
-        ${window.hexToRgba($store.facultiesPage.currentFaculty?.color || '#cac449', 0.8)} 0%,
-        ${window.hexToRgba($store.facultiesPage.currentFaculty?.colorMid || $store.facultiesPage.currentFaculty?.color || '#cac495', 0)} 50%,
-        ${window.hexToRgba($store.facultiesPage.currentFaculty?.color || '#cac449', 0)} 100%)`"
-        class="absolute inset-0">
-    </div> -->
+    <!-- ── 2. Faculty-color gradient (left → transparent) ── -->
+    <div class="absolute inset-0"
+         :style="`background: linear-gradient(
+             ${$store.app.currentLang === 'ar' ? '270deg' : '90deg'},
+             rgba(${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(0,2), 16)},
+                  ${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(2,4), 16)},
+                  ${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(4,6), 16)}, 0.85) 0%,
+             rgba(${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(0,2), 16)},
+                  ${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(2,4), 16)},
+                  ${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(4,6), 16)}, 0.4) 40%,
+             rgba(0,0,0,0.15) 100%
+         )`">
+    </div>
 
-    <div class="container relative z-10  mt-20 ">
-        <div class="w-fit relative  p-5">
-            <div class="absolute top-0 right-0 h-full w-full  opacity-75 z-0  "
-                :style="`background-color : #${$store.facultiesPage.currentFaculty?.color}`"></div>
-            <!-- <h1 class="text-white text-[50px] font-bold  uppercase mb-2 "
-                x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.top_labelar : $store.facultiesPage.currentFaculty?.top_labelen">
-            </h1> -->
-            <p class="text-3xl md:text-[40px] font-normal relative  text-white  mb-4 uppercase z-10"
-                x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.nameAr : $store.facultiesPage.currentFaculty?.nameEn">
-            </p>
-            <div class="flex flex-wrap gap-5 Z-10 relative">
-                <button :style="`color: #${$store.facultiesPage.currentFaculty?.color.replace('#', '')}`"
-                    class="px-10 py-4  bg-white font-bold rounded-[8px] transition-all duration-500 ease-in-out hover:text-white hover:scale-105"
-                    x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'Explore Programs'"></button>
-                <button
-                    class="px-10 py-4 border-2 relative z-50 text-white font-bold rounded-[8px] hover:bg-white hover:text-spu-blue transition-all backdrop-blur-sm uppercase tracking-wider text-sm"
-                    x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'Admissions'"></button>
-            </div>
+    <!-- ── 3. Dark vignette for text legibility ── -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
+
+    <!-- ── 4. Cinematic grain texture ── -->
+    <div class="faculty-hero__grain" aria-hidden="true"></div>
+
+    <!-- ── 5. Main content — vertically centered ── -->
+    <div class="container relative z-10 pt-40 pb-40">
+
+        <!-- Animated accent line -->
+        <div class="faculty-hero__accent-line mb-8"
+             :style="`background: linear-gradient(90deg, #fff 0%, rgba(${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(0,2), 16)}, ${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(2,4), 16)}, ${parseInt(($store.facultiesPage.currentFaculty?.color || '202759').substring(4,6), 16)}, 0.6) 100%)`">
+        </div>
+
+        <!-- University name (eyebrow) -->
+        <p class="faculty-hero__reveal faculty-hero__reveal--d1 text-sm font-bold uppercase tracking-[0.25em] text-white/70"
+           x-text="$store.app.currentLang === 'ar'
+               ? $store.facultiesPage.currentFaculty?.top_labelar
+               : $store.facultiesPage.currentFaculty?.top_labelen">
+        </p>
+
+        <!-- Faculty name (main heading) -->
+        <h1 class="faculty-hero__reveal faculty-hero__reveal--d2 mt-4 max-w-[800px] text-[clamp(2.2rem,5vw,3.8rem)] font-bold leading-[1.1] tracking-tight text-white"
+            x-text="$store.app.currentLang === 'ar'
+                ? $store.facultiesPage.currentFaculty?.nameAr
+                : $store.facultiesPage.currentFaculty?.nameEn">
+        </h1>
+
+        <!-- CTA buttons -->
+        <div class="faculty-hero__reveal faculty-hero__reveal--d3 mt-10 flex flex-wrap items-center gap-4">
+            <a href="#overview"
+               class="group inline-flex h-[54px] items-center gap-2.5 rounded-[6px] bg-white px-8 text-sm font-bold uppercase tracking-[1.4px] shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
+               :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
+                <span x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'EXPLORE PROGRAMS'"></span>
+                <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"
+                   :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''"></i>
+            </a>
+            <a href="/admissions.html"
+               class="inline-flex h-[54px] items-center rounded-[6px] border border-white/30 bg-white/8 px-8 text-sm font-bold uppercase tracking-[1.4px] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15"
+               x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'ADMISSIONS'">
+            </a>
         </div>
     </div>
 
-    <div class="z-40 absolute w-[582px] h-[388px] top-[70vh] left-1/2"
-        :style="$store.app.currentLang === 'ar' ? 'margin-left: -50%; transform: translateX(50%);' : 'margin-right: -50%; transform: translateX(-50%);'">
-        <img :src="$store.facultiesPage.currentFaculty?.logo" alt="$store.facultiesPage.currentFaculty?.nameEn" class=""
-            :class="$store.facultiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">
-        </div>
+
 </section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     Faculty Logo Bridge — overlaps hero bottom, sits above stats
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="relative z-30 -mt-[130px] flex flex-col items-center bg-transparent pb-6 md:-mt-[140px]" x-data>
+    <!-- Glow ring + logo -->
+    <div class="faculty-hero__logo-ring flex h-[200px] w-[200px] items-center justify-center rounded-full border-4 border-white bg-white md:h-[220px] md:w-[220px]">
+        <img :src="$store.facultiesPage.currentFaculty?.logo"
+             :alt="$store.app.currentLang === 'ar'
+                 ? $store.facultiesPage.currentFaculty?.nameAr
+                 : $store.facultiesPage.currentFaculty?.nameEn"
+             class="h-[180px] w-[180px] rounded-full object-contain transition-all duration-700 md:h-[200px] md:w-[200px]"
+             :class="$store.facultiesPage.loading ? 'scale-110 blur-sm opacity-0' : 'scale-100 blur-0 opacity-100'">
+    </div>
+    <!-- Arabic name -->
+    <p class="mt-4 text-center text-2xl font-bold text-spu-blue"
+       x-text="$store.facultiesPage.currentFaculty?.nameAr"></p>
+    <!-- English subtitle -->
+    <p class="mt-1 text-center text-[11px] font-bold uppercase tracking-[2px] text-slate-400"
+       x-text="'FACULTY OF ' + ($store.facultiesPage.currentFaculty?.nameEn?.toUpperCase() || '')"></p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     Faculty Stats Bar — separate section below the logo
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="bg-white pb-10 pt-6" x-data>
+    <div class="container">
+        <div class="mx-auto max-w-[1100px] overflow-hidden rounded-lg bg-spu-blue shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
+            <div class="grid grid-cols-2 md:grid-cols-4">
+                <template x-for="(stat, idx) in ($store.facultiesPage.currentFaculty?.stats || []).slice(0, 4)" :key="stat.id">
+                    <div class="relative flex flex-col items-center gap-2 px-6 py-8 text-center">
+                        <!-- Vertical divider -->
+                        <div x-show="idx > 0"
+                             class="absolute left-0 top-1/2 hidden h-2/3 w-px -translate-y-1/2 bg-white/10 md:block"
+                             aria-hidden="true"></div>
+                        <span class="text-3xl font-bold leading-none text-white" x-text="stat.value"></span>
+                        <span class="text-xs font-bold uppercase tracking-[1px] text-white/50"
+                              x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></span>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</div>

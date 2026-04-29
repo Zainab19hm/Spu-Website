@@ -1,76 +1,170 @@
-<section id="overview" class="mt-[279px] bg-white" x-data="{ 
+<section id="overview" class="bg-white py-16 font-hacen lg:py-24" x-data="{
         activeTab: 'overview',
-        // دالة ديناميكية لجلب اللون وتنسيقه ليعمل في CSS
-        get facultyColor() { 
+        currentSlide: 0,
+        slideInterval: null,
+        isTransitioning: false,
+
+        get facultyColor() {
             const color = $store.facultiesPage.currentFaculty?.color || '1e2652';
             return color.startsWith('#') ? color : '#' + color;
+        },
+
+        get galleryImages() {
+            const f = $store.facultiesPage.currentFaculty;
+            if (!f) return [];
+            const imgs = [];
+            if (f.image_1) imgs.push(f.image_1);
+            if (f.image_2) imgs.push(f.image_2);
+            if (f.heroImage) imgs.push(f.heroImage);
+            if (f.events) {
+                f.events.forEach(e => { if (e.image && !imgs.includes(e.image)) imgs.push(e.image); });
+            }
+            return imgs;
+        },
+
+        init() {
+            this.startAutoplay();
+            this.$watch('$store.facultiesPage.currentFaculty', () => {
+                this.currentSlide = 0;
+                this.startAutoplay();
+            });
+        },
+
+        startAutoplay() {
+            if (this.slideInterval) clearInterval(this.slideInterval);
+            this.slideInterval = setInterval(() => this.goTo((this.currentSlide + 1) % this.galleryImages.length), 5000);
+        },
+
+        goTo(idx) {
+            if (idx === this.currentSlide || this.isTransitioning || this.galleryImages.length <= 1) return;
+            this.isTransitioning = true;
+            this.currentSlide = idx;
+            setTimeout(() => { this.isTransitioning = false; }, 900);
+            this.startAutoplay();
         }
     }">
 
     <div class="container">
-        <div class="flex flex-col lg:flex-row gap-16 items-start">
+        <div class="flex flex-col items-start gap-12 lg:flex-row lg:gap-20">
 
-            <div class="w-full lg:w-[27%] relative top-5">
-                <div class="relative w-full aspect-square">
-                    <div class="absolute top-3 left-0 w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px] overflow-hidden reveal-left"
-                        x-init="observeElement($el)">
-                        <img :src="$store.facultiesPage.currentFaculty?.image_1" class="w-full h-full object-cover"
-                            alt="Faculty Header">
+            <!-- ══════════════════════════════════════════════
+                 Left: cinematic gallery
+                 ══════════════════════════════════════════════ -->
+            <div class="relative hidden w-full shrink-0 lg:block lg:w-[440px]"
+                 @mouseenter="clearInterval(slideInterval)"
+                 @mouseleave="startAutoplay()">
+
+                <!-- Main viewport -->
+                <div class="group relative aspect-[3/4] w-full overflow-hidden rounded-[20px]">
+
+                    <!-- Image layers with clip-path wipe -->
+                    <template x-for="(img, idx) in galleryImages" :key="img + idx">
+                        <div class="absolute inset-0 transition-[clip-path] duration-[900ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
+                             :style="currentSlide === idx
+                                 ? 'clip-path: inset(0 0 0 0); z-index: 2;'
+                                 : (currentSlide > idx || (currentSlide === 0 && idx === galleryImages.length - 1 && idx !== 0))
+                                     ? 'clip-path: inset(0 100% 0 0); z-index: 1;'
+                                     : 'clip-path: inset(0 0 0 0); z-index: 0;'">
+                            <img :src="img"
+                                 alt="Faculty gallery"
+                                 class="h-full w-full object-cover transition-transform duration-[5000ms] ease-out"
+                                 :class="currentSlide === idx ? 'scale-105' : 'scale-100'">
+                        </div>
+                    </template>
+
+                    <!-- Gradient overlay at bottom -->
+                    <div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-black/50 to-transparent"></div>
+
+                    <!-- Counter (bottom-left) -->
+                    <div class="absolute bottom-6 left-7 z-20 flex items-baseline gap-1.5">
+                        <span class="text-[28px] font-bold leading-none text-white"
+                              x-text="String(currentSlide + 1).padStart(2, '0')"></span>
+                        <span class="text-xs font-bold text-white/40"
+                              x-text="'/ ' + String(galleryImages.length).padStart(2, '0')"></span>
                     </div>
-                       
-                    <div class="absolute top-[155px] left-[122px] w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px]   overflow-hidden  border-[10px] border-white z-10 reveal-right"
-                        x-init="observeElement($el)">
-                        <img :src="$store.facultiesPage.currentFaculty?.image_2" class="w-full h-full object-cover"
-                            alt="Faculty Dean">
+
+                    <!-- Vertical progress (right edge) -->
+                    <div class="absolute bottom-6 right-5 top-6 z-20 flex w-[3px] flex-col justify-end overflow-hidden rounded-full bg-white/15">
+                        <div class="w-full rounded-full bg-white transition-all duration-700 ease-out"
+                             :style="`height: ${((currentSlide + 1) / galleryImages.length) * 100}%`"></div>
                     </div>
+                </div>
+
+                <!-- Horizontal thumbnail strip -->
+                <div class="no-scrollbar mt-5 flex gap-3 overflow-x-auto pb-1">
+                    <template x-for="(img, idx) in galleryImages" :key="'strip-' + idx">
+                        <button @click="goTo(idx)"
+                                class="relative h-[64px] w-[88px] shrink-0 overflow-hidden rounded-xl transition-all duration-500"
+                                :class="currentSlide === idx
+                                    ? 'ring-[2.5px] ring-offset-2 scale-100 opacity-100'
+                                    : 'ring-0 ring-offset-0 scale-[0.96] opacity-40 hover:opacity-70'"
+                                :style="currentSlide === idx ? `ring-color: ${facultyColor}` : ''"
+                                :aria-label="'View image ' + (idx + 1)">
+                            <img :src="img" alt="" class="h-full w-full object-cover">
+                            <!-- Active indicator line -->
+                            <div class="absolute inset-x-0 bottom-0 h-[3px] transition-all duration-500"
+                                 :style="currentSlide === idx ? `background-color: ${facultyColor}; opacity: 1;` : 'opacity: 0;'"></div>
+                        </button>
+                    </template>
                 </div>
             </div>
 
-            <div class="w-full lg:w-[73%] rounded-[8px] border-1 border-[#CBD5E1] px-[23px] py-[67px]">
+            <!-- ══════════════════════════════════════════════
+                 Right: tabs + content
+                 ══════════════════════════════════════════════ -->
+            <div class="min-w-0 flex-1">
 
-                <div class="flex flex-wrap gap-4  mb-5 md:mb-12">
+                <!-- Tab navigation — pill style -->
+                <div class="flex flex-wrap gap-3">
                     <template x-for="tab in $store.facultiesPage.currentFaculty?.tabs" :key="tab.id">
                         <button @click="activeTab = tab.id"
-                            class="w-[206.25px] h-[61.500003814697266px] rounded-[8px] font-bold transition-all duration-500 border-2 text-sm md:text-base shadow-sm"
-                            :style="activeTab === tab.id 
-                                ? `background-color: ${facultyColor}; color: white; border-color: ${facultyColor};` 
-                                : `background-color: transparent; color: ${facultyColor}; border-color: #f1f5f9;`"
-                            x-text="$store.app.currentLang === 'ar' ? tab.labelAr : tab.labelEn">
+                                class="relative rounded-full px-7 py-3 text-[15px] font-bold transition-all duration-300"
+                                :style="activeTab === tab.id
+                                    ? `background-color: ${facultyColor}; color: #fff; box-shadow: 0 4px 16px ${facultyColor}33;`
+                                    : `background-color: transparent; color: ${facultyColor}; border: 1.5px solid #e2e8f0;`"
+                                x-text="$store.app.currentLang === 'ar' ? tab.labelAr : tab.labelEn">
                         </button>
                     </template>
                 </div>
 
-                <div class="reveal-up " x-init="observeElement($el)">
+                <!-- Content area -->
+                <div class="mt-10">
+                    <!-- Faculty name with accent line -->
+                    <div class="flex items-center gap-4">
+                        <div class="h-[3px] w-10 shrink-0 rounded-full"
+                             :style="`background-color: ${facultyColor}`"></div>
+                        <h2 class="text-[clamp(1.6rem,3.5vw,2.4rem)] font-bold leading-tight transition-colors duration-500"
+                            :style="`color: ${facultyColor}`"
+                            x-text="$store.app.currentLang === 'ar'
+                                ? $store.facultiesPage.currentFaculty?.nameAr
+                                : $store.facultiesPage.currentFaculty?.nameEn">
+                        </h2>
+                    </div>
 
-                    <h2 class="text-[40px]  font-bold mb-8 transition-colors duration-500 "
-                        :style="`color: ${facultyColor}`"
-                        x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.nameAr : $store.facultiesPage.currentFaculty?.nameEn">
-                    </h2>
-
-                    <div class="min-h-[150px]">
+                    <!-- Tab content with transition -->
+                    <div class="mt-6 min-h-[140px]">
                         <template x-for="tab in $store.facultiesPage.currentFaculty?.tabs" :key="tab.id">
-                            <div x-show="activeTab === tab.id" x-transition:enter="transition ease-out duration-300"
-                                x-transition:enter-start="opacity-0 translate-y-4"
-                                x-transition:enter-end="opacity-100 translate-y-0">
-                                <p class="text-2xl text-[#1B1B1F] leading-relaxed "
-                                    x-text="$store.app.currentLang === 'ar' ? tab.contentAr : tab.contentEn">
+                            <div x-show="activeTab === tab.id"
+                                 x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 translate-y-3"
+                                 x-transition:enter-end="opacity-100 translate-y-0">
+                                <p class="max-w-[680px] text-[20px] leading-[1.8] text-[#46464f]"
+                                   x-text="$store.app.currentLang === 'ar' ? tab.contentAr : tab.contentEn">
                                 </p>
                             </div>
                         </template>
                     </div>
 
-                    <!-- <div class="mt-12 pt-8 border-t border-slate-100 flex items-center justify-between">
-                        <a href="#" class="inline-flex items-center gap-4 font-black group transition-all"
-                            :style="`color: ${facultyColor}`">
-                            <span class="text-sm uppercase tracking-widest"
-                                x-text="$store.app.currentLang === 'ar' ? 'الرؤية الاستراتيجية الكاملة' : 'Full Strategic Vision'"></span>
-                            <i
-                                class="fas fa-arrow-right transition-transform group-hover:translate-x-3 rtl:rotate-180"></i>
+                    <!-- CTA link -->
+                    <div class="mt-8 border-t border-slate-100 pt-6">
+                        <a href="#" class="group inline-flex items-center gap-3 transition-all"
+                           :style="`color: ${facultyColor}`">
+                            <span class="text-base font-bold"
+                                  x-text="$store.app.currentLang === 'ar' ? 'الرؤية الاستراتيجية الكاملة' : 'Read the Full Strategic Vision'"></span>
+                            <i class="fas fa-arrow-right text-sm transition-transform duration-300 group-hover:translate-x-2"
+                               :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-2' : ''"></i>
                         </a>
-
-                        <img :src="$store.facultiesPage.currentFaculty?.logo"
-                            class="h-14 opacity-10 grayscale hover:opacity-30 transition-opacity" alt="Faculty Icon">
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
