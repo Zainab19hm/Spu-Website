@@ -94,7 +94,7 @@ export const admissionsPageContent = {
         primaryDeadlineLabelAr: 'الموعد النهائي الرئيسي',
         primaryDeadlineDescEn: 'Review each phase of the admissions journey to better understand the requirements and prepare your application successfully.',
         primaryDeadlineDescAr: 'راجع كل مرحلة من رحلة القبول لفهم المتطلبات بشكل أفضل وتحضير طلبك بنجاح.',
-        image: '/images/admissions-timeline-campus.webp',
+        image: '/images/admissions-hero-campus.webp',
         phases: [
             {
                 labelEn: 'PHASE 1',
