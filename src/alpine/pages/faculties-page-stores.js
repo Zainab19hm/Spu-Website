@@ -5,6 +5,8 @@ export const registerFacultiesPageStores = (Alpine) => {
     Alpine.store('facultiesPage', {
         currentFaculty: null,
         loading: true,
+        /** true when no ?id= param → show the catalog overview */
+        catalogMode: false,
 
         init() {
             this.loadFacultyData();
@@ -17,8 +19,11 @@ export const registerFacultiesPageStores = (Alpine) => {
             const facultyId = urlParams.get('id');
 
             if (!facultyId) {
+                // No specific faculty requested → catalog overview mode
+                this.catalogMode = true;
                 this.currentFaculty = facultiesCatalog.list[0];
             } else {
+                this.catalogMode = false;
                 const data = facultiesCatalog.list.find(f => f.id === facultyId);
                 if (data) {
                     this.currentFaculty = data;

@@ -1,5 +1,5 @@
-import { portalAccessConfig } from './domains/portal-access.js';
 import { siteRoutes, withHash } from '../config/site-routes.js';
+import { portalAccessConfig } from './domains/portal-access.js';
 
 export const appUi = {
     viewAll: { en: 'View All', ar: 'عرض الكل' },
@@ -36,6 +36,7 @@ export const navigationMenuItems = [
         id: 2,
         labelAr: 'الكليات',
         labelEn: 'Faculties',
+        url: siteRoutes.faculties,
         page: 'faculties',
         hasDropdown: true,
         children: [

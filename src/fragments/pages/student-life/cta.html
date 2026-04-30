@@ -1,0 +1,40 @@
+<!-- Call to Action — full-width banner with gradient background -->
+<section x-data class="py-20 font-hacen lg:py-28">
+    <div class="container">
+        <div class="relative overflow-hidden rounded-3xl bg-spu-blue px-8 py-16 text-center text-white shadow-[0_24px_64px_rgba(32,39,89,0.3)] md:px-16 md:py-20">
+            <!-- Background pattern -->
+            <div class="pointer-events-none absolute inset-0 opacity-[0.04]"
+                 style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 28px 28px;"
+                 aria-hidden="true"></div>
+
+            <!-- Ambient gradients -->
+            <div class="pointer-events-none absolute inset-0"
+                 style="background: radial-gradient(circle at 20% 50%, rgba(111,22,22,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(43,125,179,0.1) 0%, transparent 50%);"
+                 aria-hidden="true"></div>
+
+            <div class="relative z-10">
+                <h2 class="mx-auto max-w-[600px] text-4xl font-bold leading-tight tracking-tight md:text-5xl"
+                    x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.cta.titleAr : $store.studentLifePage.cta.titleEn"></h2>
+
+                <p class="mx-auto mt-5 max-w-[520px] text-lg leading-relaxed text-white/80"
+                   x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.cta.summaryAr : $store.studentLifePage.cta.summaryEn"></p>
+
+                <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+                    <!-- Primary CTA -->
+                    <a :href="$store.studentLifePage.cta.primaryUrl"
+                       class="inline-flex items-center gap-2.5 rounded-full bg-spu-red px-8 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_12px_32px_rgba(111,22,22,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(111,22,22,0.35)]">
+                        <i class="fas fa-graduation-cap text-xs"></i>
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.cta.primaryLabelAr : $store.studentLifePage.cta.primaryLabelEn"></span>
+                    </a>
+
+                    <!-- Secondary CTA -->
+                    <a :href="$store.studentLifePage.cta.secondaryUrl"
+                       class="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/8 px-8 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/15">
+                        <i class="fas fa-envelope text-xs"></i>
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.cta.secondaryLabelAr : $store.studentLifePage.cta.secondaryLabelEn"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

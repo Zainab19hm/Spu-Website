@@ -136,6 +136,9 @@
         "SPU colleges"
       ],
       "fragments": [
+        "pages/faculties/catalog-hero.html",
+        "pages/faculties/catalog-facts.html",
+        "pages/faculties/catalog-model.html",
         "pages/faculties/hero.html",
         "pages/faculties/content.html",
         "pages/faculties/dean.html",
@@ -194,7 +197,12 @@
       ],
       "fragments": [
         "pages/student-life/hero.html",
-        "pages/student-life/services.html"
+        "pages/student-life/stats.html",
+        "pages/student-life/features.html",
+        "pages/student-life/services.html",
+        "pages/student-life/gallery.html",
+        "pages/student-life/portals.html",
+        "pages/student-life/cta.html"
       ]
     },
     {

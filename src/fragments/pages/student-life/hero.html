@@ -1,43 +1,68 @@
-<!-- Campus Life Hero with full-bleed image -->
-<section x-data class="relative min-h-[615px] overflow-hidden font-hacen">
-    <!-- Background image -->
+<!-- Campus Life Hero — full-bleed cinematic hero with gradient overlay -->
+<section x-data class="page-hero relative min-h-[680px] overflow-hidden font-hacen">
+    <!-- Background image with overlay -->
     <div class="absolute inset-0">
-        <img :src="$store.studentLifePage.hero.image" alt="" class="h-full w-full object-cover" aria-hidden="true">
-        <div class="absolute inset-0 bg-spu-blue/50 mix-blend-multiply"></div>
-        <div class="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#fbf8fd] via-[rgba(251,248,253,0)] to-transparent opacity-70"></div>
+        <img :src="$store.studentLifePage.hero.image"
+             alt=""
+             class="h-full w-full object-cover"
+             aria-hidden="true">
+        <div class="absolute inset-0 bg-gradient-to-b from-spu-blue/70 via-spu-blue/50 to-spu-blue/80"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-spu-blue/30 to-transparent"></div>
     </div>
 
-    <!-- Centered content -->
-    <div class="container relative z-10 flex min-h-[615px] items-center justify-center text-center">
-        <div class="mx-auto max-w-[800px]">
-            <h1 class="text-5xl font-bold tracking-tight text-white"
+    <!-- Content -->
+    <div class="container relative z-10 flex min-h-[680px] items-center justify-center text-center">
+        <div class="mx-auto max-w-[860px]">
+            <!-- Eyebrow badge -->
+            <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/8 px-5 py-2.5 backdrop-blur-md">
+                <span class="h-px w-8 bg-gradient-to-r from-transparent to-white/80"></span>
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/85"
+                      x-text="$store.app.currentLang === 'ar' ? 'الحياة الجامعية' : 'CAMPUS LIFE'"></span>
+                <span class="h-px w-8 bg-gradient-to-l from-transparent to-white/80"></span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-5xl font-bold leading-[1.08] tracking-tight text-white md:text-6xl lg:text-[68px]"
                 x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.hero.titleAr : $store.studentLifePage.hero.titleEn">
             </h1>
-            <p class="mx-auto mt-5 max-w-[640px] text-lg font-bold leading-relaxed text-white"
+
+            <!-- Summary -->
+            <p class="mx-auto mt-6 max-w-[640px] text-lg font-bold leading-relaxed text-white/90"
                x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.hero.summaryAr : $store.studentLifePage.hero.summaryEn">
             </p>
 
             <!-- Quick-link pills -->
-            <div class="mt-10 flex flex-wrap items-center justify-center gap-2">
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
                 <template x-for="link in $store.studentLifePage.hero.quickLinks" :key="link.labelEn">
                     <a :href="link.href"
-                       class="rounded-xl border border-white/20 bg-white/10 px-[17px] py-2 text-sm font-bold leading-5 text-white backdrop-blur-sm transition hover:bg-white/20"
-                       x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn">
+                       class="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/15 hover:shadow-[0_8px_24px_rgba(0,0,0,0.15)]">
+                        <span x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></span>
+                        <i class="fas fa-arrow-right text-[10px] opacity-60 transition-transform duration-300 group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"></i>
                     </a>
                 </template>
             </div>
         </div>
     </div>
+
+    <!-- Bottom fade -->
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
 </section>
 
 <!-- Overlapping introduction card -->
-<section x-data class="relative z-10 -mt-16 font-hacen">
+<section x-data class="relative z-10 -mt-20 font-hacen">
     <div class="container">
-        <div class="mx-auto max-w-[896px] rounded bg-spu-blue p-8 text-center text-white shadow-sm backdrop-blur-md">
-            <h2 class="text-[32px] font-bold leading-tight tracking-tight"
-                x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.intro.titleAr : $store.studentLifePage.intro.titleEn"></h2>
-            <p class="mx-auto mt-3 max-w-[672px] text-base leading-6 text-white/90"
-               x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.intro.summaryAr : $store.studentLifePage.intro.summaryEn"></p>
+        <div class="mx-auto max-w-[960px] overflow-hidden rounded-2xl bg-spu-blue shadow-[0_24px_64px_rgba(32,39,89,0.25)]">
+            <div class="relative p-10 text-center text-white md:p-12">
+                <!-- Subtle pattern overlay -->
+                <div class="pointer-events-none absolute inset-0 opacity-[0.04]"
+                     style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 24px 24px;"
+                     aria-hidden="true"></div>
+
+                <h2 class="relative text-[28px] font-bold leading-tight tracking-tight md:text-[34px]"
+                    x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.intro.titleAr : $store.studentLifePage.intro.titleEn"></h2>
+                <p class="relative mx-auto mt-4 max-w-[680px] text-base leading-7 text-white/85"
+                   x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.intro.summaryAr : $store.studentLifePage.intro.summaryEn"></p>
+            </div>
         </div>
     </div>
 </section>

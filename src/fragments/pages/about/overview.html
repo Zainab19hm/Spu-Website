@@ -90,84 +90,73 @@
             </div>
         </div>
 
-        <!-- Closing main container for grid -->
+    </div>
+    <!-- /container -->
 
-        <!-- ! Stats Section: Full width dark bar -->
-        <div x-data="{ hasCounted: false }"
-            x-init="const obs = new IntersectionObserver(e => { if(e[0].isIntersecting && !hasCounted) { $store.aboutPage.startCounting(); hasCounted = true; } }, {threshold: 0.5}); obs.observe($el);"
-            class="bg-spu-blue   text-white shadow-2xl relative">
+    <!-- ! Stats Section: Full width dark bar -->
+    <div x-data="{ hasCounted: false }"
+        x-init="const obs = new IntersectionObserver(e => { if(e[0].isIntersecting && !hasCounted) { $store.aboutPage.startCounting(); hasCounted = true; } }, {threshold: 0.5}); obs.observe($el);"
+        class="bg-spu-blue text-white shadow-2xl relative">
 
-            <div class="">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-0 relative z-10">
-                    <template x-for="(stat, index) in $store.aboutPage.quickStats" :key="stat.id">
-                        <div class="text-center group py-8"
-                            :class="index !== $store.aboutPage.quickStats.length - 1 ? '' : ''">
-                            <img :src="stat.icon"
-                                class="w-8 h-8 mb-6 mx-auto brightness-0 invert  transition-all duration-300"
-                                alt="Stat Icon">
-                            <div class="text-6xl font-black mb-3 flex items-center justify-center tracking-tighter">
-                                <span translate="no" x-text="stat.current"></span>
-                                <span class="text-spu-red " x-show="stat.id === 'papers'">+</span>
-                            </div>
-                            <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#799DD6] transition-colors"
-                                x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
+        <div class="container">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-0 relative z-10">
+                <template x-for="(stat, index) in $store.aboutPage.quickStats" :key="stat.id">
+                    <div class="text-center group py-8">
+                        <img :src="stat.icon"
+                            class="w-8 h-8 mb-6 mx-auto brightness-0 invert transition-all duration-300"
+                            alt="Stat Icon">
+                        <div class="text-6xl font-black mb-3 flex items-center justify-center tracking-tighter">
+                            <span translate="no" x-text="stat.current"></span>
+                            <span class="text-spu-red" x-show="stat.id === 'papers'">+</span>
                         </div>
-                    </template>
-                </div>
+                        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#799DD6] transition-colors"
+                            x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
+                    </div>
+                </template>
             </div>
         </div>
-        <!-- overview section -->
-        <div class=" relative z-10"> 
+    </div>
 
-            <div class="mt-32 relative group overflow-hidden">
-                <div class="flex flex-col items-center justify-between gap-24 lg:flex-row lg:gap-20">
+    <!-- overview section -->
+    <div class="container relative z-10">
+        <div class="mt-32 relative group overflow-hidden">
+            <div class="flex flex-col items-center justify-between gap-24 lg:flex-row lg:gap-20">
 
-                    <div class="relative w-full lg:w-1/2 reveal-left" x-init="$nextTick(() => { 
-                                const obs = new IntersectionObserver(entries => {
-                                    if(entries[0].isIntersecting) { $el.classList.add('active'); obs.disconnect(); }
-                                }, { threshold: 0.1 });
-                                obs.observe($el);
-                             })">
+                <div class="relative w-full lg:w-1/2 reveal-left" x-init="observeElement($el)">
 
-                      
-                        <div class="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden ">
-                            <img :src="$store.aboutPage.hero.image"
-                                class="w-full h-full object-cover transition-transform duration-1000 "
-                                alt="University Life">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-spu-blue/60 via-transparent to-transparent">
-                            </div>
+                    <div class="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden">
+                        <img :src="$store.aboutPage.hero.image"
+                            class="w-full h-full object-cover transition-transform duration-1000"
+                            alt="University Life">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-spu-blue/60 via-transparent to-transparent">
                         </div>
                     </div>
+                </div>
 
-                    <div class="w-full text-start lg:w-1/2 reveal-right" x-init="$nextTick(() => { 
-                                const obs = new IntersectionObserver(entries => {
-                                    if(entries[0].isIntersecting) { $el.classList.add('active'); obs.disconnect(); }
-                                }, { threshold: 0.1 });
-                                obs.observe($el);
-                             })">
+                <div class="w-full text-start lg:w-1/2 reveal-right" x-init="observeElement($el)">
 
-                        <div class="mb-6 inline-flex items-center gap-3">
-                            <div class="h-[2px] w-12 bg-spu-red"></div>
-                            <img src="/images/icon-award-outline.svg" class="w-5 h-5 text-spu-red" alt="Award">
-                            <span class="text-spu-red font-black tracking-widest text-sm uppercase"
-                                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.badgeAr : $store.aboutPage.hero.badgeEn"></span>
-                        </div>
+                    <div class="mb-6 inline-flex items-center gap-3">
+                        <div class="h-[2px] w-12 bg-spu-red"></div>
+                        <img src="/images/icon-award-outline.svg" class="w-5 h-5 text-spu-red" alt="Award">
+                        <span class="text-spu-red font-black tracking-widest text-sm uppercase"
+                            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.badgeAr : $store.aboutPage.hero.badgeEn"></span>
+                    </div>
 
-                        <h3 class="text-3xl md:text-4xl font-bold text-spu-blue mb-8 leading-tight"
-                            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.titleAr : $store.aboutPage.hero.titleEn">
-                        </h3>
+                    <h3 class="text-3xl md:text-4xl font-bold text-spu-blue mb-8 leading-tight"
+                        x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.titleAr : $store.aboutPage.hero.titleEn">
+                    </h3>
 
-                        <div class="space-y-6">
-                            <p class="border-s-4 border-spu-blue/10 ps-6 text-xl leading-relaxed  text-slate-600"
-                                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.quoteAr : $store.aboutPage.hero.quoteEn">
-                            </p>
-                            <p class="text-lg text-slate-500 leading-relaxed"
-                                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.descriptionAr : $store.aboutPage.hero.descriptionEn">
-                            </p>
-                        </div>
+                    <div class="space-y-6">
+                        <p class="border-s-4 border-spu-blue/10 ps-6 text-xl leading-relaxed text-slate-600"
+                            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.quoteAr : $store.aboutPage.hero.quoteEn">
+                        </p>
+                        <p class="text-lg text-slate-500 leading-relaxed"
+                            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.hero.descriptionAr : $store.aboutPage.hero.descriptionEn">
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>

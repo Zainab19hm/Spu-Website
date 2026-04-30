@@ -1,0 +1,49 @@
+<!-- Student Life Stats — animated counters with intersection observer -->
+<section x-data="{
+    hasCounted: false,
+    runCount() {
+        if (this.hasCounted) return;
+        this.hasCounted = true;
+        if ($store.studentLifePage && $store.studentLifePage.startCounting) {
+            $store.studentLifePage.startCounting();
+        }
+    }
+}" x-init="(() => {
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            runCount();
+            observer.disconnect();
+        }
+    }, { threshold: 0.2 });
+    observer.observe($el);
+})()" class="py-16 font-hacen">
+    <div class="container">
+        <div class="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+            <template x-for="stat in $store.studentLifePage.stats" :key="stat.id">
+                <div class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 text-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] md:p-8">
+                    <!-- Icon -->
+                    <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-spu-blue/5 text-spu-blue transition-colors duration-300 group-hover:bg-spu-blue group-hover:text-white">
+                        <i :class="stat.icon" class="text-xl"></i>
+                    </div>
+
+                    <!-- Value -->
+                    <div class="flex items-baseline justify-center gap-0.5" dir="ltr">
+                        <span class="text-4xl font-bold tracking-tight text-spu-blue md:text-5xl"
+                              translate="no"
+                              x-text="stat.current"></span>
+                        <span class="text-2xl font-bold text-spu-red md:text-3xl"
+                              translate="no"
+                              x-text="$store.app.currentLang === 'ar' ? stat.suffixAr : stat.suffixEn"></span>
+                    </div>
+
+                    <!-- Label -->
+                    <p class="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-400"
+                       x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
+
+                    <!-- Accent line -->
+                    <div class="mx-auto mt-4 h-1 w-10 rounded-full bg-gradient-to-r from-spu-blue to-spu-red/40 transition-all duration-300 group-hover:w-16" aria-hidden="true"></div>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>

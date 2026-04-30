@@ -1,7 +1,8 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      Faculty Hero — cinematic, dynamic, premium
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="relative flex min-h-[92vh] flex-col justify-center overflow-hidden font-hacen"
+<section x-show="!$store.facultiesPage.catalogMode" x-cloak
+         class="relative flex min-h-[92vh] flex-col justify-center overflow-hidden font-hacen"
          x-data="{ heroReady: false }"
          x-init="$nextTick(() => { setTimeout(() => heroReady = true, 80) })">
 
@@ -78,7 +79,8 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      Faculty Logo Bridge — overlaps hero bottom, sits above stats
      ═══════════════════════════════════════════════════════════════════ -->
-<div class="relative z-30 -mt-[130px] flex flex-col items-center bg-transparent pb-6 md:-mt-[140px]" x-data>
+<div x-show="!$store.facultiesPage.catalogMode" x-cloak
+     class="relative z-30 -mt-[130px] flex flex-col items-center bg-transparent pb-6 md:-mt-[140px]" x-data>
     <!-- Glow ring + logo -->
     <div class="faculty-hero__logo-ring flex h-[200px] w-[200px] items-center justify-center rounded-full border-4 border-white bg-white md:h-[220px] md:w-[220px]">
         <img :src="$store.facultiesPage.currentFaculty?.logo"
@@ -99,7 +101,8 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      Faculty Stats Bar — separate section below the logo
      ═══════════════════════════════════════════════════════════════════ -->
-<div class="bg-white pb-10 pt-6" x-data>
+<div x-show="!$store.facultiesPage.catalogMode" x-cloak
+     class="bg-white pb-10 pt-6" x-data>
     <div class="container">
         <div class="mx-auto max-w-[1100px] overflow-hidden rounded-lg bg-spu-blue shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
             <div class="grid grid-cols-2 md:grid-cols-4">
