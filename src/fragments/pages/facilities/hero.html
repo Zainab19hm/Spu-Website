@@ -1,4 +1,4 @@
-<section class="relative h-[70vh] md:h-[100vh] flex items-center " x-data>
+<section class="relative h-[70vh] md:h-screen flex items-center " x-data>
     <!-- <script>
         window.hexToRgba = function (hex, alpha) {
             hex = hex.replace('#', '');
@@ -13,7 +13,7 @@
         }
     </script> -->
     <img :src="$store.facultiesPage.currentFaculty?.heroImage"
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms]"
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-3000"
         :class="$store.facultiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">
 
     <!-- <div :style="`background: linear-gradient(${$store.app.currentLang === 'ar' ? '270deg' : '90deg'},
@@ -35,16 +35,16 @@
             </p>
             <div class="flex flex-wrap gap-5 Z-10 relative">
                 <button :style="`color: #${$store.facultiesPage.currentFaculty?.color.replace('#', '')}`"
-                    class="px-10 py-4  bg-white font-bold rounded-[8px] transition-all duration-500 ease-in-out hover:text-white hover:scale-105"
+                    class="px-10 py-4  bg-white font-bold rounded-lg transition-all duration-500 ease-in-out hover:text-white hover:scale-105"
                     x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'Explore Programs'"></button>
                 <button
-                    class="px-10 py-4 border-2 relative z-50 text-white font-bold rounded-[8px] hover:bg-white hover:text-spu-blue transition-all backdrop-blur-sm uppercase tracking-wider text-sm"
+                    class="px-10 py-4 border-2 relative z-50 text-white font-bold rounded-lg hover:bg-white hover:text-spu-blue transition-all backdrop-blur-sm uppercase tracking-wider text-sm"
                     x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'Admissions'"></button>
             </div>
         </div>
     </div>
 
-    <div class="z-40 absolute w-[582px] h-[388px] top-[70vh] left-[55%]"
+    <div class="z-40 absolute w-145.5 h-97 top-[70vh] left-[55%]"
         :style="$store.app.currentLang === 'ar' ? 'margin-left: -50%; transform: translateX(50%);' : 'margin-right: -50%; transform: translateX(-50%);'">
         <img :src="$store.facultiesPage.currentFaculty?.logo" alt="$store.facultiesPage.currentFaculty?.nameEn" class=""
             :class="$store.facultiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">

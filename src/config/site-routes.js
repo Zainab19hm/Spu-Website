@@ -25,11 +25,11 @@ export const siteRoutes = Object.freeze({
     aboutLeadership: getPageRoute('about-leadership'),
     aboutDirectorates: getPageRoute('about-directorates'),
     aboutPartnership: getPageRoute('about-partnership'),
-    faculties: getPageRoute('faculties'),
+    facilities: getPageRoute('facilities'),
     admissions: getPageRoute('admissions'),
     research: getPageRoute('research'),
-    studentLife: getPageRoute('student-life'),
-    services: getPageRoute('services'),
+    campusLife: getPageRoute('campus-life'),
+    eServices: getPageRoute('e-services'),
     news: getPageRoute('news'),
     contact: getPageRoute('contact')
 });

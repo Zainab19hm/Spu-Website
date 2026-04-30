@@ -1,6 +1,6 @@
-import { servicesPageContent } from '../../data/pages/services-content.js';
+import { eServicesPageContent } from '../../data/pages/e-services-content.js';
 import { cloneData } from '../../utils/clone.js';
 
 export function registerServicesStores(Alpine) {
-    Alpine.store('servicesPage', cloneData(servicesPageContent));
+  Alpine.store('eServicesPage', cloneData(eServicesPageContent));
 }

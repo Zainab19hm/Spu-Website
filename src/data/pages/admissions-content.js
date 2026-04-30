@@ -76,3 +76,14 @@ export const admissionsPageContent = {
         ]
     }
 };
+
+
+export const faqItems = [
+    { questionEn: "How to apply?", questionAr: "????? ????????", answerEn: "Apply online.", answerAr: "??????? ??? ????????.", category: "General" }
+];
+export const calendar = {
+    title: "Academic Calendar", currentYear: "2026", dates: [{ labelEn: "Fall Semester Starts", labelAr: "????? ??? ??????", date: "2026-09-01" }]
+};
+export const documentsChecklist = {
+    categories: [{ titleEn: "New Students", items: ["ID Copy", "High School Certificate"] }]
+};

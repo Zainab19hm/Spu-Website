@@ -78,3 +78,9 @@ export const newsPageContent = {
         ]
     }
 };
+
+
+export const announcements = [
+    { titleEn: "Holiday Notice", titleAr: "????? ????", date: "2026-04-30", bodyEn: "University closed tomorrow.", bodyAr: "??????? ????? ????." }
+];
+export const events = [];

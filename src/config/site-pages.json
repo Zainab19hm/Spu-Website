@@ -29,7 +29,7 @@
         "pages/home/hero.html",
         "pages/home/stats.html",
         "pages/home/honor-panel.html",
-        "pages/home/faculties.html",
+        "pages/home/facilities.html",
         "pages/home/paths.html",
         "pages/home/research.html",
         "pages/home/news.html",
@@ -124,24 +124,24 @@
       ]
     },
     {
-      "name": "faculties",
-      "fileName": "faculty.html",
-      "route": "/faculty.html",
-      "title": "Faculties | Syrian Private University",
-      "description": "Explore SPU faculties, study pathways, and the academic structure behind the university's core programs.",
+      "name": "facilities",
+      "fileName": "facilities.html",
+      "route": "/facilities.html",
+      "title": "Facilities | Syrian Private University",
+      "description": "Explore SPU facilities, study pathways, and the academic structure behind the university's core programs.",
       "ogImage": "/images/logo-spu.png",
       "keywords": [
-        "SPU faculties",
+        "SPU facilities",
         "Syrian Private University programs",
         "SPU colleges"
       ],
       "fragments": [
-        "pages/faculties/hero.html",
-        "pages/faculties/content.html",
-        "pages/faculties/dean.html",
-        "pages/faculties/stats.html",
-        "pages/faculties/additional.html",
-        "pages/faculties/highlights.html"
+        "pages/facilities/hero.html",
+        "pages/facilities/content.html",
+        "pages/facilities/dean.html",
+        "pages/facilities/stats.html",
+        "pages/facilities/additional.html",
+        "pages/facilities/highlights.html"
       ]
     },
     {
@@ -181,27 +181,27 @@
       ]
     },
     {
-      "name": "student-life",
-      "fileName": "student-life.html",
-      "route": "/student-life.html",
-      "title": "Student Life | Syrian Private University",
+      "name": "campus-life",
+      "fileName": "campus-life.html",
+      "route": "/campus-life.html",
+      "title": "Campus Life | Syrian Private University",
       "description": "Find student services, campus activities, academic guidance, and digital access paths at SPU.",
       "ogImage": "/images/logo-spu.png",
       "keywords": [
-        "SPU student life",
+        "SPU campus life",
         "SPU campus services",
         "Syrian Private University students"
       ],
       "fragments": [
-        "pages/student-life/hero.html",
-        "pages/student-life/services.html",
-        "pages/student-life/highlights.html"
+        "pages/campus-life/hero.html",
+        "pages/campus-life/services.html",
+        "pages/campus-life/highlights.html"
       ]
     },
     {
-      "name": "services",
-      "fileName": "services.html",
-      "route": "/services.html",
+      "name": "e-services",
+      "fileName": "e-services.html",
+      "route": "/e-services.html",
       "title": "E-Services | Syrian Private University",
       "description": "Access official SPU digital services, portal entry points, and protected student support pathways.",
       "ogImage": "/images/logo-spu.png",
@@ -211,8 +211,8 @@
         "Syrian Private University e-services"
       ],
       "fragments": [
-        "pages/services/hero.html",
-        "pages/services/access.html"
+        "pages/e-services/hero.html",
+        "pages/e-services/access.html"
       ]
     },
     {
@@ -250,6 +250,66 @@
         "pages/contact/channels.html",
         "pages/contact/visit.html"
       ]
+    },
+    {
+      "name": "facilities-medicine",
+      "fileName": "facilities/medicine.html",
+      "route": "/facilities/medicine.html",
+      "title": "Medicine | Syrian Private University",
+      "description": "Medicine facility hub",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["Medicine", "SPU"],
+      "fragments": ["pages/facilities/medicine/hub.html"]
+    },
+    {
+      "name": "facilities-dentistry",
+      "fileName": "facilities/dentistry.html",
+      "route": "/facilities/dentistry.html",
+      "title": "Dentistry | Syrian Private University",
+      "description": "Dentistry facility hub",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["Dentistry", "SPU"],
+      "fragments": ["pages/facilities/dentistry/hub.html"]
+    },
+    {
+      "name": "facilities-pharmacy",
+      "fileName": "facilities/pharmacy.html",
+      "route": "/facilities/pharmacy.html",
+      "title": "Pharmacy | Syrian Private University",
+      "description": "Pharmacy facility hub",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["Pharmacy", "SPU"],
+      "fragments": ["pages/facilities/pharmacy/hub.html"]
+    },
+    {
+      "name": "facilities-ai-engineering",
+      "fileName": "facilities/ai-engineering.html",
+      "route": "/facilities/ai-engineering.html",
+      "title": "AI Engineering | Syrian Private University",
+      "description": "AI Engineering facility hub",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["AI Engineering", "SPU"],
+      "fragments": ["pages/facilities/ai-engineering/hub.html"]
+    },
+    {
+      "name": "facilities-construction-engineering",
+      "fileName": "facilities/construction-engineering.html",
+      "route": "/facilities/construction-engineering.html",
+      "title": "Construction Engineering | Syrian Private University",
+      "description": "Construction Engineering facility hub",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["Construction Engineering", "SPU"],
+      "fragments": ["pages/facilities/construction-engineering/hub.html"]
+    },
+    {
+      "name": "facilities-petroleum-engineering",
+      "fileName": "facilities/petroleum-engineering.html",
+      "route": "/facilities/petroleum-engineering.html",
+      "title": "Petroleum Engineering | Syrian Private University",
+      "description": "Petroleum Engineering facility hub",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["Petroleum Engineering", "SPU"],
+      "fragments": ["pages/facilities/petroleum-engineering/hub.html"]
     }
   ]
 }

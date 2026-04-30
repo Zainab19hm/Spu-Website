@@ -19,80 +19,105 @@ export const appUi = {
 export const navigationMenuItems = [
     {
         id: 1,
-        labelAr: 'عن الجامعة',
+        labelAr: '?? ???????',
         labelEn: 'About',
         url: siteRoutes.about,
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership.html' },
-            { labelAr: 'تاريخنا', labelEn: 'Our History', url: '/about/history.html' },
-            { labelAr: 'المديريات', labelEn: 'Directorates', url: '/about/directorates.html' },
-            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: '/about/partnership.html' }
+            { labelAr: '??????? ????????', labelEn: 'Leadership', url: '/about/leadership.html' },
+            { labelAr: '???????', labelEn: 'Our History', url: '/about/history.html' },
+            { labelAr: '?????????', labelEn: 'Directorates', url: '/about/directorates.html' },
+            { labelAr: '????????', labelEn: 'Partnerships', url: '/about/partnership.html' }
         ]
     },
 
     {
         id: 2,
-        labelAr: 'الكليات',
-        labelEn: 'Faculties',
-        page: 'faculties',
+        labelAr: '???????',
+        labelEn: 'Facilities',
+        url: siteRoutes.facilities,
+        page: 'facilities',
         hasDropdown: true,
         children: [
-            { labelAr: 'كلية الطب البشري', labelEn: 'Medicine', url: '/faculty.html?id=medicine' },
-            { labelAr: 'كلية طب الأسنان', labelEn: 'Dentistry', url: '/faculty.html?id=dentistry' },
-            { labelAr: 'كلية الصيدلة', labelEn: 'Pharmacy', url: '/faculty.html?id=pharmacy' },
-            { labelAr: 'كلية هندسة الذكاء الاصطناعي', labelEn: 'AI Engineering', url: '/faculty.html?id=ai-engineering' },
-            { labelAr: 'كلية هندسة البناء  ', labelEn: 'Construction Engineering', url: '/faculty.html?id=Construction' },
-            { labelAr: 'كلية هندسة البترول', labelEn: 'Petroleum Engineering', url: '/faculty.html?id=petroleum' },
-            { labelAr: 'كلية إدارة الأعمال', labelEn: 'Business Administration', url: '/faculty.html?id=business' }
+            { labelAr: '???? ???? ??????', labelEn: 'Medicine', url: '/facilities/medicine.html' },
+            { labelAr: '???? ?? ???????', labelEn: 'Dentistry', url: '/facilities/dentistry.html' },
+            { labelAr: '???? ???????', labelEn: 'Pharmacy', url: '/facilities/pharmacy.html' },
+            { labelAr: '???? ????? ?????? ?????????', labelEn: 'AI Engineering', url: '/facilities/ai-engineering.html' },
+            { labelAr: '???? ????? ??????', labelEn: 'Construction Engineering', url: '/facilities/construction-engineering.html' },
+            { labelAr: '???? ????? ???????', labelEn: 'Petroleum Engineering', url: '/facilities/petroleum-engineering.html' }
         ]
     },
     {
         id: 3,
-        labelAr: 'القبول والتسجيل',
+        labelAr: '?????? ????????',
         labelEn: 'Admissions',
         url: siteRoutes.admissions,
         page: 'admissions',
         hasDropdown: true,
         children: [
-            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: withHash(siteRoutes.admissions, 'requirements') },
-            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: withHash(siteRoutes.admissions, 'fees') },
-            { labelAr: 'دعم القبول', labelEn: 'Admissions Support', url: siteRoutes.contact }
+            { labelAr: '???? ??????', labelEn: 'Admission Requirements', url: withHash(siteRoutes.admissions, 'requirements') },
+            { labelAr: '?????? ????????', labelEn: 'Tuition Fees', url: withHash(siteRoutes.admissions, 'fees') },
+            { labelAr: '??? ??????', labelEn: 'Admissions Support', url: siteRoutes.contact },
+            { labelAr: '??????? ?????????', labelEn: 'Academic Calendar', url: '/admissions.html#calendar' },
+            { labelAr: '????????? ????????', labelEn: 'Documents Checklist', url: '/admissions.html#documents' },
+            { labelAr: '??????? ???????', labelEn: 'FAQ', url: '/admissions.html#faq' }
         ]
     },
     {
         id: 4,
-        labelAr: 'الحياة الجامعية',
-        labelEn: 'Student Life',
-        url: siteRoutes.studentLife,
-        page: 'student-life',
+        labelAr: '?????? ????????',
+        labelEn: 'Campus Life',
+        url: siteRoutes.campusLife,
+        page: 'campus-life',
         hasDropdown: true,
         children: [
-            { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: withHash(siteRoutes.studentLife, 'services') },
-            { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
-            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: withHash(siteRoutes.studentLife, 'calendar') }
+            { labelAr: '??????? ????????', labelEn: 'Student Services', url: withHash(siteRoutes.campusLife, 'services') },
+            { labelAr: '??????? ????????', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.campusLife, 'activities') },
+            { labelAr: '??????? ?????????', labelEn: 'Academic Calendar', url: withHash(siteRoutes.campusLife, 'calendar') }
         ]
     },
     {
         id: 5,
-        labelAr: 'الخدمات',
+        labelAr: '??????? ???????????',
         labelEn: 'E-Services',
-        url: siteRoutes.services,
-        page: 'services',
+        url: siteRoutes.eServices,
+        page: 'e-services',
         hasDropdown: true,
         children: [
-            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, protected: true },
-            { labelAr: 'التسجيل', labelEn: 'Registration', url: portalAccessConfig.registrationDestination, protected: true },
-            { labelAr: 'المكتبة', labelEn: 'Library Access', url: withHash(siteRoutes.studentLife, 'services') },
-            { labelAr: 'التقديم الان', labelEn: 'Apply now', url: siteRoutes.admissions },
+            { labelAr: '????? ??????', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, protected: true },
+            { labelAr: '???????', labelEn: 'Registration', url: portalAccessConfig.registrationDestination, protected: true },
+            { labelAr: '????? ??????????', labelEn: 'Appeals & Forms', url: '/e-services.html#appeals' },
+            { labelAr: '???????', labelEn: 'Library', url: '/e-services.html#library' }
         ]
     },
-    { id: 6, labelAr: 'البحث العلمي', labelEn: 'Research', page: 'research', hasDropdown: false, url: siteRoutes.research },
-    { id: 7, labelAr: 'الأخبار', labelEn: 'News', page: 'news', hasDropdown: false, url: siteRoutes.news },
-    { id: 8, labelAr: 'تواصل معنا', labelEn: 'Contact', page: 'contact', hasDropdown: false, url: siteRoutes.contact },
-
-];
+    {
+        id: 6,
+        labelAr: '????? ??????',
+        labelEn: 'Research',
+        page: 'research',
+        hasDropdown: true,
+        url: siteRoutes.research,
+        children: [
+            { labelAr: '?????????', labelEn: 'Publications', url: '/research.html#publications' },
+            { labelAr: '???? ???????', labelEn: 'Expert Finder', url: '/research.html#experts' },
+            { labelAr: '???????', labelEn: 'Library', url: '/research.html#library' }
+        ]
+    },
+    {
+        id: 7,
+        labelAr: '???????',
+        labelEn: 'News',
+        page: 'news',
+        hasDropdown: true,
+        url: siteRoutes.news,
+        children: [
+            { labelAr: '?????????', labelEn: 'Announcements', url: '/news.html#announcements' },
+            { labelAr: '?????????', labelEn: 'Events', url: '/news.html#events' }
+        ]
+    },
+    { id: 8, labelAr: '????? ????', labelEn: 'Contact', page: 'contact', hasDropdown: false, url: siteRoutes.contact }
+]
 
 export const footerContent = {
     identity: {
@@ -113,10 +138,10 @@ export const footerContent = {
         titleAr: 'استكشف SPU',
         links: [
             { labelEn: 'About SPU', labelAr: 'عن الجامعة', url: siteRoutes.about },
-            { labelEn: 'Faculties', labelAr: 'الكليات', url: siteRoutes.faculties },
+            { labelEn: 'Faculties', labelAr: 'الكليات', url: siteRoutes.facilities },
             { labelEn: 'Admissions', labelAr: 'القبول والتسجيل', url: siteRoutes.admissions },
             { labelEn: 'Research', labelAr: 'البحث العلمي', url: siteRoutes.research },
-            { labelEn: 'Student Life', labelAr: 'الحياة الجامعية', url: siteRoutes.studentLife },
+            { labelEn: 'Student Life', labelAr: 'الحياة الجامعية', url: siteRoutes.campusLife },
             { labelEn: 'News', labelAr: 'الأخبار', url: siteRoutes.news }
         ]
     },

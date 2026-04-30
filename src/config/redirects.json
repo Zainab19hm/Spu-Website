@@ -1,0 +1,42 @@
+[
+  {
+    "from": "/faculties.html",
+    "to": "/facilities.html",
+    "status": 301
+  },
+  {
+    "from": "/student-life.html",
+    "to": "/campus-life.html",
+    "status": 301
+  },
+  {
+    "from": "/faculties.html#faculty-1",
+    "to": "/facilities/medicine.html",
+    "status": 301
+  },
+  {
+    "from": "/faculties.html#faculty-2",
+    "to": "/facilities/dentistry.html",
+    "status": 301
+  },
+  {
+    "from": "/faculties.html#faculty-3",
+    "to": "/facilities/pharmacy.html",
+    "status": 301
+  },
+  {
+    "from": "/faculties.html#faculty-4",
+    "to": "/facilities/ai-engineering.html",
+    "status": 301
+  },
+  {
+    "from": "/faculties.html#faculty-5",
+    "to": "/facilities/construction-engineering.html",
+    "status": 301
+  },
+  {
+    "from": "/faculties.html#faculty-6",
+    "to": "/facilities/petroleum-engineering.html",
+    "status": 301
+  }
+]
