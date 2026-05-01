@@ -130,7 +130,9 @@ function isHexColor(value) {
 }
 
 function validateInternalReferences(pages) {
-  const routes = new Set(pages.map((page) => page.route));
+  const routes = new Set(
+    pages.flatMap((page) => [page.route, ...(Array.isArray(page.legacyRoutes) ? page.legacyRoutes : [])])
+  );
   routes.add('/');
 
   const { routeIds, sharedIds } = collectRouteIds(pages);

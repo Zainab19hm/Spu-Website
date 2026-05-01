@@ -1,7 +1,6 @@
 import {
     healthcareContent,
     heroContent,
-    honorPanelItems,
     newsItems,
     pathItems,
     researchItems,
@@ -35,9 +34,9 @@ export function registerHomeStores(Alpine) {
         items: cloneData(pathItems)
     });
 
-    Alpine.store('honorPanel', {
-        items: cloneData(honorPanelItems)
-    });
+    // Deferred per current homepage scope. To restore Milestones / Important News,
+    // add pages/home/honor-panel.html back to the home fragments in site-pages.json
+    // and register honorPanelItems here again.
 
     Alpine.store('news', {
         items: cloneData(newsItems)

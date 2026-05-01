@@ -73,7 +73,7 @@ export const contactPageContent = {
             titleAr: 'دعم شؤون الطلاب',
             summaryEn: 'Reach the student-services path for daily academic support and campus-life questions.',
             summaryAr: 'انتقل إلى مسار الخدمات الطلابية للدعم الأكاديمي اليومي وأسئلة الحياة الجامعية.',
-            url: siteRoutes.studentLife
+            url: siteRoutes.campusLife
         },
         {
             titleEn: 'P.O. Box',

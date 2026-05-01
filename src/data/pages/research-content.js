@@ -97,5 +97,5 @@ export const publications = [
     { title: "Sample Paper", authors: ["Dr. Smith"], journal: "Journal of Science", year: "2026", doi: "10.0000", abstract: "Abstract here", keywords: ["Science"], faculty: "Medicine" }
 ];
 export const experts = [
-    { nameEn: "Dr. Smith", nameAr: "?. ????", photo: "/images/dr-smith.jpg", department: "Surgery", faculty: "Medicine", researchInterests: ["AI in Medicine"], orcid: "0000-0000-0000-0000", googleScholar: "https://scholar.google.com" }
+    { nameEn: "Dr. Smith", nameAr: "?. ????", photo: "/images/medicine-dean.jpg", department: "Surgery", faculty: "Medicine", researchInterests: ["AI in Medicine"], orcid: "0000-0000-0000-0000", googleScholar: "https://scholar.google.com" }
 ];

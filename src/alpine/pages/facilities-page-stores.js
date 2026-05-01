@@ -1,9 +1,10 @@
 import { facilitiesCatalog } from '../../data/domains/facilities-catalog.js';
+import { siteRoutes } from '../../config/site-routes.js';
 
 // تعديل: التصدير باستخدام اسم مسمى ليطابق ملف التسجيل
 export const registerFacilitiesPageStores = (Alpine) => {
     Alpine.store('facilitiesPage', {
-        currentFaculty: null,
+        currentFacility: null,
         loading: true,
 
         init() {
@@ -19,12 +20,12 @@ export const registerFacilitiesPageStores = (Alpine) => {
             if (!facultyId) {
                 this.currentFacility = facilitiesCatalog.list[0];
             } else {
-                const data = facilitiesCatalog.list.find(f => f.id === facilityId);
+                const data = facilitiesCatalog.list.find(f => f.id === facultyId);
                 if (data) {
                     this.currentFacility = data;
                 } else {
                     console.error("Facility not found:", facultyId);
-                    window.location.href = './index.html';
+                    window.location.href = siteRoutes.facilities;
                 }
             }
             this.loading = false;

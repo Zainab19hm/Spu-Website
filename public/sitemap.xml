@@ -14,31 +14,19 @@
     <loc>https://spu.edu.sy/about/leadership</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/about/vision-mission</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/about/accreditation</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/about/directorates</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/partnership</loc>
+    <loc>https://spu.edu.sy/about/partnerships</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/facilities</loc>
-  </url>
-  <url>
-    <loc>https://spu.edu.sy/facilities/medicine</loc>
-  </url>
-  <url>
-    <loc>https://spu.edu.sy/facilities/dentistry</loc>
-  </url>
-  <url>
-    <loc>https://spu.edu.sy/facilities/pharmacy</loc>
-  </url>
-  <url>
-    <loc>https://spu.edu.sy/facilities/ai-engineering</loc>
-  </url>
-  <url>
-    <loc>https://spu.edu.sy/facilities/construction-engineering</loc>
-  </url>
-  <url>
-    <loc>https://spu.edu.sy/facilities/petroleum-engineering</loc>
+    <loc>https://spu.edu.sy/about/why-spu</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/admissions</loc>
@@ -65,7 +53,34 @@
     <loc>https://spu.edu.sy/admissions/faq</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/facilities</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/petroleum-engineering</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/research</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/research/office</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/research/publications</loc>
@@ -77,7 +92,16 @@
     <loc>https://spu.edu.sy/research/expert-finder</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/research/conferences</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/research/postgraduate</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/research/library</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/research/policies</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/campus-life</loc>
@@ -86,13 +110,22 @@
     <loc>https://spu.edu.sy/campus-life/services</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/campus-life/transport</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/campus-life/health</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/campus-life/clubs</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/campus-life/sports</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/campus-life/career</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/campus-life/community</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/campus-life/hospital</loc>
@@ -107,13 +140,25 @@
     <loc>https://spu.edu.sy/e-services/student-portal</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/e-services/appeals</loc>
+    <loc>https://spu.edu.sy/e-services/registration</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/e-services/library</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/e-services/appeals</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/e-services/staff-email</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/e-services/it-support</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/news</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/news/articles</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/news/announcements</loc>
@@ -122,6 +167,195 @@
     <loc>https://spu.edu.sy/news/events</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/news/gallery</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/news/press-room</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/contact</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/contact/map</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/overview</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/departments</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/study-plan</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/calendar</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/research</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/projects</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/alumni</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/valedictorians</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/labs</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/training</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/overview</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/departments</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/study-plan</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/calendar</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/research</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/projects</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/alumni</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/valedictorians</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/labs</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/training</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/overview</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/departments</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/study-plan</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/calendar</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/research</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/projects</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/alumni</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/valedictorians</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/labs</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/training</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/overview</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/departments</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/study-plan</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/calendar</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/research</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/projects</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/alumni</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/valedictorians</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/labs</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/ai-engineering/training</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/overview</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/departments</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/study-plan</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/calendar</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/research</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/projects</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/alumni</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/valedictorians</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/labs</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/construction-engineering/training</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/overview</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/departments</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/study-plan</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/calendar</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/research</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/projects</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/alumni</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/valedictorians</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/labs</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/training</loc>
   </url>
 </urlset>

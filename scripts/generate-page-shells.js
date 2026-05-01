@@ -144,60 +144,60 @@ function renderStructuredData(site, page, canonicalUrl, ogImage) {
   return `<script type="application/ld+json">${escapeJson(structuredData)}</script>`;
 }
 
-const pageWarmupModules = {
-  home: [
-    '/src/alpine/pages/home-stores.js',
-    '/src/alpine/register-faculty-catalog-store.js',
-    '/src/features/calendar.js',
-    '/src/features/research-slider.js'
-  ],
-  about: ['/src/alpine/pages/about-stores.js'],
-  'about-history': ['/src/alpine/pages/about-stores.js'],
-  'about-leadership': ['/src/alpine/pages/about-stores.js'],
-  'about-directorates': ['/src/alpine/pages/about-stores.js'],
-  'about-partnership': ['/src/alpine/pages/about-stores.js'],
-  facilities: [
-    '/src/alpine/pages/facilities-page-stores.js',
-    '/src/alpine/register-faculty-catalog-store.js'
-  ],
-  'facilities-medicine': ['/src/alpine/pages/facility-hub-stores.js'],
-  'facilities-dentistry': ['/src/alpine/pages/facility-hub-stores.js'],
-  'facilities-pharmacy': ['/src/alpine/pages/facility-hub-stores.js'],
-  'facilities-ai-engineering': ['/src/alpine/pages/facility-hub-stores.js'],
-  'facilities-construction-engineering': ['/src/alpine/pages/facility-hub-stores.js'],
-  'facilities-petroleum-engineering': ['/src/alpine/pages/facility-hub-stores.js'],
-  admissions: ['/src/alpine/pages/admissions-stores.js'],
-  'admissions-requirements': ['/src/alpine/pages/admissions-stores.js'],
-  'admissions-tuition': ['/src/alpine/pages/admissions-stores.js'],
-  'admissions-how-to-apply': ['/src/alpine/pages/admissions-stores.js'],
-  'admissions-transfer': ['/src/alpine/pages/admissions-stores.js'],
-  'admissions-calendar': ['/src/alpine/pages/admissions-stores.js'],
-  'admissions-documents': ['/src/alpine/pages/admissions-stores.js'],
-  'admissions-faq': ['/src/alpine/pages/admissions-stores.js'],
-  research: ['/src/alpine/pages/research-stores.js'],
-  'research-publications': ['/src/alpine/pages/research-stores.js'],
-  'research-centers': ['/src/alpine/pages/research-stores.js'],
-  'research-expert-finder': ['/src/alpine/pages/research-stores.js'],
-  'research-library': ['/src/alpine/pages/research-stores.js'],
-  'campus-life': ['/src/alpine/pages/campus-life-stores.js'],
-  'campus-life-services': ['/src/alpine/pages/campus-life-stores.js'],
-  'campus-life-health': ['/src/alpine/pages/campus-life-stores.js'],
-  'campus-life-clubs': ['/src/alpine/pages/campus-life-stores.js'],
-  'campus-life-career': ['/src/alpine/pages/campus-life-stores.js'],
-  'campus-life-hospital': ['/src/alpine/pages/campus-life-stores.js'],
-  'campus-life-dental': ['/src/alpine/pages/campus-life-stores.js'],
-  'e-services': ['/src/alpine/pages/services-stores.js'],
-  'e-services-student-portal': ['/src/alpine/pages/services-stores.js'],
-  'e-services-appeals': ['/src/alpine/pages/services-stores.js'],
-  'e-services-library': ['/src/alpine/pages/services-stores.js'],
-  news: ['/src/alpine/pages/news-stores.js'],
-  'news-announcements': ['/src/alpine/pages/news-stores.js'],
-  'news-events': ['/src/alpine/pages/news-stores.js'],
-  contact: ['/src/alpine/pages/contact-stores.js']
-};
+function getPageWarmupModules(pageName) {
+  if (pageName === 'home') {
+    return [
+      '/src/alpine/pages/home-stores.js',
+      '/src/alpine/register-faculty-catalog-store.js',
+      '/src/features/calendar.js',
+      '/src/features/research-slider.js'
+    ];
+  }
+
+  if (pageName === 'facilities') {
+    return [
+      '/src/alpine/pages/facilities-page-stores.js',
+      '/src/alpine/register-faculty-catalog-store.js'
+    ];
+  }
+
+  if (pageName.startsWith('about-') || pageName === 'about') {
+    return ['/src/alpine/pages/about-stores.js'];
+  }
+
+  if (pageName.startsWith('facilities-')) {
+    return ['/src/alpine/pages/facility-hub-stores.js'];
+  }
+
+  if (pageName.startsWith('admissions-') || pageName === 'admissions') {
+    return ['/src/alpine/pages/admissions-stores.js'];
+  }
+
+  if (pageName.startsWith('research-') || pageName === 'research') {
+    return ['/src/alpine/pages/research-stores.js'];
+  }
+
+  if (pageName.startsWith('campus-life-') || pageName === 'campus-life') {
+    return ['/src/alpine/pages/campus-life-stores.js'];
+  }
+
+  if (pageName.startsWith('e-services-') || pageName === 'e-services') {
+    return ['/src/alpine/pages/services-stores.js'];
+  }
+
+  if (pageName.startsWith('news-') || pageName === 'news') {
+    return ['/src/alpine/pages/news-stores.js'];
+  }
+
+  if (pageName.startsWith('contact-') || pageName === 'contact') {
+    return ['/src/alpine/pages/contact-stores.js'];
+  }
+
+  return [];
+}
 
 function renderWarmupScript(pageName) {
-  const modulePaths = pageWarmupModules[pageName] || [];
+  const modulePaths = getPageWarmupModules(pageName);
 
   if (!modulePaths.length) {
     return '';
@@ -451,6 +451,7 @@ function loadSiteRegistry() {
 
   const seenNames = new Set();
   const seenRoutes = new Set();
+  const seenLegacyRoutes = new Set();
   const seenFileNames = new Set();
   const normalizedPages = ensureArray(pages, 'pages').map((page, index) => {
     const normalizedPage = {
@@ -458,6 +459,9 @@ function loadSiteRegistry() {
       name: ensureNonEmptyString(page.name, `pages[${index}].name`),
       fileName: ensureRelativeFile(page.fileName, `pages[${index}].fileName`),
       route: ensureRoute(page.route, `pages[${index}].route`),
+      legacyRoutes: Array.isArray(page.legacyRoutes)
+        ? page.legacyRoutes.map((legacyRoute, legacyIndex) => ensureRoute(legacyRoute, `pages[${index}].legacyRoutes[${legacyIndex}]`))
+        : [],
       title: ensureNonEmptyString(page.title, `pages[${index}].title`),
       description: ensureNonEmptyString(page.description, `pages[${index}].description`),
       ogImage: ensurePublicAssetExists(page.ogImage || site.defaultOgImage, `pages[${index}].ogImage`),
@@ -480,6 +484,22 @@ function loadSiteRegistry() {
     seenNames.add(normalizedPage.name);
     seenRoutes.add(normalizedPage.route);
     seenFileNames.add(normalizedPage.fileName);
+
+    normalizedPage.legacyRoutes.forEach((legacyRoute) => {
+      if (legacyRoute === normalizedPage.route) {
+        throw new Error(`legacyRoutes for '${normalizedPage.name}' includes canonical route '${legacyRoute}'.`);
+      }
+
+      if (seenRoutes.has(legacyRoute)) {
+        throw new Error(`legacy route '${legacyRoute}' conflicts with canonical route.`);
+      }
+
+      if (seenLegacyRoutes.has(legacyRoute)) {
+        throw new Error(`Duplicate legacy route '${legacyRoute}'.`);
+      }
+
+      seenLegacyRoutes.add(legacyRoute);
+    });
 
     normalizedPage.fragments.forEach((fragmentPath) => readFragment(fragmentPath));
     return normalizedPage;
@@ -525,6 +545,22 @@ function extractPageMeta(site, page) {
 }
 
 function renderPageShell(site, layout, page) {
+  const deferredSectionComments = Array.isArray(page.deferredSections)
+    ? page.deferredSections.map((section) => {
+      const parts = [
+        section.label ? `Deferred homepage section: ${section.label}` : 'Deferred homepage section',
+        section.requirement ? `requirement: ${section.requirement}` : '',
+        section.futureFragment ? `future fragment: ${section.futureFragment}` : '',
+        Array.isArray(section.futureRoutes) && section.futureRoutes.length
+          ? `future routes: ${section.futureRoutes.join(', ')}`
+          : '',
+        section.futureStore ? `future store: ${section.futureStore}` : ''
+      ].filter(Boolean);
+
+      return `    <!-- ${parts.join(' | ')} -->`;
+    }).join('\n')
+    : '';
+
   return `${generatedBanner}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -536,6 +572,7 @@ function renderPageShell(site, layout, page) {
   <include src="src/fragments/${layout.header}"></include>
   <main data-page-content x-data data-page-name="${escapeAttribute(page.name)}">
 ${page.fragments.map(f => `    <include src="src/fragments/${f}"></include>`).join('\n')}
+${deferredSectionComments ? `\n${deferredSectionComments}` : ''}
   </main>
   <include src="src/fragments/${layout.footer}"></include>
   <script type="module" src="/src/main.js"></script>

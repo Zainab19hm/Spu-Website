@@ -13,13 +13,15 @@
             <div class="w-full lg:w-[27%] relative top-5">
                 <div class="relative w-full aspect-square">
                     <div class="absolute top-3  w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px] overflow-hidden reveal-left"
-                        x-init="observeElement($el)" :style="$store.app,currentLang === 'ar' ? 'right:0px' : 'left:0px'">
+                        x-init="observeElement($el)"
+                        :style="$store.app,currentLang === 'ar' ? 'right:0px' : 'left:0px'">
                         <img :src="$store.facilitiesPage.currentFacility?.image_1" class="w-full h-full object-cover"
                             alt="Faculty Header">
                     </div>
-                       
+
                     <div class="absolute top-[155px] w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px]   overflow-hidden  border-[10px] border-white z-10 reveal-right"
-                        x-init="observeElement($el)" :style=" $store.app.currentLang === 'ar' ? 'right :122px' : 'left:122px'  ">
+                        x-init="observeElement($el)"
+                        :style=" $store.app.currentLang === 'ar' ? 'right :122px' : 'left:122px'  ">
                         <img :src="$store.facilitiesPage.currentFacility?.image_2" class="w-full h-full object-cover"
                             alt="Faculty Dean">
                     </div>
@@ -60,7 +62,7 @@
                     </div>
 
                     <!-- <div class="mt-12 pt-8 border-t border-slate-100 flex items-center justify-between">
-                        <a href="#" class="inline-flex items-center gap-4 font-black group transition-all"
+                        <a href="/facilities" class="inline-flex items-center gap-4 font-black group transition-all"
                             :style="`color: ${facultyColor}`">
                             <span class="text-sm uppercase tracking-widest"
                                 x-text="$store.app.currentLang === 'ar' ? 'الرؤية الاستراتيجية الكاملة' : 'Full Strategic Vision'"></span>

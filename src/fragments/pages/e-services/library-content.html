@@ -1,54 +1,84 @@
 <section id="e-services-library" x-data class="bg-white py-20 font-hacen lg:py-24">
     <div class="container">
         <div class="max-w-3xl">
-            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الوصول للمكتبة' : 'Library Access'"></p>
-            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'المكتبة الإلكترونية وقواعد البيانات المرخّصة' : 'E-Library and Licensed Database Access'"></h1>
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70"
+                x-text="$store.app.currentLang === 'ar' ? 'الوصول للمكتبة' : 'Library Access'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl"
+                x-text="$store.app.currentLang === 'ar' ? 'المكتبة الإلكترونية وقواعد البيانات المرخّصة' : 'E-Library and Licensed Database Access'">
+            </h1>
         </div>
 
         <div class="mt-12 grid gap-8 lg:grid-cols-2">
             <article class="rounded-[30px] bg-spu-blue p-8 text-white shadow-[0_24px_70px_rgba(20,30,70,0.16)]">
-                <h2 class="text-2xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'المكتبة الإلكترونية' : 'E-Library'"></h2>
-                <p class="mt-5 text-[15px] leading-7 text-white/80" x-text="$store.app.currentLang === 'ar' ? 'توفر الجامعة وصولاً إلى آلاف العناوين الإلكترونية من الكتب والدوريات الأكاديمية باللغتين العربية والإنجليزية. يمكن تصفح المحتوى والبحث فيه عبر البوابة الإلكترونية باستخدام رقمك الجامعي.' : 'The university provides access to thousands of e-book titles and academic journals in Arabic and English. Content can be browsed and searched through the electronic portal using your student ID.'"></p>
-                <a href="#" class="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-spu-blue transition-transform duration-300 hover:-translate-y-1">
+                <h2 class="text-2xl font-bold"
+                    x-text="$store.app.currentLang === 'ar' ? 'المكتبة الإلكترونية' : 'E-Library'"></h2>
+                <p class="mt-5 text-[15px] leading-7 text-white/80"
+                    x-text="$store.app.currentLang === 'ar' ? 'توفر الجامعة وصولاً إلى آلاف العناوين الإلكترونية من الكتب والدوريات الأكاديمية باللغتين العربية والإنجليزية. يمكن تصفح المحتوى والبحث فيه عبر البوابة الإلكترونية باستخدام رقمك الجامعي.' : 'The university provides access to thousands of e-book titles and academic journals in Arabic and English. Content can be browsed and searched through the electronic portal using your student ID.'">
+                </p>
+                <a href="/e-services/library"
+                    class="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-spu-blue transition-transform duration-300 hover:-translate-y-1">
                     <i class="fas fa-book-open"></i>
-                    <span x-text="$store.app.currentLang === 'ar' ? 'تصفح المكتبة الإلكترونية' : 'Browse E-Library'"></span>
+                    <span
+                        x-text="$store.app.currentLang === 'ar' ? 'تصفح المكتبة الإلكترونية' : 'Browse E-Library'"></span>
                 </a>
             </article>
 
             <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
-                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات المرخّصة' : 'Licensed Databases'"></h2>
-                <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'يمكن لأعضاء الهيئة التدريسية والطلاب الوصول إلى قواعد بيانات أكاديمية مرخّصة تغطي الطب والصيدلة والهندسة والعلوم الأساسية.' : 'Faculty and students can access licensed academic databases covering medicine, pharmacy, engineering, and basic sciences.'"></p>
+                <h2 class="text-2xl font-bold text-spu-blue"
+                    x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات المرخّصة' : 'Licensed Databases'"></h2>
+                <p class="mt-4 text-[15px] leading-7 text-slate-600"
+                    x-text="$store.app.currentLang === 'ar' ? 'يمكن لأعضاء الهيئة التدريسية والطلاب الوصول إلى قواعد بيانات أكاديمية مرخّصة تغطي الطب والصيدلة والهندسة والعلوم الأساسية.' : 'Faculty and students can access licensed academic databases covering medicine, pharmacy, engineering, and basic sciences.'">
+                </p>
                 <div class="mt-6 space-y-4">
                     <div class="flex items-center justify-between rounded-[20px] bg-section px-5 py-4">
-                        <span class="text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات الصحية' : 'Health Databases'"></span>
-                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600"><i class="fas fa-check text-xs"></i></span>
+                        <span class="text-[15px] font-medium text-slate-700"
+                            x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات الصحية' : 'Health Databases'"></span>
+                        <span
+                            class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600"><i
+                                class="fas fa-check text-xs"></i></span>
                     </div>
                     <div class="flex items-center justify-between rounded-[20px] bg-section px-5 py-4">
-                        <span class="text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات الهندسية' : 'Engineering Databases'"></span>
-                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600"><i class="fas fa-check text-xs"></i></span>
+                        <span class="text-[15px] font-medium text-slate-700"
+                            x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات الهندسية' : 'Engineering Databases'"></span>
+                        <span
+                            class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600"><i
+                                class="fas fa-check text-xs"></i></span>
                     </div>
                     <div class="flex items-center justify-between rounded-[20px] bg-section px-5 py-4">
-                        <span class="text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات متعددة التخصصات' : 'Multidisciplinary Databases'"></span>
-                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600"><i class="fas fa-check text-xs"></i></span>
+                        <span class="text-[15px] font-medium text-slate-700"
+                            x-text="$store.app.currentLang === 'ar' ? 'قواعد البيانات متعددة التخصصات' : 'Multidisciplinary Databases'"></span>
+                        <span
+                            class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600"><i
+                                class="fas fa-check text-xs"></i></span>
                     </div>
                 </div>
             </article>
         </div>
 
         <div class="mt-8 rounded-[30px] bg-section p-8">
-            <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'كيفية الوصول' : 'How to Access'"></h2>
+            <h2 class="text-2xl font-bold text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? 'كيفية الوصول' : 'How to Access'"></h2>
             <div class="mt-6 grid gap-4 sm:grid-cols-3">
                 <div class="rounded-[22px] bg-white p-5">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">1</span>
-                    <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'سجّل الدخول إلى البوابة الإلكترونية بالرقم الجامعي' : 'Log in to the electronic portal with your student ID'"></p>
+                    <span
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">1</span>
+                    <p class="mt-3 text-[15px] leading-7 text-slate-600"
+                        x-text="$store.app.currentLang === 'ar' ? 'سجّل الدخول إلى البوابة الإلكترونية بالرقم الجامعي' : 'Log in to the electronic portal with your student ID'">
+                    </p>
                 </div>
                 <div class="rounded-[22px] bg-white p-5">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">2</span>
-                    <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'انتقل إلى قسم المكتبة الإلكترونية واختر قاعدة البيانات' : 'Navigate to the e-library section and select a database'"></p>
+                    <span
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">2</span>
+                    <p class="mt-3 text-[15px] leading-7 text-slate-600"
+                        x-text="$store.app.currentLang === 'ar' ? 'انتقل إلى قسم المكتبة الإلكترونية واختر قاعدة البيانات' : 'Navigate to the e-library section and select a database'">
+                    </p>
                 </div>
                 <div class="rounded-[22px] bg-white p-5">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">3</span>
-                    <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'ابحث واستعرض المحتوى الكامل مباشرة من المتصفح' : 'Search and access full content directly from your browser'"></p>
+                    <span
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">3</span>
+                    <p class="mt-3 text-[15px] leading-7 text-slate-600"
+                        x-text="$store.app.currentLang === 'ar' ? 'ابحث واستعرض المحتوى الكامل مباشرة من المتصفح' : 'Search and access full content directly from your browser'">
+                    </p>
                 </div>
             </div>
         </div>

@@ -1,45 +1,65 @@
 <section id="e-services-student-portal" x-data class="bg-white py-20 font-hacen lg:py-24">
     <div class="container">
         <div class="max-w-3xl">
-            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'بوابة الطالب الإلكترونية' : 'Student Portal'"></p>
-            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'الدخول إلى البوابة الإلكترونية ودليل أول تسجيل' : 'Electronic Student Gate access and first-login guide'"></h1>
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70"
+                x-text="$store.app.currentLang === 'ar' ? 'بوابة الطالب الإلكترونية' : 'Student Portal'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl"
+                x-text="$store.app.currentLang === 'ar' ? 'الدخول إلى البوابة الإلكترونية ودليل أول تسجيل' : 'Electronic Student Gate access and first-login guide'">
+            </h1>
         </div>
 
         <div class="mt-12 grid gap-8 lg:grid-cols-2">
             <article class="rounded-[30px] bg-spu-blue p-8 text-white shadow-[0_24px_70px_rgba(20,30,70,0.16)]">
-                <h2 class="text-2xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'الدخول إلى البوابة' : 'Access the Portal'"></h2>
-                <p class="mt-5 text-[15px] leading-7 text-white/80" x-text="$store.app.currentLang === 'ar' ? 'بوابة الطالب الإلكترونية هي منصتك المركزية للوصول إلى العلامات والجدول الزمني والرسوم والوثائق الجامعية. استخدم رقمك الجامعي وكلمة المرور التي تستلمها عند التسجيل.' : 'The Electronic Student Gate is your central platform for accessing grades, schedules, fees, and university documents. Use your student ID and the password received at enrollment.'"></p>
-                <a href="#" class="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-spu-blue transition-transform duration-300 hover:-translate-y-1">
+                <h2 class="text-2xl font-bold"
+                    x-text="$store.app.currentLang === 'ar' ? 'الدخول إلى البوابة' : 'Access the Portal'"></h2>
+                <p class="mt-5 text-[15px] leading-7 text-white/80"
+                    x-text="$store.app.currentLang === 'ar' ? 'بوابة الطالب الإلكترونية هي منصتك المركزية للوصول إلى العلامات والجدول الزمني والرسوم والوثائق الجامعية. استخدم رقمك الجامعي وكلمة المرور التي تستلمها عند التسجيل.' : 'The Electronic Student Gate is your central platform for accessing grades, schedules, fees, and university documents. Use your student ID and the password received at enrollment.'">
+                </p>
+                <a href="https://cms.spu.edu.sy" target="_blank" rel="noopener noreferrer"
+                    class="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-spu-blue transition-transform duration-300 hover:-translate-y-1">
                     <i class="fas fa-sign-in-alt"></i>
                     <span x-text="$store.app.currentLang === 'ar' ? 'الدخول إلى البوابة' : 'Go to Student Gate'"></span>
                 </a>
             </article>
 
             <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
-                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'دليل أول تسجيل دخول' : 'First-Login Guide'"></h2>
+                <h2 class="text-2xl font-bold text-spu-blue"
+                    x-text="$store.app.currentLang === 'ar' ? 'دليل أول تسجيل دخول' : 'First-Login Guide'"></h2>
                 <div class="mt-6 space-y-4">
                     <div class="flex gap-4 rounded-[20px] bg-section px-5 py-4">
-                        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">1</span>
+                        <span
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">1</span>
                         <div>
-                            <p class="text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'استلم رقمك الجامعي وكلمة المرور المؤقتة من شؤون الطلاب' : 'Receive your student ID and temporary password from Student Affairs'"></p>
+                            <p class="text-[15px] font-medium text-slate-700"
+                                x-text="$store.app.currentLang === 'ar' ? 'استلم رقمك الجامعي وكلمة المرور المؤقتة من شؤون الطلاب' : 'Receive your student ID and temporary password from Student Affairs'">
+                            </p>
                         </div>
                     </div>
                     <div class="flex gap-4 rounded-[20px] bg-section px-5 py-4">
-                        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">2</span>
+                        <span
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">2</span>
                         <div>
-                            <p class="text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'سجّل الدخول باستخدام رقمك الجامعي وغيّر كلمة المرور فوراً' : 'Log in with your student ID and change your password immediately'"></p>
+                            <p class="text-[15px] font-medium text-slate-700"
+                                x-text="$store.app.currentLang === 'ar' ? 'سجّل الدخول باستخدام رقمك الجامعي وغيّر كلمة المرور فوراً' : 'Log in with your student ID and change your password immediately'">
+                            </p>
                         </div>
                     </div>
                     <div class="flex gap-4 rounded-[20px] bg-section px-5 py-4">
-                        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">3</span>
+                        <span
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">3</span>
                         <div>
-                            <p class="text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'أكمل بياناتك الشخصية وتحقق من صحة المعلومات المسجلة' : 'Complete your profile and verify your registered information'"></p>
+                            <p class="text-[15px] font-medium text-slate-700"
+                                x-text="$store.app.currentLang === 'ar' ? 'أكمل بياناتك الشخصية وتحقق من صحة المعلومات المسجلة' : 'Complete your profile and verify your registered information'">
+                            </p>
                         </div>
                     </div>
                     <div class="flex gap-4 rounded-[20px] bg-section px-5 py-4">
-                        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">4</span>
+                        <span
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">4</span>
                         <div>
-                            <p class="text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'استعرض جدولك الزمني وعلاماتك ورسومك من لوحة القيادة' : 'View your schedule, grades, and fees from the dashboard'"></p>
+                            <p class="text-[15px] font-medium text-slate-700"
+                                x-text="$store.app.currentLang === 'ar' ? 'استعرض جدولك الزمني وعلاماتك ورسومك من لوحة القيادة' : 'View your schedule, grades, and fees from the dashboard'">
+                            </p>
                         </div>
                     </div>
                 </div>

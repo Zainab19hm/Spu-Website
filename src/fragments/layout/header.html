@@ -1,14 +1,59 @@
-<header id="site-header" class="absolute top-0 z-50 w-full top-3 " x-data="{ openMenu: null, stickyNav: false, mobileNav: false }"
-    @keydown.escape.window="mobileNav = false; openMenu = null"
+<header id="site-header" class="absolute top-0 z-50 w-full top-3"
+    x-data="{
+        openMenu: null,
+        stickyNav: false,
+        mobileNav: false,
+        searchOpen: false,
+        searchQuery: '',
+        searchResults: [],
+        focusSearch() {
+            this.searchOpen = true;
+            this.$nextTick(() => this.$refs.searchInput?.focus());
+        },
+        closeSearch() {
+            this.searchOpen = false;
+            this.searchQuery = '';
+            this.searchResults = [];
+        },
+        updateSearch() {
+            const query = this.searchQuery.trim().toLowerCase();
+            if (query.length < 2) {
+                this.searchResults = [];
+                return;
+            }
+            this.searchResults = ($store.app.searchIndex || [])
+                .filter((item) => item.route !== '/' && (
+                    item.route.toLowerCase().includes(query) ||
+                    item.titleEn.toLowerCase().includes(query) ||
+                    item.titleAr.toLowerCase().includes(query)
+                ))
+                .slice(0, 8);
+        },
+        routeActive(route) {
+            if (!route || !route.startsWith('/')) return false;
+            const current = $store.app.currentRoute || '/';
+            if (current === route) return true;
+            return current.startsWith(`${route}/`);
+        },
+        childActive(route) {
+            return ($store.app.currentRoute || '/') === route;
+        }
+    }"
+    @keydown.escape.window="mobileNav = false; openMenu = null; closeSearch()"
+    @keydown.window.ctrl.k.prevent="focusSearch()"
+    @keydown.window.meta.k.prevent="focusSearch()"
     @click.outside="openMenu = null; if (window.innerWidth < 1536) { mobileNav = false; }"
     @scroll.window="stickyNav = 40 < window.scrollY"
     :class="stickyNav ? 'fixed inset-x-0 top-0 z-50 w-full font-hacen' : ''">
-    
 
     <div class="container">
+        <template x-if="$store.navigation.utility.emergency.active">
+            <div class="mb-2 rounded-lg border border-spu-red/30 bg-spu-red px-4 py-2 text-xs font-bold text-white">
+                <span x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.emergency.messageAr : $store.navigation.utility.emergency.messageEn"></span>
+            </div>
+        </template>
+
         <div class="site-nav-shell" :class="stickyNav ? 'site-nav-shell--sticky' : ''">
-
-
             <div class="site-nav-shell__main">
                 <a href="/" aria-label="Syrian Private University home" class="site-nav-brand">
                     <img src="/images/logo-spu.png" alt="Syrian Private University logo"
@@ -18,11 +63,12 @@
                 <nav class="hidden flex-1 justify-center 2xl:flex" aria-label="Primary navigation">
                     <ul class="site-nav-list">
                         <template x-for="item in $store.navigation.menuItems" :key="item.id">
-                            <li class="site-nav-item" @mouseenter="openMenu = item.hasDropdown ? item.id : null"
+                            <li class="site-nav-item"
+                                @mouseenter="openMenu = item.hasDropdown ? item.id : null"
                                 @mouseleave="openMenu = null">
                                 <a :href="item.url || '#'" class="site-nav-link font-hacen"
-                                    :class="item.page === $store.app.currentPage ? 'site-nav-link--active' : ''"
-                                    :aria-current="item.page === $store.app.currentPage ? 'page' : null">
+                                    :class="routeActive(item.url) ? 'site-nav-link--active' : ''"
+                                    :aria-current="routeActive(item.url) ? 'page' : null">
                                     <span x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></span>
                                     <template x-if="item.hasDropdown">
                                         <svg class="site-nav-link__chevron"
@@ -40,12 +86,12 @@
                                     x-transition:enter-end="opacity-100 translate-y-0 scale-100"
                                     x-transition:leave="transition duration-150 ease-in"
                                     x-transition:leave-start="opacity-100 translate-y-0 scale-100"
-                                    x-transition:leave-end="opacity-0 -translate-y-2 scale-95" style="display: none;"
-                                    class="site-nav-dropdown">
+                                    x-transition:leave-end="opacity-0 -translate-y-2 scale-95"
+                                    style="display: none;" class="site-nav-dropdown">
                                     <template x-for="child in item.children" :key="child.url">
-                                        <a :href="child.protected ? '/e-services#portal-access' : child.url"
-                                            @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }"
-                                            class="site-nav-dropdown-link"
+                                        <a :href="child.url || '#'" class="site-nav-dropdown-link"
+                                            :class="childActive(child.url) ? 'site-nav-link--active' : ''"
+                                            :aria-current="childActive(child.url) ? 'page' : null"
                                             x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
                                     </template>
                                 </div>
@@ -55,6 +101,28 @@
                 </nav>
 
                 <div class="site-nav-actions">
+                    <button type="button" @click="searchOpen = !searchOpen; if (searchOpen) { focusSearch(); }"
+                        class="site-nav-utility hidden xl:inline-flex" aria-label="Search">
+                        <img src="/images/icon-search-outline.svg" alt="Search" class="h-4 w-4">
+                        <span x-text="$store.app.currentLang === 'ar' ? 'بحث' : 'Search'"></span>
+                    </button>
+
+                    <a :href="$store.navigation.utility.apply.url" class="site-nav-cta hidden xl:inline-flex">
+                        <span class="site-nav-cta__dot"></span>
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.apply.labelAr : $store.navigation.utility.apply.labelEn"></span>
+                    </a>
+
+                    <a :href="$store.navigation.utility.studentPortal.url" target="_blank" rel="noreferrer"
+                        class="site-nav-utility hidden xl:inline-flex">
+                        <img src="/images/icon-user-graduate-outline.svg" alt="Portal" class="h-4 w-4">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.studentPortal.labelAr : $store.navigation.utility.studentPortal.labelEn"></span>
+                    </a>
+
+                    <a :href="$store.navigation.utility.staffAccess.url" target="_blank" rel="noreferrer"
+                        class="site-nav-utility hidden xl:inline-flex">
+                        <img src="/images/icon-university-outline.svg" alt="Staff" class="h-4 w-4">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.staffAccess.labelAr : $store.navigation.utility.staffAccess.labelEn"></span>
+                    </a>
 
                     <button type="button" @click="$store.app.setLang($store.app.currentLang === 'en' ? 'ar' : 'en')"
                         class="site-nav-lang">
@@ -62,7 +130,8 @@
                         <span x-text="$store.app.currentLang === 'ar' ? 'English' : 'العربية'"></span>
                     </button>
 
-                    <button type="button" @click="mobileNav = !mobileNav; if (!mobileNav) { openMenu = null; }"
+                    <button type="button"
+                        @click="mobileNav = !mobileNav; if (!mobileNav) { openMenu = null; }"
                         aria-label="Toggle navigation" class="site-nav-menu-btn 2xl:hidden">
                         <img :src="mobileNav ? '/images/icon-close-outline.svg' : '/images/icon-bars-outline.svg'"
                             class="h-5 w-5" alt="Menu">
@@ -70,12 +139,52 @@
                 </div>
             </div>
 
+            <div x-show="searchOpen" x-transition style="display:none;" class="px-4 pb-3 pt-1">
+                <div class="relative">
+                    <input x-ref="searchInput" type="search" x-model="searchQuery" @input="updateSearch()"
+                        class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-spu-blue outline-none focus:border-spu-blue"
+                        :placeholder="$store.app.currentLang === 'ar' ? $store.navigation.utility.search.placeholderAr : $store.navigation.utility.search.placeholderEn">
+                    <div x-show="searchQuery.trim().length >= 2" style="display:none;"
+                        class="mt-2 max-h-64 overflow-auto rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+                        <template x-if="searchResults.length === 0">
+                            <p class="px-2 py-1 text-xs text-slate-500"
+                                x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.search.noResultsAr : $store.navigation.utility.search.noResultsEn"></p>
+                        </template>
+                        <template x-for="result in searchResults" :key="result.route">
+                            <a :href="result.route" class="block rounded-lg px-3 py-2 text-sm text-spu-blue hover:bg-slate-100">
+                                <span x-text="$store.app.currentLang === 'ar' ? result.titleAr : result.titleEn"></span>
+                                <span class="ml-2 text-xs text-slate-500" x-text="result.route"></span>
+                            </a>
+                        </template>
+                    </div>
+                </div>
+            </div>
 
             <div x-show="mobileNav" x-transition:enter="transition duration-250 ease-out"
-                x-transition:enter-start="opacity-0 -translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:enter-start="opacity-0 -translate-y-3"
+                x-transition:enter-end="opacity-100 translate-y-0"
                 x-transition:leave="transition duration-180 ease-in"
-                x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 -translate-y-2"
                 style="display: none;" class="site-nav-mobile-panel 2xl:hidden">
+
+                <div class="site-nav-mobile-actions">
+                    <div class="site-nav-mobile-utility-row">
+                        <a :href="$store.navigation.utility.apply.url" class="site-nav-utility w-full justify-center"
+                            x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.apply.labelAr : $store.navigation.utility.apply.labelEn"></a>
+                        <button type="button" @click="focusSearch()" class="site-nav-utility w-full justify-center">
+                            <span x-text="$store.app.currentLang === 'ar' ? 'بحث' : 'Search'"></span>
+                        </button>
+                    </div>
+                    <div class="site-nav-mobile-utility-row">
+                        <a :href="$store.navigation.utility.studentPortal.url" target="_blank" rel="noreferrer"
+                            class="site-nav-utility w-full justify-center"
+                            x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.studentPortal.labelAr : $store.navigation.utility.studentPortal.labelEn"></a>
+                        <a :href="$store.navigation.utility.staffAccess.url" target="_blank" rel="noreferrer"
+                            class="site-nav-utility w-full justify-center"
+                            x-text="$store.app.currentLang === 'ar' ? $store.navigation.utility.staffAccess.labelAr : $store.navigation.utility.staffAccess.labelEn"></a>
+                    </div>
+                </div>
 
                 <div class="site-nav-mobile-list">
                     <template x-for="item in $store.navigation.menuItems" :key="`mobile-${item.id}`">
@@ -83,7 +192,7 @@
                             <div class="site-nav-mobile-row">
                                 <a :href="item.url || '#'" @click="mobileNav = false; openMenu = null"
                                     class="site-nav-mobile-link"
-                                    :class="item.page === $store.app.currentPage ? 'site-nav-mobile-link--active' : ''"
+                                    :class="routeActive(item.url) ? 'site-nav-mobile-link--active' : ''"
                                     x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></a>
 
                                 <button x-show="item.hasDropdown" type="button"
@@ -101,12 +210,12 @@
                                 x-transition:enter-end="opacity-100 translate-y-0"
                                 x-transition:leave="transition duration-150 ease-in"
                                 x-transition:leave-start="opacity-100 translate-y-0"
-                                x-transition:leave-end="opacity-0 -translate-y-1" style="display: none;"
-                                class="site-nav-mobile-children">
+                                x-transition:leave-end="opacity-0 -translate-y-1"
+                                style="display: none;" class="site-nav-mobile-children">
                                 <template x-for="child in item.children" :key="`mobile-${child.url}`">
-                                    <a :href="child.protected ? '/e-services#portal-access' : child.url"
-                                        @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null"
+                                    <a :href="child.url" @click="mobileNav = false; openMenu = null"
                                         class="site-nav-mobile-child"
+                                        :class="childActive(child.url) ? 'site-nav-mobile-link--active' : ''"
                                         x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
                                 </template>
                             </div>
@@ -115,5 +224,19 @@
                 </div>
             </div>
         </div>
+
+        <nav x-show="$store.app.currentRoute !== '/'" class="mt-2 rounded-lg bg-white/90 px-4 py-2 text-xs text-spu-blue/80"
+            aria-label="Breadcrumb">
+            <ol class="flex flex-wrap items-center gap-2">
+                <li><a href="/" class="hover:text-spu-red" x-text="$store.app.currentLang === 'ar' ? 'الرئيسية' : 'Home'"></a></li>
+                <template x-for="crumb in $store.app.breadcrumbs" :key="crumb.route">
+                    <li class="flex items-center gap-2">
+                        <span>/</span>
+                        <a :href="crumb.route" :class="crumb.isCurrent ? 'font-bold text-spu-blue pointer-events-none' : 'hover:text-spu-red'"
+                            x-text="$store.app.currentLang === 'ar' ? crumb.labelAr : crumb.labelEn"></a>
+                    </li>
+                </template>
+            </ol>
+        </nav>
     </div>
 </header>

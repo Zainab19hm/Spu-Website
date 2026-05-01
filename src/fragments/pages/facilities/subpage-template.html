@@ -1,0 +1,7 @@
+<section x-data="{ route: document.body.dataset.route || '/facilities' }" class="bg-white py-20 font-hacen lg:py-24">
+  <div class="container max-w-6xl">
+    <p class="text-xs font-bold uppercase tracking-[0.3em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? '???? ?????' : 'Subpage'"></p>
+    <h1 class="mt-4 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="route.split('/').filter(Boolean).slice(1).join(' / ').replace(/-/g, ' ')"></h1>
+    <p class="mt-5 text-base leading-8 text-slate-600" x-text="$store.app.currentLang === 'ar' ? '??? ????? ??? ?????? ??? ???? ??????? v5.1? ??? ????? ??????? ???????.' : 'This page is part of the Facilities v5.1 architecture and is ready for approved content.'"></p>
+  </div>
+</section>

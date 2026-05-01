@@ -6,7 +6,6 @@ const pageStoreLoaders = {
     'about-history': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-leadership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorates': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
-    'about-partnership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     facilities: async () => {
         const [pageModule, customModule] = await Promise.all([
             import('./pages/facilities-page-stores.js'),
@@ -27,6 +26,42 @@ const pageStoreLoaders = {
 
 const pagesUsingFacilityCatalog = new Set(['home', 'facilities']);
 
+function resolvePageStoreLoader(pageName) {
+    if (pageStoreLoaders[pageName]) {
+        return pageStoreLoaders[pageName];
+    }
+
+    if (pageName.startsWith('about-')) {
+        return pageStoreLoaders.about;
+    }
+
+    if (pageName.startsWith('admissions-')) {
+        return pageStoreLoaders.admissions;
+    }
+
+    if (pageName.startsWith('research-')) {
+        return pageStoreLoaders.research;
+    }
+
+    if (pageName.startsWith('campus-life-')) {
+        return pageStoreLoaders['campus-life'];
+    }
+
+    if (pageName.startsWith('e-services-')) {
+        return pageStoreLoaders['e-services'];
+    }
+
+    if (pageName.startsWith('news-')) {
+        return pageStoreLoaders.news;
+    }
+
+    if (pageName.startsWith('contact-')) {
+        return pageStoreLoaders.contact;
+    }
+
+    return pageStoreLoaders.home;
+}
+
 export async function registerStores(Alpine, { pageName = 'home' } = {}) {
     registerLayoutStores(Alpine, { pageName });
 
@@ -41,7 +76,7 @@ export async function registerStores(Alpine, { pageName = 'home' } = {}) {
         return;
     }
 
-    const loadPageStoreRegistrar = pageStoreLoaders[pageName] || pageStoreLoaders.home;
+    const loadPageStoreRegistrar = resolvePageStoreLoader(pageName);
     const registerPageStores = await loadPageStoreRegistrar();
     registerPageStores(Alpine);
 }

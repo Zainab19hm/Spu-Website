@@ -9,7 +9,7 @@
             </h2>
 
             <div class="flex items-center absolute top-4.5 gap-6" :style="$store.app.currentLang === 'ar' ? 'left:0' : 'right:0' "">
-                <a href="/news"
+                <a :href="$store.app.routes.news"
                     class="bg-[#1e2652] text-white w-[195px] h-[40px] text-center justify-center rounded-[12px] text-sm font-bold flex items-center gap-3 hover:bg-opacity-90 transition-all">
                     <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
 

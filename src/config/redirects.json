@@ -20,13 +20,23 @@
     "status": 301
   },
   {
-    "from": "/about.html",
-    "to": "/about",
+    "from": "/faculty",
+    "to": "/facilities",
     "status": 301
   },
   {
-    "from": "/facilities.html",
-    "to": "/facilities",
+    "from": "/services",
+    "to": "/e-services",
+    "status": 301
+  },
+  {
+    "from": "/student-life",
+    "to": "/campus-life",
+    "status": 301
+  },
+  {
+    "from": "/about.html",
+    "to": "/about",
     "status": 301
   },
   {
@@ -60,6 +70,11 @@
     "status": 301
   },
   {
+    "from": "/home.html",
+    "to": "/",
+    "status": 301
+  },
+  {
     "from": "/faculties.html#faculty-1",
     "to": "/facilities/medicine",
     "status": 301
@@ -90,6 +105,91 @@
     "status": 301
   },
   {
+    "from": "/about/history.html",
+    "to": "/about/history",
+    "status": 301
+  },
+  {
+    "from": "/about/leadership.html",
+    "to": "/about/leadership",
+    "status": 301
+  },
+  {
+    "from": "/about/vision-mission.html",
+    "to": "/about/vision-mission",
+    "status": 301
+  },
+  {
+    "from": "/about/accreditation.html",
+    "to": "/about/accreditation",
+    "status": 301
+  },
+  {
+    "from": "/about/directorates.html",
+    "to": "/about/directorates",
+    "status": 301
+  },
+  {
+    "from": "/about/partnerships.html",
+    "to": "/about/partnerships",
+    "status": 301
+  },
+  {
+    "from": "/about/partnership",
+    "to": "/about/partnerships",
+    "status": 301
+  },
+  {
+    "from": "/about/partnership.html",
+    "to": "/about/partnerships",
+    "status": 301
+  },
+  {
+    "from": "/about/why-spu.html",
+    "to": "/about/why-spu",
+    "status": 301
+  },
+  {
+    "from": "/admissions/requirements.html",
+    "to": "/admissions/requirements",
+    "status": 301
+  },
+  {
+    "from": "/admissions/tuition.html",
+    "to": "/admissions/tuition",
+    "status": 301
+  },
+  {
+    "from": "/admissions/how-to-apply.html",
+    "to": "/admissions/how-to-apply",
+    "status": 301
+  },
+  {
+    "from": "/admissions/transfer.html",
+    "to": "/admissions/transfer",
+    "status": 301
+  },
+  {
+    "from": "/admissions/calendar.html",
+    "to": "/admissions/calendar",
+    "status": 301
+  },
+  {
+    "from": "/admissions/documents.html",
+    "to": "/admissions/documents",
+    "status": 301
+  },
+  {
+    "from": "/admissions/faq.html",
+    "to": "/admissions/faq",
+    "status": 301
+  },
+  {
+    "from": "/facilities.html",
+    "to": "/facilities",
+    "status": 301
+  },
+  {
     "from": "/facilities/medicine.html",
     "to": "/facilities/medicine",
     "status": 301
@@ -115,28 +215,468 @@
     "status": 301
   },
   {
+    "from": "/facilities/business-administration.html",
+    "to": "/facilities/business-administration",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business",
+    "to": "/facilities/business-administration",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business.html",
+    "to": "/facilities/business-administration",
+    "status": 301
+  },
+  {
     "from": "/facilities/petroleum-engineering.html",
     "to": "/facilities/petroleum-engineering",
     "status": 301
   },
   {
-    "from": "/about/history.html",
-    "to": "/about/history",
+    "from": "/research/office.html",
+    "to": "/research/office",
     "status": 301
   },
   {
-    "from": "/about/leadership.html",
-    "to": "/about/leadership",
+    "from": "/research/publications.html",
+    "to": "/research/publications",
     "status": 301
   },
   {
-    "from": "/about/directorates.html",
-    "to": "/about/directorates",
+    "from": "/research/centers.html",
+    "to": "/research/centers",
     "status": 301
   },
   {
-    "from": "/about/partnership.html",
-    "to": "/about/partnership",
+    "from": "/research/expert-finder.html",
+    "to": "/research/expert-finder",
+    "status": 301
+  },
+  {
+    "from": "/research/conferences.html",
+    "to": "/research/conferences",
+    "status": 301
+  },
+  {
+    "from": "/research/postgraduate.html",
+    "to": "/research/postgraduate",
+    "status": 301
+  },
+  {
+    "from": "/research/library.html",
+    "to": "/research/library",
+    "status": 301
+  },
+  {
+    "from": "/research/policies.html",
+    "to": "/research/policies",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/services.html",
+    "to": "/campus-life/services",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/transport.html",
+    "to": "/campus-life/transport",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/health.html",
+    "to": "/campus-life/health",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/clubs.html",
+    "to": "/campus-life/clubs",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/sports.html",
+    "to": "/campus-life/sports",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/career.html",
+    "to": "/campus-life/career",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/community.html",
+    "to": "/campus-life/community",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/hospital.html",
+    "to": "/campus-life/hospital",
+    "status": 301
+  },
+  {
+    "from": "/campus-life/dental.html",
+    "to": "/campus-life/dental",
+    "status": 301
+  },
+  {
+    "from": "/e-services/student-portal.html",
+    "to": "/e-services/student-portal",
+    "status": 301
+  },
+  {
+    "from": "/e-services/registration.html",
+    "to": "/e-services/registration",
+    "status": 301
+  },
+  {
+    "from": "/e-services/library.html",
+    "to": "/e-services/library",
+    "status": 301
+  },
+  {
+    "from": "/e-services/appeals.html",
+    "to": "/e-services/appeals",
+    "status": 301
+  },
+  {
+    "from": "/e-services/staff-email.html",
+    "to": "/e-services/staff-email",
+    "status": 301
+  },
+  {
+    "from": "/e-services/it-support.html",
+    "to": "/e-services/it-support",
+    "status": 301
+  },
+  {
+    "from": "/news/articles.html",
+    "to": "/news/articles",
+    "status": 301
+  },
+  {
+    "from": "/news/announcements.html",
+    "to": "/news/announcements",
+    "status": 301
+  },
+  {
+    "from": "/news/events.html",
+    "to": "/news/events",
+    "status": 301
+  },
+  {
+    "from": "/news/gallery.html",
+    "to": "/news/gallery",
+    "status": 301
+  },
+  {
+    "from": "/news/press-room.html",
+    "to": "/news/press-room",
+    "status": 301
+  },
+  {
+    "from": "/contact/map.html",
+    "to": "/contact/map",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/overview.html",
+    "to": "/facilities/medicine/overview",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/departments.html",
+    "to": "/facilities/medicine/departments",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/study-plan.html",
+    "to": "/facilities/medicine/study-plan",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/calendar.html",
+    "to": "/facilities/medicine/calendar",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/research.html",
+    "to": "/facilities/medicine/research",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/projects.html",
+    "to": "/facilities/medicine/projects",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/alumni.html",
+    "to": "/facilities/medicine/alumni",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/valedictorians.html",
+    "to": "/facilities/medicine/valedictorians",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/labs.html",
+    "to": "/facilities/medicine/labs",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine/training.html",
+    "to": "/facilities/medicine/training",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/overview.html",
+    "to": "/facilities/dentistry/overview",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/departments.html",
+    "to": "/facilities/dentistry/departments",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/study-plan.html",
+    "to": "/facilities/dentistry/study-plan",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/calendar.html",
+    "to": "/facilities/dentistry/calendar",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/research.html",
+    "to": "/facilities/dentistry/research",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/projects.html",
+    "to": "/facilities/dentistry/projects",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/alumni.html",
+    "to": "/facilities/dentistry/alumni",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/valedictorians.html",
+    "to": "/facilities/dentistry/valedictorians",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/labs.html",
+    "to": "/facilities/dentistry/labs",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry/training.html",
+    "to": "/facilities/dentistry/training",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/overview.html",
+    "to": "/facilities/pharmacy/overview",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/departments.html",
+    "to": "/facilities/pharmacy/departments",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/study-plan.html",
+    "to": "/facilities/pharmacy/study-plan",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/calendar.html",
+    "to": "/facilities/pharmacy/calendar",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/research.html",
+    "to": "/facilities/pharmacy/research",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/projects.html",
+    "to": "/facilities/pharmacy/projects",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/alumni.html",
+    "to": "/facilities/pharmacy/alumni",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/valedictorians.html",
+    "to": "/facilities/pharmacy/valedictorians",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/labs.html",
+    "to": "/facilities/pharmacy/labs",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy/training.html",
+    "to": "/facilities/pharmacy/training",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/overview.html",
+    "to": "/facilities/ai-engineering/overview",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/departments.html",
+    "to": "/facilities/ai-engineering/departments",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/study-plan.html",
+    "to": "/facilities/ai-engineering/study-plan",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/calendar.html",
+    "to": "/facilities/ai-engineering/calendar",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/research.html",
+    "to": "/facilities/ai-engineering/research",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/projects.html",
+    "to": "/facilities/ai-engineering/projects",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/alumni.html",
+    "to": "/facilities/ai-engineering/alumni",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/valedictorians.html",
+    "to": "/facilities/ai-engineering/valedictorians",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/labs.html",
+    "to": "/facilities/ai-engineering/labs",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering/training.html",
+    "to": "/facilities/ai-engineering/training",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/overview.html",
+    "to": "/facilities/construction-engineering/overview",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/departments.html",
+    "to": "/facilities/construction-engineering/departments",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/study-plan.html",
+    "to": "/facilities/construction-engineering/study-plan",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/calendar.html",
+    "to": "/facilities/construction-engineering/calendar",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/research.html",
+    "to": "/facilities/construction-engineering/research",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/projects.html",
+    "to": "/facilities/construction-engineering/projects",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/alumni.html",
+    "to": "/facilities/construction-engineering/alumni",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/valedictorians.html",
+    "to": "/facilities/construction-engineering/valedictorians",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/labs.html",
+    "to": "/facilities/construction-engineering/labs",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering/training.html",
+    "to": "/facilities/construction-engineering/training",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/overview.html",
+    "to": "/facilities/business-administration/overview",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/departments.html",
+    "to": "/facilities/business-administration/departments",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/study-plan.html",
+    "to": "/facilities/business-administration/study-plan",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/calendar.html",
+    "to": "/facilities/business-administration/calendar",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/research.html",
+    "to": "/facilities/business-administration/research",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/projects.html",
+    "to": "/facilities/business-administration/projects",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/alumni.html",
+    "to": "/facilities/business-administration/alumni",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/valedictorians.html",
+    "to": "/facilities/business-administration/valedictorians",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/labs.html",
+    "to": "/facilities/business-administration/labs",
+    "status": 301
+  },
+  {
+    "from": "/facilities/business-administration/training.html",
+    "to": "/facilities/business-administration/training",
     "status": 301
   }
 ]

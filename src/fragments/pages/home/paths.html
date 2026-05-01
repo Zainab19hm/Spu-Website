@@ -29,7 +29,7 @@
                         <span class="text-white"
                             x-text="$store.app.currentLang === 'ar' ? 'مسارك' : 'Your Path'"></span>
                     </h2>
-                    <a href="#"
+                    <a :href="$store.app.routes.facilities"
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.explore[$store.app.currentLang]"></span>
                         <img src="/images/icon-arrow-right-outline.svg"
@@ -57,7 +57,7 @@
                 <div x-ref="pathsTrack"
                     class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2 pt-2 pb-5 items-start z-10">
                     <template x-for="path in $store.paths.items" :key="path.id">
-                        <div class="reveal-item path-card snap-start w-[292px] h-[380px] hover:cursor-pointer shrink-0 relative rounded-[28px] border border-gray-100 bg-white shadow-[0_15px_35px_rgba(20,30,70,0.06)] transition-all duration-300 group overflow-hidden"
+                        <a :href="path.url || '#'" class="reveal-item path-card snap-start w-[292px] h-[380px] hover:cursor-pointer shrink-0 relative rounded-[28px] border border-gray-100 bg-white shadow-[0_15px_35px_rgba(20,30,70,0.06)] transition-all duration-300 group overflow-hidden"
                             @mouseenter="$store.paths.activePath = path.id" @mouseleave="$store.paths.activePath = null"
                             :class="{
                                 'opacity-50 grayscale-[0.2]': $store.paths.activePath !== null && $store.paths.activePath !== path.id,
@@ -105,7 +105,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </template>
                 </div>
             </div>

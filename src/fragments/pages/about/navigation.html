@@ -24,24 +24,6 @@
 
                     </a>
                 </template>
-
-                <template x-for="item in $store.facilitiesPage.currentFacility?.highlights?.items" :key="item.id">
-                    <div
-                        class="group relative flex flex-col items-center justify-center h-44 px-6 rounded-md bg-white shadow-md transition-all duration-300 hover:bg-spu-blue hover:-translate-y-1 overflow-hidden">
-                
-                        <div class="text-center transition-all duration-500 group-hover:opacity-0 group-hover:scale-50">
-                            <h4 class="text-[20px] font-bold text-spu-blue group-hover:text-white"
-                                x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
-                            </h4>
-                        </div>
-
-                        <a :href="item.link"
-                            class="absolute inset-0 flex items-center justify-center bg-spu-blue opacity-0 group-hover:opacity-100 transition-all duration-300 text-white font-bold text-lg">
-                            <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
-                        </a>
-
-                    </div>
-                </template>
             </div>
 
         </div>

@@ -25,7 +25,7 @@
                         <span class="text-white"
                             x-text="$store.app.currentLang === 'ar' ? 'الجامعية' : 'Faculties'"></span>
                     </h2>
-                    <a href="/facilities"
+                    <a :href="$store.app.routes.facilities"
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
                         <img :src="$store.app.currentLang === 'ar' ? '/images/icon-arrow-left-outline.svg' : '/images/icon-arrow-right-outline.svg'"
@@ -35,7 +35,7 @@
             </div>
 
             <div class="flex-1 min-w-0 w-full relative">
-                <div div class="flex gap-3 absolute -top-20 z-50 " :style="$store.app.currentLang === 'ar' ? 'left-0' : 'right-0'">
+                <div class="flex gap-3 absolute -top-20 z-50 " :style="$store.app.currentLang === 'ar' ? 'left-0' : 'right-0'">
                     <button @click="slideFaculties('left')" type="button"
                         class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all"
                         aria-label="Previous">

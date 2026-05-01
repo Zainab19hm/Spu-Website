@@ -1,7 +1,10 @@
+import { siteRoutes } from '../../config/site-routes.js';
+
 export const facilitiesCatalog = {
     list: [
         {
             id: 'medicine',
+            hubUrl: siteRoutes.facilitiesMedicine,
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية الطب البشري',
@@ -56,7 +59,7 @@ export const facilitiesCatalog = {
                         titleAr: 'أبحاث علمية',
                         titleEn: 'Scientific Research',
                         value: '+2500',
-                        link: '/research',
+                        link: siteRoutes.research,
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -64,7 +67,7 @@ export const facilitiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '256',
-                        link: '/admissions',
+                        link: siteRoutes.admissions,
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -118,6 +121,7 @@ export const facilitiesCatalog = {
 
         {
             id: 'dentistry',
+            hubUrl: siteRoutes.facilitiesDentistry,
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية طب الأسنان',
@@ -173,7 +177,7 @@ export const facilitiesCatalog = {
                         titleAr: 'أبحاث علمية',
                         titleEn: 'Scientific Research',
                         value: '+1800',
-                        link: '/research',
+                        link: siteRoutes.research,
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -181,7 +185,7 @@ export const facilitiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '187',
-                        link: '/admissions',
+                        link: siteRoutes.admissions,
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -225,6 +229,7 @@ export const facilitiesCatalog = {
         },
         {
             id: 'pharmacy',
+            hubUrl: siteRoutes.facilitiesPharmacy,
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية الصيدلة',
@@ -275,7 +280,7 @@ export const facilitiesCatalog = {
                         titleAr: 'أبحاث علمية',
                         titleEn: 'Scientific Research',
                         value: '+1200',
-                        link: '/research',
+                        link: siteRoutes.research,
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -283,7 +288,7 @@ export const facilitiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '178',
-                        link: '/admissions',
+                        link: siteRoutes.admissions,
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -318,6 +323,7 @@ export const facilitiesCatalog = {
         },
         {
             id: 'ai-engineering',
+            hubUrl: siteRoutes.facilitiesAiEngineering,
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة الذكاء الاصطناعي',
@@ -368,7 +374,7 @@ export const facilitiesCatalog = {
                         titleAr: 'أبحاث الذكاء',
                         titleEn: 'AI Research',
                         value: '+500',
-                        link: '/research',
+                        link: siteRoutes.research,
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -376,7 +382,7 @@ export const facilitiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '165',
-                        link: '/admissions',
+                        link: siteRoutes.admissions,
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -411,6 +417,7 @@ export const facilitiesCatalog = {
         },
         {
             id: 'construction-engineering',
+            hubUrl: siteRoutes.facilitiesConstructionEngineering,
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة التشييد والبناء',
@@ -437,7 +444,7 @@ export const facilitiesCatalog = {
                 nameEn: 'Dr. Ammar Ghada',
                 roleAr: 'عميد كلية هندسة التشييد والبناء',
                 roleEn: 'Dean of the Faculty',
-                image: '/images/construction-dean.jpg',
+                image: '/images/dsc-1075.webp',
                 messageAr: 'نسعى لإعداد مهندسين يمتلكون المعرفة العلمية والمهارات التطبيقية في هندسة التشييد والبناء للمساهمة في إعادة الإعمار.',
                 messageEn: 'We aim to prepare engineers with scientific knowledge to contribute to the reconstruction efforts.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',
@@ -461,7 +468,7 @@ export const facilitiesCatalog = {
                         titleAr: 'أبحاث هندسية',
                         titleEn: 'Engineering Research',
                         value: '+300',
-                        link: '/research',
+                        link: siteRoutes.research,
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -469,7 +476,7 @@ export const facilitiesCatalog = {
                         titleAr: 'ساعات تدريبية',
                         titleEn: 'Training Hours',
                         value: '160',
-                        link: '/admissions',
+                        link: siteRoutes.admissions,
                         icon: '/images/icons/training.svg'
                     },
                     {
@@ -494,6 +501,7 @@ export const facilitiesCatalog = {
         },
         {
             id: 'petroleum-engineering',
+            hubUrl: siteRoutes.facilitiesPetroleumEngineering,
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة البترول',
@@ -544,7 +552,7 @@ export const facilitiesCatalog = {
                         titleAr: 'أبحاث طاقة',
                         titleEn: 'Energy Research',
                         value: '+450',
-                        link: '/research',
+                        link: siteRoutes.research,
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -552,7 +560,7 @@ export const facilitiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '160',
-                        link: '/admissions',
+                        link: siteRoutes.admissions,
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -577,6 +585,7 @@ export const facilitiesCatalog = {
         },
         {
             id: 'business',
+            hubUrl: siteRoutes.facilitiesBusinessAdministration,
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية إدارة الأعمال',
@@ -627,7 +636,7 @@ export const facilitiesCatalog = {
                         titleAr: 'أبحاث إدارية',
                         titleEn: 'Management Research',
                         value: '+600',
-                        link: '/research',
+                        link: siteRoutes.research,
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -635,7 +644,7 @@ export const facilitiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '136',
-                        link: '/admissions',
+                        link: siteRoutes.admissions,
                         icon: '/images/icons/hours.svg'
                     },
                     {

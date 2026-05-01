@@ -1,3 +1,8 @@
+/**
+ * SPU Content Data Normalization Utility
+ * Handles legacy path rewrites and asset aliasing during store initialization.
+ */
+
 const LEGACY_PATH_REWRITES = Object.freeze([
     ['public/images/', '/images/'],
     ['assets/images/', '/images/'],
@@ -24,38 +29,20 @@ const LEGACY_ASSET_ALIASES = Object.freeze({
     'images/logo-spu-variant.png': '/images/logo-spu.png'
 });
 
-const LEGACY_ROUTE_ALIASES = Object.freeze({
-    'index.html': '/',
-    'home.html': '/',
-    'about/content.html': '/about',
-    'faculties/content.html': '/facilities',
-    'faculty.html': '/facilities',
-    'admissions/content.html': '/admissions',
-    'research/content.html': '/research',
-    'student-life/content.html': '/campus-life',
-    'services/content.html': '/e-services',
-    'news/content.html': '/news',
-    'contact/content.html': '/contact',
-    'about.html': '/about',
-    'facilities.html': '/facilities',
-    'admissions.html': '/admissions',
-    'research.html': '/research',
-    'campus-life.html': '/campus-life',
-    'e-services.html': '/e-services',
-    'news.html': '/news',
-    'contact.html': '/contact',
-    'services.html': '/e-services',
-    'student-life.html': '/campus-life'
-});
-
+/**
+ * Normalizes a string value (path or route).
+ * @param {string} value 
+ * @returns {string}
+ */
 function normalizeString(value) {
-    if (typeof value !== 'string') {
+    if (typeof value !== 'string' || !value) {
         return value;
     }
 
-    let normalized = value;
-    const hasLeadingSlash = normalized.startsWith('/');
-    const normalizedWithoutLeadingSlash = hasLeadingSlash ? normalized.slice(1) : normalized;
+    let normalized = value.trim();
+    
+    // 1. Handle legacy path rewrites
+    const normalizedWithoutLeadingSlash = normalized.startsWith('/') ? normalized.slice(1) : normalized;
 
     for (const [legacyPrefix, currentPrefix] of LEGACY_PATH_REWRITES) {
         if (normalizedWithoutLeadingSlash.startsWith(legacyPrefix)) {
@@ -64,29 +51,76 @@ function normalizeString(value) {
         }
     }
 
+    // 2. Handle asset aliases
     const aliasKey = normalized.startsWith('/') ? normalized.slice(1) : normalized;
-    normalized = LEGACY_ASSET_ALIASES[aliasKey] || normalized;
+    if (LEGACY_ASSET_ALIASES[aliasKey]) {
+        normalized = LEGACY_ASSET_ALIASES[aliasKey];
+    }
 
-    const routeKey = normalized.startsWith('/') ? normalized.slice(1) : normalized;
-    normalized = LEGACY_ROUTE_ALIASES[routeKey] || normalized;
+    // 3. Handle legacy .html routes (but avoid mapping valid routes to root)
+    if (normalized.endsWith('.html')) {
+        const baseName = normalized.replace(/^\//, '');
+        if (baseName === 'index.html' || baseName === 'home.html') {
+            return '/';
+        }
+        
+        // Remove .html extension for clean routes
+        normalized = normalized.replace(/\.html$/, '');
+        if (!normalized.startsWith('/')) {
+            normalized = '/' + normalized;
+        }
+    }
 
     return normalized;
 }
 
-export function normalizeContentData(value) {
+/**
+ * Recursively normalizes all string values in a data object if their key suggests it's a path.
+ * @param {any} value 
+ * @param {string} key
+ * @returns {any}
+ */
+export function normalizeContentData(value, key = '') {
     if (Array.isArray(value)) {
-        return value.map((item) => normalizeContentData(item));
+        return value.map((item) => normalizeContentData(item, key));
     }
 
     if (value && typeof value === 'object') {
         return Object.fromEntries(
-            Object.entries(value).map(([key, item]) => [key, normalizeContentData(item)])
+            Object.entries(value).map(([k, item]) => [k, normalizeContentData(item, k)])
         );
     }
 
-    return normalizeString(value);
+    if (typeof value === 'string') {
+        const lowerKey = key.toLowerCase();
+        const isPathKey = lowerKey.includes('url') || 
+                          lowerKey.includes('link') || 
+                          lowerKey.includes('image') || 
+                          lowerKey.includes('icon') || 
+                          lowerKey.includes('logo') || 
+                          lowerKey.includes('path') || 
+                          lowerKey.includes('route') ||
+                          lowerKey.includes('photo');
+        
+        if (isPathKey) {
+            return normalizeString(value);
+        }
+    }
+
+    return value;
 }
 
+/**
+ * Deep clones an object and normalizes its string values.
+ * @param {any} value 
+ * @returns {any}
+ */
 export function cloneData(value) {
-    return normalizeContentData(JSON.parse(JSON.stringify(value)));
+    if (value === undefined || value === null) return value;
+    try {
+        return normalizeContentData(JSON.parse(JSON.stringify(value)));
+    } catch (e) {
+        console.error('[clone] Failed to clone data:', e);
+        return value;
+    }
 }

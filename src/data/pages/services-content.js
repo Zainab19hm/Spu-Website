@@ -68,7 +68,7 @@ export const servicesPageContent = {
             titleAr: 'المكتبة والدعم الأكاديمي',
             summaryEn: 'Review student-facing academic support information and campus services.',
             summaryAr: 'راجع معلومات الدعم الأكاديمي الموجهة للطلبة وخدمات الحرم الجامعي.',
-            url: withHash(siteRoutes.studentLife, 'services')
+            url: withHash(siteRoutes.campusLife, 'services')
         },
         {
             id: 4,

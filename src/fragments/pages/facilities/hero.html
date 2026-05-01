@@ -34,12 +34,11 @@
                 x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.nameAr : $store.facilitiesPage.currentFacility?.nameEn">
             </p>
             <div class="flex flex-wrap gap-5 Z-10 relative">
-                <button :style="`color: #${$store.facilitiesPage.currentFacility?.color.replace('#', '')}`"
-                    class="px-10 py-4  bg-white font-bold rounded-lg transition-all duration-500 ease-in-out hover:text-white hover:scale-105"
-                    x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'Explore Programs'"></button>
-                <button
-                    class="px-10 py-4 border-2 relative z-50 text-white font-bold rounded-lg hover:bg-white hover:text-spu-blue transition-all backdrop-blur-sm uppercase tracking-wider text-sm"
-                    x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'Admissions'"></button>
+                <a href="/facilities" class="px-10 py-4 bg-white font-bold rounded-lg transition-all duration-500 ease-in-out hover:text-white hover:scale-105 text-center"
+                    x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'Explore Programs'"></a>
+                <a href="/admissions"
+                    class="px-10 py-4 border-2 relative z-50 text-white font-bold rounded-lg hover:bg-white hover:text-spu-blue transition-all backdrop-blur-sm uppercase tracking-wider text-sm text-center"
+                    x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'Admissions'"></a>
             </div>
         </div>
     </div>
