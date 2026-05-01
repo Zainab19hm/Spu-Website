@@ -291,28 +291,28 @@ export const aboutPageContent = {
             titleAr: 'تاريخ الجامعة',
             titleEn: 'History',
             icon: '/images/icons/history.svg',
-            link: '/about/history/content.html'
+            link: '/about/history'
         },
         {
             id: 'leadership',
             titleAr: 'مجلس الجامعة',
             titleEn: 'Leadership',
             icon: '/images/icons/users.svg',
-            link: '/about/leadership/content.html'
+            link: '/about/leadership'
         },
         {
             id: 'directorates',
             titleAr: 'المديريات',
             titleEn: 'Directorates',
             icon: '/images/icons/sitemap.svg',
-            link: '/about/directorates/content.html'
+            link: '/about/directorates'
         },
         {
             id: 'partnership',
             titleAr: 'الشراكات',
             titleEn: 'Partnerships',
             icon: '/images/icons/handshake.svg',
-            link: '/about/partnership/content.html'
+            link: '/about/partnership'
         }
     ]
 

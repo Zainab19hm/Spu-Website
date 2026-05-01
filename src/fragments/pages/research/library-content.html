@@ -1,0 +1,33 @@
+<section id="research-library" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'المكتبة العلمية' : 'Scientific Library'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'المكتبة ومراجعها الإلكترونية وقواعد البيانات وقواعد الاستعارة' : 'Physical library, e-books, databases and borrowing rules'"></h1>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-spu-blue text-lg text-white"><i class="fas fa-building"></i></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'المكتبة الفيزية' : 'Physical Library'"></h2>
+                <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'توفر المكتبة الرئيسية في الحرم الجامعي مجموعة واسعة من المراجع والموسوعات والكتب الأكاديمية باللغتين العربية والإنجليزية، مع قاعاتforلصامتة ومساحات عمل جماعي.' : 'The main campus library provides a wide collection of references, encyclopedias, and academic books in Arabic and English, with quiet study rooms and group work areas.'"></p>
+            </article>
+
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-spu-red text-lg text-white"><i class="fas fa-laptop"></i></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الكتب الإلكترونية وقواعد البيانات' : 'E-Books & Databases'"></h2>
+                <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'يمكن للطلاب وأعضاء الهيئة التدريسية الوصول إلى قواعد بيانات أكاديمية مرخّصة وكتب إلكترونية عبر البوابة الإلكترونية. تشمل المنصات المتاحة قواعد صحية وهندسية متخصصة.' : 'Students and faculty can access licensed academic databases and e-books through the electronic portal. Available platforms include specialized health and engineering databases.'"></p>
+            </article>
+
+            <article class="rounded-[30px] bg-spu-blue p-8 text-white shadow-[0_24px_70px_rgba(20,30,70,0.16)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-lg text-white"><i class="fas fa-book-reader"></i></span>
+                <h2 class="mt-5 text-2xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'قواعد الاستعارة' : 'Borrowing Rules'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-white/85">
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'الحد الأقصى للاستعارة: ٣ كتب للطلاب و٥ لأعضاء الهيئة التدريسية' : 'Limit: 3 books for students, 5 for faculty'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'مدة الاستعارة: أسبوعان قابلة للتجديد مرة واحدة' : 'Duration: 2 weeks, renewable once'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'الكتب المرجعية والمجلات لا تُعار خارج المكتبة' : 'Reference books and journals are in-library only'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'غرامة التأخير: ٥٠ ل.س لكل كتاب يومياً' : 'Late fee: 50 SYP per book per day'"></span></li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>

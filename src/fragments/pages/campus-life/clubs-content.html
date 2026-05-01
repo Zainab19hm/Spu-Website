@@ -1,0 +1,26 @@
+<section id="campus-clubs" x-data class="bg-white py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الأندية والأنشطة الطلابية' : 'Student Clubs & Activities'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'دليل الأندية الطلابية الفعالة في الحرم الجامعي' : 'Directory of active student clubs on campus'"></h1>
+            <p class="mt-6 text-[16px] leading-8 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'تتيح الجامعة للطلاب المشاركة في أندية متنوعة تغطي المجالات العلمية والثقافية والرياضية والاجتماعية. الانسحاب مفتوح خلال الأسابيع الأولى من كل فصل.' : 'The university offers diverse clubs spanning academic, cultural, sports, and social fields. Registration is open during the first weeks of each semester.'"></p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <template x-for="club in [
+                { nameEn: 'Programming Club', nameAr: 'نادي البرمجة', catEn: 'Academic', catAr: 'أكاديمي', descEn: 'Weekly coding challenges, ICPC preparation, and tech talks from industry professionals.', descAr: 'تحديات برمجة أسبوعية، تحضير المسابقة العالمية ICPC، ومحاضرات تقنية من متخصصين.' },
+                { nameEn: 'Medical Society', nameAr: 'الجمعية الطبية', catEn: 'Academic', catAr: 'أكاديمي', descEn: 'Clinical skills workshops, anatomy study groups, and community health awareness campaigns.', descAr: 'ورش مهارات سريرية، مجموعات دراسة التشريح، وحملات توعية صحية مجتمعية.' },
+                { nameEn: 'Pharmacy Forum', nameAr: 'منتدى الصيدلة', catEn: 'Academic', catAr: 'أكاديمي', descEn: 'Drug interaction seminars, compounding workshops, and professional networking events.', descAr: 'ندوات التفاعلات الدوائية، ورش التركيب الصيدلاني، وفعاليات التواصل المهني.' },
+                { nameEn: 'Drama Club', nameAr: 'نادي المسرح', catEn: 'Cultural', catAr: 'ثقافي', descEn: 'Theater productions, scriptwriting sessions, and annual campus performances.', descAr: 'عروض مسرحية، جلسات كتابة النصوص، وعروض سنوية في الحرم الجامعي.' },
+                { nameEn: 'Chess Club', nameAr: 'نادي الشطرنج', catEn: 'Sports', catAr: 'رياضي', descEn: 'Regular tournaments, training sessions for beginners, and inter-university competitions.', descAr: 'بطولات منتظمة، تدريب للمبتدئين، ومسابقات بين الجامعات.' },
+                { nameEn: 'Volunteer Hub', nameAr: 'مركز التطوع', catEn: 'Social', catAr: 'اجتماعي', descEn: 'Community service projects, charity drives, and outreach programs for underserved areas.', descAr: 'مشاريع خدمة مجتمعية، حملات خيرية، وبرامج امتداد للمناطق المحرومة.' }
+            ]" :key="club.nameEn">
+                <article class="rounded-[28px] border border-slate-200/80 bg-white p-7 shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
+                    <p class="text-xs font-bold uppercase tracking-[0.24em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? club.catAr : club.catEn"></p>
+                    <h2 class="mt-3 text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? club.nameAr : club.nameEn"></h2>
+                    <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? club.descAr : club.descEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

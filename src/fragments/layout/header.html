@@ -43,7 +43,7 @@
                                     x-transition:leave-end="opacity-0 -translate-y-2 scale-95" style="display: none;"
                                     class="site-nav-dropdown">
                                     <template x-for="child in item.children" :key="child.url">
-                                        <a :href="child.protected ? '/services.html#portal-access' : child.url"
+                                        <a :href="child.protected ? '/e-services#portal-access' : child.url"
                                             @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }"
                                             class="site-nav-dropdown-link"
                                             x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
@@ -104,7 +104,7 @@
                                 x-transition:leave-end="opacity-0 -translate-y-1" style="display: none;"
                                 class="site-nav-mobile-children">
                                 <template x-for="child in item.children" :key="`mobile-${child.url}`">
-                                    <a :href="child.protected ? '/services.html#portal-access' : child.url"
+                                    <a :href="child.protected ? '/e-services#portal-access' : child.url"
                                         @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null"
                                         class="site-nav-mobile-child"
                                         x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>

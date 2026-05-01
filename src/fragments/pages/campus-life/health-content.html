@@ -1,0 +1,43 @@
+<section id="campus-health" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الصحة والتأمين' : 'Health & Insurance'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'التأمين الصحي الطلابي والغطاء وطريقة الاستخدام' : 'Student health insurance, coverage and how to use it'"></h1>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+            <article class="rounded-[30px] bg-spu-blue p-8 text-white shadow-[0_24px_70px_rgba(20,30,70,0.16)]">
+                <h2 class="text-2xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'التأمين الصحي الطلابي' : 'Student Health Insurance'"></h2>
+                <p class="mt-5 text-[15px] leading-7 text-white/80" x-text="$store.app.currentLang === 'ar' ? 'يُلزم جميع الطلاب المسجلين بالتأمين الصحي الجامعي كشرط للتسجيل. يُدفع قسط التأمين سنوياً مع الرسوم الدراسية ويمنح الطالب حق العلاج في المستشفى الجامعي والعيادات المرتبطة.' : 'All enrolled students are required to have university health insurance as a registration condition. The premium is paid annually with tuition and gives the student treatment rights at the university hospital and affiliated clinics.'"></p>
+            </article>
+
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'نطاق الغطاء' : 'Coverage'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'العيادات الخارجية والأدوية الأساسية في المستشفى الجامعي' : 'Outpatient visits and basic medications at university hospital'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'الإجراءات الطبية البسيطة والفحوصات المخبرية' : 'Minor procedures and laboratory tests'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'الإسعافات الأولية والحالات الطارئة' : 'First aid and emergency services'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'لا يشمل العمليات الكبرى أو العلاج خارج الشبكة المعتمدة' : 'Does not cover major surgeries or out-of-network treatment'"></span></li>
+                </ul>
+            </article>
+        </div>
+
+        <div class="mt-8 rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+            <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'كيف تستخدم التأمين' : 'How to Use Your Insurance'"></h2>
+            <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-[22px] bg-section p-5">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">1</span>
+                    <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'قدّم بطاقتك الجامعية في قسم الاستقبال بالمستشفى' : 'Present your student ID at the hospital reception'"></p>
+                </div>
+                <div class="rounded-[22px] bg-section p-5">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">2</span>
+                    <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'يتم تحويلك للعيادة المناسبة ضمن الشبكة المعتمدة' : 'Get referred to the appropriate clinic within the network'"></p>
+                </div>
+                <div class="rounded-[22px] bg-section p-5">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white">3</span>
+                    <p class="mt-3 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'استلم العلاج والأدوية بدون رسوم إضافية ضمن الغطاء' : 'Receive treatment and medications at no extra charge within coverage'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -65,6 +65,7 @@ export function registerLayoutStores(Alpine, { pageName = 'home' } = {}) {
         currentLang: savedLang,
         currentPage: pageName,
         ui: appUi,
+        routes: siteRoutes,
         setLang(lang) {
             this.currentLang = lang;
             applyLanguage(lang);

@@ -1,9 +1,9 @@
-import { facultiesCatalog } from '../data/domains/faculties-catalog.js';
+import { facilitiesCatalog } from '../data/domains/facilities-catalog.js';
 import { cloneData } from '../utils/clone.js';
 
-export function registerFacultyCatalogStore(Alpine) {
-    Alpine.store('faculties', {
-        activeFaculty: null,
-        items: cloneData(facultiesCatalog)
+export function registerFacilityCatalogStore(Alpine) {
+    Alpine.store('facilitiesCatalog', {
+        activeFacility: null,
+        items: cloneData(facilitiesCatalog)
     });
 }

@@ -27,14 +27,25 @@ const LEGACY_ASSET_ALIASES = Object.freeze({
 const LEGACY_ROUTE_ALIASES = Object.freeze({
     'index.html': '/',
     'home.html': '/',
-    'about/content.html': '/about.html',
-    'faculties/content.html': '/faculty.html',
-    'admissions/content.html': '/admissions.html',
-    'research/content.html': '/research.html',
-    'student-life/content.html': '/student-life.html',
-    'services/content.html': '/services.html',
-    'news/content.html': '/news.html',
-    'contact/content.html': '/contact.html'
+    'about/content.html': '/about',
+    'faculties/content.html': '/facilities',
+    'faculty.html': '/facilities',
+    'admissions/content.html': '/admissions',
+    'research/content.html': '/research',
+    'student-life/content.html': '/campus-life',
+    'services/content.html': '/e-services',
+    'news/content.html': '/news',
+    'contact/content.html': '/contact',
+    'about.html': '/about',
+    'facilities.html': '/facilities',
+    'admissions.html': '/admissions',
+    'research.html': '/research',
+    'campus-life.html': '/campus-life',
+    'e-services.html': '/e-services',
+    'news.html': '/news',
+    'contact.html': '/contact',
+    'services.html': '/e-services',
+    'student-life.html': '/campus-life'
 });
 
 function normalizeString(value) {

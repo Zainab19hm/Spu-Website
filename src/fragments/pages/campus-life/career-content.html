@@ -1,0 +1,41 @@
+<section id="campus-career" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'التطوير المهني' : 'Career Development'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'مركز التوجيه المهني والفعاليات ولوحة الوظائف' : 'Career center, events, job board and CV workshops'"></h1>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+            <article class="rounded-[30px] bg-spu-blue p-8 text-white shadow-[0_24px_70px_rgba(20,30,70,0.16)]">
+                <h2 class="text-2xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'مركز التطوير المهني' : 'Career Development Center'"></h2>
+                <p class="mt-5 text-[15px] leading-7 text-white/80" x-text="$store.app.currentLang === 'ar' ? 'يقدم المركز خدمات إرشاد مهني فردي وجماعي للطلاب والخريجين. يشمل ذلك ورش كتابة السيرة الذاتية، ومحاكاة المقابلات الشخصية، وإرشاد اختيار المسار المهني.' : 'The center provides individual and group career guidance for students and graduates. Services include CV writing workshops, mock interviews, and career path counseling.'"></p>
+                <ul class="mt-6 space-y-3 text-[15px] leading-7 text-white/85">
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'استشارات مهنية فردية' : 'One-on-one career advising'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'معرض التوظيف السنوي' : 'Annual job fair'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'ورش السيرة الذاتية المقابلات' : 'CV and interview workshops'"></span></li>
+                </ul>
+            </article>
+
+            <div class="grid gap-6">
+                <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                    <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'فعاليات مهنية قادمة' : 'Upcoming Career Events'"></h2>
+                    <div class="mt-6 space-y-4">
+                        <div class="rounded-[20px] bg-section px-5 py-4">
+                            <p class="text-xs font-bold uppercase tracking-[0.24em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'معرض التوظيف' : 'Job Fair'"></p>
+                            <p class="mt-2 text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'معرض التوظيف السنوي — تشرين الثاني ٢٠٢٦' : 'Annual Job Fair — November 2026'"></p>
+                        </div>
+                        <div class="rounded-[20px] bg-section px-5 py-4">
+                            <p class="text-xs font-bold uppercase tracking-[0.24em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'ورشة عمل' : 'Workshop'"></p>
+                            <p class="mt-2 text-[15px] font-medium text-slate-700" x-text="$store.app.currentLang === 'ar' ? 'كتابة السيرة الذاتية — كانون الأول ٢٠٢٦' : 'CV Writing Workshop — December 2026'"></p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                    <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'لوحة الوظائف' : 'Job Board'"></h2>
+                    <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'تنشر الجامعة فرص عمل وتدريب من شركات ومؤسسات شريكة بشكل دوري. يمكن للطلاب والخريجين تصفح الفرص عبر البوابة الإلكترونية أو لوحة الإعلانات في مركز التطوير المهني.' : 'The university regularly posts job and training opportunities from partner companies and institutions. Students and graduates can browse openings via the electronic portal or the career center notice board.'"></p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>

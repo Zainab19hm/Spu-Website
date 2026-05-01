@@ -1,6 +1,6 @@
 <section x-data="{
         slideFaculties(direction) {
-            const track = this.$refs.facultiesTrack;
+            const track = this.$refs.facilitiesCatalogTrack;
             if (!track) return;
             const firstCard = track.querySelector('.faculty-card');
             const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 292;
@@ -25,7 +25,7 @@
                         <span class="text-white"
                             x-text="$store.app.currentLang === 'ar' ? 'الجامعية' : 'Faculties'"></span>
                     </h2>
-                    <a href="/faculty.html"
+                    <a href="/facilities"
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
                         <img :src="$store.app.currentLang === 'ar' ? '/images/icon-arrow-left-outline.svg' : '/images/icon-arrow-right-outline.svg'"
@@ -50,15 +50,15 @@
                     </button>
                 </div>
 
-                <div x-ref="facultiesTrack"
+                <div x-ref="facilitiesCatalogTrack"
                     class="flex h-[390px] w-full snap-x snap-mandatory flex-nowrap gap-6 bg-transparent overflow-x-auto overflow-y-hidden no-scrollbar scroll-smooth overscroll-x-contain px-2  pb-5 items-start z-10">
 
-                    <template x-for="faculty in $store.faculties.items.list" :key="faculty.id">
-                        <div :id="'faculty-' + faculty.id" @mouseenter="$store.faculties.activeFaculty = faculty.id" @mouseleave="$store.faculties.activeFaculty = null"
+                    <template x-for="faculty in $store.facilitiesCatalog.items.list" :key="faculty.id">
+                        <div :id="'faculty-' + faculty.id" @mouseenter="$store.facilitiesCatalog.activeFaculty = faculty.id" @mouseleave="$store.facilitiesCatalog.activeFaculty = null"
                             :class="{ 
-                                'opacity-50 grayscale-[0.2]': $store.faculties.activeFaculty !== null && $store.faculties.activeFaculty !== faculty.id,
-                                'opacity-100 scale-[1.02] z-20 shadow-2xl border-transparent': $store.faculties.activeFaculty === faculty.id,
-                                'opacity-100': $store.faculties.activeFaculty === null
+                                'opacity-50 grayscale-[0.2]': $store.facilitiesCatalog.activeFaculty !== null && $store.facilitiesCatalog.activeFaculty !== faculty.id,
+                                'opacity-100 scale-[1.02] z-20 shadow-2xl border-transparent': $store.facilitiesCatalog.activeFaculty === faculty.id,
+                                'opacity-100': $store.facilitiesCatalog.activeFaculty === null
                             }"
                             class="faculty-card snap-start w-[292px] h-[380px] hover:cursor-pointer shrink-0 relative bg-white rounded-[24px] border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] flex flex-col items-center text-center transition-all duration-300 group overflow-hidden">
 
@@ -80,7 +80,7 @@
                                 x-html="$store.app.currentLang === 'ar' ? faculty.yearsAr : faculty.yearsEn">
                             </div>
 
-                            <a :href="'/faculty.html?id=' + faculty.id" 
+                            <a :href="faculty.hubUrl || $store.app.routes.facilities" 
                                 class="mt-auto mb-6 flex items-center gap-2 text-[13px] font-extrabold transition-all duration-300 group-hover:gap-3"
                                 :style="'color:' + faculty.color">
                                 <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>

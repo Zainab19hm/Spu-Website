@@ -1,0 +1,29 @@
+<section id="research-publications" x-data class="bg-white py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'المنشورات العلمية' : 'Publications'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'أبحاث ورسائل وأوراق مؤتمرات محكّمة' : 'Theses, Dissertations and Peer-Reviewed Conference Proceedings'"></h1>
+            <p class="mt-6 text-[16px] leading-8 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'توثق هذه الصفحة الإنتاج العلمي لفرق البحث في الجامعة، من رسائل الماجستير والدكتوراه إلى أوراق المؤتمرات والمقالات المحكّمة.' : 'This page documents the scholarly output of university research teams, from master\'s and doctoral theses to conference papers and peer-reviewed articles.'"></p>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-spu-blue text-lg text-white"><i class="fas fa-book"></i></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الرسائل الجامعية' : 'Theses & Dissertations'"></h2>
+                <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'رسائل الماجستير والدكتوراه المقدمة من طلبة الدراسات العليا في كليات الطب والصيدلة والهندسة. كل رسالة تخضع لمناقشة علنية ولجنة محكّمة وفق المعايير الأكاديمية المعتمدة.' : 'Master\'s and doctoral theses submitted by graduate students in Medicine, Pharmacy, and Engineering faculties. Each thesis undergoes public defense and committee review per approved academic standards.'"></p>
+            </article>
+
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-spu-red text-lg text-white"><i class="fas fa-file-alt"></i></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'أوراق المؤتمرات' : 'Conference Proceedings'"></h2>
+                <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'المشاركات البحثية في مؤتمرات علمية محلية وإقليمية ودولية. تشمل الأبحاث المقدمة في مجالات المحاكاة الطبية، والأنظمة الذكية، والصيدلة السريرية، والبناء المستدام.' : 'Research contributions in local, regional, and international scientific conferences. Includes papers on medical simulation, intelligent systems, clinical pharmacy, and sustainable construction.'"></p>
+            </article>
+
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-700 text-lg text-white"><i class="fas fa-newspaper"></i></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'المقالات المحكّمة' : 'Journal Articles'"></h2>
+                <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'أبحاث منشورة في مجلات علمية محكّمة تصدر عن الجامعة أو بالشراكة مع مؤسسات بحثية أخرى. تغطي مجالات الصحة والأدوية والتقنية والهندسة.' : 'Published research in peer-reviewed journals issued by the university or in partnership with other research institutions. Covers health, pharmaceuticals, technology, and engineering.'"></p>
+            </article>
+        </div>
+    </div>
+</section>

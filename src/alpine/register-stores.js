@@ -25,12 +25,12 @@ const pageStoreLoaders = {
     contact: () => import('./pages/contact-stores.js').then((module) => module.registerContactStores)
 };
 
-const pagesUsingFacultyCatalog = new Set(['home', 'facilities']);
+const pagesUsingFacilityCatalog = new Set(['home', 'facilities']);
 
 export async function registerStores(Alpine, { pageName = 'home' } = {}) {
     registerLayoutStores(Alpine, { pageName });
 
-    if (pagesUsingFacultyCatalog.has(pageName)) {
+    if (pagesUsingFacilityCatalog.has(pageName)) {
         const { registerFacilityCatalogStore } = await import('./register-facility-catalog-store.js');
         registerFacilityCatalogStore(Alpine);
     }

@@ -10,7 +10,7 @@ export const registerAboutStores = (Alpine) => {
             if (e) e.preventDefault();
 
             // If ID is provided, navigate to that page. Otherwise, go to about.html
-            const targetUrl = id ? `/about/${id}/content.html` : '/about.html';
+            const targetUrl = id ? `/about/${id}` : '/about';
             window.location.assign(targetUrl);
         },
         subPages: aboutPageContent.subPages || [],

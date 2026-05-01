@@ -1,0 +1,53 @@
+<section id="admissions-documents" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'قائمة الوثائق' : 'Documents Checklist'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'الوثائق المطلوبة ونظام الدراسة وحساب المعدل' : 'Required Documents, Study System and GPA Explanation'"></h1>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الطلاب الجدد' : 'New Students'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'شهادة الثانوية' : 'Secondary certificate'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'الهوية الشخصية' : 'National ID'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'شهادة الميلاد' : 'Birth certificate'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'صور شخصية (٦)' : 'Photos (6)'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'شهادة حسن السيرة' : 'Good conduct cert.'"></span></li>
+                </ul>
+            </article>
+
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الطلاب المحولون' : 'Transfer Students'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'كافة وثائق الطالب الجديد' : 'All new-student docs'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'كشف علامات رسمي' : 'Official transcript'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'وصف المقررات' : 'Course descriptions'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'رسالة تسريح' : 'Clearance letter'"></span></li>
+                </ul>
+            </article>
+
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الطلبة الدوليون' : 'International Students'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'جواز سفر ساري' : 'Valid passport'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'قرار المعادلة' : 'Equivalency decision'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'ترجمة معتمدة للوثائق' : 'Certified translations'"></span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i><span x-text="$store.app.currentLang === 'ar' ? 'تأشيرة الطالب' : 'Student visa'"></span></li>
+                </ul>
+            </article>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+            <article class="rounded-[30px] bg-spu-blue p-8 text-white shadow-[0_24px_70px_rgba(20,30,70,0.16)]">
+                <h2 class="text-2xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'نظام الدراسة' : 'Study System'"></h2>
+                <p class="mt-5 text-[15px] leading-7 text-white/80" x-text="$store.app.currentLang === 'ar' ? 'تتبع الجامعة نظام الساعات المعتمدة. يتطلب كل برنامج عدداً محدداً من الساعات تتراوح بين ١٦٠-٢٥٠ ساعة حسب الكلية. ينقسم العام الأكاديمي إلى فصلين دراسيين رئيسيين مع إمكانية فصل صيفي.' : 'The university follows a credit-hour system. Each program requires a specific number of credits ranging from 160–250 based on the faculty. The academic year is divided into two main semesters with an optional summer session.'"></p>
+            </article>
+
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'حساب المعدل التراكمي' : 'GPA Explanation'"></h2>
+                <p class="mt-5 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'يُحسب المعدل التراكمي (GPA) على مقياس ٤.٠. يتم احتساء المعدل بضرب علامة كل مادة بعدد ساعاتها وقسمة المجموع على إجمالي الساعات. تشترط الجامعة حد أدنى ٢.٠ للبقاء في البرنامج.' : 'GPA is calculated on a 4.0 scale. Each course grade is multiplied by its credit hours, summed, and divided by total credits. The university requires a minimum 2.0 GPA to remain in the program.'"></p>
+            </article>
+        </div>
+    </div>
+</section>

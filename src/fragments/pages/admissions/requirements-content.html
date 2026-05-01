@@ -1,0 +1,46 @@
+<section id="admissions-requirements" x-data class="bg-white py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'متطلبات القبول' : 'Admission Requirements'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'متطلبات القبول حسب فئة الطالب' : 'Requirements by Student Category'"></h1>
+            <p class="mt-6 text-[16px] leading-8 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'يتم تحديد متطلبات القبول وفقاً لنوع الطالب: طالب جديد، أو محول، أو معادلة. يرجى مراجعة الشروط أدناه بعناية قبل التقديم.' : 'Admission requirements are determined by student type: new entrant, transfer, or equivalency. Please review the conditions below carefully before applying.'"></p>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+            <article class="rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white" x-text="$store.app.currentLang === 'ar' ? 'جديد' : 'New'"></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الطلاب الجدد' : 'New Entrants'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'شهادة الثانوية العامة أو ما يعادلها بمعدل لا يقل عن الحد الأدنى للكلية' : 'Secondary school certificate with minimum GPA per faculty'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'صورة عن الهوية الشخصية أو جواز السفر' : 'Copy of national ID or passport'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'شهادة ميلاد رسمية' : 'Official birth certificate'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? '6 صور شخصية حديثة' : 'Six recent passport-sized photographs'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'اجتياز امتحان القبول الخاصة بالكلية إن وُجد' : 'Passing faculty-specific entrance exam if applicable'"></span></li>
+                </ul>
+            </article>
+
+            <article class="rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-spu-red text-sm font-bold text-white" x-text="$store.app.currentLang === 'ar' ? 'محول' : 'Transfer'"></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الطلاب المحولون' : 'Transfer Students'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'جميع متطلبات القبول للطلاب الجدد' : 'All new-entrant requirements'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'كشف علامات رسمي معتمد من الجامعة المحولة منها' : 'Official transcript from previous university'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'وصف المقررات للمواد المطلوب معادلتها' : 'Course descriptions for equivalency review'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'رسالة تسريح رسمية من الجامعة السابقة' : 'Official clearance letter from previous university'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'ألا يكون الطالب مفصولاً تأديبياً من الجامعة السابقة' : 'No disciplinary dismissal from previous institution'"></span></li>
+                </ul>
+            </article>
+
+            <article class="rounded-[30px] border border-slate-200/80 bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-700 text-sm font-bold text-white" x-text="$store.app.currentLang === 'ar' ? 'معادلة' : 'Equivalency'"></span>
+                <h2 class="mt-5 text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'معادلة الشهادات' : 'Equivalency Applicants'"></h2>
+                <ul class="mt-5 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'شهادة ثانوية أجنبية معادلة معتمدة من وزارة التعليم العالي' : 'Foreign secondary certificate with MOHE equivalency'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'ترجمة معتمدة للوثائق الأجنبية' : 'Certified translation of foreign documents'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'قرار معادلة رسمي من وزارة التعليم العالي' : 'Official equivalency decision from MOHE'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'اجتياز امتحان اللغة العربية للطلاب غير الناطقين بها' : 'Arabic language proficiency exam for non-native speakers'"></span></li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>

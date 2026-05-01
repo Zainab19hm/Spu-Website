@@ -1,0 +1,55 @@
+<section id="news-events" x-data="{ view: 'list', currentMonth: 4, currentYear: 2026 }" class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="flex max-w-3xl items-start justify-between gap-6">
+            <div>
+                <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'تقويم الفعاليات' : 'Events Calendar'"></p>
+                <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'الفعاليات والأنشطة الجامعية شهرياً' : 'University events and activities by month'"></h1>
+            </div>
+            <div class="flex gap-2">
+                <button @click="view = 'calendar'" :class="view === 'calendar' ? 'bg-spu-blue text-white' : 'bg-white text-slate-600'" class="rounded-full px-4 py-2 text-sm font-medium shadow transition-colors" x-text="$store.app.currentLang === 'ar' ? 'تقويم' : 'Calendar'"></button>
+                <button @click="view = 'list'" :class="view === 'list' ? 'bg-spu-blue text-white' : 'bg-white text-slate-600'" class="rounded-full px-4 py-2 text-sm font-medium shadow transition-colors" x-text="$store.app.currentLang === 'ar' ? 'قائمة' : 'List'"></button>
+            </div>
+        </div>
+
+        <div x-show="view === 'calendar'" class="mt-12">
+            <div class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <div class="flex items-center justify-between">
+                    <button @click="if(currentMonth===1){currentMonth=12;currentYear--}else{currentMonth--}" class="rounded-full bg-section h-10 w-10 flex items-center justify-center text-spu-blue hover:bg-slate-100"><i class="fas fa-chevron-left text-xs"></i></button>
+                    <h2 class="text-xl font-bold text-spu-blue" x-text="[$store.app.currentLang === 'ar' ? 'يناير,فبراير,مارس,أبريل,مايو,يونيو,يوليو,أغسطس,سبتمبر,أكتوبر,نوفمبر,ديسمبر' : 'January,February,March,April,May,June,July,August,September,October,November,December'].at($store.app.currentLang === 'ar' ? 0 : 1).split(',')[currentMonth-1] + ' ' + currentYear"></h2>
+                    <button @click="if(currentMonth===12){currentMonth=1;currentYear++}else{currentMonth++}" class="rounded-full bg-section h-10 w-10 flex items-center justify-center text-spu-blue hover:bg-slate-100"><i class="fas fa-chevron-right text-xs"></i></button>
+                </div>
+                <div class="mt-6 grid grid-cols-7 gap-1 text-center text-sm">
+                    <template x-for="day in ($store.app.currentLang === 'ar' ? ['أحد','إثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'] : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'])" :key="day">
+                        <div class="py-2 text-xs font-bold uppercase tracking-wider text-slate-400" x-text="day"></div>
+                    </template>
+                    <template x-for="n in 35" :key="n">
+                        <div class="flex h-12 items-center justify-center rounded-lg text-sm" :class="n >= 1 && n <= 31 ? 'text-slate-700 hover:bg-slate-100' : 'text-slate-300'" x-text="n >= 1 && n <= 31 ? n : ''"></div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="view === 'list'" class="mt-12 space-y-4">
+            <template x-for="event in [
+                { dateEn: '15 Sep 2026', dateAr: '١٥ أيلول ٢٠٢٦', titleEn: 'Fall Semester Orientation Day', titleAr: 'يوم التعريف للفصل الدراسي الأول', typeEn: 'Academic', typeAr: 'أكاديمي', descEn: 'New student orientation with campus tours, faculty introductions, and registration guidance.', descAr: 'يوم تعريفي للطلاب الجدد مع جولات في الحرم وتعريف بالكليات وإرشاد التسجيل.' },
+                { dateEn: '20 Oct 2026', dateAr: '٢٠ تشرين الأول ٢٠٢٦', titleEn: 'Annual Job Fair', titleAr: 'معرض التوظيف السنوي', typeEn: 'Career', typeAr: 'مهني', descEn: 'Employer booths, on-the-spot interviews, and networking with partner organizations.', descAr: 'أجنحة أصحاب العمل ومقابلات فورية وتواصل مع المؤسسات الشريكة.' },
+                { dateEn: '5 Nov 2026', dateAr: '٥ تشرين الثاني ٢٠٢٦', titleEn: 'Research Symposium: AI in Healthcare', titleAr: 'ندوة بحثية: الذكاء الاصطناعي في الرعاية الصحية', typeEn: 'Research', typeAr: 'بحثي', descEn: 'Faculty presentations on applied AI models in clinical decision support and diagnostics.', descAr: 'عروض من الهيئة التدريسية حول نماذج الذكاء الاصطناعي التطبيقية في دعم القرار السريري والتشخيص.' },
+                { dateEn: '12 Dec 2026', dateAr: '١٢ كانون الأول ٢٠٢٦', titleEn: 'Student Clubs Showcase', titleAr: 'عرض الأندية الطلابية', typeEn: 'Campus Life', typeAr: 'حياة جامعية', descEn: 'Annual exhibition of club activities, achievements, and recruitment for new members.', descAr: 'معرض سنوي لأنشطة الأندية وإنجازاتها وتجنيس أعضاء جدد.' }
+            ]" :key="event.titleEn">
+                <article class="rounded-[22px] border border-slate-200/80 bg-white p-6 shadow-[0_12px_35px_rgba(20,30,70,0.05)]">
+                    <div class="flex items-center gap-4">
+                        <div class="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-[16px] bg-spu-blue text-white">
+                            <span class="text-lg font-bold" x-text="event.dateEn.split(' ')[0]"></span>
+                            <span class="text-[10px] uppercase" x-text="event.dateEn.split(' ')[1]"></span>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p class="text-xs font-bold uppercase tracking-[0.24em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? event.typeAr : event.typeEn"></p>
+                            <h2 class="mt-1 text-lg font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? event.titleAr : event.titleEn"></h2>
+                            <p class="mt-1 text-[15px] leading-6 text-slate-600" x-text="$store.app.currentLang === 'ar' ? event.descAr : event.descEn"></p>
+                        </div>
+                    </div>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

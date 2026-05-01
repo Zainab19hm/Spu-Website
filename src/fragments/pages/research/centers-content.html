@@ -1,0 +1,27 @@
+<section id="research-centers" x-data class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'المراكز والمخابر البحثية' : 'Research Centers & Labs'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'مراكز بحثية ومخابر متخصصة تخدم المجتمع والمهنة' : 'Dedicated research facilities serving community and profession'"></h1>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-2">
+            <template x-for="center in [
+                { titleEn: 'Simulation and Clinical Skills Center', titleAr: 'مركز المحاكاة والمهارات السريرية', dirEn: 'Dr. Ahmad Khalil', dirAr: 'د. أحمد خليل', missionEn: 'Advancing simulation-based medical education and clinical readiness through hands-on training environments for medical and dental students.', missionAr: 'تطوير التعليم الطبي القائم على المحاكاة والجاهزية السريرية عبر بيئات تدريب عملية لطلاب الطب والأسنان.', facultyEn: 'Medicine, Dentistry', facultyAr: 'الطب، طب الأسنان' },
+                { titleEn: 'Pharmaceutical Research Laboratory', titleAr: 'مخابر الأبحاث الصيدلانية', dirEn: 'Dr. Layla Haddad', dirAr: 'د. ليلى حداد', missionEn: 'Investigating drug formulation quality, safety profiles, and evidence-based therapeutic protocols through applied pharmaceutical research.', missionAr: 'دراسة جودة التصنيع الدوائي والملامح الأمنية والبروتوكولات العلاجية القائمة على الأدلة عبر الأبحاث الصيدلانية التطبيقية.', facultyEn: 'Pharmacy', facultyAr: 'الصيدلة' },
+                { titleEn: 'AI and Data Science Lab', titleAr: 'مختبر الذكاء الاصطناعي وعلوم البيانات', dirEn: 'Dr. Omar Saeed', dirAr: 'د. عمر سعيد', missionEn: 'Developing applied AI models for decision support, pattern recognition, and automation in partnership with engineering and health faculties.', missionAr: 'تطوير نماذج ذكاء اصطناعي تطبيقية لدعم القرار والتعرف على الأنماط والأتمتة بالشراكة مع كليات الهندسة والصحة.', facultyEn: 'AI Engineering', facultyAr: 'هندسة الذكاء الاصطناعي' },
+                { titleEn: 'Energy and Construction Research Unit', titleAr: 'وحدة أبحاث الطاقة والبناء', dirEn: 'Dr. Rami Youssef', dirAr: 'د. رامي يوسف', missionEn: 'Conducting applied research on infrastructure resilience, site efficiency, and sustainable construction and petroleum engineering practices.', missionAr: 'إجراء أبحاث تطبيقية حول مرونة البنية التحتية وكفاءة المواقع وممارسات البناء المستدام وهندسة البترول.', facultyEn: 'Petroleum Eng., Construction Eng.', facultyAr: 'هندسة البترول، هندسة البناء' }
+            ]" :key="center.titleEn">
+                <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                    <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? center.titleAr : center.titleEn"></h2>
+                    <div class="mt-4 flex items-center gap-2 text-sm text-slate-500">
+                        <i class="fas fa-user-tie"></i>
+                        <span x-text="$store.app.currentLang === 'ar' ? 'المدير: ' + center.dirAr : 'Director: ' + center.dirEn"></span>
+                    </div>
+                    <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? center.missionAr : center.missionEn"></p>
+                    <p class="mt-4 text-sm font-medium text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الكليات المرتبطة: ' + center.facultyAr : 'Affiliated: ' + center.facultyEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

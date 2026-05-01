@@ -1,5 +1,5 @@
 import { portalAccessConfig } from './domains/portal-access.js';
-import { siteRoutes, withHash } from '../config/site-routes.js';
+import { siteRoutes } from '../config/site-routes.js';
 
 export const appUi = {
     viewAll: { en: 'View All', ar: 'عرض الكل' },
@@ -25,10 +25,10 @@ export const navigationMenuItems = [
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: '??????? ????????', labelEn: 'Leadership', url: '/about/leadership.html' },
-            { labelAr: '???????', labelEn: 'Our History', url: '/about/history.html' },
-            { labelAr: '?????????', labelEn: 'Directorates', url: '/about/directorates.html' },
-            { labelAr: '????????', labelEn: 'Partnerships', url: '/about/partnership.html' }
+            { labelAr: '??????? ????????', labelEn: 'Leadership', url: siteRoutes.aboutLeadership },
+            { labelAr: '???????', labelEn: 'Our History', url: siteRoutes.aboutHistory },
+            { labelAr: '?????????', labelEn: 'Directorates', url: siteRoutes.aboutDirectorates },
+            { labelAr: '????????', labelEn: 'Partnerships', url: siteRoutes.aboutPartnership }
         ]
     },
 
@@ -40,12 +40,12 @@ export const navigationMenuItems = [
         page: 'facilities',
         hasDropdown: true,
         children: [
-            { labelAr: '???? ???? ??????', labelEn: 'Medicine', url: '/facilities/medicine.html' },
-            { labelAr: '???? ?? ???????', labelEn: 'Dentistry', url: '/facilities/dentistry.html' },
-            { labelAr: '???? ???????', labelEn: 'Pharmacy', url: '/facilities/pharmacy.html' },
-            { labelAr: '???? ????? ?????? ?????????', labelEn: 'AI Engineering', url: '/facilities/ai-engineering.html' },
-            { labelAr: '???? ????? ??????', labelEn: 'Construction Engineering', url: '/facilities/construction-engineering.html' },
-            { labelAr: '???? ????? ???????', labelEn: 'Petroleum Engineering', url: '/facilities/petroleum-engineering.html' }
+            { labelAr: '???? ???? ??????', labelEn: 'Medicine', url: siteRoutes.facilitiesMedicine },
+            { labelAr: '???? ?? ???????', labelEn: 'Dentistry', url: siteRoutes.facilitiesDentistry },
+            { labelAr: '???? ???????', labelEn: 'Pharmacy', url: siteRoutes.facilitiesPharmacy },
+            { labelAr: '???? ????? ?????? ?????????', labelEn: 'AI Engineering', url: siteRoutes.facilitiesAiEngineering },
+            { labelAr: '???? ????? ??????', labelEn: 'Construction Engineering', url: siteRoutes.facilitiesConstructionEngineering },
+            { labelAr: '???? ????? ???????', labelEn: 'Petroleum Engineering', url: siteRoutes.facilitiesPetroleumEngineering }
         ]
     },
     {
@@ -56,12 +56,13 @@ export const navigationMenuItems = [
         page: 'admissions',
         hasDropdown: true,
         children: [
-            { labelAr: '???? ??????', labelEn: 'Admission Requirements', url: withHash(siteRoutes.admissions, 'requirements') },
-            { labelAr: '?????? ????????', labelEn: 'Tuition Fees', url: withHash(siteRoutes.admissions, 'fees') },
-            { labelAr: '??? ??????', labelEn: 'Admissions Support', url: siteRoutes.contact },
-            { labelAr: '??????? ?????????', labelEn: 'Academic Calendar', url: '/admissions.html#calendar' },
-            { labelAr: '????????? ????????', labelEn: 'Documents Checklist', url: '/admissions.html#documents' },
-            { labelAr: '??????? ???????', labelEn: 'FAQ', url: '/admissions.html#faq' }
+            { labelAr: '???? ??????', labelEn: 'Admission Requirements', url: siteRoutes.admissionsRequirements },
+            { labelAr: '?????? ????????', labelEn: 'Tuition & Fees', url: siteRoutes.admissionsTuition },
+            { labelAr: '??? ???????? ??? ?????', labelEn: 'How to Apply', url: siteRoutes.admissionsHowToApply },
+            { labelAr: '??????? ?????????? ????????', labelEn: 'Transfer & International', url: siteRoutes.admissionsTransfer },
+            { labelAr: '??????? ?????????', labelEn: 'Academic Calendar', url: siteRoutes.admissionsCalendar },
+            { labelAr: '????????? ????????', labelEn: 'Documents Checklist', url: siteRoutes.admissionsDocuments },
+            { labelAr: '??????? ???????', labelEn: 'FAQ', url: siteRoutes.admissionsFaq }
         ]
     },
     {
@@ -72,9 +73,12 @@ export const navigationMenuItems = [
         page: 'campus-life',
         hasDropdown: true,
         children: [
-            { labelAr: '??????? ????????', labelEn: 'Student Services', url: withHash(siteRoutes.campusLife, 'services') },
-            { labelAr: '??????? ????????', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.campusLife, 'activities') },
-            { labelAr: '??????? ?????????', labelEn: 'Academic Calendar', url: withHash(siteRoutes.campusLife, 'calendar') }
+            { labelAr: '??????? ????????', labelEn: 'Campus Services', url: siteRoutes.campusLifeServices },
+            { labelAr: '??????? ????????', labelEn: 'Health & Insurance', url: siteRoutes.campusLifeHealth },
+            { labelAr: '??????? ????????', labelEn: 'Clubs & Activities', url: siteRoutes.campusLifeClubs },
+            { labelAr: '??????? ?????????????', labelEn: 'Career Development', url: siteRoutes.campusLifeCareer },
+            { labelAr: '????? ?????????', labelEn: 'University Hospital', url: siteRoutes.campusLifeHospital },
+            { labelAr: '??????? ????????', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental }
         ]
     },
     {
@@ -87,8 +91,8 @@ export const navigationMenuItems = [
         children: [
             { labelAr: '????? ??????', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, protected: true },
             { labelAr: '???????', labelEn: 'Registration', url: portalAccessConfig.registrationDestination, protected: true },
-            { labelAr: '????? ??????????', labelEn: 'Appeals & Forms', url: '/e-services.html#appeals' },
-            { labelAr: '???????', labelEn: 'Library', url: '/e-services.html#library' }
+            { labelAr: '????????? ???????', labelEn: 'Appeals & Forms', url: siteRoutes.eServicesAppeals },
+            { labelAr: '???????', labelEn: 'Library Access', url: siteRoutes.eServicesLibrary }
         ]
     },
     {
@@ -99,9 +103,10 @@ export const navigationMenuItems = [
         hasDropdown: true,
         url: siteRoutes.research,
         children: [
-            { labelAr: '?????????', labelEn: 'Publications', url: '/research.html#publications' },
-            { labelAr: '???? ???????', labelEn: 'Expert Finder', url: '/research.html#experts' },
-            { labelAr: '???????', labelEn: 'Library', url: '/research.html#library' }
+            { labelAr: '?????????', labelEn: 'Publications', url: siteRoutes.researchPublications },
+            { labelAr: '????? ???????? ????????', labelEn: 'Research Centers & Labs', url: siteRoutes.researchCenters },
+            { labelAr: '???? ???????', labelEn: 'Expert Finder', url: siteRoutes.researchExpertFinder },
+            { labelAr: '???????', labelEn: 'Library', url: siteRoutes.researchLibrary }
         ]
     },
     {
@@ -112,12 +117,12 @@ export const navigationMenuItems = [
         hasDropdown: true,
         url: siteRoutes.news,
         children: [
-            { labelAr: '?????????', labelEn: 'Announcements', url: '/news.html#announcements' },
-            { labelAr: '?????????', labelEn: 'Events', url: '/news.html#events' }
+            { labelAr: '?????????', labelEn: 'Announcements', url: siteRoutes.newsAnnouncements },
+            { labelAr: '?????????', labelEn: 'Events Calendar', url: siteRoutes.newsEvents }
         ]
     },
     { id: 8, labelAr: '????? ????', labelEn: 'Contact', page: 'contact', hasDropdown: false, url: siteRoutes.contact }
-]
+];
 
 export const footerContent = {
     identity: {
@@ -138,10 +143,10 @@ export const footerContent = {
         titleAr: 'استكشف SPU',
         links: [
             { labelEn: 'About SPU', labelAr: 'عن الجامعة', url: siteRoutes.about },
-            { labelEn: 'Faculties', labelAr: 'الكليات', url: siteRoutes.facilities },
+            { labelEn: 'Facilities', labelAr: 'الكليات', url: siteRoutes.facilities },
             { labelEn: 'Admissions', labelAr: 'القبول والتسجيل', url: siteRoutes.admissions },
             { labelEn: 'Research', labelAr: 'البحث العلمي', url: siteRoutes.research },
-            { labelEn: 'Student Life', labelAr: 'الحياة الجامعية', url: siteRoutes.campusLife },
+            { labelEn: 'Campus Life', labelAr: 'الحياة الجامعية', url: siteRoutes.campusLife },
             { labelEn: 'News', labelAr: 'الأخبار', url: siteRoutes.news }
         ]
     },

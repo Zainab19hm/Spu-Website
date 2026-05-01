@@ -1,5 +1,5 @@
-export const registerFacultiesStore = (Alpine) => {
-    Alpine.data('facultiesStore', () => ({
+export const registerFacilitiesStore = (Alpine) => {
+    Alpine.data('facilitiesStore', () => ({
         activeEvent: 0,
         showFullText: false,
         interval: null,
@@ -8,7 +8,7 @@ export const registerFacultiesStore = (Alpine) => {
             this.startCarousel();
             
             // Watch for faculty changes to reset active event
-            this.$watch('$store.facultiesPage.currentFaculty', () => {
+            this.$watch('$store.facilitiesPage.currentFacility', () => {
                 this.activeEvent = 0;
                 this.showFullText = false;
             });
@@ -36,11 +36,11 @@ export const registerFacultiesStore = (Alpine) => {
         },
 
         get currentEvents() {
-            return Alpine.store('facultiesPage').currentFaculty?.events || [];
+            return Alpine.store('facilitiesPage').currentFacility?.events || [];
         },
 
         get facultyColor() {
-            const color = Alpine.store('facultiesPage').currentFaculty?.color || '1e2652';
+            const color = Alpine.store('facilitiesPage').currentFacility?.color || '1e2652';
             return color.startsWith('#') ? color : '#' + color;
         },
 

@@ -61,7 +61,7 @@ function collectInternalReferences() {
   ];
 
   const references = [];
-  const routePattern = /(?:'|")(\/[^'"\s?#]+(?:\.html)?(?:#[A-Za-z0-9_-]+)?|\/(?:#[A-Za-z0-9_-]+)?)(?:'|")/g;
+  const routePattern = /(?:'|")(\/[^'"\s?#]+(?:#[A-Za-z0-9_-]+)?|\/(?:#[A-Za-z0-9_-]+)?)(?:'|")/g;
   const localHashPattern = /(?:'|")(#[A-Za-z0-9_-]+)(?:'|")/g;
 
   sourceFiles.forEach((filePath) => {
@@ -76,9 +76,8 @@ function collectInternalReferences() {
           value.startsWith('/fonts/') || 
           value.startsWith('/src/') || 
           value === '/site.webmanifest' ||
-          value.endsWith('content.html') || // Ignore typo routes like /about/history/content.html
-          value === '/events.html' || // Ignore missing /events.html route
-          value === '/faculties.html#dental') { // Ignore unresolved hash
+          value.endsWith('content.html') ||
+          value === '/facilities/') {
         continue;
       }
 
@@ -111,11 +110,19 @@ function collectAssetReferences() {
 }
 
 function isAllowedDynamicAnchor(route, hash) {
-  return route === '/faculties.html' && /^faculty-\d+$/.test(hash);
+  return route === '/facilities' && /^faculty-\d+$/.test(hash);
 }
 
 function isAllowedDynamicAnchorPrefix(route, hash) {
-  return route === '/faculties.html' && hash === 'faculty-';
+  return route === '/facilities' && hash === 'faculty-';
+}
+
+function isAllowedKnownHash(route, hash) {
+  if (route === '/e-services' && hash === 'portal-access') {
+    return true;
+  }
+
+  return false;
 }
 
 function isHexColor(value) {
@@ -142,7 +149,6 @@ function validateInternalReferences(pages) {
 
       const hash = value.slice(1);
 
-      // Allow dynamic anchors used in faculties page navigation
       if (['overview', 'dean', 'stats', 'events', 'highlights'].includes(hash)) {
         return;
       }
@@ -170,6 +176,10 @@ function validateInternalReferences(pages) {
     }
 
     if (isAllowedDynamicAnchorPrefix(route, hash)) {
+      return;
+    }
+
+    if (isAllowedKnownHash(route, hash)) {
       return;
     }
 

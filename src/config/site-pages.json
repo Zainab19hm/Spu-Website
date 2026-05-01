@@ -39,8 +39,8 @@
     },
     {
       "name": "about",
-      "fileName": "about.html",
-      "route": "/about.html",
+      "fileName": "about/index.html",
+      "route": "/about",
       "title": "About SPU | Syrian Private University",
       "description": "Learn about the mission, governance, history, and institutional direction of Syrian Private University.",
       "ogImage": "/images/logo-spu.png",
@@ -57,8 +57,8 @@
     },
     {
       "name": "about-history",
-      "fileName": "about/history.html",
-      "route": "/about/history.html",
+      "fileName": "about/history/index.html",
+      "route": "/about/history",
       "title": "History | Syrian Private University",
       "description": "Follow the development of Syrian Private University from its founding through its current academic growth.",
       "ogImage": "/images/logo-spu.png",
@@ -74,8 +74,8 @@
     },
     {
       "name": "about-leadership",
-      "fileName": "about/leadership.html",
-      "route": "/about/leadership.html",
+      "fileName": "about/leadership/index.html",
+      "route": "/about/leadership",
       "title": "Leadership | Syrian Private University",
       "description": "Explore the university presidency and leadership direction guiding Syrian Private University.",
       "ogImage": "/images/logo-spu.png",
@@ -91,8 +91,8 @@
     },
     {
       "name": "about-directorates",
-      "fileName": "about/directorates.html",
-      "route": "/about/directorates.html",
+      "fileName": "about/directorates/index.html",
+      "route": "/about/directorates",
       "title": "Directorates | Syrian Private University",
       "description": "Review the administrative directorates supporting academic operations and student services at SPU.",
       "ogImage": "/images/logo-spu.png",
@@ -108,8 +108,8 @@
     },
     {
       "name": "about-partnership",
-      "fileName": "about/partnership.html",
-      "route": "/about/partnership.html",
+      "fileName": "about/partnership/index.html",
+      "route": "/about/partnership",
       "title": "Partnerships | Syrian Private University",
       "description": "See the academic and institutional partnerships that extend Syrian Private University's reach.",
       "ogImage": "/images/logo-spu.png",
@@ -125,8 +125,8 @@
     },
     {
       "name": "facilities",
-      "fileName": "facilities.html",
-      "route": "/facilities.html",
+      "fileName": "facilities/index.html",
+      "route": "/facilities",
       "title": "Facilities | Syrian Private University",
       "description": "Explore SPU facilities, study pathways, and the academic structure behind the university's core programs.",
       "ogImage": "/images/logo-spu.png",
@@ -145,9 +145,69 @@
       ]
     },
     {
+      "name": "facilities-medicine",
+      "fileName": "facilities/medicine/index.html",
+      "route": "/facilities/medicine",
+      "title": "Medicine | Syrian Private University",
+      "description": "Faculty of Medicine at SPU — accredited medical education, clinical training, and research in Damascus.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU Medicine", "Faculty of Medicine", "medical education Syria"],
+      "fragments": ["pages/facilities/medicine/hub.html"]
+    },
+    {
+      "name": "facilities-dentistry",
+      "fileName": "facilities/dentistry/index.html",
+      "route": "/facilities/dentistry",
+      "title": "Dentistry | Syrian Private University",
+      "description": "Faculty of Dentistry at SPU — modern dental clinics, clinical training, and advanced oral healthcare education.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU Dentistry", "Faculty of Dentistry", "dental education Syria"],
+      "fragments": ["pages/facilities/dentistry/hub.html"]
+    },
+    {
+      "name": "facilities-pharmacy",
+      "fileName": "facilities/pharmacy/index.html",
+      "route": "/facilities/pharmacy",
+      "title": "Pharmacy | Syrian Private University",
+      "description": "Faculty of Pharmacy at SPU — pharmaceutical sciences, clinical pharmacy, and drug research.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU Pharmacy", "Faculty of Pharmacy", "pharmaceutical education Syria"],
+      "fragments": ["pages/facilities/pharmacy/hub.html"]
+    },
+    {
+      "name": "facilities-ai-engineering",
+      "fileName": "facilities/ai-engineering/index.html",
+      "route": "/facilities/ai-engineering",
+      "title": "AI Engineering | Syrian Private University",
+      "description": "Faculty of AI Engineering at SPU — machine learning, robotics, data science, and applied AI research.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU AI Engineering", "Faculty of AI", "artificial intelligence Syria"],
+      "fragments": ["pages/facilities/ai-engineering/hub.html"]
+    },
+    {
+      "name": "facilities-construction-engineering",
+      "fileName": "facilities/construction-engineering/index.html",
+      "route": "/facilities/construction-engineering",
+      "title": "Construction Engineering | Syrian Private University",
+      "description": "Faculty of Construction Engineering at SPU — structural engineering, BIM, and sustainable building.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU Construction Engineering", "Faculty of Construction", "civil engineering Syria"],
+      "fragments": ["pages/facilities/construction-engineering/hub.html"]
+    },
+    {
+      "name": "facilities-petroleum-engineering",
+      "fileName": "facilities/petroleum-engineering/index.html",
+      "route": "/facilities/petroleum-engineering",
+      "title": "Petroleum Engineering | Syrian Private University",
+      "description": "Faculty of Petroleum Engineering at SPU — oil and gas engineering, energy sciences, and field training.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU Petroleum Engineering", "Faculty of Petroleum", "oil gas engineering Syria"],
+      "fragments": ["pages/facilities/petroleum-engineering/hub.html"]
+    },
+    {
       "name": "admissions",
-      "fileName": "admissions.html",
-      "route": "/admissions.html",
+      "fileName": "admissions/index.html",
+      "route": "/admissions",
       "title": "Admissions | Syrian Private University",
       "description": "Understand SPU admission requirements, application steps, tuition guidance, and enrollment support.",
       "ogImage": "/images/logo-spu.png",
@@ -163,9 +223,93 @@
       ]
     },
     {
+      "name": "admissions-requirements",
+      "fileName": "admissions/requirements/index.html",
+      "route": "/admissions/requirements",
+      "title": "Admission Requirements | Syrian Private University",
+      "description": "SPU admission requirements per student type — new entrants, transfer, and equivalency applicants.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU admission requirements", "SPU enrollment criteria", "university admission Syria"],
+      "fragments": [
+        "pages/admissions/requirements-content.html"
+      ]
+    },
+    {
+      "name": "admissions-tuition",
+      "fileName": "admissions/tuition/index.html",
+      "route": "/admissions/tuition",
+      "title": "Tuition & Fees | Syrian Private University",
+      "description": "Complete tuition fees by faculty and student type, payment methods, instalments, and scholarships at SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU tuition", "SPU fees", "university tuition Syria"],
+      "fragments": [
+        "pages/admissions/tuition-content.html"
+      ]
+    },
+    {
+      "name": "admissions-how-to-apply",
+      "fileName": "admissions/how-to-apply/index.html",
+      "route": "/admissions/how-to-apply",
+      "title": "How to Apply | Syrian Private University",
+      "description": "Step-by-step guide to applying at SPU — required documents, deadlines, and the complete application process.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU how to apply", "SPU application process", "university application Syria"],
+      "fragments": [
+        "pages/admissions/how-to-apply-content.html"
+      ]
+    },
+    {
+      "name": "admissions-transfer",
+      "fileName": "admissions/transfer/index.html",
+      "route": "/admissions/transfer",
+      "title": "Transfer & International Students | Syrian Private University",
+      "description": "Credit transfer policy, language requirements, visa guide, and country-specific notes for transfer and international students.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU transfer", "SPU international students", "university transfer Syria"],
+      "fragments": [
+        "pages/admissions/transfer-content.html"
+      ]
+    },
+    {
+      "name": "admissions-calendar",
+      "fileName": "admissions/calendar/index.html",
+      "route": "/admissions/calendar",
+      "title": "Academic Calendar | Syrian Private University",
+      "description": "Current academic year calendar with key dates, exam periods, and registration deadlines at SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU academic calendar", "university dates", "SPU schedule"],
+      "fragments": [
+        "pages/admissions/calendar-content.html"
+      ]
+    },
+    {
+      "name": "admissions-documents",
+      "fileName": "admissions/documents/index.html",
+      "route": "/admissions/documents",
+      "title": "Documents Checklist | Syrian Private University",
+      "description": "Downloadable checklist of required documents per application category, study system, and GPA explanation.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU documents checklist", "SPU required documents", "university admission documents"],
+      "fragments": [
+        "pages/admissions/documents-content.html"
+      ]
+    },
+    {
+      "name": "admissions-faq",
+      "fileName": "admissions/faq/index.html",
+      "route": "/admissions/faq",
+      "title": "Admissions FAQ | Syrian Private University",
+      "description": "Frequently asked questions about SPU admissions — organized by topic with expandable answers and search.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU admissions FAQ", "SPU questions", "university admission FAQ Syria"],
+      "fragments": [
+        "pages/admissions/faq-content.html"
+      ]
+    },
+    {
       "name": "research",
-      "fileName": "research.html",
-      "route": "/research.html",
+      "fileName": "research/index.html",
+      "route": "/research",
       "title": "Research | Syrian Private University",
       "description": "Discover SPU research priorities, applied initiatives, and faculty-led work with clinical and technical impact.",
       "ogImage": "/images/logo-spu.png",
@@ -181,9 +325,57 @@
       ]
     },
     {
+      "name": "research-publications",
+      "fileName": "research/publications/index.html",
+      "route": "/research/publications",
+      "title": "Publications | Syrian Private University",
+      "description": "Browse SPU faculty publications — theses, dissertations, conference proceedings, and working papers.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU publications", "SPU research papers", "university publications Syria"],
+      "fragments": [
+        "pages/research/publications-content.html"
+      ]
+    },
+    {
+      "name": "research-centers",
+      "fileName": "research/centers/index.html",
+      "route": "/research/centers",
+      "title": "Research Centers & Labs | Syrian Private University",
+      "description": "Research centers and laboratories at SPU — missions, directors, affiliated faculty, and projects.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU research centers", "SPU labs", "university research Syria"],
+      "fragments": [
+        "pages/research/centers-content.html"
+      ]
+    },
+    {
+      "name": "research-expert-finder",
+      "fileName": "research/expert-finder/index.html",
+      "route": "/research/expert-finder",
+      "title": "Expert Finder | Syrian Private University",
+      "description": "Searchable directory of SPU academic staff — search by name, faculty, department, or expertise keyword.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU expert finder", "SPU faculty directory", "university experts Syria"],
+      "fragments": [
+        "pages/research/expert-finder-content.html"
+      ]
+    },
+    {
+      "name": "research-library",
+      "fileName": "research/library/index.html",
+      "route": "/research/library",
+      "title": "Scientific Library | Syrian Private University",
+      "description": "Access the SPU scientific library — physical collections, e-books, licensed databases, and borrowing rules.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU library", "SPU e-library", "university library Syria"],
+      "fragments": [
+        "pages/research/library-content.html"
+      ]
+    },
+    {
       "name": "campus-life",
-      "fileName": "campus-life.html",
-      "route": "/campus-life.html",
+      "fileName": "campus-life/index.html",
+      "route": "/campus-life",
       "title": "Campus Life | Syrian Private University",
       "description": "Find student services, campus activities, academic guidance, and digital access paths at SPU.",
       "ogImage": "/images/logo-spu.png",
@@ -199,9 +391,81 @@
       ]
     },
     {
+      "name": "campus-life-services",
+      "fileName": "campus-life/services/index.html",
+      "route": "/campus-life/services",
+      "title": "Campus Services | Syrian Private University",
+      "description": "Transport, health, IT, cafeteria, accommodation — all campus services at SPU in one place.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU campus services", "SPU student services", "university services Syria"],
+      "fragments": [
+        "pages/campus-life/services-content.html"
+      ]
+    },
+    {
+      "name": "campus-life-health",
+      "fileName": "campus-life/health/index.html",
+      "route": "/campus-life/health",
+      "title": "Health & Insurance | Syrian Private University",
+      "description": "Student health insurance details, coverage information, and how to use campus health services at SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU health insurance", "SPU student health", "university health services Syria"],
+      "fragments": [
+        "pages/campus-life/health-content.html"
+      ]
+    },
+    {
+      "name": "campus-life-clubs",
+      "fileName": "campus-life/clubs/index.html",
+      "route": "/campus-life/clubs",
+      "title": "Student Clubs & Activities | Syrian Private University",
+      "description": "Directory of active student clubs at SPU — find, join, and participate in campus activities.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU student clubs", "SPU activities", "university clubs Syria"],
+      "fragments": [
+        "pages/campus-life/clubs-content.html"
+      ]
+    },
+    {
+      "name": "campus-life-career",
+      "fileName": "campus-life/career/index.html",
+      "route": "/campus-life/career",
+      "title": "Career Development | Syrian Private University",
+      "description": "SPU career center — events, job board, CV workshops, internship listings, and employer partners.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU career", "SPU career center", "university career services Syria"],
+      "fragments": [
+        "pages/campus-life/career-content.html"
+      ]
+    },
+    {
+      "name": "campus-life-hospital",
+      "fileName": "campus-life/hospital/index.html",
+      "route": "/campus-life/hospital",
+      "title": "University Hospital | Syrian Private University",
+      "description": "SPU University Hospital — departments, medical services, hours, appointment process, and insurance information.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU hospital", "SPU University Hospital", "university hospital Syria"],
+      "fragments": [
+        "pages/campus-life/hospital-content.html"
+      ]
+    },
+    {
+      "name": "campus-life-dental",
+      "fileName": "campus-life/dental/index.html",
+      "route": "/campus-life/dental",
+      "title": "Dental Clinics | Syrian Private University",
+      "description": "SPU Dental Clinics — services, clinic hours, booking process, and patient information.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU dental clinic", "SPU dental services", "university dental Syria"],
+      "fragments": [
+        "pages/campus-life/dental-content.html"
+      ]
+    },
+    {
       "name": "e-services",
-      "fileName": "e-services.html",
-      "route": "/e-services.html",
+      "fileName": "e-services/index.html",
+      "route": "/e-services",
       "title": "E-Services | Syrian Private University",
       "description": "Access official SPU digital services, portal entry points, and protected student support pathways.",
       "ogImage": "/images/logo-spu.png",
@@ -216,9 +480,45 @@
       ]
     },
     {
+      "name": "e-services-student-portal",
+      "fileName": "e-services/student-portal/index.html",
+      "route": "/e-services/student-portal",
+      "title": "Student Portal | Syrian Private University",
+      "description": "Direct link to the SPU Electronic Student Gate with step-by-step first-login guide.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU student portal", "SPU electronic gate", "university portal Syria"],
+      "fragments": [
+        "pages/e-services/student-portal-content.html"
+      ]
+    },
+    {
+      "name": "e-services-appeals",
+      "fileName": "e-services/appeals/index.html",
+      "route": "/e-services/appeals",
+      "title": "Appeals & Forms | Syrian Private University",
+      "description": "Online forms for student appeals, complaints, and suggestions at SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU appeals", "SPU forms", "university appeals Syria"],
+      "fragments": [
+        "pages/e-services/appeals-content.html"
+      ]
+    },
+    {
+      "name": "e-services-library",
+      "fileName": "e-services/library/index.html",
+      "route": "/e-services/library",
+      "title": "Library Access | Syrian Private University",
+      "description": "Access instructions for the SPU e-library and licensed databases.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU e-library", "SPU library access", "university digital library Syria"],
+      "fragments": [
+        "pages/e-services/library-content.html"
+      ]
+    },
+    {
       "name": "news",
-      "fileName": "news.html",
-      "route": "/news.html",
+      "fileName": "news/index.html",
+      "route": "/news",
       "title": "News | Syrian Private University",
       "description": "Read official SPU announcements, academic stories, newsroom updates, and campus coverage.",
       "ogImage": "/images/logo-spu.png",
@@ -234,9 +534,33 @@
       ]
     },
     {
+      "name": "news-announcements",
+      "fileName": "news/announcements/index.html",
+      "route": "/news/announcements",
+      "title": "Announcements | Syrian Private University",
+      "description": "Official SPU announcements — dates, titles, details, and downloadable attachments.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU announcements", "university announcements Syria"],
+      "fragments": [
+        "pages/news/announcements-content.html"
+      ]
+    },
+    {
+      "name": "news-events",
+      "fileName": "news/events/index.html",
+      "route": "/news/events",
+      "title": "Events Calendar | Syrian Private University",
+      "description": "Upcoming and past events at SPU — monthly calendar view, event details, and iCal export.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU events", "SPU calendar", "university events Syria"],
+      "fragments": [
+        "pages/news/events-content.html"
+      ]
+    },
+    {
       "name": "contact",
-      "fileName": "contact.html",
-      "route": "/contact.html",
+      "fileName": "contact/index.html",
+      "route": "/contact",
       "title": "Contact | Syrian Private University",
       "description": "Reach SPU through official contact channels for admissions, student affairs, university offices, and campus visits.",
       "ogImage": "/images/logo-spu.png",
@@ -250,66 +574,6 @@
         "pages/contact/channels.html",
         "pages/contact/visit.html"
       ]
-    },
-    {
-      "name": "facilities-medicine",
-      "fileName": "facilities/medicine.html",
-      "route": "/facilities/medicine.html",
-      "title": "Medicine | Syrian Private University",
-      "description": "Medicine facility hub",
-      "ogImage": "/images/logo-spu.png",
-      "keywords": ["Medicine", "SPU"],
-      "fragments": ["pages/facilities/medicine/hub.html"]
-    },
-    {
-      "name": "facilities-dentistry",
-      "fileName": "facilities/dentistry.html",
-      "route": "/facilities/dentistry.html",
-      "title": "Dentistry | Syrian Private University",
-      "description": "Dentistry facility hub",
-      "ogImage": "/images/logo-spu.png",
-      "keywords": ["Dentistry", "SPU"],
-      "fragments": ["pages/facilities/dentistry/hub.html"]
-    },
-    {
-      "name": "facilities-pharmacy",
-      "fileName": "facilities/pharmacy.html",
-      "route": "/facilities/pharmacy.html",
-      "title": "Pharmacy | Syrian Private University",
-      "description": "Pharmacy facility hub",
-      "ogImage": "/images/logo-spu.png",
-      "keywords": ["Pharmacy", "SPU"],
-      "fragments": ["pages/facilities/pharmacy/hub.html"]
-    },
-    {
-      "name": "facilities-ai-engineering",
-      "fileName": "facilities/ai-engineering.html",
-      "route": "/facilities/ai-engineering.html",
-      "title": "AI Engineering | Syrian Private University",
-      "description": "AI Engineering facility hub",
-      "ogImage": "/images/logo-spu.png",
-      "keywords": ["AI Engineering", "SPU"],
-      "fragments": ["pages/facilities/ai-engineering/hub.html"]
-    },
-    {
-      "name": "facilities-construction-engineering",
-      "fileName": "facilities/construction-engineering.html",
-      "route": "/facilities/construction-engineering.html",
-      "title": "Construction Engineering | Syrian Private University",
-      "description": "Construction Engineering facility hub",
-      "ogImage": "/images/logo-spu.png",
-      "keywords": ["Construction Engineering", "SPU"],
-      "fragments": ["pages/facilities/construction-engineering/hub.html"]
-    },
-    {
-      "name": "facilities-petroleum-engineering",
-      "fileName": "facilities/petroleum-engineering.html",
-      "route": "/facilities/petroleum-engineering.html",
-      "title": "Petroleum Engineering | Syrian Private University",
-      "description": "Petroleum Engineering facility hub",
-      "ogImage": "/images/logo-spu.png",
-      "keywords": ["Petroleum Engineering", "SPU"],
-      "fragments": ["pages/facilities/petroleum-engineering/hub.html"]
     }
   ]
 }

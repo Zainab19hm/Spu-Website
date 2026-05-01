@@ -1,4 +1,4 @@
-export const facultiesCatalog = {
+export const facilitiesCatalog = {
     list: [
         {
             id: 'medicine',
@@ -56,7 +56,7 @@ export const facultiesCatalog = {
                         titleAr: 'أبحاث علمية',
                         titleEn: 'Scientific Research',
                         value: '+2500',
-                        link: 'research.html',
+                        link: '/research',
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -64,7 +64,7 @@ export const facultiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '256',
-                        link: 'admissions.html',
+                        link: '/admissions',
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -173,7 +173,7 @@ export const facultiesCatalog = {
                         titleAr: 'أبحاث علمية',
                         titleEn: 'Scientific Research',
                         value: '+1800',
-                        link: 'research.html',
+                        link: '/research',
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -181,7 +181,7 @@ export const facultiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '187',
-                        link: 'admissions.html',
+                        link: '/admissions',
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -275,7 +275,7 @@ export const facultiesCatalog = {
                         titleAr: 'أبحاث علمية',
                         titleEn: 'Scientific Research',
                         value: '+1200',
-                        link: 'research.html',
+                        link: '/research',
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -283,7 +283,7 @@ export const facultiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '178',
-                        link: 'admissions.html',
+                        link: '/admissions',
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -368,7 +368,7 @@ export const facultiesCatalog = {
                         titleAr: 'أبحاث الذكاء',
                         titleEn: 'AI Research',
                         value: '+500',
-                        link: 'research.html',
+                        link: '/research',
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -376,7 +376,7 @@ export const facultiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '165',
-                        link: 'admissions.html',
+                        link: '/admissions',
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -410,7 +410,7 @@ export const facultiesCatalog = {
             ]
         },
         {
-            id: 'Construction',
+            id: 'construction-engineering',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة التشييد والبناء',
@@ -461,7 +461,7 @@ export const facultiesCatalog = {
                         titleAr: 'أبحاث هندسية',
                         titleEn: 'Engineering Research',
                         value: '+300',
-                        link: 'research.html',
+                        link: '/research',
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -469,7 +469,7 @@ export const facultiesCatalog = {
                         titleAr: 'ساعات تدريبية',
                         titleEn: 'Training Hours',
                         value: '160',
-                        link: 'admissions.html',
+                        link: '/admissions',
                         icon: '/images/icons/training.svg'
                     },
                     {
@@ -493,7 +493,7 @@ export const facultiesCatalog = {
             events: []
         },
         {
-            id: 'petroleum',
+            id: 'petroleum-engineering',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة البترول',
@@ -544,7 +544,7 @@ export const facultiesCatalog = {
                         titleAr: 'أبحاث طاقة',
                         titleEn: 'Energy Research',
                         value: '+450',
-                        link: 'research.html',
+                        link: '/research',
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -552,7 +552,7 @@ export const facultiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '160',
-                        link: 'admissions.html',
+                        link: '/admissions',
                         icon: '/images/icons/hours.svg'
                     },
                     {
@@ -627,7 +627,7 @@ export const facultiesCatalog = {
                         titleAr: 'أبحاث إدارية',
                         titleEn: 'Management Research',
                         value: '+600',
-                        link: 'research.html',
+                        link: '/research',
                         icon: '/images/icons/file.svg'
                     },
                     {
@@ -635,7 +635,7 @@ export const facultiesCatalog = {
                         titleAr: 'ساعة معتمدة',
                         titleEn: 'Credit Hours',
                         value: '136',
-                        link: 'admissions.html',
+                        link: '/admissions',
                         icon: '/images/icons/hours.svg'
                     },
                     {

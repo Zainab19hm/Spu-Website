@@ -1,0 +1,41 @@
+<section id="admissions-faq" x-data="{ searchQuery: '', activeCategory: 'all', openIndex: null }" class="bg-white py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الأسئلة الشائعة' : 'Admissions FAQ'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'إجابات على أكثر الأسئلة شيوعاً حول القبول' : 'Answers to the most common admissions questions'"></h1>
+        </div>
+
+        <div class="mt-8 max-w-xl">
+            <div class="relative">
+                <input type="text" x-model="searchQuery" :placeholder="$store.app.currentLang === 'ar' ? 'ابحث في الأسئلة...' : 'Search questions...'" class="w-full rounded-full border border-slate-200 bg-section px-6 py-4 pr-12 text-[15px] text-slate-700 outline-none focus:border-spu-blue">
+                <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+            <template x-for="cat in ['all', 'requirements', 'fees', 'transfer', 'dates']" :key="cat">
+                <button @click="activeCategory = cat" :class="activeCategory === cat ? 'bg-spu-blue text-white' : 'bg-section text-slate-600'" class="rounded-full px-5 py-2 text-sm font-medium transition-colors" x-text="$store.app.currentLang === 'ar' ? { all: 'الكل', requirements: 'المتطلبات', fees: 'الرسوم', transfer: 'التحويل', dates: 'المواعيد' }[cat] : cat.charAt(0).toUpperCase() + cat.slice(1)"></button>
+            </template>
+        </div>
+
+        <div class="mt-10 space-y-4">
+            <template x-for="(faq, idx) in [
+                { cat: 'requirements', qEn: 'What are the minimum GPA requirements?', qAr: 'ما هو الحد الأدنى لمعدل الثانوية؟', aEn: 'Minimum GPA varies by faculty. Medicine requires the highest threshold, while engineering and pharmacy have their own benchmarks. Check the specific faculty page for details.', aAr: 'يختلف الحد الأدنى حسب الكلية. يتطلب الطب أعلى معدل، بينما للهندسة والصيدلة معاييرهم الخاصة. راجع صفحة الكلية للحصول على التفاصيل.' },
+                { cat: 'requirements', qEn: 'Do I need an entrance exam?', qAr: 'هل أحتاج إلى امتحان قبول؟', aEn: 'Some faculties require entrance exams. Medicine and Dentistry typically hold aptitude tests. Check the admissions office for current year schedules.', aAr: 'بعض الكليات تتطلب اختبارات قبول. عادة ما تجري الطب والأسنان اختبارات قدرة. راجع مكتب القبول لمعرفة جدول العام الحالي.' },
+                { cat: 'fees', qEn: 'Can I pay tuition in instalments?', qAr: 'هل يمكن دفع الرسوم على أقساط؟', aEn: 'Yes, the university offers a two-instalment plan. The first payment is due at enrollment and the second midway through the semester.', aAr: 'نعم، تقدم الجامعة خطة قسطين. الدفعة الأولى عند التسجيل والثانية في منتصف الفصل الدراسي.' },
+                { cat: 'fees', qEn: 'Are scholarships available?', qAr: 'هل تتوفر منح دراسية؟', aEn: 'Scholarships are available for top-performing students, martyrs\' children, and specific exempt categories. Contact Student Affairs for a current list.', aAr: 'تتوفر منح للطلاب المتفوقين وأبناء الشهداء وفئات الإعفاء المحددة. تواصل مع شؤون الطلاب للحصول على القائمة الحالية.' },
+                { cat: 'transfer', qEn: 'How many credits can I transfer?', qAr: 'كم ساعة يمكنني معادلتها؟', aEn: 'Up to 50% of total graduation credits may be transferred, subject to course content matching and the faculty committee\'s approval.', aAr: 'يمكن تحويل حتى ٥٠٪ من إجمالي ساعات التخرج، بشرط تطابق المحتوى وموافقة لجنة الكلية.' },
+                { cat: 'dates', qEn: 'When does registration open?', qAr: 'متى يفتح باب التسجيل؟', aEn: 'Registration typically opens in September for the fall semester. Exact dates are published on the academic calendar each year.', aAr: 'يفتح التسجيل عادة في أيلول للفصل الأول. تُنشر المواعيد الدقيقة في التقويم الأكاديمي سنوياً.' },
+                { cat: 'dates', qEn: 'What is the application deadline?', qAr: 'ما هو الموعد النهائي للتقديم؟', aEn: 'The application deadline is usually in October for the fall semester. Late applications are not accepted.', aAr: 'الموعد النهائي عادة في تشرين الأول للفصل الأول. لا تُقبل الطلبات المتأخرة.' }
+            ].filter(f => (activeCategory === 'all' || f.cat === activeCategory) && (!searchQuery || (($store.app.currentLang === 'ar' ? f.qAr : f.qEn).toLowerCase().includes(searchQuery.toLowerCase()))))" :key="idx">
+                <div class="rounded-[22px] border border-slate-200/80 bg-white shadow-[0_12px_35px_rgba(20,30,70,0.05)]">
+                    <button @click="openIndex = openIndex === idx ? null : idx" class="flex w-full items-center justify-between px-6 py-5 text-left">
+                        <span class="text-[15px] font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? faq.qAr : faq.qEn"></span>
+                        <i :class="openIndex === idx ? 'rotate-180' : ''" class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div x-show="openIndex === idx" x-collapse class="px-6 pb-5 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? faq.aAr : faq.aEn"></div>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>

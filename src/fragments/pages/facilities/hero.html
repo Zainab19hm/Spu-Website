@@ -12,29 +12,29 @@
             return `rgba(${r},${g},${b},${alpha})`;
         }
     </script> -->
-    <img :src="$store.facultiesPage.currentFaculty?.heroImage"
+    <img :src="$store.facilitiesPage.currentFacility?.heroImage"
         class="absolute inset-0 w-full h-full object-cover transition-transform duration-3000"
-        :class="$store.facultiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">
+        :class="$store.facilitiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">
 
     <!-- <div :style="`background: linear-gradient(${$store.app.currentLang === 'ar' ? '270deg' : '90deg'},
-        ${window.hexToRgba($store.facultiesPage.currentFaculty?.color || '#cac449', 0.8)} 0%,
-        ${window.hexToRgba($store.facultiesPage.currentFaculty?.colorMid || $store.facultiesPage.currentFaculty?.color || '#cac495', 0)} 50%,
-        ${window.hexToRgba($store.facultiesPage.currentFaculty?.color || '#cac449', 0)} 100%)`"
+        ${window.hexToRgba($store.facilitiesPage.currentFacility?.color || '#cac449', 0.8)} 0%,
+        ${window.hexToRgba($store.facilitiesPage.currentFacility?.colorMid || $store.facilitiesPage.currentFacility?.color || '#cac495', 0)} 50%,
+        ${window.hexToRgba($store.facilitiesPage.currentFacility?.color || '#cac449', 0)} 100%)`"
         class="absolute inset-0">
     </div> -->
 
     <div class="container relative z-10  mt-20 ">
         <div class="w-fit relative  p-5">
             <div class="absolute top-0 right-0 h-full w-full  opacity-75 z-0  "
-                :style="`background-color : #${$store.facultiesPage.currentFaculty?.color}`"></div>
+                :style="`background-color : #${$store.facilitiesPage.currentFacility?.color}`"></div>
             <!-- <h1 class="text-white text-[50px] font-bold  uppercase mb-2 "
-                x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.top_labelar : $store.facultiesPage.currentFaculty?.top_labelen">
+                x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.top_labelar : $store.facilitiesPage.currentFacility?.top_labelen">
             </h1> -->
             <p class="text-3xl md:text-[40px] font-normal relative  text-white  mb-4 uppercase z-10"
-                x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.nameAr : $store.facultiesPage.currentFaculty?.nameEn">
+                x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.nameAr : $store.facilitiesPage.currentFacility?.nameEn">
             </p>
             <div class="flex flex-wrap gap-5 Z-10 relative">
-                <button :style="`color: #${$store.facultiesPage.currentFaculty?.color.replace('#', '')}`"
+                <button :style="`color: #${$store.facilitiesPage.currentFacility?.color.replace('#', '')}`"
                     class="px-10 py-4  bg-white font-bold rounded-lg transition-all duration-500 ease-in-out hover:text-white hover:scale-105"
                     x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'Explore Programs'"></button>
                 <button
@@ -46,7 +46,7 @@
 
     <div class="z-40 absolute w-145.5 h-97 top-[70vh] left-[55%]"
         :style="$store.app.currentLang === 'ar' ? 'margin-left: -50%; transform: translateX(50%);' : 'margin-right: -50%; transform: translateX(-50%);'">
-        <img :src="$store.facultiesPage.currentFaculty?.logo" alt="$store.facultiesPage.currentFaculty?.nameEn" class=""
-            :class="$store.facultiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">
+        <img :src="$store.facilitiesPage.currentFacility?.logo" alt="$store.facilitiesPage.currentFacility?.nameEn" class=""
+            :class="$store.facilitiesPage.loading ? 'scale-110 blur-sm' : 'scale-100 blur-0'">
         </div>
 </section>

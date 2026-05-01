@@ -2,7 +2,7 @@
         activeTab: 'overview',
         // دالة ديناميكية لجلب اللون وتنسيقه ليعمل في CSS
         get facultyColor() { 
-            const color = $store.facultiesPage.currentFaculty?.color || '1e2652';
+            const color = $store.facilitiesPage.currentFacility?.color || '1e2652';
             return color.startsWith('#') ? color : '#' + color;
         }
     }">
@@ -14,13 +14,13 @@
                 <div class="relative w-full aspect-square">
                     <div class="absolute top-3  w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px] overflow-hidden reveal-left"
                         x-init="observeElement($el)" :style="$store.app,currentLang === 'ar' ? 'right:0px' : 'left:0px'">
-                        <img :src="$store.facultiesPage.currentFaculty?.image_1" class="w-full h-full object-cover"
+                        <img :src="$store.facilitiesPage.currentFacility?.image_1" class="w-full h-full object-cover"
                             alt="Faculty Header">
                     </div>
                        
                     <div class="absolute top-[155px] w-[281.904541015625px] h-[293.6371154785156px] rounded-[8px]   overflow-hidden  border-[10px] border-white z-10 reveal-right"
                         x-init="observeElement($el)" :style=" $store.app.currentLang === 'ar' ? 'right :122px' : 'left:122px'  ">
-                        <img :src="$store.facultiesPage.currentFaculty?.image_2" class="w-full h-full object-cover"
+                        <img :src="$store.facilitiesPage.currentFacility?.image_2" class="w-full h-full object-cover"
                             alt="Faculty Dean">
                     </div>
                 </div>
@@ -29,7 +29,7 @@
             <div class="w-full lg:w-[73%] rounded-[8px] border-1 border-[#CBD5E1] px-[23px] py-[67px]">
 
                 <div class="flex flex-wrap gap-4  mb-5 md:mb-12">
-                    <template x-for="tab in $store.facultiesPage.currentFaculty?.tabs" :key="tab.id">
+                    <template x-for="tab in $store.facilitiesPage.currentFacility?.tabs" :key="tab.id">
                         <button @click="activeTab = tab.id"
                             class="w-[206.25px] h-[61.500003814697266px] rounded-[8px] font-bold transition-all duration-500 border-2 text-sm md:text-base shadow-sm"
                             :style="activeTab === tab.id 
@@ -44,11 +44,11 @@
 
                     <h2 class="text-[40px]  font-bold mb-8 transition-colors duration-500 "
                         :style="`color: ${facultyColor}`"
-                        x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.nameAr : $store.facultiesPage.currentFaculty?.nameEn">
+                        x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.nameAr : $store.facilitiesPage.currentFacility?.nameEn">
                     </h2>
 
                     <div class="min-h-[150px]">
-                        <template x-for="tab in $store.facultiesPage.currentFaculty?.tabs" :key="tab.id">
+                        <template x-for="tab in $store.facilitiesPage.currentFacility?.tabs" :key="tab.id">
                             <div x-show="activeTab === tab.id" x-transition:enter="transition ease-out duration-300"
                                 x-transition:enter-start="opacity-0 translate-y-4"
                                 x-transition:enter-end="opacity-100 translate-y-0">
@@ -68,7 +68,7 @@
                                 class="fas fa-arrow-right transition-transform group-hover:translate-x-3 rtl:rotate-180"></i>
                         </a>
 
-                        <img :src="$store.facultiesPage.currentFaculty?.logo"
+                        <img :src="$store.facilitiesPage.currentFacility?.logo"
                             class="h-14 opacity-10 grayscale hover:opacity-30 transition-opacity" alt="Faculty Icon">
                     </div> -->
                 </div>

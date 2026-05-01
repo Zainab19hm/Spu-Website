@@ -1,19 +1,19 @@
 <section id="highlights" class="py-32 bg-section relative font-hacen overflow-hidden" x-data
-    x-show="$store.facultiesPage.currentFaculty?.highlights">
+    x-show="$store.facilitiesPage.currentFacility?.highlights">
     <div class="container relative z-10">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-12 pt-16">
 
             <div class="lg:w-1/2 text-center lg:text-left">
                 <h3 class="text-4xl lg:text-5xl font-bold text-spu-blue leading-tight"
-                    x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.highlights?.sectionTitleAr : $store.facultiesPage.currentFaculty?.highlights?.sectionTitleEn">
+                    x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.highlights?.sectionTitleAr : $store.facilitiesPage.currentFacility?.highlights?.sectionTitleEn">
                 </h3>
                 <p class="mt-4 text-lg text-gray-600"
-                    x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.highlights?.sectionPAr : $store.facultiesPage.currentFaculty?.highlights?.sectionPEn">
+                    x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.highlights?.sectionPAr : $store.facilitiesPage.currentFacility?.highlights?.sectionPEn">
                 </p>
             </div>
 
             <div class="lg:w-1/2 grid grid-cols-2 gap-6">
-                <template x-for="item in $store.facultiesPage.currentFaculty?.highlights?.items" :key="item.id">
+                <template x-for="item in $store.facilitiesPage.currentFacility?.highlights?.items" :key="item.id">
                     <div
                         class="group relative flex flex-col items-center justify-center h-44 px-6 rounded-md bg-white shadow-md transition-all duration-300 hover:bg-spu-blue hover:-translate-y-1 overflow-hidden">
 

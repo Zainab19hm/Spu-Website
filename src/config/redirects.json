@@ -1,42 +1,142 @@
 [
   {
     "from": "/faculties.html",
-    "to": "/facilities.html",
+    "to": "/facilities",
     "status": 301
   },
   {
     "from": "/student-life.html",
-    "to": "/campus-life.html",
+    "to": "/campus-life",
+    "status": 301
+  },
+  {
+    "from": "/services.html",
+    "to": "/e-services",
+    "status": 301
+  },
+  {
+    "from": "/faculty.html",
+    "to": "/facilities",
+    "status": 301
+  },
+  {
+    "from": "/about.html",
+    "to": "/about",
+    "status": 301
+  },
+  {
+    "from": "/facilities.html",
+    "to": "/facilities",
+    "status": 301
+  },
+  {
+    "from": "/admissions.html",
+    "to": "/admissions",
+    "status": 301
+  },
+  {
+    "from": "/research.html",
+    "to": "/research",
+    "status": 301
+  },
+  {
+    "from": "/campus-life.html",
+    "to": "/campus-life",
+    "status": 301
+  },
+  {
+    "from": "/e-services.html",
+    "to": "/e-services",
+    "status": 301
+  },
+  {
+    "from": "/news.html",
+    "to": "/news",
+    "status": 301
+  },
+  {
+    "from": "/contact.html",
+    "to": "/contact",
     "status": 301
   },
   {
     "from": "/faculties.html#faculty-1",
-    "to": "/facilities/medicine.html",
+    "to": "/facilities/medicine",
     "status": 301
   },
   {
     "from": "/faculties.html#faculty-2",
-    "to": "/facilities/dentistry.html",
+    "to": "/facilities/dentistry",
     "status": 301
   },
   {
     "from": "/faculties.html#faculty-3",
-    "to": "/facilities/pharmacy.html",
+    "to": "/facilities/pharmacy",
     "status": 301
   },
   {
     "from": "/faculties.html#faculty-4",
-    "to": "/facilities/ai-engineering.html",
+    "to": "/facilities/ai-engineering",
     "status": 301
   },
   {
     "from": "/faculties.html#faculty-5",
-    "to": "/facilities/construction-engineering.html",
+    "to": "/facilities/construction-engineering",
     "status": 301
   },
   {
     "from": "/faculties.html#faculty-6",
-    "to": "/facilities/petroleum-engineering.html",
+    "to": "/facilities/petroleum-engineering",
+    "status": 301
+  },
+  {
+    "from": "/facilities/medicine.html",
+    "to": "/facilities/medicine",
+    "status": 301
+  },
+  {
+    "from": "/facilities/dentistry.html",
+    "to": "/facilities/dentistry",
+    "status": 301
+  },
+  {
+    "from": "/facilities/pharmacy.html",
+    "to": "/facilities/pharmacy",
+    "status": 301
+  },
+  {
+    "from": "/facilities/ai-engineering.html",
+    "to": "/facilities/ai-engineering",
+    "status": 301
+  },
+  {
+    "from": "/facilities/construction-engineering.html",
+    "to": "/facilities/construction-engineering",
+    "status": 301
+  },
+  {
+    "from": "/facilities/petroleum-engineering.html",
+    "to": "/facilities/petroleum-engineering",
+    "status": 301
+  },
+  {
+    "from": "/about/history.html",
+    "to": "/about/history",
+    "status": 301
+  },
+  {
+    "from": "/about/leadership.html",
+    "to": "/about/leadership",
+    "status": 301
+  },
+  {
+    "from": "/about/directorates.html",
+    "to": "/about/directorates",
+    "status": 301
+  },
+  {
+    "from": "/about/partnership.html",
+    "to": "/about/partnership",
     "status": 301
   }
 ]

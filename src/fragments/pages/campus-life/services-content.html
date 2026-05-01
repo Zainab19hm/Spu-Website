@@ -1,0 +1,25 @@
+<section id="campus-services" x-data class="bg-white py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'خدمات الحرم الجامعي' : 'Campus Services'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'النقل والصحة والاتصالات والإقامة والمطاعم' : 'Transport, Health, IT, Accommodation and Cafeteria'"></h1>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <template x-for="svc in [
+                { titleEn: 'Transportation', titleAr: 'النقل الجامعي', icon: 'fas fa-bus', summaryEn: 'Regular shuttle buses connect campus with major city points. Routes run morning and evening with schedules posted at campus gates.', summaryAr: 'حافلات منتظمة تربط الحرم الجامعي بنقاط المدينة الرئيسية. تعمل الخطوط صباحاً ومساءً مع جداول منشورة على بوابات الحرم.' },
+                { titleEn: 'Health Center', titleAr: 'المركز الصحي', icon: 'fas fa-heartbeat', summaryEn: 'On-campus health center provides first aid, basic medical consultations, and referrals to the university hospital for advanced care.', summaryAr: 'يقدم المركز الصحي في الحرم الإسعافات الأولية والاستشارات الطبية الأساسية ويحوّل الحالات المتقدمة إلى المستشفى الجامعي.' },
+                { titleEn: 'IT Services', titleAr: 'خدمات تكنولوجيا المعلومات', icon: 'fas fa-wifi', summaryEn: 'Campus-wide Wi-Fi, computer labs, printing services, and technical support for students and faculty throughout the academic day.', summaryAr: 'واي فاي في جميع أنحاء الحرم، مخابر حاسوب، خدمات طباعة، ودعم تقني للطلاب والهيئة التدريسية طوال اليوم الأكاديمي.' },
+                { titleEn: 'Cafeteria', titleAr: 'المطعم الجامعي', icon: 'fas fa-utensils', summaryEn: 'Main cafeteria and coffee shop serve meals and beverages daily at subsidized student prices. Open from 7 AM to 8 PM.', summaryAr: 'يقدم المطعم الرئيسي والمقهى وجبات ومشروبات يومياً بأسعار طلابية مدعومة. مفتوح من ٧ صباحاً حتى ٨ مساءً.' },
+                { titleEn: 'Accommodation', titleAr: 'السكن الجامعي', icon: 'fas fa-home', summaryEn: 'Student dormitories available for out-of-city students with furnished rooms, shared kitchens, and common study areas.', summaryAr: 'سكن طلابي متاح للطلاب من خارج المدينة بغرف مفروشة ومطابخ مشتركة ومساحات دراسة.' },
+                { titleEn: 'Student Affairs', titleAr: 'شؤون الطلاب', icon: 'fas fa-id-card', summaryEn: 'Central student affairs office handles enrollment, ID cards, certificates, attendance, and general student inquiries.', summaryAr: 'يتولى مكتب شؤون الطلاب المركزي التسجيل وبطاقات الهوية والشهادات والحضور والاستفسارات العامة.' }
+            ]" :key="svc.titleEn">
+                <article class="rounded-[28px] border border-slate-200/80 bg-white p-7 shadow-[0_18px_50px_rgba(20,30,70,0.08)]">
+                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-section text-xl text-spu-blue"><i :class="svc.icon"></i></span>
+                    <h2 class="mt-5 text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? svc.titleAr : svc.titleEn"></h2>
+                    <p class="mt-4 text-[15px] leading-7 text-slate-600" x-text="$store.app.currentLang === 'ar' ? svc.summaryAr : svc.summaryEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

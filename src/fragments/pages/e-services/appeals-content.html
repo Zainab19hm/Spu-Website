@@ -1,0 +1,40 @@
+<section id="e-services-appeals" x-data="{ formOpen: false }" class="bg-section py-20 font-hacen lg:py-24">
+    <div class="container">
+        <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-spu-red/70" x-text="$store.app.currentLang === 'ar' ? 'الطعون والنماذج' : 'Appeals & Forms'"></p>
+            <h1 class="mt-5 text-3xl font-bold leading-tight text-spu-blue md:text-4xl" x-text="$store.app.currentLang === 'ar' ? 'تقديم طعون ونماذج طلابية إلكترونياً' : 'Submit student appeals and forms electronically'"></h1>
+        </div>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+            <article class="rounded-[30px] bg-white p-8 shadow-[0_20px_60px_rgba(20,30,70,0.08)]">
+                <h2 class="text-2xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'أنواع الطعون المتاحة' : 'Available Appeal Types'"></h2>
+                <ul class="mt-6 space-y-3 text-[15px] leading-7 text-slate-600">
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'طعن بعلامة مادة' : 'Grade appeal'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'طلب إعادة نظر في قرار فصل أو إنذار' : 'Reconsideration of dismissal or warning decision'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'طلب تأجيل دراسة أو انقطاع' : 'Study deferment or withdrawal request'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'طلب تحويل قسم أو كلية' : 'Department or faculty transfer request'"></span></li>
+                    <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-spu-red"></span><span x-text="$store.app.currentLang === 'ar' ? 'شكوى إدارية أو أكاديمية' : 'Administrative or academic complaint'"></span></li>
+                </ul>
+            </article>
+
+            <article class="rounded-[30px] bg-spu-blue p-8 text-white shadow-[0_24px_70px_rgba(20,30,70,0.16)]">
+                <h2 class="text-2xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'نموذج الطعون الإلكتروني' : 'Online Appeals Form'"></h2>
+                <p class="mt-5 text-[15px] leading-7 text-white/80" x-text="$store.app.currentLang === 'ar' ? 'قدّم طعنك أو طلبك إلكترونياً من خلال تعبئة النموذج أدناه. ستتلقى رسالة تأكيد عبر البريد الإلكتروني بعد الإرسال، وسيتم مراجعة الطلب خلال ١٥ يوم عمل.' : 'Submit your appeal or request electronically by completing the form below. You will receive an email confirmation after submission, and the request will be reviewed within 15 business days.'"></p>
+                <button @click="formOpen = !formOpen" class="mt-6 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-spu-blue transition-transform duration-300 hover:-translate-y-1">
+                    <i class="fas fa-file-alt"></i>
+                    <span x-text="$store.app.currentLang === 'ar' ? 'تقديم طعن' : 'Submit Appeal'"></span>
+                </button>
+
+                <div x-show="formOpen" x-collapse class="mt-6 space-y-4">
+                    <input type="text" :placeholder="$store.app.currentLang === 'ar' ? 'الرقم الجامعي' : 'Student ID'" class="w-full rounded-[14px] bg-white/10 border border-white/15 px-5 py-3 text-white placeholder-white/50 outline-none focus:border-white/40">
+                    <input type="text" :placeholder="$store.app.currentLang === 'ar' ? 'الاسم الكامل' : 'Full Name'" class="w-full rounded-[14px] bg-white/10 border border-white/15 px-5 py-3 text-white placeholder-white/50 outline-none focus:border-white/40">
+                    <select class="w-full rounded-[14px] bg-white/10 border border-white/15 px-5 py-3 text-white/80 outline-none focus:border-white/40">
+                        <option x-text="$store.app.currentLang === 'ar' ? 'نوع الطعن' : 'Appeal Type'"></option>
+                    </select>
+                    <textarea :placeholder="$store.app.currentLang === 'ar' ? 'تفاصيل الطعن' : 'Appeal details'" rows="4" class="w-full rounded-[14px] bg-white/10 border border-white/15 px-5 py-3 text-white placeholder-white/50 outline-none focus:border-white/40"></textarea>
+                    <button class="rounded-full bg-spu-red px-8 py-3 text-sm font-bold text-white" x-text="$store.app.currentLang === 'ar' ? 'إرسال' : 'Submit'"></button>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>

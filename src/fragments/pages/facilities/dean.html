@@ -1,6 +1,6 @@
 <section id="dean" class="md:mt-[200px] relative overflow-hidden bg-section" x-data="{ 
         get facultyColor() { 
-            const color = $store.facultiesPage.currentFaculty?.color || '1e2652';
+            const color = $store.facilitiesPage.currentFacility?.color || '1e2652';
             return color.startsWith('#') ? color : '#' + color;
         }
     }">
@@ -11,11 +11,11 @@
             <div class="w-full lg:w-1/2  relative" x-init="observeElement($el)">
                 <div class="relative group">
                     <div class="relative overflow-hidden">
-                        <img :src="$store.facultiesPage.currentFaculty?.dean?.image"
+                        <img :src="$store.facilitiesPage.currentFacility?.dean?.image"
                             class="w-full object-cover scale-[0.9]">
                         <div class="absolute bottom-[25%]  bg-white shadow-2xl shadow-black/10 rounded-md text-[#1e2652] w-fit px-6 py-4 text-center " :style="$store.app.currentLang === 'ar' ? 'left: 2rem;' : 'right: 2rem;'">
-                            <h5 class="text-[24px] font-bold" x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.nameAr : $store.facultiesPage.currentFaculty?.dean?.nameEn"></h5>
-                            <p class="text-[16px] font-normal" x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.roleAr : $store.facultiesPage.currentFaculty?.dean?.roleEn"></p>
+                            <h5 class="text-[24px] font-bold" x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.dean?.nameAr : $store.facilitiesPage.currentFacility?.dean?.nameEn"></h5>
+                            <p class="text-[16px] font-normal" x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.dean?.roleAr : $store.facilitiesPage.currentFacility?.dean?.roleEn"></p>
                         </div>
                     </div>
                 </div>
@@ -26,21 +26,21 @@
                 <div class="inline-flex items-center absolute -top-36  gap-3 mb-6" :style="`$store.app.currentLang === 'ar' ? 'right: 2rem;' : 'left: 2rem;'`">
                     <div class="h-px w-10" :style="`background-color: ${facultyColor}`"></div>
                     <span class="font-black text-[12px] uppercase tracking-[0.4em]" :style="`color: ${facultyColor}`"
-                        x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.sectionLabelAr : $store.facultiesPage.currentFaculty?.dean?.sectionLabelEn">
+                        x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.dean?.sectionLabelAr : $store.facilitiesPage.currentFacility?.dean?.sectionLabelEn">
                     </span>
                 </div>
 
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
                     <span
-                        x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.titlePrefixAr : $store.facultiesPage.currentFaculty?.dean?.titlePrefixEn"></span>
+                        x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.dean?.titlePrefixAr : $store.facilitiesPage.currentFacility?.dean?.titlePrefixEn"></span>
                     <span :style="`color: ${facultyColor}`"
-                        x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.roleAr : $store.facultiesPage.currentFaculty?.dean?.roleEn">
+                        x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.dean?.roleAr : $store.facilitiesPage.currentFacility?.dean?.roleEn">
                     </span>
                 </h2>
 
                 <div class="space-y-6 mb-10">
                     <p class="text-lg md:text-2xl text-[#475467] leading-relaxed font-normal " 
-                        x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.currentFaculty?.dean?.messageAr : $store.facultiesPage.currentFaculty?.dean?.messageEn">
+                        x-text="$store.app.currentLang === 'ar' ? $store.facilitiesPage.currentFacility?.dean?.messageAr : $store.facilitiesPage.currentFacility?.dean?.messageEn">
                     </p>
                 </div>
 
