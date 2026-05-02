@@ -1,74 +1,201 @@
-<section x-cloak class="relative py-24 overflow-hidden bg-white font-hacen">
-    <div class="absolute inset-0 opacity-[0.05] pointer-events-none z-0"></div>
+<style>
+    /* Partnership Design System */
+    .partner-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 3rem;
+    }
 
-    <div class="container relative z-10 max-w-6xl mx-auto px-6">
-        <header class="text-center mb-20 mt-10 reveal" x-init="observeElement($el)">
-            <div class="inline-block">
-                <p class="text-xs font-black uppercase tracking-[0.4em] text-spu-red mb-4"
-                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.eyebrowAr : $store.aboutPage.partnerships.eyebrowEn">
-                </p>
-                <h1 class="text-4xl md:text-5xl font-bold text-spu-blue leading-tight"
-                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn">
-                </h1>
-                <p class="mt-4 text-spu-blue/60 font-medium max-w-xl mx-auto"
-                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.subTextAr : $store.aboutPage.partnerships.subTextEn">
-                </p>
+    .partner-card {
+        background: white;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 2.5rem;
+        padding: 2rem;
+        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
 
-                <div class="mt-6 flex justify-center items-center gap-3">
-                    <div class="h-1.5 w-1.5 rounded-full bg-spu-red"></div>
-                    <div class="h-px w-20 bg-gradient-to-r from-transparent via-spu-red to-transparent"></div>
-                    <div class="h-1.5 w-1.5 rounded-full bg-spu-red"></div>
-                </div>
-            </div>
-            <p class="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-slate-500 leading-relaxed"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.summaryAr : $store.aboutPage.partnerships.summaryEn">
-            </p>
-        </header>
+    .partner-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 30px 60px -15px rgba(32, 39, 89, 0.12);
+        border-color: rgba(111, 22, 22, 0.2);
+    }
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    .partner-logo-box {
+        position: relative;
+        height: 180px;
+        background: #f8fafc;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        padding: 2.5rem;
+        transition: all 0.5s ease;
+        border: 1px solid transparent;
+    }
+
+    .partner-card:hover .partner-logo-box {
+        background: white;
+        border-color: rgba(111, 22, 22, 0.05);
+    }
+
+    .partner-logo-box img {
+        max-width: 100%;
+        max-height: 100%;
+        object-contain;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.5s ease;
+    }
+
+    .partner-card:hover .partner-logo-box img {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    /* Badge for partnership type */
+    .partner-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        padding: 0.4rem 1rem;
+        background: white;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        color: #202759;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        z-index: 10;
+    }
+
+    [dir="rtl"] .partner-badge {
+        right: auto;
+        left: 1.5rem;
+    }
+
+    /* Action Links */
+    .partner-actions {
+        margin-top: auto;
+        padding-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #f1f5f9;
+    }
+
+    .partner-link {
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: #6f1616;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .partner-link:hover {
+        gap: 0.8rem;
+        color: #202759;
+    }
+
+    @media (max-width: 768px) {
+        .partner-grid { grid-template-columns: 1fr; }
+        .partner-logo-box { height: 140px; }
+    }
+</style>
+
+<section id="partnership-section" x-cloak
+         class="relative py-32 overflow-hidden bg-white font-hacen">
+    
+    <!-- Background Connectivity Pattern -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none -z-10" 
+         style="background-image: radial-gradient(#202759 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <!-- Header Section -->
+    <div class="container relative z-10 mx-auto px-6 mb-24 text-center">
+        <div class="reveal reveal-up inline-flex items-center gap-3 mb-6">
+            <span class="h-px w-10 bg-spu-red"></span>
+            <span class="text-spu-red font-black tracking-widest text-sm uppercase"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.eyebrowAr : $store.aboutPage.partnerships.eyebrowEn"></span>
+            <span class="h-px w-10 bg-spu-red"></span>
+        </div>
+        
+        <h2 class="reveal reveal-up reveal-delay-1 text-5xl md:text-7xl font-black text-spu-blue tracking-tighter leading-tight"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn"></h2>
+        
+        <p class="reveal reveal-up reveal-delay-2 mt-8 text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
+            x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.summaryAr : $store.aboutPage.partnerships.summaryEn"></p>
+    </div>
+
+    <!-- Partners Grid -->
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="partner-grid">
             <template x-for="(partner, index) in $store.aboutPage.partnerships.list" :key="index">
-                <a :href="partner.newsLink"
-                    class="group relative block rounded-[2.5rem] bg-white border border-slate-100 p-4 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(32,39,89,0.15)] hover:-translate-y-3 reveal-bottom"
-                    :style="'transition-delay: ' + (index * 150) + 'ms'" x-init="observeElement($el)">
+                <div class="reveal reveal-up" :class="`reveal-delay-${(index % 3) + 1}`">
+                    <div class="partner-card">
+                        <!-- Badge -->
+                        <div class="partner-badge" x-text="$store.app.currentLang === 'ar' ? 'شريك استراتيجي' : 'Strategic Partner'"></div>
+                        
+                        <!-- Logo Box -->
+                        <div class="partner-logo-box">
+                            <img :src="partner.logo" :alt="partner.nameEn">
+                        </div>
 
-                    <div
-                        class="relative h-52 w-full rounded-[2rem] overflow-hidden bg-slate-50 mb-6 border border-slate-50/50">
-                        <img :src="partner.logo"
-                            class="w-full h-full object-contain p-10 transition-transform duration-700 group-hover:scale-110"
-                            :alt="partner.nameEn">
-                    </div>
-
-                    <div class="px-4 pb-4">
-                        <h3 class="text-xl font-bold text-spu-blue group-hover:text-spu-red transition-colors duration-300"
-                            x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
-
-                        <p class="mt-3 text-sm text-slate-500 leading-relaxed line-clamp-2"
-                            x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
-
-                        <div
-                            class="mt-6 flex items-center gap-2 text-spu-red text-xs font-bold uppercase tracking-wider opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                            <span
-                                x-text="$store.app.currentLang === 'ar' ? 'اقرأ تفاصيل الخبر' : 'Read Full Story'"></span>
-                            <i class="fas fa-arrow-right rtl:rotate-180"></i>
+                        <!-- Content -->
+                        <div class="flex flex-col grow">
+                            <h3 class="text-xl font-black text-spu-blue mb-4 leading-tight group-hover:text-spu-red transition-colors"
+                                x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
+                            
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6"
+                                x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
+                            
+                            <!-- Actions -->
+                            <div class="partner-actions">
+                                <a :href="partner.newsLink" class="partner-link">
+                                    <span x-text="$store.app.currentLang === 'ar' ? 'التفاصيل' : 'Details'"></span>
+                                    <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+                                </a>
+                                
+                                <a :href="partner.website" target="_blank" class="text-slate-400 hover:text-spu-blue transition-colors">
+                                    <i class="fa-solid fa-globe"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </template>
         </div>
-        <a href="/news.html"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-spu-blue text-white hover:bg-spu-red transition-colors duration-300 font-bold text-sm uppercase tracking-wider mx-auto">
-            <span x-text="$store.app.currentLang === 'ar' ? 'عرض المزيد' : 'View More'"></span>
-            <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
-        </a>
 
-        <div class="mt-24 pt-10 border-t border-slate-100 flex justify-center">
-            <a href="/about.html"
-                class="group relative inline-flex items-center gap-4 px-10 py-4 rounded-full bg-white border border-slate-200 text-spu-blue font-bold transition-all duration-300 hover:border-spu-blue hover:bg-slate-50 shadow-sm hover:shadow-xl">
-                <img src="/images/icon-chevron-right-outline.svg"
-                    class="w-4 h-4 rtl:rotate-180 transition-transform group-hover:-translate-x-1" alt="Back">
+        <!-- Pagination/CTA -->
+        <div class="reveal reveal-up reveal-delay-4 mt-24 text-center">
+            <div class="inline-flex items-center gap-6 p-2 pl-6 bg-slate-50 rounded-2xl border border-slate-100">
+                <span class="text-slate-500 font-bold text-sm" 
+                      x-text="$store.app.currentLang === 'ar' ? 'هل تريد استكشاف المزيد من الأخبار؟' : 'Want to explore more news?'"></span>
+                <a href="/news.html" class="px-6 py-3 bg-white border border-slate-200 text-spu-blue font-black rounded-xl hover:bg-spu-blue hover:text-white transition-all shadow-sm">
+                    <span x-text="$store.app.currentLang === 'ar' ? 'جميع الأخبار' : 'All News'"></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Back Link -->
+        <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
+            <a href="/about.html" 
+               class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
+                <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform rtl:rotate-180"></i>
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
             </a>
         </div>
-
     </div>
-</section>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-radial from-spu-blue/5 to-transparent -z-10 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-radial from-spu-red/5 to-transparent -z-10 blur-3xl"></div>
+</section>

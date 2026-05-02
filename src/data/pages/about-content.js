@@ -119,13 +119,38 @@ export const aboutPageContent = {
         roleEn: 'Academic leadership focused on quality and long-term impact.',
         roleAr: 'قيادة أكاديمية تركز على الجودة والأثر طويل المدى.'
     },
-    leadershipMembers: [ // ! Added specific data for the leadership page
+    leadershipMembers: [
         {
             nameEn: 'Dr. Abdul Razzaq Sheikh Issa',
             nameAr: 'د. عبد الرزاق شيخ عيسى',
             roleEn: 'President of the University',
             roleAr: 'رئيس الجامعة',
-            image: '/images/about-highlight-1.webp'
+            image: '/images/about-highlight-1.webp',
+            type: 'president'
+        },
+        {
+            nameEn: 'Dr. Mohammad Al-Jali',
+            nameAr: 'د. محمد الجلي',
+            roleEn: 'Vice President for Academic Affairs',
+            roleAr: 'نائب رئيس الجامعة للشؤون الأكاديمية',
+            image: '/images/faculty-dean-1.webp',
+            type: 'vp'
+        },
+        {
+            nameEn: 'Dr. Rania Al-Hamed',
+            nameAr: 'د. رانيا الحامد',
+            roleEn: 'Vice President for Administrative Affairs',
+            roleAr: 'نائب رئيس الجامعة للشؤون الإدارية',
+            image: '/images/faculty-dean-2.webp',
+            type: 'vp'
+        },
+        {
+            nameEn: 'Dr. Ahmad Samer Al-Kabbani',
+            nameAr: 'د. أحمد سامر القباني',
+            roleEn: 'Dean of the Faculty of Medicine',
+            roleAr: 'عميد كلية الطب البشري',
+            image: '/images/about-hero-2.webp',
+            type: 'dean'
         }
     ],
     history: { // ! Restored history section for history/content.html
@@ -254,6 +279,24 @@ export const aboutPageContent = {
                 website: 'https://www.coursera.org',
                 descAr: 'توفير مسارات تعليمية رقمية معتمدة دولياً.',
                 descEn: 'Providing internationally accredited digital learning paths.'
+            },
+            {
+                nameAr: 'جامعة دمشق',
+                nameEn: 'Damascus University',
+                logo: '/images/damascus-uni.png',
+                newsLink: '/news-detail.html?id=damascus-uni-coop',
+                website: 'http://www.damascusuniversity.edu.sy',
+                descAr: 'تعاون أكاديمي وثيق لتبادل الخبرات والبحث العلمي المشترك.',
+                descEn: 'Close academic cooperation for sharing expertise and joint scientific research.'
+            },
+            {
+                nameAr: 'نقابة المهندسين السوريين',
+                nameEn: 'Order of Syrian Engineers',
+                logo: '/images/engineers-sy.png',
+                newsLink: '/news-detail.html?id=syrian-engineers-partnership',
+                website: 'https://www.ose.org.sy',
+                descAr: 'شراكة مهنية لتدريب الطلاب وتطوير المهارات الهندسية.',
+                descEn: 'Professional partnership for student training and engineering skill development.'
             }
             // يمكن إضافة المزيد هنا...
         ]

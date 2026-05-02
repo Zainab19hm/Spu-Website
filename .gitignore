@@ -7,3 +7,4 @@ dist/
 .cursor/debug*.log
 *.log
 coverage/
+req.md

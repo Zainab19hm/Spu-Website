@@ -1,39 +1,200 @@
-<section class="py-12 px-6 bg-slate-50/50 rounded-[3rem] border border-slate-100 shadow-inner">
-    <div class="max-w-6xl mx-auto">
-        <header class="text-center mb-16">
-            <p class="text-sm font-bold uppercase tracking-widest text-spu-red"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.eyebrowAr : $store.aboutPage.leadership.eyebrowEn">
-            </p>
-            <h1 class="mt-4 text-4xl md:text-5xl font-bold text-spu-blue"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.nameAr : $store.aboutPage.leadership.nameEn">
-            </h1>
-            <div class="mt-6 h-1 w-24 bg-spu-red mx-auto rounded-full"></div>
-            <p class="mt-8 max-w-2xl mx-auto text-lg text-slate-600  leading-relaxed"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.quoteAr : $store.aboutPage.leadership.quoteEn">
-            </p>
-        </header>
+<style>
+    /* Leadership Design System */
+    .leadership-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 3rem;
+    }
 
-        <div class="max-w-md mx-auto">
-            <template x-for="member in $store.aboutPage.leadershipMembers" :key="member.nameEn">
-                <div class="text-center group">
-                    <div
-                        class="relative w-64 h-64 mx-auto mb-8 rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                        <img :src="member.image" :alt="member.nameEn" class="w-full h-full object-cover">
+    .president-spotlight {
+        max-width: 900px;
+        margin: 0 auto 6rem;
+    }
+
+    /* Executive Card Styling */
+    .member-card {
+        background: white;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 2.5rem;
+        padding: 2.5rem;
+        text-align: center;
+        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .member-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgba(32, 39, 89, 0.08);
+        border-color: rgba(111, 22, 22, 0.2);
+    }
+
+    .member-photo-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 2rem;
+        border-radius: 2rem;
+        overflow: hidden;
+        border: 4px solid white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        transition: all 0.5s ease;
+    }
+
+    .member-card:hover .member-photo-container {
+        border-radius: 3rem;
+        box-shadow: 0 15px 35px rgba(111, 22, 22, 0.1);
+    }
+
+    .president-card .member-photo-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    /* Professional Background pattern for cards */
+    .card-bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(135deg, rgba(32, 39, 89, 0.03) 0%, rgba(111, 22, 22, 0.03) 100%);
+        z-index: 0;
+    }
+
+    /* Bio quote styling for President */
+    .president-quote {
+        position: relative;
+        padding: 2rem;
+        background: rgba(32, 39, 89, 0.02);
+        border-radius: 2rem;
+        margin-top: 2rem;
+        border-left: 4px solid #6f1616;
+    }
+
+    [dir="rtl"] .president-quote {
+        border-left: none;
+        border-right: 4px solid #6f1616;
+    }
+
+    .quote-icon {
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 3rem;
+        color: rgba(111, 22, 22, 0.1);
+        font-family: serif;
+    }
+
+    @media (max-width: 768px) {
+        .leadership-grid { grid-template-columns: 1fr; }
+        .president-card .member-photo-container { width: 180px; height: 180px; }
+        .member-card { padding: 1.5rem; }
+    }
+</style>
+
+<section id="leadership-section" x-cloak
+         class="relative py-32 overflow-hidden bg-white font-hacen">
+    
+    <!-- Header Section -->
+    <div class="container relative z-10 mx-auto px-6 mb-24 text-center">
+        <div class="reveal reveal-up inline-flex items-center gap-3 mb-6">
+            <span class="h-px w-10 bg-spu-red"></span>
+            <span class="text-spu-red font-black tracking-widest text-sm uppercase"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.eyebrowAr : $store.aboutPage.leadership.eyebrowEn"></span>
+            <span class="h-px w-10 bg-spu-red"></span>
+        </div>
+        
+        <h2 class="reveal reveal-up reveal-delay-1 text-5xl md:text-7xl font-black text-spu-blue tracking-tighter leading-tight"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.nameAr : $store.aboutPage.leadership.nameEn"></h2>
+        
+        <p class="reveal reveal-up reveal-delay-2 mt-8 text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
+            x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.roleAr : $store.aboutPage.leadership.roleEn"></p>
+    </div>
+
+    <!-- Content Area -->
+    <div class="container mx-auto px-6 relative z-10">
+        
+        <!-- President Spotlight -->
+        <template x-for="member in $store.aboutPage.leadershipMembers.filter(m => m.type === 'president')" :key="member.nameEn">
+            <div class="president-spotlight reveal reveal-up reveal-delay-3">
+                <div class="member-card president-card">
+                    <div class="card-bg-pattern"></div>
+                    
+                    <div class="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                        <div class="member-photo-container shrink-0">
+                            <img :src="member.image" :alt="member.nameEn" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <div class="text-center md:text-start">
+                            <span class="inline-block px-4 py-1 bg-spu-red/10 text-spu-red text-xs font-black uppercase tracking-widest rounded-full mb-4"
+                                  x-text="$store.app.currentLang === 'ar' ? member.roleAr : member.roleEn"></span>
+                            
+                            <h3 class="text-3xl md:text-4xl font-black text-spu-blue mb-4"
+                                x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
+                            
+                            <div class="president-quote">
+                                <span class="quote-icon">"</span>
+                                <p class="text-slate-600 text-lg leading-relaxed "
+                                   x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.quoteAr : $store.aboutPage.leadership.quoteEn"></p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-spu-blue mb-2"
-                        x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
-                    <p class="text-spu-red font-bold uppercase tracking-widest text-sm"
-                        x-text="$store.app.currentLang === 'ar' ? member.roleAr : member.roleEn"></p>
                 </div>
-            </template>
+            </div>
+        </template>
+
+        <!-- Executive Council Grid -->
+        <div class="mb-16">
+            <div class="reveal reveal-up mb-12 flex items-center gap-4">
+                <h4 class="text-2xl font-black text-spu-blue" 
+                    x-text="$store.app.currentLang === 'ar' ? 'المجلس التنفيذي' : 'Executive Council'"></h4>
+                <div class="h-px grow bg-slate-100"></div>
+            </div>
+
+            <div class="leadership-grid">
+                <template x-for="(member, index) in $store.aboutPage.leadershipMembers.filter(m => m.type !== 'president')" :key="member.nameEn">
+                    <div class="reveal reveal-up" :class="`reveal-delay-${(index % 3) + 1}`">
+                        <div class="member-card h-full flex flex-col">
+                            <div class="card-bg-pattern"></div>
+                            
+                            <div class="relative z-10 flex flex-col h-full">
+                                <div class="member-photo-container">
+                                    <img :src="member.image" :alt="member.nameEn" class="w-full h-full object-cover">
+                                </div>
+                                
+                                <span class="text-spu-red text-xs font-black uppercase tracking-widest mb-3"
+                                      x-text="$store.app.currentLang === 'ar' ? member.roleAr : member.roleEn"></span>
+                                
+                                <h3 class="text-xl font-bold text-spu-blue mb-4"
+                                    x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
+                                
+                                <div class="mt-auto pt-6 border-t border-slate-50 flex justify-center gap-4">
+                                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-spu-blue hover:bg-spu-blue hover:text-white transition-colors">
+                                        <i class="fa-solid fa-envelope text-sm"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-spu-blue hover:bg-spu-blue hover:text-white transition-colors">
+                                        <i class="fa-solid fa-graduation-cap text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
         </div>
 
-        <div class="mt-20 pt-10 border-t border-slate-100 text-center">
-            <a href="/about.html"
-                class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white border border-slate-200 text-spu-blue font-bold transition-all hover:bg-slate-50 hover:shadow-lg">
-                <img src="/images/icon-arrow-right-outline.svg" class="w-4 h-4 rtl:rotate-180 rotate-0" alt="Back">
+        <!-- Back Link -->
+        <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
+            <a href="/about.html" 
+               class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
+                <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform rtl:rotate-180"></i>
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
             </a>
         </div>
     </div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-1/3 h-1/3 bg-radial from-spu-red/5 to-transparent -z-10 blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-1/4 h-1/4 bg-radial from-spu-blue/5 to-transparent -z-10 blur-3xl"></div>
 </section>
