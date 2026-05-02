@@ -257,6 +257,194 @@
         "pages/contact/channels.html",
         "pages/contact/visit.html"
       ]
+    },
+    {
+      "name": "about-directorate-scientific-research",
+      "fileName": "about/directorates/scientific-research.html",
+      "route": "/about/directorates/scientific-research.html",
+      "title": "Scientific Research Directorate | SPU",
+      "description": "Information and services from the Scientific Research Directorate at Syrian Private University.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Research",
+        "Scientific Research Directorate"
+      ],
+      "fragments": [
+        "pages/about/directorates/detail.html",
+        "pages/about/navigation.html"
+      ],
+      "data": {
+        "slug": "scientific-research"
+      }
+    },
+    {
+      "name": "about-directorate-student-affairs",
+      "fileName": "about/directorates/student-affairs.html",
+      "route": "/about/directorates/student-affairs.html",
+      "title": "Student Affairs Directorate | SPU",
+      "description": "Information and services from the Student Affairs Directorate at Syrian Private University.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Student Affairs",
+        "Student Affairs Directorate"
+      ],
+      "fragments": [
+        "pages/about/directorates/detail.html",
+        "pages/about/navigation.html"
+      ],
+      "data": {
+        "slug": "student-affairs"
+      }
+    },
+    {
+      "name": "about-directorate-it-services",
+      "fileName": "about/directorates/it-services.html",
+      "route": "/about/directorates/it-services.html",
+      "title": "IT Services Directorate | SPU",
+      "description": "Information and services from the IT Services Directorate at Syrian Private University.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU IT",
+        "Information Technology Directorate"
+      ],
+      "fragments": [
+        "pages/about/directorates/detail.html",
+        "pages/about/navigation.html"
+      ],
+      "data": {
+        "slug": "it-services"
+      }
+    },
+    {
+      "name": "about-directorate-public-relations",
+      "fileName": "about/directorates/public-relations.html",
+      "route": "/about/directorates/public-relations.html",
+      "title": "Public Relations Directorate | SPU",
+      "description": "Information and services from the Public Relations Directorate at Syrian Private University.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU PR",
+        "Public Relations Directorate"
+      ],
+      "fragments": [
+        "pages/about/directorates/detail.html",
+        "pages/about/navigation.html"
+      ],
+      "data": {
+        "slug": "public-relations"
+      }
+    },
+    {
+      "name": "admissions-requirements",
+      "fileName": "admissions/requirements.html",
+      "route": "/admissions/requirements.html",
+      "title": "Admission Requirements | SPU",
+      "description": "Structured admission requirements for new, transfer, and international students at SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Admissions",
+        "Admission Requirements"
+      ],
+      "fragments": [
+        "pages/admissions/requirements/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-tuition",
+      "fileName": "admissions/tuition.html",
+      "route": "/admissions/tuition.html",
+      "title": "Tuition & Fees | SPU",
+      "description": "Complete tuition fees by faculty and payment methods for Syrian Private University.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Tuition",
+        "University Fees Syria"
+      ],
+      "fragments": [
+        "pages/admissions/tuition/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-faq",
+      "fileName": "admissions/faq.html",
+      "route": "/admissions/faq.html",
+      "title": "Admissions FAQ | SPU",
+      "description": "Frequently asked questions about SPU admissions, scholarships, and enrollment.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU FAQ",
+        "Admissions Questions"
+      ],
+      "fragments": [
+        "pages/admissions/faq/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-how-to-apply",
+      "fileName": "admissions/how-to-apply.html",
+      "route": "/admissions/how-to-apply.html",
+      "title": "How to Apply | SPU",
+      "description": "Step-by-step application guide for Syrian Private University.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Application",
+        "How to apply SPU"
+      ],
+      "fragments": [
+        "pages/admissions/how-to-apply/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-transfer",
+      "fileName": "admissions/transfer.html",
+      "route": "/admissions/transfer.html",
+      "title": "Transfer & International | SPU",
+      "description": "Pathways and policies for transfer and international students at SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Transfer",
+        "International Students Syria"
+      ],
+      "fragments": [
+        "pages/admissions/transfer/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-calendar",
+      "fileName": "admissions/calendar.html",
+      "route": "/admissions/calendar.html",
+      "title": "Academic Calendar | SPU",
+      "description": "Current academic year calendar with all key dates for SPU.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Calendar",
+        "Academic Dates Syria"
+      ],
+      "fragments": [
+        "pages/admissions/calendar/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-documents",
+      "fileName": "admissions/documents.html",
+      "route": "/admissions/documents.html",
+      "title": "Documents Checklist | SPU",
+      "description": "Checklist of required documents for all SPU application categories.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU Documents",
+        "Application Checklist"
+      ],
+      "fragments": [
+        "pages/admissions/documents/content.html",
+        "pages/admissions/navigation.html"
+      ]
     }
   ]
 }

@@ -156,11 +156,22 @@ const pageWarmupModules = {
   'about-leadership': ['/src/alpine/pages/about-stores.js'],
   'about-directorates': ['/src/alpine/pages/about-stores.js'],
   'about-partnership': ['/src/alpine/pages/about-stores.js'],
+  'about-directorate-scientific-research': ['/src/alpine/pages/about-stores.js'],
+  'about-directorate-student-affairs': ['/src/alpine/pages/about-stores.js'],
+  'about-directorate-it-services': ['/src/alpine/pages/about-stores.js'],
+  'about-directorate-public-relations': ['/src/alpine/pages/about-stores.js'],
   faculties: [
     '/src/alpine/pages/faculties-page-stores.js',
     '/src/alpine/register-faculty-catalog-store.js'
   ],
   admissions: ['/src/alpine/pages/admissions-stores.js'],
+  'admissions-requirements': ['/src/alpine/pages/admissions-stores.js'],
+  'admissions-tuition': ['/src/alpine/pages/admissions-stores.js'],
+  'admissions-faq': ['/src/alpine/pages/admissions-stores.js'],
+  'admissions-how-to-apply': ['/src/alpine/pages/admissions-stores.js'],
+  'admissions-transfer': ['/src/alpine/pages/admissions-stores.js'],
+  'admissions-calendar': ['/src/alpine/pages/admissions-stores.js'],
+  'admissions-documents': ['/src/alpine/pages/admissions-stores.js'],
   research: ['/src/alpine/pages/research-stores.js'],
   'student-life': ['/src/alpine/pages/student-life-stores.js'],
   services: ['/src/alpine/pages/services-stores.js'],
@@ -506,7 +517,7 @@ function renderPageShell(site, layout, page) {
 <body data-page="${escapeAttribute(page.name)}" data-page-store="${escapeAttribute(page.name)}" data-page-section="${escapeAttribute(page.name)}" data-route="${escapeAttribute(page.route)}">
   <include src="src/fragments/layout/${page.name}/boot-screen.html"></include>
   <include src="src/fragments/${layout.header}"></include>
-  <main data-page-content x-data data-page-name="${escapeAttribute(page.name)}">
+  <main data-page-content x-data data-page-name="${escapeAttribute(page.name)}"${page.data ? Object.entries(page.data).map(([k, v]) => ` data-${k}="${escapeAttribute(v)}"`).join('') : ''}>
 ${page.fragments.map(f => `    <include src="src/fragments/${f}"></include>`).join('\n')}
   </main>
   <include src="src/fragments/${layout.footer}"></include>

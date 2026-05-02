@@ -205,22 +205,64 @@ export const aboutPageContent = {
         titleAr: 'مديريات متخصصة تضمن التميز التشغيلي ونجاح الطلاب.',
         items: [
             {
+                slug: 'scientific-research',
                 titleEn: 'Scientific Research Directorate',
                 titleAr: 'مديرية البحث العلمي',
+                icon: 'fa-microscope',
                 summaryEn: 'Managing research initiatives, publication support, and academic partnerships.',
-                summaryAr: 'إدارة مبادرات البحث ودعم النشر والشراكات الأكاديمية.'
+                summaryAr: 'إدارة مبادرات البحث ودعم النشر والشراكات الأكاديمية.',
+                descriptionEn: 'The Scientific Research Directorate is dedicated to fostering a culture of innovation and inquiry. We provide resources for faculty and students to conduct high-impact research and facilitate international academic collaborations.',
+                descriptionAr: 'تكرس مديرية البحث العلمي جهودها لتعزيز ثقافة الابتكار والبحث. نحن نوفر الموارد لأعضاء هيئة التدريس والطلاب لإجراء أبحاث عالية التأثير وتسهيل التعاون الأكاديمي الدولي.',
+                services: [
+                    { en: 'Research Grant Management', ar: 'إدارة منح البحث العلمي' },
+                    { en: 'Publication Support', ar: 'دعم النشر العلمي' },
+                    { en: 'Ethics Committee Oversight', ar: 'الإشراف على لجنة الأخلاقيات' }
+                ]
             },
             {
+                slug: 'student-affairs',
                 titleEn: 'Student Affairs Directorate',
                 titleAr: 'مديرية شؤون الطلاب',
+                icon: 'fa-user-graduate',
                 summaryEn: 'Overseeing student records, activities, and campus life experience.',
-                summaryAr: 'الإشراف على سجلات الطلاب والأنشطة وتجربة الحياة الجامعية.'
+                summaryAr: 'الإشراف على سجلات الطلاب والأنشطة وتجربة الحياة الجامعية.',
+                descriptionEn: 'Student Affairs is the heart of the SPU campus experience. From enrollment to graduation, we ensure students have access to the support, activities, and resources they need to thrive.',
+                descriptionAr: 'شؤون الطلاب هي قلب تجربة الحرم الجامعي في SPU. من التسجيل وحتى التخرج، نضمن وصول الطلاب إلى الدعم والأنشطة والموارد التي يحتاجونها للنجاح.',
+                services: [
+                    { en: 'Enrollment & Registration', ar: 'التسجيل والقبول' },
+                    { en: 'Student Clubs & Activities', ar: 'الأندية والأنشطة الطلابية' },
+                    { en: 'Career Counseling', ar: 'الإرشاد الوظيفي' }
+                ]
             },
             {
+                slug: 'it-services',
                 titleEn: 'Information Technology Directorate',
                 titleAr: 'مديرية تقانة المعلومات',
+                icon: 'fa-laptop-code',
                 summaryEn: 'Maintaining digital infrastructure, portal services, and campus connectivity.',
-                summaryAr: 'صيانة البنية التحتية الرقمية وخدمات البوابة والاتصال داخل الحرم.'
+                summaryAr: 'صيانة البنية التحتية الرقمية وخدمات البوابة والاتصال داخل الحرم.',
+                descriptionEn: 'Our IT Directorate provides the digital backbone of the university, managing high-speed campus networks, student portals, and state-of-the-art computer labs.',
+                descriptionAr: 'توفر مديرية تقانة المعلومات العمود الفقري الرقمي للجامعة، حيث تدير شبكات الحرم الجامعي عالية السرعة، وبوابات الطلاب، ومختبرات الكمبيوتر المتطورة.',
+                services: [
+                    { en: 'Campus Network & Wi-Fi', ar: 'شبكة الحرم الجامعي والواي فاي' },
+                    { en: 'Student & Staff Portals', ar: 'بوابات الطلاب والموظفين' },
+                    { en: 'E-Learning Support', ar: 'دعم التعلم الإلكتروني' }
+                ]
+            },
+            {
+                slug: 'public-relations',
+                titleEn: 'Public Relations Directorate',
+                titleAr: 'مديرية العلاقات العامة',
+                icon: 'fa-bullhorn',
+                summaryEn: 'Managing university communications, events, and media presence.',
+                summaryAr: 'إدارة اتصالات الجامعة والفعاليات والتواجد الإعلامي.',
+                descriptionEn: 'The Public Relations Directorate bridges SPU with the community, managing official communications, major university events, and institutional branding.',
+                descriptionAr: 'تربط مديرية العلاقات العامة SPU بالمجتمع، وتدير الاتصالات الرسمية، والفعاليات الجامعية الكبرى، والهوية المؤسسية.',
+                services: [
+                    { en: 'Media & Press Relations', ar: 'العلاقات الإعلامية والصحفية' },
+                    { en: 'Event Management', ar: 'إدارة الفعاليات' },
+                    { en: 'Community Outreach', ar: 'التواصل المجتمعي' }
+                ]
             }
         ]
     },

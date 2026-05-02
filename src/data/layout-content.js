@@ -57,9 +57,10 @@ export const navigationMenuItems = [
         page: 'admissions',
         hasDropdown: true,
         children: [
-            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: withHash(siteRoutes.admissions, 'requirements') },
-            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: withHash(siteRoutes.admissions, 'fees') },
-            { labelAr: 'دعم القبول', labelEn: 'Admissions Support', url: siteRoutes.contact }
+            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: '/admissions/requirements.html' },
+            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: '/admissions/tuition.html' },
+            { labelAr: 'كيفية التقديم', labelEn: 'How to Apply', url: '/admissions/how-to-apply.html' },
+            { labelAr: 'الأسئلة الشائعة', labelEn: 'FAQ', url: '/admissions/faq.html' }
         ]
     },
     {
@@ -72,7 +73,7 @@ export const navigationMenuItems = [
         children: [
             { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: withHash(siteRoutes.studentLife, 'services') },
             { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
-            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: withHash(siteRoutes.studentLife, 'calendar') }
+            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: '/admissions/calendar.html' }
         ]
     },
     {

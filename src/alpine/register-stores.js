@@ -18,6 +18,13 @@ const pageStoreLoaders = {
         };
     },
     admissions: () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    'admissions-requirements': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    'admissions-tuition': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    'admissions-faq': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    'admissions-how-to-apply': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    'admissions-transfer': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    'admissions-calendar': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
+    'admissions-documents': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
     research: () => import('./pages/research-stores.js').then((module) => module.registerResearchStores),
     'student-life': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
     services: () => import('./pages/services-stores.js').then((module) => module.registerServicesStores),

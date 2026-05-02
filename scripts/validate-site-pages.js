@@ -75,6 +75,8 @@ function collectInternalReferences() {
           value.startsWith('/images/') || 
           value.startsWith('/fonts/') || 
           value.startsWith('/src/') || 
+          value.includes('%3C') ||
+          value.includes('%3E') ||
           value === '/site.webmanifest' ||
           value.endsWith('content.html') || // Ignore typo routes like /about/history/content.html
           value === '/events.html' || // Ignore missing /events.html route

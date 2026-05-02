@@ -1,0 +1,92 @@
+<style>
+    .step-card {
+        background: white;
+        border: 1px solid #f1f5f9;
+        border-radius: 2.5rem;
+        padding: 3.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .step-number {
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        font-size: 8rem;
+        font-weight: 900;
+        color: rgba(111,22,22,0.03);
+        line-height: 1;
+        pointer-events: none;
+    }
+    [dir="rtl"] .step-number {
+        right: auto;
+        left: 20px;
+    }
+    .step-dot {
+        width: 12px;
+        height: 12px;
+        background: #6f1616;
+        border-radius: 50%;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        transform: translateX(-50%);
+    }
+    [dir="rtl"] .step-dot {
+        left: auto;
+        right: 0;
+        transform: translateX(50%);
+    }
+    .step-line {
+        position: absolute;
+        top: 4rem;
+        bottom: -4rem;
+        left: 0;
+        width: 2px;
+        background: repeating-linear-gradient(to bottom, #6f1616 0, #6f1616 10px, transparent 10px, transparent 20px);
+    }
+    [dir="rtl"] .step-line {
+        left: auto;
+        right: 0;
+    }
+</style>
+
+<div x-data="{ page: $store.admissionsPage.howToApplyPage }">
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden bg-spu-blue">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="reveal reveal-up text-4xl md:text-6xl font-black text-white mb-8"
+                x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
+            <p class="reveal reveal-up reveal-delay-1 text-white/60 max-w-2xl mx-auto"
+               x-text="$store.app.currentLang === 'ar' ? 'اتبع هذه الخطوات البسيطة لبدء رحلتك الأكاديمية معنا.' : 'Follow these simple steps to begin your academic journey with us.'"></p>
+        </div>
+    </section>
+
+    <!-- Steps Timeline -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="space-y-16">
+                <template x-for="(step, idx) in page.steps" :key="idx">
+                    <div class="reveal reveal-up relative" :class="`reveal-delay-${idx + 1}`">
+                        <!-- Connecting Line -->
+                        <div x-show="idx < page.steps.length - 1" class="step-line hidden md:block"></div>
+                        <div class="step-dot hidden md:block"></div>
+
+                        <div class="step-card md:ms-12">
+                            <span class="step-number" x-text="step.number"></span>
+                            <div class="relative z-10">
+                                <h3 class="text-3xl font-black text-spu-blue mb-4"
+                                    x-text="$store.app.currentLang === 'ar' ? step.titleAr : step.titleEn"></h3>
+                                <p class="text-xl text-slate-500 leading-relaxed mb-8"
+                                   x-text="$store.app.currentLang === 'ar' ? step.descAr : step.descEn"></p>
+                                <a href="#" class="inline-flex items-center gap-3 px-8 py-3 bg-spu-red text-white font-bold rounded-xl hover:opacity-90 transition-all">
+                                    <span x-text="$store.app.currentLang === 'ar' ? 'ابدأ الآن' : 'Start Now'"></span>
+                                    <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,96 @@
+<style>
+    .req-card {
+        background: white;
+        border: 1px solid #f1f5f9;
+        border-radius: 2.5rem;
+        padding: 3rem;
+        transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        height: 100%;
+    }
+    .req-card:hover {
+        border-color: #6f1616;
+        box-shadow: 0 30px 60px -12px rgba(111, 22, 22, 0.1);
+        transform: translateY(-10px);
+    }
+    .criteria-list li {
+        position: relative;
+        padding-inline-start: 2rem;
+        margin-bottom: 1rem;
+        color: #475569;
+        font-weight: 600;
+    }
+    .criteria-list li::before {
+        content: '→';
+        position: absolute;
+        inset-inline-start: 0;
+        color: #6f1616;
+        font-weight: 900;
+    }
+    [dir="rtl"] .criteria-list li::before {
+        content: '←';
+    }
+</style>
+
+<div x-data="{ page: $store.admissionsPage.requirementsPage }">
+    <!-- Hero / Header -->
+    <section class="relative py-24 overflow-hidden bg-spu-blue">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="reveal reveal-up inline-block px-4 py-1 rounded-full bg-white/10 text-white/80 text-xs font-black uppercase tracking-widest mb-6 border border-white/10">
+                <span x-text="$store.app.currentLang === 'ar' ? 'القبول' : 'Admissions'"></span>
+            </div>
+            <h1 class="reveal reveal-up reveal-delay-1 text-4xl md:text-6xl font-black text-white mb-8"
+                x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
+            <div class="reveal reveal-up reveal-delay-2 flex items-center justify-center gap-4 text-white/60 text-sm">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span x-text="$store.app.currentLang === 'ar' ? 'آخر مراجعة: ' + page.lastReviewed : 'Last Reviewed: ' + page.lastReviewed"></span>
+            </div>
+        </div>
+        <!-- Decorative bg -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(111,22,22,0.15),transparent)]"></div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                <template x-for="(type, index) in page.types" :key="type.id">
+                    <div class="reveal reveal-up" :class="`reveal-delay-${index + 1}`">
+                        <div class="req-card">
+                            <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-2xl text-spu-blue mb-8">
+                                <i class="fa-solid" :class="type.id === 'new' ? 'fa-graduation-cap' : 'fa-right-left'"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-spu-blue mb-6 pb-4 border-b border-slate-100"
+                                x-text="$store.app.currentLang === 'ar' ? type.titleAr : type.titleEn"></h3>
+                            
+                            <ul class="criteria-list">
+                                <template x-for="item in type.criteria" :key="item.en">
+                                    <li x-text="$store.app.currentLang === 'ar' ? item.ar : item.en"></li>
+                                </template>
+                            </ul>
+
+                            <div class="mt-10">
+                                <a href="#" class="inline-flex items-center gap-2 text-spu-red font-black group">
+                                    <span x-text="$store.app.currentLang === 'ar' ? 'تحقق من الأهلية' : 'Check Eligibility'"></span>
+                                    <i class="fa-solid fa-chevron-right transition-transform group-hover:translate-x-1 rtl:rotate-180"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Global Footer CTA -->
+            <div class="reveal reveal-up reveal-delay-3 mt-20 text-center">
+                <div class="inline-block p-10 bg-white rounded-[3rem] border border-slate-100 shadow-xl shadow-blue-900/5 max-w-2xl">
+                    <h4 class="text-xl font-bold text-spu-blue mb-4"
+                        x-text="$store.app.currentLang === 'ar' ? 'هل لديك سؤال محدد؟' : 'Have a specific question?'"></h4>
+                    <p class="text-slate-500 mb-8"
+                       x-text="$store.app.currentLang === 'ar' ? 'فريق القبول لدينا جاهز لمساعدتك في كل خطوة.' : 'Our admissions team is ready to assist you at every step.'"></p>
+                    <a href="/contact.html" class="px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20">
+                        <span x-text="$store.app.currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us'"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

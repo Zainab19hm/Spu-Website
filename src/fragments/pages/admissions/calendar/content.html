@@ -1,0 +1,66 @@
+<style>
+    .calendar-event {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        padding: 2.5rem;
+        background: white;
+        border: 1px solid #f1f5f9;
+        border-radius: 2rem;
+        transition: all 0.3s ease;
+    }
+    .calendar-event:hover {
+        border-color: #6f1616;
+        box-shadow: 0 20px 40px rgba(111, 22, 22, 0.05);
+    }
+    .event-date {
+        flex-shrink: 0;
+        width: 140px;
+        text-align: center;
+    }
+    .date-box {
+        padding: 1rem;
+        background: #f8fafc;
+        border-radius: 1.5rem;
+        color: #6f1616;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+</style>
+
+<div x-data="{ page: $store.admissionsPage.calendarPage }">
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden bg-spu-blue">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="reveal reveal-up text-4xl md:text-6xl font-black text-white mb-8"
+                x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
+            
+            <a href="#" class="reveal reveal-up reveal-delay-1 inline-flex items-center gap-3 px-8 py-3 bg-white/10 text-white rounded-xl border border-white/20 hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span x-text="$store.app.currentLang === 'ar' ? 'تحميل التقويم (PDF)' : 'Download Calendar (PDF)'"></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Calendar Events -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="space-y-6">
+                <template x-for="(ev, idx) in page.events" :key="idx">
+                    <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
+                        <div class="calendar-event">
+                            <div class="event-date">
+                                <div class="date-box" x-text="$store.app.currentLang === 'ar' ? ev.dateAr : ev.dateEn"></div>
+                            </div>
+                            <div class="event-info">
+                                <h3 class="text-xl font-bold text-spu-blue"
+                                    x-text="$store.app.currentLang === 'ar' ? ev.eventAr : ev.eventEn"></h3>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+</div>

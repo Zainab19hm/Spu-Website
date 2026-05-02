@@ -1,0 +1,119 @@
+<style>
+    .tuition-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 0.75rem;
+    }
+    .tuition-table th {
+        text-align: start;
+        padding: 1.5rem 2rem;
+        background: #202759;
+        color: white;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.75rem;
+    }
+    .tuition-table th:first-child { border-radius: 1rem 0 0 1rem; }
+    .tuition-table th:last-child { border-radius: 0 1rem 1rem 0; }
+    [dir="rtl"] .tuition-table th:first-child { border-radius: 0 1rem 1rem 0; }
+    [dir="rtl"] .tuition-table th:last-child { border-radius: 1rem 0 0 1rem; }
+
+    .tuition-table td {
+        padding: 2rem;
+        background: white;
+        border-top: 1px solid #f1f5f9;
+        border-bottom: 1px solid #f1f5f9;
+        font-weight: 600;
+        color: #1e293b;
+    }
+    .tuition-table td:first-child { border-inline-start: 1px solid #f1f5f9; border-radius: 1.5rem 0 0 1.5rem; }
+    .tuition-table td:last-child { border-inline-end: 1px solid #f1f5f9; border-radius: 0 1.5rem 1.5rem 0; }
+    [dir="rtl"] .tuition-table td:first-child { border-radius: 0 1.5rem 1.5rem 0; }
+    [dir="rtl"] .tuition-table td:last-child { border-radius: 1.5rem 0 0 1.5rem; }
+
+    .payment-method {
+        background: white;
+        border: 1px solid #f1f5f9;
+        border-radius: 2rem;
+        padding: 2.5rem;
+        transition: all 0.4s ease;
+    }
+    .payment-method:hover {
+        border-color: #6f1616;
+        transform: translateY(-5px);
+    }
+</style>
+
+<div x-data="{ page: $store.admissionsPage.tuitionPage }">
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden bg-spu-blue">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="reveal reveal-up inline-block px-4 py-1 rounded-full bg-white/10 text-white/80 text-xs font-black uppercase tracking-widest mb-6 border border-white/10">
+                <span x-text="$store.app.currentLang === 'ar' ? 'القبول' : 'Admissions'"></span>
+            </div>
+            <h1 class="reveal reveal-up reveal-delay-1 text-4xl md:text-6xl font-black text-white mb-8"
+                x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
+            <div class="reveal reveal-up reveal-delay-2 flex items-center justify-center gap-4 text-white/60 text-sm">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span x-text="$store.app.currentLang === 'ar' ? 'للعام الأكاديمي 2026/2027' : 'For Academic Year 2026/2027'"></span>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(111,22,22,0.15),transparent)]"></div>
+    </section>
+
+    <!-- Fees Table -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <header class="mb-12 text-center">
+                <h2 class="reveal reveal-up text-3xl font-black text-spu-blue mb-4"
+                    x-text="$store.app.currentLang === 'ar' ? 'الرسوم الدراسية حسب الكلية' : 'Tuition Fees by Faculty'"></h2>
+                <p class="reveal reveal-up reveal-delay-1 text-slate-500"
+                   x-text="$store.app.currentLang === 'ar' ? 'يتم احتساب الرسوم بناءً على عدد الساعات المعتمدة المسجلة لكل فصل.' : 'Fees are calculated based on the number of registered credit hours per semester.'"></p>
+            </header>
+
+            <div class="reveal reveal-up reveal-delay-2 overflow-x-auto">
+                <table class="tuition-table">
+                    <thead>
+                        <tr>
+                            <th x-text="$store.app.currentLang === 'ar' ? 'الكلية' : 'Faculty'"></th>
+                            <th x-text="$store.app.currentLang === 'ar' ? 'الرسم لكل ساعة معتمدة' : 'Fee Per Credit Hour'"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="faculty in page.faculties" :key="faculty.nameEn">
+                            <tr>
+                                <td class="font-black" x-text="$store.app.currentLang === 'ar' ? faculty.nameAr : faculty.nameEn"></td>
+                                <td class="text-spu-red font-black" x-text="$store.app.currentLang === 'ar' ? faculty.feeAr : faculty.feeEn"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="reveal reveal-up text-3xl font-black text-spu-blue mb-12 text-center"
+                x-text="$store.app.currentLang === 'ar' ? 'طرق الدفع' : 'Payment Methods'"></h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <template x-for="(method, idx) in page.methods" :key="idx">
+                    <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
+                        <div class="payment-method h-full">
+                            <div class="w-12 h-12 bg-spu-blue/5 rounded-xl flex items-center justify-center text-spu-blue mb-6">
+                                <i class="fa-solid" :class="idx === 0 ? 'fa-building-columns' : 'fa-credit-card'"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-spu-blue mb-3"
+                                x-text="$store.app.currentLang === 'ar' ? method.titleAr : method.titleEn"></h3>
+                            <p class="text-slate-500"
+                               x-text="$store.app.currentLang === 'ar' ? method.descAr : method.descEn"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+</div>
