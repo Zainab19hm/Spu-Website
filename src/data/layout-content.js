@@ -25,6 +25,7 @@ export const navigationMenuItems = [
         page: 'about',
         hasDropdown: true,
         children: [
+            { labelAr: 'الرؤية والرسالة', labelEn: 'Vision & Mission', url: siteRoutes.aboutVisionMission },
             { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership.html' },
             { labelAr: 'تاريخنا', labelEn: 'Our History', url: '/about/history.html' },
             { labelAr: 'المديريات', labelEn: 'Directorates', url: '/about/directorates.html' },

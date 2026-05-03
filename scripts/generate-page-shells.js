@@ -152,6 +152,7 @@ const pageWarmupModules = {
     '/src/features/research-slider.js'
   ],
   about: ['/src/alpine/pages/about-stores.js'],
+  'about-vision-mission': ['/src/alpine/pages/about-stores.js'],
   'about-history': ['/src/alpine/pages/about-stores.js'],
   'about-leadership': ['/src/alpine/pages/about-stores.js'],
   'about-directorates': ['/src/alpine/pages/about-stores.js'],

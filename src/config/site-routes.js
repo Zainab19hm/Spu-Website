@@ -21,6 +21,7 @@ export function withHash(route, hash) {
 export const siteRoutes = Object.freeze({
     home: getPageRoute('home'),
     about: getPageRoute('about'),
+    aboutVisionMission: getPageRoute('about-vision-mission'),
     aboutHistory: getPageRoute('about-history'),
     aboutLeadership: getPageRoute('about-leadership'),
     aboutDirectorates: getPageRoute('about-directorates'),

@@ -51,6 +51,26 @@
         height: 240px;
     }
 
+    .leadership-icon-container {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 2rem;
+        border-radius: 2rem;
+        background: rgba(32, 39, 89, 0.05);
+        color: #202759;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.25rem;
+        transition: all 0.5s ease;
+    }
+
+    .member-card:hover .leadership-icon-container {
+        background: #6f1616;
+        color: white;
+        transform: rotate(-8deg) scale(1.05);
+    }
+
     /* Professional Background pattern for cards */
     .card-bg-pattern {
         position: absolute;
@@ -132,6 +152,9 @@
                             
                             <h3 class="text-3xl md:text-4xl font-black text-spu-blue mb-4"
                                 x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
+
+                            <p class="text-slate-500 leading-relaxed"
+                               x-text="$store.app.currentLang === 'ar' ? member.bioAr : member.bioEn"></p>
                             
                             <div class="president-quote">
                                 <span class="quote-icon">"</span>
@@ -148,8 +171,12 @@
         <div class="mb-16">
             <div class="reveal reveal-up mb-12 flex items-center gap-4">
                 <h4 class="text-2xl font-black text-spu-blue" 
-                    x-text="$store.app.currentLang === 'ar' ? 'المجلس التنفيذي' : 'Executive Council'"></h4>
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.councilTitleAr : $store.aboutPage.leadership.councilTitleEn"></h4>
                 <div class="h-px grow bg-slate-100"></div>
+            </div>
+
+            <div class="reveal reveal-up mb-10 rounded-3xl border border-amber-200 bg-amber-50 px-6 py-5 text-sm leading-relaxed text-amber-950">
+                <p x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.noteAr : $store.aboutPage.leadership.noteEn"></p>
             </div>
 
             <div class="leadership-grid">
@@ -159,8 +186,8 @@
                             <div class="card-bg-pattern"></div>
                             
                             <div class="relative z-10 flex flex-col h-full">
-                                <div class="member-photo-container">
-                                    <img :src="member.image" :alt="member.nameEn" class="w-full h-full object-cover">
+                                <div class="leadership-icon-container">
+                                    <i class="fa-solid" :class="member.icon"></i>
                                 </div>
                                 
                                 <span class="text-spu-red text-xs font-black uppercase tracking-widest mb-3"
@@ -168,14 +195,15 @@
                                 
                                 <h3 class="text-xl font-bold text-spu-blue mb-4"
                                     x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
+
+                                <p class="mb-6 text-sm leading-relaxed text-slate-500"
+                                   x-text="$store.app.currentLang === 'ar' ? member.bioAr : member.bioEn"></p>
                                 
-                                <div class="mt-auto pt-6 border-t border-slate-50 flex justify-center gap-4">
-                                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-spu-blue hover:bg-spu-blue hover:text-white transition-colors">
-                                        <i class="fa-solid fa-envelope text-sm"></i>
-                                    </a>
-                                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-spu-blue hover:bg-spu-blue hover:text-white transition-colors">
-                                        <i class="fa-solid fa-graduation-cap text-sm"></i>
-                                    </a>
+                                <div class="mt-auto pt-6 border-t border-slate-50 flex justify-center">
+                                    <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 px-4 py-2 text-xs font-black uppercase tracking-widest text-spu-blue">
+                                        <i class="fa-solid fa-circle-nodes text-spu-red"></i>
+                                        <span x-text="$store.app.currentLang === 'ar' ? 'حوكمة' : 'Governance'"></span>
+                                    </span>
                                 </div>
                             </div>
                         </div>

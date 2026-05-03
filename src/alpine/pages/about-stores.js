@@ -5,16 +5,16 @@ import { animateCounter } from '../../utils/animate-counter.js'; // ! Added impo
 
 export const registerAboutStores = (Alpine) => {
     Alpine.store('aboutPage', {
-        ...cloneData(aboutPageContent), // ! Used cloneData to ensure store isolation
+        ...cloneData(aboutPageContent),
         navigate(e, id) {
             if (e) e.preventDefault();
 
-            // If ID is provided, navigate to that page. Otherwise, go to about.html
-            const targetUrl = id ? `/about/${id}/content.html` : '/about.html';
+            const target = (aboutPageContent.subPages || []).find((subPage) => subPage.id === id);
+            const targetUrl = target?.link || '/about.html';
             window.location.assign(targetUrl);
         },
         subPages: aboutPageContent.subPages || [],
-        startCounting() { // ! Added startCounting to handle numerical animations
+        startCounting() {
             (this.quickStats || []).forEach(item => animateCounter(item));
         }
     });
