@@ -82,12 +82,12 @@
 <div x-show="!$store.facultiesPage.catalogMode" x-cloak
      class="relative z-30 -mt-[130px] flex flex-col items-center bg-transparent pb-6 md:-mt-[140px]" x-data>
     <!-- Glow ring + logo -->
-    <div class="faculty-hero__logo-ring flex h-[200px] w-[200px] items-center justify-center rounded-full border-4 border-white bg-white md:h-[220px] md:w-[220px]">
+    <div class="faculty-hero__logo-ring flex h-[200px] w-[200px] items-center justify-center rounded-full  border-white bg-white md:h-[220px] md:w-[220px]">
         <img :src="$store.facultiesPage.currentFaculty?.logo"
              :alt="$store.app.currentLang === 'ar'
                  ? $store.facultiesPage.currentFaculty?.nameAr
                  : $store.facultiesPage.currentFaculty?.nameEn"
-             class="h-[180px] w-[180px] rounded-full object-contain transition-all duration-700 md:h-[200px] md:w-[200px]"
+             class="h-full w-full object-cover transition-all duration-700"
              :class="$store.facultiesPage.loading ? 'scale-110 blur-sm opacity-0' : 'scale-100 blur-0 opacity-100'">
     </div>
     <!-- Arabic name -->

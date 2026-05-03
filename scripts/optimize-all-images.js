@@ -1,4 +1,4 @@
-const path = require('path');
+  const path = require('path');
 const fs = require('fs/promises');
 const sharp = require('sharp');
 
@@ -35,12 +35,12 @@ const optimizationJobs = [
     category: 'Faculty Logos',
     jobs: [
       { source: 'faculty-medicine-logo.png', output: 'faculty-medicine-logo.webp', width: 320, quality: 82 },
-      { source: 'faculty-dentistry-logo.png', output: 'faculty-dentistry-logo.webp', width: 320, quality: 82 },
-      { source: 'faculty-pharmacy-logo.png', output: 'faculty-pharmacy-logo.webp', width: 320, quality: 82 },
-      { source: 'faculty-ai-engineering-logo.png', output: 'faculty-ai-engineering-logo.webp', width: 320, quality: 82 },
-      { source: 'faculty-construction-engineering-logo.png', output: 'faculty-construction-engineering-logo.webp', width: 320, quality: 82 },
-      { source: 'faculty-petroleum-engineering-logo.png', output: 'faculty-petroleum-engineering-logo.webp', width: 320, quality: 82 },
-      { source: 'faculty-admin-sciences-logo.png', output: 'faculty-admin-sciences-logo.webp', width: 320, quality: 82 }
+      { source: 'spu-dentistry-logo.png', output: 'spu-dentistry-logo.webp', width: 320, quality: 82 },
+      { source: 'spu-pharmacy-logo.png', output: 'spu-pharmacy-logo.webp', width: 320, quality: 82 },
+      { source: 'spu-ai-logo.png', output: 'spu-ai-logo.webp', width: 320, quality: 82 },
+      { source: 'spu-construction-logo.png', output: 'spu-construction-logo.webp', width: 320, quality: 82 },
+      { source: 'spu-petroleum-logo.png', output: 'spu-petroleum-logo.webp', width: 320, quality: 82 },
+      { source: 'spu-business-logo.png', output: 'spu-business-logo.webp', width: 320, quality: 82 }
     ]
   },
   

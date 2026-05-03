@@ -6,8 +6,13 @@
 
     /* ── Ken Burns slow zoom on the background image ── */
     @keyframes faculty-hero-zoom {
-        0%   { transform: scale(1); }
-        100% { transform: scale(1.08); }
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.08);
+        }
     }
 
     .faculty-hero__image {
@@ -20,7 +25,7 @@
         transform: scale(1.12);
         filter: blur(8px);
         transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
-                    filter 1.2s ease-out;
+            filter 1.2s ease-out;
     }
 
     .faculty-hero__image--ready {
@@ -30,12 +35,31 @@
 
     /* ── Subtle animated grain overlay for cinematic depth ── */
     @keyframes faculty-hero-grain {
-        0%, 100% { transform: translate(0, 0); }
-        10%      { transform: translate(-2%, -2%); }
-        30%      { transform: translate(1%, -1%); }
-        50%      { transform: translate(-1%, 2%); }
-        70%      { transform: translate(2%, 1%); }
-        90%      { transform: translate(-2%, 1%); }
+
+        0%,
+        100% {
+            transform: translate(0, 0);
+        }
+
+        10% {
+            transform: translate(-2%, -2%);
+        }
+
+        30% {
+            transform: translate(1%, -1%);
+        }
+
+        50% {
+            transform: translate(-1%, 2%);
+        }
+
+        70% {
+            transform: translate(2%, 1%);
+        }
+
+        90% {
+            transform: translate(-2%, 1%);
+        }
     }
 
     .faculty-hero__grain {
@@ -56,6 +80,7 @@
             opacity: 0;
             transform: translateY(28px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -67,15 +92,31 @@
         animation: faculty-hero-text-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .faculty-hero__reveal--d1 { animation-delay: 0.15s; }
-    .faculty-hero__reveal--d2 { animation-delay: 0.35s; }
-    .faculty-hero__reveal--d3 { animation-delay: 0.55s; }
-    .faculty-hero__reveal--d4 { animation-delay: 0.75s; }
+    .faculty-hero__reveal--d1 {
+        animation-delay: 0.15s;
+    }
+
+    .faculty-hero__reveal--d2 {
+        animation-delay: 0.35s;
+    }
+
+    .faculty-hero__reveal--d3 {
+        animation-delay: 0.55s;
+    }
+
+    .faculty-hero__reveal--d4 {
+        animation-delay: 0.75s;
+    }
 
     /* ── Accent line that draws in ── */
     @keyframes faculty-hero-line-draw {
-        from { width: 0; }
-        to   { width: 4.5rem; }
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 4.5rem;
+        }
     }
 
     .faculty-hero__accent-line {
@@ -88,8 +129,15 @@
 
     /* ── Logo glow pulse ── */
     @keyframes faculty-hero-glow {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4), 0 20px 60px rgba(0, 0, 0, 0.15); }
-        50%      { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.15); }
+
+        0%,
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4), 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        50% {
+            box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
     }
 
     .faculty-hero__logo-ring {
@@ -106,9 +154,22 @@
 
     /* ── Scroll indicator bounce ── */
     @keyframes faculty-hero-bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-        40%  { transform: translateY(-6px) translateX(-50%); }
-        60%  { transform: translateY(-3px) translateX(-50%); }
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0) translateX(-50%);
+        }
+
+        40% {
+            transform: translateY(-6px) translateX(-50%);
+        }
+
+        60% {
+            transform: translateY(-3px) translateX(-50%);
+        }
     }
 
     .faculty-hero__scroll-hint {
@@ -116,11 +177,12 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
         .faculty-hero__image,
         .faculty-hero__grain,
         .faculty-hero__reveal,
         .faculty-hero__accent-line,
-        .faculty-hero__logo-ring,
+        .g,
         .faculty-hero__scroll-hint {
             animation: none !important;
             opacity: 1 !important;
