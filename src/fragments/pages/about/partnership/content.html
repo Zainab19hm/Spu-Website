@@ -6,6 +6,20 @@
         gap: 3rem;
     }
 
+    .partner-goals-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        margin-bottom: 4rem;
+    }
+
+    .partner-goal-card {
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 1.75rem;
+        background: rgba(255, 255, 255, 0.88);
+        padding: 1.5rem;
+    }
+
     .partner-card {
         background: white;
         border: 1px solid rgba(226, 232, 240, 0.8);
@@ -107,16 +121,17 @@
     }
 
     @media (max-width: 768px) {
-        .partner-grid { grid-template-columns: 1fr; }
+        .partner-grid,
+        .partner-goals-grid { grid-template-columns: 1fr; }
         .partner-logo-box { height: 140px; }
     }
 </style>
 
 <section id="partnership-section" x-cloak
          class="relative py-32 overflow-hidden bg-white font-hacen">
-    
+
     <!-- Background Connectivity Pattern -->
-    <div class="absolute inset-0 opacity-[0.03] pointer-events-none -z-10" 
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none -z-10"
          style="background-image: radial-gradient(#202759 1px, transparent 1px); background-size: 40px 40px;"></div>
 
     <!-- Header Section -->
@@ -127,23 +142,39 @@
                 x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.eyebrowAr : $store.aboutPage.partnerships.eyebrowEn"></span>
             <span class="h-px w-10 bg-spu-red"></span>
         </div>
-        
+
         <h2 class="reveal reveal-up reveal-delay-1 text-5xl md:text-7xl font-black text-spu-blue tracking-tighter leading-tight"
             x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn"></h2>
-        
+
         <p class="reveal reveal-up reveal-delay-2 mt-8 text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
             x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.summaryAr : $store.aboutPage.partnerships.summaryEn"></p>
+
+        <p class="reveal reveal-up reveal-delay-3 mt-5 text-base text-slate-400 max-w-3xl mx-auto leading-relaxed"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.subTextAr : $store.aboutPage.partnerships.subTextEn"></p>
     </div>
 
     <!-- Partners Grid -->
     <div class="container mx-auto px-6 relative z-10">
+        <div class="partner-goals-grid">
+            <template x-for="(goal, index) in $store.aboutPage.partnerships.goals" :key="goal.titleEn">
+                <article class="partner-goal-card reveal reveal-up" :class="`reveal-delay-${(index % 4) + 1}`">
+                    <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-spu-red/10 text-sm font-black text-spu-red"
+                         x-text="String(index + 1).padStart(2, '0')"></div>
+                    <h3 class="text-lg font-black text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? goal.titleAr : goal.titleEn"></h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-500"
+                        x-text="$store.app.currentLang === 'ar' ? goal.summaryAr : goal.summaryEn"></p>
+                </article>
+            </template>
+        </div>
+
         <div class="partner-grid">
             <template x-for="(partner, index) in $store.aboutPage.partnerships.list" :key="index">
                 <div class="reveal reveal-up" :class="`reveal-delay-${(index % 3) + 1}`">
                     <div class="partner-card">
                         <!-- Badge -->
-                        <div class="partner-badge" x-text="$store.app.currentLang === 'ar' ? 'شريك استراتيجي' : 'Strategic Partner'"></div>
-                        
+                        <div class="partner-badge" x-text="$store.app.currentLang === 'ar' ? partner.categoryAr : partner.categoryEn"></div>
+
                         <!-- Logo Box -->
                         <div class="partner-logo-box">
                             <img :src="partner.logo" :alt="partner.nameEn">
@@ -153,17 +184,17 @@
                         <div class="flex flex-col grow">
                             <h3 class="text-xl font-black text-spu-blue mb-4 leading-tight group-hover:text-spu-red transition-colors"
                                 x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
-                            
+
                             <p class="text-slate-500 text-sm leading-relaxed mb-6"
                                 x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
-                            
+
                             <!-- Actions -->
                             <div class="partner-actions">
-                                <a :href="partner.newsLink" class="partner-link">
-                                    <span x-text="$store.app.currentLang === 'ar' ? 'التفاصيل' : 'Details'"></span>
+                                <a :href="partner.newsLink" class="partner-link" :target="partner.newsLink.startsWith('http') ? '_blank' : null" :rel="partner.newsLink.startsWith('http') ? 'noopener' : null">
+                                    <span x-text="$store.app.currentLang === 'ar' ? 'المصدر' : 'Source'"></span>
                                     <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
                                 </a>
-                                
+
                                 <a :href="partner.website" target="_blank" class="text-slate-400 hover:text-spu-blue transition-colors">
                                     <i class="fa-solid fa-globe"></i>
                                 </a>
@@ -177,7 +208,7 @@
         <!-- Pagination/CTA -->
         <div class="reveal reveal-up reveal-delay-4 mt-24 text-center">
             <div class="inline-flex items-center gap-6 p-2 pl-6 bg-slate-50 rounded-2xl border border-slate-100">
-                <span class="text-slate-500 font-bold text-sm" 
+                <span class="text-slate-500 font-bold text-sm"
                       x-text="$store.app.currentLang === 'ar' ? 'هل تريد استكشاف المزيد من الأخبار؟' : 'Want to explore more news?'"></span>
                 <a href="/news.html" class="px-6 py-3 bg-white border border-slate-200 text-spu-blue font-black rounded-xl hover:bg-spu-blue hover:text-white transition-all shadow-sm">
                     <span x-text="$store.app.currentLang === 'ar' ? 'جميع الأخبار' : 'All News'"></span>
@@ -187,7 +218,7 @@
 
         <!-- Back Link -->
         <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
-            <a href="/about.html" 
+            <a href="/about.html"
                class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform rtl:rotate-180"></i>
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
@@ -198,4 +229,4 @@
     <!-- Decorative Elements -->
     <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-radial from-spu-blue/5 to-transparent -z-10 blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-radial from-spu-red/5 to-transparent -z-10 blur-3xl"></div>
-</section>
+</section>

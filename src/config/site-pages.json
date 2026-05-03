@@ -56,6 +56,24 @@
       ]
     },
     {
+      "name": "about-vision-mission",
+      "fileName": "about/vision-mission.html",
+      "route": "/about/vision-mission.html",
+      "title": "Vision & Mission | Syrian Private University",
+      "description": "Review Syrian Private University's vision, mission, values, and institutional pillars for education, research, and community service.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU vision",
+        "SPU mission",
+        "Syrian Private University values",
+        "SPU institutional strategy"
+      ],
+      "fragments": [
+        "pages/about/vision-mission/content.html",
+        "pages/about/navigation.html"
+      ]
+    },
+    {
       "name": "about-history",
       "fileName": "about/history.html",
       "route": "/about/history.html",
