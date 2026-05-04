@@ -1,0 +1,54 @@
+<section x-data class="relative w-full bg-white pt-24 pb-32 overflow-hidden" id="portal-access">
+    <!-- Section Title -->
+    <div class="text-center pb-20 relative z-10">
+        <h2 class="text-4xl md:text-[40px] font-bold text-[#1e2756]" x-text="$store.app.currentLang === 'ar' ? $store.servicesPage.digitalServices.titleAr : $store.servicesPage.digitalServices.titleEn"></h2>
+    </div>
+
+    <!-- Layout Container -->
+    <div class="relative container    ">
+        
+        <!-- Background Images Layer -->
+        <div class="absolute inset-0 z-0 hidden lg:block pointer-events-none w-full h-full">
+            <!-- Left Background Image -->
+            <div class="absolute left-0 w-[441px] h-[581px] -top-12 z-0 overflow-hidden">
+                <div class="absolute inset-0 z-10"></div>
+                <img :src="$store.servicesPage.hero.image_left" alt="Campus Day" class="w-full h-full object-cover" />
+            </div>
+            <!-- Right Background Image -->
+            <div class="absolute right-0 w-[441px] h-[581px] -bottom-12 z-0 overflow-hidden">
+                <div class="absolute inset-0  z-10"></div>
+                <img :src="$store.servicesPage.hero.image_right" alt="Campus Night" class="w-full h-full object-cover" />
+            </div>
+        </div>
+
+        <!-- Cards Grid Layer -->
+        <div class="relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-18 xl:gap-24">
+                <template x-for="(service, index) in $store.servicesPage.digitalServices.services" :key="service.id">
+                    <div class="bg-white rounded-xl border border-[#94A3B880] p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col w-[397px] h-[314px] relative">
+                        
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-[20px] font-bold text-[#1e2756] pr-4 rtl:pl-4 rtl:pr-0" x-text="$store.app.currentLang === 'ar' ? service.titleAr : service.titleEn"></h3>
+                            <!-- Icon -->
+                            <div class="text-[#1e2756] mt-1">
+                                <img :src="service.icon" class="w-5 h-5 object-contain" style="filter: brightness(0) saturate(100%) invert(16%) sepia(21%) saturate(2361%) hue-rotate(193deg) brightness(97%) contrast(97%);" />
+                            </div>
+                        </div>
+                        
+                        <p class="text-[13px] text-gray-500 leading-relaxed mb-6 flex-grow" x-text="$store.app.currentLang === 'ar' ? service.summaryAr : service.summaryEn"></p>
+                        
+                        <!-- Button -->
+                        <div class="mt-auto">
+                            <a :href="service.url" class="inline-flex items-center justify-center px-6 py-2.5 bg-[#1e2756] text-white text-[11px] font-bold uppercase tracking-wider rounded hover:bg-opacity-90 transition-colors w-max">
+                                <span x-text="$store.app.currentLang === 'ar' ? service.buttonAr : service.buttonEn"></span>
+                                <template x-if="service.buttonEn.includes('Launch')">
+                                    <svg class="w-3.5 h-3.5 ml-2 rtl:rotate-180 rtl:mr-2 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </template>
+                            </a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>

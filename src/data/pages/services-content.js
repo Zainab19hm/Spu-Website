@@ -8,75 +8,85 @@ export const servicesPageContent = {
         titleEn: 'A protected university services hub for portal access, registration, and digital student support.',
         titleAr: 'مركز خدمات جامعي محمي للوصول إلى البوابة والتسجيل والدعم الرقمي للطلبة.',
         summaryEn: 'This page establishes a clearer entry point for authenticated services so portal access does not live as an orphan external link in the navigation.',
-        summaryAr: 'تنشئ هذه الصفحة نقطة دخول أوضح للخدمات الموثقة حتى لا تبقى بوابة الطالب مجرد رابط خارجي معزول داخل التنقل.'
+        summaryAr: 'تنشئ هذه الصفحة نقطة دخول أوضح للخدمات الموثقة حتى لا تبقى بوابة الطالب مجرد رابط خارجي معزول داخل التنقل.',
+        image_hero: 'images/slider-1.webp',
+        image_left: 'images/dsc-1060.webp',
+        image_right: 'images/slider-3.webp'
+        
     },
-    metrics: [
-        { value: 'Protected', labelEn: 'Portal Access', labelAr: 'وصول محمي' },
-        { value: 'Official', labelEn: 'Registration Pathways', labelAr: 'مسارات رسمية' },
-        { value: 'Direct', labelEn: 'Support Handoffs', labelAr: 'تحويلات مباشرة' }
-    ],
-    access: {
-        eyebrowEn: 'Access Control',
-        eyebrowAr: 'ضبط الوصول',
-        titleEn: 'Verify identity before continuing to student-facing digital systems.',
-        titleAr: 'تحقق من الهوية قبل المتابعة إلى الأنظمة الرقمية المخصصة للطلبة.',
-        summaryEn: 'This frontend pattern provides a protected handoff page, a recoverable return destination, and a visible fallback state for official university services.',
-        summaryAr: 'يوفر هذا النمط في الواجهة صفحة انتقال محمية ووجهة عودة قابلة للاسترجاع وحالة بديلة واضحة للخدمات الجامعية الرسمية.'
-    },
-    requirements: [
-        {
-            titleEn: 'University Identity',
-            titleAr: 'هوية جامعية',
-            summaryEn: 'Use your student or staff identifier before continuing to secure services.',
-            summaryAr: 'استخدم معرف الطالب أو الموظف قبل المتابعة إلى الخدمات المؤمنة.'
-        },
-        {
-            titleEn: 'Official Channels Only',
-            titleAr: 'قنوات رسمية فقط',
-            summaryEn: 'Protected resources route through the university services hub before handing off to external systems.',
-            summaryAr: 'تمر الموارد المحمية عبر مركز الخدمات الجامعي قبل التحويل إلى الأنظمة الخارجية.'
-        },
-        {
-            titleEn: 'Manual Support Backup',
-            titleAr: 'دعم يدوي احتياطي',
-            summaryEn: 'Student Affairs and admissions support remain visible if a digital service is unavailable.',
-            summaryAr: 'يبقى دعم شؤون الطلاب والقبول ظاهراً إذا تعذرت إحدى الخدمات الرقمية.'
-        }
-    ],
-    resources: [
-        {
-            id: 1,
-            titleEn: 'Student Portal',
-            titleAr: 'بوابة الطالب',
-            summaryEn: 'Access records, schedules, tuition statements, and core digital services.',
-            summaryAr: 'الوصول إلى السجلات والجداول وكشوف الرسوم والخدمات الرقمية الأساسية.',
-            url: portalAccessConfig.defaultDestination,
-            protected: true
-        },
-        {
-            id: 2,
-            titleEn: 'Electronic Registration',
-            titleAr: 'التسجيل الإلكتروني',
-            summaryEn: 'Continue to the official online registration entry point after identity verification.',
-            summaryAr: 'المتابعة إلى نقطة الدخول الرسمية للتسجيل الإلكتروني بعد التحقق من الهوية.',
-            url: portalAccessConfig.registrationDestination,
-            protected: true
-        },
-        {
-            id: 3,
-            titleEn: 'Library and Academic Support',
-            titleAr: 'المكتبة والدعم الأكاديمي',
-            summaryEn: 'Review student-facing academic support information and campus services.',
-            summaryAr: 'راجع معلومات الدعم الأكاديمي الموجهة للطلبة وخدمات الحرم الجامعي.',
-            url: withHash(siteRoutes.studentLife, 'services')
-        },
-        {
-            id: 4,
-            titleEn: 'Student Affairs Support',
-            titleAr: 'دعم شؤون الطلاب',
-            summaryEn: 'Reach the university team directly if you need a manual handoff or service recovery.',
-            summaryAr: 'تواصل مباشرة مع فريق الجامعة إذا كنت تحتاج إلى تحويل يدوي أو استعادة الخدمة.',
-            url: withHash(siteRoutes.contact, 'admissions-support')
-        }
-    ]
+    digitalServices: {
+        titleEn: 'Digital Services',
+        titleAr: 'الخدمات الرقمية',
+        summaryEn: 'Access your essential academic tools, manage registrations, and connect with university support systems through our secure and streamlined digital platform.',
+        summaryAr: 'الوصول إلى أدواتك الأكاديمية الأساسية وإدارة التسجيلات والاتصال بأنظمة دعم الجامعة من خلال منصتنا الرقمية الآمنة والمبسطة.',
+        backgroundImage: 'unsplash_VckdJzo7ig0.webp',
+        services: [
+            {
+                id: 1,
+                titleEn: 'Student Portal',
+                titleAr: 'بوابة الطالب',
+                summaryEn: 'Access your grades, academic transcript, course schedules, and personal academic profile in one place.',
+                summaryAr: 'الوصول إلى درجاتك والسجل الأكاديمي والجداول الدراسية وملفك الشخصي الأكاديمي في مكان واحد.',
+                icon: '/images/icons/users.svg',
+                url: portalAccessConfig.defaultDestination,
+                buttonEn: 'Launch Service',
+                buttonAr: 'تفعيل الخدمة'
+            },
+            {
+                id: 2,
+                titleEn: 'Registration',
+                titleAr: 'التسجيل',
+                summaryEn: 'Enroll in courses for the upcoming semester. View your current and proposed class schedule and the classroom.',
+                summaryAr: 'التسجيل في الدورات للفصل الدراسي القادم. عرض جدولك الحالي والمقترح والفصل الدراسي.',
+                icon: '/images/icons/file.svg',
+                url: portalAccessConfig.registrationDestination,
+                buttonEn: 'Launch Service',
+                buttonAr: 'تفعيل الخدمة'
+            },
+            {
+                id: 3,
+                titleEn: 'Library Access',
+                titleAr: 'وصول المكتبة',
+                summaryEn: 'Search the digital catalog, reserve physical books, access academic journals, and utilize other digital research databases.',
+                summaryAr: 'البحث في الفهرس الرقمي وحجز الكتب الفيزيائية والوصول إلى المجلات الأكاديمية واستخدام قواعد البيانات البحثية الأخرى.',
+                icon: '/images/icons/book.svg',
+                url: withHash(siteRoutes.studentLife, 'services'),
+                buttonEn: 'View Guide',
+                buttonAr: 'عرض الدليل'
+            },
+            {
+                id: 4,
+                titleEn: 'Appeals & Forms',
+                titleAr: 'الاستئنافات والنماذج',
+                summaryEn: 'Submit official university petitions, academic appeals, documentation requests, and manage your official records securely.',
+                summaryAr: 'تقديم الالتماسات والاستئنافات الأكاديمية وطلبات التوثيق وإدارة سجلاتك الرسمية بأمان.',
+                icon: '/images/icons/check-circle.svg',
+                url: withHash(siteRoutes.contact, 'admissions-support'),
+                buttonEn: 'Launch Service',
+                buttonAr: 'تفعيل الخدمة'
+            },
+            {
+                id: 5,
+                titleEn: 'Staff Email',
+                titleAr: 'البريد الإلكتروني للموظفين',
+                summaryEn: 'Securely access your official university email account. Manage official university communications and administrative staff information.',
+                summaryAr: 'الوصول الآمن إلى حسابك البريدي الرسمي بالجامعة. إدارة الاتصالات الرسمية للجامعة ومعلومات الموظفين الإداريين.',
+                icon: '/images/icons/globe.svg',
+                url: 'https://mail.google.com',
+                buttonEn: 'View Guide',
+                buttonAr: 'عرض الدليل'
+            },
+            {
+                id: 6,
+                titleEn: 'IT Support',
+                titleAr: 'دعم تكنولوجيا المعلومات',
+                summaryEn: 'Create support tickets, report network issues, reset passwords, and get help from the university IT support team.',
+                summaryAr: 'إنشاء تذاكر الدعم والإبلاغ عن مشاكل الشبكة وإعادة تعيين كلمات المرور والحصول على مساعدة من فريق دعم تكنولوجيا المعلومات بالجامعة.',
+                icon: '/images/icons/dept.svg',
+                url: withHash(siteRoutes.contact, 'it-support'),
+                buttonEn: 'Launch Service',
+                buttonAr: 'تفعيل الخدمة'
+            }
+        ]
+    }
 };

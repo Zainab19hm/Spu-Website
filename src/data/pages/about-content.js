@@ -1,23 +1,23 @@
 export const aboutPageContent = {
-    hero: { // ! Renamed for project-wide consistency with other pages
-        image1: '/images/about-hero-1.webp', // المربع الخلفي الكبير
-        image2: '/images/about-hero-2.webp', // المربع الصغير الإضافي
-        image: '/images/about-hero-1.webp', // ! Added missing image property
+    hero: {
+        image1: '/images/about-hero-1.webp',
+        image2: '/images/about-hero-2.webp',
+        image: '/images/about-hero-1.webp',
         badgeAr: 'نبذة عن SPU',
         badgeEn: 'ABOUT SPU',
-        titleAr: 'جامعة رائدة تقدم تعليماً حديثاً وعالي الجودة يجهز الطلاب لنجاح مستقبلي.',
-        titleEn: 'Syrian Private University offers modern, high-quality education that prepares students for future success.',
-        quoteAr: 'نسعى دائماً لتقديم الأفضل لطلابنا من خلال بيئة تعليمية متكاملة.', // ! Added missing quote data
-        quoteEn: 'We always strive to provide the best for our students through an integrated educational environment.', // ! Added missing quote data
-        descriptionAr: 'تأسست الجامعة السورية الخاصة لتكون منارة للعلم والمعرفة، وتوفر لطلابها كافة السبل للنجاح الأكاديمي والمهني.', // ! Added missing description
-        descriptionEn: 'Syrian Private University was established to be a beacon of science and knowledge, providing students with all means for academic and professional success.' // ! Added missing description
+        titleAr: 'مشروع علمي وثقافي وتنموي يدعم التعليم العالي في سوريا.',
+        titleEn: 'A scientific, cultural, and developmental project supporting higher education in Syria.',
+        quoteAr: 'نربط التعليم الأكاديمي باحتياجات المجتمع وسوق العمل من خلال برامج معتمدة وتجربة جامعية تطبيقية.',
+        quoteEn: 'SPU connects academic learning with community and labor-market needs through accredited programs and applied campus experience.',
+        descriptionAr: 'أُحدثت الجامعة السورية الخاصة بالمرسوم الجمهوري رقم 339 لعام 2005، وتعمل ضمن أنظمة ومناهج معتمدة من وزارة التعليم العالي والبحث العلمي في الجمهورية العربية السورية.',
+        descriptionEn: 'Syrian Private University was established by Republican Decree No. 339 in 2005 and operates with regulations and curricula approved by the Syrian Ministry of Higher Education and Scientific Research.'
     },
 
-    metrics: [ // Added translate="no" to preserve numeric values
+    metrics: [
         { value: '<span translate="no">2005</span>', labelEn: 'Established', labelAr: 'سنة التأسيس' },
         { value: '<span translate="no">7</span>', labelEn: 'Faculties', labelAr: 'الكليات' },
-        { value: '<span translate="no">8500+</span>', labelEn: 'Students', labelAr: 'الطلاب' },
-        { value: '<span translate="no">450+</span>', labelEn: 'Graduates', labelAr: 'الخريجون' }
+        { value: '<span translate="no">2009</span>', labelEn: 'First graduates', labelAr: 'أول دفعة خريجين' },
+        { value: '<span translate="no">2012</span>', labelEn: 'SPU name adopted', labelAr: 'اعتماد اسم الجامعة' }
     ],
     story: {
         eyebrowAr: 'رؤيتنا ورسالتنا',
@@ -46,7 +46,71 @@ export const aboutPageContent = {
         missionEn: 'To provide high-quality, modern academic programs that equip students with the knowledge, skills, and values needed for professional success, innovation, and community impact.'
     },
 
-    // الإحصائيات (التي ستتحرك وتعد من 0)
+    visionMission: {
+        eyebrowAr: 'الرؤية والرسالة',
+        eyebrowEn: 'VISION & MISSION',
+        titleAr: 'بوصلة مؤسسية واضحة للتعليم والبحث وخدمة المجتمع.',
+        titleEn: 'A clear institutional compass for education, research, and community service.',
+        summaryAr: 'تعكس هذه الصفحة الاتجاه الأكاديمي للجامعة السورية الخاصة كما يظهر في تعريفها الرسمي: دعم التعليم العالي، تحسين جودة التعليم، وتعزيز التعاون العلمي والثقافي.',
+        summaryEn: 'This page translates SPU’s official direction into a clear design story: advancing higher education, improving educational quality, and strengthening scientific and cultural cooperation.',
+        sourceNoteAr: 'بيانات أساسية مستندة إلى التعريف الرسمي للجامعة: الإحداث بالمرسوم الجمهوري رقم 339 لعام 2005، وتعديل الاسم بالمرسوم رقم 343 لعام 2012.',
+        sourceNoteEn: 'Core data reflects SPU’s official profile: established by Republican Decree No. 339 in 2005 and renamed by Decree No. 343 in 2012.',
+        cards: [
+            {
+                icon: 'fa-eye',
+                titleAr: 'الرؤية',
+                titleEn: 'Vision',
+                bodyAr: 'أن تكون الجامعة مركزاً علمياً متميزاً محلياً وإقليمياً وعالمياً، يواكب تطور المعرفة ويستجيب لاحتياجات المجتمع.',
+                bodyEn: 'To be a distinguished scientific center locally, regionally, and globally, keeping pace with knowledge development while responding to community needs.'
+            },
+            {
+                icon: 'fa-bullseye',
+                titleAr: 'الرسالة',
+                titleEn: 'Mission',
+                bodyAr: 'تقديم تعليم جامعي معتمد وعالي الجودة من خلال مناهج وبرامج تدريبية وكفاءات أكاديمية متخصصة في المجالات الطبية والهندسية والإدارية.',
+                bodyEn: 'To provide accredited, high-quality university education through curricula, training programs, and specialized academic expertise across medical, engineering, and administrative disciplines.'
+            },
+            {
+                icon: 'fa-hand-holding-heart',
+                titleAr: 'القيم',
+                titleEn: 'Values',
+                bodyAr: 'الجودة، المسؤولية، الانفتاح العلمي، خدمة المجتمع، والنزاهة الأكاديمية في التعليم والبحث والعمل المؤسسي.',
+                bodyEn: 'Quality, responsibility, scientific openness, community service, and academic integrity in learning, research, and institutional work.'
+            }
+        ],
+        pillars: [
+            {
+                titleAr: 'تعليم معتمد',
+                titleEn: 'Accredited Education',
+                summaryAr: 'تعمل الجامعة وفق أنظمة ومناهج معتمدة من وزارة التعليم العالي والبحث العلمي.',
+                summaryEn: 'SPU operates through regulations and curricula approved by the Ministry of Higher Education and Scientific Research.'
+            },
+            {
+                titleAr: 'تعاون علمي',
+                titleEn: 'Scientific Cooperation',
+                summaryAr: 'تسعى الاتفاقيات الأكاديمية إلى تبادل الخبرات ورفع جودة التعليم وتسهيل فرص الدراسات العليا.',
+                summaryEn: 'Academic agreements support experience exchange, educational quality, and postgraduate opportunities.'
+            },
+            {
+                titleAr: 'خدمة المجتمع',
+                titleEn: 'Community Relevance',
+                summaryAr: 'ترتبط البرامج والأنشطة البحثية باحتياجات التنمية الاقتصادية والاجتماعية.',
+                summaryEn: 'Programs and research activities are aligned with economic and social development needs.'
+            },
+            {
+                titleAr: 'خريجون مؤهلون',
+                titleEn: 'Qualified Graduates',
+                summaryAr: 'تركز التجربة التعليمية على تأهيل الخريجين للمنافسة والتميز في سوق العمل.',
+                summaryEn: 'The learning experience prepares graduates to compete and stand out in the labor market.'
+            }
+        ],
+        timeline: [
+            { year: '2005', labelAr: 'الإحداث', labelEn: 'Established' },
+            { year: '2009', labelAr: 'أول دفعة', labelEn: 'First cohort' },
+            { year: '2012', labelAr: 'تعديل الاسم', labelEn: 'Name updated' }
+        ]
+    },
+
     quickStats: [
         {
             id: 'papers',
@@ -112,12 +176,16 @@ export const aboutPageContent = {
     leadership: {
         eyebrowEn: 'Leadership and Culture',
         eyebrowAr: 'القيادة والثقافة',
-        quoteEn: 'Our role is not only to teach knowledge, but to shape graduates who think clearly, act responsibly, and lead with purpose.',
-        quoteAr: 'دورنا لا يقتصر على تعليم المعرفة، بل على إعداد خريجين يفكرون بوضوح، ويتصرفون بمسؤولية، ويقودون بهدف.',
+        quoteEn: 'The presidency office frames SPU’s academic work around quality, official accreditation, and stronger links between university outputs and community needs.',
+        quoteAr: 'يرتكز عمل رئاسة الجامعة على الجودة والاعتماد الرسمي وتعزيز ارتباط مخرجات الجامعة باحتياجات المجتمع.',
         nameEn: 'Office of the University Presidency',
         nameAr: 'مكتب رئاسة الجامعة',
-        roleEn: 'Academic leadership focused on quality and long-term impact.',
-        roleAr: 'قيادة أكاديمية تركز على الجودة والأثر طويل المدى.'
+        roleEn: 'Academic governance focused on quality, accreditation, and long-term institutional impact.',
+        roleAr: 'حوكمة أكاديمية تركز على الجودة والاعتماد والأثر المؤسسي طويل المدى.',
+        councilTitleEn: 'University Leadership Areas',
+        councilTitleAr: 'مجالات القيادة الجامعية',
+        noteEn: 'Named public records identify Prof. Dr. Abdul Razzaq Sheikh Issa as president of SPU. Other leadership-area cards below are role-based placeholders until official officer names are provided.',
+        noteAr: 'تذكر السجلات العامة اسم الأستاذ الدكتور عبد الرزاق شيخ عيسى رئيساً للجامعة السورية الخاصة. البطاقات الأخرى أدناه مبنية على الأدوار إلى حين تزويد أسماء رسمية.'
     },
     leadershipMembers: [
         {
@@ -125,77 +193,85 @@ export const aboutPageContent = {
             nameAr: 'د. عبد الرزاق شيخ عيسى',
             roleEn: 'President of the University',
             roleAr: 'رئيس الجامعة',
+            bioEn: 'Former Syrian Minister of Higher Education and university president, associated with SPU leadership through official university records.',
+            bioAr: 'وزير التعليم العالي الأسبق ورئيس الجامعة، ويرد اسمه في السجلات الرسمية المرتبطة بقيادة الجامعة السورية الخاصة.',
             image: '/images/about-highlight-1.webp',
             type: 'president'
         },
         {
-            nameEn: 'Dr. Mohammad Al-Jali',
-            nameAr: 'د. محمد الجلي',
-            roleEn: 'Vice President for Academic Affairs',
-            roleAr: 'نائب رئيس الجامعة للشؤون الأكاديمية',
-            image: '/images/faculty-dean-1.webp',
+            nameEn: 'Academic Affairs',
+            nameAr: 'الشؤون الأكاديمية',
+            roleEn: 'Vice Presidency Portfolio',
+            roleAr: 'محفظة نيابة الرئاسة',
+            bioEn: 'Coordinates program quality, curricula, faculty affairs, and student learning outcomes across faculties.',
+            bioAr: 'تنسق جودة البرامج والمناهج وشؤون أعضاء الهيئة التدريسية ومخرجات التعلم في الكليات.',
+            icon: 'fa-book-open-reader',
             type: 'vp'
         },
         {
-            nameEn: 'Dr. Rania Al-Hamed',
-            nameAr: 'د. رانيا الحامد',
-            roleEn: 'Vice President for Administrative Affairs',
-            roleAr: 'نائب رئيس الجامعة للشؤون الإدارية',
-            image: '/images/faculty-dean-2.webp',
+            nameEn: 'Administrative Affairs',
+            nameAr: 'الشؤون الإدارية',
+            roleEn: 'Administrative Leadership Portfolio',
+            roleAr: 'محفظة القيادة الإدارية',
+            bioEn: 'Supports governance, operational planning, student services, facilities, and institutional service quality.',
+            bioAr: 'تدعم الحوكمة والتخطيط التشغيلي وخدمات الطلبة والمرافق وجودة الخدمات المؤسسية.',
+            icon: 'fa-building-columns',
             type: 'vp'
         },
         {
-            nameEn: 'Dr. Ahmad Samer Al-Kabbani',
-            nameAr: 'د. أحمد سامر القباني',
-            roleEn: 'Dean of the Faculty of Medicine',
-            roleAr: 'عميد كلية الطب البشري',
-            image: '/images/about-hero-2.webp',
+            nameEn: 'Faculty Deans Council',
+            nameAr: 'مجلس عمداء الكليات',
+            roleEn: 'Academic Coordination Body',
+            roleAr: 'هيئة تنسيق أكاديمي',
+            bioEn: 'Aligns faculty plans in medicine, dentistry, pharmacy, engineering, petroleum engineering, and business administration.',
+            bioAr: 'يوائم خطط كليات الطب وطب الأسنان والصيدلة والهندسة وهندسة البترول وإدارة الأعمال.',
+            icon: 'fa-users-gear',
             type: 'dean'
         }
     ],
-    history: { // ! Restored history section for history/content.html
+    history: {
         eyebrowEn: 'Our Journey',
         eyebrowAr: 'رحلتنا عبر الزمن',
-        titleEn: 'A legacy of excellence built through determination and vision.',
-        titleAr: 'إرث من التميز بني بالعزيمة والرؤية.',
-        summaryEn: 'Since our establishment in <span translate="no">2005</span>, SPU has evolved from a foundational concept into one of the region\'s leading private academic institutions.',
-        summaryAr: 'منذ تأسيسنا في عام <span translate="no">2005</span>، تطورت SPU من مفهوم تأسيسي لتصبح واحدة من المؤسسات الأكاديمية الخاصة الرائدة في المنطقة.'
+        titleEn: 'From a founding decree to an active private university.',
+        titleAr: 'من مرسوم الإحداث إلى جامعة خاصة فاعلة.',
+        summaryEn: 'SPU was established as the Syrian International Private University for Science and Technology by Republican Decree No. <span translate="no">339</span> dated <span translate="no">7 August 2005</span>. Its name was amended to Syrian Private University by Decree No. <span translate="no">343</span> dated <span translate="no">24 September 2012</span>.',
+        summaryAr: 'أُحدثت الجامعة باسم الجامعة السورية الدولية الخاصة للعلوم والتكنولوجيا بالمرسوم الجمهوري رقم <span translate="no">339</span> تاريخ <span translate="no">7 آب 2005</span>، ثم عُدّل اسمها إلى الجامعة السورية الخاصة بالمرسوم رقم <span translate="no">343</span> تاريخ <span translate="no">24 أيلول 2012</span>.'
     },
-    historyPoints: [ // ! Timeline data for history page
+    historyPoints: [
         {
             year: '2005',
             titleAr: 'تأسيس الصرح الأكاديمي',
-            titleEn: 'Foundation of SPU',
-            descAr: 'صدور المرسوم التشريعي رقم 339 القاضي بتأسيس الجامعة السورية الخاصة كمنارة للعلم والمعرفة في قلب سوريا.',
-            descEn: 'Presidential Decree No. 339 was issued, establishing SPU as a beacon of knowledge in the heart of Syria.' // ! Fixed indentation
+            titleEn: 'Foundation Decree',
+            descAr: 'صدر المرسوم الجمهوري رقم 339 بتاريخ 7 آب 2005 لإحداث الجامعة السورية الدولية الخاصة للعلوم والتكنولوجيا.',
+            descEn: 'Republican Decree No. 339 dated 7 August 2005 established the Syrian International Private University for Science and Technology.'
         },
         {
-            year: '2008',
-            titleAr: 'انطلاقة كليات العلوم الطبية',
-            titleEn: 'Medical Sciences Launch',
-            descAr: 'بدء استقبال الطلاب في كليات الطب البشري وطب الأسنان والصيدلة مع تجهيز أحدث المخابر المتخصصة.',
-            descEn: 'Opening admissions for Medicine, Dentistry, and Pharmacy with state-of-the-art specialized laboratories.'
+            year: '2009',
+            titleAr: 'تخريج الدفعة الأولى',
+            titleEn: 'First Graduating Cohort',
+            descAr: 'خرّجت الجامعة أول دفعة من طلابها، وبدأت رفد المجتمع بخريجين متخصصين قادرين على المنافسة في سوق العمل.',
+            descEn: 'SPU graduated its first cohort, beginning its annual contribution of specialized graduates prepared to compete in the labor market.'
         },
         {
-            year: '2015',
-            titleAr: 'عشر سنوات من العطاء',
-            titleEn: 'A Decade of Excellence',
-            descAr: 'الاحتفال بمرور عشرة أعوام على التأسيس مع تخريج دفعات رفدت سوق العمل بنخبة من الكفاءات العلمية.',
-            descEn: 'Celebrating 10 years of founding, providing the market with top-tier scientific competencies.'
+            year: '2012',
+            titleAr: 'اعتماد اسم الجامعة السورية الخاصة',
+            titleEn: 'Syrian Private University Name',
+            descAr: 'عُدّل اسم الجامعة بموجب المرسوم الجمهوري رقم 343 بتاريخ 24 أيلول 2012 ليصبح الجامعة السورية الخاصة.',
+            descEn: 'Republican Decree No. 343 dated 24 September 2012 amended the institution’s name to Syrian Private University.'
         },
         {
-            year: '2020',
-            titleAr: 'الريادة في البحث العلمي',
-            titleEn: 'Scientific Research Leadership',
-            descAr: 'تصدر الجامعة للمراكز الأولى بين الجامعات الخاصة في النشر العلمي في المجلات العالمية المرموقة.',
-            descEn: 'Ranking first among private universities in scientific publications within prestigious international journals.'
+            year: '2016',
+            titleAr: 'حضور أكاديمي عربي أوروبي',
+            titleEn: 'Arab-European Academic Presence',
+            descAr: 'شاركت الجامعة في المؤتمر العربي الأوروبي الثالث للتعليم العالي في برشلونة بصفتها عضواً عاملاً في اتحاد الجامعات العربية.',
+            descEn: 'SPU participated in the Third Arab-European Conference on Higher Education in Barcelona as an active member of the Association of Arab Universities.'
         },
         {
             year: '2026',
-            titleAr: 'عصر التحول الذكي',
-            titleEn: 'The Smart Transformation Era',
-            descAr: 'إطلاق الاستراتيجية الرقمية الجديدة وتوسيع كليات الهندسة لتشمل علوم الذكاء الاصطناعي والروبوت.',
-            descEn: 'Launching the new digital strategy and expanding Engineering faculties to include AI and Robotics.'
+            titleAr: 'تطوير التجربة الرقمية',
+            titleEn: 'Digital Experience Development',
+            descAr: 'تحديث تجربة الموقع لتقديم مسارات أوضح حول الكليات والقبول والخدمات الإلكترونية وتاريخ الجامعة وشراكاتها.',
+            descEn: 'The website experience is being enhanced to present clearer paths for faculties, admissions, e-services, history, and partnerships.'
         }
     ],
     directorates: {
@@ -286,61 +362,96 @@ export const aboutPageContent = {
 
     partnerships: {
         eyebrowAr: 'شبكة التميز العالمي',
-        eyebrowEn: 'GLOBAL EXCELLENCE NETWORK',
-        titleAr: 'شركاؤنا في النجاح',
-        titleEn: 'Our Partners in Success',
-        summaryAr: 'تتبنى الجامعة السورية الخاصة استراتيجية الانفتاح العلمي من خلال عقد اتفاقيات تعاون مع كبرى المنظمات والجامعات لضمان مستقبل أكاديمي مرموق لطلابنا.',
-        summaryEn: 'SPU adopts a strategy of scientific openness by concluding cooperation agreements with major organizations and universities to ensure a prestigious academic future.',
-        // النص الإضافي تحت العنوان
-        subTextAr: 'نعمل يداً بيد مع مؤسسات رائدة عالمياً لنقل المعرفة وتطوير المهارات السريرية والتقنية.',
-        subTextEn: 'We work hand-in-hand with leading global institutions to transfer knowledge and develop clinical and technical skills.',
+        eyebrowEn: 'SCIENTIFIC COOPERATION',
+        titleAr: 'شراكات توسّع أثر الجامعة',
+        titleEn: 'Partnerships that extend SPU’s impact',
+        summaryAr: 'تهدف اتفاقيات التعاون العلمي إلى تبادل الخبرات التعليمية والبحثية، استضافة كفاءات أكاديمية، تحسين كفاءة أعضاء الهيئة التدريسية، وتسهيل فرص الدراسات العليا والتبادل الطلابي.',
+        summaryEn: 'SPU’s scientific cooperation agreements aim to exchange educational and research experience, host expert lecturers, improve faculty capability, and support postgraduate and student-exchange opportunities.',
+        subTextAr: 'تتضمن البيانات أدناه شراكات وعضويات عامة موثقة، مع بطاقات نموذجية قابلة للاستبدال عند توفر قوائم رسمية أحدث.',
+        subTextEn: 'The data below combines public partnerships and memberships with model cards that can be replaced when newer official lists are provided.',
+        goals: [
+            {
+                titleAr: 'تبادل الخبرات',
+                titleEn: 'Experience Exchange',
+                summaryAr: 'تبادل الخبرات التعليمية والبحثية مع جامعات ومؤسسات مرموقة.',
+                summaryEn: 'Exchange teaching and research experience with reputable institutions.'
+            },
+            {
+                titleAr: 'تطوير الكفاءات',
+                titleEn: 'Faculty Development',
+                summaryAr: 'الاستفادة من خبرات الأساتذة والمحاضرين في التعليم والبحث العلمي.',
+                summaryEn: 'Benefit from experienced professors and lecturers in teaching and research.'
+            },
+            {
+                titleAr: 'الدراسات العليا',
+                titleEn: 'Postgraduate Pathways',
+                summaryAr: 'تسهيل قبول الخريجين في برامج الماجستير والدكتوراه.',
+                summaryEn: 'Support graduates seeking master’s and doctoral study pathways.'
+            },
+            {
+                titleAr: 'الربط بالمجتمع',
+                titleEn: 'Community Alignment',
+                summaryAr: 'ربط مخرجات الجامعة باحتياجات المجتمع والتنمية الاقتصادية والاجتماعية.',
+                summaryEn: 'Link university outputs with community, economic, and social development needs.'
+            }
+        ],
 
         list: [
-            {
-                nameAr: 'منظمة الصحة العالمية',
-                nameEn: 'World Health Organization',
-                logo: '/images/world-health.png',
-                newsLink: '/news-detail.html?id=who-cooperation',
-                website: 'https://www.who.int',
-                descAr: 'تعاون استراتيجي لتعزيز المعايير الطبية التعليمية.',
-                descEn: 'Strategic cooperation to enhance educational medical standards.'
-            },
             {
                 nameAr: 'اتحاد الجامعات العربية',
                 nameEn: 'Association of Arab Universities',
                 logo: '/images/arab-uni.png',
-                newsLink: '/news-detail.html?id=aaru-membership',
-                website: 'http://www.aaru.edu.jo', descAr: 'عضوية فاعلة لتبادل الخبرات الأكاديمية العربية.',
-                descEn: 'Active membership for exchanging Arab academic expertise.'
+                categoryAr: 'عضوية أكاديمية',
+                categoryEn: 'Academic Membership',
+                newsLink: 'https://www.aaru.edu.jo/member-universities/syria/',
+                website: 'https://www.aaru.edu.jo/member-universities/syria/',
+                descAr: 'تظهر الجامعة السورية الخاصة ضمن قائمة الجامعات السورية الأعضاء في اتحاد الجامعات العربية.',
+                descEn: 'Syrian Private University appears among Syrian member universities listed by the Association of Arab Universities.'
+            },
+            {
+                nameAr: 'الجامعات المتعاونة',
+                nameEn: 'Cooperating Universities',
+                logo: '/images/icon-university-outline.svg',
+                categoryAr: 'اتفاقيات تعاون',
+                categoryEn: 'Cooperation Agreements',
+                newsLink: 'https://www.spu.edu.sy/index.php?dir=items&ex=2&lang=2&page=list&service=5',
+                website: 'https://www.spu.edu.sy/index.php?dir=items&ex=2&lang=2&page=list&service=5',
+                descAr: 'تستهدف الاتفاقيات تبادل الخبرات، رفع جودة التعليم، دعم البحث المشترك، وتفعيل التبادل الطلابي.',
+                descEn: 'The agreements target experience exchange, educational quality, joint research, and student exchange.'
             },
             {
                 nameAr: 'منصة كورسيرا العالمية',
-                nameEn: 'Coursera for Campus',
+                nameEn: 'Coursera',
                 logo: '/images/corsera.png',
-                newsLink: '/news-detail.html?id=coursera-spu',
+                categoryAr: 'تعلم رقمي',
+                categoryEn: 'Digital Learning',
+                newsLink: 'https://www.coursera.org',
                 website: 'https://www.coursera.org',
-                descAr: 'توفير مسارات تعليمية رقمية معتمدة دولياً.',
-                descEn: 'Providing internationally accredited digital learning paths.'
+                descAr: 'بطاقة نموذجية لمسارات التعلم الرقمي والشهادات المهنية التي يمكن ربطها بالبرامج الجامعية.',
+                descEn: 'A model card for digital learning paths and professional certificates that can complement university programs.'
             },
             {
-                nameAr: 'جامعة دمشق',
-                nameEn: 'Damascus University',
-                logo: '/images/damascus-uni.png',
-                newsLink: '/news-detail.html?id=damascus-uni-coop',
-                website: 'http://www.damascusuniversity.edu.sy',
-                descAr: 'تعاون أكاديمي وثيق لتبادل الخبرات والبحث العلمي المشترك.',
-                descEn: 'Close academic cooperation for sharing expertise and joint scientific research.'
+                nameAr: 'منظمة الصحة العالمية',
+                nameEn: 'World Health Organization',
+                logo: '/images/world-health.png',
+                categoryAr: 'صحة عامة',
+                categoryEn: 'Public Health',
+                newsLink: 'https://www.who.int',
+                website: 'https://www.who.int',
+                descAr: 'بطاقة نموذجية للتعاون الصحي والمعايير الطبية والتعليمية المرتبطة ببرامج العلوم الصحية.',
+                descEn: 'A model card for health cooperation and medical-education standards connected to health-science programs.'
             },
             {
-                nameAr: 'نقابة المهندسين السوريين',
-                nameEn: 'Order of Syrian Engineers',
-                logo: '/images/engineers-sy.png',
-                newsLink: '/news-detail.html?id=syrian-engineers-partnership',
-                website: 'https://www.ose.org.sy',
-                descAr: 'شراكة مهنية لتدريب الطلاب وتطوير المهارات الهندسية.',
-                descEn: 'Professional partnership for student training and engineering skill development.'
+                nameAr: 'GitHub Education و Microsoft',
+                nameEn: 'GitHub Education and Microsoft',
+                logo: '/images/faculty-ai-engineering-logo.png',
+                categoryAr: 'تقنية وذكاء اصطناعي',
+                categoryEn: 'Technology & AI',
+                newsLink: '/news.html',
+                website: 'https://education.github.com',
+                descAr: 'يعكس خبر المنحة التقنية المتقدمة لطلاب كلية هندسة الذكاء الاصطناعي اتجاهاً نحو بناء مهارات تقنية حديثة.',
+                descEn: 'The advanced technology grant for AI Engineering students reflects SPU’s focus on modern technical skills.'
             }
-            // يمكن إضافة المزيد هنا...
         ]
     },
     highlights: [
@@ -370,34 +481,41 @@ export const aboutPageContent = {
         }
     ],
 
-    subPages: [ // ! Removed messy placeholder comment and kept unified IDs
+    subPages: [
+        {
+            id: 'vision-mission',
+            titleAr: 'الرؤية والرسالة',
+            titleEn: 'Vision & Mission',
+            icon: '/images/icon-award-outline.svg',
+            link: '/about/vision-mission.html'
+        },
         {
             id: 'history',
             titleAr: 'تاريخ الجامعة',
             titleEn: 'History',
-            icon: '/images/icons/history.svg',
-            link: '/about/history/content.html'
+            icon: '/images/icon-history-outline.svg',
+            link: '/about/history.html'
         },
         {
             id: 'leadership',
             titleAr: 'مجلس الجامعة',
             titleEn: 'Leadership',
-            icon: '/images/icons/users.svg',
-            link: '/about/leadership/content.html'
+            icon: '/images/icon-university-outline.svg',
+            link: '/about/leadership.html'
         },
         {
             id: 'directorates',
             titleAr: 'المديريات',
             titleEn: 'Directorates',
-            icon: '/images/icons/sitemap.svg',
-            link: '/about/directorates/content.html'
+            icon: '/images/icon-sitemap-outline.svg',
+            link: '/about/directorates.html'
         },
         {
             id: 'partnership',
             titleAr: 'الشراكات',
             titleEn: 'Partnerships',
-            icon: '/images/icons/handshake.svg',
-            link: '/about/partnership/content.html'
+            icon: '/images/icon-handshake-outline.svg',
+            link: '/about/partnership.html'
         }
     ]
 

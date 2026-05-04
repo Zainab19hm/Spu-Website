@@ -1,3 +1,5 @@
+import { siteRoutes, withHash } from '../../config/site-routes.js';
+
 export const heroContent = {
     titleAr: 'الجامعة السورية الخاصة',
     titleEn: 'Syrian Private University',
@@ -76,10 +78,78 @@ export const statsItems = [
 ];
 
 export const pathItems = [
-    { id: 1, titleAr: 'الطلاب المستجدون', titleEn: 'Prospective Students', icon: '/images/icons/book.svg', linksAr: ['استكشاف البرامج', 'القبول', 'المنح الدراسية', 'الحياة الجامعية'], linksEn: ['Explore programs', 'Admission', 'Scholarships', 'Campus life'], actionAr: 'استكشاف القبول', actionEn: 'Explore Admissions' },
-    { id: 2, titleAr: 'الطلاب الحاليون', titleEn: 'Current Students', icon: '/images/icons/globe.svg', linksAr: ['بوابات الدخول', 'الجداول', 'الخدمات', 'المصادر الأكاديمية'], linksEn: ['Access portals', 'Schedules', 'Services', 'Academic resources'], actionAr: 'عرض المصادر', actionEn: 'View Student Resources' },
-    { id: 3, titleAr: 'الكادر التدريسي والمنظومة', titleEn: 'Faculty & Staff', icon: '/images/icons/sitemap.svg', linksAr: ['أدوات التدريس', 'السياسات', 'الأنظمة', 'الخدمات الداخلية'], linksEn: ['Find teaching tools', 'Policies', 'Systems', 'Internal services'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
-    { id: 4, titleAr: 'الخريجون', titleEn: 'Alumni', icon: '/images/icons/users.svg', linksAr: ['خدمات الخريجين', 'الشبكة', 'الفعاليات', 'التوظيف'], linksEn: ['Alumni Services', 'Network', 'Events', 'Career'], actionAr: 'استكشاف المصادر', actionEn: 'Explore Resources' },
+    { 
+        id: 1, 
+        titleAr: 'الطلاب المستجدون', 
+        titleEn: 'Prospective Students', 
+        icon: '/images/icons/book.svg', 
+        linksAr: [
+            { text: 'استكشاف الكليات', url: siteRoutes.faculties }, 
+            { text: 'متطلبات القبول', url: siteRoutes.admissionsRequirements }, 
+            { text: 'الرسوم الدراسية', url: siteRoutes.admissionsTuition }, 
+            { text: 'الحياة الجامعية', url: siteRoutes.studentLife }
+        ], 
+        linksEn: [
+            { text: 'Explore Faculties', url: siteRoutes.faculties }, 
+            { text: 'Admission Requirements', url: siteRoutes.admissionsRequirements }, 
+            { text: 'Tuition & Fees', url: siteRoutes.admissionsTuition }, 
+            { text: 'Campus Life', url: siteRoutes.studentLife }
+        ]
+    },
+    { 
+        id: 2, 
+        titleAr: 'الطلاب الحاليون', 
+        titleEn: 'Current Students', 
+        icon: '/images/icons/globe.svg', 
+        linksAr: [
+            { text: 'بوابة الطالب', url: siteRoutes.services }, 
+            { text: 'التقويم الأكاديمي', url: siteRoutes.admissionsCalendar }, 
+            { text: 'الخدمات الإلكترونية', url: siteRoutes.services }, 
+            { text: 'المكتبة والدعم', url: withHash(siteRoutes.studentLife, 'services') }
+        ], 
+        linksEn: [
+            { text: 'Student Portal', url: siteRoutes.services }, 
+            { text: 'Academic Calendar', url: siteRoutes.admissionsCalendar }, 
+            { text: 'E-Services', url: siteRoutes.services }, 
+            { text: 'Library & Support', url: withHash(siteRoutes.studentLife, 'services') }
+        ]
+    },
+    { 
+        id: 3, 
+        titleAr: 'الكادر التدريسي والمنظومة', 
+        titleEn: 'Faculty & Staff', 
+        icon: '/images/icons/sitemap.svg', 
+        linksAr: [
+            { text: 'البريد الجامعي', url: siteRoutes.services }, 
+            { text: 'الأنظمة الإدارية', url: siteRoutes.services }, 
+            { text: 'رئاسة الجامعة', url: siteRoutes.aboutLeadership }, 
+            { text: 'البحث العلمي', url: siteRoutes.research }
+        ], 
+        linksEn: [
+            { text: 'University Email', url: siteRoutes.services }, 
+            { text: 'Administrative Systems', url: siteRoutes.services }, 
+            { text: 'University Leadership', url: siteRoutes.aboutLeadership }, 
+            { text: 'Scientific Research', url: siteRoutes.research }
+        ]
+    },
+    { 
+        id: 4, 
+        titleAr: 'الخريجون', 
+        titleEn: 'Alumni', 
+        icon: '/images/icons/users.svg', 
+        linksAr: [
+            { text: 'تواصل معنا', url: siteRoutes.contact }, 
+            { text: 'آخر الأخبار', url: siteRoutes.news }, 
+            { text: 'دليل الكليات', url: siteRoutes.faculties }, 
+            { text: 'عن الجامعة', url: siteRoutes.about }
+        ], 
+        linksEn: [
+            { text: 'Contact Us', url: siteRoutes.contact }, 
+            { text: 'Latest News', url: siteRoutes.news }, 
+            { text: 'Faculties Guide', url: siteRoutes.faculties }, 
+            { text: 'About SPU', url: siteRoutes.about }
+        ]
+    },
 ];
 
 export const honorPanelItems = [
@@ -96,7 +166,7 @@ export const honorPanelItems = [
         highlightsEn: ['Official recognition', 'Field photography', 'Academic excellence'],
         highlightsAr: ['تكريم رسمي', 'تصوير ميداني', 'تميّز أكاديمي'],
         image: '/images/dsc-1060.webp',
-        link: '/faculty.html?id=medicine'
+        link: `${siteRoutes.faculties}?id=medicine`
     },
     {
         id: 2,
@@ -111,7 +181,7 @@ export const honorPanelItems = [
         highlightsEn: ['Innovation programs', 'Student projects', 'Research visibility'],
         highlightsAr: ['برامج الابتكار', 'مشاريع طلابية', 'حضور بحثي'],
         image: '/images/dsc-1075.webp',
-        link: '/research.html#research-priorities'
+        link: withHash(siteRoutes.research, 'research-priorities')
     },
     {
         id: 3,
@@ -138,11 +208,11 @@ export const newsItems = [
 ];
 
 export const researchItems = [
-    { id: 1, category: 'Medicine', tagColor: '#d32f2f', metaEn: 'Faculty of Medicine', metaAr: 'كلية الطب', titleEn: 'Clinical Simulation and Preventive Health Research', titleAr: 'أبحاث المحاكاة السريرية والصحة الوقائية', summaryEn: 'Faculty-led work highlights early diagnosis and community health studies.', summaryAr: 'تسلط أعمال الكلية الضوء على دراسات التشخيص المبكر وصحة المجتمع.', image: '/images/frame-114.webp', link: '/research.html#research-priorities' },
-    { id: 2, category: 'Dentistry', tagColor: '#1976d2', metaEn: 'Faculty of Dentistry', metaAr: 'كلية طب الأسنان', titleEn: 'Digital Dentistry and Oral Regeneration Studies', titleAr: 'دراسات طب الأسنان الرقمي وتجديد الأنسجة الفموية', summaryEn: 'Research themes include restorative techniques and evidence-based planning.', summaryAr: 'تشمل محاور البحث تقنيات الترميم والتخطيط القائم على الأدلة.', image: '/images/unsplash_s9CC2SKySJM.webp', link: '/research.html#research-initiatives' },
-    { id: 3, category: 'Pharmacy', tagColor: '#388e3c', metaEn: 'Faculty of Pharmacy', metaAr: 'كلية الصيدلة', titleEn: 'Drug Formulation, Quality Control, and Therapeutics', titleAr: 'صياغة الأدوية، مراقبة الجودة، والعلاجات', summaryEn: 'Projects focus on safe and effective medication use studies.', summaryAr: 'تركز المشاريع على دراسات الاستخدام الآمن والفعال للأدوية.', image: '/images/unsplash_VckdJzo7ig0.webp', link: '/research.html' },
-    { id: 4, category: 'AI', tagColor: '#7b1fa2', metaEn: 'Faculty of AI Engineering', metaAr: 'كلية هندسة الذكاء الاصطناعي', titleEn: 'Applied AI for Industrial Systems', titleAr: 'الذكاء الاصطناعي التطبيقي للأنظمة الصناعية', summaryEn: 'Exploring intelligent systems and data-driven decision support.', summaryAr: 'استكشاف الأنظمة الذكية ودعم القرار القائم على البيانات.', image: '/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp', link: '/research.html#research-priorities' },
-    { id: 5, category: 'Construction', tagColor: '#7e8b8c', metaEn: 'Faculty of Construction Engineering', metaAr: 'كلية هندسة البناء', titleEn: 'Smart Construction and Sustainable Design', titleAr: 'البناء الذكي والتصميم المستدام', summaryEn: 'Investigating structural performance and site efficiency.', summaryAr: 'التحقيق في الأداء الإنشائي وكفاءة الموقع.', image: '/images/Gemini_Generated_Image_rrcjc2rrcjc2rrcj.webp', link: '/research.html#research-initiatives' }
+    { id: 1, category: 'Medicine', tagColor: '#d32f2f', metaEn: 'Faculty of Medicine', metaAr: 'كلية الطب', titleEn: 'Clinical Simulation and Preventive Health Research', titleAr: 'أبحاث المحاكاة السريرية والصحة الوقائية', summaryEn: 'Faculty-led work highlights early diagnosis and community health studies.', summaryAr: 'تسلط أعمال الكلية الضوء على دراسات التشخيص المبكر وصحة المجتمع.', image: '/images/frame-114.webp', link: withHash(siteRoutes.research, 'research-priorities') },
+    { id: 2, category: 'Dentistry', tagColor: '#1976d2', metaEn: 'Faculty of Dentistry', metaAr: 'كلية طب الأسنان', titleEn: 'Digital Dentistry and Oral Regeneration Studies', titleAr: 'دراسات طب الأسنان الرقمي وتجديد الأنسجة الفموية', summaryEn: 'Research themes include restorative techniques and evidence-based planning.', summaryAr: 'تشمل محاور البحث تقنيات الترميم والتخطيط القائم على الأدلة.', image: '/images/unsplash_s9CC2SKySJM.webp', link: withHash(siteRoutes.research, 'research-initiatives') },
+    { id: 3, category: 'Pharmacy', tagColor: '#388e3c', metaEn: 'Faculty of Pharmacy', metaAr: 'كلية الصيدلة', titleEn: 'Drug Formulation, Quality Control, and Therapeutics', titleAr: 'صياغة الأدوية، مراقبة الجودة، والعلاجات', summaryEn: 'Projects focus on safe and effective medication use studies.', summaryAr: 'تركز المشاريع على دراسات الاستخدام الآمن والفعال للأدوية.', image: '/images/unsplash_VckdJzo7ig0.webp', link: siteRoutes.research },
+    { id: 4, category: 'AI', tagColor: '#7b1fa2', metaEn: 'Faculty of AI Engineering', metaAr: 'كلية هندسة الذكاء الاصطناعي', titleEn: 'Applied AI for Industrial Systems', titleAr: 'الذكاء الاصطناعي التطبيقي للأنظمة الصناعية', summaryEn: 'Exploring intelligent systems and data-driven decision support.', summaryAr: 'استكشاف الأنظمة الذكية ودعم القرار القائم على البيانات.', image: '/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp', link: withHash(siteRoutes.research, 'research-priorities') },
+    { id: 5, category: 'Construction', tagColor: '#7e8b8c', metaEn: 'Faculty of Construction Engineering', metaAr: 'كلية هندسة البناء', titleEn: 'Smart Construction and Sustainable Design', titleAr: 'البناء الذكي والتصميم المستدام', summaryEn: 'Investigating structural performance and site efficiency.', summaryAr: 'التحقيق في الأداء الإنشائي وكفاءة الموقع.', image: '/images/Gemini_Generated_Image_rrcjc2rrcjc2rrcj.webp', link: withHash(siteRoutes.research, 'research-initiatives') }
 ];
 
 export const healthcareContent = {
@@ -156,7 +226,7 @@ export const healthcareContent = {
         featuresAr: ['مشفى الجامعة', 'عيادة الأسنان', 'دعم التعلم السريري'],
         actionEn: 'Explore Hospital',
         actionAr: 'استكشاف المشفى',
-        link: '/faculty.html?id=medicine'
+        link: `${siteRoutes.faculties}?id=medicine`
     },
     hospitalCard: {
         image: '/images/healthcare-hospital.webp',
@@ -164,7 +234,7 @@ export const healthcareContent = {
         titleAr: 'مشفى SPU',
         descriptionEn: 'Advanced medical diagnostics and clinical training facilities.',
         descriptionAr: 'تشخيص طبي متقدم ومرافق تدريب سريري.',
-        link: '/contact.html#visit-campus'
+        link: withHash(siteRoutes.contact, 'visit-campus')
     },
     dentalCard: {
         image: '/images/healthcare-dental.webp',
@@ -174,7 +244,7 @@ export const healthcareContent = {
         descriptionAr: 'وحدات أسنان حديثة للممارسة العملية ورعاية المرضى.',
         linkTextEn: 'Explore Clinic',
         linkTextAr: 'استكشاف العيادة',
-        link: '/faculty.html?id=dentistry'
+        link: `${siteRoutes.faculties}?id=dentistry`
     },
     stats: [
         { id: 1, labelEn: 'HOSPITAL BEDS', labelAr: 'أسرة المشفى', value: 200, current: 0, suffixEn: '+', suffixAr: '+' },
@@ -185,15 +255,15 @@ export const healthcareContent = {
 };
 
 export const mockCalendarEvents = [
-    { id: 1, type: 'Seminar', titleEn: 'Open Campus Seminar', titleAr: 'ندوة الحرم الجامعي المفتوح', date: '2026-03-13', image: '/images/slider-2.webp', descriptionEn: 'Explore campus and learn about programs.', descriptionAr: 'استكشف الحرم الجامعي وتعرف على البرامج الدراسية.', link: '/admissions.html' },
-    { id: 2, type: 'Workshop', titleEn: 'Program Discovery Workshop', titleAr: 'ورشة عمل اكتشاف البرامج', date: '2026-03-13', image: '/images/slider-3.webp', descriptionEn: 'Interactive workshop for academic track planning.', descriptionAr: 'ورشة عمل تفاعلية للتخطيط للمسار الأكاديمي.', link: '/admissions.html' },
-    { id: 3, type: 'Tour', titleEn: 'Campus Tour', titleAr: 'جولة في الحرم الجامعي', date: '2026-03-13', image: '/images/unsplash_s9CC2SKySJM.webp', descriptionEn: 'Guided tour of university student spaces.', descriptionAr: 'جولة إرشادية في مسارات الطلاب بالجامعة.', link: '/contact.html#visit-campus' },
-    { id: 4, type: 'Research Talk', titleEn: 'Medical Innovation Forum', titleAr: 'منتدى الابتكار الطبي', date: '2026-03-23', image: '/images/slider-4.webp', descriptionEn: 'Faculty researchers share current medical innovations.', descriptionAr: 'باحثون من الهيئة التدريسية يشاركون الابتكارات الطبية الحالية.', link: '/research.html' },
-    { id: 5, type: 'Student Life', titleEn: 'Campus Clubs Fair', titleAr: 'معرض الأندية الجامعية', date: '2026-03-30', image: '/images/unsplash_VckdJzo7ig0.webp', descriptionEn: 'Join activities matching your interests on campus.', descriptionAr: 'انضم إلى الأنشطة التي تناسب اهتماماتك في الحرم الجامعي.', link: '/student-life.html#activities' },
-    { id: 6, type: 'Cultural Event', titleEn: 'Spring Arts Festival', titleAr: 'مهرجان الفنون الربيعي', date: '2026-04-10', image: '/images/slider-1.webp', descriptionEn: 'Annual spring festival celebrating arts and music.', descriptionAr: 'مهرجان الربيع السنوي للاحتفال بالفنون والموسيقى.', link: '/events.html' },
-    { id: 7, type: 'Academic', titleEn: 'Final Projects Showcase', titleAr: 'عرض المشاريع النهائية', date: '2026-04-15', image: '/images/slider-2.webp', descriptionEn: 'Engineering students present their final graduation projects.', descriptionAr: 'طلاب الهندسة يقدمون مشاريع تخرجهم النهائية.', link: '/research.html' },
-    { id: 8, type: 'Health', titleEn: 'Free Dental Checkup Day', titleAr: 'يوم فحص الأسنان المجاني', date: '2026-04-20', image: '/images/healthcare-dental.webp', descriptionEn: 'Public dental health awareness and free checkups.', descriptionAr: 'التوعية بصحة الأسنان العامة وفحوصات مجانية.', link: '/faculty.html?id=dentistry' },
-    { id: 9, type: 'Registration', titleEn: 'Summer Semester Registration', titleAr: 'التسجيل في الفصل الصيفي', date: '2026-04-20', image: '/images/slider-3.webp', descriptionEn: 'Official registration period for summer courses begins.', descriptionAr: 'بدء فترة التسجيل الرسمية للمقررات الصيفية.', link: '/admissions.html' },
-    { id: 10, type: 'Talk', titleEn: 'Engineering Alumni Career Talk', titleAr: 'لقاء مهني مع خريجي الهندسة', date: '2026-04-10', image: '/images/unsplash_VckdJzo7ig0.webp', descriptionEn: 'Successful alumni share their career journeys with students.', descriptionAr: 'خريجون ناجحون يشاركون مساراتهم المهنية مع الطلاب.', link: '/student-life.html' },
-    { id: 11, type: 'Science', titleEn: 'Robotics Team Competition', titleAr: 'مسابقة فريق الروبوتات', date: '2026-04-25', image: '/images/slider-4.webp', descriptionEn: 'University robotics teams showcase their latest inventions.', descriptionAr: 'عرض الفرق الجامعية للروبوتات لأحدث ابتكاراتها.', link: '/faculty.html' }
+    { id: 1, type: 'Seminar', titleEn: 'Open Campus Seminar', titleAr: 'ندوة الحرم الجامعي المفتوح', date: '2026-03-13', image: '/images/slider-2.webp', descriptionEn: 'Explore campus and learn about programs.', descriptionAr: 'استكشف الحرم الجامعي وتعرف على البرامج الدراسية.', link: siteRoutes.admissions },
+    { id: 2, type: 'Workshop', titleEn: 'Program Discovery Workshop', titleAr: 'ورشة عمل اكتشاف البرامج', date: '2026-03-13', image: '/images/slider-3.webp', descriptionEn: 'Interactive workshop for academic track planning.', descriptionAr: 'ورشة عمل تفاعلية للتخطيط للمسار الأكاديمي.', link: siteRoutes.admissions },
+    { id: 3, type: 'Tour', titleEn: 'Campus Tour', titleAr: 'جولة في الحرم الجامعي', date: '2026-03-13', image: '/images/unsplash_s9CC2SKySJM.webp', descriptionEn: 'Guided tour of university student spaces.', descriptionAr: 'جولة إرشادية في مسارات الطلاب بالجامعة.', link: withHash(siteRoutes.contact, 'visit-campus') },
+    { id: 4, type: 'Research Talk', titleEn: 'Medical Innovation Forum', titleAr: 'منتدى الابتكار الطبي', date: '2026-03-23', image: '/images/slider-4.webp', descriptionEn: 'Faculty researchers share current medical innovations.', descriptionAr: 'باحثون من الهيئة التدريسية يشاركون الابتكارات الطبية الحالية.', link: siteRoutes.research },
+    { id: 5, type: 'Student Life', titleEn: 'Campus Clubs Fair', titleAr: 'معرض الأندية الجامعية', date: '2026-03-30', image: '/images/unsplash_VckdJzo7ig0.webp', descriptionEn: 'Join activities matching your interests on campus.', descriptionAr: 'انضم إلى الأنشطة التي تناسب اهتماماتك في الحرم الجامعي.', link: withHash(siteRoutes.studentLife, 'activities') },
+    { id: 6, type: 'Cultural Event', titleEn: 'Spring Arts Festival', titleAr: 'مهرجان الفنون الربيعي', date: '2026-04-10', image: '/images/slider-1.webp', descriptionEn: 'Annual spring festival celebrating arts and music.', descriptionAr: 'مهرجان الربيع السنوي للاحتفال بالفنون والموسيقى.', link: siteRoutes.news },
+    { id: 7, type: 'Academic', titleEn: 'Final Projects Showcase', titleAr: 'عرض المشاريع النهائية', date: '2026-04-15', image: '/images/slider-2.webp', descriptionEn: 'Engineering students present their final graduation projects.', descriptionAr: 'طلاب الهندسة يقدمون مشاريع تخرجهم النهائية.', link: siteRoutes.research },
+    { id: 8, type: 'Health', titleEn: 'Free Dental Checkup Day', titleAr: 'يوم فحص الأسنان المجاني', date: '2026-04-20', image: '/images/healthcare-dental.webp', descriptionEn: 'Public dental health awareness and free checkups.', descriptionAr: 'التوعية بصحة الأسنان العامة وفحوصات مجانية.', link: `${siteRoutes.faculties}?id=dentistry` },
+    { id: 9, type: 'Registration', titleEn: 'Summer Semester Registration', titleAr: 'التسجيل في الفصل الصيفي', date: '2026-04-20', image: '/images/slider-3.webp', descriptionEn: 'Official registration period for summer courses begins.', descriptionAr: 'بدء فترة التسجيل الرسمية للمقررات الصيفية.', link: siteRoutes.admissions },
+    { id: 10, type: 'Talk', titleEn: 'Engineering Alumni Career Talk', titleAr: 'لقاء مهني مع خريجي الهندسة', date: '2026-04-10', image: '/images/unsplash_VckdJzo7ig0.webp', descriptionEn: 'Successful alumni share their career journeys with students.', descriptionAr: 'خريجون ناجحون يشاركون مساراتهم المهنية مع الطلاب.', link: siteRoutes.studentLife },
+    { id: 11, type: 'Science', titleEn: 'Robotics Team Competition', titleAr: 'مسابقة فريق الروبوتات', date: '2026-04-25', image: '/images/slider-4.webp', descriptionEn: 'University robotics teams showcase their latest inventions.', descriptionAr: 'عرض الفرق الجامعية للروبوتات لأحدث ابتكاراتها.', link: siteRoutes.faculties }
 ];

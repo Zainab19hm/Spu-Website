@@ -1,0 +1,27 @@
+<section x-data class="relative font-hacen">
+    <!-- Full Width Map -->
+    <h1 class="container relative mt-20 mb-8 text-spu-blue text-center text-[44px] font-bold z-10 flex items-center justify-center">
+        <span
+            x-text="$store.app.currentLang === 'ar' ? $store.contactPage.location.titleAr : $store.contactPage.location.titleEn"></span>
+    </h1>
+    <div class="relative h-[400px]">
+        <div class="inset-0 relative w-full h-full">
+            <!-- overlay layer -->
+            <div class="top-0 left-0 w-full h-full absolute z-10 bg-spu-blue/20"></div>
+            <iframe :src="$store.footer.location.mapUrl"
+                class="h-full w-full grayscale-[0.2] transition-all duration-700 hover:grayscale-0" style="border:0;"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="container absolute bottom-[45%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
+            <div class="">
+                <a :href="$store.contactPage.location.mapUrl" target="_blank"
+                    class="inline-flex items-center gap-3 bg-spu-red px-10 py-4 text-sm font-bold text-white transition-all hover:bg-spu-red/90 hover:shadow-xl active:scale-95">
+                    <i class="fas fa-directions"></i>
+                    <span
+                        x-text="$store.app.currentLang === 'ar' ? $store.contactPage.location.buttonAr : $store.contactPage.location.buttonEn"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

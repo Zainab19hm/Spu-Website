@@ -3,6 +3,7 @@ import { registerLayoutStores } from './register-layout-stores.js';
 const pageStoreLoaders = {
     home: () => import('./pages/home-stores.js').then((module) => module.registerHomeStores),
     about: () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'about-vision-mission': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-history': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-leadership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorates': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),

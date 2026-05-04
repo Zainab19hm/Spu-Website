@@ -1,0 +1,15 @@
+<!-- Hero Section -->
+<div class="relative h-72 overflow-hidden md:h-[450px] w-full" id="digital-services-hero" x-data>
+    <img :src="$store.servicesPage.hero.image_hero" alt="Digital Services" class="absolute inset-0 h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-[#1e2756]/50"></div>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+        <div class="bg-[#1e2756]/80 px-4 py-1.5 rounded text-xs font-bold uppercase tracking-[0.2em] mb-4"
+            x-text="$store.app.currentLang === 'ar' ? 'بوابة الحرم الجامعي الرقمية' : 'DIGITAL CAMPUS GATEWAY'"></div>
+        <h1 class="text-4xl md:text-5xl lg:text-[44px] font-bold leading-tight"
+            x-text="$store.app.currentLang === 'ar' ? 'الخدمات الإلكترونية الجامعية' : 'University E-Services'">
+        </h1>
+        <p class="mt-4 max-w-[800px] text-sm md:text-base text-white/90 leading-relaxed font-medium"
+            x-text="$store.app.currentLang === 'ar' ? $store.servicesPage.digitalServices.summaryAr : $store.servicesPage.digitalServices.summaryEn">
+        </p>
+    </div>
+</div>

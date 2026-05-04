@@ -25,10 +25,11 @@ export const navigationMenuItems = [
         page: 'about',
         hasDropdown: true,
         children: [
-            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: '/about/leadership.html' },
-            { labelAr: 'تاريخنا', labelEn: 'Our History', url: '/about/history.html' },
-            { labelAr: 'المديريات', labelEn: 'Directorates', url: '/about/directorates.html' },
-            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: '/about/partnership.html' }
+            { labelAr: 'الرؤية والرسالة', labelEn: 'Vision & Mission', url: siteRoutes.aboutVisionMission },
+            { labelAr: 'القيادة الجامعية', labelEn: 'Leadership', url: siteRoutes.aboutLeadership },
+            { labelAr: 'تاريخنا', labelEn: 'Our History', url: siteRoutes.aboutHistory },
+            { labelAr: 'المديريات', labelEn: 'Directorates', url: siteRoutes.aboutDirectorates },
+            { labelAr: 'الشراكات', labelEn: 'Partnerships', url: siteRoutes.aboutPartnership }
         ]
     },
 
@@ -57,10 +58,10 @@ export const navigationMenuItems = [
         page: 'admissions',
         hasDropdown: true,
         children: [
-            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: '/admissions/requirements.html' },
-            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: '/admissions/tuition.html' },
-            { labelAr: 'كيفية التقديم', labelEn: 'How to Apply', url: '/admissions/how-to-apply.html' },
-            { labelAr: 'الأسئلة الشائعة', labelEn: 'FAQ', url: '/admissions/faq.html' }
+            { labelAr: 'شروط القبول', labelEn: 'Admission Requirements', url: siteRoutes.admissionsRequirements },
+            { labelAr: 'الرسوم الدراسية', labelEn: 'Tuition Fees', url: siteRoutes.admissionsTuition },
+            { labelAr: 'كيفية التقديم', labelEn: 'How to Apply', url: siteRoutes.admissionsHowToApply },
+            { labelAr: 'الأسئلة الشائعة', labelEn: 'FAQ', url: siteRoutes.admissionsFAQ }
         ]
     },
     {
@@ -73,7 +74,7 @@ export const navigationMenuItems = [
         children: [
             { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: withHash(siteRoutes.studentLife, 'services') },
             { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
-            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: '/admissions/calendar.html' }
+            { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: siteRoutes.admissionsCalendar }
         ]
     },
     {

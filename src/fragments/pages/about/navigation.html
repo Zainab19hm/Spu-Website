@@ -19,8 +19,8 @@
 
                 <p class="mt-4 max-w-[400px] text-base leading-relaxed text-slate-400"
                    x-text="$store.app.currentLang === 'ar'
-                       ? 'تعرّف على تاريخنا وقيادتنا ومديرياتنا وشراكاتنا الأكاديمية.'
-                       : 'Explore our history, leadership, directorates, and academic partnerships.'">
+                       ? 'تعرّف على رؤيتنا ورسالتنا وتاريخنا وقيادتنا ومديرياتنا وشراكاتنا الأكاديمية.'
+                       : 'Explore our vision, mission, history, leadership, directorates, and academic partnerships.'">
                 </p>
 
                 <div class="mt-6 h-[3px] w-16 rounded-full bg-spu-red/50"></div>
@@ -28,7 +28,7 @@
 
             <!-- Right: 2×2 card grid -->
             <div class="w-full flex-1">
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     <template x-for="(sub, idx) in $store.aboutPage.subPages" :key="sub.id">
                         <a :href="sub.link"
                            @click="$store.aboutPage.navigate($event, sub.id)"
@@ -39,7 +39,7 @@
                                 <!-- Icon circle -->
                                 <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-spu-blue/5 transition-colors duration-300 group-hover:bg-spu-blue">
                                     <i class="text-lg text-spu-blue transition-colors duration-300 group-hover:text-white"
-                                       :class="idx === 0 ? 'fas fa-landmark' : idx === 1 ? 'fas fa-users' : idx === 2 ? 'fas fa-sitemap' : 'fas fa-handshake'"></i>
+                                       :class="sub.id === 'vision-mission' ? 'fas fa-compass' : sub.id === 'history' ? 'fas fa-landmark' : sub.id === 'leadership' ? 'fas fa-users' : sub.id === 'directorates' ? 'fas fa-sitemap' : 'fas fa-handshake'"></i>
                                 </div>
                                 <!-- Arrow -->
                                 <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 text-slate-300 transition-all duration-300 group-hover:bg-spu-red group-hover:text-white">
