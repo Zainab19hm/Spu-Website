@@ -1,19 +1,40 @@
-<section x-data class="page-hero relative overflow-hidden bg-spu-blue text-white font-hacen">
-    <div class="absolute inset-0 opacity-60" style="background: radial-gradient(circle at top right, rgba(202,169,73,0.28), transparent 42%), radial-gradient(circle at bottom left, rgba(43,125,179,0.24), transparent 34%);"></div>
-    <div class="container relative z-10 grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-        <div class="max-w-3xl">
-            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/60" x-text="$store.app.currentLang === 'ar' ? $store.newsPage.hero.eyebrowAr : $store.newsPage.hero.eyebrowEn"></p>
-            <h1 class="mt-6 text-4xl font-bold leading-tight md:text-5xl xl:text-6xl" x-text="$store.app.currentLang === 'ar' ? $store.newsPage.hero.titleAr : $store.newsPage.hero.titleEn"></h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/78" x-text="$store.app.currentLang === 'ar' ? $store.newsPage.hero.summaryAr : $store.newsPage.hero.summaryEn"></p>
-        </div>
+<section x-data class="relative h-screen flex items-center justify-center overflow-hidden py-24">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0 ">
+        <img :src="$store.newsPage.hero.image" alt="News Hero" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-spu-blue/40"></div>
+    </div>
 
-        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-            <template x-for="metric in $store.newsPage.metrics" :key="metric.labelEn">
-                <article class="rounded-[24px] border border-white/12 bg-white/10 p-5 backdrop-blur-md shadow-[0_24px_70px_rgba(8,15,42,0.18)]">
-                    <p class="text-2xl font-bold text-white" x-text="metric.value"></p>
-                    <p class="mt-2 text-xs uppercase tracking-[0.2em] text-white/62" x-text="$store.app.currentLang === 'ar' ? metric.labelAr : metric.labelEn"></p>
-                </article>
-            </template>
+    <div class="container relative top-26 z-10 text-center text-white">
+        <div class="">
+            <h1 class="text-[48px] font-bold uppercase tracking-[0.4em] text-spu-gold mb-6" 
+                x-text="$store.app.currentLang === 'ar' ? $store.newsPage.hero.eyebrowAr : $store.newsPage.hero.eyebrowEn"></h1>
+            
+            <p class="text-[30px] font-bold leading-tight mb-8"
+                x-text="$store.app.currentLang === 'ar' ? $store.newsPage.hero.titleAr : $store.newsPage.hero.titleEn"></p>
+
+            <!-- Navigation Links -->
+            <div class="mt-12 space-y-4">
+                <!-- First Row: 3 items -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <template x-for="link in $store.newsPage.hero.links.slice(0, 3)" :key="link.id">
+                        <a :href="'#' + link.id" 
+                           class="px-10 py-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-md text-sm font-bold transition-all hover:bg-white/20 hover:border-white/40"
+                           x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn">
+                        </a>
+                    </template>
+                </div>
+                <!-- Second Row: 2 items -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <template x-for="link in $store.newsPage.hero.links.slice(3, 5)" :key="link.id">
+                        <a :href="'#' + link.id" 
+                           class="px-10 py-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-md text-sm font-bold transition-all hover:bg-white/20 hover:border-white/40"
+                           x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn">
+                        </a>
+                    </template>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+

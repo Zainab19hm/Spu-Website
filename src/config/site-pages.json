@@ -256,7 +256,9 @@
       "fragments": [
         "pages/news/hero.html",
         "pages/news/featured.html",
-        "pages/news/archive.html"
+        "pages/news/last-news.html",
+        "pages/news/announcements.html",
+        "pages/news/explore.html"
       ]
     },
     {

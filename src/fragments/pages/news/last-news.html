@@ -1,0 +1,46 @@
+<section id="last-news" x-data class="bg-white py-20 font-hacen">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-5xl font-bold text-[#202759]"
+                x-text="$store.app.currentLang === 'ar' ? 'آخر الأخبار' : 'Last News'"></h2>
+            <a href="#" class="px-10 py-2 border border-slate-300 rounded text-sm font-bold text-[#202759] hover:bg-slate-50 transition-colors"
+               x-text="$store.app.currentLang === 'ar' ? 'عرض الكل' : 'View All News'"></a>
+        </div>
+
+        <!-- News Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="(news, index) in $store.newsPage.lastNews" :key="news.id">
+                <article class="bg-white relative rounded-[8px] h-[500px] overflow-hidden transition-all duration-300 group border-2  border-[#CBD5E1B2] hover:shadow-2xl"
+                         :class="index === 3 ? 'lg:col-span-2'  : 'col-span-1'"
+                         >
+                                           
+                    <!-- Image Container -->
+                    <div class="relative overflow-hidden w-full"  :class="index === 3 ? 'h-[60%]'  : 'h-[55%]'">
+                        <img :src="news.image" :alt="$store.app.currentLang === 'ar' ? news.titleAr : news.titleEn" 
+                             class="w-full h-full object-cover">
+                        
+                        <!-- Category Badge -->
+                        <div class="absolute top-5 left-5 rtl:left-auto rtl:right-5">
+                            <span class="px-5 py-1.5 bg-white rounded-lg text-[12px] font-bold text-[#202759] shadow-sm"
+                                  x-text="$store.app.currentLang === 'ar' ? news.categoryAr : news.categoryEn"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-8">
+                        <div class="relative">
+                            <h3 class="text-[18px] max-h-[62px] overflow-hidden z-10 bg-white top-[-60px] py-[3px] w-[300px] px-5 absolute  font-bold text-[#202759]" 
+                                x-text="$store.app.currentLang === 'ar' ? news.titleAr : news.titleEn" :style="$store.app.currentLang === 'ar' ? 'right:-32px' : 'left:-32px'"></h3>
+                            <p class="text-[14px] font-medium text-[#c0392b] mb-5 lowercase" 
+                               x-text="news.date"></p>
+                            <p class="text-[16px] text-slate-900 leading-relaxed line-clamp-3"
+                               x-text="$store.app.currentLang === 'ar' ? news.summaryAr : news.summaryEn"></p>
+                        </div>
+                    </div>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>
+
