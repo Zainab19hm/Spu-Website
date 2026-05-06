@@ -36,7 +36,7 @@
             <h1 class="reveal reveal-up text-4xl md:text-6xl font-black text-white mb-4"
                 x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
             <p class="reveal reveal-up reveal-delay-1 text-white/80 font-bold mb-8 uppercase tracking-widest"
-               x-text="$store.admissionsPage.getFormattedDate($store.app.currentLang)"></p>
+               x-text="$store.date.getFormattedDate($store.app.currentLang)"></p>
             
             <a href="#" class="reveal reveal-up reveal-delay-1 inline-flex items-center gap-3 px-8 py-3 bg-white/10 text-white rounded-xl border border-white/20 hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-file-pdf"></i>

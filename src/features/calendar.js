@@ -46,9 +46,9 @@ export function createCalendarApp() {
                 .filter(Boolean)
                 .sort((a, b) => a.dateKey.localeCompare(b.dateKey));
 
-            const initialDate = this.rawEvents[0]?.dateKey ?? dayjs().format('YYYY-MM-DD');
-            this.selectedDate = initialDate;
-            this.viewDate = dayjs(initialDate).startOf('month');
+            const today = dayjs().format('YYYY-MM-DD');
+            this.selectedDate = today;
+            this.viewDate = dayjs(today).startOf('month');
             this.activeEventIndex = 0;
         },
 
@@ -86,6 +86,7 @@ export function createCalendarApp() {
             const groupedEvents = this.eventsByDate;
             const monthStart = this.viewDate.startOf('month');
             const gridStart = monthStart;
+            const today = dayjs().format('YYYY-MM-DD');
 
             return Array.from({ length: CALENDAR_GRID_DAYS }, (_, index) => {
                 const currentDay = gridStart.add(index, 'day');
@@ -96,6 +97,7 @@ export function createCalendarApp() {
                     date: dateKey,
                     dayNumber: isCurrentMonth ? `<span translate="no">${currentDay.date()}</span>` : '', // !
                     isCurrentMonth: isCurrentMonth,
+                    isToday: dateKey === today,
                     hasEvent: isCurrentMonth && (groupedEvents[dateKey] || []).length > 0
                 };
             });

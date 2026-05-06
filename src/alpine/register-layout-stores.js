@@ -2,6 +2,7 @@ import { appUi, navigationMenuItems, footerContent } from '../data/layout-conten
 import { portalAccessConfig } from '../data/domains/portal-access.js';
 import { siteRoutes } from '../config/site-routes.js';
 import { cloneData } from '../utils/clone.js';
+import { registerDateStore } from './date-store.js';
 
 const portalSessionStorageKey = 'spu.portal.session';
 
@@ -60,6 +61,8 @@ function buildProtectedRoute(destination) {
 export function registerLayoutStores(Alpine, { pageName = 'home' } = {}) {
     const savedLang = readLocalStorageValue('lang', 'en') || 'en';
     const savedPortalSession = readPortalSession();
+
+    registerDateStore(Alpine);
 
     Alpine.store('app', {
         currentLang: savedLang,

@@ -1,8 +1,9 @@
-import { dentalClinicPageContent } from '../../data/pages/dental-clinic-content.js';
 
-export function registerDentalClinicStores(Alpine) {
-    Alpine.store('dentalClinicPage', {
-        ...dentalClinicPageContent,
+import { universityHospitalPageContent } from '../../data/pages/university-hospital-content.js';
+
+export function registerUniversityHospitalStores(Alpine) {
+    Alpine.store('universityHospitalPage', {
+        ...universityHospitalPageContent,
         getCurrentSchedule() {
             const daysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const todayIndex = Alpine.store('date').now.getDay();

@@ -297,6 +297,23 @@
       ]
     },
     {
+      "name": "campus-life-hospital",
+      "fileName": "campus-life/hospital.html",
+      "route": "/campus-life/hospital.html",
+      "title": "University Hospital | Syrian Private University",
+      "description": "Explore the SPU University Hospital, offering specialized medical services and emergency care.",
+      "ogImage": "/images/campus-hospital.webp",
+      "keywords": [
+        "SPU university hospital",
+        "medical services Damascus",
+        "healthcare Syria"
+      ],
+      "fragments": [
+        "pages/student-life/university-hospital/hero.html",
+        "pages/student-life/university-hospital/content.html"
+      ]
+    },
+    {
       "name": "about-directorate-scientific-research",
       "fileName": "about/directorates/scientific-research.html",
       "route": "/about/directorates/scientific-research.html",

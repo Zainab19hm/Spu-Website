@@ -54,10 +54,11 @@
                         ? (($store.dentalClinicPage.getCurrentSchedule().isEmergency || $store.dentalClinicPage.getCurrentSchedule().timeEn === 'Emergency Only') ? $store.dentalClinicPage.scheduleSection.statusClosedAr : $store.dentalClinicPage.scheduleSection.statusAr) 
                         : (($store.dentalClinicPage.getCurrentSchedule().isEmergency || $store.dentalClinicPage.getCurrentSchedule().timeEn === 'Emergency Only') ? $store.dentalClinicPage.scheduleSection.statusClosedEn : $store.dentalClinicPage.scheduleSection.statusEn)"></span>
                 </div>
-                <h3 class="text-3xl font-bold mb-4">
+                <h3 class="text-3xl font-bold mb-1">
                     <span x-text="$store.app.currentLang === 'ar' ? 'اليوم: ' : 'Today: '"></span>
                     <span x-text="$store.app.currentLang === 'ar' ? $store.dentalClinicPage.getCurrentSchedule().timeAr : $store.dentalClinicPage.getCurrentSchedule().timeEn"></span>
                 </h3>
+                <p class="text-white/60 text-sm mb-4 font-medium" x-text="$store.date.getFormattedDate($store.app.currentLang)"></p>
                 <p class="text-slate-300 text-lg max-w-sm"
                    x-text="$store.app.currentLang === 'ar' ? $store.dentalClinicPage.scheduleDetailsAr : $store.dentalClinicPage.scheduleDetailsEn"></p>
             </div>

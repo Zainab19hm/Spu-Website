@@ -16,7 +16,11 @@ export const appUi = {
     }
 };
 
+
+
+
 export const navigationMenuItems = [
+   
     {
         id: 1,
         labelAr: 'عن الجامعة',
@@ -67,13 +71,14 @@ export const navigationMenuItems = [
     {
         id: 4,
         labelAr: 'الحياة الجامعية',
-        labelEn: 'Student Life',
+        labelEn: 'Campus Life',
         url: siteRoutes.studentLife,
-        page: 'student-life',
+        page: 'campus-life',
         hasDropdown: true,
         children: [
             { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: withHash(siteRoutes.studentLife, 'services') },
             { labelAr: 'العيادات السنية', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental },
+            { labelAr: 'المستشفى الجامعي', labelEn: 'University Hospital', url: siteRoutes.campusLifeHospital },
             { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
             { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: siteRoutes.admissionsCalendar }
         ]

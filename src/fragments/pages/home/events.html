@@ -95,9 +95,15 @@
                     <template x-for="day in calendarDays" :key="day.date">
                         <button type="button" @click="selectDate(day.date)"
                             class="relative mx-auto flex h-[50px] w-[50px] items-center justify-center rounded-[14px] transition-colors sm:h-[56px] sm:w-[56px]"
-                            :class="selectedDate === day.date ? 'bg-[#27316d]' : 'bg-transparent hover:bg-[#f5f7fc]'">
+                            :class="[
+                                selectedDate === day.date ? 'bg-[#27316d]' : 'bg-transparent hover:bg-[#f5f7fc]',
+                                day.isToday && selectedDate !== day.date ? 'border-2 border-[#27316d]/30' : ''
+                            ]">
                             <span class="text-[18px] font-semibold transition-colors sm:text-[20px]"
-                                :class="selectedDate === day.date ? 'text-white' : day.isCurrentMonth ? 'text-[#111111]' : 'text-[#d0d0d0]'"
+                                :class="[
+                                    selectedDate === day.date ? 'text-white' : (day.isCurrentMonth ? 'text-[#111111]' : 'text-[#d0d0d0]'),
+                                    day.isToday && selectedDate !== day.date ? 'text-[#c63030]' : ''
+                                ]"
                                 x-html="day.dayNumber"></span>
 
                             <span x-show="day.hasEvent && selectedDate !== day.date"

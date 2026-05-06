@@ -59,6 +59,9 @@
 
                 <!-- Actions: language + CTA + hamburger -->
                 <div class="site-nav-actions">
+                    <!-- Current Date -->
+                   
+
                     <!-- Language toggle -->
                     <button type="button"
                             @click="$store.app.setLang($store.app.currentLang === 'en' ? 'ar' : 'en')"
@@ -70,8 +73,8 @@
                     <!-- Apply Now CTA (desktop only) -->
                     <a href="/admissions.html"
                        class="hidden items-center gap-2 rounded-full bg-spu-red px-5 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white shadow-[0_8px_24px_rgba(111,22,22,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(111,22,22,0.3)] 2xl:inline-flex">
-                        <i class="fas fa-graduation-cap text-[11px]"></i>
-                        <span x-text="$store.app.currentLang === 'ar' ? 'قدّم الآن' : 'Apply Now'"></span>
+                    
+                       <span x-text="$store.app.currentLang === 'ar' ? 'قدّم الآن' : 'Apply Now'"></span>
                     </a>
 
                     <!-- Mobile hamburger -->
@@ -139,7 +142,7 @@
                     <a href="/admissions.html"
                        @click="mobileNav = false"
                        class="mt-2 flex items-center justify-center gap-2 rounded-xl bg-spu-red px-5 py-3.5 text-sm font-bold text-white shadow-[0_8px_24px_rgba(111,22,22,0.2)]">
-                        <i class="fas fa-graduation-cap text-xs"></i>
+                        <img src="/images/icon-user-graduate-outline.svg" alt="Graduate" class="h-5 w-5">
                         <span x-text="$store.app.currentLang === 'ar' ? 'قدّم الآن' : 'Apply Now'"></span>
                     </a>
                 </div>

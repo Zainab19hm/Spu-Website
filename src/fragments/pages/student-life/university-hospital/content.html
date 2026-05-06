@@ -1,0 +1,128 @@
+<section class="py-24 bg-white font-hacen">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.sectionHeader.titleAr : $store.universityHospitalPage.sectionHeader.titleEn">
+            </h2>
+        </div>
+
+        <!-- Departments Grid -->
+        <div class="grid gap-6 grid-cols-1 md:grid-cols-2">
+            <template x-for="(dept, index) in $store.universityHospitalPage.departments" :key="dept.titleEn">
+                <div
+                    class="bg-white border border-[#C3C6D180] rounded-[8px] p-10 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:border-slate-200 group">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-bold text-[#1e2d5b]"
+                            x-text="$store.app.currentLang === 'ar' ? dept.titleAr : dept.titleEn"></h3>
+                        <div class="flex items-center justify-center">
+                            <img :src="dept.icon" class="w-12 h-12 bg-white text-black" alt="">
+                        </div>
+                    </div>
+                    <p class="text-slate-500 text-lg leading-relaxed"
+                        x-text="$store.app.currentLang === 'ar' ? dept.descriptionAr : dept.descriptionEn"></p>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- Weekly Schedule -->
+    <div id="weekly-schedule" class="container mt-24 pb-20">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold text-[#1e2d5b]"
+                x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.scheduleSection.titleAr : $store.universityHospitalPage.scheduleSection.titleEn">
+            </h2>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+            <!-- Left Card: Status -->
+            <div
+                class="bg-[#1e2d5b] rounded-[8px] p-12 text-white flex flex-col items-center justify-center text-center shadow-xl">
+                <div class="mb-6">
+                    <svg class="w-[97px] h-[97px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div :class="($store.universityHospitalPage.getCurrentSchedule().isEmergency) ? 'bg-red-600 text-white' : 'bg-white text-[#1e2d5b]'"
+                    class="px-6 py-1.5 rounded-full font-bold text-sm mb-8 inline-block shadow-sm transition-colors duration-300 uppercase tracking-wider">
+                    <span
+                        x-text="$store.app.currentLang === 'ar' 
+                        ? (($store.universityHospitalPage.getCurrentSchedule().isEmergency) ? $store.universityHospitalPage.scheduleSection.statusClosedAr : $store.universityHospitalPage.scheduleSection.statusAr) 
+                        : (($store.universityHospitalPage.getCurrentSchedule().isEmergency) ? $store.universityHospitalPage.scheduleSection.statusClosedEn : $store.universityHospitalPage.scheduleSection.statusEn)"></span>
+                </div>
+                <h3 class="text-3xl font-bold mb-2">
+                    <span x-text="$store.app.currentLang === 'ar' ? 'اليوم: ' : 'Today: '"></span>
+                    <span
+                        x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.getCurrentSchedule().timeAr : $store.universityHospitalPage.getCurrentSchedule().timeEn"></span>
+                </h3>
+                <p class="text-white/60 text-sm mb-6 font-medium"
+                    x-text="$store.date.getFormattedDate($store.app.currentLang)"></p>
+                <p class="text-slate-300 text-lg max-w-sm mx-auto"
+                    x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.scheduleDetailsAr : $store.universityHospitalPage.scheduleDetailsEn">
+                </p>
+            </div>
+
+            <!-- Right Card: Weekly Table -->
+            <div class="bg-white border border-[#C3C6D180] rounded-[8px] p-10 shadow-sm">
+                <div class="space-y-6">
+                    <template x-for="slot in $store.universityHospitalPage.schedule" :key="slot.dayEn">
+                        <div
+                            class="flex justify-between items-center pb-4 border-b border-slate-100 last:border-0 last:pb-0">
+                            <span class="text-slate-500 font-medium" :class="slot.isEmergency ? 'text-red-500' : ''"
+                                x-text="$store.app.currentLang === 'ar' ? slot.dayAr : slot.dayEn"></span>
+                            <span class="font-semibold text-[#1e2d5b]" :class="slot.isEmergency ? 'text-red-500' : ''"
+                                x-text="$store.app.currentLang === 'ar' ? slot.timeAr : slot.timeEn"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Footer -->
+    <div class="container">
+        <div
+            class="rounded-[8px] p-8 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0px_4px_12px_0px_rgba(51,51,51,0.08)]">
+            <!-- Left: Icon & Status -->
+            <div class="flex items-center gap-5">
+                <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center">
+                    <img :src="$store.universityHospitalPage.emergency.icon" class="w-full h-full object-cover" alt="">
+                </div>
+                <div>
+                    <h4 class="font-bold text-[#1e2d5b] text-lg"
+                        x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.emergency.labelAr : $store.universityHospitalPage.emergency.labelEn">
+                    </h4>
+                    <p class="text-[#737780] text-sm font-bold tracking-wider"
+                        x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.emergency.statusAr : $store.universityHospitalPage.emergency.statusEn">
+                    </p>
+                </div>
+            </div>
+
+            <!-- Middle: Hotline -->
+            <div class="text-center md:text-left border-x border-[#E2E8F0] px-12 hidden lg:block">
+                <p class="text-slate-500 text-sm font-medium mb-1"
+                    x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.emergency.hotlineLabelAr : $store.universityHospitalPage.emergency.hotlineLabelEn">
+                </p>
+                <p class="text-[#1e2d5b] text-xl font-bold" x-text="$store.universityHospitalPage.emergency.phone"></p>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a :href="'tel:' + $store.universityHospitalPage.emergency.phone"
+                    class="inline-flex items-center gap-3 px-8 py-3 bg-spu-red text-white rounded-xl font-bold hover:bg-[#4a1212] transition-colors shadow-lg shadow-red-900/10">
+                    <i class="fas fa-phone-alt text-sm"></i>
+                    <span
+                        x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.emergency.callCtaAr : $store.universityHospitalPage.emergency.callCtaEn"></span>
+                </a>
+                <a :href="$store.universityHospitalPage.hero.ctaUrl" target="_blank"
+                    class="inline-flex items-center gap-3 px-8 py-3 bg-white border border-[#CBD5E1] text-[#1e2d5b] rounded-xl font-bold hover:bg-[#F1F5F9] transition-colors">
+                    <i class="fas fa-map-marker-alt text-sm text-spu-blue/60"></i>
+                    <span
+                        x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.emergency.directionsCtaAr : $store.universityHospitalPage.emergency.directionsCtaEn"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -3,23 +3,6 @@ import { cloneData } from '../../utils/clone.js';
 
 export function registerContactStores(Alpine) {
     Alpine.store('contactPage', {
-        ...cloneData(contactPageContent),
-        getFormattedDate(lang) {
-            const date = new Date();
-            if (lang === 'ar') {
-                return date.toLocaleDateString('ar-EG', { 
-                    weekday: 'long', 
-                    day: 'numeric', 
-                    month: 'long', 
-                    year: 'numeric' 
-                });
-            }
-            return date.toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                day: 'numeric', 
-                month: 'long', 
-                year: 'numeric' 
-            });
-        }
+        ...cloneData(contactPageContent)
     });
 }
