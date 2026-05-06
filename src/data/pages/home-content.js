@@ -237,14 +237,14 @@ export const healthcareContent = {
         link: withHash(siteRoutes.contact, 'visit-campus')
     },
     dentalCard: {
-        image: '/images/healthcare-dental.webp',
+        image: '/images/healthcare-dental.png',
         titleEn: 'SPU Dental Clinical',
         titleAr: 'عيادة SPU للأسنان',
         descriptionEn: 'Modern dental units for hands-on student practice and patient care.',
         descriptionAr: 'وحدات أسنان حديثة للممارسة العملية ورعاية المرضى.',
         linkTextEn: 'Explore Clinic',
         linkTextAr: 'استكشاف العيادة',
-        link: `${siteRoutes.faculties}?id=dentistry`
+        link: siteRoutes.campusLifeDental
     },
     stats: [
         { id: 1, labelEn: 'HOSPITAL BEDS', labelAr: 'أسرة المشفى', value: 200, current: 0, suffixEn: '+', suffixAr: '+' },

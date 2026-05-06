@@ -30,7 +30,8 @@ const pageStoreLoaders = {
     'student-life': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
     services: () => import('./pages/services-stores.js').then((module) => module.registerServicesStores),
     news: () => import('./pages/news-stores.js').then((module) => module.registerNewsStores),
-    contact: () => import('./pages/contact-stores.js').then((module) => module.registerContactStores)
+    contact: () => import('./pages/contact-stores.js').then((module) => module.registerContactStores),
+    'campus-life-dental': () => import('./pages/dental-clinic-stores.js').then((module) => module.registerDentalClinicStores)
 };
 
 const pagesUsingFacultyCatalog = new Set(['home', 'faculties']);

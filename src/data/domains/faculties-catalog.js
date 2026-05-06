@@ -1,3 +1,4 @@
+import { siteRoutes } from '../../config/site-routes.js';
 export const facultiesCatalog = {
     list: [
         {
@@ -193,7 +194,7 @@ export const facultiesCatalog = {
                         titleAr: 'عيادات تخصصية',
                         titleEn: 'Specialized Clinics',
                         value: '10',
-                        link: '#',
+                        link: siteRoutes.campusLifeDental,
                         icon: '/images/icons/clinic.svg'
                     },
                     {

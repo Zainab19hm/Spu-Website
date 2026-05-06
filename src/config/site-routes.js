@@ -39,5 +39,6 @@ export const siteRoutes = Object.freeze({
     studentLife: getPageRoute('student-life'),
     services: getPageRoute('services'),
     news: getPageRoute('news'),
-    contact: getPageRoute('contact')
+    contact: getPageRoute('contact'),
+    campusLifeDental: getPageRoute('campus-life-dental')
 });

@@ -177,7 +177,8 @@ const pageWarmupModules = {
   'student-life': ['/src/alpine/pages/student-life-stores.js'],
   services: ['/src/alpine/pages/services-stores.js'],
   news: ['/src/alpine/pages/news-stores.js'],
-  contact: ['/src/alpine/pages/contact-stores.js']
+  contact: ['/src/alpine/pages/contact-stores.js'],
+  'campus-life-dental': ['/src/alpine/pages/dental-clinic-stores.js']
 };
 
 function renderWarmupScript(pageName) {

@@ -73,6 +73,7 @@ export const navigationMenuItems = [
         hasDropdown: true,
         children: [
             { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: withHash(siteRoutes.studentLife, 'services') },
+            { labelAr: 'العيادات السنية', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental },
             { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
             { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: siteRoutes.admissionsCalendar }
         ]

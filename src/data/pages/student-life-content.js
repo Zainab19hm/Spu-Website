@@ -150,6 +150,7 @@ export const studentLifePageContent = {
             summaryAr: 'تفاصيل حول خدمات الأسنان وساعات العيادة وعملية الحجز ووصول المرضى للطلاب والجمهور.',
             linkEn: 'Explore Clinics',
             linkAr: 'استكشف العيادات',
+            href: siteRoutes.campusLifeDental,
             image: '/images/campus-dental.webp',
             imagePosition: 'right'
         },
