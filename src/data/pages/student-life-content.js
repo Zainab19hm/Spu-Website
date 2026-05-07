@@ -139,6 +139,7 @@ export const studentLifePageContent = {
             summaryAr: 'معلومات عن أقسام المستشفى والخدمات الطبية وساعات العمل والمواعيد والتأمين والاتصال بالطوارئ.',
             linkEn: 'Explore Hospital',
             linkAr: 'استكشف المستشفى',
+            href: siteRoutes.campusLifeHospital,
             image: '/images/campus-hospital.webp',
             imagePosition: 'left'
         },

@@ -1,23 +1,29 @@
-<section x-data="{ sections: $store.healthInsurancePage.sections }" class="bg-white py-16 md:py-24 font-hacen">
-  <div class="container max-w-[980px]">
+<section x-data="{ sections: $store.healthInsurancePage.sections }" class="bg-white py-16 relative md:py-24 font-hacen">
+  <div class="container ">
     <template x-for="section in sections" :key="section.id">
       <div>
         <template x-if="section.type === 'highlight'">
-          <div class="bg-spu-blue text-white rounded-[4px] px-8 md:px-14 py-8 md:py-10 text-center -mt-28 relative z-20 shadow-xl border border-white/20">
-            <h2 class="text-[34px] md:text-[40px] font-bold mb-3" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
-            <p class="text-sm md:text-[15px] text-white/90 leading-relaxed max-w-4xl mx-auto" x-text="$store.app.currentLang === 'ar' ? section.descriptionAr : section.descriptionEn"></p>
+          <div
+            class="bg-spu-blue text-white rounded-[4px] md:top-[-80px] left-[50%] translate-x-[-50%] px-12 md:px-28 py-8 md:py-10 text-center  absolute z-20 shadow-xl border border-[#E4E1E6]">
+            <h2 class="text-[34px] md:text-[40px] font-bold mb-3"
+              x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+            <p class="text-sm md:text-[15px] text-white/90 leading-relaxed max-w-4xl mx-auto"
+              x-text="$store.app.currentLang === 'ar' ? section.descriptionAr : section.descriptionEn"></p>
           </div>
         </template>
 
         <template x-if="section.type === 'steps'">
-          <div class="mt-20 md:mt-24">
-            <h3 class="text-[38px] md:text-[48px] font-bold text-spu-blue text-center mb-10 md:mb-12" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
+          <div class="mt-24 md:mt-28">
+            <h3 class="text-[38px] md:text-[48px] font-bold text-spu-blue text-center mb-10 md:mb-12"
+              x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
             <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
               <template x-for="item in section.items" :key="item.number">
                 <div>
                   <p class="text-[42px] md:text-[50px] font-bold text-[#D0D6E6] leading-none" x-text="item.number"></p>
-                  <h4 class="text-[28px] font-bold text-spu-blue mb-2" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
-                  <p class="text-[#5B6277] leading-relaxed" x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
+                  <h4 class="text-[28px] font-bold text-spu-blue mb-2"
+                    x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                  <p class="text-[#5B6277] leading-relaxed"
+                    x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
                 </div>
               </template>
             </div>
@@ -26,12 +32,19 @@
 
         <template x-if="section.type === 'cards'">
           <div class="mt-20 md:mt-24">
-            <h3 class="text-[38px] md:text-[48px] font-bold text-spu-blue text-center mb-8 md:mb-10" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
+            <h3 class="text-[38px] md:text-[48px] font-bold text-spu-blue text-center mb-8 md:mb-10"
+              x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
               <template x-for="item in section.items" :key="item.titleEn">
-                <div class="border border-[#DCE1ED] rounded-[8px] p-5 shadow-[0px_4px_12px_0px_rgba(51,51,51,0.06)] bg-white">
-                  <h4 class="text-[19px] font-bold text-spu-blue mb-2" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
-                  <p class="text-sm text-[#5B6277] leading-relaxed" x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
+                <div
+                  class="border border-[#DCE1ED] rounded-[8px] p-5 shadow-[0px_4px_12px_0px_rgba(51,51,51,0.06)] bg-white">
+                  <div class="mb-4 flex items-center justify-between gap-3 ">
+                    <h4 class="text-[19px] font-bold text-spu-blue mb-2"
+                      x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                    <img :src="item.icon" class="w-6 h-6 object-contain" aria-hidden="true">
+                  </div>
+                  <p class="text-sm text-[#5B6277] leading-relaxed"
+                    x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
                 </div>
               </template>
             </div>
@@ -39,21 +52,50 @@
         </template>
 
         <template x-if="section.type === 'documents'">
-          <div class="mt-20 md:mt-24 grid lg:grid-cols-[1fr_320px] gap-8 items-start">
-            <div class="border border-[#DCE1ED] rounded-[8px] p-6 md:p-8">
-              <h3 class="text-[38px] md:text-[44px] font-bold text-spu-blue mb-5" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
-              <ul class="space-y-3 text-[#3C435D]">
-                <template x-for="(item, idx) in ($store.app.currentLang === 'ar' ? section.listAr : section.listEn)" :key="idx">
-                  <li class="flex items-start gap-3"><span class="text-spu-red mt-1"><i class="fas fa-check-circle"></i></span><span x-text="item"></span></li>
-                </template>
-              </ul>
+          <div class="mt-20 md:mt-24">
+            <!-- ! Main title moved to top for full-width alignment -->
+            <h3 class="text-[38px] md:text-[44px] font-bold text-spu-blue mb-10 "
+              :style="$store.app.currentLang === 'ar' ? 'text-align: right;' : 'text-align:left'"
+              x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
+
+            <!-- ! Updated grid to 2 columns with a 1.6:1 ratio for wider left side -->
+            <div class="grid lg:grid-cols-[1.8fr_1fr] gap-8 items-stretch">
+              <div style="box-shadow: #33333314 4px 0 12px 0; "
+                class=" border border-[#C3C6D14D]  rounded-[8px] px-6 py-12 ">
+                <ul class="space-y-3 text-[#3C435D]">
+                  <template x-for="(item, idx) in ($store.app.currentLang === 'ar' ? section.listAr : section.listEn)"
+                    :key="idx">
+                    <li class="flex items-start gap-3">
+                      <!-- ! Replaced FontAwesome icon with a custom SVG check icon from the images folder -->
+                      <img src="/images/icon-check-circle-outline.svg" class="w-5 h-5 mt-1 shrink-0" aria-hidden="true">
+                      <span x-text="item"></span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <aside
+                class="bg-spu-blue text-white rounded-[12px] px-6 py-7 shadow-lg flex flex-col justify-between">
+                <h4 class="text-[26px] font-bold mb-4 border-b border-[#A7C8FF4D] pb-1"
+                  x-text="$store.app.currentLang === 'ar' ? section.support.titleAr : section.support.titleEn"></h4>
+
+                <!-- ! Cleaned up redundant tags and linked icons/text to the data store dynamically -->
+                <p class="text-white/90 mb-3 flex items-center gap-3">
+                  <img :src="section.support.locationIcon" class="w-5 h-5 brightness-0 invert" aria-hidden="true">
+                  <span
+                    x-text="$store.app.currentLang === 'ar' ? section.support.locationAr : section.support.locationEn"></span>
+                </p>
+
+                <p class="mb-2 flex items-center gap-3">
+                  <img :src="section.support.phoneIcon" class="w-5 h-5 brightness-0 invert" aria-hidden="true">
+                  <a :href="'tel:' + section.support.phone" x-text="section.support.phone"></a>
+                </p>
+
+                <p class="flex items-center gap-3">
+                  <img :src="section.support.emailIcon" class="w-5 h-5 brightness-0 invert" aria-hidden="true">
+                  <a :href="'mailto:' + section.support.email" x-text="section.support.email"></a>
+                </p>
+              </aside>
             </div>
-            <aside class="bg-spu-blue text-white rounded-[8px] p-6 md:p-7 shadow-lg">
-              <h4 class="text-[26px] font-bold mb-4" x-text="$store.app.currentLang === 'ar' ? section.support.titleAr : section.support.titleEn"></h4>
-              <p class="text-white/90 mb-3" x-text="$store.app.currentLang === 'ar' ? section.support.locationAr : section.support.locationEn"></p>
-              <p class="mb-2"><a :href="'tel:' + section.support.phone" x-text="section.support.phone"></a></p>
-              <p><a :href="'mailto:' + section.support.email" x-text="section.support.email"></a></p>
-            </aside>
           </div>
         </template>
       </div>

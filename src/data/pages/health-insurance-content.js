@@ -1,4 +1,4 @@
-import { siteRoutes } from '../../config/site-routes.js';
+import { siteRoutes, withHash } from '../../config/site-routes.js';
 
 export const healthInsurancePageContent = {
   hero: {
@@ -6,7 +6,7 @@ export const healthInsurancePageContent = {
     titleAr: 'الصحة والتأمين',
     summaryEn: 'Student insurance support with clear coverage, step-by-step usage, and required claim documents.',
     summaryAr: 'دعم التأمين الطلابي مع تغطية واضحة وخطوات استخدام مفصلة ووثائق المطالبة المطلوبة.',
-    image: '/images/campus-hospital.webp',
+    image: '/images/campus-health.webp', // ! Updated to the specific health and insurance campus image
     breadcrumbHomeEn: 'Home',
     breadcrumbHomeAr: 'الرئيسية',
     breadcrumbCampusEn: 'Campus Life',
@@ -29,11 +29,11 @@ export const healthInsurancePageContent = {
       titleEn: 'How to Use Your Insurance',
       titleAr: 'كيفية استخدام التأمين',
       items: [
-      { number: '01', titleEn: 'Carry Your ID', titleAr: 'احمل هويتك', descEn: 'Always have your valid SPU student ID and your insurance card with you.', descAr: 'احمل دائماً بطاقة الطالب في SPU وبطاقة التأمين.' },
-      { number: '02', titleEn: 'Present at Reception', titleAr: 'قدّمها عند الاستقبال', descEn: 'Present both cards to the hospital or clinic reception before consultation.', descAr: 'قدّم البطاقتين عند استقبال المستشفى أو العيادة قبل المعاينة.' },
-      { number: '03', titleEn: 'Receive Service', titleAr: 'احصل على الخدمة', descEn: 'Use approved departments and ask staff for your insurance-eligible options.', descAr: 'استخدم الأقسام المعتمدة واسأل الموظفين عن الخيارات المشمولة بتأمينك.' },
-      { number: '04', titleEn: 'Keep Your Records', titleAr: 'احتفظ بالسجلات', descEn: 'Keep prescriptions and invoices for follow-up, reimbursement, or claims.', descAr: 'احتفظ بالوصفات والفواتير للمتابعة أو التعويض أو المطالبات.' }
-    ]
+        { number: '01', titleEn: 'Carry Your ID', titleAr: 'احمل هويتك', descEn: 'Always have your valid SPU student ID and your insurance card with you.', descAr: 'احمل دائماً بطاقة الطالب في SPU وبطاقة التأمين.' },
+        { number: '02', titleEn: 'Present at Reception', titleAr: 'قدّمها عند الاستقبال', descEn: 'Present both cards to the hospital or clinic reception before consultation.', descAr: 'قدّم البطاقتين عند استقبال المستشفى أو العيادة قبل المعاينة.' },
+        { number: '03', titleEn: 'Receive Service', titleAr: 'احصل على الخدمة', descEn: 'Use approved departments and ask staff for your insurance-eligible options.', descAr: 'استخدم الأقسام المعتمدة واسأل الموظفين عن الخيارات المشمولة بتأمينك.' },
+        { number: '04', titleEn: 'Keep Your Records', titleAr: 'احتفظ بالسجلات', descEn: 'Keep prescriptions and invoices for follow-up, reimbursement, or claims.', descAr: 'احتفظ بالوصفات والفواتير للمتابعة أو التعويض أو المطالبات.' }
+      ]
     },
     {
       id: 'coverage',
@@ -41,11 +41,11 @@ export const healthInsurancePageContent = {
       titleEn: 'What is Covered',
       titleAr: 'ما الذي يشمله التأمين',
       items: [
-      { titleEn: 'Emergency Care', titleAr: 'رعاية الطوارئ', descEn: '24/7 emergency access and urgent medical interventions.', descAr: 'خدمة طوارئ على مدار الساعة وتدخلات طبية عاجلة.' },
-      { titleEn: 'Consultations', titleAr: 'الاستشارات', descEn: 'Regular visits with faculty-approved doctors and specialists.', descAr: 'زيارات منتظمة مع أطباء واختصاصيين معتمدين من الكلية.' },
-      { titleEn: 'Diagnostics', titleAr: 'التحاليل والتشخيص', descEn: 'Basic laboratory tests, X-rays, and required medical imaging.', descAr: 'تحاليل مخبرية أساسية وصور أشعة وتصوير طبي مطلوب.' },
-      { titleEn: 'Medications', titleAr: 'الأدوية', descEn: 'Selected prescriptions based on policy limits and approved lists.', descAr: 'وصفات دوائية محددة وفق حدود البوليصة والقوائم المعتمدة.' }
-    ]
+        { titleEn: 'Emergency Care', titleAr: 'رعاية الطوارئ', descEn: '24/7 emergency access and urgent medical interventions.', descAr: 'خدمة طوارئ على مدار الساعة وتدخلات طبية عاجلة.', icon: '/images/icons/hospital.svg' }, // ! Added emergency hospital icon
+        { titleEn: 'Consultations', titleAr: 'الاستشارات', descEn: 'Regular visits with faculty-approved doctors and specialists.', descAr: 'زيارات منتظمة مع أطباء واختصاصيين معتمدين من الكلية.', icon: '/images/icons/dept.svg' }, // ! Added department/consultation icon
+        { titleEn: 'Diagnostics', titleAr: 'التحاليل والتشخيص', descEn: 'Basic laboratory tests, X-rays, and required medical imaging.', descAr: 'تحاليل مخبرية أساسية وصور أشعة وتصوير طبي مطلوب.', icon: '/images/icons/lab.svg' }, // ! Added laboratory/diagnostics icon
+        { titleEn: 'Medications', titleAr: 'الأدوية', descEn: 'Selected prescriptions based on policy limits and approved lists.', descAr: 'وصفات دوائية محددة وفق حدود البوليصة والقوائم المعتمدة.', icon: '/images/icons/file.svg' } // ! Added prescription/file icon
+      ]
     },
     {
       id: 'required-documents',
@@ -55,18 +55,21 @@ export const healthInsurancePageContent = {
       listEn: ['Completed claim form (available at student portal).', 'Original, itemized medical invoices and receipts.', 'Copy of medical prescription or doctor’s referral.', 'Diagnostic report copies (for tests/scans).'],
       listAr: ['نموذج مطالبة مكتمل (متاح في بوابة الطالب).', 'فواتير وإيصالات طبية أصلية ومفصلة.', 'نسخة من الوصفة الطبية أو تحويل الطبيب.', 'نسخ تقارير التشخيص (للفحوصات/الصور).'],
       support: {
-      titleEn: 'Insurance Support',
-      titleAr: 'دعم التأمين',
-      locationEn: 'Main Campus · Student Affairs Floor',
-      locationAr: 'الحرم الرئيسي · طابق شؤون الطلاب',
-      phone: '+963 11 213 3000',
-      email: 'insurance@spu.edu.sy'
-    }
+        titleEn: 'Insurance Support',
+        titleAr: 'دعم التأمين',
+        locationEn: 'Main Campus · Student Affairs Floor',
+        locationAr: 'الحرم الرئيسي · طابق شؤون الطلاب',
+        locationIcon: '/images/icon-map-outline.svg', // ! Added dynamic location icon path
+        phone: '+963 11 213 3000',
+        phoneIcon: '/images/icon-phone-outline.svg', // ! Added dynamic phone icon path
+        email: 'insurance@spu.edu.sy',
+        emailIcon: '/images/icon-envelope-outline.svg' // ! Added dynamic email icon path
+      }
     }
   ],
   footerLinks: {
-      hospitalEn: 'Visit University Hospital',
-      hospitalAr: 'زيارة المستشفى الجامعي',
-      hospitalUrl: siteRoutes.campusLifeHospital
-    }
+    hospitalEn: 'Visit University Hospital',
+    hospitalAr: 'زيارة المستشفى الجامعي',
+    hospitalUrl: siteRoutes.campusLifeHospital
+  }
 };

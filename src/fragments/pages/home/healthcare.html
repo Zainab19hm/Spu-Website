@@ -75,9 +75,14 @@
                         <h4 class="text-xl font-bold text-spu-blue mb-2"
                             x-text="$store.app.currentLang === 'ar' ? $store.healthcare.hospitalCard.titleAr : $store.healthcare.hospitalCard.titleEn">
                         </h4>
-                        <p class="text-gray-500 text-sm line-clamp-2"
-                            x-text="$store.app.currentLang === 'ar' ? $store.healthcare.hospitalCard.descriptionAr : $store.healthcare.hospitalCard.descriptionEn">
-                        </p>
+                        <a :href="$store.healthcare.hospitalCard.link"
+                            class="text-spu-blue font-bold text-sm flex items-center gap-2 hover:text-spu-red transition-colors mt-2">
+                            <span
+                                x-text="$store.app.currentLang === 'ar' ? $store.healthcare.hospitalCard.linkTextAr : $store.healthcare.hospitalCard.linkTextEn"></span>
+                            <img src="/images/icon-chevron-left-outline.svg" class="w-2.5 h-2.5 rtl:block hidden" alt="Prev">
+                            <img src="/images/icon-chevron-right-outline.svg" class="w-2.5 h-2.5 ltr:block hidden" alt="Next">
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -101,6 +106,7 @@
                                 alt="Next">
                         </a>
                     </div>
+                    
                 </div>
             </div>
         </div>

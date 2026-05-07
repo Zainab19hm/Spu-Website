@@ -1,4 +1,5 @@
 import { icon } from "@fortawesome/fontawesome-svg-core";
+import { siteRoutes , withHash } from "../../config/site-routes";
 
 export const universityHospitalPageContent = {
     hero: {

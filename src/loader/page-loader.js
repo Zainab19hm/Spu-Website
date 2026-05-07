@@ -10,20 +10,27 @@ function hasRenderableMarkup(selector) {
         return false;
     }
 
-    return element.children.length > 0 || element.innerHTML.trim().length > 0;
+    // ! Filter out <include> tags and check for real elements or non-whitespace text
+    const hasRealElements = Array.from(element.children).some(child => child.tagName !== 'INCLUDE');
+    const hasRealText = Array.from(element.childNodes).some(node =>
+        node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0
+    );
+
+    return hasRealElements || hasRealText;
 }
 
 function hasGeneratedPageShell(pageName) {
     const pageRoot = document.querySelector('main[data-page-content]');
 
-    if (!pageRoot || document.body?.dataset.page !== pageName) {
+    // ! Verify body existence and page identity before checking content content
+    if (!document.body || !pageRoot || document.body.dataset.page !== pageName) {
         return false;
     }
 
     return [
         hasRenderableMarkup('header'),
         hasRenderableMarkup('footer'),
-        pageRoot.children.length > 0 || pageRoot.innerHTML.trim().length > 0
+        hasRenderableMarkup('main[data-page-content]') // ! Use improved check to ignore main content placeholders
     ].every(Boolean);
 }
 

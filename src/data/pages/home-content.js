@@ -78,75 +78,75 @@ export const statsItems = [
 ];
 
 export const pathItems = [
-    { 
-        id: 1, 
-        titleAr: 'الطلاب المستجدون', 
-        titleEn: 'Prospective Students', 
-        icon: '/images/icons/book.svg', 
+    {
+        id: 1,
+        titleAr: 'الطلاب المستجدون',
+        titleEn: 'Prospective Students',
+        icon: '/images/icons/book.svg',
         linksAr: [
-            { text: 'استكشاف الكليات', url: siteRoutes.faculties }, 
-            { text: 'متطلبات القبول', url: siteRoutes.admissionsRequirements }, 
-            { text: 'الرسوم الدراسية', url: siteRoutes.admissionsTuition }, 
+            { text: 'استكشاف الكليات', url: siteRoutes.faculties },
+            { text: 'متطلبات القبول', url: siteRoutes.admissionsRequirements },
+            { text: 'الرسوم الدراسية', url: siteRoutes.admissionsTuition },
             { text: 'الحياة الجامعية', url: siteRoutes.studentLife }
-        ], 
+        ],
         linksEn: [
-            { text: 'Explore Faculties', url: siteRoutes.faculties }, 
-            { text: 'Admission Requirements', url: siteRoutes.admissionsRequirements }, 
-            { text: 'Tuition & Fees', url: siteRoutes.admissionsTuition }, 
+            { text: 'Explore Faculties', url: siteRoutes.faculties },
+            { text: 'Admission Requirements', url: siteRoutes.admissionsRequirements },
+            { text: 'Tuition & Fees', url: siteRoutes.admissionsTuition },
             { text: 'Campus Life', url: siteRoutes.studentLife }
         ]
     },
-    { 
-        id: 2, 
-        titleAr: 'الطلاب الحاليون', 
-        titleEn: 'Current Students', 
-        icon: '/images/icons/globe.svg', 
+    {
+        id: 2,
+        titleAr: 'الطلاب الحاليون',
+        titleEn: 'Current Students',
+        icon: '/images/icons/globe.svg',
         linksAr: [
-            { text: 'بوابة الطالب', url: siteRoutes.services }, 
-            { text: 'التقويم الأكاديمي', url: siteRoutes.admissionsCalendar }, 
-            { text: 'الخدمات الإلكترونية', url: siteRoutes.services }, 
+            { text: 'بوابة الطالب', url: siteRoutes.services },
+            { text: 'التقويم الأكاديمي', url: siteRoutes.admissionsCalendar },
+            { text: 'الخدمات الإلكترونية', url: siteRoutes.services },
             { text: 'المكتبة والدعم', url: withHash(siteRoutes.studentLife, 'services') }
-        ], 
+        ],
         linksEn: [
-            { text: 'Student Portal', url: siteRoutes.services }, 
-            { text: 'Academic Calendar', url: siteRoutes.admissionsCalendar }, 
-            { text: 'E-Services', url: siteRoutes.services }, 
+            { text: 'Student Portal', url: siteRoutes.services },
+            { text: 'Academic Calendar', url: siteRoutes.admissionsCalendar },
+            { text: 'E-Services', url: siteRoutes.services },
             { text: 'Library & Support', url: withHash(siteRoutes.studentLife, 'services') }
         ]
     },
-    { 
-        id: 3, 
-        titleAr: 'الكادر التدريسي والمنظومة', 
-        titleEn: 'Faculty & Staff', 
-        icon: '/images/icons/sitemap.svg', 
+    {
+        id: 3,
+        titleAr: 'الكادر التدريسي والمنظومة',
+        titleEn: 'Faculty & Staff',
+        icon: '/images/icons/sitemap.svg',
         linksAr: [
-            { text: 'البريد الجامعي', url: siteRoutes.services }, 
-            { text: 'الأنظمة الإدارية', url: siteRoutes.services }, 
-            { text: 'رئاسة الجامعة', url: siteRoutes.aboutLeadership }, 
+            { text: 'البريد الجامعي', url: siteRoutes.services },
+            { text: 'الأنظمة الإدارية', url: siteRoutes.services },
+            { text: 'رئاسة الجامعة', url: siteRoutes.aboutLeadership },
             { text: 'البحث العلمي', url: siteRoutes.research }
-        ], 
+        ],
         linksEn: [
-            { text: 'University Email', url: siteRoutes.services }, 
-            { text: 'Administrative Systems', url: siteRoutes.services }, 
-            { text: 'University Leadership', url: siteRoutes.aboutLeadership }, 
+            { text: 'University Email', url: siteRoutes.services },
+            { text: 'Administrative Systems', url: siteRoutes.services },
+            { text: 'University Leadership', url: siteRoutes.aboutLeadership },
             { text: 'Scientific Research', url: siteRoutes.research }
         ]
     },
-    { 
-        id: 4, 
-        titleAr: 'الخريجون', 
-        titleEn: 'Alumni', 
-        icon: '/images/icons/users.svg', 
+    {
+        id: 4,
+        titleAr: 'الخريجون',
+        titleEn: 'Alumni',
+        icon: '/images/icons/users.svg',
         linksAr: [
-            { text: 'تواصل معنا', url: siteRoutes.contact }, 
-            { text: 'آخر الأخبار', url: siteRoutes.news }, 
-            { text: 'دليل الكليات', url: siteRoutes.faculties }, 
+            { text: 'تواصل معنا', url: siteRoutes.contact },
+            { text: 'آخر الأخبار', url: siteRoutes.news },
+            { text: 'دليل الكليات', url: siteRoutes.faculties },
             { text: 'عن الجامعة', url: siteRoutes.about }
-        ], 
+        ],
         linksEn: [
-            { text: 'Contact Us', url: siteRoutes.contact }, 
-            { text: 'Latest News', url: siteRoutes.news }, 
-            { text: 'Faculties Guide', url: siteRoutes.faculties }, 
+            { text: 'Contact Us', url: siteRoutes.contact },
+            { text: 'Latest News', url: siteRoutes.news },
+            { text: 'Faculties Guide', url: siteRoutes.faculties },
             { text: 'About SPU', url: siteRoutes.about }
         ]
     },
@@ -226,15 +226,15 @@ export const healthcareContent = {
         featuresAr: ['مشفى الجامعة', 'عيادة الأسنان', 'دعم التعلم السريري'],
         actionEn: 'Explore Hospital',
         actionAr: 'استكشاف المشفى',
-        link: `${siteRoutes.faculties}?id=medicine`
+        link: siteRoutes.campusLifeHealthInsurance // ! Fix typo: siteRouts -> siteRoutes and remove trailing 't'
     },
     hospitalCard: {
         image: '/images/healthcare-hospital.webp',
         titleEn: 'SPU Hospital',
         titleAr: 'مشفى SPU',
-        descriptionEn: 'Advanced medical diagnostics and clinical training facilities.',
-        descriptionAr: 'تشخيص طبي متقدم ومرافق تدريب سريري.',
-        link: withHash(siteRoutes.contact, 'visit-campus')
+        linkTextEn: 'Explore Hospital',
+        linkTextAr: 'استكشاف المشفى',
+        link: siteRoutes.campusLifeHospital // ! Fix typo: siteRouts -> siteRoutes
     },
     dentalCard: {
         image: '/images/healthcare-dental.png',

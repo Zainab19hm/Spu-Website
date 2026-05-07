@@ -9,7 +9,8 @@ import './style.css';
 window.Alpine = Alpine;
 window.observeElement = observeElement;
 
-const pageName = document.body?.dataset.page || 'home';
+// ! Robust extraction of page name to prevent bootstrap failure if body is null or attribute is missing
+const pageName = document.body ? (document.body.dataset.page || 'home') : 'home';
 
 function setAppReadyState(state) {
   if (!document.body) {
