@@ -32,7 +32,8 @@ const pageStoreLoaders = {
     news: () => import('./pages/news-stores.js').then((module) => module.registerNewsStores),
     contact: () => import('./pages/contact-stores.js').then((module) => module.registerContactStores),
     'campus-life-dental': () => import('./pages/dental-clinic-stores.js').then((module) => module.registerDentalClinicStores),
-    'campus-life-hospital': () => import('./pages/university-hospital-stores.js').then((module) => module.registerUniversityHospitalStores)
+    'campus-life-hospital': () => import('./pages/university-hospital-stores.js').then((module) => module.registerUniversityHospitalStores),
+    'campus-life-health-insurance': () => import('./pages/health-insurance-stores.js').then((module) => module.registerHealthInsuranceStores)
 };
 
 const pagesUsingFacultyCatalog = new Set(['home', 'faculties']);

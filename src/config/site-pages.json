@@ -314,6 +314,23 @@
       ]
     },
     {
+      "name": "campus-life-health-insurance",
+      "fileName": "campus-life/health-insurance.html",
+      "route": "/campus-life/health-insurance.html",
+      "title": "Health & Insurance | Syrian Private University",
+      "description": "Student health insurance details, coverage, required documents, and support contacts at SPU.",
+      "ogImage": "/images/campus-health.webp",
+      "keywords": [
+        "SPU health insurance",
+        "student medical coverage",
+        "campus healthcare"
+      ],
+      "fragments": [
+        "pages/student-life/health-insurance/hero.html",
+        "pages/student-life/health-insurance/content.html"
+      ]
+    },
+    {
       "name": "about-directorate-scientific-research",
       "fileName": "about/directorates/scientific-research.html",
       "route": "/about/directorates/scientific-research.html",
