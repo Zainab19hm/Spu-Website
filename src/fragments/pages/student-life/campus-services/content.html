@@ -1,4 +1,4 @@
-<section class="pb-20 font-hacen">
+<section class="pb-20 font-hacen" x-data="campusServicesPage()">
   <section class="relative overflow-hidden">
     <img src="/images/admissions-hero-campus.webp" alt="SPU Campus Services" class="h-[260px] w-full object-cover md:h-[340px]">
     <div class="absolute inset-0 bg-spu-blue/55"></div>
@@ -12,19 +12,93 @@
 
   <section class="container py-16">
     <h2 class="text-center text-4xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الخدمات المتاحة' : 'Available Services'"></h2>
+
     <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <article class="rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <img src="/images/campus-transport.webp" alt="Transport" class="h-48 w-full rounded-t-2xl object-cover">
-        <div class="p-5"><h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'النقل' : 'Transport'"></h3><p class="mt-3 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'رحلات منتظمة تربط الحرم بمناطق المدينة الأساسية.' : 'Regular bus routes connecting campus with major city areas.'"></p></div>
-      </article>
-      <article class="rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <img src="/images/campus-health.webp" alt="Health Services" class="h-48 w-full rounded-t-2xl object-cover">
-        <div class="p-5"><h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الخدمات الصحية' : 'Health Services'"></h3><p class="mt-3 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'خدمات طبية أساسية وإرشادات التأمين داخل الحرم.' : 'Core medical support and insurance guidance on campus.'"></p><a href="/campus-life/health-insurance.html" class="mt-3 inline-flex text-spu-red font-bold">View Details</a></div>
-      </article>
-      <article class="rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <img src="/images/healthcare-main.webp" alt="IT Support" class="h-48 w-full rounded-t-2xl object-cover">
-        <div class="p-5"><h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الدعم التقني' : 'IT Support'"></h3><p class="mt-3 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'دعم منصات الجامعة وخدمات الحسابات للطلاب.' : 'Support for university platforms and student accounts.'"></p><a href="/services.html" class="mt-3 inline-flex text-spu-red font-bold">View Details</a></div>
-      </article>
+      <template x-for="card in cards" :key="card.id">
+        <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <img :src="card.image" :alt="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn" class="h-44 w-full object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
+            <div class="mt-3 rounded-xl bg-slate-100 p-3 text-sm text-slate-700">
+              <p class="font-semibold" x-text="$store.app.currentLang === 'ar' ? 'كيفية الوصول:' : 'How to access:'"></p>
+              <p class="mt-1" x-text="$store.app.currentLang === 'ar' ? card.accessAr : card.accessEn"></p>
+            </div>
+            <a :href="card.href" class="mt-4 inline-flex items-center gap-2 font-semibold text-spu-blue hover:text-spu-red">
+              <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
+              <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+            </a>
+          </div>
+        </article>
+      </template>
     </div>
   </section>
+
+  <section class="container">
+    <article class="grid overflow-hidden rounded-2xl bg-spu-blue text-white shadow-lg lg:grid-cols-2">
+      <img src="/images/campus-feature-02.webp" alt="Campus collaboration area" class="h-64 w-full object-cover lg:h-full">
+      <div class="p-8 md:p-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80" x-text="$store.app.currentLang === 'ar' ? 'تمكين الطلاب' : 'Student Support'"></p>
+        <h3 class="mt-3 text-3xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'ملتزمون بنجاحك' : 'Dedicated to Your Success'"></h3>
+        <p class="mt-4 text-sm leading-7 text-white/90" x-text="$store.app.currentLang === 'ar' ? 'ما بعد قاعات الدراسة، نوفر لكل طالب الموارد والإرشاد اللازمين للنجاح. خدمات الحرم لدينا مصممة لرفع رفاهيتك وكفاءتك الأكاديمية.' : 'Beyond the classroom, we ensure every student has the tools and support needed to thrive. Our campus services are designed to elevate wellbeing and academic efficiency.'"></p>
+        <div class="mt-5 flex flex-wrap gap-5 text-sm font-medium">
+          <span class="inline-flex items-center gap-2"><i class="fas fa-check-circle text-white/85"></i><span x-text="$store.app.currentLang === 'ar' ? 'دعم معتمد للجودة' : 'Quality Assured'"></span></span>
+          <span class="inline-flex items-center gap-2"><i class="fas fa-shield-heart text-white/85"></i><span x-text="$store.app.currentLang === 'ar' ? 'سلامة الطالب أولاً' : 'Student Safety First'"></span></span>
+        </div>
+      </div>
+    </article>
+  </section>
 </section>
+
+<script>
+  function campusServicesPage() {
+    return {
+      cards: [
+        {
+          id: 'transport',
+          titleEn: 'Transport',
+          titleAr: 'النقل',
+          accessEn: 'Register at the Transport Office (Building A) and select your preferred route.',
+          accessAr: 'سجّل في مكتب النقل (المبنى A) واختر المسار المناسب لك.',
+          href: '/student-life.html#services',
+          image: '/images/campus-transport.webp'
+        },
+        {
+          id: 'health',
+          titleEn: 'Health Services',
+          titleAr: 'الخدمات الصحية',
+          accessEn: 'Visit the Health Center on campus or review medical coverage details online.',
+          accessAr: 'زر المركز الصحي داخل الحرم أو راجع تفاصيل التغطية الطبية إلكترونياً.',
+          href: '/campus-life/health-insurance.html',
+          image: '/images/campus-health.webp'
+        },
+        {
+          id: 'it',
+          titleEn: 'IT Support',
+          titleAr: 'الدعم التقني',
+          accessEn: 'Submit a support ticket via E-Services or visit the IT Help Desk in Student Affairs.',
+          accessAr: 'قدّم تذكرة دعم عبر الخدمات الإلكترونية أو زر مكتب الدعم التقني في شؤون الطلاب.',
+          href: '/services.html',
+          image: '/images/healthcare-main.webp'
+        },
+        {
+          id: 'cafeteria',
+          titleEn: 'Cafeteria',
+          titleAr: 'الكافتيريا',
+          accessEn: 'Open daily in the Student Center with affordable meals and beverages.',
+          accessAr: 'تعمل يومياً في المركز الطلابي مع وجبات ومشروبات بأسعار مناسبة.',
+          href: '/student-life.html',
+          image: '/images/campus-feature-01.webp'
+        },
+        {
+          id: 'accommodation',
+          titleEn: 'Accommodation',
+          titleAr: 'السكن الطلابي',
+          accessEn: 'Apply through Student Affairs to review available residence options and eligibility.',
+          accessAr: 'قدّم عبر شؤون الطلاب للاطلاع على خيارات السكن المتاحة ومتطلبات الأهلية.',
+          href: '/contact.html',
+          image: '/images/campus-feature-01.webp'
+        }
+      ]
+    };
+  }
+</script>
