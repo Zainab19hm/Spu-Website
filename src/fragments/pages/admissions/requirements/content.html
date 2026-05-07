@@ -7,11 +7,13 @@
         transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         height: 100%;
     }
+
     .req-card:hover {
         border-color: #6f1616;
         box-shadow: 0 30px 60px -12px rgba(111, 22, 22, 0.1);
         transform: translateY(-10px);
     }
+
     .criteria-list li {
         position: relative;
         padding-inline-start: 2rem;
@@ -19,6 +21,7 @@
         color: #475569;
         font-weight: 600;
     }
+
     .criteria-list li::before {
         content: '→';
         position: absolute;
@@ -26,6 +29,7 @@
         color: #6f1616;
         font-weight: 900;
     }
+
     [dir="rtl"] .criteria-list li::before {
         content: '←';
     }
@@ -35,14 +39,16 @@
     <!-- Hero / Header -->
     <section class="relative py-24 overflow-hidden bg-spu-blue">
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="reveal reveal-up inline-block px-4 py-1 rounded-full bg-white/10 text-white/80 text-xs font-black uppercase tracking-widest mb-6 border border-white/10">
+            <div
+                class="reveal reveal-up inline-block px-4 py-1 rounded-full bg-white/10 text-white/80 text-xs font-black uppercase tracking-widest mb-6 border border-white/10">
                 <span x-text="$store.app.currentLang === 'ar' ? 'القبول' : 'Admissions'"></span>
             </div>
             <h1 class="reveal reveal-up reveal-delay-1 text-4xl md:text-6xl font-black text-white mb-8"
                 x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
             <div class="reveal reveal-up reveal-delay-2 flex items-center justify-center gap-4 text-white/60 text-sm">
                 <i class="fa-solid fa-clock-rotate-left"></i>
-                <span x-text="$store.app.currentLang === 'ar' ? 'آخر مراجعة: ' + page.lastReviewed : 'Last Reviewed: ' + page.lastReviewed"></span>
+                <span
+                    x-text="$store.app.currentLang === 'ar' ? 'آخر مراجعة: ' + page.lastReviewed : 'Last Reviewed: ' + page.lastReviewed"></span>
             </div>
         </div>
         <!-- Decorative bg -->
@@ -52,41 +58,129 @@
     <!-- Main Content -->
     <section class="py-24 bg-slate-50">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-                <template x-for="(type, index) in page.types" :key="type.id">
-                    <div class="reveal reveal-up" :class="`reveal-delay-${index + 1}`">
-                        <div class="req-card">
-                            <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-2xl text-spu-blue mb-8">
-                                <i class="fa-solid" :class="type.id === 'new' ? 'fa-graduation-cap' : 'fa-right-left'"></i>
+            <template x-for="section in page.sections" :key="section.id">
+                <div class="mb-20" x-show="section.type === 'categories'">
+                    <div class="max-w-3xl mx-auto text-center mb-14">
+                        <p class="text-sm font-black uppercase tracking-[0.35em] text-spu-red mb-4"
+                            x-text="$store.app.currentLang === 'ar' ? 'المسارات' : 'Admission tracks'"></p>
+                        <h2 class="text-4xl font-black text-spu-blue"
+                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+                    </div>
+                    <div class="grid gap-8 md:grid-cols-3">
+                        <template x-for="card in section.cards" :key="card.titleEn">
+                            <div class="reveal reveal-up rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+                                <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-slate-50 text-2xl text-spu-blue">
+                                    <i class="fa-solid" :class="card.icon"></i>
+                                </div>
+                                <h3 class="text-2xl font-black text-spu-blue mb-3"
+                                    x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
+                                <p class="text-sm text-slate-500 leading-relaxed mb-8"
+                                   x-text="$store.app.currentLang === 'ar' ? card.summaryAr : card.summaryEn"></p>
+                                <a :href="card.linkUrl"
+                                   class="inline-flex items-center gap-2 font-black text-spu-red hover:text-spu-blue">
+                                    <span x-text="$store.app.currentLang === 'ar' ? card.linkTextAr : card.linkTextEn"></span>
+                                    <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+                                </a>
                             </div>
-                            <h3 class="text-2xl font-black text-spu-blue mb-6 pb-4 border-b border-slate-100"
-                                x-text="$store.app.currentLang === 'ar' ? type.titleAr : type.titleEn"></h3>
-                            
-                            <ul class="criteria-list">
-                                <template x-for="item in type.criteria" :key="item.en">
-                                    <li x-text="$store.app.currentLang === 'ar' ? item.ar : item.en"></li>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="mb-20" x-show="section.type === 'steps'">
+                    <div class="max-w-3xl mx-auto text-center mb-12">
+                        <h2 class="text-4xl font-black text-spu-blue"
+                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+                    </div>
+                    <div class="grid gap-8 md:grid-cols-2">
+                        <template x-for="item in section.steps" :key="item.number">
+                            <div class="reveal reveal-up rounded-[2rem] border border-slate-200 bg-white p-10 shadow-sm">
+                                <div class="mb-6 flex items-center gap-4">
+                                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-spu-blue text-xl font-black text-white">
+                                        <span x-text="item.number"></span>
+                                    </span>
+                                    <h3 class="text-xl font-black text-spu-blue"
+                                        x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                                </div>
+                                <p class="text-slate-500 leading-relaxed"
+                                   x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="mb-20" x-show="section.type === 'coverage'">
+                    <div class="max-w-3xl mx-auto text-center mb-12">
+                        <h2 class="text-4xl font-black text-spu-blue"
+                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+                    </div>
+                    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                        <template x-for="card in section.cards" :key="card.titleEn">
+                            <div class="reveal reveal-up rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+                                <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-slate-50 text-2xl text-spu-blue">
+                                    <i class="fa-solid" :class="card.icon"></i>
+                                </div>
+                                <h3 class="text-xl font-black text-spu-blue mb-3"
+                                    x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
+                                <p class="text-sm text-slate-500 leading-relaxed"
+                                   x-text="$store.app.currentLang === 'ar' ? card.descAr : card.descEn"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="mb-0" x-show="section.type === 'checklist'">
+                    <div class="max-w-3xl mx-auto text-center mb-12">
+                        <h2 class="text-4xl font-black text-spu-blue"
+                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+                    </div>
+                    <div class="grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+                        <div class="rounded-[2rem] border border-slate-200 bg-white p-10 shadow-sm">
+                            <ul class="space-y-4">
+                                <template x-for="item in section.items" :key="item.en">
+                                    <li class="flex gap-4 text-slate-600 text-base leading-relaxed">
+                                        <span class="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-spu-blue text-white">✓</span>
+                                        <span x-text="$store.app.currentLang === 'ar' ? item.ar : item.en"></span>
+                                    </li>
                                 </template>
                             </ul>
-
-                            <div class="mt-10">
-                                <a href="#" class="inline-flex items-center gap-2 text-spu-red font-black group">
-                                    <span x-text="$store.app.currentLang === 'ar' ? 'تحقق من الأهلية' : 'Check Eligibility'"></span>
-                                    <i class="fa-solid fa-chevron-right transition-transform group-hover:translate-x-1 rtl:rotate-180"></i>
-                                </a>
+                        </div>
+                        <div class="rounded-[2rem] bg-spu-blue p-10 text-white shadow-xl">
+                            <h3 class="text-2xl font-black mb-6"
+                                x-text="$store.app.currentLang === 'ar' ? section.support.titleAr : section.support.titleEn"></h3>
+                            <div class="space-y-5 text-sm leading-relaxed">
+                                <div>
+                                    <p class="text-slate-300 font-semibold"
+                                       x-text="$store.app.currentLang === 'ar' ? 'الموقع' : 'Location'"></p>
+                                    <p x-text="$store.app.currentLang === 'ar' ? section.support.locationAr : section.support.locationEn"></p>
+                                </div>
+                                <div>
+                                    <p class="text-slate-300 font-semibold"
+                                       x-text="$store.app.currentLang === 'ar' ? 'الهاتف' : 'Phone'"></p>
+                                    <p x-text="section.support.phone"></p>
+                                </div>
+                                <div>
+                                    <p class="text-slate-300 font-semibold"
+                                       x-text="$store.app.currentLang === 'ar' ? 'البريد الإلكتروني' : 'Email'"></p>
+                                    <p x-text="section.support.email"></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </template>
-            </div>
+                </div>
+            </template>
 
             <!-- Global Footer CTA -->
             <div class="reveal reveal-up reveal-delay-3 mt-20 text-center">
-                <div class="inline-block p-10 bg-white rounded-[3rem] border border-slate-100 shadow-xl shadow-blue-900/5 max-w-2xl">
+                <div
+                    class="inline-block p-10 bg-white rounded-[3rem] border border-slate-100 shadow-xl shadow-blue-900/5 max-w-2xl">
                     <h4 class="text-xl font-bold text-spu-blue mb-4"
-                        x-text="$store.app.currentLang === 'ar' ? 'هل لديك سؤال محدد؟' : 'Have a specific question?'"></h4>
+                        x-text="$store.app.currentLang === 'ar' ? 'هل لديك سؤال محدد؟' : 'Have a specific question?'">
+                    </h4>
                     <p class="text-slate-500 mb-8"
-                       x-text="$store.app.currentLang === 'ar' ? 'فريق القبول لدينا جاهز لمساعدتك في كل خطوة.' : 'Our admissions team is ready to assist you at every step.'"></p>
-                    <a href="/contact.html" class="px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20">
+                        x-text="$store.app.currentLang === 'ar' ? 'فريق القبول لدينا جاهز لمساعدتك في كل خطوة.' : 'Our admissions team is ready to assist you at every step.'">
+                    </p>
+                    <a href="/contact.html"
+                        class="px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20">
                         <span x-text="$store.app.currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us'"></span>
                     </a>
                 </div>

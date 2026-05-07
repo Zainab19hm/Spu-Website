@@ -144,26 +144,138 @@ export const admissionsPageContent = {
         lastReviewed: 'May 2026',
         titleEn: 'Admission Requirements',
         titleAr: 'متطلبات القبول',
-        types: [
+        sections: [
             {
-                id: 'new',
-                titleEn: 'New Entrants',
-                titleAr: 'الطلاب المستجدون',
-                criteria: [
-                    { en: 'High School Diploma (Secondary Certificate)', ar: 'شهادة الدراسة الثانوية العامة' },
-                    { en: 'Minimum GPA based on Faculty requirements', ar: 'الحد الأدنى للمعدل حسب متطلبات الكلية' },
-                    { en: 'English Proficiency Test (or SPU Placement)', ar: 'اختبار كفاءة اللغة الإنجليزية (أو تحديد مستوى SPU)' }
+                id: 'requirements-categories',
+                type: 'categories',
+                titleEn: 'Admission tracks',
+                titleAr: 'مسارات القبول',
+                cards: [
+                    {
+                        icon: 'fa-graduation-cap',
+                        titleEn: 'New Entrants',
+                        titleAr: 'الطلاب المستجدون',
+                        summaryEn: 'Prepare your secondary certificate, GPA, and English eligibility.',
+                        summaryAr: 'جهز شهادة الثانوية، المعدل، وأهلية اللغة الإنجليزية.',
+                        linkUrl: '/admissions/how-to-apply.html',
+                        linkTextEn: 'Start your application',
+                        linkTextAr: 'ابدأ طلبك'
+                    },
+                    {
+                        icon: 'fa-right-left',
+                        titleEn: 'Transfer Students',
+                        titleAr: 'طلاب التحويل',
+                        summaryEn: 'Submit previous transcripts, course descriptions, and academic clearance.',
+                        summaryAr: 'قدم كشوفات سابقة، توصيف المقررات، وشهادة الحالة الأكاديمية.',
+                        linkUrl: '/admissions/transfer.html',
+                        linkTextEn: 'Review transfer rules',
+                        linkTextAr: 'راجع قواعد التحويل'
+                    },
+                    {
+                        icon: 'fa-file-circle-check',
+                        titleEn: 'Equivalency & International',
+                        titleAr: 'المعادلة والدوليون',
+                        summaryEn: 'Follow equivalency, translation and visa guidance for foreign credentials.',
+                        summaryAr: 'اتبع إرشادات المعادلة والترجمة والتأشيرة للشهادات الأجنبية.',
+                        linkUrl: '/admissions/transfer.html',
+                        linkTextEn: 'See international guidance',
+                        linkTextAr: 'عرض الإرشادات الدولية'
+                    }
                 ]
             },
             {
-                id: 'transfer',
-                titleEn: 'Transfer Students',
-                titleAr: 'طلاب التحويل',
-                criteria: [
-                    { en: 'Transcripts from previous university', ar: 'كشف علامات من الجامعة السابقة' },
-                    { en: 'Course descriptions for credit evaluation', ar: 'توصيف المقررات لتقييم الساعات المعتمدة' },
-                    { en: 'Good academic standing certificate', ar: 'شهادة حسن سيرة وسلوك أكاديمي' }
+                id: 'requirements-steps',
+                type: 'steps',
+                titleEn: 'How to Use Your Requirements',
+                titleAr: 'كيفية استخدام متطلبات القبول',
+                steps: [
+                    {
+                        number: '01',
+                        titleEn: 'Collect the documents',
+                        titleAr: 'جمع الوثائق',
+                        descEn: 'Gather all certificates, transcripts, and identification documents before applying.',
+                        descAr: 'اجمع جميع الشهادات والكشوفات ووثائق الهوية قبل التقديم.'
+                    },
+                    {
+                        number: '02',
+                        titleEn: 'Verify eligibility',
+                        titleAr: 'تحقق من الأهلية',
+                        descEn: 'Review faculty-specific GPA and program requirements to avoid surprises.',
+                        descAr: 'راجع متطلبات المعدل والبرنامج الخاصة بالكلية لتجنب المفاجآت.'
+                    },
+                    {
+                        number: '03',
+                        titleEn: 'Submit the application',
+                        titleAr: 'قدّم الطلب',
+                        descEn: 'Complete the online admission form and upload your documents securely.',
+                        descAr: 'أكمل نموذج القبول الإلكتروني وارفع وثائقك بشكل آمن.'
+                    },
+                    
+                    {
+                        number: '04',
+                        titleEn: 'Track the review',
+                        titleAr: 'تابع المراجعة',
+                        descEn: 'Follow status updates and prepare for any follow-up tests or interviews.',
+                        descAr: 'تابع تحديثات الحالة واستعد لأي اختبارات أو مقابلات لاحقة.'
+                    }
                 ]
+            },
+            {
+                id: 'requirements-coverage',
+                type: 'coverage',
+                titleEn: 'What is Covered',
+                titleAr: 'ما الذي يشمله',
+                cards: [
+                    {
+                        icon: 'fa-file-alt',
+                        titleEn: 'Application Documents',
+                        titleAr: 'وثائق الطلب',
+                        descEn: 'All required papers for new, transfer, and international students.',
+                        descAr: 'كل الأوراق المطلوبة للطلاب المستجدين والمحولين والدوليين.'
+                    },
+                    {
+                        icon: 'fa-graduation-cap',
+                        titleEn: 'Academic Criteria',
+                        titleAr: 'المعايير الأكاديمية',
+                        descEn: 'GPA, diploma type, and faculty-specific admissions standards.',
+                        descAr: 'المعدل، نوع الشهادة، والمعايير الخاصة بكل كلية.'
+                    },
+                    {
+                        icon: 'fa-language',
+                        titleEn: 'Language Requirements',
+                        titleAr: 'متطلبات اللغة',
+                        descEn: 'English and Arabic requirements for programmes and placement tests.',
+                        descAr: 'متطلبات الإنجليزية والعربية للبرامج واختبارات تحديد المستوى.'
+                    },
+                    {
+                        icon: 'fa-globe',
+                        titleEn: 'International Equivalency',
+                        titleAr: 'المعادلة الدولية',
+                        descEn: 'Guidance for international credentials and Syrian equivalency certificates.',
+                        descAr: 'إرشادات للشهادات الدولية وشهادات المعادلة السورية.'
+                    }
+                ]
+            },
+            {
+                id: 'requirements-documents',
+                type: 'checklist',
+                titleEn: 'Required Documents',
+                titleAr: 'الوثائق المطلوبة',
+                items: [
+                    { en: 'Completed admission form', ar: 'نموذج القبول مكتمل' },
+                    { en: 'Certified secondary school diploma', ar: 'شهادة الثانوية العامة مصدقة' },
+                    { en: 'Official transcripts from all institutions', ar: 'كشف علامات رسمي من جميع المؤسسات' },
+                    { en: 'Copy of national ID or passport', ar: 'صورة الهوية الوطنية أو جواز السفر' },
+                    { en: 'English proficiency proof if required', ar: 'إثبات كفاءة اللغة الإنجليزية عند الحاجة' }
+                ],
+                support: {
+                    titleEn: 'Admissions Support',
+                    titleAr: 'دعم القبول',
+                    locationEn: 'Admissions Office, Main Campus',
+                    locationAr: 'مكتب القبول، الحرم الرئيسي',
+                    phone: '+963 11 123 4567',
+                    email: 'admissions@spu.edu.sy'
+                }
             }
         ]
     },
