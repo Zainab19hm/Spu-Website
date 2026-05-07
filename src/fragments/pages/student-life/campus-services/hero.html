@@ -1,0 +1,10 @@
+<section class="relative overflow-hidden font-hacen" x-data="campusServicesPage()">
+  <img src="/images/admissions-hero-campus.webp" alt="SPU Campus Services" class="h-[260px] w-full object-cover md:h-[340px]">
+  <div class="absolute inset-0 bg-spu-blue/55"></div>
+  <div class="absolute inset-0">
+    <div class="container flex h-full flex-col items-start justify-center text-white">
+      <p class="text-sm font-semibold" x-text="$store.app.currentLang === 'ar' ? 'الرئيسية > الحياة الجامعية > خدمات الحرم' : 'Home > Campus Life > Campus Services'"></p>
+      <h1 class="mt-2 text-4xl font-bold md:text-5xl" x-text="$store.app.currentLang === 'ar' ? 'خدمات الحرم' : 'Campus Services'"></h1>
+    </div>
+  </div>
+</section>
