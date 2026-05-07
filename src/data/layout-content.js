@@ -76,7 +76,7 @@ export const navigationMenuItems = [
         page: 'campus-life',
         hasDropdown: true,
         children: [
-            { labelAr: 'الخدمات الطلابية', labelEn: 'Student Services', url: withHash(siteRoutes.studentLife, 'services') },
+            { labelAr: 'خدمات الحرم', labelEn: 'Campus Services', url: siteRoutes.campusLifeServices },
             { labelAr: 'العيادات السنية', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental },
             { labelAr: 'المستشفى الجامعي', labelEn: 'University Hospital', url: siteRoutes.campusLifeHospital },
             { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
@@ -93,7 +93,7 @@ export const navigationMenuItems = [
         children: [
             { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, protected: true },
             { labelAr: 'التسجيل', labelEn: 'Registration', url: portalAccessConfig.registrationDestination, protected: true },
-            { labelAr: 'المكتبة', labelEn: 'Library Access', url: withHash(siteRoutes.studentLife, 'services') },
+            { labelAr: 'المكتبة', labelEn: 'Library Access', url: siteRoutes.campusLifeServices },
             { labelAr: 'التقديم الان', labelEn: 'Apply now', url: siteRoutes.admissions },
         ]
     },

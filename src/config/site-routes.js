@@ -42,5 +42,6 @@ export const siteRoutes = Object.freeze({
     contact: getPageRoute('contact'),
     campusLifeDental: getPageRoute('campus-life-dental'),
     campusLifeHospital: getPageRoute('campus-life-hospital'),
-    campusLifeHealthInsurance: getPageRoute('campus-life-health-insurance')
+    campusLifeHealthInsurance: getPageRoute('campus-life-health-insurance'),
+    campusLifeServices: getPageRoute('campus-life-services')
 });

@@ -9,7 +9,7 @@ export const studentLifePageContent = {
         summaryAr: 'اكتشف المجتمع النابض بالحياة والخدمات الأساسية والمرافق الاستثنائية التي تشكل تجربتك في الجامعة السورية الخاصة.',
         image: '/images/admissions-hero-campus.webp',
         quickLinks: [
-            { labelEn: 'Campus Services', labelAr: 'خدمات الحرم', href: '/student-life.html#services' },
+            { labelEn: 'Campus Services', labelAr: 'خدمات الحرم', href: siteRoutes.campusLifeServices },
             { labelEn: 'Health & Wellbeing', labelAr: 'الصحة والرفاهية', href: '/student-life.html#health' },
             { labelEn: 'Student Activities', labelAr: 'الأنشطة الطلابية', href: '/student-life.html#activities' },
             { labelEn: 'Career Development', labelAr: 'التطوير المهني', href: '/student-life.html#career' }
@@ -126,6 +126,7 @@ export const studentLifePageContent = {
             titleAr: 'خدمات الحرم الجامعي',
             summaryEn: 'A centralized directory for essential student services, including transport, health, IT, cafeteria, and accommodation.',
             summaryAr: 'دليل مركزي للخدمات الطلابية الأساسية، بما في ذلك النقل والصحة وتقنية المعلومات والكافتيريا والسكن.',
+            href: siteRoutes.campusLifeServices,
             linkEn: 'Explore Services',
             linkAr: 'استكشف الخدمات',
             image: '/images/admissions-hero-students.webp',
