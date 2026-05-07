@@ -1,0 +1,62 @@
+<section x-data="{ sections: $store.healthInsurancePage.sections }" class="bg-white py-16 md:py-24 font-hacen">
+  <div class="container max-w-[980px]">
+    <template x-for="section in sections" :key="section.id">
+      <div>
+        <template x-if="section.type === 'highlight'">
+          <div class="bg-spu-blue text-white rounded-[4px] px-8 md:px-14 py-8 md:py-10 text-center -mt-28 relative z-20 shadow-xl border border-white/20">
+            <h2 class="text-[34px] md:text-[40px] font-bold mb-3" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+            <p class="text-sm md:text-[15px] text-white/90 leading-relaxed max-w-4xl mx-auto" x-text="$store.app.currentLang === 'ar' ? section.descriptionAr : section.descriptionEn"></p>
+          </div>
+        </template>
+
+        <template x-if="section.type === 'steps'">
+          <div class="mt-20 md:mt-24">
+            <h3 class="text-[38px] md:text-[48px] font-bold text-spu-blue text-center mb-10 md:mb-12" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
+              <template x-for="item in section.items" :key="item.number">
+                <div>
+                  <p class="text-[42px] md:text-[50px] font-bold text-[#D0D6E6] leading-none" x-text="item.number"></p>
+                  <h4 class="text-[28px] font-bold text-spu-blue mb-2" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                  <p class="text-[#5B6277] leading-relaxed" x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <template x-if="section.type === 'cards'">
+          <div class="mt-20 md:mt-24">
+            <h3 class="text-[38px] md:text-[48px] font-bold text-spu-blue text-center mb-8 md:mb-10" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+              <template x-for="item in section.items" :key="item.titleEn">
+                <div class="border border-[#DCE1ED] rounded-[8px] p-5 shadow-[0px_4px_12px_0px_rgba(51,51,51,0.06)] bg-white">
+                  <h4 class="text-[19px] font-bold text-spu-blue mb-2" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                  <p class="text-sm text-[#5B6277] leading-relaxed" x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <template x-if="section.type === 'documents'">
+          <div class="mt-20 md:mt-24 grid lg:grid-cols-[1fr_320px] gap-8 items-start">
+            <div class="border border-[#DCE1ED] rounded-[8px] p-6 md:p-8">
+              <h3 class="text-[38px] md:text-[44px] font-bold text-spu-blue mb-5" x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h3>
+              <ul class="space-y-3 text-[#3C435D]">
+                <template x-for="(item, idx) in ($store.app.currentLang === 'ar' ? section.listAr : section.listEn)" :key="idx">
+                  <li class="flex items-start gap-3"><span class="text-spu-red mt-1"><i class="fas fa-check-circle"></i></span><span x-text="item"></span></li>
+                </template>
+              </ul>
+            </div>
+            <aside class="bg-spu-blue text-white rounded-[8px] p-6 md:p-7 shadow-lg">
+              <h4 class="text-[26px] font-bold mb-4" x-text="$store.app.currentLang === 'ar' ? section.support.titleAr : section.support.titleEn"></h4>
+              <p class="text-white/90 mb-3" x-text="$store.app.currentLang === 'ar' ? section.support.locationAr : section.support.locationEn"></p>
+              <p class="mb-2"><a :href="'tel:' + section.support.phone" x-text="section.support.phone"></a></p>
+              <p><a :href="'mailto:' + section.support.email" x-text="section.support.email"></a></p>
+            </aside>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</section>

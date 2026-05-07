@@ -1,0 +1,16 @@
+<section class="relative min-h-[58vh] md:min-h-[68vh] flex items-center justify-center overflow-hidden font-hacen mx-auto">
+  <div class="absolute inset-0 z-0">
+    <img :src="$store.healthInsurancePage.hero.image" class="w-full h-full object-cover" alt="Health Insurance Hero">
+    <div class="absolute inset-0 bg-spu-blue/65"></div>
+  </div>
+  <div class="container relative z-10 pb-12 pt-40 mx-auto text-center">
+    <nav class="flex flex-wrap justify-center items-center gap-2 text-white/75 text-sm md:text-base font-medium mb-6">
+      <a :href="siteRoutes.home" class="hover:text-white" x-text="$store.app.currentLang === 'ar' ? $store.healthInsurancePage.hero.breadcrumbHomeAr : $store.healthInsurancePage.hero.breadcrumbHomeEn"></a>
+      <i class="fas fa-chevron-right text-[10px] rtl:rotate-180"></i>
+      <a :href="siteRoutes.studentLife" class="hover:text-white" x-text="$store.app.currentLang === 'ar' ? $store.healthInsurancePage.hero.breadcrumbCampusAr : $store.healthInsurancePage.hero.breadcrumbCampusEn"></a>
+      <i class="fas fa-chevron-right text-[10px] rtl:rotate-180"></i>
+      <span class="text-white font-semibold" x-text="$store.app.currentLang === 'ar' ? $store.healthInsurancePage.hero.breadcrumbCurrentAr : $store.healthInsurancePage.hero.breadcrumbCurrentEn"></span>
+    </nav>
+    <h1 class="text-4xl md:text-[54px] font-bold text-white mb-6" x-text="$store.app.currentLang === 'ar' ? $store.healthInsurancePage.hero.titleAr : $store.healthInsurancePage.hero.titleEn"></h1>
+  </div>
+</section>

@@ -182,8 +182,9 @@ export const studentLifePageContent = {
             titleAr: 'الصحة والتأمين',
             summaryEn: 'Student health insurance information, including coverage details, how to use the insurance, and contact information.',
             summaryAr: 'معلومات التأمين الصحي للطلاب، بما في ذلك تفاصيل التغطية وكيفية استخدام التأمين ومعلومات الاتصال.',
-            linkEn: 'Explore Portal',
-            linkAr: 'استكشف البوابة',
+            linkEn: 'Explore Coverage',
+            linkAr: 'استكشف التغطية',
+            href: siteRoutes.campusLifeHealthInsurance,
             image: '/images/campus-health.webp',
             imagePosition: 'left'
         },
