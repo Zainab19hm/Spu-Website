@@ -236,7 +236,9 @@
         "SPU student support"
       ],
       "fragments": [
-        "pages/student-life/campus-services/content.html"
+        "pages/student-life/campus-services/hero.html",
+        "pages/student-life/campus-services/services-grid.html",
+        "pages/student-life/campus-services/support-highlight.html"
       ]
     },
     {
