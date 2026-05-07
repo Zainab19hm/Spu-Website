@@ -1,0 +1,30 @@
+<section class="pb-20 font-hacen">
+  <section class="relative overflow-hidden">
+    <img src="/images/admissions-hero-campus.webp" alt="SPU Campus Services" class="h-[260px] w-full object-cover md:h-[340px]">
+    <div class="absolute inset-0 bg-spu-blue/55"></div>
+    <div class="absolute inset-0">
+      <div class="container flex h-full flex-col items-start justify-center text-white">
+        <p class="text-sm font-semibold" x-text="$store.app.currentLang === 'ar' ? 'الرئيسية > الحياة الجامعية > خدمات الحرم' : 'Home > Campus Life > Campus Services'"></p>
+        <h1 class="mt-2 text-4xl font-bold md:text-5xl" x-text="$store.app.currentLang === 'ar' ? 'خدمات الحرم' : 'Campus Services'"></h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-16">
+    <h2 class="text-center text-4xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الخدمات المتاحة' : 'Available Services'"></h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <article class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <img src="/images/campus-transport.webp" alt="Transport" class="h-48 w-full rounded-t-2xl object-cover">
+        <div class="p-5"><h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'النقل' : 'Transport'"></h3><p class="mt-3 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'رحلات منتظمة تربط الحرم بمناطق المدينة الأساسية.' : 'Regular bus routes connecting campus with major city areas.'"></p></div>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <img src="/images/campus-health.webp" alt="Health Services" class="h-48 w-full rounded-t-2xl object-cover">
+        <div class="p-5"><h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الخدمات الصحية' : 'Health Services'"></h3><p class="mt-3 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'خدمات طبية أساسية وإرشادات التأمين داخل الحرم.' : 'Core medical support and insurance guidance on campus.'"></p><a href="/campus-life/health-insurance.html" class="mt-3 inline-flex text-spu-red font-bold">View Details</a></div>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <img src="/images/healthcare-main.webp" alt="IT Support" class="h-48 w-full rounded-t-2xl object-cover">
+        <div class="p-5"><h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الدعم التقني' : 'IT Support'"></h3><p class="mt-3 text-slate-600" x-text="$store.app.currentLang === 'ar' ? 'دعم منصات الجامعة وخدمات الحسابات للطلاب.' : 'Support for university platforms and student accounts.'"></p><a href="/services.html" class="mt-3 inline-flex text-spu-red font-bold">View Details</a></div>
+      </article>
+    </div>
+  </section>
+</section>

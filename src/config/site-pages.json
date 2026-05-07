@@ -224,6 +224,22 @@
       ]
     },
     {
+      "name": "campus-life-services",
+      "fileName": "campus-life/services.html",
+      "route": "/campus-life/services.html",
+      "title": "Campus Services | Syrian Private University",
+      "description": "Explore SPU campus services including transport, health services, IT support, and student care resources.",
+      "ogImage": "/images/admissions-hero-campus.webp",
+      "keywords": [
+        "SPU campus services",
+        "SPU transport",
+        "SPU student support"
+      ],
+      "fragments": [
+        "pages/student-life/campus-services/content.html"
+      ]
+    },
+    {
       "name": "services",
       "fileName": "services.html",
       "route": "/services.html",
