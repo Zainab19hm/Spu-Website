@@ -14,10 +14,10 @@
                 class="flex flex-wrap justify-center items-center gap-2 text-white/70 text-sm md:text-base font-medium mb-6">
                 <a :href="siteRoutes.home" class="hover:text-white transition-colors"
                     x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.hero.breadcrumbHomeAr : $store.universityHospitalPage.hero.breadcrumbHomeEn"></a>
-                <i class="fas fa-chevron-right text-[10px] rtl:rotate-180"></i>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
                 <a :href="siteRoutes.studentLife" class="hover:text-white transition-colors"
                     x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.hero.breadcrumbCampusAr : $store.universityHospitalPage.hero.breadcrumbCampusEn"></a>
-                <i class="fas fa-chevron-right text-[10px] rtl:rotate-180"></i>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
                 <span class="text-white font-semibold"
                     x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.hero.breadcrumbCurrentAr : $store.universityHospitalPage.hero.breadcrumbCurrentEn"></span>
             </nav>
@@ -33,7 +33,7 @@
                 class="inline-flex items-center justify-center gap-3 px-10 py-4 bg-spu-red text-white rounded-full font-semibold shadow-2xl shadow-spu-red/20 hover:bg-white hover:text-spu-blue transition-all duration-300">
                 <span
                     x-text="$store.app.currentLang === 'ar' ? $store.universityHospitalPage.hero.ctaAr : $store.universityHospitalPage.hero.ctaEn"></span>
-                <i class="fas fa-map-marker-alt"></i>
+                <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
             </a>
         </div>
     </div>

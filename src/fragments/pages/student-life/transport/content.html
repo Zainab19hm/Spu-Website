@@ -1,0 +1,52 @@
+<section class="bg-white py-16 font-hacen md:py-24">
+  <div class="container">
+    <h2 class="mb-12 text-center text-3xl font-bold text-spu-blue md:text-[36px]"
+      x-text="$store.app.currentLang === 'ar' ? $store.transportPage.overview.titleAr : $store.transportPage.overview.titleEn"></h2>
+
+    <div class="mx-auto grid w-full gap-6 md:grid-cols-3 ">
+      <span id="schedule" class="sr-only"></span>
+      <span id="routes" class="sr-only"></span>
+      <span id="fees" class="sr-only"></span>
+      <template x-for="(card, index) in $store.transportPage.cards" :key="card.titleEn">
+        <article
+          class="rounded-[6px] border border-[#E4E7EF] bg-white px-6 py-6 shadow-[0_8px_24px_rgba(32,39,89,0.08)]"
+          :class="(index === 0 || index === 3) ? 'md:col-span-2' : 'md:col-span-1'">
+          <div class="mb-4 flex items-start justify-between gap-6">
+            <h3 class="text-[16px] font-bold text-spu-blue"
+              x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
+            <img :src="card.icon" alt="" class="h-5 w-5 object-contain" aria-hidden="true">
+          </div>
+          <p class="mb-5 text-[13px] leading-relaxed text-[#5E6478]"
+            x-text="$store.app.currentLang === 'ar' ? card.descriptionAr : card.descriptionEn"></p>
+          <a :href="card.href" class="inline-flex items-center gap-2 text-[13px] font-bold text-spu-blue transition-colors hover:text-spu-red">
+            <span x-text="$store.app.currentLang === 'ar' ? card.ctaAr : card.ctaEn"></span>
+            <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
+          </a>
+        </article>
+      </template>
+    </div>
+
+    <article class="mx-auto mt-20 grid w-full overflow-hidden rounded-[6px] bg-spu-blue shadow-[0_14px_36px_rgba(32,39,89,0.22)] md:grid-cols-[1fr_1fr] ">
+      <div class="max-h-[450px]">
+        <img
+          :src="$store.transportPage.success.image"
+          :alt="$store.app.currentLang === 'ar' ? $store.transportPage.success.imageAltAr : $store.transportPage.success.imageAltEn"
+          class="h-full w-full object-cover">
+      </div>
+      <div class="flex flex-col justify-center px-7 py-8 text-white md:px-10">
+        <h3 class="mb-4 text-[22px] font-bold leading-tight"
+          x-text="$store.app.currentLang === 'ar' ? $store.transportPage.success.titleAr : $store.transportPage.success.titleEn"></h3>
+        <p class="mb-7 text-[14px] leading-7 text-white/88"
+          x-text="$store.app.currentLang === 'ar' ? $store.transportPage.success.descriptionAr : $store.transportPage.success.descriptionEn"></p>
+        <div class="flex flex-wrap gap-6">
+          <template x-for="link in $store.transportPage.success.links" :key="link.labelEn">
+            <span class="inline-flex items-center gap-2 text-[12px] font-semibold text-white/90">
+              <img :src="link.icon" alt="" class="h-4 w-4 brightness-0 invert" aria-hidden="true">
+              <span x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn"></span>
+            </span>
+          </template>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

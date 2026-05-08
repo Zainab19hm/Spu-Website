@@ -9,10 +9,10 @@ export const studentLifePageContent = {
         summaryAr: 'اكتشف المجتمع النابض بالحياة والخدمات الأساسية والمرافق الاستثنائية التي تشكل تجربتك في الجامعة السورية الخاصة.',
         image: '/images/admissions-hero-campus.webp',
         quickLinks: [
-            { labelEn: 'Campus Services', labelAr: 'خدمات الحرم', href: siteRoutes.campusLifeServices },
+            { labelEn: 'Campus Services', labelAr: 'خدمات الحرم الجامعي', href: siteRoutes.campusLifeServices },
             { labelEn: 'Health & Wellbeing', labelAr: 'الصحة والرفاهية', href: '/student-life.html#health' },
-            { labelEn: 'Student Activities', labelAr: 'الأنشطة الطلابية', href: '/student-life.html#activities' },
-            { labelEn: 'Career Development', labelAr: 'التطوير المهني', href: '/student-life.html#career' }
+            { labelEn: 'Student Activities', labelAr: 'الأنشطة الطلابية', href: siteRoutes.campusLifeClubsActivities },
+            { labelEn: 'Career Development', labelAr: 'التطوير المهني', href: siteRoutes.campusLifeCareerDevelopment }
         ]
     },
 
@@ -32,7 +32,7 @@ export const studentLifePageContent = {
             suffixAr: '+',
             labelEn: 'Active Students',
             labelAr: 'طالب نشط',
-            icon: 'fas fa-user-graduate'
+            icon: '/images/icon-user-graduate-outline.svg'
         },
         {
             id: 'clubs',
@@ -42,7 +42,7 @@ export const studentLifePageContent = {
             suffixAr: '+',
             labelEn: 'Student Clubs',
             labelAr: 'نادي طلابي',
-            icon: 'fas fa-users'
+            icon: '/images/icon-users-outline.svg'
         },
         {
             id: 'events',
@@ -52,7 +52,7 @@ export const studentLifePageContent = {
             suffixAr: '+',
             labelEn: 'Annual Events',
             labelAr: 'فعالية سنوية',
-            icon: 'fas fa-calendar-alt'
+            icon: '/images/icon-calendar-outline.svg'
         },
         {
             id: 'satisfaction',
@@ -62,7 +62,7 @@ export const studentLifePageContent = {
             suffixAr: '%',
             labelEn: 'Student Satisfaction',
             labelAr: 'رضا الطلاب',
-            icon: 'fas fa-heart'
+            icon: '/images/icon-handshake-outline.svg'
         }
     ],
 
@@ -114,7 +114,7 @@ export const studentLifePageContent = {
                 titleEn: 'Transport Network',
                 titleAr: 'شبكة النقل',
                 summaryEn: 'Organized bus routes connecting campus to major city areas with flexible schedules.',
-                summaryAr: 'خطوط حافلات منظمة تربط الحرم بالمناطق الرئيسية في المدينة بجداول مرنة.'
+                summaryAr: 'خطوط حافلات منظمة تربط الحرم الجامعي بالمناطق الرئيسية في المدينة بجداول مرنة.'
             }
         ]
     },
@@ -164,6 +164,7 @@ export const studentLifePageContent = {
             summaryAr: 'دليل الأندية والأنشطة الطلابية النشطة، بما في ذلك أوصاف الأندية وكيفية انضمام الطلاب.',
             linkEn: 'Explore Clubs',
             linkAr: 'استكشف الأندية',
+            href: siteRoutes.campusLifeClubsActivities,
             image: '/images/campus-clubs.webp',
             imagePosition: 'left'
         },
@@ -175,6 +176,7 @@ export const studentLifePageContent = {
             summaryAr: 'موارد الدعم المهني، بما في ذلك الفعاليات وفرص العمل وورش السيرة الذاتية والتدريب والشراكات مع أصحاب العمل.',
             linkEn: 'Explore Portal',
             linkAr: 'استكشف البوابة',
+            href: siteRoutes.campusLifeCareerDevelopment,
             image: '/images/campus-career.webp',
             imagePosition: 'right'
         },
@@ -198,10 +200,326 @@ export const studentLifePageContent = {
             summaryAr: 'مسارات النقل والجداول والرسوم ومعلومات التسجيل للطلاب.',
             linkEn: 'View Routes',
             linkAr: 'عرض المسارات',
+            href: siteRoutes.campusLifeTransport,
             image: '/images/campus-transport.webp',
             imagePosition: 'right'
         }
     ],
+
+    campusServices: {
+        hero: {
+            image: '/images/admissions-hero-campus.webp',
+            titleEn: 'Campus Services',
+            titleAr: 'خدمات الحرم الجامعي',
+            breadcrumbs: [
+                { labelEn: 'Home', labelAr: 'الرئيسية', href: siteRoutes.home },
+                { labelEn: 'Campus Life', labelAr: 'الحياة الجامعية', href: siteRoutes.studentLife },
+                { labelEn: 'Campus Services', labelAr: 'خدمات الحرم الجامعي', href: siteRoutes.campusLifeServices }
+            ]
+        },
+        services: {
+            titleEn: 'Available Services',
+            titleAr: 'الخدمات المتاحة',
+            accessLabelEn: 'How to access:',
+            accessLabelAr: 'كيفية الوصول:',
+            detailsLabelEn: 'View Details',
+            detailsLabelAr: 'عرض التفاصيل',
+            items: [
+                {
+                    id: 'transport',
+                    titleEn: 'Transport',
+                    titleAr: 'النقل',
+                    accessEn: 'Register at the Transport Office (Building A) and select your route.',
+                    accessAr: 'سجّل في مكتب النقل (المبنى A) واختر المسار المناسب لك.',
+                    href: siteRoutes.campusLifeTransport,
+                    image: '/images/campus-transport.webp'
+                },
+                {
+                    id: 'health',
+                    titleEn: 'Health Services',
+                    titleAr: 'الخدمات الصحية',
+                    accessEn: 'Visit the on-campus Health Center or review coverage details online.',
+                    accessAr: 'زر المركز الصحي داخل الحرم الجامعي أو راجع تفاصيل التغطية الطبية إلكترونياً.',
+                    href: siteRoutes.campusLifeHealthInsurance,
+                    image: '/images/campus-health.webp'
+                },
+                {
+                    id: 'it',
+                    titleEn: 'IT Support',
+                    titleAr: 'الدعم التقني',
+                    accessEn: 'Submit a service request via E-Services or visit the IT Help Desk.',
+                    accessAr: 'قدّم طلب خدمة عبر الخدمات الإلكترونية أو زر مكتب الدعم التقني.',
+                    href: siteRoutes.services,
+                    image: '/images/healthcare-main.webp'
+                },
+                {
+                    id: 'cafeteria',
+                    titleEn: 'Cafeteria',
+                    titleAr: 'الكافتيريا',
+                    accessEn: 'Open daily in the Student Center with meals and beverages.',
+                    accessAr: 'تعمل يومياً في المركز الطلابي مع وجبات ومشروبات مناسبة.',
+                    href: siteRoutes.studentLife,
+                    image: '/images/campus-feature-01.webp',
+                    wide: true
+                },
+                {
+                    id: 'accommodation',
+                    titleEn: 'Accommodation',
+                    titleAr: 'السكن الطلابي',
+                    accessEn: 'Apply through Student Affairs to review available residence options.',
+                    accessAr: 'قدّم عبر شؤون الطلاب للاطلاع على خيارات السكن المتاحة.',
+                    href: siteRoutes.contact,
+                    image: '/images/campus-feature-01.webp',
+                    wide: true
+                },
+            ],
+
+        },
+        support: {
+            image: '/images/slider-4.webp',
+            imageAltEn: 'Campus collaboration area',
+            imageAltAr: 'مساحة تعاون داخل الحرم الجامعي',
+            titleEn: 'Dedicated to Your Success',
+            titleAr: 'ملتزمون بنجاحك',
+            summaryEn: 'Beyond the classroom, we ensure that every student has the tools and support needed to thrive. Our campus services are designed with accessibility and efficiency in mind.',
+            summaryAr: 'ما بعد قاعات الدراسة، نوفر لكل طالب الموارد والإرشاد اللازمين للنجاح. خدمات الحرم الجامعي لدينا مصممة لسهولة الوصول والكفاءة.',
+            badges: [
+                {
+                    labelEn: 'Quality Assured',
+                    labelAr: 'دعم معتمد للجودة',
+                    icon: '/images/icon-check-circle-outline.svg'
+                },
+                {
+                    labelEn: 'Student Support',
+                    labelAr: 'سلامة الطالب أولاً',
+                    icon: '/images/student.svg'
+                }
+            ]
+        }
+    },
+
+    careerDevelopment: {
+        hero: {
+            image: '/images/career-development-hero.webp',
+            eyebrowEn: 'Campus Services / Career Development',
+            eyebrowAr: 'خدمات الحرم الجامعي / التطوير المهني',
+            titleEn: 'Career Development',
+            titleAr: 'التطوير المهني',
+            breadcrumbs: [
+                { labelEn: 'Home', labelAr: 'الرئيسية', href: siteRoutes.home },
+                { labelEn: 'Campus Life', labelAr: 'الحياة الجامعية', href: siteRoutes.studentLife },
+                { labelEn: 'Career Development', labelAr: 'التطوير المهني', href: siteRoutes.campusLifeCareerDevelopment }
+            ],
+            panel: {
+                titleEn: 'Empowering Your Future',
+                titleAr: 'تمكين مستقبلك المهني',
+                summaryEn: 'The Career Growth Hub serves as the vital connector between academic achievement and professional success.',
+                summaryAr: 'يعمل مركز النمو المهني كحلقة وصل أساسية بين الإنجاز الأكاديمي والنجاح المهني.'
+            }
+        },
+        services: {
+            titleEn: 'Career Services',
+            titleAr: 'خدمات التطوير المهني',
+            items: [
+                {
+                    id: 'career-guidance',
+                    icon: '/images/icon-globe-outline.svg',
+                    titleEn: 'Career Guidance',
+                    titleAr: 'الإرشاد المهني',
+                    summaryEn: 'One-on-one support for students preparing career direction and professional profiles.',
+                    summaryAr: 'دعم فردي للطلاب في تحديد المسار المهني وبناء الملف الاحترافي.',
+                    linkEn: 'Get Career Guidance',
+                    linkAr: 'احصل على إرشاد مهني',
+                    href: withHash(siteRoutes.campusLifeCareerDevelopment, 'career-guidance')
+                },
+                {
+                    id: 'cv-workshops',
+                    icon: '/images/icon-award-outline.svg',
+                    titleEn: 'CV Workshops',
+                    titleAr: 'ورش السيرة الذاتية',
+                    summaryEn: 'Interactive workshops on CV structure, interview readiness, and job search confidence.',
+                    summaryAr: 'ورش تفاعلية حول بنية السيرة الذاتية والاستعداد للمقابلات والبحث عن العمل.',
+                    linkEn: 'View Workshops',
+                    linkAr: 'عرض الورش',
+                    href: withHash(siteRoutes.campusLifeCareerDevelopment, 'cv-workshops')
+                },
+                {
+                    id: 'internship-listings',
+                    icon: '/images/icon-calendar-outline.svg',
+                    titleEn: 'Internship Listings',
+                    titleAr: 'فرص التدريب',
+                    summaryEn: 'Seasonal internship listings with university partners across academic disciplines.',
+                    summaryAr: 'فرص تدريب موسمية مع شركاء الجامعة في مختلف الاختصاصات.',
+                    linkEn: 'View Internships',
+                    linkAr: 'عرض فرص التدريب',
+                    href: withHash(siteRoutes.campusLifeCareerDevelopment, 'internship-listings')
+                },
+                {
+                    id: 'job-board',
+                    icon: '/images/icon-file-outline.svg',
+                    titleEn: 'Job Board',
+                    titleAr: 'لوحة الوظائف',
+                    summaryEn: 'Access full-time job opportunities for recent graduates through verified employer outreach.',
+                    summaryAr: 'الوصول إلى فرص عمل بدوام كامل للخريجين عبر أصحاب عمل موثوقين.',
+                    linkEn: 'Open Job Board',
+                    linkAr: 'فتح لوحة الوظائف',
+                    href: withHash(siteRoutes.campusLifeCareerDevelopment, 'job-board')
+                },
+                {
+                    id: 'employer-partners',
+                    icon: '/images/icon-handshake-outline.svg',
+                    titleEn: 'Employer Partners',
+                    titleAr: 'شركاء التوظيف',
+                    summaryEn: 'Discover cooperating organizations and employer resources connected with Syrian Private University.',
+                    summaryAr: 'اكتشف المؤسسات المتعاونة وموارد أصحاب العمل المرتبطة بالجامعة السورية الخاصة.',
+                    linkEn: 'View Partners',
+                    linkAr: 'عرض الشركاء',
+                    href: withHash(siteRoutes.campusLifeCareerDevelopment, 'employer-partners')
+                },
+                {
+                    id: 'career-events',
+                    icon: '/images/icon-sitemap-outline.svg',
+                    titleEn: 'Career Events',
+                    titleAr: 'فعاليات التوظيف',
+                    summaryEn: 'Explore upcoming career fairs, employer information sessions, and specialized hiring events.',
+                    summaryAr: 'استكشف معارض التوظيف والجلسات التعريفية وفعاليات التوظيف المتخصصة.',
+                    linkEn: 'View Events',
+                    linkAr: 'عرض الفعاليات',
+                    href: withHash(siteRoutes.campusLifeCareerDevelopment, 'career-events')
+                }
+            ]
+        },
+        success: {
+            image: '/images/career-development-success.webp',
+            imageAltEn: 'Syrian Private University campus building',
+            imageAltAr: 'مبنى في حرم الجامعة السورية الخاصة',
+            titleEn: 'Dedicated to Your Success',
+            titleAr: 'ملتزمون بنجاحك',
+            summaryEn: 'Beyond the classroom, we ensure that every student has the tools and support systems needed to thrive. Our campus services are designed with accessibility and efficiency in mind.',
+            summaryAr: 'خارج القاعات الدراسية، نضمن حصول كل طالب على الأدوات وأنظمة الدعم اللازمة للنجاح. صممت خدماتنا الجامعية لتكون سهلة الوصول وفعالة.',
+            badges: [
+                {
+                    labelEn: 'Quality Assured',
+                    labelAr: 'جودة موثوقة',
+                    icon: '/images/icon-check-circle-outline.svg'
+                },
+                {
+                    labelEn: 'Pro Support',
+                    labelAr: 'دعم مهني',
+                    icon: '/images/icon-user-graduate-outline.svg'
+                }
+            ]
+        }
+    },
+
+    clubsActivities: {
+        hero: {
+            image: '/images/admissions-hero-campus.webp',
+            titleEn: 'Student Clubs & Activities',
+            titleAr: 'الأندية والأنشطة الطلابية',
+            breadcrumbs: [
+                { labelEn: 'Home', labelAr: 'الرئيسية', href: siteRoutes.home },
+                { labelEn: 'Campus Life', labelAr: 'الحياة الجامعية', href: siteRoutes.studentLife },
+                { labelEn: 'Clubs & Activities', labelAr: 'الأندية والأنشطة', href: siteRoutes.campusLifeClubsActivities }
+            ]
+        },
+        clubs: {
+            titleEn: 'Student Clubs',
+            titleAr: 'الأندية الطلابية',
+            directoryLabelEn: 'View Directory',
+            directoryLabelAr: 'عرض الدليل',
+            directoryUrl: withHash(siteRoutes.campusLifeClubsActivities, 'clubs'),
+            detailsLabelEn: 'View Details',
+            detailsLabelAr: 'عرض التفاصيل',
+            items: [
+                {
+                    id: 'ai-technology',
+                    tagEn: 'Technology',
+                    tagAr: 'تقنية',
+                    titleEn: 'AI & Technology Club',
+                    titleAr: 'نادي الذكاء الاصطناعي والتكنولوجيا',
+                    summaryEn: 'Exploring artificial intelligence and public speaking skills through weekly regional and national competitions.',
+                    summaryAr: 'استكشاف الذكاء الاصطناعي ومهارات العرض من خلال لقاءات أسبوعية ومشاركات محلية ووطنية.',
+                    image: '/images/campus-feature-01.webp',
+                    href: withHash(siteRoutes.campusLifeClubsActivities, 'ai-technology')
+                },
+                {
+                    id: 'medical-students',
+                    tagEn: 'Health',
+                    tagAr: 'صحة',
+                    titleEn: 'Medical Students Club',
+                    titleAr: 'نادي طلاب الطب',
+                    summaryEn: 'Connecting students with local health initiatives through sustained volunteer partnerships and community action.',
+                    summaryAr: 'ربط الطلاب بالمبادرات الصحية المحلية عبر شراكات تطوعية مستمرة وعمل مجتمعي.',
+                    image: '/images/campus-clubs.webp',
+                    href: withHash(siteRoutes.campusLifeClubsActivities, 'medical-students')
+                },
+                {
+                    id: 'business-entrepreneurship',
+                    tagEn: 'Business',
+                    tagAr: 'أعمال',
+                    titleEn: 'Business & Entrepreneurship',
+                    titleAr: 'نادي الأعمال وريادة الأعمال',
+                    summaryEn: 'An open space for students of all levels to join, perform at campus events, and appreciate creative culture.',
+                    summaryAr: 'مساحة مفتوحة للطلاب للمشاركة في الفعاليات الجامعية وتطوير ثقافة المبادرة والإبداع.',
+                    image: '/images/admissions-hero-campus.webp',
+                    href: withHash(siteRoutes.campusLifeClubsActivities, 'business-entrepreneurship')
+                }
+            ]
+        },
+        activities: {
+            titleEn: 'Upcoming Activities',
+            titleAr: 'الأنشطة القادمة',
+            feature: {
+                badgeEn: 'Featured Achievement',
+                badgeAr: 'إنجاز مميز',
+                titleEn: 'Autumn Club Fair & Involvement Week',
+                titleAr: 'معرض أندية الخريف وأسبوع المشاركة',
+                summaryEn: 'Kick off the new quarter by meeting representatives from over 50 student organizations. Free food, live music, and opportunities to connect on the main quad all week long.',
+                summaryAr: 'ابدأ الفصل الجديد بالتعرف إلى ممثلي الأندية والمنظمات الطلابية، مع أنشطة تواصل وفرص مشاركة طوال الأسبوع.',
+                image: '/images/dsc-1075.webp',
+                href: withHash(siteRoutes.campusLifeClubsActivities, 'autumn-club-fair')
+            },
+            announcementLabelEn: 'View All Announcements',
+            announcementLabelAr: 'عرض جميع الإعلانات',
+            announcementUrl: siteRoutes.news,
+            items: [
+                {
+                    id: 'tech-showcase',
+                    dateEn: 'Oct 24-26 2024',
+                    dateAr: '24-26 تشرين الأول 2024',
+                    titleEn: 'Tech Innovation Showcase',
+                    titleAr: 'معرض الابتكار التقني',
+                    summaryEn: 'Computer Science club presents end-of-year projects in the library atrium.',
+                    summaryAr: 'يعرض نادي علوم الحاسوب مشاريع نهاية العام في بهو المكتبة.',
+                    image: '/images/healthcare-main.webp',
+                    href: withHash(siteRoutes.news, 'tech-showcase')
+                },
+                {
+                    id: 'charity-run',
+                    dateEn: 'Oct 30 2024',
+                    dateAr: '30 تشرين الأول 2024',
+                    titleEn: 'Annual Falcon 5K Charity Run',
+                    titleAr: 'سباق فالكون الخيري السنوي',
+                    summaryEn: 'Join the Athletics board to raise funds for local healthcare access.',
+                    summaryAr: 'شارك مع المجلس الرياضي لدعم مبادرات الرعاية الصحية المحلية.',
+                    image: '/images/campus-feature-01.webp',
+                    href: withHash(siteRoutes.news, 'charity-run')
+                },
+                {
+                    id: 'charity-run-final',
+                    dateEn: 'Oct 30 2024',
+                    dateAr: '30 تشرين الأول 2024',
+                    titleEn: 'Annual Falcon 5K Charity Run',
+                    titleAr: 'سباق فالكون الخيري السنوي',
+                    summaryEn: 'Join the Athletics board to raise funds for local healthcare food banks.',
+                    summaryAr: 'شارك مع المجلس الرياضي لدعم بنوك الغذاء والرعاية الصحية المحلية.',
+                    image: '/images/campus-feature-01.webp',
+                    href: withHash(siteRoutes.news, 'charity-run-final')
+                }
+            ]
+        }
+    },
 
     gallery: {
         eyebrowEn: 'CAMPUS GALLERY',
@@ -226,7 +544,7 @@ export const studentLifePageContent = {
             titleAr: 'بوابة الطالب',
             summaryEn: 'Access student records and core digital services.',
             summaryAr: 'الوصول إلى السجلات الطلابية والخدمات الرقمية الأساسية.',
-            icon: 'fas fa-user-shield',
+            icon: '/images/icon-check-circle-outline.svg',
             url: portalAccessConfig.defaultDestination,
             protected: true
         },
@@ -235,7 +553,7 @@ export const studentLifePageContent = {
             titleAr: 'التسجيل الإلكتروني',
             summaryEn: 'Reach online registration services through the official portal entry point.',
             summaryAr: 'الوصول إلى خدمات التسجيل الإلكتروني عبر بوابة الجامعة الرسمية.',
-            icon: 'fas fa-edit',
+            icon: '/images/icon-file-outline.svg',
             url: portalAccessConfig.registrationDestination,
             protected: true
         },
@@ -244,7 +562,7 @@ export const studentLifePageContent = {
             titleAr: 'التواصل مع شؤون الطلاب',
             summaryEn: 'Get direct guidance for support needs, schedules, and student services.',
             summaryAr: 'الحصول على إرشاد مباشر لاحتياجات الدعم والجداول والخدمات الطلابية.',
-            icon: 'fas fa-headset',
+            icon: '/images/icon-phone-outline.svg',
             url: withHash(siteRoutes.contact, 'admissions-support')
         }
     ],

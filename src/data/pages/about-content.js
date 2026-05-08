@@ -57,21 +57,21 @@ export const aboutPageContent = {
         sourceNoteEn: 'Core data reflects SPU’s official profile: established by Republican Decree No. 339 in 2005 and renamed by Decree No. 343 in 2012.',
         cards: [
             {
-                icon: 'fa-eye',
+                icon: '/images/icon-search-outline.svg',
                 titleAr: 'الرؤية',
                 titleEn: 'Vision',
                 bodyAr: 'أن تكون الجامعة مركزاً علمياً متميزاً محلياً وإقليمياً وعالمياً، يواكب تطور المعرفة ويستجيب لاحتياجات المجتمع.',
                 bodyEn: 'To be a distinguished scientific center locally, regionally, and globally, keeping pace with knowledge development while responding to community needs.'
             },
             {
-                icon: 'fa-bullseye',
+                icon: '/images/icon-award-outline.svg',
                 titleAr: 'الرسالة',
                 titleEn: 'Mission',
                 bodyAr: 'تقديم تعليم جامعي معتمد وعالي الجودة من خلال مناهج وبرامج تدريبية وكفاءات أكاديمية متخصصة في المجالات الطبية والهندسية والإدارية.',
                 bodyEn: 'To provide accredited, high-quality university education through curricula, training programs, and specialized academic expertise across medical, engineering, and administrative disciplines.'
             },
             {
-                icon: 'fa-hand-holding-heart',
+                icon: '/images/icon-handshake-outline.svg',
                 titleAr: 'القيم',
                 titleEn: 'Values',
                 bodyAr: 'الجودة، المسؤولية، الانفتاح العلمي، خدمة المجتمع، والنزاهة الأكاديمية في التعليم والبحث والعمل المؤسسي.',
@@ -205,7 +205,7 @@ export const aboutPageContent = {
             roleAr: 'محفظة نيابة الرئاسة',
             bioEn: 'Coordinates program quality, curricula, faculty affairs, and student learning outcomes across faculties.',
             bioAr: 'تنسق جودة البرامج والمناهج وشؤون أعضاء الهيئة التدريسية ومخرجات التعلم في الكليات.',
-            icon: 'fa-book-open-reader',
+            icon: '/images/icon-book-outline.svg',
             type: 'vp'
         },
         {
@@ -215,7 +215,7 @@ export const aboutPageContent = {
             roleAr: 'محفظة القيادة الإدارية',
             bioEn: 'Supports governance, operational planning, student services, facilities, and institutional service quality.',
             bioAr: 'تدعم الحوكمة والتخطيط التشغيلي وخدمات الطلبة والمرافق وجودة الخدمات المؤسسية.',
-            icon: 'fa-building-columns',
+            icon: '/images/icon-university-outline.svg',
             type: 'vp'
         },
         {
@@ -225,7 +225,7 @@ export const aboutPageContent = {
             roleAr: 'هيئة تنسيق أكاديمي',
             bioEn: 'Aligns faculty plans in medicine, dentistry, pharmacy, engineering, petroleum engineering, and business administration.',
             bioAr: 'يوائم خطط كليات الطب وطب الأسنان والصيدلة والهندسة وهندسة البترول وإدارة الأعمال.',
-            icon: 'fa-users-gear',
+            icon: '/images/icon-users-outline.svg',
             type: 'dean'
         }
     ],
@@ -284,7 +284,7 @@ export const aboutPageContent = {
                 slug: 'scientific-research',
                 titleEn: 'Scientific Research Directorate',
                 titleAr: 'مديرية البحث العلمي',
-                icon: 'fa-microscope',
+                icon: '/images/icons/research.svg',
                 summaryEn: 'Managing research initiatives, publication support, and academic partnerships.',
                 summaryAr: 'إدارة مبادرات البحث ودعم النشر والشراكات الأكاديمية.',
                 descriptionEn: 'The Scientific Research Directorate is dedicated to fostering a culture of innovation and inquiry. We provide resources for faculty and students to conduct high-impact research and facilitate international academic collaborations.',
@@ -299,11 +299,11 @@ export const aboutPageContent = {
                 slug: 'student-affairs',
                 titleEn: 'Student Affairs Directorate',
                 titleAr: 'مديرية شؤون الطلاب',
-                icon: 'fa-user-graduate',
+                icon: '/images/icon-user-graduate-outline.svg',
                 summaryEn: 'Overseeing student records, activities, and campus life experience.',
                 summaryAr: 'الإشراف على سجلات الطلاب والأنشطة وتجربة الحياة الجامعية.',
                 descriptionEn: 'Student Affairs is the heart of the SPU campus experience. From enrollment to graduation, we ensure students have access to the support, activities, and resources they need to thrive.',
-                descriptionAr: 'شؤون الطلاب هي قلب تجربة الحرم الجامعي في SPU. من التسجيل وحتى التخرج، نضمن وصول الطلاب إلى الدعم والأنشطة والموارد التي يحتاجونها للنجاح.',
+                descriptionAr: 'شؤون الطلاب هي قلب تجربة الحرم الجامعي  في SPU. من التسجيل وحتى التخرج، نضمن وصول الطلاب إلى الدعم والأنشطة والموارد التي يحتاجونها للنجاح.',
                 services: [
                     { en: 'Enrollment & Registration', ar: 'التسجيل والقبول' },
                     { en: 'Student Clubs & Activities', ar: 'الأندية والأنشطة الطلابية' },
@@ -314,13 +314,13 @@ export const aboutPageContent = {
                 slug: 'it-services',
                 titleEn: 'Information Technology Directorate',
                 titleAr: 'مديرية تقانة المعلومات',
-                icon: 'fa-laptop-code',
+                icon: '/images/icons/software.svg',
                 summaryEn: 'Maintaining digital infrastructure, portal services, and campus connectivity.',
-                summaryAr: 'صيانة البنية التحتية الرقمية وخدمات البوابة والاتصال داخل الحرم.',
+                summaryAr: 'صيانة البنية التحتية الرقمية وخدمات البوابة والاتصال داخل الحرم الجامعي.',
                 descriptionEn: 'Our IT Directorate provides the digital backbone of the university, managing high-speed campus networks, student portals, and state-of-the-art computer labs.',
                 descriptionAr: 'توفر مديرية تقانة المعلومات العمود الفقري الرقمي للجامعة، حيث تدير شبكات الحرم الجامعي عالية السرعة، وبوابات الطلاب، ومختبرات الكمبيوتر المتطورة.',
                 services: [
-                    { en: 'Campus Network & Wi-Fi', ar: 'شبكة الحرم الجامعي والواي فاي' },
+                    { en: 'Campus Network & Wi-Fi', ar: 'شبكة الحرم  الجامعي والواي فاي' },
                     { en: 'Student & Staff Portals', ar: 'بوابات الطلاب والموظفين' },
                     { en: 'E-Learning Support', ar: 'دعم التعلم الإلكتروني' }
                 ]
@@ -329,7 +329,7 @@ export const aboutPageContent = {
                 slug: 'public-relations',
                 titleEn: 'Public Relations Directorate',
                 titleAr: 'مديرية العلاقات العامة',
-                icon: 'fa-bullhorn',
+                icon: '/images/icon-envelope-outline.svg',
                 summaryEn: 'Managing university communications, events, and media presence.',
                 summaryAr: 'إدارة اتصالات الجامعة والفعاليات والتواجد الإعلامي.',
                 descriptionEn: 'The Public Relations Directorate bridges SPU with the community, managing official communications, major university events, and institutional branding.',

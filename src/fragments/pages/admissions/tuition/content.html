@@ -55,7 +55,7 @@
             <h1 class="reveal reveal-up reveal-delay-1 text-4xl md:text-6xl font-black text-white mb-8"
                 x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
             <div class="reveal reveal-up reveal-delay-2 flex items-center justify-center gap-4 text-white/60 text-sm">
-                <i class="fa-solid fa-calendar-check"></i>
+                <img src="/images/icon-calendar-outline.svg" alt="" class="h-5 w-5" aria-hidden="true">
                 <span x-text="$store.app.currentLang === 'ar' ? 'للعام الأكاديمي 2026/2027' : 'For Academic Year 2026/2027'"></span>
             </div>
         </div>
@@ -104,7 +104,7 @@
                     <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
                         <div class="payment-method h-full">
                             <div class="w-12 h-12 bg-spu-blue/5 rounded-xl flex items-center justify-center text-spu-blue mb-6">
-                                <i class="fa-solid" :class="idx === 0 ? 'fa-building-columns' : 'fa-credit-card'"></i>
+                                <img :src="idx === 0 ? '/images/icon-university-outline.svg' : '/images/icon-file-outline.svg'" alt="" class="h-5 w-5" aria-hidden="true">
                             </div>
                             <h3 class="text-xl font-bold text-spu-blue mb-3"
                                 x-text="$store.app.currentLang === 'ar' ? method.titleAr : method.titleEn"></h3>

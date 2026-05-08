@@ -58,7 +58,7 @@ export const healthInsurancePageContent = {
         titleEn: 'Insurance Support',
         titleAr: 'دعم التأمين',
         locationEn: 'Main Campus · Student Affairs Floor',
-        locationAr: 'الحرم الرئيسي · طابق شؤون الطلاب',
+        locationAr: 'الحرم الجامعي الرئيسي · طابق شؤون الطلاب',
         locationIcon: '/images/icon-map-outline.svg', // ! Added dynamic location icon path
         phone: '+963 11 213 3000',
         phoneIcon: '/images/icon-phone-outline.svg', // ! Added dynamic phone icon path

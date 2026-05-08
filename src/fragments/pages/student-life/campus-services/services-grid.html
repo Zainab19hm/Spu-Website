@@ -1,76 +1,31 @@
-<section class="container py-16 font-hacen" x-data="campusServicesPage()">
-  <h2 class="text-center text-4xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? 'الخدمات المتاحة' : 'Available Services'"></h2>
+<section class="bg-white py-14 font-hacen md:py-16" x-data>
+  <div class="container">
+    <h2 class="text-center text-3xl font-bold text-spu-blue md:text-4xl"
+        x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.services.titleAr : $store.studentLifePage.campusServices.services.titleEn"></h2>
 
-  <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    <template x-for="card in cards" :key="card.id">
-      <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-        <img :src="card.image" :alt="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn" class="h-44 w-full object-cover">
-        <div class="p-5">
-          <h3 class="text-xl font-bold text-spu-blue" x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
-          <div class="mt-3 rounded-xl bg-slate-100 p-3 text-sm text-slate-700">
-            <p class="font-semibold" x-text="$store.app.currentLang === 'ar' ? 'كيفية الوصول:' : 'How to access:'"></p>
-            <p class="mt-1" x-text="$store.app.currentLang === 'ar' ? card.accessAr : card.accessEn"></p>
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-6">
+      <template x-for="card in $store.studentLifePage.campusServices.services.items" :key="card.id">
+        <article class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(15,23,42,0.12)]" :class="card.wide ? 'lg:col-span-3' : 'lg:col-span-2'">
+          <img :src="card.image"
+               :alt="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"
+               class="h-40 w-full object-cover">
+          <div class="p-4">
+            <h3 class="text-base font-bold text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
+            <div class="mt-3 rounded-md bg-[#f3f7fe] p-3 text-xs leading-5 text-slate-700">
+              <p class="flex items-center gap-2 font-semibold text-spu-blue">
+                <img src="/images/icon-file-outline.svg" alt="" class="h-3 w-3" aria-hidden="true">
+                <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.services.accessLabelAr : $store.studentLifePage.campusServices.services.accessLabelEn"></span>
+              </p>
+              <p class="mt-1" x-text="$store.app.currentLang === 'ar' ? card.accessAr : card.accessEn"></p>
+            </div>
+            <a :href="card.href" class="mt-4 inline-flex items-center gap-2 text-xs font-bold text-spu-blue transition hover:text-spu-red">
+              <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.services.detailsLabelAr : $store.studentLifePage.campusServices.services.detailsLabelEn"></span>
+              <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
+            </a>
           </div>
-          <a :href="card.href" class="mt-4 inline-flex items-center gap-2 font-semibold text-spu-blue hover:text-spu-red">
-            <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
-            <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
-          </a>
-        </div>
-      </article>
-    </template>
+        </article>
+      </template>
+    </div>
   </div>
 </section>
-
-<script>
-  function campusServicesPage() {
-    return {
-      cards: [
-        {
-          id: 'transport',
-          titleEn: 'Transport',
-          titleAr: 'النقل',
-          accessEn: 'Register at the Transport Office (Building A) and select your preferred route.',
-          accessAr: 'سجّل في مكتب النقل (المبنى A) واختر المسار المناسب لك.',
-          href: '/student-life.html#services',
-          image: '/images/campus-transport.webp'
-        },
-        {
-          id: 'health',
-          titleEn: 'Health Services',
-          titleAr: 'الخدمات الصحية',
-          accessEn: 'Visit the Health Center on campus or review medical coverage details online.',
-          accessAr: 'زر المركز الصحي داخل الحرم أو راجع تفاصيل التغطية الطبية إلكترونياً.',
-          href: '/campus-life/health-insurance.html',
-          image: '/images/campus-health.webp'
-        },
-        {
-          id: 'it',
-          titleEn: 'IT Support',
-          titleAr: 'الدعم التقني',
-          accessEn: 'Submit a support ticket via E-Services or visit the IT Help Desk in Student Affairs.',
-          accessAr: 'قدّم تذكرة دعم عبر الخدمات الإلكترونية أو زر مكتب الدعم التقني في شؤون الطلاب.',
-          href: '/services.html',
-          image: '/images/healthcare-main.webp'
-        },
-        {
-          id: 'cafeteria',
-          titleEn: 'Cafeteria',
-          titleAr: 'الكافتيريا',
-          accessEn: 'Open daily in the Student Center with affordable meals and beverages.',
-          accessAr: 'تعمل يومياً في المركز الطلابي مع وجبات ومشروبات بأسعار مناسبة.',
-          href: '/student-life.html',
-          image: '/images/campus-feature-01.webp'
-        },
-        {
-          id: 'accommodation',
-          titleEn: 'Accommodation',
-          titleAr: 'السكن الطلابي',
-          accessEn: 'Apply through Student Affairs to review available residence options and eligibility.',
-          accessAr: 'قدّم عبر شؤون الطلاب للاطلاع على خيارات السكن المتاحة ومتطلبات الأهلية.',
-          href: '/contact.html',
-          image: '/images/campus-feature-01.webp'
-        }
-      ]
-    };
-  }
-</script>

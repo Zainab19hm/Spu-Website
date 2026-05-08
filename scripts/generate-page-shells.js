@@ -175,10 +175,22 @@ const pageWarmupModules = {
   'admissions-documents': ['/src/alpine/pages/admissions-stores.js'],
   research: ['/src/alpine/pages/research-stores.js'],
   'student-life': ['/src/alpine/pages/student-life-stores.js'],
+  'virtual-tour': ['/src/alpine/pages/virtual-tour-stores.js'],
+  'campus-life-services': ['/src/alpine/pages/student-life-stores.js'],
+  'campus-life-clubs-activities': ['/src/alpine/pages/student-life-stores.js'],
+  'campus-life-career-development': ['/src/alpine/pages/student-life-stores.js'],
   services: ['/src/alpine/pages/services-stores.js'],
   news: ['/src/alpine/pages/news-stores.js'],
   contact: ['/src/alpine/pages/contact-stores.js'],
-  'campus-life-dental': ['/src/alpine/pages/dental-clinic-stores.js']
+  'campus-life-dental': ['/src/alpine/pages/dental-clinic-stores.js'],
+  'campus-life-transport': ['/src/alpine/pages/transport-stores.js'],
+  'faculty-artificial-intelligence-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
+  'faculty-business-administration-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
+  'faculty-building-construction-engineering-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
+  'faculty-dentistry-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
+  'faculty-medicine-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
+  'faculty-petroleum-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
+  'faculty-pharmacy-valedictorians': ['/src/alpine/pages/honor-list-stores.js']
 };
 
 function renderWarmupScript(pageName) {

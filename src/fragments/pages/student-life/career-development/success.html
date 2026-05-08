@@ -1,0 +1,23 @@
+<section class="bg-white pb-16 font-hacen md:pb-20" x-data>
+  <div class="container">
+    <article class="grid overflow-hidden rounded-md bg-spu-blue text-white shadow-[0_16px_36px_rgba(15,23,42,0.16)] lg:grid-cols-[1fr_1.12fr]">
+      <img :src="$store.studentLifePage.careerDevelopment.success.image"
+           :alt="$store.app.currentLang === 'ar' ? $store.studentLifePage.careerDevelopment.success.imageAltAr : $store.studentLifePage.careerDevelopment.success.imageAltEn"
+           class="h-64 w-full object-cover lg:h-full">
+      <div class="flex min-h-[260px] flex-col justify-center p-7 md:p-9">
+        <h2 class="text-2xl font-bold md:text-3xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.careerDevelopment.success.titleAr : $store.studentLifePage.careerDevelopment.success.titleEn"></h2>
+        <p class="mt-4 max-w-[620px] text-sm leading-7 text-white/90"
+           x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.careerDevelopment.success.summaryAr : $store.studentLifePage.careerDevelopment.success.summaryEn"></p>
+        <div class="mt-6 grid gap-4 text-xs font-semibold sm:grid-cols-2">
+          <template x-for="badge in $store.studentLifePage.careerDevelopment.success.badges" :key="badge.labelEn">
+            <span class="inline-flex items-center gap-2">
+              <img :src="badge.icon" alt="" class="h-4 w-4 brightness-0 invert" aria-hidden="true">
+              <span x-text="$store.app.currentLang === 'ar' ? badge.labelAr : badge.labelEn"></span>
+            </span>
+          </template>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

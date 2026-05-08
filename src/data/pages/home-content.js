@@ -13,8 +13,10 @@ export const heroContent = {
     ],
     primaryBtnAr: 'استكشف الكليات',
     primaryBtnEn: 'Explore Faculties',
-    secondaryBtnAr: 'زيارة الحرم',
-    secondaryBtnEn: 'Visit Campus'
+    secondaryBtnAr: 'جولة افتراضية',
+    secondaryBtnEn: 'virtual tour',
+    secondaryBtnUrl: siteRoutes.virtualTour
+
 };
 
 
@@ -192,7 +194,7 @@ export const honorPanelItems = [
         titleEn: 'Community and student-life highlights can sit in the same premium visual system.',
         titleAr: 'يمكن أن تنتمي إنجازات المجتمع والحياة الجامعية إلى النظام البصري المميز نفسه.',
         summaryEn: 'The smaller card layout keeps recognition items neat and professional while still leaving space for campus photography, short summaries, and a direct path to the related page.',
-        summaryAr: 'يحافظ تخطيط البطاقة الأصغر على أناقة عناصر التكريم واحترافيتها مع ترك مساحة لصور الحرم والملخصات القصيرة والمسار المباشر إلى الصفحة ذات الصلة.',
+        summaryAr: 'يحافظ تخطيط البطاقة الأصغر على أناقة عناصر التكريم واحترافيتها مع ترك مساحة لصور الحرم الجامعي والملخصات القصيرة والمسار المباشر إلى الصفحة ذات الصلة.',
         highlightsEn: ['Campus activity', 'Outreach coverage', 'Official updates'],
         highlightsAr: ['نشاط جامعي', 'تغطية مجتمعية', 'تحديثات رسمية'],
         image: '/images/slider-3.webp',

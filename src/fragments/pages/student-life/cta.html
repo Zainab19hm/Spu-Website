@@ -23,14 +23,14 @@
                     <!-- Primary CTA -->
                     <a :href="$store.studentLifePage.cta.primaryUrl"
                        class="inline-flex items-center gap-2.5 rounded-full bg-spu-red px-8 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_12px_32px_rgba(111,22,22,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(111,22,22,0.35)]">
-                        <i class="fas fa-graduation-cap text-xs"></i>
+                        <img src="/images/icon-user-graduate-outline.svg" alt="" class="h-3 w-3 brightness-0 invert" aria-hidden="true">
                         <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.cta.primaryLabelAr : $store.studentLifePage.cta.primaryLabelEn"></span>
                     </a>
 
                     <!-- Secondary CTA -->
                     <a :href="$store.studentLifePage.cta.secondaryUrl"
                        class="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/8 px-8 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/15">
-                        <i class="fas fa-envelope text-xs"></i>
+                        <img src="/images/icon-envelope-outline.svg" alt="" class="h-3 w-3 brightness-0 invert" aria-hidden="true">
                         <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.cta.secondaryLabelAr : $store.studentLifePage.cta.secondaryLabelEn"></span>
                     </a>
                 </div>

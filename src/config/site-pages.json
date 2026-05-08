@@ -224,6 +224,26 @@
       ]
     },
     {
+      "name": "virtual-tour",
+      "fileName": "virtual-tour.html",
+      "route": "/virtual-tour.html",
+      "title": "Virtual Tour | Syrian Private University",
+      "description": "Explore Syrian Private University through a visual campus tour featuring the central administration building, student spaces, hospital, dental clinics, and learning facilities.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU virtual tour",
+        "Syrian Private University campus",
+        "SPU facilities",
+        "campus tour Damascus"
+      ],
+      "fragments": [
+        "pages/virtual-tour/hero.html",
+        "pages/virtual-tour/tour.html",
+        "pages/virtual-tour/highlights.html",
+        "pages/virtual-tour/facilities.html"
+      ]
+    },
+    {
       "name": "campus-life-services",
       "fileName": "campus-life/services.html",
       "route": "/campus-life/services.html",
@@ -239,6 +259,58 @@
         "pages/student-life/campus-services/hero.html",
         "pages/student-life/campus-services/services-grid.html",
         "pages/student-life/campus-services/support-highlight.html"
+      ]
+    },
+    {
+      "name": "campus-life-transport",
+      "fileName": "campus-life/transport.html",
+      "route": "/campus-life/transport.html",
+      "title": "Transport Services | Syrian Private University",
+      "description": "Find SPU student transport schedules, routes, registration guidance, fees, and portal support.",
+      "ogImage": "/images/campus-transport.webp",
+      "keywords": [
+        "SPU transport",
+        "student transport Damascus",
+        "Syrian Private University routes"
+      ],
+      "fragments": [
+        "pages/student-life/transport/hero.html",
+        "pages/student-life/transport/content.html"
+      ]
+    },
+    {
+      "name": "campus-life-clubs-activities",
+      "fileName": "campus-life/clubs-activities.html",
+      "route": "/campus-life/clubs-activities.html",
+      "title": "Student Clubs & Activities | Syrian Private University",
+      "description": "Explore SPU student clubs, upcoming activities, announcements, and opportunities to join campus life.",
+      "ogImage": "/images/campus-clubs.webp",
+      "keywords": [
+        "SPU student clubs",
+        "SPU campus activities",
+        "Syrian Private University clubs"
+      ],
+      "fragments": [
+        "pages/student-life/clubs-activities/hero.html",
+        "pages/student-life/clubs-activities/content.html"
+      ]
+    },
+    {
+      "name": "campus-life-career-development",
+      "fileName": "campus-life/career-development.html",
+      "route": "/campus-life/career-development.html",
+      "title": "Career Development | Syrian Private University",
+      "description": "Explore SPU career guidance, CV workshops, internship listings, job opportunities, employer partnerships, and career events.",
+      "ogImage": "/images/campus-career.webp",
+      "keywords": [
+        "SPU career development",
+        "SPU internships",
+        "Syrian Private University careers"
+      ],
+      "fragments": [
+        "pages/student-life/career-development/hero.html",
+        "pages/student-life/career-development/services.html",
+        "pages/student-life/career-development/success.html"
       ]
     },
     {
@@ -534,6 +606,237 @@
       "fragments": [
         "pages/admissions/documents/content.html",
         "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "faculty-artificial-intelligence-departments",
+      "fileName": "facilities/artificial-intelligence/departments/index.html",
+      "route": "/facilities/artificial-intelligence/departments/",
+      "title": "Artificial Intelligence Departments | SPU",
+      "description": "Academic departments for the SPU Faculty of Artificial Intelligence.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU departments",
+        "Artificial Intelligence departments",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-departments",
+      "fileName": "facilities/business-administration/departments/index.html",
+      "route": "/facilities/business-administration/departments/",
+      "title": "Business Administration Departments | SPU",
+      "description": "Academic departments for the SPU Faculty of Business Administration.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU departments",
+        "Business Administration departments",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-departments",
+      "fileName": "facilities/building-construction-engineering/departments/index.html",
+      "route": "/facilities/building-construction-engineering/departments/",
+      "title": "Building & Construction Engineering Departments | SPU",
+      "description": "Academic departments for the SPU Faculty of Building and Construction Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU departments",
+        "Construction Engineering departments",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-departments",
+      "fileName": "facilities/dentistry/departments/index.html",
+      "route": "/facilities/dentistry/departments/",
+      "title": "Dentistry Departments | SPU",
+      "description": "Academic departments for the SPU Faculty of Dentistry.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU departments",
+        "Dentistry departments",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-medicine-departments",
+      "fileName": "facilities/medicine/departments/index.html",
+      "route": "/facilities/medicine/departments/",
+      "title": "Medicine Departments | SPU",
+      "description": "Academic departments for the SPU Faculty of Medicine.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU departments",
+        "Medicine departments",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-petroleum-departments",
+      "fileName": "facilities/petroleum/departments/index.html",
+      "route": "/facilities/petroleum/departments/",
+      "title": "Petroleum Engineering Departments | SPU",
+      "description": "Academic departments for the SPU Faculty of Petroleum Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU departments",
+        "Petroleum Engineering departments",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-departments",
+      "fileName": "facilities/pharmacy/departments/index.html",
+      "route": "/facilities/pharmacy/departments/",
+      "title": "Pharmacy Departments | SPU",
+      "description": "Academic departments for the SPU Faculty of Pharmacy.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU departments",
+        "Pharmacy departments",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-artificial-intelligence-valedictorians",
+      "fileName": "facilities/artificial-intelligence/valedictorians/index.html",
+      "route": "/facilities/artificial-intelligence/valedictorians/",
+      "title": "Artificial Intelligence Valedictorians | SPU",
+      "description": "Honor list and valedictorians for the SPU Faculty of Artificial Intelligence.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU honor list",
+        "Artificial Intelligence valedictorians",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/honor-list/hero.html",
+        "pages/honor-list/content.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-valedictorians",
+      "fileName": "facilities/business-administration/valedictorians/index.html",
+      "route": "/facilities/business-administration/valedictorians/",
+      "title": "Business Administration Valedictorians | SPU",
+      "description": "Honor list and valedictorians for the SPU Faculty of Business Administration.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU honor list",
+        "Business Administration valedictorians",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/honor-list/hero.html",
+        "pages/honor-list/content.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-valedictorians",
+      "fileName": "facilities/building-construction-engineering/valedictorians/index.html",
+      "route": "/facilities/building-construction-engineering/valedictorians/",
+      "title": "Building & Construction Engineering Valedictorians | SPU",
+      "description": "Honor list and valedictorians for the SPU Faculty of Building and Construction Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU honor list",
+        "Construction Engineering valedictorians",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/honor-list/hero.html",
+        "pages/honor-list/content.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-valedictorians",
+      "fileName": "facilities/dentistry/valedictorians/index.html",
+      "route": "/facilities/dentistry/valedictorians/",
+      "title": "Dentistry Valedictorians | SPU",
+      "description": "Honor list and valedictorians for the SPU Faculty of Dentistry.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU honor list",
+        "Dentistry valedictorians",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/honor-list/hero.html",
+        "pages/honor-list/content.html"
+      ]
+    },
+    {
+      "name": "faculty-medicine-valedictorians",
+      "fileName": "facilities/medicine/valedictorians/index.html",
+      "route": "/facilities/medicine/valedictorians/",
+      "title": "Medicine Valedictorians | SPU",
+      "description": "Honor list and valedictorians for the SPU Faculty of Medicine.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU honor list",
+        "Medicine valedictorians",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/honor-list/hero.html",
+        "pages/honor-list/content.html"
+      ]
+    },
+    {
+      "name": "faculty-petroleum-valedictorians",
+      "fileName": "facilities/petroleum/valedictorians/index.html",
+      "route": "/facilities/petroleum/valedictorians/",
+      "title": "Petroleum Engineering Valedictorians | SPU",
+      "description": "Honor list and valedictorians for the SPU Faculty of Petroleum Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU honor list",
+        "Petroleum Engineering valedictorians",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/honor-list/hero.html",
+        "pages/honor-list/content.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-valedictorians",
+      "fileName": "facilities/pharmacy/valedictorians/index.html",
+      "route": "/facilities/pharmacy/valedictorians/",
+      "title": "Pharmacy Valedictorians | SPU",
+      "description": "Honor list and valedictorians for the SPU Faculty of Pharmacy.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU honor list",
+        "Pharmacy valedictorians",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/honor-list/hero.html",
+        "pages/honor-list/content.html"
       ]
     }
   ]

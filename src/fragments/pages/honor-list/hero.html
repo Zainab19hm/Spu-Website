@@ -1,0 +1,23 @@
+<section class="honor-hero relative flex min-h-[310px] items-end overflow-hidden pt-28 font-hacen">
+  <div class="absolute inset-0">
+    <img :src="$store.honorListPage.hero.image"
+         :alt="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.imageAltAr : $store.honorListPage.intro.imageAltEn"
+         class="h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/90 via-spu-blue/60 to-spu-blue/0"></div>
+  </div>
+
+  <div class="container relative z-10 pb-14 text-center text-white">
+    <nav class="mb-3 flex items-center justify-center gap-2 text-[11px] font-semibold text-white/72">
+      <a href="/" class="transition-colors hover:text-white"
+         x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.hero.eyebrowAr : $store.honorListPage.hero.eyebrowEn"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <span x-text="$store.honorListPage.localized('faculty') || ($store.app.currentLang === 'ar' ? $store.honorListPage.hero.sectionAr : $store.honorListPage.hero.sectionEn)"></span>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <span class="text-white"
+            x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.hero.titleAr : $store.honorListPage.hero.titleEn"></span>
+    </nav>
+
+    <h1 class="text-[34px] font-bold leading-tight md:text-[42px]"
+        x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.hero.titleAr : $store.honorListPage.hero.titleEn"></h1>
+  </div>
+</section>

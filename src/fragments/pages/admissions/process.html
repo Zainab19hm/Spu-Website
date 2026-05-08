@@ -8,7 +8,7 @@
                         <div x-show="idx > 0"
                              class="absolute left-0 top-1/2 hidden h-full w-px -translate-y-1/2 bg-white/10 md:block"
                              aria-hidden="true"></div>
-                        <span class="text-2xl text-white"><i :class="item.icon"></i></span>
+                        <span class="text-2xl text-white"><img :src="item.icon" alt="" class="h-7 w-7 brightness-0 invert" aria-hidden="true"></span>
                         <h3 class="text-lg font-semibold leading-[31.2px] text-white md:text-xl"
                             x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
                     </div>

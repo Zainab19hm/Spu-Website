@@ -1,0 +1,25 @@
+<section class="relative min-h-[300px] md:min-h-[340px] flex items-end justify-center overflow-hidden font-hacen">
+  <div class="absolute inset-0 z-0">
+    <img
+      :src="$store.transportPage.hero.image"
+      :alt="$store.app.currentLang === 'ar' ? $store.transportPage.hero.imageAltAr : $store.transportPage.hero.imageAltEn"
+      class="h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/90 via-spu-blue/60 to-spu-blue/0"></div>
+  </div>
+
+  <div class="container relative z-10 pb-14 pt-34 text-center">
+    <nav class="mb-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-medium text-white/75 md:text-xs">
+      <a :href="$store.transportPage.hero.breadcrumbHomeUrl" class="transition-colors hover:text-white"
+        x-text="$store.app.currentLang === 'ar' ? $store.transportPage.hero.breadcrumbHomeAr : $store.transportPage.hero.breadcrumbHomeEn"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+      <a :href="$store.transportPage.hero.breadcrumbCampusUrl" class="transition-colors hover:text-white"
+        x-text="$store.app.currentLang === 'ar' ? $store.transportPage.hero.breadcrumbCampusAr : $store.transportPage.hero.breadcrumbCampusEn"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+      <span class="font-semibold text-white"
+        x-text="$store.app.currentLang === 'ar' ? $store.transportPage.hero.breadcrumbCurrentAr : $store.transportPage.hero.breadcrumbCurrentEn"></span>
+    </nav>
+
+    <h1 class="text-3xl font-bold leading-tight text-white md:text-[42px]"
+      x-text="$store.app.currentLang === 'ar' ? $store.transportPage.hero.titleAr : $store.transportPage.hero.titleEn"></h1>
+  </div>
+</section>

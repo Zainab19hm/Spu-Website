@@ -26,8 +26,7 @@
                     <!-- Icon -->
                     <div class="flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
                          :class="card.active ? 'bg-white/15' : 'bg-spu-blue/5'">
-                        <i :class="card.icon + ' text-lg'"
-                           :style="card.active ? 'color: white' : `color: #202759`"></i>
+                        <img :src="card.icon" alt="" class="h-5 w-5" :class="card.active ? 'brightness-0 invert' : ''" aria-hidden="true">
                     </div>
 
                     <!-- Title -->
@@ -51,8 +50,7 @@
                          class="mt-auto flex items-center gap-2 pt-5 text-sm font-bold opacity-0 transition-all duration-300 group-hover:opacity-100"
                          :class="card.active ? 'text-white/80' : 'text-spu-red'">
                         <span x-text="$store.app.currentLang === 'ar' ? 'اكتشف' : 'Explore'"></span>
-                        <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"
-                           :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''"></i>
+                        <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
                     </div>
 
                     <!-- Decorative corner accent (active card) -->

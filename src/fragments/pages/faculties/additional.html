@@ -33,11 +33,11 @@
                             <div class="flex gap-3">
                                 <button @click="activeEvent = (activeEvent - 1 + currentEvents.length) % currentEvents.length; startCarousel()" 
                                         class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all">
-                                    <i class="fas fa-chevron-left rtl:rotate-180"></i>
+                                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
                                 </button>
                                 <button @click="activeEvent = (activeEvent + 1) % currentEvents.length; startCarousel()" 
                                         class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all">
-                                    <i class="fas fa-chevron-right rtl:rotate-180"></i>
+                                    <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
                                 </button>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                   x-text="showFullText ? ($store.app.currentLang === 'ar' ? 'عرض أقل' : 'Show Less') : ($store.app.currentLang === 'ar' ? 'إكمال القراءة' : 'Resume Reading')"></span>
                             <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center group-hover:scale-110 transition-transform"
                                  :style="`border-color: ${facultyColor}33`">
-                                <i class="fas transition-transform duration-300" :class="showFullText ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                <img src="/images/icon-chevron-down-outline.svg" alt="" class="h-4 w-4 transition-transform duration-300" :class="showFullText ? 'rotate-180' : ''" aria-hidden="true">
                             </div>
                         </button>
                     </div>
@@ -89,7 +89,7 @@
         </template>        
         <template x-if="currentEvents.length === 0">
             <div class="text-center py-20 bg-slate-50 rounded-[32px] border-2 border-dashed border-slate-200">
-                 <i class="fas fa-calendar-alt text-4xl mb-4 text-slate-300"></i>
+                 <img src="/images/icon-calendar-outline.svg" alt="" class="mb-4 h-10 w-10 opacity-35" aria-hidden="true">
                  <p class="text-slate-400 text-lg font-medium" x-text="$store.app.currentLang === 'ar' ? 'لا توجد فعاليات مسجلة لهذه الكلية حالياً' : 'No registered events for this faculty currently'"></p>
             </div>
         </template>

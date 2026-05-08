@@ -1,10 +1,26 @@
-<section class="relative overflow-hidden font-hacen" x-data="campusServicesPage()">
-  <img src="/images/admissions-hero-campus.webp" alt="SPU Campus Services" class="h-[260px] w-full object-cover md:h-[340px]">
-  <div class="absolute inset-0 bg-spu-blue/55"></div>
+<section class="relative overflow-hidden font-hacen" x-data>
+  <img :src="$store.studentLifePage.campusServices.hero.image"
+       :alt="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.hero.titleAr : $store.studentLifePage.campusServices.hero.titleEn"
+       class="h-[300px] w-full object-cover md:h-[340px]">
+  <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/80 via-spu-blue/50 to-spu-blue/0"></div>
   <div class="absolute inset-0">
-    <div class="container flex h-full flex-col items-start justify-center text-white">
-      <p class="text-sm font-semibold" x-text="$store.app.currentLang === 'ar' ? 'الرئيسية > الحياة الجامعية > خدمات الحرم' : 'Home > Campus Life > Campus Services'"></p>
-      <h1 class="mt-2 text-4xl font-bold md:text-5xl" x-text="$store.app.currentLang === 'ar' ? 'خدمات الحرم' : 'Campus Services'"></h1>
+    <div class="container flex h-full flex-col items-center justify-center text-center text-white">
+      <nav class="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-white/85">
+        <template x-for="(crumb, index) in $store.studentLifePage.campusServices.hero.breadcrumbs" :key="crumb.href">
+          <span class="inline-flex items-center gap-2">
+            <a :href="crumb.href"
+               class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? crumb.labelAr : crumb.labelEn"></a>
+            <img x-show="index < $store.studentLifePage.campusServices.hero.breadcrumbs.length - 1"
+                 src="/images/icon-chevron-right-outline.svg"
+                 alt=""
+                 class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180"
+                 aria-hidden="true">
+          </span>
+        </template>
+      </nav>
+      <h1 class="mt-2 text-4xl font-bold leading-tight md:text-5xl"
+          x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.hero.titleAr : $store.studentLifePage.campusServices.hero.titleEn"></h1>
     </div>
   </div>
 </section>

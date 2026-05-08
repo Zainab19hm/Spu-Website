@@ -66,7 +66,6 @@
                   <template x-for="(item, idx) in ($store.app.currentLang === 'ar' ? section.listAr : section.listEn)"
                     :key="idx">
                     <li class="flex items-start gap-3">
-                      <!-- ! Replaced FontAwesome icon with a custom SVG check icon from the images folder -->
                       <img src="/images/icon-check-circle-outline.svg" class="w-5 h-5 mt-1 shrink-0" aria-hidden="true">
                       <span x-text="item"></span>
                     </li>

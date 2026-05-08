@@ -143,7 +143,7 @@
             <div class="reveal reveal-right rounded-[2.5rem] bg-spu-blue p-8 text-white shadow-2xl shadow-spu-blue/20">
                 <div class="mb-8 flex items-center gap-4">
                     <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10">
-                        <i class="fa-solid fa-compass text-2xl text-white"></i>
+                        <img src="/images/icon-sitemap-outline.svg" alt="" class="h-6 w-6 brightness-0 invert" aria-hidden="true">
                     </div>
                     <div>
                         <p class="text-xs font-black uppercase tracking-widest text-white/50">SPU</p>
@@ -172,7 +172,7 @@
                 <article class="vm-card reveal reveal-up" :class="`reveal-delay-${index + 1}`">
                     <div class="relative z-10">
                         <div class="vm-icon">
-                            <i class="fa-solid" :class="card.icon"></i>
+                            <img :src="card.icon" alt="" class="h-6 w-6" aria-hidden="true">
                         </div>
                         <h2 class="mt-8 text-3xl font-black text-spu-blue"
                             x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h2>
@@ -195,7 +195,7 @@
                     x-text="$store.app.currentLang === 'ar' ? 'كيف تتحول الرؤية إلى تجربة جامعية' : 'How the vision becomes a campus experience'"></h2>
             </div>
             <a href="/about.html" class="inline-flex items-center gap-3 rounded-2xl bg-spu-blue px-8 py-4 font-black text-white shadow-xl transition-all hover:bg-spu-red">
-                <i class="fa-solid fa-arrow-left rtl:rotate-180"></i>
+                <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
             </a>
         </div>

@@ -1,13 +1,56 @@
-<section x-show="!$store.facultiesPage.catalogMode" x-cloak
-         id="highlights" class="relative overflow-hidden bg-section py-24 font-hacen lg:py-32" x-data
-         x-show="$store.facultiesPage.currentFaculty?.highlights">
+<section x-show="!$store.facultiesPage.catalogMode && $store.facultiesPage.currentFaculty?.highlights" x-cloak
+         id="highlights"
+         class="relative overflow-hidden bg-section py-24 font-hacen lg:py-32"
+         x-data="{
+            activeHighlight: 0,
+            get items() {
+                const baseItems = $store.facultiesPage.currentFaculty?.highlights?.items || [];
+                const departmentRoute = $store.facultiesPage.currentFaculty?.departmentRoute;
+
+                if (!departmentRoute) return baseItems;
+
+                return [
+                    ...baseItems,
+                    {
+                        id: 'departments-nav',
+                        titleAr: 'الأقسام الأكاديمية',
+                        titleEn: 'Academic Departments',
+                        value: 'View',
+                        link: departmentRoute,
+                        icon: '/images/icons/dept.svg'
+                    }
+                ];
+            },
+            get shouldSlide() {
+                return this.items.length > 4;
+            },
+            get slides() {
+                const groups = [];
+                for (let index = 0; index < this.items.length; index += 4) {
+                    groups.push(this.items.slice(index, index + 4));
+                }
+                return groups;
+            },
+            get maxHighlight() {
+                return Math.max(this.slides.length - 1, 0);
+            },
+            nextHighlight() {
+                this.activeHighlight = this.activeHighlight >= this.maxHighlight ? 0 : this.activeHighlight + 1;
+            },
+            previousHighlight() {
+                this.activeHighlight = this.activeHighlight <= 0 ? this.maxHighlight : this.activeHighlight - 1;
+            },
+            init() {
+                this.$watch('$store.facultiesPage.currentFaculty', () => {
+                    this.activeHighlight = 0;
+                });
+            }
+         }">
 
     <div class="container relative z-10">
         <div class="flex flex-col items-start gap-14 lg:flex-row lg:items-center lg:gap-20">
 
-            <!-- ── Left: title + description ── -->
             <div class="w-full shrink-0 lg:w-[42%]">
-                <!-- Eyebrow -->
                 <p class="text-sm font-bold uppercase tracking-[0.2em] text-spu-blue/40"
                    x-text="$store.app.currentLang === 'ar' ? 'أبرز الملامح' : 'At a Glance'"></p>
 
@@ -23,39 +66,94 @@
                        : $store.facultiesPage.currentFaculty?.highlights?.sectionPEn">
                 </p>
 
-                <!-- Decorative accent -->
                 <div class="mt-8 h-[3px] w-16 rounded-full bg-spu-red/60"></div>
             </div>
 
-            <!-- ── Right: 2×2 card grid ── -->
-            <div class="w-full flex-1">
-                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    <template x-for="(item, idx) in $store.facultiesPage.currentFaculty?.highlights?.items" :key="item.id">
-                        <a :href="item.link"
-                           class="group relative flex h-[180px] flex-col justify-end overflow-hidden rounded-2xl bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)]"
-                           :class="idx === 0 ? 'border-b-[3px]' : 'border-b-[3px] border-transparent hover:border-current'"
-                           :style="idx === 0 ? `border-bottom-color: #${$store.facultiesPage.currentFaculty?.color}` : ''"
-                           >
+            <div class="w-full min-w-0 flex-1">
+                <template x-if="!shouldSlide">
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                        <template x-for="(item, idx) in items" :key="item.id">
+                            <a :href="item.link"
+                               class="group relative flex h-[180px] flex-col justify-end overflow-hidden rounded-2xl bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)]"
+                               :class="idx === 0 ? 'border-b-[3px]' : 'border-b-[3px] border-transparent hover:border-current'"
+                               :style="idx === 0 ? `border-bottom-color: #${$store.facultiesPage.currentFaculty?.color}` : ''">
 
-                            <!-- Value badge (top-right) -->
-                            <span class="absolute right-6 top-6 text-[32px] font-bold leading-none text-spu-blue/10 transition-colors duration-300 group-hover:text-spu-blue/20"
-                                  x-text="item.value"></span>
+                                <span class="absolute right-6 top-6 text-[32px] font-bold leading-none text-spu-blue/10 transition-colors duration-300 group-hover:text-spu-blue/20"
+                                      x-text="item.value"></span>
 
-                            <!-- Title -->
-                            <h4 class="text-xl font-bold text-spu-blue transition-colors duration-300"
-                                x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
-                            </h4>
+                                <h4 class="text-xl font-bold text-spu-blue transition-colors duration-300"
+                                    x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
 
-                            <!-- Hover arrow -->
-                            <div class="mt-2 flex items-center gap-2 text-sm font-bold opacity-0 transition-all duration-300 group-hover:opacity-100"
-                                 :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
-                                <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
-                                <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"
-                                   :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''"></i>
+                                <div class="mt-2 flex items-center gap-2 text-sm font-bold opacity-0 transition-all duration-300 group-hover:opacity-100"
+                                     :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
+                                    <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
+                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
+                                </div>
+                            </a>
+                        </template>
+                    </div>
+                </template>
+
+                <template x-if="shouldSlide">
+                    <div>
+                        <div class="overflow-hidden">
+                            <div class="flex transition-transform duration-500 ease-out"
+                                 :style="`transform: translateX(${$store.app.currentLang === 'ar' ? activeHighlight * 100 : activeHighlight * -100}%);`">
+                                <template x-for="(slide, slideIndex) in slides" :key="slideIndex">
+                                    <div class="grid w-full shrink-0 grid-cols-1 gap-5 sm:grid-cols-2">
+                                        <template x-for="(item, itemIndex) in slide" :key="item.id">
+                                            <a :href="item.link"
+                                               class="group relative flex h-[180px] flex-col justify-end overflow-hidden rounded-2xl bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)]"
+                                               :class="slideIndex === 0 && itemIndex === 0 ? 'border-b-[3px]' : 'border-b-[3px] border-transparent hover:border-current'"
+                                               :style="slideIndex === 0 && itemIndex === 0 ? `border-bottom-color: #${$store.facultiesPage.currentFaculty?.color}` : ''">
+
+                                                <span class="absolute right-6 top-6 text-[32px] font-bold leading-none text-spu-blue/10 transition-colors duration-300 group-hover:text-spu-blue/20"
+                                                      x-text="item.value"></span>
+
+                                                <h4 class="text-xl font-bold text-spu-blue transition-colors duration-300"
+                                                    x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+
+                                                <div class="mt-2 flex items-center gap-2 text-sm font-bold opacity-0 transition-all duration-300 group-hover:opacity-100"
+                                                     :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
+                                                    <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
+                                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
+                                                </div>
+                                            </a>
+                                        </template>
+                                    </div>
+                                </template>
                             </div>
-                        </a>
-                    </template>
-                </div>
+                        </div>
+
+                        <div class="mt-6 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-2">
+                                <template x-for="(_, idx) in Array.from({ length: maxHighlight + 1 })" :key="idx">
+                                    <button type="button"
+                                            class="h-1.5 rounded-full transition-all duration-300"
+                                            :class="activeHighlight === idx ? 'w-8' : 'w-2 bg-spu-blue/20'"
+                                            :style="activeHighlight === idx ? `background-color: #${$store.facultiesPage.currentFaculty?.color}` : ''"
+                                            @click="activeHighlight = idx"
+                                            :aria-label="`Go to faculty card group ${idx + 1}`"></button>
+                                </template>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <button type="button"
+                                        class="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all hover:-translate-y-0.5"
+                                        @click="previousHighlight()"
+                                        aria-label="Previous faculty card">
+                                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                                </button>
+                                <button type="button"
+                                        class="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all hover:-translate-y-0.5"
+                                        @click="nextHighlight()"
+                                        aria-label="Next faculty card">
+                                    <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
 
         </div>

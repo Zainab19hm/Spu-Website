@@ -35,7 +35,19 @@
     <loc>https://spu.edu.sy/student-life.html</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/virtual-tour.html</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/campus-life/services.html</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/campus-life/transport.html</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/campus-life/clubs-activities.html</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/campus-life/career-development.html</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/services.html</loc>
@@ -87,5 +99,47 @@
   </url>
   <url>
     <loc>https://spu.edu.sy/admissions/documents.html</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/artificial-intelligence/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/building-construction-engineering/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/petroleum/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/artificial-intelligence/valedictorians/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/valedictorians/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/building-construction-engineering/valedictorians/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/valedictorians/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/valedictorians/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/petroleum/valedictorians/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/valedictorians/</loc>
   </url>
 </urlset>

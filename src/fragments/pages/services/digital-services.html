@@ -42,7 +42,7 @@
                             <a :href="service.url" class="inline-flex items-center justify-center px-6 py-2.5 bg-[#1e2756] text-white text-[11px] font-bold uppercase tracking-wider rounded hover:bg-opacity-90 transition-colors w-max">
                                 <span x-text="$store.app.currentLang === 'ar' ? service.buttonAr : service.buttonEn"></span>
                                 <template x-if="service.buttonEn.includes('Launch')">
-                                    <svg class="w-3.5 h-3.5 ml-2 rtl:rotate-180 rtl:mr-2 rtl:ml-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="w-3.5 h-3.5 ml-2 brightness-0 invert rtl:rotate-180 rtl:mr-2 rtl:ml-0" aria-hidden="true">
                                 </template>
                             </a>
                         </div>

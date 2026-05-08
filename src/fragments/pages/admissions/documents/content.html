@@ -55,7 +55,7 @@
                             <template x-for="item in cat.items" :key="item.en">
                                 <div class="check-item">
                                     <div class="check-circle">
-                                        <i class="fa-solid fa-check"></i>
+                                        <img src="/images/icon-check-outline.svg" alt="" class="h-3 w-3 brightness-0 invert" aria-hidden="true">
                                     </div>
                                     <span class="text-xl font-bold text-slate-700"
                                           x-text="$store.app.currentLang === 'ar' ? item.ar : item.en"></span>
@@ -65,7 +65,7 @@
 
                         <div class="mt-12 text-center">
                             <a href="#" class="inline-flex items-center gap-3 px-8 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg">
-                                <i class="fa-solid fa-download"></i>
+                                <img src="/images/icon-file-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                                 <span x-text="$store.app.currentLang === 'ar' ? 'تحميل القائمة كـ PDF' : 'Download Checklist as PDF'"></span>
                             </a>
                         </div>

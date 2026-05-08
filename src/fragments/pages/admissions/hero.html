@@ -28,7 +28,7 @@
             <div class="flex flex-col gap-5 pt-2">
                 <template x-for="item in $store.admissionsPage.hero.checklistItems" :key="item.titleEn">
                     <div class="flex items-start gap-4">
-                        <span class="mt-0.5 shrink-0 text-spu-blue"><i class="fas fa-check-circle text-[25px]"></i></span>
+                        <span class="mt-0.5 shrink-0 text-spu-blue"><img src="/images/icon-check-circle-outline.svg" alt="" class="h-6 w-6" aria-hidden="true"></span>
                         <div class="flex flex-col gap-1">
                             <h4 class="text-lg font-bold leading-7 text-[#1b1b1f]"
                                 x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>

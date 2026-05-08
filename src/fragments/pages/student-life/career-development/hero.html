@@ -1,0 +1,37 @@
+<section class="relative bg-white font-hacen" x-data>
+  <div class="relative h-[320px] overflow-hidden md:h-[360px]">
+    <img :src="$store.studentLifePage.careerDevelopment.hero.image"
+         :alt="$store.app.currentLang === 'ar' ? $store.studentLifePage.careerDevelopment.hero.titleAr : $store.studentLifePage.careerDevelopment.hero.titleEn"
+         class="h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/80 via-spu-blue/50 to-spu-blue/0"></div>
+    <div class="absolute inset-0">
+      <div class="container flex h-full flex-col items-center justify-center pt-16 text-center text-white">
+        <nav class="flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-white/85">
+          <template x-for="(crumb, index) in $store.studentLifePage.careerDevelopment.hero.breadcrumbs" :key="crumb.href">
+            <span class="inline-flex items-center gap-2">
+              <a :href="crumb.href"
+                 class="transition hover:text-white"
+                 x-text="$store.app.currentLang === 'ar' ? crumb.labelAr : crumb.labelEn"></a>
+              <img x-show="index < $store.studentLifePage.careerDevelopment.hero.breadcrumbs.length - 1"
+                   src="/images/icon-chevron-right-outline.svg"
+                   alt=""
+                   class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180"
+                   aria-hidden="true">
+            </span>
+          </template>
+        </nav>
+        <h1 class="mt-2 text-4xl font-bold leading-tight md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.careerDevelopment.hero.titleAr : $store.studentLifePage.careerDevelopment.hero.titleEn"></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container relative z-10 -mt-16">
+    <article class="mx-auto max-w-[760px] bg-spu-blue px-8 py-8 text-center text-white shadow-[0_16px_32px_rgba(15,23,42,0.18)] md:px-12">
+      <h2 class="text-2xl font-bold"
+          x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.careerDevelopment.hero.panel.titleAr : $store.studentLifePage.careerDevelopment.hero.panel.titleEn"></h2>
+      <p class="mx-auto mt-3 max-w-[620px] text-sm leading-6 text-white/88"
+         x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.careerDevelopment.hero.panel.summaryAr : $store.studentLifePage.careerDevelopment.hero.panel.summaryEn"></p>
+    </article>
+  </div>
+</section>

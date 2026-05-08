@@ -20,7 +20,7 @@ export const appUi = {
 
 
 export const navigationMenuItems = [
-   
+
     {
         id: 1,
         labelAr: 'عن الجامعة',
@@ -76,11 +76,13 @@ export const navigationMenuItems = [
         page: 'campus-life',
         hasDropdown: true,
         children: [
-            { labelAr: 'خدمات الحرم', labelEn: 'Campus Services', url: siteRoutes.campusLifeServices },
+            { labelAr: 'خدمات الحرم الجامعي ', labelEn: 'Campus Services', url: siteRoutes.campusLifeServices },
+            { labelAr: 'النقل', labelEn: 'Transport', url: siteRoutes.campusLifeTransport },
             { labelAr: 'العيادات السنية', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental },
             { labelAr: 'الصحة والتأمين  ', labelEn: 'Health Insurance ', url: siteRoutes.campusLifeHealthInsurance },
             { labelAr: 'المستشفى الجامعي', labelEn: 'University Hospital', url: siteRoutes.campusLifeHospital },
-            { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: withHash(siteRoutes.studentLife, 'activities') },
+            { labelAr: 'الأنشطة والنوادي', labelEn: 'Activities & Clubs', url: siteRoutes.campusLifeClubsActivities },
+            { labelAr: 'التطوير المهني', labelEn: 'Career Development', url: siteRoutes.campusLifeCareerDevelopment },
             { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: siteRoutes.admissionsCalendar },
         ]
     },
@@ -112,11 +114,11 @@ export const footerContent = {
         missionEn: 'Committed to fostering academic excellence and global leadership from the heart of Damascus.',
         missionAr: 'ملتزمون بتعزيز التميز الأكاديمي والقيادة العالمية من قلب دمشق.',
         socials: [
-            { icon: 'fas fa-globe', url: 'https://spu.edu.sy/' },
-            { icon: 'fab fa-telegram-plane', url: 'https://telegram.me/SPUchannel' },
-            { icon: 'fab fa-facebook-f', url: 'https://www.facebook.com/SPUpage.sy/?ref=bookmarks' },
-            { icon: 'fab fa-instagram', url: 'https://www.instagram.com/spu_syrian_private_university/' },
-            { icon: 'fab fa-youtube', url: 'https://www.youtube.com/channel/UCaoshcqsl9_fx7WVYgEZI5A' }
+            { icon: '/images/icon-globe-outline.svg', url: 'https://spu.edu.sy/' },
+            { icon: '/images/icon-telegram-outline.svg', url: 'https://telegram.me/SPUchannel' },
+            { icon: '/images/icon-facebook-outline.svg', url: 'https://www.facebook.com/SPUpage.sy/?ref=bookmarks' },
+            { icon: '/images/icon-instagram-outline.svg', url: 'https://www.instagram.com/spu_syrian_private_university/' },
+            { icon: '/images/icon-youtube-outline.svg', url: 'https://www.youtube.com/channel/UCaoshcqsl9_fx7WVYgEZI5A' }
         ]
     },
     resources: {
@@ -136,18 +138,18 @@ export const footerContent = {
         titleAr: 'التواصل',
         items: [
             {
-                icon: 'fas fa-map-marker-alt',
+                icon: '/images/icon-map-outline.svg',
                 textEn: 'University headquarters, Daraa International Highway, past Al-Kiswa, Khayara Danoun, Damascus.',
                 textAr: 'مقر الجامعة الرئيس، أوتوستراد درعا الدولي، بعد بلدة الكسوة، خيارة دنون، دمشق.'
             },
             {
-                icon: 'fas fa-phone-alt',
+                icon: '/images/icon-phone-outline.svg',
                 textEn: '<span translate="no">+963 11 9860</span>',
                 textAr: '<span translate="no">+963 11 9860</span>',
                 ltr: true
             },
             {
-                icon: 'fas fa-envelope',
+                icon: '/images/icon-envelope-outline.svg',
                 textEn: 'info@spu.edu.sy',
                 textAr: 'info@spu.edu.sy',
                 ltr: true

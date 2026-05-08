@@ -1,0 +1,48 @@
+<section id="tour" x-data class="bg-white py-14 font-hacen">
+    <div class="container">
+        <div class="text-center">
+            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-spu-blue/55"
+               x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.eyebrowAr : $store.virtualTourPage.tour.eyebrowEn"></p>
+            <h2 class="mt-2 text-[24px] font-bold leading-tight text-spu-blue md:text-[30px]"
+                x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.titleAr : $store.virtualTourPage.tour.titleEn"></h2>
+            <p class="mx-auto mt-3 w-full text-sm leading-6 text-spu-blue/60 md:w-[48%]"
+               x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.summaryAr : $store.virtualTourPage.tour.summaryEn"></p>
+        </div>
+
+        <div class="relative mt-8 overflow-hidden rounded-[8px] border border-spu-blue/10 bg-white shadow-[0_18px_60px_rgba(32,39,89,0.16)]">
+            <img :src="$store.virtualTourPage.tour.image"
+                 :alt="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.imageAltAr : $store.virtualTourPage.tour.imageAltEn"
+                 class="h-[360px] w-full object-cover md:h-[560px]">
+
+            <div class="absolute right-4 top-4 flex items-center gap-2 rtl:left-4 rtl:right-auto"
+                 :aria-label="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.controlLabelAr : $store.virtualTourPage.tour.controlLabelEn">
+                <button type="button"
+                        class="grid h-8 w-8 place-items-center rounded-[4px] bg-white/90 text-spu-blue shadow-lg transition hover:bg-white"
+                        :aria-label="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.floorLabelAr : $store.virtualTourPage.tour.floorLabelEn">
+                    <img src="/images/icon-sitemap-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+                </button>
+                <button type="button"
+                        class="grid h-8 w-8 place-items-center rounded-[4px] bg-white/90 text-spu-blue shadow-lg transition hover:bg-white"
+                        :aria-label="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.fullscreenLabelAr : $store.virtualTourPage.tour.fullscreenLabelEn">
+                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+                </button>
+            </div>
+
+            <template x-for="hotspot in $store.virtualTourPage.tour.hotspots" :key="hotspot.id">
+                <button type="button"
+                        class="group absolute -translate-x-1/2 -translate-y-1/2"
+                        :style="`left: ${hotspot.x}; top: ${hotspot.y};`"
+                        :aria-label="$store.app.currentLang === 'ar' ? hotspot.labelAr : hotspot.labelEn">
+                    <span class="grid h-7 w-7 place-items-center rounded-full bg-white/95 shadow-[0_8px_24px_rgba(0,0,0,0.2)] ring-4 ring-white/25">
+                        <span class="h-2.5 w-2.5 rounded-full bg-spu-red"></span>
+                    </span>
+                    <span class="pointer-events-none absolute left-1/2 top-9 hidden -translate-x-1/2 whitespace-nowrap rounded-[4px] bg-spu-blue px-3 py-1.5 text-[11px] font-bold text-white shadow-xl group-hover:block"
+                          x-text="$store.app.currentLang === 'ar' ? hotspot.labelAr : hotspot.labelEn"></span>
+                </button>
+            </template>
+
+            <div class="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-spu-blue/85 px-5 py-2 text-xs font-bold text-white shadow-xl backdrop-blur-sm"
+                 x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.tour.experienceLabelAr : $store.virtualTourPage.tour.experienceLabelEn"></div>
+        </div>
+    </div>
+</section>

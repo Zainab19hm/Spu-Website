@@ -1,14 +1,23 @@
-<section class="container pb-20 font-hacen">
-  <article class="grid overflow-hidden rounded-2xl bg-spu-blue text-white shadow-lg lg:grid-cols-2">
-    <img src="/images/campus-feature-02.webp" alt="Campus collaboration area" class="h-64 w-full object-cover lg:h-full">
-    <div class="p-8 md:p-10">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80" x-text="$store.app.currentLang === 'ar' ? 'تمكين الطلاب' : 'Student Support'"></p>
-      <h3 class="mt-3 text-3xl font-bold" x-text="$store.app.currentLang === 'ar' ? 'ملتزمون بنجاحك' : 'Dedicated to Your Success'"></h3>
-      <p class="mt-4 text-sm leading-7 text-white/90" x-text="$store.app.currentLang === 'ar' ? 'ما بعد قاعات الدراسة، نوفر لكل طالب الموارد والإرشاد اللازمين للنجاح. خدمات الحرم لدينا مصممة لرفع رفاهيتك وكفاءتك الأكاديمية.' : 'Beyond the classroom, we ensure every student has the tools and support needed to thrive. Our campus services are designed to elevate wellbeing and academic efficiency.'"></p>
-      <div class="mt-5 flex flex-wrap gap-5 text-sm font-medium">
-        <span class="inline-flex items-center gap-2"><i class="fas fa-check-circle text-white/85"></i><span x-text="$store.app.currentLang === 'ar' ? 'دعم معتمد للجودة' : 'Quality Assured'"></span></span>
-        <span class="inline-flex items-center gap-2"><i class="fas fa-shield-heart text-white/85"></i><span x-text="$store.app.currentLang === 'ar' ? 'سلامة الطالب أولاً' : 'Student Safety First'"></span></span>
+<section class="bg-white pb-16 font-hacen md:pb-20" x-data>
+  <div class="container">
+    <article class="grid overflow-hidden rounded-lg bg-spu-blue text-white shadow-[0_16px_36px_rgba(15,23,42,0.16)] lg:grid-cols-2">
+      <img :src="$store.studentLifePage.campusServices.support.image"
+           :alt="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.support.imageAltAr : $store.studentLifePage.campusServices.support.imageAltEn"
+           class="h-64 w-full object-cover lg:h-full">
+      <div class="flex flex-col justify-center p-7 md:p-9">
+        <h3 class="mt-3 text-3xl font-bold md:text-3xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.support.titleAr : $store.studentLifePage.campusServices.support.titleEn"></h3>
+        <p class="mt-4  text-xl leading-7 text-white/90"
+           x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.campusServices.support.summaryAr : $store.studentLifePage.campusServices.support.summaryEn"></p>
+        <div class="mt-6 grid gap-4 text-xs font-semibold sm:grid-cols-2">
+          <template x-for="badge in $store.studentLifePage.campusServices.support.badges" :key="badge.labelEn">
+            <span class="inline-flex items-center gap-2">
+              <img :src="badge.icon" alt="" class="h-4 w-4 brightness-0 invert" aria-hidden="true">
+              <span x-text="$store.app.currentLang === 'ar' ? badge.labelAr : badge.labelEn"></span>
+            </span>
+          </template>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
 </section>

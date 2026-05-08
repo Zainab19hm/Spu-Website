@@ -1,8 +1,8 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      Faculties Catalog Hero — diagonal image + stacked faculty cards
      ═══════════════════════════════════════════════════════════════════ -->
-<section x-show="$store.facultiesPage.catalogMode" x-cloak
-         class="relative min-h-[1116px] overflow-hidden font-hacen" x-data="{
+<section x-show="$store.facultiesPage.catalogMode" x-cloak class="relative min-h-[1116px] overflow-hidden font-hacen"
+    x-data="{
     catalogReady: false,
     faculties: $store.faculties?.items?.list || []
 }" x-init="$nextTick(() => { setTimeout(() => catalogReady = true, 100) })">
@@ -11,16 +11,13 @@
     <div class="absolute inset-0">
         <!-- Left image area with diagonal clip -->
         <div class="absolute inset-0 w-[55%]" style="clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);">
-            <img src="/images/slider-2.webp"
-                 alt="SPU Campus"
-                 class="h-full w-full object-cover">
+            <img src="/images/slider-2.webp" alt="SPU Campus" class="h-full w-full object-cover">
             <!-- Dark overlay for text legibility -->
             <div class="absolute inset-0 bg-spu-blue/50 mix-blend-multiply"></div>
         </div>
 
         <!-- Right navy area with diagonal edge -->
-        <div class="absolute inset-0 bg-spu-blue"
-             style="clip-path: polygon(35% 0, 100% 0, 100% 100%, 20% 100%);">
+        <div class="absolute inset-0 bg-spu-blue" style="clip-path: polygon(35% 0, 100% 0, 100% 100%, 20% 100%);">
         </div>
     </div>
 
@@ -38,20 +35,21 @@
                 </h1>
 
                 <p class="mt-6 max-w-[565px] text-[25px] leading-[29px] text-white"
-                   x-text="$store.app.currentLang === 'ar'
+                    x-text="$store.app.currentLang === 'ar'
                        ? 'اكتشف مختبراتنا المتطورة ومراكزنا السريرية المتخصصة والمساحات التعاونية المصممة لدعم البحث الأكاديمي الدقيق والتميز العملي'
                        : 'Discover our state-of-the-art laboratories, specialized clinical centers, and collaborative spaces designed to support rigorous academic inquiry and practical excellence'">
                 </p>
 
                 <div class="mt-10 flex flex-wrap items-center gap-5">
                     <a href="/admissions.html"
-                       class="inline-flex h-[45px] items-center justify-center rounded-[6px] bg-spu-red px-8 text-[12px] font-bold uppercase tracking-[1.2px] text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                        class="inline-flex h-[45px] items-center justify-center rounded-[6px] bg-spu-red px-8 text-[12px] font-bold uppercase tracking-[1.2px] text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <span x-text="$store.app.currentLang === 'ar' ? 'قدم الآن' : 'APPLY NOW'"></span>
                     </a>
                     <a href="javascript:void(0)"
-                       @click="document.getElementById('faculties-overview')?.scrollIntoView({ behavior: 'smooth' })"
-                       class="inline-flex h-[45px] items-center justify-center rounded-[4px] border border-white/60 bg-white/10 px-8 text-[16px] font-bold text-white backdrop-blur-[6px] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/80 hover:bg-white/15">
-                        <span x-text="$store.app.currentLang === 'ar' ? 'استكشف خريطة الحرم' : 'Explore Campus Map'"></span>
+                        @click="document.getElementById('faculties-overview')?.scrollIntoView({ behavior: 'smooth' })"
+                        class="inline-flex h-[45px] items-center justify-center rounded-[4px] border border-white/60 bg-white/10 px-8 text-[16px] font-bold text-white backdrop-blur-[6px] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/80 hover:bg-white/15">
+                        <span
+                            x-text="$store.app.currentLang === 'ar' ? 'استكشف خريطة الحرم الجامعي' : 'Explore Campus Map'"></span>
                     </a>
                 </div>
             </div>
@@ -60,8 +58,8 @@
             <div class="w-full lg:w-[55%] relative min-h-[900px] hidden lg:block">
                 <template x-for="(faculty, idx) in faculties" :key="faculty.id">
                     <a :href="'/faculty.html?id=' + faculty.id"
-                       class="group absolute flex items-center rounded-[12px] border border-white/40 bg-white/80 p-8 shadow-[0_20px_40px_rgba(32,39,89,0.05)] backdrop-blur-[12px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(32,39,89,0.12)]"
-                       :style="`
+                        class="group absolute flex items-center rounded-[12px] border border-white/40 bg-white/80 p-8 shadow-[0_20px_40px_rgba(32,39,89,0.05)] backdrop-blur-[12px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(32,39,89,0.12)]"
+                        :style="`
                            left: ${idx * 62.5}px;
                            top: ${idx === 0 ? 0 : (idx * 165.19)}px;
                            width: 768px;
@@ -71,9 +69,8 @@
 
                         <!-- Number badge -->
                         <div class="mr-8 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-spu-blue"
-                             :class="idx === 0 ? 'border border-white' : ''">
-                            <span class="text-[30px] font-bold leading-[46px] text-white"
-                                  x-text="idx + 1"></span>
+                            :class="idx === 0 ? 'border border-white' : ''">
+                            <span class="text-[30px] font-bold leading-[46px] text-white" x-text="idx + 1"></span>
                         </div>
 
                         <!-- Faculty info -->
@@ -83,11 +80,12 @@
                             </h3>
                             <div class="mt-1 flex items-center justify-between">
                                 <p class="text-[20px] leading-[26px] text-[#46464F]"
-                                   x-text="$store.app.currentLang === 'ar'
+                                    x-text="$store.app.currentLang === 'ar'
                                        ? (faculty.catalogDescAr || faculty.tabs?.[0]?.contentAr?.substring(0, 60) + '...')
                                        : (faculty.catalogDescEn || faculty.tabs?.[0]?.contentEn?.substring(0, 60) + '...')">
                                 </p>
-                                <span class="text-[40px] leading-[26px] text-[#46464F] opacity-0 transition-opacity duration-300 group-hover:opacity-100 shrink-0 ml-4">→</span>
+                                <span
+                                    class="text-[40px] leading-[26px] text-[#46464F] opacity-0 transition-opacity duration-300 group-hover:opacity-100 shrink-0 ml-4">→</span>
                             </div>
                         </div>
                     </a>
@@ -98,7 +96,7 @@
             <div class="w-full lg:hidden flex flex-col gap-4 pb-10">
                 <template x-for="(faculty, idx) in faculties" :key="'m-' + faculty.id">
                     <a :href="'/faculty.html?id=' + faculty.id"
-                       class="flex items-center rounded-xl border border-white/40 bg-white/80 p-5 shadow-md backdrop-blur-md transition-all duration-300 hover:shadow-lg">
+                        class="flex items-center rounded-xl border border-white/40 bg-white/80 p-5 shadow-md backdrop-blur-md transition-all duration-300 hover:shadow-lg">
                         <div class="mr-5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-spu-blue">
                             <span class="text-xl font-bold text-white" x-text="idx + 1"></span>
                         </div>

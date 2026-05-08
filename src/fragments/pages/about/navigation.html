@@ -38,13 +38,11 @@
                             <div class="flex items-start justify-between">
                                 <!-- Icon circle -->
                                 <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-spu-blue/5 transition-colors duration-300 group-hover:bg-spu-blue">
-                                    <i class="text-lg text-spu-blue transition-colors duration-300 group-hover:text-white"
-                                       :class="sub.id === 'vision-mission' ? 'fas fa-compass' : sub.id === 'history' ? 'fas fa-landmark' : sub.id === 'leadership' ? 'fas fa-users' : sub.id === 'directorates' ? 'fas fa-sitemap' : 'fas fa-handshake'"></i>
+                                    <img :src="sub.id === 'vision-mission' ? '/images/icon-sitemap-outline.svg' : sub.id === 'history' ? '/images/icon-history-outline.svg' : sub.id === 'leadership' ? '/images/icon-users-outline.svg' : sub.id === 'directorates' ? '/images/icon-sitemap-outline.svg' : '/images/icon-handshake-outline.svg'" alt="" class="h-5 w-5 transition duration-300 group-hover:brightness-0 group-hover:invert" aria-hidden="true">
                                 </div>
                                 <!-- Arrow -->
                                 <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 text-slate-300 transition-all duration-300 group-hover:bg-spu-red group-hover:text-white">
-                                    <i class="fas fa-arrow-right text-xs"
-                                       :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''"></i>
+                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''" aria-hidden="true">
                                 </div>
                             </div>
 

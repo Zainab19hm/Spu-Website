@@ -1,0 +1,33 @@
+<section x-data class="relative min-h-[360px] overflow-hidden font-hacen">
+    <div class="absolute inset-0">
+        <img :src="$store.virtualTourPage.hero.image"
+             :alt="$store.app.currentLang === 'ar' ? $store.virtualTourPage.hero.imageAltAr : $store.virtualTourPage.hero.imageAltEn"
+             class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/90 via-spu-blue/60 to-spu-blue/0"></div>
+        <div class="absolute inset-0 bg-spu-blue/25"></div>
+    </div>
+
+    <div class="container relative z-10 flex min-h-[360px] items-center justify-center pb-12 pt-32 text-center">
+        <div class="w-full">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/80"
+               x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.hero.eyebrowAr : $store.virtualTourPage.hero.eyebrowEn"></p>
+            <h1 class="mt-3 text-[32px] font-bold leading-tight text-white md:text-[42px]"
+                x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.hero.titleAr : $store.virtualTourPage.hero.titleEn"></h1>
+            <p class="mx-auto mt-4 w-full text-sm font-semibold leading-6 text-white/85 md:w-[58%]"
+               x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.hero.summaryAr : $store.virtualTourPage.hero.summaryEn"></p>
+
+            <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+                <a :href="$store.virtualTourPage.hero.primaryUrl"
+                   class="group inline-flex items-center justify-center gap-2 rounded-[4px] bg-spu-red px-6 py-3 text-xs font-bold text-white shadow-[0_12px_30px_rgba(111,22,22,0.28)] transition hover:-translate-y-0.5 hover:bg-white hover:text-spu-blue">
+                    <img :src="$store.virtualTourPage.hero.primaryIcon" alt="" class="h-4 w-4 brightness-0 invert transition group-hover:brightness-100 group-hover:invert-0" aria-hidden="true">
+                    <span x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.hero.primaryLabelAr : $store.virtualTourPage.hero.primaryLabelEn"></span>
+                </a>
+                <a :href="$store.virtualTourPage.hero.secondaryUrl"
+                   class="inline-flex items-center justify-center gap-2 rounded-[4px] border border-white/20 bg-white/10 px-6 py-3 text-xs font-bold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/18">
+                    <img :src="$store.virtualTourPage.hero.secondaryIcon" alt="" class="h-4 w-4 brightness-0 invert" aria-hidden="true">
+                    <span x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.hero.secondaryLabelAr : $store.virtualTourPage.hero.secondaryLabelEn"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

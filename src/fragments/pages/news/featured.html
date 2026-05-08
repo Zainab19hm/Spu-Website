@@ -23,12 +23,9 @@
 
                 <a :href="$store.newsPage.featured.link" class="inline-flex items-center gap-2 text-spu-blue font-bold group/link">
                     <span x-text="$store.app.currentLang === 'ar' ? 'اقرأ المزيد' : 'Read More'"></span>
-                    <svg class="w-5 h-5 transition-transform group-hover/link:translate-x-1 rtl:group-hover/link:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
+                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="w-5 h-5 transition-transform group-hover/link:translate-x-1 rtl:group-hover/link:-translate-x-1" aria-hidden="true">
                 </a>
             </div>
         </article>
     </div>
 </section>
-

@@ -1,0 +1,36 @@
+<section x-data class="bg-white py-12 font-hacen">
+    <div class="container">
+        <div class="text-center">
+            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-spu-blue/55"
+               x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.highlights.eyebrowAr : $store.virtualTourPage.highlights.eyebrowEn"></p>
+            <h2 class="mt-2 text-[24px] font-bold leading-tight text-spu-blue md:text-[30px]"
+                x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.highlights.titleAr : $store.virtualTourPage.highlights.titleEn"></h2>
+            <p class="mx-auto mt-3 w-full text-sm leading-6 text-spu-blue/60 md:w-[56%]"
+               x-text="$store.app.currentLang === 'ar' ? $store.virtualTourPage.highlights.summaryAr : $store.virtualTourPage.highlights.summaryEn"></p>
+        </div>
+
+        <div class="mt-8 grid gap-4 lg:grid-cols-2">
+            <template x-for="item in $store.virtualTourPage.highlights.items" :key="item.id">
+                <a :href="item.href"
+                   class="group relative min-h-[210px] overflow-hidden rounded-[8px] bg-spu-blue text-white shadow-[0_16px_42px_rgba(32,39,89,0.14)]"
+                   :class="item.featured ? 'lg:row-span-2 lg:min-h-[440px]' : ''">
+                    <img :src="item.image"
+                         :alt="$store.app.currentLang === 'ar' ? item.imageAltAr : item.imageAltEn"
+                         class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/45 to-transparent"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-5 md:p-7">
+                        <h3 class="text-[22px] font-bold leading-tight"
+                            :class="item.featured ? 'md:text-[28px]' : 'md:text-[24px]'"
+                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                        <p class="mt-2 text-sm leading-6 text-white/82"
+                           x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                        <span class="mt-4 inline-flex items-center gap-2 rounded-[4px] bg-spu-red px-4 py-2 text-[11px] font-bold transition group-hover:bg-white group-hover:text-spu-blue">
+                            <span x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></span>
+                            <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+                        </span>
+                    </div>
+                </a>
+            </template>
+        </div>
+    </div>
+</section>

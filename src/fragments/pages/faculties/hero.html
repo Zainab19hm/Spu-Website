@@ -63,8 +63,7 @@
                class="group inline-flex h-[54px] items-center gap-2.5 rounded-[6px] bg-white px-8 text-sm font-bold uppercase tracking-[1.4px] shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
                :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
                 <span x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'EXPLORE PROGRAMS'"></span>
-                <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"
-                   :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''"></i>
+                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
             </a>
             <a href="/admissions.html"
                class="inline-flex h-[54px] items-center rounded-[6px] border border-white/30 bg-white/8 px-8 text-sm font-bold uppercase tracking-[1.4px] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15"

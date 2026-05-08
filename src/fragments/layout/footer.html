@@ -8,7 +8,7 @@
                 <div class="flex items-center gap-6 text-[22px]">
                     <template x-for="social in $store.footer.identity.socials" :key="social.icon">
                         <a :href="social.url" target="_blank" rel="noreferrer" class="text-white/80 transition-all hover:scale-110 hover:text-spu-red">
-                            <i :class="social.icon"></i>
+                            <img :src="social.icon" alt="" class="h-5 w-5 brightness-0 invert transition-opacity" aria-hidden="true">
                         </a>
                     </template>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="flex flex-col gap-6">
                     <template x-for="item in $store.footer.contact.items" :key="item.icon + item.textEn">
                         <div class="flex items-start gap-4">
-                            <i :class="item.icon" class="mt-1.5 text-spu-red"></i>
+                            <img :src="item.icon" alt="" class="mt-1.5 h-4 w-4 shrink-0" aria-hidden="true">
                             <span class="text-[15px] leading-relaxed text-white/80" :class="item.ltr ? 'ltr' : ''" x-html="$store.app.currentLang === 'ar' ? item.textAr : item.textEn"></span>
                         </div>
                     </template>

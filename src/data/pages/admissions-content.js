@@ -32,10 +32,10 @@ export const admissionsPageContent = {
         }
     },
     trustBar: [
-        { titleEn: 'Accredited Programs', titleAr: 'برامج معتمدة', icon: 'fas fa-award' },
-        { titleEn: 'Expert Faculty', titleAr: 'هيئة تدريسية متميزة', icon: 'fas fa-chalkboard-teacher' },
-        { titleEn: 'Student Support', titleAr: 'دعم الطلاب', icon: 'fas fa-hands-helping' },
-        { titleEn: 'International Standards', titleAr: 'معايير دولية', icon: 'fas fa-globe' }
+        { titleEn: 'Accredited Programs', titleAr: 'برامج معتمدة', icon: '/images/icon-award-outline.svg' },
+        { titleEn: 'Expert Faculty', titleAr: 'هيئة تدريسية متميزة', icon: '/images/icon-university-outline.svg' },
+        { titleEn: 'Student Support', titleAr: 'دعم الطلاب', icon: '/images/icon-handshake-outline.svg' },
+        { titleEn: 'International Standards', titleAr: 'معايير دولية', icon: '/images/icon-globe-outline.svg' }
     ],
     journey: {
         titleEn: 'The Admissions Journey',
@@ -131,13 +131,13 @@ export const admissionsPageContent = {
         subtitleEn: 'Explore everything you need to know about joining SPU',
         subtitleAr: 'اكتشف كل ما تحتاج معرفته للانضمام إلى الجامعة',
         cards: [
-            { titleEn: 'How to Apply', titleAr: 'كيفية التقديم', icon: 'fas fa-paper-plane', descEn: 'Step-by-step application guide', descAr: 'دليل التقديم خطوة بخطوة', linkEn: 'Start Application →', linkAr: 'ابدأ التقديم ←', active: true, slug: 'how-to-apply' },
-            { titleEn: 'Admission Requirements', titleAr: 'متطلبات القبول', icon: 'fas fa-clipboard-check', descEn: 'Documents and prerequisites', descAr: 'الوثائق والمتطلبات المسبقة', active: false, slug: 'requirements' },
-            { titleEn: 'Tuition & Fees', titleAr: 'الرسوم والأقساط', icon: 'fas fa-coins', descEn: 'Program costs and payment plans', descAr: 'تكاليف البرامج وخطط الدفع', active: false, slug: 'tuition' },
-            { titleEn: 'FAQ', titleAr: 'الأسئلة الشائعة', icon: 'fas fa-comments', descEn: 'Common questions answered', descAr: 'إجابات على الأسئلة الشائعة', active: false, slug: 'faq' },
-            { titleEn: 'Academic Calendar', titleAr: 'التقويم الأكاديمي', icon: 'fas fa-calendar-alt', descEn: 'Important dates and deadlines', descAr: 'تواريخ ومواعيد هامة', active: false, slug: 'calendar' },
-            { titleEn: 'Documents Checklist', titleAr: 'قائمة الوثائق', icon: 'fas fa-file-alt', descEn: 'Required paperwork for all students', descAr: 'الأوراق المطلوبة لجميع الطلاب', active: false, slug: 'documents' },
-            { titleEn: 'Transfer & International', titleAr: 'طلاب التحويل والدوليون', icon: 'fas fa-globe-americas', descEn: 'Pathways for global students', descAr: 'مسارات للطلاب الدوليين', active: false, slug: 'transfer' }
+            { titleEn: 'How to Apply', titleAr: 'كيفية التقديم', icon: '/images/icon-telegram-outline.svg', descEn: 'Step-by-step application guide', descAr: 'دليل التقديم خطوة بخطوة', linkEn: 'Start Application →', linkAr: 'ابدأ التقديم ←', active: true, slug: 'how-to-apply' },
+            { titleEn: 'Admission Requirements', titleAr: 'متطلبات القبول', icon: '/images/icon-check-circle-outline.svg', descEn: 'Documents and prerequisites', descAr: 'الوثائق والمتطلبات المسبقة', active: false, slug: 'requirements' },
+            { titleEn: 'Tuition & Fees', titleAr: 'الرسوم والأقساط', icon: '/images/icon-file-outline.svg', descEn: 'Program costs and payment plans', descAr: 'تكاليف البرامج وخطط الدفع', active: false, slug: 'tuition' },
+            { titleEn: 'FAQ', titleAr: 'الأسئلة الشائعة', icon: '/images/icon-envelope-outline.svg', descEn: 'Common questions answered', descAr: 'إجابات على الأسئلة الشائعة', active: false, slug: 'faq' },
+            { titleEn: 'Academic Calendar', titleAr: 'التقويم الأكاديمي', icon: '/images/icon-calendar-outline.svg', descEn: 'Important dates and deadlines', descAr: 'تواريخ ومواعيد هامة', active: false, slug: 'calendar' },
+            { titleEn: 'Documents Checklist', titleAr: 'قائمة الوثائق', icon: '/images/icon-file-outline.svg', descEn: 'Required paperwork for all students', descAr: 'الأوراق المطلوبة لجميع الطلاب', active: false, slug: 'documents' },
+            { titleEn: 'Transfer & International', titleAr: 'طلاب التحويل والدوليون', icon: '/images/icon-globe-outline.svg', descEn: 'Pathways for global students', descAr: 'مسارات للطلاب الدوليين', active: false, slug: 'transfer' }
         ]
     },
     requirementsPage: {
@@ -152,7 +152,7 @@ export const admissionsPageContent = {
                 titleAr: 'مسارات القبول',
                 cards: [
                     {
-                        icon: 'fa-graduation-cap',
+                        icon: '/images/icon-user-graduate-outline.svg',
                         titleEn: 'New Entrants',
                         titleAr: 'الطلاب المستجدون',
                         summaryEn: 'Prepare your secondary certificate, GPA, and English eligibility.',
@@ -162,7 +162,7 @@ export const admissionsPageContent = {
                         linkTextAr: 'ابدأ طلبك'
                     },
                     {
-                        icon: 'fa-right-left',
+                        icon: '/images/icons/exchange.svg',
                         titleEn: 'Transfer Students',
                         titleAr: 'طلاب التحويل',
                         summaryEn: 'Submit previous transcripts, course descriptions, and academic clearance.',
@@ -172,7 +172,7 @@ export const admissionsPageContent = {
                         linkTextAr: 'راجع قواعد التحويل'
                     },
                     {
-                        icon: 'fa-file-circle-check',
+                        icon: '/images/icon-check-circle-outline.svg',
                         titleEn: 'Equivalency & International',
                         titleAr: 'المعادلة والدوليون',
                         summaryEn: 'Follow equivalency, translation and visa guidance for foreign credentials.',
@@ -210,7 +210,7 @@ export const admissionsPageContent = {
                         descEn: 'Complete the online admission form and upload your documents securely.',
                         descAr: 'أكمل نموذج القبول الإلكتروني وارفع وثائقك بشكل آمن.'
                     },
-                    
+
                     {
                         number: '04',
                         titleEn: 'Track the review',
@@ -227,28 +227,28 @@ export const admissionsPageContent = {
                 titleAr: 'ما الذي يشمله',
                 cards: [
                     {
-                        icon: 'fa-file-alt',
+                        icon: '/images/icon-file-outline.svg',
                         titleEn: 'Application Documents',
                         titleAr: 'وثائق الطلب',
                         descEn: 'All required papers for new, transfer, and international students.',
                         descAr: 'كل الأوراق المطلوبة للطلاب المستجدين والمحولين والدوليين.'
                     },
                     {
-                        icon: 'fa-graduation-cap',
+                        icon: '/images/icon-user-graduate-outline.svg',
                         titleEn: 'Academic Criteria',
                         titleAr: 'المعايير الأكاديمية',
                         descEn: 'GPA, diploma type, and faculty-specific admissions standards.',
                         descAr: 'المعدل، نوع الشهادة، والمعايير الخاصة بكل كلية.'
                     },
                     {
-                        icon: 'fa-language',
+                        icon: '/images/ic_outline-language.svg',
                         titleEn: 'Language Requirements',
                         titleAr: 'متطلبات اللغة',
                         descEn: 'English and Arabic requirements for programmes and placement tests.',
                         descAr: 'متطلبات الإنجليزية والعربية للبرامج واختبارات تحديد المستوى.'
                     },
                     {
-                        icon: 'fa-globe',
+                        icon: '/images/icon-globe-outline.svg',
                         titleEn: 'International Equivalency',
                         titleAr: 'المعادلة الدولية',
                         descEn: 'Guidance for international credentials and Syrian equivalency certificates.',
@@ -272,7 +272,7 @@ export const admissionsPageContent = {
                     titleEn: 'Admissions Support',
                     titleAr: 'دعم القبول',
                     locationEn: 'Admissions Office, Main Campus',
-                    locationAr: 'مكتب القبول، الحرم الرئيسي',
+                    locationAr: 'مكتب القبول، الحرم الجامعي الرئيسي',
                     phone: '+963 11 123 4567',
                     email: 'admissions@spu.edu.sy'
                 }

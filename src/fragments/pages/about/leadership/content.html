@@ -187,7 +187,7 @@
                             
                             <div class="relative z-10 flex flex-col h-full">
                                 <div class="leadership-icon-container">
-                                    <i class="fa-solid" :class="member.icon"></i>
+                                    <img :src="member.icon" alt="" class="h-5 w-5" aria-hidden="true">
                                 </div>
                                 
                                 <span class="text-spu-red text-xs font-black uppercase tracking-widest mb-3"
@@ -201,7 +201,7 @@
                                 
                                 <div class="mt-auto pt-6 border-t border-slate-50 flex justify-center">
                                     <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 px-4 py-2 text-xs font-black uppercase tracking-widest text-spu-blue">
-                                        <i class="fa-solid fa-circle-nodes text-spu-red"></i>
+                                        <img src="/images/icon-sitemap-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                                         <span x-text="$store.app.currentLang === 'ar' ? 'حوكمة' : 'Governance'"></span>
                                     </span>
                                 </div>
@@ -216,7 +216,7 @@
         <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
             <a href="/about.html" 
                class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
-                <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform rtl:rotate-180"></i>
+                <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
             </a>
         </div>

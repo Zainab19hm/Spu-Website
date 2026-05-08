@@ -29,9 +29,7 @@
                                    :aria-current="item.page === $store.app.currentPage ? 'page' : null">
                                     <span x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></span>
                                     <template x-if="item.hasDropdown">
-                                        <svg class="site-nav-link__chevron" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="m5 7.5 5 5 5-5"></path>
-                                        </svg>
+                                        <img src="/images/icon-chevron-down-outline.svg" alt="" class="site-nav-link__chevron" aria-hidden="true">
                                     </template>
                                 </a>
 

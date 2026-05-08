@@ -2,7 +2,7 @@ import { siteRoutes } from '../../config/site-routes.js';
 
 export const contactPageContent = {
     hero: {
-        titleEn: 'CONTACT US',  
+        titleEn: 'CONTACT US',
         titleAr: 'تواصل معنا',
         bgImage: '/images/slider-3.webp'
     },
@@ -12,7 +12,8 @@ export const contactPageContent = {
         callUs: {
             labelEn: 'CALL US',
             labelAr: 'اتصل بنا',
-            value: '+963 11 123 4567'
+            value: '+963 11 123 4567',
+            icon: 'images/icon-phone-outline.svg'
         },
         emailUs: {
             labelEn: 'EMAIL US',
@@ -35,9 +36,9 @@ export const contactPageContent = {
     socialsTitleEn: 'CONNECT WITH US',
     socialsTitleAr: 'تواصل معنا عبر',
     socials: [
-        { icon: 'fab fa-facebook-f', url: 'https://www.facebook.com/SPUpage.sy' },
-        { icon: 'fab fa-instagram', url: 'https://www.instagram.com/spu_syrian_private_university/' },
-        { icon: 'fab fa-youtube', url: 'https://youtube.com/@spusyrianprivateuniversity755?si=xW_6Zru4wvjHnm6R' }
+        { icon: '/images/icon-facebook-outline.svg', url: 'https://www.facebook.com/SPUpage.sy' },
+        { icon: '/images/icon-instagram-outline.svg', url: 'https://www.instagram.com/spu_syrian_private_university/' },
+        { icon: '/images/icon-youtube-outline.svg', url: 'https://youtube.com/@spusyrianprivateuniversity755?si=xW_6Zru4wvjHnm6R' }
     ],
     form: {
         titleEn: 'Send us a Message',

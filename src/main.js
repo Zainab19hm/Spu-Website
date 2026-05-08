@@ -1,7 +1,6 @@
 import Alpine from 'alpinejs';
 import { registerStores } from './alpine/register-stores.js';
 import { siteRoutes } from './config/site-routes.js';
-import { reconcileFontAwesomeIcons, startFontAwesome } from './features/font-awesome.js';
 import { initRevealSections, observeElement, observeRevealSections } from './features/reveal-sections.js';
 import { initPageLoader } from './loader/page-loader.js';
 import './style.css';
@@ -87,7 +86,6 @@ function renderBootstrapFailure() {
 async function bootstrap() {
   try {
     setAppReadyState('pending');
-    startFontAwesome();
     await initPageLoader(pageName);
     await Promise.all([
       registerPageFeatureGlobals(),
@@ -97,7 +95,6 @@ async function bootstrap() {
     setAppReadyState('true');
 
     requestAnimationFrame(() => {
-      reconcileFontAwesomeIcons();
       initRevealSections();
       observeRevealSections();
     });

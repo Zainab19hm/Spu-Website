@@ -3,6 +3,7 @@ export const facultiesCatalog = {
     list: [
         {
             id: 'medicine',
+            departmentRoute: '/facilities/medicine/departments/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية الطب البشري',
@@ -85,6 +86,14 @@ export const facultiesCatalog = {
                         value: '5',
                         link: '#',
                         icon: '/images/icons/hospital.svg'
+                    },
+                    {
+                        id: 5,
+                        titleAr: 'قائمة الشرف',
+                        titleEn: 'Honor List',
+                        value: 'Top',
+                        link: siteRoutes.facultyMedicineValedictorians,
+                        icon: '/images/icons/award.svg'
                     }
                 ]
             },
@@ -121,6 +130,7 @@ export const facultiesCatalog = {
 
         {
             id: 'dentistry',
+            departmentRoute: '/facilities/dentistry/departments/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية طب الأسنان',
@@ -204,6 +214,14 @@ export const facultiesCatalog = {
                         value: '120',
                         link: '#',
                         icon: '/images/icons/chair.svg'
+                    },
+                    {
+                        id: 5,
+                        titleAr: 'قائمة الشرف',
+                        titleEn: 'Honor List',
+                        value: 'Top',
+                        link: siteRoutes.facultyDentistryValedictorians,
+                        icon: '/images/icons/award.svg'
                     }
                 ]
             },
@@ -230,6 +248,7 @@ export const facultiesCatalog = {
         },
         {
             id: 'pharmacy',
+            departmentRoute: '/facilities/pharmacy/departments/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية الصيدلة',
@@ -308,6 +327,14 @@ export const facultiesCatalog = {
                         value: 'Active',
                         link: '#',
                         icon: '/images/icons/training.svg'
+                    },
+                    {
+                        id: 5,
+                        titleAr: 'قائمة الشرف',
+                        titleEn: 'Honor List',
+                        value: 'Top',
+                        link: siteRoutes.facultyPharmacyValedictorians,
+                        icon: '/images/icons/award.svg'
                     }
                 ]
             },
@@ -325,6 +352,7 @@ export const facultiesCatalog = {
         },
         {
             id: 'ai-engineering',
+            departmentRoute: '/facilities/artificial-intelligence/departments/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة الذكاء الاصطناعي',
@@ -403,6 +431,14 @@ export const facultiesCatalog = {
                         value: '40+',
                         link: '#',
                         icon: '/images/icons/ai.svg'
+                    },
+                    {
+                        id: 5,
+                        titleAr: 'قائمة الشرف',
+                        titleEn: 'Honor List',
+                        value: 'Top',
+                        link: siteRoutes.facultyArtificialIntelligenceValedictorians,
+                        icon: '/images/icons/award.svg'
                     }
                 ]
             },
@@ -420,6 +456,7 @@ export const facultiesCatalog = {
         },
         {
             id: 'Construction',
+            departmentRoute: '/facilities/building-construction-engineering/departments/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة التشييد والبناء',
@@ -498,6 +535,14 @@ export const facultiesCatalog = {
                         value: 'Full',
                         link: '#',
                         icon: '/images/icons/bim.svg'
+                    },
+                    {
+                        id: 5,
+                        titleAr: 'قائمة الشرف',
+                        titleEn: 'Honor List',
+                        value: 'Top',
+                        link: siteRoutes.facultyBuildingConstructionEngineeringValedictorians,
+                        icon: '/images/icons/award.svg'
                     }
                 ]
             },
@@ -505,6 +550,7 @@ export const facultiesCatalog = {
         },
         {
             id: 'petroleum',
+            departmentRoute: '/facilities/petroleum/departments/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة البترول',
@@ -583,6 +629,14 @@ export const facultiesCatalog = {
                         value: 'Done',
                         link: '#',
                         icon: '/images/icons/field.svg'
+                    },
+                    {
+                        id: 5,
+                        titleAr: 'قائمة الشرف',
+                        titleEn: 'Honor List',
+                        value: 'Top',
+                        link: siteRoutes.facultyPetroleumValedictorians,
+                        icon: '/images/icons/award.svg'
                     }
                 ]
             },
@@ -590,6 +644,7 @@ export const facultiesCatalog = {
         },
         {
             id: 'business',
+            departmentRoute: '/facilities/business-administration/departments/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية إدارة الأعمال',
@@ -668,6 +723,14 @@ export const facultiesCatalog = {
                         value: 'Active',
                         link: '#',
                         icon: '/images/icons/exchange.svg'
+                    },
+                    {
+                        id: 5,
+                        titleAr: 'قائمة الشرف',
+                        titleEn: 'Honor List',
+                        value: 'Top',
+                        link: siteRoutes.facultyBusinessAdministrationValedictorians,
+                        icon: '/images/icons/award.svg'
                     }
                 ]
             },

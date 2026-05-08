@@ -37,11 +37,22 @@ export const siteRoutes = Object.freeze({
     admissionsDocuments: getPageRoute('admissions-documents'),
     research: getPageRoute('research'),
     studentLife: getPageRoute('student-life'),
+    virtualTour: getPageRoute('virtual-tour'),
     services: getPageRoute('services'),
     news: getPageRoute('news'),
     contact: getPageRoute('contact'),
     campusLifeDental: getPageRoute('campus-life-dental'),
     campusLifeHospital: getPageRoute('campus-life-hospital'),
     campusLifeHealthInsurance: getPageRoute('campus-life-health-insurance'),
-    campusLifeServices: getPageRoute('campus-life-services')
+    campusLifeTransport: getPageRoute('campus-life-transport'),
+    campusLifeServices: getPageRoute('campus-life-services'),
+    campusLifeClubsActivities: getPageRoute('campus-life-clubs-activities'),
+    campusLifeCareerDevelopment: getPageRoute('campus-life-career-development'),
+    facultyArtificialIntelligenceValedictorians: getPageRoute('faculty-artificial-intelligence-valedictorians'),
+    facultyBusinessAdministrationValedictorians: getPageRoute('faculty-business-administration-valedictorians'),
+    facultyBuildingConstructionEngineeringValedictorians: getPageRoute('faculty-building-construction-engineering-valedictorians'),
+    facultyDentistryValedictorians: getPageRoute('faculty-dentistry-valedictorians'),
+    facultyMedicineValedictorians: getPageRoute('faculty-medicine-valedictorians'),
+    facultyPetroleumValedictorians: getPageRoute('faculty-petroleum-valedictorians'),
+    facultyPharmacyValedictorians: getPageRoute('faculty-pharmacy-valedictorians')
 });

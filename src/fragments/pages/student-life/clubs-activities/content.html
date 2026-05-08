@@ -1,0 +1,87 @@
+<section id="clubs" class="bg-white py-14 font-hacen md:py-16" x-data>
+  <div class="container ">
+    <div class="flex items-end justify-between gap-6 border-b border-slate-200 pb-3">
+      <h2 class="text-3xl font-bold text-spu-blue md:text-4xl"
+          x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.clubs.titleAr : $store.studentLifePage.clubsActivities.clubs.titleEn"></h2>
+      <a :href="$store.studentLifePage.clubsActivities.clubs.directoryUrl"
+         class="inline-flex shrink-0 items-center gap-2 text-xs font-bold text-spu-blue transition hover:text-spu-red">
+        <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.clubs.directoryLabelAr : $store.studentLifePage.clubsActivities.clubs.directoryLabelEn"></span>
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+      </a>
+    </div>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <template x-for="club in $store.studentLifePage.clubsActivities.clubs.items" :key="club.id">
+        <article class="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(15,23,42,0.12)]">
+          <div class="relative">
+            <img :src="club.image"
+                 :alt="$store.app.currentLang === 'ar' ? club.titleAr : club.titleEn"
+                 class="h-44 w-full object-cover transition duration-500 group-hover:scale-[1.03]">
+            <span class="absolute left-3 top-3 rounded-sm bg-white px-2 py-1 text-[10px] font-bold text-spu-blue"
+                  x-text="$store.app.currentLang === 'ar' ? club.tagAr : club.tagEn"></span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-base font-bold text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? club.titleAr : club.titleEn"></h3>
+            <p class="mt-3 min-h-[66px] text-xs leading-5 text-slate-600"
+               x-text="$store.app.currentLang === 'ar' ? club.summaryAr : club.summaryEn"></p>
+            <a :href="club.href" class="mt-4 inline-flex items-center gap-2 text-xs font-bold text-spu-blue transition hover:text-spu-red">
+              <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.clubs.detailsLabelAr : $store.studentLifePage.clubsActivities.clubs.detailsLabelEn"></span>
+              <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+            </a>
+          </div>
+        </article>
+      </template>
+    </div>
+  </div>
+</section>
+
+<section id="activities" class="bg-white pb-16 font-hacen md:pb-20" x-data>
+  <div class="container ">
+    <div class="border-b border-slate-200 pb-3">
+      <h2 class="text-3xl font-bold text-spu-blue md:text-4xl"
+          x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.activities.titleAr : $store.studentLifePage.clubsActivities.activities.titleEn"></h2>
+    </div>
+
+    <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_330px]">
+      <article class="overflow-hidden">
+        <a :href="$store.studentLifePage.clubsActivities.activities.feature.href" class="group block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img :src="$store.studentLifePage.clubsActivities.activities.feature.image"
+                 :alt="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.activities.feature.titleAr : $store.studentLifePage.clubsActivities.activities.feature.titleEn"
+                 class="h-[360px] w-full object-cover transition duration-500 group-hover:scale-[1.03]">
+            <span class="absolute left-4 top-4 rounded-sm bg-spu-red px-3 py-1.5 text-[10px] font-bold text-white"
+                  x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.activities.feature.badgeAr : $store.studentLifePage.clubsActivities.activities.feature.badgeEn"></span>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-spu-blue"
+              x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.activities.feature.titleAr : $store.studentLifePage.clubsActivities.activities.feature.titleEn"></h3>
+          <p class="mt-2 max-w-[780px] text-sm font-semibold leading-6 text-slate-700"
+             x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.activities.feature.summaryAr : $store.studentLifePage.clubsActivities.activities.feature.summaryEn"></p>
+        </a>
+      </article>
+
+      <aside class="flex flex-col gap-5">
+        <template x-for="item in $store.studentLifePage.clubsActivities.activities.items" :key="item.id">
+          <a :href="item.href" class="group grid grid-cols-[92px_minmax(0,1fr)] gap-4 border-b border-slate-200 pb-5 last:border-b-0">
+            <img :src="item.image"
+                 :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"
+                 class="h-20 w-full rounded-md object-cover">
+            <span class="min-w-0">
+              <span class="block text-[11px] font-bold text-spu-red" x-text="$store.app.currentLang === 'ar' ? item.dateAr : item.dateEn"></span>
+              <span class="mt-1 block text-sm font-bold leading-5 text-spu-blue transition group-hover:text-spu-red"
+                    x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></span>
+              <span class="mt-1 block text-xs leading-5 text-slate-600"
+                    x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></span>
+            </span>
+          </a>
+        </template>
+
+        <a :href="$store.studentLifePage.clubsActivities.activities.announcementUrl"
+           class="inline-flex items-center gap-2 pt-1 text-xs font-bold text-spu-red transition hover:text-spu-blue">
+          <span x-text="$store.app.currentLang === 'ar' ? $store.studentLifePage.clubsActivities.activities.announcementLabelAr : $store.studentLifePage.clubsActivities.activities.announcementLabelEn"></span>
+          <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>

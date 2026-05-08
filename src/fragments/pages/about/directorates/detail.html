@@ -81,7 +81,7 @@
                             <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
                                 <div class="service-item h-full">
                                     <div class="icon-circle">
-                                        <i class="fa-solid fa-check-circle"></i>
+                                        <img src="/images/icon-check-circle-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                                     </div>
                                     <h4 class="font-bold text-spu-blue text-lg"
                                         x-text="$store.app.currentLang === 'ar' ? service.ar : service.en"></h4>
@@ -95,7 +95,7 @@
                 <div class="lg:col-span-2">
                     <div class="reveal reveal-right p-10 bg-slate-50 rounded-[3rem] border border-slate-100 sticky top-32">
                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-3xl text-spu-red shadow-sm mb-8">
-                            <i class="fa-solid" :class="directorate.icon"></i>
+                            <img :src="directorate.icon" alt="" class="h-6 w-6" aria-hidden="true">
                         </div>
                         
                         <h3 class="text-xl font-black text-spu-blue mb-6 border-b border-slate-200 pb-4"
@@ -104,7 +104,7 @@
                         <ul class="space-y-6">
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-spu-blue shrink-0 shadow-sm">
-                                    <i class="fa-solid fa-envelope text-sm"></i>
+                                    <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                                 </div>
                                 <div>
                                     <p class="text-xs font-black text-spu-red uppercase tracking-widest mb-1"
@@ -114,7 +114,7 @@
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-spu-blue shrink-0 shadow-sm">
-                                    <i class="fa-solid fa-location-dot text-sm"></i>
+                                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                                 </div>
                                 <div>
                                     <p class="text-xs font-black text-spu-red uppercase tracking-widest mb-1"
@@ -129,7 +129,7 @@
                             <a href="/contact.html" 
                                class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20 group">
                                 <span x-text="$store.app.currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us'"></span>
-                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform rtl:rotate-180"></i>
+                                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180" aria-hidden="true">
                             </a>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
             <div class="reveal reveal-up reveal-delay-4 mt-24 pt-12 border-t border-slate-100 text-center">
                 <a href="/about/directorates.html" 
                    class="inline-flex items-center gap-3 text-spu-blue font-black hover:text-spu-red transition-colors group">
-                    <i class="fa-solid fa-chevron-left group-hover:-translate-x-1 transition-transform rtl:rotate-180"></i>
+                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
                     <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى جميع المديريات' : 'Back to All Directorates'"></span>
                 </a>
             </div>
