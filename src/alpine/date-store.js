@@ -2,12 +2,19 @@
 export function registerDateStore(Alpine) {
     Alpine.store('date', {
         now: new Date(),
-        
+        _intervalId: null,
+
         init() {
-            // Update the date every minute to keep it fresh
-            setInterval(() => {
+            this._intervalId = setInterval(() => {
                 this.now = new Date();
             }, 60000);
+        },
+
+        destroy() {
+            if (this._intervalId) {
+                clearInterval(this._intervalId);
+                this._intervalId = null;
+            }
         },
 
         getFormattedDate(lang) {

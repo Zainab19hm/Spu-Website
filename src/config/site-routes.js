@@ -4,7 +4,38 @@ const pageRouteByName = Object.freeze(
     Object.fromEntries((sitePages.pages || []).map((page) => [page.name, page.route]))
 );
 
+function fileNameToHref(fileName) {
+    if (fileName === 'index.html') {
+        return '/';
+    }
+
+    const normalizedFileName = fileName.replace(/\\/g, '/');
+
+    const indexFileName = 'index.html';
+    const nestedIndexSuffix = `/${indexFileName}`;
+
+    if (normalizedFileName.endsWith(nestedIndexSuffix)) {
+        return `/${normalizedFileName.slice(0, -indexFileName.length)}`;
+    }
+
+    return `/${normalizedFileName}`;
+}
+
+const pageHrefByName = Object.freeze(
+    Object.fromEntries((sitePages.pages || []).map((page) => [page.name, fileNameToHref(page.fileName)]))
+);
+
 export function getPageRoute(name) {
+    const route = pageHrefByName[name];
+
+    if (!route) {
+        throw new Error(`Unknown page route '${name}'.`);
+    }
+
+    return route;
+}
+
+export function getCanonicalRoute(name) {
     const route = pageRouteByName[name];
 
     if (!route) {
@@ -26,6 +57,7 @@ export const siteRoutes = Object.freeze({
     aboutLeadership: getPageRoute('about-leadership'),
     aboutDirectorates: getPageRoute('about-directorates'),
     aboutPartnership: getPageRoute('about-partnership'),
+    facilities: getPageRoute('faculties'),
     faculties: getPageRoute('faculties'),
     admissions: getPageRoute('admissions'),
     admissionsRequirements: getPageRoute('admissions-requirements'),
@@ -51,6 +83,7 @@ export const siteRoutes = Object.freeze({
     facultyArtificialIntelligenceValedictorians: getPageRoute('faculty-artificial-intelligence-valedictorians'),
     facultyBusinessAdministrationValedictorians: getPageRoute('faculty-business-administration-valedictorians'),
     facultyBuildingConstructionEngineeringValedictorians: getPageRoute('faculty-building-construction-engineering-valedictorians'),
+    facultyDentistryLabs: getPageRoute('faculty-dentistry-labs'),
     facultyDentistryValedictorians: getPageRoute('faculty-dentistry-valedictorians'),
     facultyMedicineValedictorians: getPageRoute('faculty-medicine-valedictorians'),
     facultyPetroleumValedictorians: getPageRoute('faculty-petroleum-valedictorians'),

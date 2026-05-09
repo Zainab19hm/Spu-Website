@@ -1,6 +1,3 @@
-<!-- ═══════════════════════════════════════════════════════════════════
-     Faculties Catalog — Facts/Stats Bar
-     ═══════════════════════════════════════════════════════════════════ -->
 <section x-show="$store.facultiesPage.catalogMode" x-cloak
          class="relative z-20 py-16 font-hacen" x-data="{
     facts: [
@@ -11,7 +8,7 @@
     ]
 }">
     <div class="container">
-        <div class="relative mx-auto max-w-[1513px] overflow-hidden rounded-[4px] bg-spu-blue shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
+        <div class="relative mx-auto max-w-6xl overflow-hidden rounded-[4px] bg-spu-blue shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]">
             <div class="grid grid-cols-2 lg:grid-cols-4">
                 <template x-for="(fact, idx) in facts" :key="fact.labelEn">
                     <div class="relative flex flex-col items-center justify-center px-6 py-14 text-center">

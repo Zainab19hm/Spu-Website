@@ -40,8 +40,19 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
+    cssCodeSplit: true,
     rollupOptions: {
       input,
+      output: {
+        manualChunks(id) {
+          if (id.includes('alpinejs')) {
+            return 'vendor';
+          }
+          if (id.includes('@tailwindcss/vite') || id.includes('tailwindcss')) {
+            return 'vendor-tailwind';
+          }
+        },
+      },
     },
   },
   server: {

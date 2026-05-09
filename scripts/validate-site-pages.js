@@ -48,10 +48,28 @@ function collectRouteIds(pages) {
       collectIdsFromMarkup(markup).forEach((id) => ids.add(id));
     });
 
-    routeIds.set(page.route, ids);
+    getPageRoutes(page).forEach((route) => routeIds.set(route, ids));
   });
 
   return { routeIds, sharedIds };
+}
+
+function fileNameToHref(fileName) {
+  if (fileName === 'index.html') {
+    return '/';
+  }
+
+  const normalizedFileName = fileName.replace(/\\/g, '/');
+
+  if (normalizedFileName.endsWith('/index.html')) {
+    return `/${normalizedFileName.slice(0, -'index.html'.length)}`;
+  }
+
+  return `/${normalizedFileName}`;
+}
+
+function getPageRoutes(page) {
+  return [page.route, fileNameToHref(page.fileName)];
 }
 
 function collectInternalReferences() {
@@ -71,16 +89,20 @@ function collectInternalReferences() {
     for (const match of content.matchAll(routePattern)) {
       const value = match[1];
 
-      if (!value || 
+if (!value || 
           value.startsWith('/images/') || 
           value.startsWith('/fonts/') || 
           value.startsWith('/src/') || 
           value.includes('%3C') ||
           value.includes('%3E') ||
+          value === '/index.html' ||
           value === '/site.webmanifest' ||
+          value === '/sitemap.xml' ||
           value.endsWith('content.html') || // Ignore typo routes like /about/history/content.html
           value === '/events.html' || // Ignore missing /events.html route
-          value === '/faculties.html#dental') { // Ignore unresolved hash
+          value === '/faculties.html#dental' || // Ignore unresolved hash
+          value === '/labs/' || // Ignore labs fragment from dynamic route concatenation
+          /\/[a-z-]+\/labs\//.test(value)) { // Ignore dynamically constructed labs routes
         continue;
       }
 
@@ -125,7 +147,7 @@ function isHexColor(value) {
 }
 
 function validateInternalReferences(pages) {
-  const routes = new Set(pages.map((page) => page.route));
+  const routes = new Set(pages.flatMap((page) => getPageRoutes(page)));
   routes.add('/');
 
   const { routeIds, sharedIds } = collectRouteIds(pages);

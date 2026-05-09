@@ -194,7 +194,7 @@
                 <h2 class="mt-4 text-4xl font-black text-spu-blue md:text-5xl"
                     x-text="$store.app.currentLang === 'ar' ? 'كيف تتحول الرؤية إلى تجربة جامعية' : 'How the vision becomes a campus experience'"></h2>
             </div>
-            <a href="/about.html" class="inline-flex items-center gap-3 rounded-2xl bg-spu-blue px-8 py-4 font-black text-white shadow-xl transition-all hover:bg-spu-red">
+            <a :href="'/about.html'" class="inline-flex items-center gap-3 rounded-2xl bg-spu-blue px-8 py-4 font-black text-white shadow-xl transition-all hover:bg-spu-red">
                 <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
             </a>

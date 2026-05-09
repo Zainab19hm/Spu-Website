@@ -16,6 +16,9 @@
   <meta name="twitter:description" content="Syrian Private University offers accredited faculties, admissions guidance, research, student life, and official campus updates from Damascus.">
   <meta name="twitter:image" content="https://spu.edu.sy/images/logo-spu.png">
   <link rel="canonical" href="https://spu.edu.sy/">
+  <link rel="alternate" hreflang="en" href="https://spu.edu.sy/">
+  <link rel="alternate" hreflang="ar" href="https://spu.edu.sy/">
+  <link rel="alternate" hreflang="x-default" href="https://spu.edu.sy/">
   <link rel="icon" href="/images/single-logo.png" type="image/png">
   <link rel="manifest" href="/site.webmanifest">
   <style>
@@ -216,6 +219,12 @@
 
   window.setTimeout(function () {
     if (document.body && document.body.dataset.appReady === 'true') {
+      return;
+    }
+
+    if (document.body) {
+      document.body.dataset.appReady = 'timeout';
+      revealCloakedContent();
       return;
     }
 

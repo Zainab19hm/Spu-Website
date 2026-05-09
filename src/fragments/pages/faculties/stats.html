@@ -1,23 +1,18 @@
-<!-- <section x-show="!$store.facultiesPage.catalogMode" x-cloak
-         id="stats" class="relative z-20 mt-20" x-data>
-    <div class="bg-spu-blue ">
-        <div class="  container ">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<section x-show="!$store.facultiesPage.catalogMode" x-cloak id="stats" class="relative z-20 mt-20" x-data>
+    <div class="bg-spu-blue">
+        <div class="container">
+            <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
                 <template x-for="stat in $store.facultiesPage.currentFaculty?.stats" :key="stat.id">
-                    <div class="p-8 md:p-10 text-center">
+                    <div class="p-8 text-center md:p-10">
                         <div class="mb-4 flex justify-center">
-                            <div
-                                class="text-[43px]">
-                                <img :src="stat.icon" class="w-10 h-10 brightness-0 text-white invert" alt="stat icon">
-                            </div>
+                            <img :src="stat.icon" class="h-10 w-10 brightness-0 invert" alt="">
                         </div>
-                        <div class="text-3xl font-black text-white mb-1" x-text="stat.value"></div>
-                        <p class="text-[10px] md:text-xs font-bold text-white/50 uppercase tracking-[0.2em]"
-                            x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
+                        <div class="mb-1 text-3xl font-black text-white" x-text="stat.value"></div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 md:text-xs"
+                           x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
                     </div>
                 </template>
             </div>
         </div>
     </div>
 </section>
- -->

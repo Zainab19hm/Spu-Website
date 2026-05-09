@@ -1,0 +1,279 @@
+<div class="font-hacen" x-data="{
+    currentPage: 1,
+    itemsPerPage: 6,
+
+    get currentFaculty() {
+        return $store.facultiesPage.currentFaculty;
+    },
+
+    get labId() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('lab');
+    },
+
+    get labs() {
+        return this.currentFaculty?.labs || [];
+    },
+
+    get totalPages() {
+        return Math.ceil(this.labs.length / this.itemsPerPage);
+    },
+
+    get visibleLabs() {
+        const start = (this.currentPage - 1) * this.itemsPerPage;
+        return this.labs.slice(start, start + this.itemsPerPage);
+    },
+
+    get hasLabs() {
+        return this.labs && this.labs.length > 0;
+    },
+
+    get currentLab() {
+        if (!this.labId || !this.labs) return null;
+        return this.labs.find(l => l.id === this.labId);
+    },
+
+    get relatedLabs() {
+        if (!this.labs || !this.currentLab) return [];
+        return this.labs.filter(l => l.id !== this.labId).slice(0, 3);
+    },
+
+    get isDetailView() {
+        return !!this.currentLab;
+    },
+
+    get canGoNext() {
+        return this.currentPage < this.totalPages;
+    },
+
+    get canGoPrev() {
+        return this.currentPage > 1;
+    },
+
+    nextPage() {
+        if (this.canGoNext) this.currentPage++;
+    },
+
+    prevPage() {
+        if (this.canGoPrev) this.currentPage--;
+    },
+
+    goToLab(labId) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lab', labId);
+        window.location.href = url.toString();
+    },
+
+    goBackToLabs() {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('lab');
+        window.history.pushState({}, '', url.toString());
+        this.currentPage = 1;
+    }
+}">
+
+
+    <section class="relative flex min-h-[330px] items-end overflow-hidden pt-28">
+        <div class="absolute inset-0">
+            <img :src="isDetailView ? (currentLab?.image || '/images/dental-clin-lab.jpg') : (currentFaculty?.heroImage || '/images/slider-3.webp')" 
+                 alt="" 
+                 class="h-full w-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/65 to-spu-blue/15"></div>
+        </div>
+
+        <div class="container relative z-10 pb-14 text-center text-white">
+            <nav class="mb-3 flex items-center justify-center gap-2 text-[11px] font-semibold text-white/72">
+                <a href="/" class="transition-colors hover:text-white"
+                   x-text="$store.app.currentLang === 'ar' ? 'الرئيسية' : 'Home'"></a>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+                <a :href="'/?id=' + currentFaculty?.id" class="transition-colors hover:text-white"
+                   x-text="$store.app.currentLang === 'ar' ? currentFaculty?.nameAr : currentFaculty?.nameEn"></a>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+                <a href="#" @click.prevent="goBackToLabs()" class="transition-colors hover:text-white"
+                   x-text="$store.app.currentLang === 'ar' ? 'المخابر' : 'Labs'"></a>
+                <template x-if="isDetailView">
+                    <span>
+                        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+                        <span x-text="$store.app.currentLang === 'ar' ? currentLab?.titleAr : currentLab?.titleEn"></span>
+                    </span>
+                </template>
+            </nav>
+
+            <h1 class="text-[34px] font-bold leading-tight md:text-[42px]"
+                x-text="isDetailView 
+                    ? ($store.app.currentLang === 'ar' ? currentLab?.titleAr : currentLab?.titleEn)
+                    : ($store.app.currentLang === 'ar' ? 'المخابر' : 'Labs')"></h1>
+            
+            <p x-show="!isDetailView" class="mx-auto mt-4 max-w-[760px] text-sm font-semibold leading-7 text-white/82"
+               x-text="labs.length + ($store.app.currentLang === 'ar' ? ' مخابر بحثية وتدريبية' : ' research and training labs')"></p>
+        </div>
+    </section>
+
+ 
+    <section x-show="isDetailView" class="bg-white py-16 lg:py-24">
+        <div class="container">
+            <!-- No Lab Found -->
+            <div x-show="!currentLab" class="flex flex-col items-center justify-center py-20 text-center">
+                <img src="/images/icons/lab.svg" alt="" class="mb-4 h-16 w-16 opacity-30" aria-hidden="true">
+                <p class="text-lg font-semibold text-slate-400"
+                   x-text="$store.app.currentLang === 'ar' ? 'المخبر غير موجود' : 'Lab not found'"></p>
+                <button @click="goBackToLabs()" 
+                        class="mt-6 inline-flex h-11 items-center justify-center rounded-[6px] px-6 text-sm font-bold text-white transition-all hover:-translate-y-0.5"
+                        :style="'background-color: ' + (currentFaculty?.color || '#1e2652')"
+                        x-text="$store.app.currentLang === 'ar' ? 'العودة للمخابر' : 'Back to Labs'"></button>
+            </div>
+
+            <!-- Lab Detail Content -->
+            <div x-show="currentLab" class="mx-auto max-w-4xl">
+                <!-- Main Image -->
+                <div class="relative h-[300px] overflow-hidden rounded-[10px]">
+                    <img :src="currentLab?.image || '/images/dental-clin-lab.jpg'" 
+                         :alt="$store.app.currentLang === 'ar' ? currentLab?.titleAr : currentLab?.titleEn"
+                         class="h-full w-full object-cover">
+                </div>
+
+                <!-- Lab Info -->
+                <div class="mt-8">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <span class="rounded-full bg-section px-4 py-2 text-sm font-bold text-spu-blue"
+                              x-text="$store.app.currentLang === 'ar' ? 'القسم' : 'Department'"></span>
+                        <span class="text-lg font-semibold text-slate-700"
+                              x-text="$store.app.currentLang === 'ar' ? currentLab?.departmentAr : currentLab?.departmentEn"></span>
+                    </div>
+
+                    <div class="mt-4 flex flex-wrap items-center gap-4">
+                        <span class="rounded-full bg-section px-4 py-2 text-sm font-bold text-spu-blue"
+                              x-text="$store.app.currentLang === 'ar' ? 'المشرف' : 'Instructor'"></span>
+                        <span class="text-lg font-semibold text-slate-700"
+                              x-text="$store.app.currentLang === 'ar' ? currentLab?.instructorAr : currentLab?.instructorEn"></span>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mt-8">
+                    <h2 class="mb-4 text-xl font-bold text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? 'وصف المخبر' : 'Lab Description'"></h2>
+                    <p class="text-lg leading-relaxed text-slate-600"
+                       x-text="$store.app.currentLang === 'ar' ? currentLab?.descriptionAr : currentLab?.descriptionEn"></p>
+                </div>
+
+                <!-- Back Button -->
+                <div class="mt-12">
+                    <button @click="goBackToLabs()" 
+                            class="inline-flex items-center gap-2 text-sm font-bold transition-colors hover:text-spu-red"
+                            :style="'color: ' + (currentFaculty?.color || '#1e2652')">
+                        <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
+                        <span x-text="$store.app.currentLang === 'ar' ? 'العودة للمخابر' : 'Back to Labs'"></span>
+                    </button>
+                </div>
+
+                <!-- Related Labs -->
+                <div x-show="relatedLabs.length > 0" class="mt-16">
+                    <h2 class="mb-6 text-xl font-bold text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? 'مخابر أخرى' : 'Other Labs'"></h2>
+                    
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <template x-for="relatedLab in relatedLabs" :key="relatedLab.id">
+                            <article class="group cursor-pointer overflow-hidden rounded-[10px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]"
+                                     @click="goToLab(relatedLab.id)">
+                                <div class="relative h-[140px] overflow-hidden">
+                                    <img :src="relatedLab.image || '/images/dental-clin-lab.jpg'" 
+                                         :alt="$store.app.currentLang === 'ar' ? relatedLab.titleAr : relatedLab.titleEn"
+                                         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold leading-tight text-spu-blue"
+                                        x-text="$store.app.currentLang === 'ar' ? relatedLab.titleAr : relatedLab.titleEn"></h3>
+                                    <p class="mt-2 text-xs text-slate-500"
+                                       x-text="$store.app.currentLang === 'ar' ? relatedLab.departmentAr : relatedLab.departmentEn"></p>
+                                </div>
+                            </article>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         LIST VIEW
+         ═══════════════════════════════════════════ -->
+    <section x-show="!isDetailView" class="bg-white py-16 lg:py-24">
+        <div class="container">
+            <!-- No Labs Message -->
+            <div x-show="!hasLabs" class="flex flex-col items-center justify-center py-20 text-center">
+                <img src="/images/icons/lab.svg" alt="" class="mb-4 h-16 w-16 opacity-30" aria-hidden="true">
+                <p class="text-lg font-semibold text-slate-400"
+                   x-text="$store.app.currentLang === 'ar' 
+                       ? 'لا توجد مخابر متاحة لهذه الكلية حالياً' 
+                       : 'No labs available for this faculty currently'"></p>
+                <a :href="'/?id=' + currentFaculty?.id" 
+                   class="mt-6 inline-flex h-11 items-center justify-center rounded-[6px] px-6 text-sm font-bold text-white transition-all hover:-translate-y-0.5"
+                   :style="'background-color: ' + (currentFaculty?.color || '#1e2652')"
+                   x-text="$store.app.currentLang === 'ar' ? 'العودة للكلية' : 'Back to Faculty'"></a>
+            </div>
+
+            <!-- Labs Grid -->
+            <div x-show="hasLabs" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                <template x-for="lab in visibleLabs" :key="lab.id">
+                    <article class="group cursor-pointer overflow-hidden rounded-[10px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]"
+                             @click="goToLab(lab.id)">
+                        <!-- Card Image -->
+                        <div class="relative h-[180px] overflow-hidden">
+                            <img :src="lab.image || '/images/dental-clin-lab.jpg'" 
+                                 :alt="$store.app.currentLang === 'ar' ? lab.titleAr : lab.titleEn"
+                                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            
+                            <!-- Category Badge -->
+                            <div class="absolute top-3 right-3 rtl:left-3 rtl:right-auto">
+                                <span class="flex items-center gap-1 rounded border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-bold text-spu-blue shadow-sm">
+                                    <span x-text="$store.app.currentLang === 'ar' ? lab.departmentAr : lab.departmentEn"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold leading-tight text-spu-blue"
+                                x-text="$store.app.currentLang === 'ar' ? lab.titleAr : lab.titleEn"></h3>
+                            
+                            <p class="mt-2 text-xs font-medium text-slate-500 uppercase tracking-wide"
+                               x-text="$store.app.currentLang === 'ar' ? 'القسم' : 'Department'"></p>
+                            <p class="text-sm text-slate-600"
+                               x-text="$store.app.currentLang === 'ar' ? lab.departmentAr : lab.departmentEn"></p>
+                            
+                            <p class="mt-2 text-xs font-medium text-slate-500 uppercase tracking-wide"
+                               x-text="$store.app.currentLang === 'ar' ? 'المشرف' : 'Instructor'"></p>
+                            <p class="text-sm text-slate-400"
+                               x-text="$store.app.currentLang === 'ar' ? lab.instructorAr : lab.instructorEn"></p>
+                        </div>
+                    </article>
+                </template>
+            </div>
+
+            <!-- Pagination -->
+            <div x-show="hasLabs && totalPages > 1" class="mt-12 flex items-center justify-end gap-4">
+                <button @click="prevPage()" 
+                        class="flex items-center gap-2 text-sm font-semibold transition-colors"
+                        :class="canGoPrev ? 'text-spu-blue hover:text-spu-red' : 'text-slate-300 cursor-not-allowed'"
+                        :disabled="!canGoPrev">
+                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
+                    <span x-text="$store.app.currentLang === 'ar' ? 'السابق' : 'Previous'"></span>
+                </button>
+
+                <span class="text-sm text-slate-500">
+                    <span x-text="currentPage"></span>
+                    <span x-text="' / ' + totalPages"></span>
+                </span>
+
+                <button @click="nextPage()"
+                        class="flex items-center gap-2 text-sm font-semibold transition-colors"
+                        :class="canGoNext ? 'text-spu-blue hover:text-spu-red' : 'text-slate-300 cursor-not-allowed'"
+                        :disabled="!canGoNext">
+                    <span x-text="$store.app.currentLang === 'ar' ? 'التالي' : 'Next'"></span>
+                    <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

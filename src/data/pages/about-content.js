@@ -444,7 +444,7 @@ export const aboutPageContent = {
             {
                 nameAr: 'GitHub Education و Microsoft',
                 nameEn: 'GitHub Education and Microsoft',
-                logo: '/images/faculty-ai-engineering-logo.png',
+                logo: '/images/spu-ai-logo.png',
                 categoryAr: 'تقنية وذكاء اصطناعي',
                 categoryEn: 'Technology & AI',
                 newsLink: '/news.html',

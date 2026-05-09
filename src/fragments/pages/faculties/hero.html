@@ -2,7 +2,7 @@
      Faculty Hero — cinematic, dynamic, premium
      ═══════════════════════════════════════════════════════════════════ -->
 <section x-show="!$store.facultiesPage.catalogMode" x-cloak
-         class="relative flex min-h-[92vh] flex-col justify-center overflow-hidden font-hacen"
+         class="relative flex min-h-[600px] lg:min-h-[700px] flex-col justify-center overflow-hidden font-hacen"
          x-data="{ heroReady: false }"
          x-init="$nextTick(() => { setTimeout(() => heroReady = true, 80) })">
 
@@ -65,7 +65,7 @@
                 <span x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'EXPLORE PROGRAMS'"></span>
                 <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
             </a>
-            <a href="/admissions.html"
+            <a :href="'/admissions/how-to-apply.html'"
                class="inline-flex h-[54px] items-center rounded-[6px] border border-white/30 bg-white/8 px-8 text-sm font-bold uppercase tracking-[1.4px] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15"
                x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'ADMISSIONS'">
             </a>

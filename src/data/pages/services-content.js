@@ -67,17 +67,6 @@ export const servicesPageContent = {
             },
             {
                 id: 5,
-                titleEn: 'Staff Email',
-                titleAr: 'البريد الإلكتروني للموظفين',
-                summaryEn: 'Securely access your official university email account. Manage official university communications and administrative staff information.',
-                summaryAr: 'الوصول الآمن إلى حسابك البريدي الرسمي بالجامعة. إدارة الاتصالات الرسمية للجامعة ومعلومات الموظفين الإداريين.',
-                icon: '/images/icons/globe.svg',
-                url: 'https://mail.google.com',
-                buttonEn: 'View Guide',
-                buttonAr: 'عرض الدليل'
-            },
-            {
-                id: 6,
                 titleEn: 'IT Support',
                 titleAr: 'دعم تكنولوجيا المعلومات',
                 summaryEn: 'Create support tickets, report network issues, reset passwords, and get help from the university IT support team.',

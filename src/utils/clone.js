@@ -34,7 +34,7 @@ const LEGACY_ROUTE_ALIASES = Object.freeze({
     'index.html': '/',
     'home.html': '/',
     'about/content.html': '/about.html',
-    'faculties/content.html': '/faculty.html',
+    'faculties/content.html': '/facilities/',
     'admissions/content.html': '/admissions.html',
     'research/content.html': '/research.html',
     'student-life/content.html': '/student-life.html',
@@ -83,5 +83,5 @@ export function normalizeContentData(value) {
 }
 
 export function cloneData(value) {
-    return normalizeContentData(JSON.parse(JSON.stringify(value)));
+    return normalizeContentData(structuredClone(value));
 }

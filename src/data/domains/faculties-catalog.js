@@ -1,9 +1,10 @@
 import { siteRoutes } from '../../config/site-routes.js';
 export const facultiesCatalog = {
     list: [
-        {
+{
             id: 'medicine',
             departmentRoute: '/facilities/medicine/departments/',
+            labsRoute: '/facilities/medicine/labs/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية الطب البشري',
@@ -125,12 +126,87 @@ export const facultiesCatalog = {
                     descriptionEn: 'An annual event that allows students to present their outstanding research to a committee of professors and experts, with awards for the best research to encourage innovation and scientific discovery.',
                     image: '/images/slider-4.jpg'
                 }
+            ],
+            labs: [
+                {
+                    id: 'med-lab-1',
+                    titleEn: 'Clinical Simulation Laboratory',
+                    titleAr: 'مخبر المحاكاة السريرية',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Medical Education Center',
+                    departmentAr: 'مركز التعليم الطبي',
+                    instructorEn: 'Dr. Ahmad Mansour',
+                    instructorAr: 'د. أحمد منصور',
+                    descriptionEn: 'Equipped with state-of-the-art patient simulation technology including high-fidelity mannequins, vital signs monitors, and emergency response training equipment for hands-on clinical skill development.',
+                    descriptionAr: 'مجهز بأحدث تقنيات محاكاة المرضى بما في ذلك نماذج المحاكاة عالية الدقة وشاشات العلامات الحيوية ومعدات تدريب الاستجابة للطوارئ لتطوير المهارات السريرية العملية.'
+                },
+                {
+                    id: 'med-lab-2',
+                    titleEn: 'Anatomy & Histology Laboratory',
+                    titleAr: 'مخبر التشريح والنسج',
+                    image: '/images/slider-2.webp',
+                    departmentEn: 'Department of Anatomy',
+                    departmentAr: 'قسم التشريح',
+                    instructorEn: 'Dr. Khaled Ibrahim',
+                    instructorAr: 'د. خالد إبراهيم',
+                    descriptionEn: 'Features comprehensive anatomical models, microscopic stations for histology study, and digital anatomy tables for detailed visualization of human body systems.',
+                    descriptionAr: 'يضم نماذج تشريحية شاملة ومحطات مجهرية لدراسة الأنسجة وطاولات تشريح رقمية لتصور تفصيلي لأجهزة الجسم البشرية.'
+                },
+                {
+                    id: 'med-lab-3',
+                    titleEn: 'Microbiology Research Lab',
+                    titleAr: 'مخبر أبحاث الأحياء الدقيقة',
+                    image: '/images/slider-4.webp',
+                    departmentEn: 'Department of Microbiology',
+                    departmentAr: 'قسم الأحياء الدقيقة',
+                    instructorEn: 'Dr. Sara Khalil',
+                    instructorAr: 'د. سارة خليل',
+                    descriptionEn: 'Equipped for culture techniques, pathogen identification, and antimicrobial sensitivity testing with modern biosafety cabinets and sterilization systems.',
+                    descriptionAr: 'مجهز لتقنيات الزرع والتعرف على مسببات الأمراض واختبار حساسية مضادات المكروبات مع خزائن السلامة البيولوجية الحديثة وأنظمة التعقيم.'
+                },
+                {
+                    id: 'med-lab-4',
+                    titleEn: 'Physiology & Biochemistry Lab',
+                    titleAr: 'مخبر الفيزيولوجيا والكيمياء الحيوية',
+                    image: '/images/slider-2.webp',
+                    departmentEn: 'Department of Physiology',
+                    departmentAr: 'قسم الفيزيولوجيا',
+                    instructorEn: 'Dr. Nada Hassan',
+                    instructorAr: 'د. ندى حسن',
+                    descriptionEn: 'Features equipment for hematology analysis, biochemical assays, and physiological measurements including ECG, EEG, and spirometry systems.',
+                    descriptionAr: 'يضم معدات لتحليل أمراض الدم والاختبارات الكيميائية الحيوية وقياسات الفيزيولوجيا بما في ذلك أنظمة تخطيط القلب والدماغ وكشف التنفس.'
+                },
+                {
+                    id: 'med-lab-5',
+                    titleEn: 'Pathology Laboratory',
+                    titleAr: 'مخبر علم الأمراض',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Pathology',
+                    departmentAr: 'قسم علم الأمراض',
+                    instructorEn: 'Dr. Mohammed Ali',
+                    instructorAr: 'د. محمد علي',
+                    descriptionEn: 'Equipped for tissue processing, slide preparation, and microscopic examination with modern immunohistochemistry and digital pathology systems.',
+                    descriptionAr: 'مجهز للمعالجة النسيجية وإعداد الشرائح والفحص المجهري مع أنظمة الكيمياء المناعية المرضية والباثولوجيا الرقمية الحديثة.'
+                },
+                {
+                    id: 'med-lab-6',
+                    titleEn: 'Surgery Training Lab',
+                    titleAr: 'مخبر التدريب الجراحي',
+                    image: '/images/slider-4.webp',
+                    departmentEn: 'Department of Surgery',
+                    departmentAr: 'قسم الجراحة',
+                    instructorEn: 'Dr. Youssef Ahmad',
+                    instructorAr: 'د. يوسف أحمد',
+                    descriptionEn: 'Features laparoscopic training boxes, surgical instrumentation stations, and suture practice models for pre-clinical surgical skills development.',
+                    descriptionAr: 'يضم صناديق التدريب على المنظار البطني ومحطات أدوات الجراحة ونماذج ممارسة الخياطة لتطوير المهارات الجراحية قبل السريرية.'
+                }
             ]
         },
 
-        {
+{
             id: 'dentistry',
             departmentRoute: '/facilities/dentistry/departments/',
+            labsRoute: '/facilities/dentistry/labs/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية طب الأسنان',
@@ -212,7 +288,7 @@ export const facultiesCatalog = {
                         titleAr: 'كراسي طبية',
                         titleEn: 'Dental Chairs',
                         value: '120',
-                        link: '#',
+                        link: siteRoutes.facultyDentistryLabs,
                         icon: '/images/icons/chair.svg'
                     },
                     {
@@ -244,11 +320,62 @@ export const facultiesCatalog = {
                     descriptionEn: 'A scientific seminar discussing the future of orthodontics and the shift towards clear solutions, featuring successful clinical cases treated in the faculty\'s specialized clinics.',
                     image: '/images/slider-4.jpg'
                 }
+            ],
+            labs: [
+                {
+                    id: 'den-lab-1',
+                    titleEn: 'Clinical Simulation Lab',
+                    titleAr: 'مخبر المحاكاة السريرية',
+                    image: '/images/dental-clin-lab.jpg',
+                    departmentEn: 'Restorative Dentistry',
+                    departmentAr: 'قسم المعالجة والترميم',
+                    instructorEn: 'Dr. Maya Hasan',
+                    instructorAr: 'د. مايا حسن',
+                    descriptionEn: 'Pre-clinical stations for restorative dentistry, operative procedures, ergonomics, and supervised skill repetition before patient care with phantom heads and dental units.',
+                    descriptionAr: 'محطات تدريب قبل سريرية للمعالجة والترميم والإجراءات العملية ووضعيات العمل، بإشراف مباشر قبل الانتقال إلى رعاية المرضى مع رؤوس المحاكاة والوحدات السنية.'
+                },
+                {
+                    id: 'den-lab-2',
+                    titleEn: 'Prosthodontics & Dental Materials Lab',
+                    titleAr: 'مخبر التعويضات والمواد السنية',
+                    image: '/images/vantom-lab-den.jpg',
+                    departmentEn: 'Prosthodontics Department',
+                    departmentAr: 'قسم التعويضات السنية',
+                    instructorEn: 'Dr. Tarek Nasser',
+                    instructorAr: 'د. طارق Nasser',
+                    descriptionEn: 'Practical environment for fixed and removable prostheses, occlusion analysis, impression workflows, and material handling with articulators and casting tools.',
+                    descriptionAr: 'بيئة عملية للتعويضات الثابتة والمتحركة وتحليل الإطباق وسير عمل الطبعات والتعامل مع المواد السنية مع أجهزة الإطباق وأدوات الصب.'
+                },
+                {
+                    id: 'den-lab-3',
+                    titleEn: 'Oral Health Training Clinic',
+                    titleAr: 'عيادة تدريب صحة الفم',
+                    image: '/images/dental-place.JPG',
+                    departmentEn: 'Periodontology and Oral Medicine',
+                    departmentAr: 'قسم أمراض اللثة وطب الفم',
+                    instructorEn: 'Dr. Lina Karam',
+                    instructorAr: 'د. لينا كرم',
+                    descriptionEn: 'Supervised clinical setting connecting preventive dentistry, diagnosis, patient communication, and community oral health service with digital imaging access.',
+                    descriptionAr: 'بيئة سريرية بإشراف أكاديمي تربط طب الأسنان الوقائي والتشخيص والتواصل مع المرضى وخدمة صحة الفم المجتمعية مع إتاحة التصوير الرقمي.'
+                },
+                {
+                    id: 'den-lab-4',
+                    titleEn: 'Dental Imaging Lab',
+                    titleAr: 'مخبر تصوير الأسنان',
+                    image: '/images/dental-clin-lab.jpg',
+                    departmentEn: 'Oral and Maxillofacial Surgery',
+                    departmentAr: 'قسم جراحة الفم والفكين',
+                    instructorEn: 'Dr. Bassem Darwish',
+                    instructorAr: 'د. بسام درويش',
+                    descriptionEn: 'Equipped with panoramic and intraoral radiographic systems, 3D cone beam CT, and digital imaging workstations for diagnostic accuracy.',
+                    descriptionAr: 'مجهز بأنظمة التصوير الشعاعي البانورامي والفموي ومنظم الأشعة المخروطي 3D ومحطات عمل التصوير الرقمي للدقة التشخيصية.'
+                }
             ]
         },
-        {
+{
             id: 'pharmacy',
             departmentRoute: '/facilities/pharmacy/departments/',
+            labsRoute: '/facilities/pharmacy/labs/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية الصيدلة',
@@ -348,11 +475,74 @@ export const facultiesCatalog = {
                     descriptionEn: 'A special celebration to honor the role of pharmacists in society, including an exhibition of modern medicines and awareness seminars on safe and optimal drug use.',
                     image: '/images/slider-1.webp'
                 }
+            ],
+            labs: [
+                {
+                    id: 'pharm-lab-1',
+                    titleEn: 'Pharmaceutical Chemistry Lab',
+                    titleAr: 'مخبر الكيمياء الصيدلية',
+                    image: '/images/pharmacy-place.jpg',
+                    departmentEn: 'Department of Pharmaceutical Chemistry',
+                    departmentAr: 'قسم الكيمياء الصيدلية',
+                    instructorEn: 'Dr. Rami Hamdan',
+                    instructorAr: 'د. رامي حمدان',
+                    descriptionEn: 'Equipped for drug synthesis, analytical chemistry techniques, and structure-activity relationship studies with modern spectroscopic instrumentation.',
+                    descriptionAr: 'مجهز لاصطناع الأدوية وتقنيات الكيمياء التحليلية ودراسات علاقات البنية بالفعالية مع أجهزة التحليل الطيفي الحديثة.'
+                },
+                {
+                    id: 'pharm-lab-2',
+                    titleEn: 'Pharmacology & Toxicology Lab',
+                    titleAr: 'مخبر علم الأدوية والسموم',
+                    image: '/images/pharmacy-place.jpg',
+                    departmentEn: 'Department of Pharmacology',
+                    departmentAr: 'قسم علم الأدوية',
+                    instructorEn: 'Dr. Hala Sheikh',
+                    instructorAr: 'د. هالة شيخ',
+                    descriptionEn: 'Features bioassay systems, drug screening equipment, and toxicology analysis instruments for studying therapeutic drug actions and safety profiles.',
+                    descriptionAr: 'يضم أنظمة التحليل الحيوي ومعدات فحص الأدوية وأدوات تحليل السموم لدراسة تأثيرات الأدوية العلاجية وآمانها.'
+                },
+                {
+                    id: 'pharm-lab-3',
+                    titleEn: 'Pharmaceutics & Quality Control Lab',
+                    titleAr: 'مخبر الصيدلانيات ومراقبة الجودة',
+                    image: '/images/pharmacy-place.jpg',
+                    departmentEn: 'Department of Pharmaceutics',
+                    departmentAr: 'قسم الصيدلانيات',
+                    instructorEn: 'Dr. Qusai Ahmad',
+                    instructorAr: 'د. قسسي أحمد',
+                    descriptionEn: 'Features dissolution testing, tablet compression, granulation equipment, and quality control instruments for pharmaceutical product development.',
+                    descriptionAr: 'يضم معدات اختبار الذوبان والضغط اللوحي والتدرج وأدوات مراقبة الجودة لتطوير المنتجات الصيدلانية.'
+                },
+                {
+                    id: 'pharm-lab-4',
+                    titleEn: 'Clinical Pharmacy Practice Lab',
+                    titleAr: 'مخبر الصيدلة السريرية التطبيقية',
+                    image: '/images/pharmacy-place.jpg',
+                    departmentEn: 'Department of Clinical Pharmacy',
+                    departmentAr: 'قسم الصيدلة السريرية',
+                    instructorEn: 'Dr. Yara Mustafa',
+                    instructorAr: 'د. يارا مصطفى',
+                    descriptionEn: 'Simulated pharmacy environment for medication counseling, drug information retrieval, and clinical case discussion with patient simulation scenarios.',
+                    descriptionAr: 'بيئة صيدلية محاكاة لاستشارات الأدوية واسترجاع معلومات الأدوية ومناقشة الحالات السريرية مع سيناريوهات محاكاة المرضى.'
+                },
+                {
+                    id: 'pharm-lab-5',
+                    titleEn: 'Pharmacognosy & Natural Products Lab',
+                    titleAr: 'مخبر العقاقير والمنتجات الطبيعية',
+                    image: '/images/pharmacy-place.jpg',
+                    departmentEn: 'Department of Pharmacognosy',
+                    departmentAr: 'قسم العقاقير',
+                    instructorEn: 'Dr. Dunia Hassan',
+                    instructorAr: 'د. دنيا حسن',
+                    descriptionEn: 'Equipped for plant extraction, phytochemical analysis, and natural product identification with chromatography and spectroscopy systems.',
+                    descriptionAr: 'مجهز للاستخلاص النباتي والتحليل الكيميائي النباتي والتعرف على المنتجات الطبيعية مع أنظمة الكروماتوغرافيا والتحليل الطيفي.'
+                }
             ]
         },
-        {
+{
             id: 'ai-engineering',
             departmentRoute: '/facilities/artificial-intelligence/departments/',
+            labsRoute: '/facilities/artificial-intelligence/labs/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة الذكاء الاصطناعي',
@@ -452,11 +642,74 @@ export const facultiesCatalog = {
                     descriptionEn: 'An intensive 48-hour programming competition where students compete to innovate AI-based software solutions to solve real-world problems in health, education, and the environment.',
                     image: '/images/slider-2.webp'
                 }
+            ],
+            labs: [
+                {
+                    id: 'ai-lab-1',
+                    titleEn: 'Machine Learning Lab',
+                    titleAr: 'مخبر تعلم الآلة',
+                    image: '/images/slider-2.webp',
+                    departmentEn: 'Department of AI',
+                    departmentAr: 'قسم الذكاء الاصطناعي',
+                    instructorEn: 'Dr. Mouhib Alnoukari',
+                    instructorAr: 'د. مهيب النقري',
+                    descriptionEn: 'Equipped with GPU workstations, deep learning frameworks, and data science tools for training and deploying machine learning models.',
+                    descriptionAr: 'مجهز بمحطات عمل GPU وأطر التعلم العميق وأدوات علم البيانات لتدريب ونشر نماذج تعلم الآلة.'
+                },
+                {
+                    id: 'ai-lab-2',
+                    titleEn: 'Robotics & Automation Lab',
+                    titleAr: 'مخبر الروبوتات والأتمتة',
+                    image: '/images/slider-2.webp',
+                    departmentEn: 'Department of Software Engineering',
+                    departmentAr: 'قسم هندسة البرمجيات',
+                    instructorEn: 'Dr. Omar Khalil',
+                    instructorAr: 'د. عمر خليل',
+                    descriptionEn: 'Features industrial robot arms, autonomous vehicles, and embedded systems platforms for hands-on robotics and automation projects.',
+                    descriptionAr: 'يضم أذرع الروبوتات الصناعية والمركبات ذاتية التشغيل ومنصات الأنظمة المدمجة لمشاريع الروبوتات والأتمتة العملية.'
+                },
+                {
+                    id: 'ai-lab-3',
+                    titleEn: 'Data Science & Big Data Lab',
+                    titleAr: 'مخبر علم البيانات والبيانات الضخمة',
+                    image: '/images/slider-2.webp',
+                    departmentEn: 'Department of Computer Science',
+                    departmentAr: 'قسم علوم الحاسوب',
+                    instructorEn: 'Dr. Rania Shah',
+                    instructorAr: 'د. رانيا شاه',
+                    descriptionEn: 'High-performance computing clusters, big data frameworks, and visualization tools for processing and analyzing large-scale datasets.',
+                    descriptionAr: 'عناقيد الحوسبة عالية الأداء وأطر البيانات الضخمة وأدوات التصور لمعالجة وتحليل مجموعات البيانات واسعة النطاق.'
+                },
+                {
+                    id: 'ai-lab-4',
+                    titleEn: 'Computer Vision & NLP Lab',
+                    titleAr: 'مخبر الرؤية الحاسوبية ومعالجة اللغة',
+                    image: '/images/slider-2.webp',
+                    departmentEn: 'Department of AI',
+                    departmentAr: 'قسم الذكاء الاصطناعي',
+                    instructorEn: 'Dr. Yazan Kassab',
+                    instructorAr: 'د. يزن كساب',
+                    descriptionEn: 'Equipped for image processing, object detection, natural language processing, and speech recognition research with specialized AI models.',
+                    descriptionAr: 'مجهز لمعالجة الصور وكشف الأشياء ومعالجة اللغة الطبيعية والتعرف على الكلام مع نماذج الذكاء الاصطناعي المتخصصة.'
+                },
+                {
+                    id: 'ai-lab-5',
+                    titleEn: 'Cloud Computing & IoT Lab',
+                    titleAr: 'مخبر الحوسبة السحابية وإنترنت الأشياء',
+                    image: '/images/slider-2.webp',
+                    departmentEn: 'Department of Information Systems',
+                    departmentAr: 'قسم نظم المعلومات',
+                    instructorEn: 'Dr. Nisreen Haddadin',
+                    instructorAr: 'د. نسرين حدادين',
+                    descriptionEn: 'Features cloud platforms, container orchestration tools, and IoT sensor networks for developing distributed and connected applications.',
+                    descriptionAr: 'يضم منصات سحابية وأدوات تنظيم الحاويات وشبكات حساسات إنترنت الأشياء لتطوير التطبيقات الموزعة والمتصل.'
+                }
             ]
         },
-        {
+{
             id: 'Construction',
             departmentRoute: '/facilities/building-construction-engineering/departments/',
+            labsRoute: '/facilities/building-construction-engineering/labs/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة التشييد والبناء',
@@ -485,7 +738,7 @@ export const facultiesCatalog = {
                 nameEn: 'Dr. Ammar Ghada',
                 roleAr: 'عميد كلية هندسة التشييد والبناء',
                 roleEn: 'Dean of the Faculty',
-                image: '/images/construction-dean.jpg',
+                image: '/images/uni-main-place.JPG',
                 messageAr: 'نسعى لإعداد مهندسين يمتلكون المعرفة العلمية والمهارات التطبيقية في هندسة التشييد والبناء للمساهمة في إعادة الإعمار.',
                 messageEn: 'We aim to prepare engineers with scientific knowledge to contribute to the reconstruction efforts.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',
@@ -547,10 +800,74 @@ export const facultiesCatalog = {
                 ]
             },
             events: []
+            ,
+            labs: [
+                {
+                    id: 'construct-lab-1',
+                    titleEn: 'Structural Engineering Lab',
+                    titleAr: 'مخبر الهندسة الإنشائية',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Structural Engineering',
+                    departmentAr: 'قسم الهندسة الإنشائية',
+                    instructorEn: 'Dr. Ammar Ghada',
+                    instructorAr: 'د. عمار غضة',
+                    descriptionEn: 'Features concrete testing equipment, steel tension machines, and structural analysis software for studying building materials and structural behavior.',
+                    descriptionAr: 'يضم معدات اختبار الخرسانة وآلات شد الفولاذ وبرامج التحليل الإنشائي لدراسة مواد البناء والسلوك الإنشائي.'
+                },
+                {
+                    id: 'construct-lab-2',
+                    titleEn: 'Construction Materials Lab',
+                    titleAr: 'مخبر مواد البناء',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Building Materials',
+                    departmentAr: 'قسم مواد البناء',
+                    instructorEn: 'Dr. Hala Kassar',
+                    instructorAr: 'د. هالة كصر',
+                    descriptionEn: 'Equipped for material testing including compression machines, durability assessment tools, and mix design equipment for concrete and asphalt.',
+                    descriptionAr: 'مجهز لاختبار المواد بما في ذلك آلات الانضغاط وأدوات تقييم المتانة ومعدات تصميم الخلطات للخرسانة والأسفلت.'
+                },
+                {
+                    id: 'construct-lab-3',
+                    titleEn: 'Surveying & Geomatics Lab',
+                    titleAr: 'مخبر المساحة والهندسة الجيوماتيكية',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Surveying and Infrastructure',
+                    departmentAr: 'قسم المساحة والبنى التحتية',
+                    instructorEn: 'Dr. Khaldoun Halabi',
+                    instructorAr: 'د. خلدون حلبية',
+                    descriptionEn: 'Features total stations, GPS surveying equipment, GIS software, and drone mapping systems for land surveying and infrastructure planning.',
+                    descriptionAr: 'يضم المحطات الشاملة ومعدات المسح GPS وبرامج نظم المعلومات الجغرافية وأنظمة رسم الخرائط بالطائرات بدون طيار للمساحة والتخطيط.'
+                },
+                {
+                    id: 'construct-lab-4',
+                    titleEn: 'BIM & Construction Management Lab',
+                    titleAr: 'مخبر BIM وإدارة التشييد',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Construction Management',
+                    departmentAr: 'قسم إدارة التشييد',
+                    instructorEn: 'Dr. Rami Hamdan',
+                    instructorAr: 'د. رامي حمدان',
+                    descriptionEn: 'Equipped with BIM software stations, project management tools, and construction scheduling systems for planning and managing construction projects.',
+                    descriptionAr: 'مجهز بمحطات برامج BIM وأدوات إدارة المشاريع وأنظمة جدولة البناء لتخطيط وإدارة مشاريع التشييد.'
+                },
+                {
+                    id: 'construct-lab-5',
+                    titleEn: 'Geotechnical Lab',
+                    titleAr: 'مخبر الجيوتكنيك',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Surveying and Infrastructure',
+                    departmentAr: 'قسم المساحة والبنى التحتية',
+                    instructorEn: 'Dr. Sarah Ahmad',
+                    instructorAr: 'د. سارة أحمد',
+                    descriptionEn: 'Features soil testing equipment, triaxial testing machines, and geotechnical analysis tools for studying ground behavior and foundation design.',
+                    descriptionAr: 'يضم معدات اختبار التربة وآلات الاختبار الثلاثية وأدوات التحليل الجيوتكنيكي لدراسة سلوك الأرض وتصميم الأساسات.'
+                }
+            ]
         },
-        {
+{
             id: 'petroleum',
             departmentRoute: '/facilities/petroleum/departments/',
+            labsRoute: '/facilities/petroleum/labs/',
             top_labelar: 'الجامعة السورية الخاصة',
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة البترول',
@@ -641,6 +958,57 @@ export const facultiesCatalog = {
                 ]
             },
             events: []
+            ,
+            labs: [
+                {
+                    id: 'petrol-lab-1',
+                    titleEn: 'Drilling Engineering Lab',
+                    titleAr: 'مخبر هندسة الحفر',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Drilling Engineering',
+                    departmentAr: 'قسم هندسة الحفر',
+                    instructorEn: 'Dr. Jean Saad',
+                    instructorAr: 'د. جان سعد',
+                    descriptionEn: 'Equipped with drilling simulator, mud testing equipment, and well control training systems for hands-on drilling operations practice.',
+                    descriptionAr: 'مجهز بمحاكي الحفر ومعدات اختبار سوائل الحفر وأنظمة تدريب السيطرة على الآبار للممارسة العملية لعمليات الحفر.'
+                },
+                {
+                    id: 'petrol-lab-2',
+                    titleEn: 'Reservoir Engineering Lab',
+                    titleAr: 'مخبر هندسة المكامن',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Reservoir Engineering',
+                    departmentAr: 'قسم هندسة المكامن',
+                    instructorEn: 'Dr. Samer Khalil',
+                    instructorAr: 'د. سامر خليل',
+                    descriptionEn: 'Features core analysis equipment, PVT analysis instruments, and reservoir simulation software for studying fluid behavior in porous media.',
+                    descriptionAr: 'يضم معدات تحليل اللباب وأدوات تحليل الضغط والحجم والحرارة وبرامج محاكاة المكامن لدراسة سلوك السوائل في الوسائط المسامية.'
+                },
+                {
+                    id: 'petrol-lab-3',
+                    titleEn: 'Production & Processing Lab',
+                    titleAr: 'مخبر الإنتاج والمعالجة',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Petroleum Production',
+                    departmentAr: 'قسم إنتاج النفط والغاز',
+                    instructorEn: 'Dr. Maher Ahmad',
+                    instructorAr: 'د. ماهر أحمد',
+                    descriptionEn: 'Equipped with separator testing units, flow measurement systems, and production optimization equipment for oil and gas processing training.',
+                    descriptionAr: 'مجهز بوحدات اختبار الفاصل وأنظمة قياس التدفق ومعدات تحسين الإنتاج للتدريب على معالجة النفط والغاز.'
+                },
+                {
+                    id: 'petrol-lab-4',
+                    titleEn: 'Petroleum Geology Lab',
+                    titleAr: 'مخبر الجيولوجيا البترولية',
+                    image: '/images/slider-3.webp',
+                    departmentEn: 'Department of Petroleum Geology',
+                    departmentAr: 'قسم الجيولوجيا البترولية',
+                    instructorEn: 'Dr. Layla Hassan',
+                    instructorAr: 'د. ليلا حسن',
+                    descriptionEn: 'Features geological modeling tools, seismic analysis software, and rock sample analysis equipment for exploration and reservoir characterization.',
+                    descriptionAr: 'يضم أدوات النمذجة الجيولوجية وبرامج التحليل الزلزالي ومعدات تحليل عينات الصخور للاستكشاف وتوصيف المكامن.'
+                }
+            ]
         },
         {
             id: 'business',

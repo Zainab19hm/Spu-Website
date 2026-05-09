@@ -36,6 +36,7 @@
             0 4px 12px rgba(8,14,40,0.03);
         backdrop-filter: blur(24px) saturate(170%);
         -webkit-backdrop-filter: blur(24px) saturate(170%);
+        will-change: backdrop-filter;
     }
 
     /* ── Main row: logo + nav + actions ── */
@@ -146,6 +147,7 @@
             0 1px 0 rgba(255,255,255,0.88) inset;
         backdrop-filter: blur(20px) saturate(170%);
         -webkit-backdrop-filter: blur(20px) saturate(170%);
+        will-change: backdrop-filter;
     }
 
     .site-nav-dropdown::before {

@@ -210,7 +210,7 @@
             <div class="inline-flex items-center gap-6 p-2 pl-6 bg-slate-50 rounded-2xl border border-slate-100">
                 <span class="text-slate-500 font-bold text-sm"
                       x-text="$store.app.currentLang === 'ar' ? 'هل تريد استكشاف المزيد من الأخبار؟' : 'Want to explore more news?'"></span>
-                <a href="/news.html" class="px-6 py-3 bg-white border border-slate-200 text-spu-blue font-black rounded-xl hover:bg-spu-blue hover:text-white transition-all shadow-sm">
+                <a :href="'/news.html'" class="px-6 py-3 bg-white border border-slate-200 text-spu-blue font-black rounded-xl hover:bg-spu-blue hover:text-white transition-all shadow-sm">
                     <span x-text="$store.app.currentLang === 'ar' ? 'جميع الأخبار' : 'All News'"></span>
                 </a>
             </div>
@@ -218,7 +218,7 @@
 
         <!-- Back Link -->
         <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
-            <a href="/about.html"
+            <a :href="'/about.html'"
                class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
                 <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
                 <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>

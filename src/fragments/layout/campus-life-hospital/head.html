@@ -7,7 +7,7 @@
   <meta property="og:site_name" content="Syrian Private University">
   <meta property="og:title" content="University Hospital | Syrian Private University">
   <meta property="og:description" content="Explore the SPU University Hospital, offering specialized medical services and emergency care.">
-  <meta property="og:url" content="https://spu.edu.sy/campus-life/hospital.html">
+  <meta property="og:url" content="https://spu.edu.sy/campus-life/hospital/">
   <meta property="og:image" content="https://spu.edu.sy/images/campus-hospital.webp">
   <meta property="og:locale" content="en_US">
   <meta name="robots" content="index, follow">
@@ -15,7 +15,10 @@
   <meta name="twitter:title" content="University Hospital | Syrian Private University">
   <meta name="twitter:description" content="Explore the SPU University Hospital, offering specialized medical services and emergency care.">
   <meta name="twitter:image" content="https://spu.edu.sy/images/campus-hospital.webp">
-  <link rel="canonical" href="https://spu.edu.sy/campus-life/hospital.html">
+  <link rel="canonical" href="https://spu.edu.sy/campus-life/hospital/">
+  <link rel="alternate" hreflang="en" href="https://spu.edu.sy/campus-life/hospital/">
+  <link rel="alternate" hreflang="ar" href="https://spu.edu.sy/campus-life/hospital/">
+  <link rel="alternate" hreflang="x-default" href="https://spu.edu.sy/campus-life/hospital/">
   <link rel="icon" href="/images/single-logo.png" type="image/png">
   <link rel="manifest" href="/site.webmanifest">
   <style>
@@ -219,9 +222,17 @@
       return;
     }
 
+    if (document.body) {
+      document.body.dataset.appReady = 'timeout';
+      revealCloakedContent();
+      return;
+    }
+
     setBootStage('error', 'The page is taking longer than expected. You can wait a moment or reload it.');
   }, 10000);
 })();</script>
-  
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollegeOrUniversity","@id":"https://spu.edu.sy/#organization","name":"Syrian Private University","url":"https://spu.edu.sy","logo":"https://spu.edu.sy/images/single-logo.png","image":"https://spu.edu.sy/images/campus-hospital.webp","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"sameAs":["https://www.facebook.com/SPUpage.sy/?ref=bookmarks","https://www.instagram.com/spu_syrian_private_university/","https://telegram.me/SPUchannel","https://www.youtube.com/channel/UCaoshcqsl9_fx7WVYgEZI5A"]},{"@type":"WebSite","@id":"https://spu.edu.sy/#website","url":"https://spu.edu.sy","name":"Syrian Private University","inLanguage":["en","ar"],"publisher":{"@id":"https://spu.edu.sy/#organization"}},{"@type":"WebPage","@id":"https://spu.edu.sy/campus-life/hospital.html#webpage","url":"https://spu.edu.sy/campus-life/hospital.html","name":"University Hospital | Syrian Private University","description":"Explore the SPU University Hospital, offering specialized medical services and emergency care.","isPartOf":{"@id":"https://spu.edu.sy/#website"},"about":{"@id":"https://spu.edu.sy/#organization"},"primaryImageOfPage":"https://spu.edu.sy/images/campus-hospital.webp","inLanguage":"en"}]}</script>
+  <script type="module">
+  import '/src/alpine/pages/university-hospital-stores.js';
+</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollegeOrUniversity","@id":"https://spu.edu.sy/#organization","name":"Syrian Private University","url":"https://spu.edu.sy","logo":"https://spu.edu.sy/images/single-logo.png","image":"https://spu.edu.sy/images/campus-hospital.webp","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"sameAs":["https://www.facebook.com/SPUpage.sy/?ref=bookmarks","https://www.instagram.com/spu_syrian_private_university/","https://telegram.me/SPUchannel","https://www.youtube.com/channel/UCaoshcqsl9_fx7WVYgEZI5A"]},{"@type":"WebSite","@id":"https://spu.edu.sy/#website","url":"https://spu.edu.sy","name":"Syrian Private University","inLanguage":["en","ar"],"publisher":{"@id":"https://spu.edu.sy/#organization"}},{"@type":"WebPage","@id":"https://spu.edu.sy/campus-life/hospital/#webpage","url":"https://spu.edu.sy/campus-life/hospital/","name":"University Hospital | Syrian Private University","description":"Explore the SPU University Hospital, offering specialized medical services and emergency care.","isPartOf":{"@id":"https://spu.edu.sy/#website"},"about":{"@id":"https://spu.edu.sy/#organization"},"primaryImageOfPage":"https://spu.edu.sy/images/campus-hospital.webp","inLanguage":"en"}]}</script>
   <title>University Hospital | Syrian Private University</title>

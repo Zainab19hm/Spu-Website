@@ -126,7 +126,7 @@
                         </ul>
 
                         <div class="mt-12">
-                            <a href="/contact.html" 
+                            <a :href="'/contact.html'" 
                                class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20 group">
                                 <span x-text="$store.app.currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us'"></span>
                                 <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180" aria-hidden="true">
@@ -138,7 +138,7 @@
 
             <!-- Navigation Back -->
             <div class="reveal reveal-up reveal-delay-4 mt-24 pt-12 border-t border-slate-100 text-center">
-                <a href="/about/directorates.html" 
+                <a :href="'/about/directorates.html'" 
                    class="inline-flex items-center gap-3 text-spu-blue font-black hover:text-spu-red transition-colors group">
                     <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
                     <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى جميع المديريات' : 'Back to All Directorates'"></span>

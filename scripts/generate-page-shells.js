@@ -179,11 +179,26 @@ const pageWarmupModules = {
   'campus-life-services': ['/src/alpine/pages/student-life-stores.js'],
   'campus-life-clubs-activities': ['/src/alpine/pages/student-life-stores.js'],
   'campus-life-career-development': ['/src/alpine/pages/student-life-stores.js'],
+  'campus-life-hospital': ['/src/alpine/pages/university-hospital-stores.js'],
+  'campus-life-health-insurance': ['/src/alpine/pages/health-insurance-stores.js'],
   services: ['/src/alpine/pages/services-stores.js'],
   news: ['/src/alpine/pages/news-stores.js'],
   contact: ['/src/alpine/pages/contact-stores.js'],
   'campus-life-dental': ['/src/alpine/pages/dental-clinic-stores.js'],
   'campus-life-transport': ['/src/alpine/pages/transport-stores.js'],
+  'faculty-artificial-intelligence-departments': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-business-administration-departments': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-building-construction-engineering-departments': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-dentistry-departments': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-medicine-departments': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-petroleum-departments': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-pharmacy-departments': ['/src/alpine/pages/faculties-page-stores.js'],
+'faculty-dentistry-labs': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-medicine-labs': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-pharmacy-labs': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-artificial-intelligence-labs': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-petroleum-labs': ['/src/alpine/pages/faculties-page-stores.js'],
+  'faculty-building-construction-engineering-labs': ['/src/alpine/pages/faculties-page-stores.js'],
   'faculty-artificial-intelligence-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
   'faculty-business-administration-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
   'faculty-building-construction-engineering-valedictorians': ['/src/alpine/pages/honor-list-stores.js'],
@@ -250,6 +265,12 @@ function renderBootGuardScript() {
 
   window.setTimeout(function () {
     if (document.body && document.body.dataset.appReady === 'true') {
+      return;
+    }
+
+    if (document.body) {
+      document.body.dataset.appReady = 'timeout';
+      revealCloakedContent();
       return;
     }
 
@@ -512,6 +533,9 @@ function extractPageMeta(site, page) {
   <meta name="twitter:description" content="${escapeAttribute(page.description)}">
   <meta name="twitter:image" content="${escapeAttribute(ogImage)}">
   <link rel="canonical" href="${escapeAttribute(canonicalUrl)}">
+  <link rel="alternate" hreflang="en" href="${escapeAttribute(canonicalUrl)}">
+  <link rel="alternate" hreflang="ar" href="${escapeAttribute(canonicalUrl)}">
+  <link rel="alternate" hreflang="x-default" href="${escapeAttribute(canonicalUrl)}">
   <link rel="icon" href="${escapeAttribute(site.manifestIcon)}" type="image/png">
   <link rel="manifest" href="/site.webmanifest">
   ${renderBootGuardStyles()}
@@ -531,7 +555,7 @@ function renderPageShell(site, layout, page) {
 <body data-page="${escapeAttribute(page.name)}" data-page-store="${escapeAttribute(page.name)}" data-page-section="${escapeAttribute(page.name)}" data-route="${escapeAttribute(page.route)}">
   <include src="src/fragments/layout/${page.name}/boot-screen.html"></include>
   <include src="src/fragments/${layout.header}"></include>
-  <main data-page-content x-data data-page-name="${escapeAttribute(page.name)}"${page.data ? Object.entries(page.data).map(([k, v]) => ` data-${k}="${escapeAttribute(v)}"`).join('') : ''}>
+  <main id="main-content" tabindex="-1" data-page-content x-data data-page-name="${escapeAttribute(page.name)}"${page.data ? Object.entries(page.data).map(([k, v]) => ` data-${k}="${escapeAttribute(v)}"`).join('') : ''}>
 ${page.fragments.map(f => `    <include src="src/fragments/${f}"></include>`).join('\n')}
   </main>
   <include src="src/fragments/${layout.footer}"></include>

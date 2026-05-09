@@ -25,7 +25,7 @@
                         <span class="text-white"
                             x-text="$store.app.currentLang === 'ar' ? 'الجامعية' : 'Faculties'"></span>
                     </h2>
-                    <a href="/faculty.html"
+                    <a href="/facilities/"
                         class="bg-white mx-auto absolute inset-x-0 bottom-10 w-[195px] h-[40px] text-spu-blue justify-center rounded-[10px] font-bold text-[16px] flex items-center gap-2 hover:bg-gray-100 transition-all shadow-lg group/btn overflow-hidden">
                         <span x-text="$store.app.ui.viewAll[$store.app.currentLang]"></span>
                         <img :src="$store.app.currentLang === 'ar' ? '/images/icon-arrow-left-outline.svg' : '/images/icon-arrow-right-outline.svg'"
@@ -80,7 +80,7 @@
                                 x-html="$store.app.currentLang === 'ar' ? faculty.yearsAr : faculty.yearsEn">
                             </div>
 
-                            <a :href="'/faculty.html?id=' + faculty.id" 
+                            <a :href="'/facilities/?id=' + faculty.id" 
                                 class="mt-auto mb-6 flex items-center gap-2 text-[13px] font-extrabold transition-all duration-300 group-hover:gap-3"
                                 :style="'color:' + faculty.color">
                                 <span x-text="$store.app.ui.learnMore[$store.app.currentLang]"></span>

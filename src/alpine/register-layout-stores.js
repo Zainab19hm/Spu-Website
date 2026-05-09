@@ -1,4 +1,4 @@
-import { appUi, navigationMenuItems, footerContent } from '../data/layout-content.js';
+import { appUi, navigationMenuItems, footerContent, emergencyNotice } from '../data/layout-content.js';
 import { portalAccessConfig } from '../data/domains/portal-access.js';
 import { siteRoutes } from '../config/site-routes.js';
 import { cloneData } from '../utils/clone.js';
@@ -78,7 +78,9 @@ export function registerLayoutStores(Alpine, { pageName = 'home' } = {}) {
     applyLanguage(savedLang);
 
     Alpine.store('navigation', {
-        menuItems: cloneData(navigationMenuItems)
+        menuItems: cloneData(navigationMenuItems),
+        emergencyNotice: cloneData(emergencyNotice),
+        applyUrl: siteRoutes.admissionsHowToApply
     });
 
     Alpine.store('footer', cloneData(footerContent));

@@ -1,26 +1,39 @@
 <section x-show="!$store.facultiesPage.catalogMode && $store.facultiesPage.currentFaculty?.highlights" x-cloak
          id="highlights"
          class="relative overflow-hidden bg-section py-24 font-hacen lg:py-32"
-         x-data="{
-            activeHighlight: 0,
-            get items() {
-                const baseItems = $store.facultiesPage.currentFaculty?.highlights?.items || [];
-                const departmentRoute = $store.facultiesPage.currentFaculty?.departmentRoute;
+x-data="{
+             activeHighlight: 0,
+             get items() {
+                 const baseItems = $store.facultiesPage.currentFaculty?.highlights?.items || [];
+                 const departmentRoute = $store.facultiesPage.currentFaculty?.departmentRoute;
+const labsRoute = $store.facultiesPage.currentFaculty?.labsRoute || null;
 
-                if (!departmentRoute) return baseItems;
+                 let result = [...baseItems];
 
-                return [
-                    ...baseItems,
-                    {
-                        id: 'departments-nav',
-                        titleAr: 'الأقسام الأكاديمية',
-                        titleEn: 'Academic Departments',
-                        value: 'View',
-                        link: departmentRoute,
-                        icon: '/images/icons/dept.svg'
-                    }
-                ];
-            },
+                 if (departmentRoute) {
+                     result.push({
+                         id: 'departments-nav',
+                         titleAr: 'الأقسام الأكاديمية',
+                         titleEn: 'Academic Departments',
+                         value: 'View',
+                         link: departmentRoute,
+                         icon: '/images/icons/dept.svg'
+                     });
+                 }
+
+                 if (labsRoute) {
+                     result.push({
+                         id: 'labs-nav',
+                         titleAr: 'المخابر',
+                         titleEn: 'Labs',
+                         value: $store.facultiesPage.currentFaculty.labs.length,
+                         link: labsRoute,
+                         icon: '/images/icons/lab.svg'
+                     });
+                 }
+
+                 return result;
+             },
             get shouldSlide() {
                 return this.items.length > 4;
             },

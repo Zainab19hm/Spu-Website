@@ -1,12 +1,15 @@
 import { facultiesCatalog } from '../../data/domains/faculties-catalog.js';
 
-// تعديل: التصدير باستخدام اسم مسمى ليطابق ملف التسجيل
 export const registerFacultiesPageStores = (Alpine) => {
     Alpine.store('facultiesPage', {
         currentFaculty: null,
         loading: true,
-        /** true when no ?id= param → show the catalog overview */
         catalogMode: false,
+
+        routeToIdMap: {
+            'artificial-intelligence': 'ai-engineering',
+            'building-construction-engineering': 'Construction'
+        },
 
         init() {
             this.loadFacultyData();
@@ -16,10 +19,12 @@ export const registerFacultiesPageStores = (Alpine) => {
         loadFacultyData() {
             this.loading = true;
             const urlParams = new URLSearchParams(window.location.search);
-            const facultyId = urlParams.get('id');
+            const facultyIdFromQuery = urlParams.get('id');
+            const facultyIdFromRoute = this.extractFacultyIdFromRoute(window.location.pathname);
+
+            const facultyId = facultyIdFromQuery || facultyIdFromRoute;
 
             if (!facultyId) {
-                // No specific faculty requested → catalog overview mode
                 this.catalogMode = true;
                 this.currentFaculty = facultiesCatalog.list[0];
             } else {
@@ -33,6 +38,12 @@ export const registerFacultiesPageStores = (Alpine) => {
                 }
             }
             this.loading = false;
+        },
+
+        extractFacultyIdFromRoute(pathname) {
+            const match = pathname.match(/\/facilities\/([^\/]+)\//);
+            const routeFolder = match ? match[1] : null;
+            return this.routeToIdMap[routeFolder] || routeFolder;
         }
     });
 };

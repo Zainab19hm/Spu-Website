@@ -5,100 +5,100 @@
     <loc>https://spu.edu.sy/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about.html</loc>
+    <loc>https://spu.edu.sy/about/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/vision-mission.html</loc>
+    <loc>https://spu.edu.sy/about/vision-mission/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/history.html</loc>
+    <loc>https://spu.edu.sy/about/history/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/leadership.html</loc>
+    <loc>https://spu.edu.sy/about/leadership/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/directorates.html</loc>
+    <loc>https://spu.edu.sy/about/directorates/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/partnership.html</loc>
+    <loc>https://spu.edu.sy/about/partnership/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/faculty.html</loc>
+    <loc>https://spu.edu.sy/facilities/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions.html</loc>
+    <loc>https://spu.edu.sy/admissions/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/research.html</loc>
+    <loc>https://spu.edu.sy/research/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/student-life.html</loc>
+    <loc>https://spu.edu.sy/campus-life/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/virtual-tour.html</loc>
+    <loc>https://spu.edu.sy/virtual-tour/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/campus-life/services.html</loc>
+    <loc>https://spu.edu.sy/campus-life/services/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/campus-life/transport.html</loc>
+    <loc>https://spu.edu.sy/campus-life/transport/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/campus-life/clubs-activities.html</loc>
+    <loc>https://spu.edu.sy/campus-life/clubs-activities/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/campus-life/career-development.html</loc>
+    <loc>https://spu.edu.sy/campus-life/career-development/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/services.html</loc>
+    <loc>https://spu.edu.sy/e-services/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/news.html</loc>
+    <loc>https://spu.edu.sy/news/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/contact.html</loc>
+    <loc>https://spu.edu.sy/contact/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/campus-life/dental.html</loc>
+    <loc>https://spu.edu.sy/campus-life/dental/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/campus-life/hospital.html</loc>
+    <loc>https://spu.edu.sy/campus-life/hospital/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/campus-life/health-insurance.html</loc>
+    <loc>https://spu.edu.sy/campus-life/health-insurance/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/directorates/scientific-research.html</loc>
+    <loc>https://spu.edu.sy/about/directorates/scientific-research/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/directorates/student-affairs.html</loc>
+    <loc>https://spu.edu.sy/about/directorates/student-affairs/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/directorates/it-services.html</loc>
+    <loc>https://spu.edu.sy/about/directorates/it-services/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/about/directorates/public-relations.html</loc>
+    <loc>https://spu.edu.sy/about/directorates/public-relations/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions/requirements.html</loc>
+    <loc>https://spu.edu.sy/admissions/requirements/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions/tuition.html</loc>
+    <loc>https://spu.edu.sy/admissions/tuition/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions/faq.html</loc>
+    <loc>https://spu.edu.sy/admissions/faq/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions/how-to-apply.html</loc>
+    <loc>https://spu.edu.sy/admissions/how-to-apply/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions/transfer.html</loc>
+    <loc>https://spu.edu.sy/admissions/transfer/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions/calendar.html</loc>
+    <loc>https://spu.edu.sy/admissions/calendar/</loc>
   </url>
   <url>
-    <loc>https://spu.edu.sy/admissions/documents.html</loc>
+    <loc>https://spu.edu.sy/admissions/documents/</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/facilities/artificial-intelligence/departments/</loc>
@@ -111,6 +111,24 @@
   </url>
   <url>
     <loc>https://spu.edu.sy/facilities/dentistry/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/labs/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/labs/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/labs/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/artificial-intelligence/labs/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/petroleum/labs/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/building-construction-engineering/labs/</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/facilities/medicine/departments/</loc>

@@ -1,12 +1,11 @@
 import Alpine from 'alpinejs';
 import { registerStores } from './alpine/register-stores.js';
 import { siteRoutes } from './config/site-routes.js';
-import { initRevealSections, observeElement, observeRevealSections } from './features/reveal-sections.js';
+import { initRevealSections, observeRevealSections, disconnectRevealSections } from './features/reveal-sections.js';
 import { initPageLoader } from './loader/page-loader.js';
 import './style.css';
 
 window.Alpine = Alpine;
-window.observeElement = observeElement;
 
 // ! Robust extraction of page name to prevent bootstrap failure if body is null or attribute is missing
 const pageName = document.body ? (document.body.dataset.page || 'home') : 'home';
@@ -23,17 +22,22 @@ function setAppReadyState(state) {
     return;
   }
 
-  if (typeof window.__SPU_SET_BOOT_STAGE === 'function') {
-    if (state === 'false') {
-      window.__SPU_SET_BOOT_STAGE('error', 'Interactive features are temporarily unavailable. Please reload the page.');
-      return;
+  if (state === 'false') {
+    document.documentElement.removeAttribute('data-app-boot');
+
+    if (typeof window.__SPU_REVEAL_CLOAKED === 'function') {
+      window.__SPU_REVEAL_CLOAKED();
     }
 
+    return;
+  }
+
+  if (typeof window.__SPU_SET_BOOT_STAGE === 'function') {
     window.__SPU_SET_BOOT_STAGE('pending', 'Preparing the page...');
     return;
   }
 
-  document.documentElement.setAttribute('data-app-boot', state === 'false' ? 'error' : 'pending');
+  document.documentElement.setAttribute('data-app-boot', 'pending');
 }
 
 async function registerPageFeatureGlobals() {
@@ -83,6 +87,8 @@ function renderBootstrapFailure() {
   document.body.prepend(alert);
 }
 
+let mutationObserver;
+
 async function bootstrap() {
   try {
     setAppReadyState('pending');
@@ -94,9 +100,16 @@ async function bootstrap() {
     Alpine.start();
     setAppReadyState('true');
 
-    requestAnimationFrame(() => {
-      initRevealSections();
-      observeRevealSections();
+    initRevealSections();
+    mutationObserver = observeRevealSections();
+
+    window.addEventListener('beforeunload', () => {
+      if (mutationObserver) {
+        disconnectRevealSections(mutationObserver);
+      }
+      if (Alpine.store('date')) {
+        Alpine.store('date').destroy();
+      }
     });
   } catch (error) {
     setAppReadyState('false');

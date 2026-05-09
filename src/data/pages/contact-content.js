@@ -57,7 +57,7 @@ export const contactPageContent = {
         titleAr: 'موقع الحرم الجامعي',
         buttonEn: 'Open Campus Map',
         buttonAr: 'فتح خريطة الحرم الجامعي',
-        bgImage: '/images/contact/map-bg.jpg',
+        bgImage: '/images/uni-main-place.JPG',
         mapUrl: 'https://www.google.com/maps?q=Syrian+Private+University'
     }
 };

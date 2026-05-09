@@ -14,7 +14,7 @@
 
         <div class="grid grid-cols-1 gap-4 overflow-visible lg:grid-cols-12">
 
-            <div class="relative z-20 flex flex-col justify-center gap-6 overflow-visible lg:col-span-5 reveal-left" x-init="observeElement($el)">
+            <div class="relative z-20 flex flex-col justify-center gap-6 overflow-visible lg:col-span-5 reveal-left">
                 <div class="relative mx-auto w-full  overflow-visible">
                     <div class="relative z-10 h-[411px] w-full max-w-[448px] overflow-hidden shadow-xl">
                         <img :src="$store.aboutPage.hero.image1" class="h-full w-full object-cover" alt="">
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="relative z-10 flex flex-col justify-center lg:col-span-7 reveal-right" x-init="observeElement($el)">
+            <div class="relative z-10 flex flex-col justify-center lg:col-span-7 reveal-right">
                 <!-- Bold Intro Statement -->
                 <div class="mb-12 lg:ps-12">
                     <p class="text-[30px] font-bold text-[#1B1B1F] leading-[100%] w-full"
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="mt-6 lg:ps-12">
-                    <a href="/about/vision-mission.html"
+                    <a :href="'/about/vision-mission.html'"
                         class="inline-flex items-center gap-3 rounded-2xl bg-spu-blue px-8 py-4 font-black text-white shadow-xl transition-all hover:-translate-y-1 hover:bg-spu-red">
                         <span x-text="$store.app.currentLang === 'ar' ? 'استكشف الرؤية والرسالة' : 'Explore Vision & Mission'"></span>
                         <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
@@ -130,7 +130,7 @@
         <div class="mt-32 relative group overflow-hidden">
             <div class="flex flex-col items-center justify-between gap-24 lg:flex-row lg:gap-20">
 
-                <div class="relative w-full lg:w-1/2 reveal-left" x-init="observeElement($el)">
+                <div class="relative w-full lg:w-1/2 reveal-left">
 
                     <div class="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden">
                         <img :src="$store.aboutPage.hero.image"
@@ -142,7 +142,7 @@
                     </div>
                 </div>
 
-                <div class="w-full text-start lg:w-1/2 reveal-right" x-init="observeElement($el)">
+                <div class="w-full text-start lg:w-1/2 reveal-right">
 
                     <div class="mb-6 inline-flex items-center gap-3">
                         <div class="h-[2px] w-12 bg-spu-red"></div>

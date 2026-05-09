@@ -1,28 +1,54 @@
 <header id="site-header" class="absolute top-0 z-50 w-full pt-3 font-hacen"
-        x-data="{ openMenu: null, stickyNav: false, mobileNav: false }"
-        @keydown.escape.window="mobileNav = false; openMenu = null"
-        @click.outside="openMenu = null; if (window.innerWidth < 1536) { mobileNav = false; }"
+        x-data="{
+            openMenu: null,
+            stickyNav: false,
+            mobileNav: false,
+            searchOpen: false,
+            searchQuery: '',
+            get searchResults() {
+                const query = this.searchQuery.trim().toLowerCase();
+
+                if (query.length < 2) {
+                    return [];
+                }
+
+                return $store.navigation.menuItems.flatMap((item) => [
+                    { labelEn: item.labelEn, labelAr: item.labelAr, url: item.url },
+                    ...((item.children || []).map((child) => ({
+                        labelEn: child.labelEn,
+                        labelAr: child.labelAr,
+                        url: child.protected ? $store.auth.servicesHubPath : child.url
+                    })))
+                ]).filter((item) => `${item.labelEn} ${item.labelAr}`.toLowerCase().includes(query)).slice(0, 6);
+            }
+        }"
+        @keydown.escape.window="mobileNav = false; openMenu = null; searchOpen = false"
+        @keydown.window.ctrl.k.prevent="searchOpen = true; $nextTick(() => $refs.siteSearch?.focus())"
+        @keydown.window.meta.k.prevent="searchOpen = true; $nextTick(() => $refs.siteSearch?.focus())"
+        @click.outside="openMenu = null; searchOpen = false; if (window.innerWidth < 1536) { mobileNav = false; }"
         @scroll.window="stickyNav = 40 < window.scrollY"
         :class="stickyNav ? 'fixed inset-x-0 top-0 z-50 w-full pt-3' : ''">
 
     <div class="container">
+        <a x-show="$store.navigation.emergencyNotice.active"
+           x-cloak
+           :href="$store.navigation.emergencyNotice.url"
+           class="mb-2 flex rounded-[10px] bg-spu-red px-4 py-2 text-sm font-bold text-white shadow-[0_12px_30px_rgba(111,22,22,0.22)]">
+            <span x-text="$store.app.currentLang === 'ar' ? $store.navigation.emergencyNotice.messageAr : $store.navigation.emergencyNotice.messageEn"></span>
+        </a>
         <div class="site-nav-shell" :class="stickyNav ? 'site-nav-shell--sticky' : ''">
             <div class="site-nav-shell__main">
-
-                <!-- Logo -->
                 <a href="/" aria-label="Syrian Private University home" class="site-nav-brand">
                     <img src="/images/logo-spu.png" alt="Syrian Private University logo"
                          class="h-auto w-[9.25rem] sm:w-[11rem] xl:w-[13.5rem]">
                 </a>
 
-                <!-- Desktop navigation -->
                 <nav class="hidden flex-1 justify-center 2xl:flex" aria-label="Primary navigation">
                     <ul class="site-nav-list">
                         <template x-for="item in $store.navigation.menuItems" :key="item.id">
                             <li class="site-nav-item"
                                 @mouseenter="openMenu = item.hasDropdown ? item.id : null"
                                 @mouseleave="openMenu = null">
-
                                 <a :href="item.url || '#'"
                                    class="site-nav-link"
                                    :class="item.page === $store.app.currentPage ? 'site-nav-link--active' : ''"
@@ -33,7 +59,6 @@
                                     </template>
                                 </a>
 
-                                <!-- Dropdown -->
                                 <div x-show="item.hasDropdown && openMenu === item.id"
                                      x-transition:enter="transition duration-200 ease-out"
                                      x-transition:enter-start="opacity-0 -translate-y-2 scale-[0.97]"
@@ -44,7 +69,7 @@
                                      style="display: none;"
                                      class="site-nav-dropdown">
                                     <template x-for="child in item.children" :key="child.url">
-                                        <a :href="child.protected ? '/services.html' : child.url"
+                                        <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
                                            @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }"
                                            class="site-nav-dropdown-link"
                                            x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
@@ -55,12 +80,15 @@
                     </ul>
                 </nav>
 
-                <!-- Actions: language + CTA + hamburger -->
                 <div class="site-nav-actions">
-                    <!-- Current Date -->
-                   
+                    <button type="button"
+                            @click="searchOpen = !searchOpen; if (searchOpen) { $nextTick(() => $refs.siteSearch?.focus()); }"
+                            class="site-nav-lang"
+                            :aria-expanded="searchOpen.toString()"
+                            aria-controls="site-search-panel">
+                        <img src="/images/icon-search-outline.svg" alt="" class="h-[1rem] w-[1rem]" aria-hidden="true">
+                    </button>
 
-                    <!-- Language toggle -->
                     <button type="button"
                             @click="$store.app.setLang($store.app.currentLang === 'en' ? 'ar' : 'en')"
                             class="site-nav-lang">
@@ -68,14 +96,41 @@
                         <span x-text="$store.app.currentLang === 'ar' ? 'English' : 'العربية'"></span>
                     </button>
 
-                    <!-- Apply Now CTA (desktop only) -->
-                    <a href="/admissions.html"
+                    <a :href="$store.navigation.applyUrl"
                        class="hidden items-center gap-2 rounded-full bg-spu-red px-5 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white shadow-[0_8px_24px_rgba(111,22,22,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(111,22,22,0.3)] 2xl:inline-flex">
-                    
                        <span x-text="$store.app.currentLang === 'ar' ? 'قدّم الآن' : 'Apply Now'"></span>
                     </a>
 
-                    <!-- Mobile hamburger -->
+                    <div id="site-search-panel"
+                         x-show="searchOpen"
+                         x-transition:enter="transition duration-200 ease-out"
+                         x-transition:enter-start="opacity-0 -translate-y-2 scale-[0.98]"
+                         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                         x-transition:leave="transition duration-150 ease-in"
+                         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                         x-transition:leave-end="opacity-0 -translate-y-1 scale-[0.98]"
+                         style="display: none;"
+                         class="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-[min(22rem,calc(100vw-2rem))] rounded-[14px] border border-spu-blue/10 bg-white p-3 shadow-[0_24px_52px_rgba(11,19,50,0.14)] rtl:left-0 rtl:right-auto">
+                        <label class="sr-only" for="site-search-input" x-text="$store.app.currentLang === 'ar' ? 'بحث في الموقع' : 'Search the site'"></label>
+                        <input id="site-search-input"
+                               x-ref="siteSearch"
+                               x-model="searchQuery"
+                               type="search"
+                               class="w-full rounded-[10px] border border-spu-blue/10 px-3 py-2 text-sm font-semibold text-spu-blue outline-none transition focus:border-spu-red"
+                               :placeholder="$store.app.currentLang === 'ar' ? 'ابحث عن صفحة...' : 'Search pages...'">
+                        <div class="mt-2 grid gap-1" x-show="searchResults.length">
+                            <template x-for="item in searchResults" :key="item.url + item.labelEn">
+                                <a :href="item.url"
+                                   @click="searchOpen = false; searchQuery = ''"
+                                   class="rounded-[8px] px-3 py-2 text-sm font-semibold text-spu-blue transition hover:bg-spu-blue/5"
+                                   x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></a>
+                            </template>
+                        </div>
+                        <p class="mt-2 px-1 text-xs font-semibold text-spu-blue/45"
+                           x-show="searchQuery.length > 0 && searchQuery.length < 2"
+                           x-text="$store.app.currentLang === 'ar' ? 'اكتب حرفين على الأقل.' : 'Type at least 2 characters.'"></p>
+                    </div>
+
                     <button type="button"
                             @click="mobileNav = !mobileNav; if (!mobileNav) { openMenu = null; }"
                             aria-label="Toggle navigation"
@@ -86,7 +141,6 @@
                 </div>
             </div>
 
-            <!-- Mobile panel -->
             <div x-show="mobileNav"
                  x-transition:enter="transition duration-250 ease-out"
                  x-transition:enter-start="opacity-0 -translate-y-3"
@@ -127,7 +181,7 @@
                                  style="display: none;"
                                  class="site-nav-mobile-children">
                                 <template x-for="child in item.children" :key="`mobile-${child.url}`">
-                                    <a :href="child.protected ? '/services.html' : child.url"
+                                    <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
                                        @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null"
                                        class="site-nav-mobile-child"
                                        x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
@@ -136,8 +190,7 @@
                         </div>
                     </template>
 
-                    <!-- Mobile Apply Now -->
-                    <a href="/admissions.html"
+                    <a :href="$store.navigation.applyUrl"
                        @click="mobileNav = false"
                        class="mt-2 flex items-center justify-center gap-2 rounded-xl bg-spu-red px-5 py-3.5 text-sm font-bold text-white shadow-[0_8px_24px_rgba(111,22,22,0.2)]">
                         <img src="/images/icon-user-graduate-outline.svg" alt="Graduate" class="h-5 w-5">
