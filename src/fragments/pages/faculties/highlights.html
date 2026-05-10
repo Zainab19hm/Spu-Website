@@ -1,108 +1,125 @@
 <section x-show="!$store.facultiesPage.catalogMode && $store.facultiesPage.currentFaculty?.highlights" x-cloak
          id="highlights"
-         class="relative overflow-hidden bg-section py-24 font-hacen lg:py-32"
-x-data="{
+         class="relative rounded-[6px] overflow-hidden bg-section py-24 font-hacen lg:py-32"
+         x-data="{
              activeHighlight: 0,
+             hasLink(item) {
+                 return !!item?.link && item.link !== '#';
+             },
              get items() {
-                 const baseItems = $store.facultiesPage.currentFaculty?.highlights?.items || [];
-                 const departmentRoute = $store.facultiesPage.currentFaculty?.departmentRoute;
-const labsRoute = $store.facultiesPage.currentFaculty?.labsRoute || null;
+                 const faculty = $store.facultiesPage.currentFaculty || {};
+                 const baseItems = (faculty.highlights?.items || []).map((item) => ({
+                     id: item.id,
+                     titleAr: item.titleAr,
+                     titleEn: item.titleEn,
+                     link: item.link,
+                     actionAr: 'استكشف',
+                     actionEn: 'Explore'
+                 }));
+                 const result = [...baseItems];
 
-                 let result = [...baseItems];
-
-                 if (departmentRoute) {
+                 if (faculty.departmentRoute && !result.some((item) => item.link === faculty.departmentRoute)) {
                      result.push({
                          id: 'departments-nav',
                          titleAr: 'الأقسام الأكاديمية',
                          titleEn: 'Academic Departments',
-                         value: 'View',
-                         link: departmentRoute,
-                         icon: '/images/icons/dept.svg'
+                         link: faculty.departmentRoute,
+                         actionAr: 'استكشف الأقسام',
+                         actionEn: 'Explore Departments'
                      });
                  }
 
-                 if (labsRoute) {
+                 if (faculty.labsRoute) {
                      result.push({
                          id: 'labs-nav',
                          titleAr: 'المخابر',
                          titleEn: 'Labs',
-                         value: $store.facultiesPage.currentFaculty.labs.length,
-                         link: labsRoute,
-                         icon: '/images/icons/lab.svg'
+                         link: faculty.labsRoute,
+                         actionAr: 'استكشف المخابر',
+                         actionEn: 'Explore Labs'
+                     });
+                 }
+
+                 if (faculty.dean) {
+                     result.push({
+                         id: 'leadership-nav',
+                         titleAr: 'قيادة الكلية',
+                         titleEn: 'Faculty Leadership',
+                         link: '#dean',
+                         actionAr: 'استكشف القيادة',
+                         actionEn: 'Explore Leadership'
                      });
                  }
 
                  return result;
              },
-            get shouldSlide() {
-                return this.items.length > 4;
-            },
-            get slides() {
-                const groups = [];
-                for (let index = 0; index < this.items.length; index += 4) {
-                    groups.push(this.items.slice(index, index + 4));
-                }
-                return groups;
-            },
-            get maxHighlight() {
-                return Math.max(this.slides.length - 1, 0);
-            },
-            nextHighlight() {
-                this.activeHighlight = this.activeHighlight >= this.maxHighlight ? 0 : this.activeHighlight + 1;
-            },
-            previousHighlight() {
-                this.activeHighlight = this.activeHighlight <= 0 ? this.maxHighlight : this.activeHighlight - 1;
-            },
-            init() {
-                this.$watch('$store.facultiesPage.currentFaculty', () => {
-                    this.activeHighlight = 0;
-                });
-            }
+             get shouldSlide() {
+                 return this.items.length > 4;
+             },
+             get slides() {
+                 const groups = [];
+                 for (let index = 0; index < this.items.length; index += 4) {
+                     groups.push(this.items.slice(index, index + 4));
+                 }
+                 return groups;
+             },
+             get maxHighlight() {
+                 return Math.max(this.slides.length - 1, 0);
+             },
+             nextHighlight() {
+                 this.activeHighlight = this.activeHighlight >= this.maxHighlight ? 0 : this.activeHighlight + 1;
+             },
+             previousHighlight() {
+                 this.activeHighlight = this.activeHighlight <= 0 ? this.maxHighlight : this.activeHighlight - 1;
+             },
+             init() {
+                 this.$watch('$store.facultiesPage.currentFaculty', () => {
+                     this.activeHighlight = 0;
+                 });
+             }
          }">
 
     <div class="container relative z-10">
         <div class="flex flex-col items-start gap-14 lg:flex-row lg:items-center lg:gap-20">
 
             <div class="w-full shrink-0 lg:w-[42%]">
-                <p class="text-sm font-bold uppercase tracking-[0.2em] text-spu-blue/40"
-                   x-text="$store.app.currentLang === 'ar' ? 'أبرز الملامح' : 'At a Glance'"></p>
-
-                <h3 class="mt-4 text-4xl font-bold leading-tight text-spu-blue lg:text-5xl"
+                <h3 class="text-[26px] font-bold leading-tight text-spu-blue md:text-[32px]"
                     x-text="$store.app.currentLang === 'ar'
                         ? $store.facultiesPage.currentFaculty?.highlights?.sectionTitleAr
                         : $store.facultiesPage.currentFaculty?.highlights?.sectionTitleEn">
                 </h3>
 
-                <p class="mt-5 max-w-[480px] text-lg leading-relaxed text-slate-500"
+                <p class="mt-5 max-w-[480px] text-[16px] leading-8 text-slate-600"
                    x-text="$store.app.currentLang === 'ar'
                        ? $store.facultiesPage.currentFaculty?.highlights?.sectionPAr
                        : $store.facultiesPage.currentFaculty?.highlights?.sectionPEn">
                 </p>
-
-                <div class="mt-8 h-[3px] w-16 rounded-full bg-spu-red/60"></div>
             </div>
 
             <div class="w-full min-w-0 flex-1">
                 <template x-if="!shouldSlide">
-                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <template x-for="(item, idx) in items" :key="item.id">
-                            <a :href="item.link"
-                               class="group relative flex h-[180px] flex-col justify-end overflow-hidden rounded-2xl bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)]"
-                               :class="idx === 0 ? 'border-b-[3px]' : 'border-b-[3px] border-transparent hover:border-current'"
-                               :style="idx === 0 ? `border-bottom-color: #${$store.facultiesPage.currentFaculty?.color}` : ''">
-
-                                <span class="absolute right-6 top-6 text-[32px] font-bold leading-none text-spu-blue/10 transition-colors duration-300 group-hover:text-spu-blue/20"
-                                      x-text="item.value"></span>
-
-                                <h4 class="text-xl font-bold text-spu-blue transition-colors duration-300"
-                                    x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
-
-                                <div class="mt-2 flex items-center gap-2 text-sm font-bold opacity-0 transition-all duration-300 group-hover:opacity-100"
-                                     :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
-                                    <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
-                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
-                                </div>
-                            </a>
+                            <div>
+                                <template x-if="hasLink(item)">
+                                    <a :href="item.link"
+                                       class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
+                                       :aria-label="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
+                                        <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"
+                                            :class="idx === 0 ? 'text-white' : 'text-slate-950 group-hover:text-white'"
+                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                                        <span class="mt-5 text-[8px] font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                              :class="idx === 0 ? 'opacity-100' : ''"
+                                              x-text="($store.app.currentLang === 'ar' ? item.actionAr : item.actionEn) + ' →'"></span>
+                                    </a>
+                                </template>
+                                <template x-if="!hasLink(item)">
+                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
+                                        <h4 class="text-[17px] font-bold leading-tight text-slate-950"
+                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                                    </div>
+                                </template>
+                            </div>
                         </template>
                     </div>
                 </template>
@@ -113,25 +130,26 @@ const labsRoute = $store.facultiesPage.currentFaculty?.labsRoute || null;
                             <div class="flex transition-transform duration-500 ease-out"
                                  :style="`transform: translateX(${$store.app.currentLang === 'ar' ? activeHighlight * 100 : activeHighlight * -100}%);`">
                                 <template x-for="(slide, slideIndex) in slides" :key="slideIndex">
-                                    <div class="grid w-full shrink-0 grid-cols-1 gap-5 sm:grid-cols-2">
+                                    <div class="grid w-full shrink-0 grid-cols-1 gap-4 sm:grid-cols-2">
                                         <template x-for="(item, itemIndex) in slide" :key="item.id">
-                                            <a :href="item.link"
-                                               class="group relative flex h-[180px] flex-col justify-end overflow-hidden rounded-2xl bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)]"
-                                               :class="slideIndex === 0 && itemIndex === 0 ? 'border-b-[3px]' : 'border-b-[3px] border-transparent hover:border-current'"
-                                               :style="slideIndex === 0 && itemIndex === 0 ? `border-bottom-color: #${$store.facultiesPage.currentFaculty?.color}` : ''">
-
-                                                <span class="absolute right-6 top-6 text-[32px] font-bold leading-none text-spu-blue/10 transition-colors duration-300 group-hover:text-spu-blue/20"
-                                                      x-text="item.value"></span>
-
-                                                <h4 class="text-xl font-bold text-spu-blue transition-colors duration-300"
-                                                    x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
-
-                                                <div class="mt-2 flex items-center gap-2 text-sm font-bold opacity-0 transition-all duration-300 group-hover:opacity-100"
-                                                     :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
-                                                    <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
-                                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
-                                                </div>
-                                            </a>
+                                            <div>
+                                                <template x-if="hasLink(item)">
+                                                    <a :href="item.link"
+                                                       class="group relative flex h-[118px] rounded-[6px] shadow shadow-md  flex-col items-center hover:text-white justify-center overflow-hidden border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
+                                                       :aria-label="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
+                                                        <h4 class="text-[17px] font-bold group hover:text-white leading-tight transition-colors duration-300"
+                                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                                                        <span class="mt-5 text-[8px] hover:text-white font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                                              x-text="($store.app.currentLang === 'ar' ? item.actionAr : item.actionEn) + ' →'"></span>
+                                                    </a>
+                                                </template>
+                                                <template x-if="!hasLink(item)">
+                                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
+                                                        <h4 class="text-[17px] font-bold leading-tight text-slate-950"
+                                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                                                    </div>
+                                                </template>
+                                            </div>
                                         </template>
                                     </div>
                                 </template>
@@ -143,24 +161,23 @@ const labsRoute = $store.facultiesPage.currentFaculty?.labsRoute || null;
                                 <template x-for="(_, idx) in Array.from({ length: maxHighlight + 1 })" :key="idx">
                                     <button type="button"
                                             class="h-1.5 rounded-full transition-all duration-300"
-                                            :class="activeHighlight === idx ? 'w-8' : 'w-2 bg-spu-blue/20'"
-                                            :style="activeHighlight === idx ? `background-color: #${$store.facultiesPage.currentFaculty?.color}` : ''"
+                                            :class="activeHighlight === idx ? 'w-8 bg-spu-blue' : 'w-2 bg-spu-blue/20'"
                                             @click="activeHighlight = idx"
-                                            :aria-label="`Go to faculty card group ${idx + 1}`"></button>
+                                            :aria-label="`Go to navigation card group ${idx + 1}`"></button>
                                 </template>
                             </div>
 
                             <div class="flex items-center gap-3">
                                 <button type="button"
-                                        class="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all hover:-translate-y-0.5"
+                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
                                         @click="previousHighlight()"
-                                        aria-label="Previous faculty card">
+                                        aria-label="Previous navigation card">
                                     <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
                                 </button>
                                 <button type="button"
-                                        class="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all hover:-translate-y-0.5"
+                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
                                         @click="nextHighlight()"
-                                        aria-label="Next faculty card">
+                                        aria-label="Next navigation card">
                                     <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
                                 </button>
                             </div>

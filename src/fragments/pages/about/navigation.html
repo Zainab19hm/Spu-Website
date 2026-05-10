@@ -1,14 +1,38 @@
-<!-- About — Explore More navigation cards -->
-<section id="about-navigation" class="relative bg-section py-20 font-hacen lg:py-28" x-data>
+<!-- About - Explore More navigation cards -->
+<section id="about-navigation" class="relative bg-section rounded-md py-20 font-hacen lg:py-28"
+         x-data="{
+             activeSlide: 0,
+             hasLink(card) {
+                 return !!card?.link && card.link !== '#';
+             },
+             get cards() {
+                 return $store.aboutPage.subPages || [];
+             },
+             get shouldSlide() {
+                 return this.cards.length > 4;
+             },
+             get slides() {
+                 const groups = [];
+                 for (let index = 0; index < this.cards.length; index += 4) {
+                     groups.push(this.cards.slice(index, index + 4));
+                 }
+                 return groups;
+             },
+             get maxSlide() {
+                 return Math.max(this.slides.length - 1, 0);
+             },
+             nextSlide() {
+                 this.activeSlide = this.activeSlide >= this.maxSlide ? 0 : this.activeSlide + 1;
+             },
+             previousSlide() {
+                 this.activeSlide = this.activeSlide <= 0 ? this.maxSlide : this.activeSlide - 1;
+             }
+         }">
     <div class="container relative z-10">
         <div class="flex flex-col items-start gap-14 lg:flex-row lg:items-center lg:gap-20">
 
-            <!-- Left: title -->
             <div class="w-full shrink-0 lg:w-[38%]">
-                <p class="text-sm font-bold uppercase tracking-[0.2em] text-spu-blue/40"
-                   x-text="$store.app.currentLang === 'ar' ? 'استكشف' : 'Discover'"></p>
-
-                <h3 class="mt-4 text-4xl font-bold leading-tight text-spu-blue lg:text-5xl">
+                <h3 class="text-[26px] font-bold leading-tight text-spu-blue md:text-[32px]">
                     <template x-if="$store.app.currentLang === 'ar'">
                         <span>استكشف المزيد عن <span class="text-spu-red">الجامعة</span></span>
                     </template>
@@ -17,45 +41,102 @@
                     </template>
                 </h3>
 
-                <p class="mt-4 max-w-[400px] text-base leading-relaxed text-slate-400"
+                <p class="mt-5 max-w-[480px] text-[16px] leading-8 text-slate-600"
                    x-text="$store.app.currentLang === 'ar'
                        ? 'تعرّف على رؤيتنا ورسالتنا وتاريخنا وقيادتنا ومديرياتنا وشراكاتنا الأكاديمية.'
                        : 'Explore our vision, mission, history, leadership, directorates, and academic partnerships.'">
                 </p>
-
-                <div class="mt-6 h-[3px] w-16 rounded-full bg-spu-red/50"></div>
             </div>
 
-            <!-- Right: 2×2 card grid -->
-            <div class="w-full flex-1">
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                    <template x-for="(sub, idx) in $store.aboutPage.subPages" :key="sub.id">
-                        <a :href="sub.link"
-                           @click="$store.aboutPage.navigate($event, sub.id)"
-                           class="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.1)]">
+            <div class="w-full min-w-0 flex-1">
+                <template x-if="!shouldSlide">
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <template x-for="(sub, idx) in cards" :key="sub.id">
+                            <div>
+                                <template x-if="hasLink(sub)">
+                                    <a :href="sub.link"
+                                       @click="$store.aboutPage.navigate($event, sub.id)"
+                                       class="group relative flex h-[118px] flex-col items-center  justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
+                                       :aria-label="$store.app.currentLang === 'ar' ? sub.titleAr : sub.titleEn">
+                                        <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"
+                                            x-text="$store.app.currentLang === 'ar' ? sub.titleAr : sub.titleEn"></h4>
+                                        <span class="mt-5 text-[8px] font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                              x-text="$store.app.currentLang === 'ar' ? 'استكشف →' : 'Explore →'"></span>
+                                    </a>
+                                </template>
+                                <template x-if="!hasLink(sub)">
+                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
+                                        <h4 class="text-[17px] font-bold leading-tight text-slate-950"
+                                            x-text="$store.app.currentLang === 'ar' ? sub.titleAr : sub.titleEn"></h4>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </template>
 
-                            <!-- Top row: icon + arrow -->
-                            <div class="flex items-start justify-between">
-                                <!-- Icon circle -->
-                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-spu-blue/5 transition-colors duration-300 group-hover:bg-spu-blue">
-                                    <img :src="sub.id === 'vision-mission' ? '/images/icon-sitemap-outline.svg' : sub.id === 'history' ? '/images/icon-history-outline.svg' : sub.id === 'leadership' ? '/images/icon-users-outline.svg' : sub.id === 'directorates' ? '/images/icon-sitemap-outline.svg' : '/images/icon-handshake-outline.svg'" alt="" class="h-5 w-5 transition duration-300 group-hover:brightness-0 group-hover:invert" aria-hidden="true">
-                                </div>
-                                <!-- Arrow -->
-                                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 text-slate-300 transition-all duration-300 group-hover:bg-spu-red group-hover:text-white">
-                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3" :class="$store.app.currentLang === 'ar' ? 'rotate-180' : ''" aria-hidden="true">
-                                </div>
+                <template x-if="shouldSlide">
+                    <div>
+                        <div class="overflow-hidden">
+                            <div class="flex transition-transform duration-500 ease-out"
+                                 :style="`transform: translateX(${$store.app.currentLang === 'ar' ? activeSlide * 100 : activeSlide * -100}%);`">
+                                <template x-for="(slide, slideIndex) in slides" :key="slideIndex">
+                                    <div class="grid w-full shrink-0 grid-cols-1 gap-4 sm:grid-cols-2">
+                                        <template x-for="(sub, itemIndex) in slide" :key="sub.id">
+                                            <div>
+                                                <template x-if="hasLink(sub)">
+                                                    <a :href="sub.link"
+                                                       @click="$store.aboutPage.navigate($event, sub.id)"
+                                                       class="group relative flex h-[118px] hover:text-white flex-col items-center justify-center overflow-hidden rounded-[6px] shadow shadow-md border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
+                                                       :aria-label="$store.app.currentLang === 'ar' ? sub.titleAr : sub.titleEn">
+                                                        <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"
+                                                            x-text="$store.app.currentLang === 'ar' ? sub.titleAr : sub.titleEn"></h4>
+                                                        <span class="mt-5 text-[8px] font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                                              :class="itemIndex === 0 ? 'opacity-100' : ''"
+                                                              x-text="$store.app.currentLang === 'ar' ? 'استكشف →' : 'Explore →'"></span>
+                                                    </a>
+                                                </template>
+                                                <template x-if="!hasLink(sub)">
+                                                    <div class="relative flex h-[118px]  items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
+                                                        <h4 class="text-[17px] font-bold leading-tight text-slate-950"
+                                                            x-text="$store.app.currentLang === 'ar' ? sub.titleAr : sub.titleEn"></h4>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-2">
+                                <template x-for="(_, idx) in Array.from({ length: maxSlide + 1 })" :key="idx">
+                                    <button type="button"
+                                            class="h-1.5 rounded-full transition-all duration-300"
+                                            :class="activeSlide === idx ? 'w-8 bg-spu-blue' : 'w-2 bg-spu-blue/20'"
+                                            @click="activeSlide = idx"
+                                            :aria-label="`Go to navigation card group ${idx + 1}`"></button>
+                                </template>
                             </div>
 
-                            <!-- Title -->
-                            <h4 class="mt-6 text-xl font-bold text-spu-blue"
-                                x-text="$store.app.currentLang === 'ar' ? sub.titleAr : sub.titleEn">
-                            </h4>
-
-                            <!-- Bottom accent line -->
-                            <div class="mt-5 h-[2.5px] w-0 rounded-full bg-spu-red transition-all duration-500 group-hover:w-12"></div>
-                        </a>
-                    </template>
-                </div>
+                            <div class="flex items-center gap-3">
+                                <button type="button"
+                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
+                                        @click="previousSlide()"
+                                        aria-label="Previous navigation card">
+                                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                                </button>
+                                <button type="button"
+                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
+                                        @click="nextSlide()"
+                                        aria-label="Next navigation card">
+                                    <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
 
         </div>
