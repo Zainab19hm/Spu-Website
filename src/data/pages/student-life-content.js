@@ -533,7 +533,7 @@ export const studentLifePageContent = {
             { src: '/images/campus-feature-02.webp', altEn: 'Student collaboration space', altAr: 'مساحة تعاون الطلاب' },
             { src: '/images/dsc-1060.webp', altEn: 'Campus grounds', altAr: 'أرض الحرم الجامعي' },
             { src: '/images/dsc-1075.webp', altEn: 'University facilities', altAr: 'مرافق الجامعة' },
-            { src: '/images/admissions-timeline-campus.webp', altEn: 'Academic environment', altAr: 'البيئة الأكاديمية' },
+            { src: 'images/about-hero-2.jpg', altEn: 'Academic environment', altAr: 'البيئة الأكاديمية' },
             { src: '/images/slider-1.webp', altEn: 'SPU campus aerial view', altAr: 'منظر جوي لحرم SPU' }
         ]
     },

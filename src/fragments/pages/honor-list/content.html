@@ -1,29 +1,25 @@
 <section class="honor-page bg-white py-14 font-hacen md:py-18" x-data>
   <div class="container">
-    <div class="text-center">
-      <h2 class="text-[30px] font-bold leading-tight text-spu-blue md:text-[34px]"
-          x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.titleAr : $store.honorListPage.intro.titleEn"></h2>
-    </div>
-
-    <div class="mt-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+    <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
       <div class="flex flex-wrap items-center gap-3">
         <template x-for="filter in $store.honorListPage.filters" :key="filter.id">
           <button type="button"
                   class="honor-filter"
                   :class="$store.honorListPage.activeSemester === filter.id ? 'honor-filter--active' : ''"
-                  @click="$store.honorListPage.activeSemester = filter.id">
+                  @click="$store.honorListPage.setSemester(filter.id)">
             <span x-text="$store.app.currentLang === 'ar' ? filter.labelAr : filter.labelEn"></span>
           </button>
         </template>
 
         <label class="sr-only"
-               x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.facultyLabelAr : $store.honorListPage.intro.facultyLabelEn"></label>
+               x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.departmentLabelAr : $store.honorListPage.intro.departmentLabelEn"></label>
         <select class="honor-select"
-                x-model="$store.honorListPage.selectedFaculty"
-                @change="$store.honorListPage.selectFaculty($event.target.value)"
-                :aria-label="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.facultyLabelAr : $store.honorListPage.intro.facultyLabelEn">
-          <template x-for="faculty in $store.honorListPage.faculties" :key="faculty.pageName">
-            <option :value="faculty.pageName" x-text="$store.app.currentLang === 'ar' ? faculty.labelAr : faculty.labelEn"></option>
+                x-model="$store.honorListPage.selectedDepartment"
+                @change="$store.honorListPage.setDepartment($event.target.value)"
+                :aria-label="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.departmentLabelAr : $store.honorListPage.intro.departmentLabelEn">
+          <option value="all" x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.departmentLabelAr : $store.honorListPage.intro.departmentLabelEn"></option>
+          <template x-for="department in $store.honorListPage.departments()" :key="department.id">
+            <option :value="department.id" x-text="department.label"></option>
           </template>
         </select>
 
@@ -31,20 +27,17 @@
                x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.yearLabelAr : $store.honorListPage.intro.yearLabelEn"></label>
         <select class="honor-select"
                 x-model="$store.honorListPage.activeYear"
+                @change="$store.honorListPage.setYear($event.target.value)"
                 :aria-label="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.yearLabelAr : $store.honorListPage.intro.yearLabelEn">
           <template x-for="year in $store.honorListPage.academicYears" :key="year.id">
             <option :value="year.id" x-text="$store.app.currentLang === 'ar' ? year.labelAr : year.labelEn"></option>
           </template>
         </select>
       </div>
-
-      <button type="button" class="honor-view-all" @click="$store.honorListPage.showAll()">
-        <span x-text="$store.app.currentLang === 'ar' ? $store.honorListPage.intro.viewAllAr : $store.honorListPage.intro.viewAllEn"></span>
-      </button>
     </div>
 
     <div class="mt-9 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-      <template x-for="honoree in $store.honorListPage.filteredHonorees()" :key="honoree.id">
+      <template x-for="honoree in $store.honorListPage.visibleHonorees()" :key="honoree.facultyPageName + '-' + honoree.id">
         <article class="honor-card">
           <div class="honor-card__media">
             <img :src="honoree.image"
@@ -69,6 +62,30 @@
           </div>
         </article>
       </template>
+    </div>
+
+    <div class="mt-12 flex items-center justify-center gap-2">
+      <button type="button"
+              class="honor-page-btn"
+              :disabled="$store.honorListPage.currentPage === 1"
+              @click="$store.honorListPage.goToPage($store.honorListPage.currentPage - 1)"
+              aria-label="Previous page">
+        <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+      </button>
+      <template x-for="page in $store.honorListPage.totalPages()" :key="page">
+        <button type="button"
+                class="honor-page-btn"
+                :class="$store.honorListPage.currentPage === page ? 'honor-page-btn--active' : ''"
+                @click="$store.honorListPage.goToPage(page)"
+                x-text="page"></button>
+      </template>
+      <button type="button"
+              class="honor-page-btn"
+              :disabled="$store.honorListPage.currentPage === $store.honorListPage.totalPages()"
+              @click="$store.honorListPage.goToPage($store.honorListPage.currentPage + 1)"
+              aria-label="Next page">
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+      </button>
     </div>
 
     <div class="honor-quote">

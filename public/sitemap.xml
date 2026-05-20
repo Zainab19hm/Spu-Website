@@ -56,6 +56,12 @@
     <loc>https://spu.edu.sy/news/</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/news/articles/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/news/gallery/</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/contact/</loc>
   </url>
   <url>
@@ -122,6 +128,27 @@
     <loc>https://spu.edu.sy/facilities/pharmacy/labs/</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/training/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/artificial-intelligence/projects/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/projects/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/building-construction-engineering/projects/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/projects/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/projects/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/projects/</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/facilities/artificial-intelligence/labs/</loc>
   </url>
   <url>
@@ -138,6 +165,27 @@
   </url>
   <url>
     <loc>https://spu.edu.sy/facilities/pharmacy/departments/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/artificial-intelligence/alumni/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/business-administration/alumni/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/building-construction-engineering/alumni/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/dentistry/alumni/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/medicine/alumni/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/petroleum/alumni/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/facilities/pharmacy/alumni/</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/facilities/artificial-intelligence/valedictorians/</loc>

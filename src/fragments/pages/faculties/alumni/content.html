@@ -1,0 +1,138 @@
+<section class="bg-white py-12 font-hacen"
+    x-data="{
+        selectedYear: '',
+        selectedDepartment: '',
+        selectedFaculty: '',
+        selectedPhase: '',
+        currentPage: 1,
+        perPage: 12,
+        get content() { return $store.facultyAlumniPage },
+        get isAr() { return $store.app.currentLang === 'ar' },
+        get alumni() { return this.content.alumni || [] },
+        unique(key) {
+            return [...new Set(this.alumni.map((item) => item[key]).filter(Boolean))];
+        },
+        get years() { return this.unique('graduationYear') },
+        get departments() { return this.unique(this.isAr ? 'departmentAr' : 'departmentEn') },
+        get faculties() { return this.unique(this.isAr ? 'facultyAr' : 'facultyEn') },
+        get phases() { return this.unique(this.isAr ? 'academicPhaseAr' : 'academicPhaseEn') },
+        get filteredAlumni() {
+            const departmentKey = this.isAr ? 'departmentAr' : 'departmentEn';
+            const facultyKey = this.isAr ? 'facultyAr' : 'facultyEn';
+            const phaseKey = this.isAr ? 'academicPhaseAr' : 'academicPhaseEn';
+
+            return this.alumni.filter((item) => {
+                return (!this.selectedYear || item.graduationYear === this.selectedYear)
+                    && (!this.selectedDepartment || item[departmentKey] === this.selectedDepartment)
+                    && (!this.selectedFaculty || item[facultyKey] === this.selectedFaculty)
+                    && (!this.selectedPhase || item[phaseKey] === this.selectedPhase);
+            });
+        },
+        get totalPages() { return Math.max(1, Math.ceil(this.filteredAlumni.length / this.perPage)) },
+        get visibleAlumni() {
+            const start = (this.currentPage - 1) * this.perPage;
+            return this.filteredAlumni.slice(start, start + this.perPage);
+        },
+        resetFilters() {
+            this.selectedYear = '';
+            this.selectedDepartment = '';
+            this.selectedFaculty = '';
+            this.selectedPhase = '';
+            this.currentPage = 1;
+        },
+        updateFilter() {
+            this.currentPage = 1;
+        }
+    }">
+    <div class="container">
+        <div class="mb-8 flex flex-wrap items-center gap-4">
+            <button type="button" @click="resetFilters()"
+                class="inline-flex h-9 items-center justify-center rounded-[6px] bg-spu-red px-4 text-[11px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-spu-blue"
+                x-text="isAr ? content.filters.allLabelAr : content.filters.allLabelEn"></button>
+
+            <label class="sr-only" for="alumni-year" x-text="isAr ? content.filters.yearLabelAr : content.filters.yearLabelEn"></label>
+            <select id="alumni-year" x-model="selectedYear" @change="updateFilter()"
+                class="h-9 min-w-[150px] rounded-[6px] border border-slate-200 bg-white px-4 text-[12px] font-semibold text-spu-blue outline-none transition-colors focus:border-spu-blue">
+                <option value="" x-text="isAr ? content.filters.yearLabelAr : content.filters.yearLabelEn"></option>
+                <template x-for="year in years" :key="year">
+                    <option :value="year" x-text="year"></option>
+                </template>
+            </select>
+
+            <label class="sr-only" for="alumni-department" x-text="isAr ? content.filters.departmentLabelAr : content.filters.departmentLabelEn"></label>
+            <select id="alumni-department" x-model="selectedDepartment" @change="updateFilter()"
+                class="h-9 min-w-[150px] rounded-[6px] border border-slate-200 bg-white px-4 text-[12px] font-semibold text-spu-blue outline-none transition-colors focus:border-spu-blue">
+                <option value="" x-text="isAr ? content.filters.departmentLabelAr : content.filters.departmentLabelEn"></option>
+                <template x-for="department in departments" :key="department">
+                    <option :value="department" x-text="department"></option>
+                </template>
+            </select>
+
+            <label class="sr-only" for="alumni-faculty" x-text="isAr ? content.filters.facultyLabelAr : content.filters.facultyLabelEn"></label>
+            <select id="alumni-faculty" x-model="selectedFaculty" @change="updateFilter()"
+                class="h-9 min-w-[150px] rounded-[6px] border border-slate-200 bg-white px-4 text-[12px] font-semibold text-spu-blue outline-none transition-colors focus:border-spu-blue">
+                <option value="" x-text="isAr ? content.filters.facultyLabelAr : content.filters.facultyLabelEn"></option>
+                <template x-for="faculty in faculties" :key="faculty">
+                    <option :value="faculty" x-text="faculty"></option>
+                </template>
+            </select>
+
+            <label class="sr-only" for="alumni-phase" x-text="isAr ? content.filters.phaseLabelAr : content.filters.phaseLabelEn"></label>
+            <select id="alumni-phase" x-model="selectedPhase" @change="updateFilter()"
+                class="h-9 min-w-[150px] rounded-[6px] border border-slate-200 bg-white px-4 text-[12px] font-semibold text-spu-blue outline-none transition-colors focus:border-spu-blue">
+                <option value="" x-text="isAr ? content.filters.phaseLabelAr : content.filters.phaseLabelEn"></option>
+                <template x-for="phase in phases" :key="phase">
+                    <option :value="phase" x-text="phase"></option>
+                </template>
+            </select>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <template x-for="person in visibleAlumni" :key="person.id">
+                <article class="overflow-hidden border border-slate-200 bg-white shadow-[0_8px_26px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.1)]">
+                    <div class="h-[230px] overflow-hidden bg-slate-100">
+                        <img :src="person.image" :alt="isAr ? person.fullNameAr : person.fullNameEn" class="h-full w-full object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-4 text-center">
+                        <h2 class="text-[14px] font-bold text-spu-blue" x-text="isAr ? person.fullNameAr : person.fullNameEn"></h2>
+                        <p class="mt-2 text-[11px] font-bold text-spu-red">
+                            <span x-text="isAr ? 'سنة التخرج:' : 'Graduation Year:'"></span>
+                            <span x-text="person.graduationYear"></span>
+                        </p>
+                        <p class="mt-1 text-[11px] font-bold text-spu-red">
+                            <span x-text="isAr ? 'الفصل:' : 'Semester:'"></span>
+                            <span x-text="isAr ? person.semesterAr : person.semesterEn"></span>
+                        </p>
+                        <p class="mt-1 text-[11px] font-semibold text-slate-500">
+                            <span x-text="isAr ? 'القسم:' : 'Department:'"></span>
+                            <span x-text="isAr ? person.departmentAr : person.departmentEn"></span>
+                        </p>
+                    </div>
+                </article>
+            </template>
+        </div>
+
+        <div x-show="filteredAlumni.length === 0" class="py-16 text-center">
+            <p class="text-sm font-semibold text-slate-500" x-text="isAr ? 'لا توجد نتائج مطابقة.' : 'No matching alumni found.'"></p>
+        </div>
+
+        <div class="mt-10 flex items-center justify-center gap-2">
+            <button type="button" @click="currentPage = Math.max(1, currentPage - 1)"
+                class="flex h-8 w-8 items-center justify-center rounded-[4px] border border-slate-200 text-[12px] font-bold text-spu-blue transition-colors hover:border-spu-blue"
+                :disabled="currentPage === 1" aria-label="Previous page">
+                <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+            </button>
+            <template x-for="page in totalPages" :key="page">
+                <button type="button" @click="currentPage = page"
+                    class="flex h-8 w-8 items-center justify-center rounded-[4px] border text-[12px] font-bold transition-colors"
+                    :class="currentPage === page ? 'border-spu-red bg-spu-red text-white' : 'border-slate-200 text-spu-blue hover:border-spu-blue'"
+                    x-text="page"></button>
+            </template>
+            <button type="button" @click="currentPage = Math.min(totalPages, currentPage + 1)"
+                class="flex h-8 w-8 items-center justify-center rounded-[4px] border border-slate-200 text-[12px] font-bold text-spu-blue transition-colors hover:border-spu-blue"
+                :disabled="currentPage === totalPages" aria-label="Next page">
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+            </button>
+        </div>
+    </div>
+</section>

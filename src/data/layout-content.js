@@ -122,10 +122,10 @@ export const navigationMenuItems = [
         page: 'news',
         hasDropdown: true,
         children: [
-            { labelAr: 'الأخبار', labelEn: 'News', url: siteRoutes.news },
+            { labelAr: 'الأخبار', labelEn: 'News', url: siteRoutes.newsArticles },
             { labelAr: 'الإعلانات', labelEn: 'Announcements', url: withHash(siteRoutes.news, 'announcements') },
             { labelAr: 'تقويم الفعاليات', labelEn: 'Events Calendar', url: withHash(siteRoutes.news, 'events') },
-            { labelAr: 'معرض الوسائط', labelEn: 'Media Gallery', url: withHash(siteRoutes.news, 'media-gallery') },
+            { labelAr: 'معرض الوسائط', labelEn: 'Media Gallery', url: siteRoutes.newsGallery },
             { labelAr: 'غرفة الصحافة', labelEn: 'Press Room', url: withHash(siteRoutes.news, 'press-room') }
         ]
     },

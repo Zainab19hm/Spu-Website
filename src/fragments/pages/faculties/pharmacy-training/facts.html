@@ -1,0 +1,13 @@
+<section class="bg-spu-blue py-9 font-hacen"
+    x-data="{ get facts() { return $store.pharmacyTrainingPage.facts }, get isAr() { return $store.app.currentLang === 'ar' } }">
+    <div class="container">
+        <div class="grid gap-5 text-white sm:grid-cols-2 lg:grid-cols-4">
+            <template x-for="fact in facts" :key="fact.id">
+                <article class="text-center lg:text-left rtl:lg:text-right">
+                    <p class="text-[14px] font-bold" x-text="isAr ? fact.valueAr : fact.valueEn"></p>
+                    <p class="mt-2 text-[11px] font-semibold text-white/60" x-text="isAr ? fact.labelAr : fact.labelEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

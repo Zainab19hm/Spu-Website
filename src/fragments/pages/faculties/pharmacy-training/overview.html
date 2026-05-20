@@ -1,0 +1,19 @@
+<section class="bg-white py-12 font-hacen"
+    x-data="{ get cards() { return $store.pharmacyTrainingPage.introCards }, get isAr() { return $store.app.currentLang === 'ar' } }">
+    <div class="container">
+        <div class="grid gap-5 md:grid-cols-3">
+            <template x-for="card in cards" :key="card.id">
+                <article class="min-h-[150px] border border-slate-200 bg-white p-6 shadow-[0_8px_26px_rgba(15,23,42,0.04)]">
+                    <div class="flex items-start justify-between gap-4">
+                        <h2 class="text-[15px] font-bold text-spu-blue" x-text="isAr ? card.titleAr : card.titleEn"></h2>
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#eef4ff]">
+                            <img :src="card.icon" alt="" class="h-4 w-4" aria-hidden="true">
+                        </span>
+                    </div>
+                    <p class="mt-4 text-[12px] font-semibold leading-6 text-slate-500"
+                        x-text="isAr ? card.descriptionAr : card.descriptionEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

@@ -1,60 +1,50 @@
 <section x-show="!$store.facultiesPage.catalogMode && $store.facultiesPage.currentFaculty?.highlights" x-cloak
          id="highlights"
-         class="relative rounded-[6px] overflow-hidden bg-section py-24 font-hacen lg:py-32"
+         class="relative overflow-hidden bg-section py-20 font-hacen lg:py-28"
          x-data="{
              activeHighlight: 0,
-             hasLink(item) {
-                 return !!item?.link && item.link !== '#';
+             routeSlug(faculty) {
+                 return {
+                     medicine: 'medicine',
+                     dentistry: 'dentistry',
+                     pharmacy: 'pharmacy',
+                     'ai-engineering': 'artificial-intelligence',
+                     Construction: 'building-construction-engineering',
+                     business: 'business-administration'
+                 }[faculty?.id] || '';
+             },
+             card(id, titleEn, titleAr, link, actionEn, actionAr) {
+                 return { id, titleEn, titleAr, link, actionEn, actionAr };
              },
              get items() {
                  const faculty = $store.facultiesPage.currentFaculty || {};
-                 const baseItems = (faculty.highlights?.items || []).map((item) => ({
-                     id: item.id,
-                     titleAr: item.titleAr,
-                     titleEn: item.titleEn,
-                     link: item.link,
-                     actionAr: 'استكشف',
-                     actionEn: 'Explore'
-                 }));
-                 const result = [...baseItems];
+                 const slug = this.routeSlug(faculty);
 
-                 if (faculty.departmentRoute && !result.some((item) => item.link === faculty.departmentRoute)) {
-                     result.push({
-                         id: 'departments-nav',
-                         titleAr: 'الأقسام الأكاديمية',
-                         titleEn: 'Academic Departments',
-                         link: faculty.departmentRoute,
-                         actionAr: 'استكشف الأقسام',
-                         actionEn: 'Explore Departments'
-                     });
+                 if (!slug) {
+                     return [];
                  }
+
+                 const baseRoute = `/facilities/${slug}`;
+                 const cards = [
+                     this.card('overview-nav', 'Overview', 'لمحة عامة', `${baseRoute}/overview/`, 'Explore Overview', 'استكشف اللمحة'),
+                     this.card('departments-nav', 'Departments', 'الأقسام الأكاديمية', faculty.departmentRoute || `${baseRoute}/departments/`, 'Explore Departments', 'استكشف الأقسام'),
+                     this.card('study-plan-nav', 'Study Plan', 'الخطة الدراسية', `${baseRoute}/study-plan/`, 'Explore Study Plan', 'استكشف الخطة'),
+                     this.card('calendar-nav', 'Calendar', 'التقويم الأكاديمي', `${baseRoute}/calendar/`, 'Explore Calendar', 'استكشف التقويم'),
+                     this.card('research-nav', 'Research', 'البحث العلمي', `${baseRoute}/research/`, 'Explore Research', 'استكشف البحث'),
+                     this.card('projects-nav', 'Projects', 'المشاريع', `${baseRoute}/projects/`, 'Explore Projects', 'استكشف المشاريع'),
+                     this.card('alumni-nav', 'Alumni', 'الخريجون', faculty.alumniRoute || `${baseRoute}/alumni/`, 'Explore Alumni', 'استكشف الخريجين'),
+                     this.card('valedictorians-nav', 'Honor List', 'قائمة الشرف', `${baseRoute}/valedictorians/`, 'Explore Honor List', 'استكشف قائمة الشرف')
+                 ];
 
                  if (faculty.labsRoute) {
-                     result.push({
-                         id: 'labs-nav',
-                         titleAr: 'المخابر',
-                         titleEn: 'Labs',
-                         link: faculty.labsRoute,
-                         actionAr: 'استكشف المخابر',
-                         actionEn: 'Explore Labs'
-                     });
+                     cards.push(this.card('labs-nav', 'Laboratories', 'المخابر', faculty.labsRoute, 'Explore Laboratories', 'استكشف المخابر'));
                  }
 
-                 if (faculty.dean) {
-                     result.push({
-                         id: 'leadership-nav',
-                         titleAr: 'قيادة الكلية',
-                         titleEn: 'Faculty Leadership',
-                         link: '#dean',
-                         actionAr: 'استكشف القيادة',
-                         actionEn: 'Explore Leadership'
-                     });
+                 if (faculty.trainingRoute) {
+                     cards.push(this.card('training-nav', 'Training', 'التدريب', faculty.trainingRoute, 'Explore Training', 'استكشف التدريب'));
                  }
 
-                 return result;
-             },
-             get shouldSlide() {
-                 return this.items.length > 4;
+                 return cards;
              },
              get slides() {
                  const groups = [];
@@ -80,9 +70,8 @@
          }">
 
     <div class="container relative z-10">
-        <div class="flex flex-col items-start gap-14 lg:flex-row lg:items-center lg:gap-20">
-
-            <div class="w-full shrink-0 lg:w-[42%]">
+        <div class="flex flex-col items-start gap-12 lg:flex-row lg:items-center lg:gap-16">
+            <div class="w-full shrink-0 lg:w-[38%]">
                 <h3 class="text-[26px] font-bold leading-tight text-spu-blue md:text-[32px]"
                     x-text="$store.app.currentLang === 'ar'
                         ? $store.facultiesPage.currentFaculty?.highlights?.sectionTitleAr
@@ -97,95 +86,53 @@
             </div>
 
             <div class="w-full min-w-0 flex-1">
-                <template x-if="!shouldSlide">
-                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <template x-for="(item, idx) in items" :key="item.id">
-                            <div>
-                                <template x-if="hasLink(item)">
+                <div class="overflow-hidden">
+                    <div class="flex transition-transform duration-500 ease-out"
+                         :style="`transform: translateX(${$store.app.currentLang === 'ar' ? activeHighlight * 100 : activeHighlight * -100}%);`">
+                        <template x-for="(slide, slideIndex) in slides" :key="slideIndex">
+                            <div class="grid w-full shrink-0 grid-cols-1 gap-4 sm:grid-cols-2">
+                                <template x-for="item in slide" :key="item.id">
                                     <a :href="item.link"
-                                       class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
+                                       class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[6px] border border-slate-200/70 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-spu-blue hover:shadow-md"
                                        :aria-label="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
-                                        <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"
-                                            :class="idx === 0 ? 'text-white' : 'text-slate-950 group-hover:text-white'"
+                                        <h4 class="text-[17px] font-bold leading-tight text-spu-blue transition-colors duration-300 group-hover:text-white"
                                             x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
                                         <span class="mt-5 text-[8px] font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                                              :class="idx === 0 ? 'opacity-100' : ''"
                                               x-text="($store.app.currentLang === 'ar' ? item.actionAr : item.actionEn) + ' →'"></span>
                                     </a>
-                                </template>
-                                <template x-if="!hasLink(item)">
-                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
-                                        <h4 class="text-[17px] font-bold leading-tight text-slate-950"
-                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
-                                    </div>
                                 </template>
                             </div>
                         </template>
                     </div>
-                </template>
+                </div>
 
-                <template x-if="shouldSlide">
-                    <div>
-                        <div class="overflow-hidden">
-                            <div class="flex transition-transform duration-500 ease-out"
-                                 :style="`transform: translateX(${$store.app.currentLang === 'ar' ? activeHighlight * 100 : activeHighlight * -100}%);`">
-                                <template x-for="(slide, slideIndex) in slides" :key="slideIndex">
-                                    <div class="grid w-full shrink-0 grid-cols-1 gap-4 sm:grid-cols-2">
-                                        <template x-for="(item, itemIndex) in slide" :key="item.id">
-                                            <div>
-                                                <template x-if="hasLink(item)">
-                                                    <a :href="item.link"
-                                                       class="group relative flex h-[118px] rounded-[6px] shadow shadow-md  flex-col items-center hover:text-white justify-center overflow-hidden border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
-                                                       :aria-label="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
-                                                        <h4 class="text-[17px] font-bold group hover:text-white leading-tight transition-colors duration-300"
-                                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
-                                                        <span class="mt-5 text-[8px] hover:text-white font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                                                              x-text="($store.app.currentLang === 'ar' ? item.actionAr : item.actionEn) + ' →'"></span>
-                                                    </a>
-                                                </template>
-                                                <template x-if="!hasLink(item)">
-                                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
-                                                        <h4 class="text-[17px] font-bold leading-tight text-slate-950"
-                                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
-                                                    </div>
-                                                </template>
-                                            </div>
-                                        </template>
-                                    </div>
-                                </template>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 flex items-center justify-between gap-4">
-                            <div class="flex items-center gap-2">
-                                <template x-for="(_, idx) in Array.from({ length: maxHighlight + 1 })" :key="idx">
-                                    <button type="button"
-                                            class="h-1.5 rounded-full transition-all duration-300"
-                                            :class="activeHighlight === idx ? 'w-8 bg-spu-blue' : 'w-2 bg-spu-blue/20'"
-                                            @click="activeHighlight = idx"
-                                            :aria-label="`Go to navigation card group ${idx + 1}`"></button>
-                                </template>
-                            </div>
-
-                            <div class="flex items-center gap-3">
-                                <button type="button"
-                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
-                                        @click="previousHighlight()"
-                                        aria-label="Previous navigation card">
-                                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
-                                </button>
-                                <button type="button"
-                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
-                                        @click="nextHighlight()"
-                                        aria-label="Next navigation card">
-                                    <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
-                                </button>
-                            </div>
-                        </div>
+                <div class="mt-6 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-2">
+                        <template x-for="(_, idx) in Array.from({ length: maxHighlight + 1 })" :key="idx">
+                            <button type="button"
+                                    class="h-1.5 rounded-full transition-all duration-300"
+                                    :class="activeHighlight === idx ? 'w-8 bg-spu-blue' : 'w-2 bg-spu-blue/20'"
+                                    @click="activeHighlight = idx"
+                                    :aria-label="`Go to navigation card group ${idx + 1}`"></button>
+                        </template>
                     </div>
-                </template>
-            </div>
 
+                    <div class="flex items-center gap-3">
+                        <button type="button"
+                                class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
+                                @click="previousHighlight()"
+                                aria-label="Previous navigation card">
+                            <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                        </button>
+                        <button type="button"
+                                class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
+                                @click="nextHighlight()"
+                                aria-label="Next navigation card">
+                            <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

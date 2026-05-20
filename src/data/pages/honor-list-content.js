@@ -18,6 +18,8 @@ export const honorListPageContent = {
       viewAllAr: 'عرض الكل',
       semesterLabelEn: 'Semester',
       semesterLabelAr: 'الفصل',
+      departmentLabelEn: 'Department',
+      departmentLabelAr: 'القسم',
       yearLabelEn: 'Academic Years',
       yearLabelAr: 'السنوات الدراسية',
       facultyLabelEn: 'Faculty',

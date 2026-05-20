@@ -72,6 +72,8 @@ export const siteRoutes = Object.freeze({
     virtualTour: getPageRoute('virtual-tour'),
     services: getPageRoute('services'),
     news: getPageRoute('news'),
+    newsArticles: getPageRoute('news-articles'),
+    newsGallery: getPageRoute('news-gallery'),
     contact: getPageRoute('contact'),
     campusLifeDental: getPageRoute('campus-life-dental'),
     campusLifeHospital: getPageRoute('campus-life-hospital'),

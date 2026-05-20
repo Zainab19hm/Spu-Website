@@ -352,6 +352,40 @@
       ]
     },
     {
+      "name": "news-articles",
+      "fileName": "news/articles/index.html",
+      "route": "/news/articles/",
+      "title": "News Listing | Syrian Private University",
+      "description": "Browse published Syrian Private University news with category filters, featured images, explicit dates, excerpts, and pagination.",
+      "ogImage": "/images/news/researches.jpeg",
+      "keywords": [
+        "SPU news listing",
+        "Syrian Private University news",
+        "SPU articles"
+      ],
+      "fragments": [
+        "pages/news/listing/hero.html",
+        "pages/news/listing/content.html"
+      ]
+    },
+    {
+      "name": "news-gallery",
+      "fileName": "news/gallery/index.html",
+      "route": "/news/gallery/",
+      "title": "Media Gallery | Syrian Private University",
+      "description": "Browse high-resolution Syrian Private University photography organized by campus life, academic activities, events, research, clinics, and student activities.",
+      "ogImage": "/images/DSC_0647.JPG",
+      "keywords": [
+        "SPU media gallery",
+        "Syrian Private University photos",
+        "SPU events gallery"
+      ],
+      "fragments": [
+        "pages/news/gallery/hero.html",
+        "pages/news/gallery/content.html"
+      ]
+    },
+    {
       "name": "contact",
       "fileName": "contact.html",
       "route": "/contact/",
@@ -721,6 +755,128 @@
       ]
     },
     {
+      "name": "faculty-pharmacy-training",
+      "fileName": "facilities/pharmacy/training/index.html",
+      "route": "/facilities/pharmacy/training/",
+      "title": "Pharmacy Training & Apprenticeship | SPU",
+      "description": "Explore the supervised pharmacy training pathway, approved training locations, partner pharmacies, and hospital placements for SPU pharmacy students.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU pharmacy training",
+        "Pharmacy apprenticeship",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/pharmacy-training/hero.html",
+        "pages/faculties/pharmacy-training/overview.html",
+        "pages/faculties/pharmacy-training/structure.html",
+        "pages/faculties/pharmacy-training/partners.html",
+        "pages/faculties/pharmacy-training/facts.html"
+      ]
+    },
+    {
+      "name": "faculty-artificial-intelligence-projects",
+      "fileName": "facilities/artificial-intelligence/projects/index.html",
+      "route": "/facilities/artificial-intelligence/projects/",
+      "title": "Artificial Intelligence Student Projects | SPU",
+      "description": "Student projects from the SPU Faculty of Artificial Intelligence.",
+      "ogImage": "/images/research-clinical-simulation.webp",
+      "keywords": [
+        "SPU student projects",
+        "Artificial Intelligence projects",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/projects/hero.html",
+        "pages/faculties/projects/content.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-projects",
+      "fileName": "facilities/business-administration/projects/index.html",
+      "route": "/facilities/business-administration/projects/",
+      "title": "Business Administration Student Projects | SPU",
+      "description": "Student projects from the SPU Faculty of Business Administration.",
+      "ogImage": "/images/campus-career.webp",
+      "keywords": [
+        "SPU student projects",
+        "Business Administration projects",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/projects/hero.html",
+        "pages/faculties/projects/content.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-projects",
+      "fileName": "facilities/building-construction-engineering/projects/index.html",
+      "route": "/facilities/building-construction-engineering/projects/",
+      "title": "Building & Construction Engineering Student Projects | SPU",
+      "description": "Student projects from the SPU Faculty of Building and Construction Engineering.",
+      "ogImage": "/images/campus-feature-01.webp",
+      "keywords": [
+        "SPU student projects",
+        "Construction Engineering projects",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/projects/hero.html",
+        "pages/faculties/projects/content.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-projects",
+      "fileName": "facilities/dentistry/projects/index.html",
+      "route": "/facilities/dentistry/projects/",
+      "title": "Dentistry Student Projects | SPU",
+      "description": "Student projects from the SPU Faculty of Dentistry.",
+      "ogImage": "/images/research-digital-dentistry.webp",
+      "keywords": [
+        "SPU student projects",
+        "Dentistry projects",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/projects/hero.html",
+        "pages/faculties/projects/content.html"
+      ]
+    },
+    {
+      "name": "faculty-medicine-projects",
+      "fileName": "facilities/medicine/projects/index.html",
+      "route": "/facilities/medicine/projects/",
+      "title": "Medicine Student Projects | SPU",
+      "description": "Student projects from the SPU Faculty of Medicine.",
+      "ogImage": "/images/research-clinical-simulation.webp",
+      "keywords": [
+        "SPU student projects",
+        "Medicine projects",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/projects/hero.html",
+        "pages/faculties/projects/content.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-projects",
+      "fileName": "facilities/pharmacy/projects/index.html",
+      "route": "/facilities/pharmacy/projects/",
+      "title": "Pharmacy Student Projects | SPU",
+      "description": "Student projects from the SPU Faculty of Pharmacy.",
+      "ogImage": "/images/news/pharmacy.jpg",
+      "keywords": [
+        "SPU student projects",
+        "Pharmacy projects",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/projects/hero.html",
+        "pages/faculties/projects/content.html"
+      ]
+    },
+    {
       "name": "faculty-artificial-intelligence-labs",
       "fileName": "facilities/artificial-intelligence/labs/index.html",
       "route": "/facilities/artificial-intelligence/labs/",
@@ -814,6 +970,125 @@
       ],
       "fragments": [
         "pages/faculties/departments.html"
+      ]
+    },
+    {
+      "name": "faculty-artificial-intelligence-alumni",
+      "fileName": "facilities/artificial-intelligence/alumni/index.html",
+      "route": "/facilities/artificial-intelligence/alumni/",
+      "title": "Alumni | SPU Faculties",
+      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU alumni",
+        "Syrian Private University graduates",
+        "Faculty alumni"
+      ],
+      "fragments": [
+        "pages/faculties/alumni/hero.html",
+        "pages/faculties/alumni/content.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-alumni",
+      "fileName": "facilities/business-administration/alumni/index.html",
+      "route": "/facilities/business-administration/alumni/",
+      "title": "Alumni | SPU Faculties",
+      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU alumni",
+        "Syrian Private University graduates",
+        "Faculty alumni"
+      ],
+      "fragments": [
+        "pages/faculties/alumni/hero.html",
+        "pages/faculties/alumni/content.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-alumni",
+      "fileName": "facilities/building-construction-engineering/alumni/index.html",
+      "route": "/facilities/building-construction-engineering/alumni/",
+      "title": "Alumni | SPU Faculties",
+      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU alumni",
+        "Syrian Private University graduates",
+        "Faculty alumni"
+      ],
+      "fragments": [
+        "pages/faculties/alumni/hero.html",
+        "pages/faculties/alumni/content.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-alumni",
+      "fileName": "facilities/dentistry/alumni/index.html",
+      "route": "/facilities/dentistry/alumni/",
+      "title": "Alumni | SPU Faculties",
+      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU alumni",
+        "Syrian Private University graduates",
+        "Faculty alumni"
+      ],
+      "fragments": [
+        "pages/faculties/alumni/hero.html",
+        "pages/faculties/alumni/content.html"
+      ]
+    },
+    {
+      "name": "faculty-medicine-alumni",
+      "fileName": "facilities/medicine/alumni/index.html",
+      "route": "/facilities/medicine/alumni/",
+      "title": "Alumni | SPU Faculties",
+      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU alumni",
+        "Syrian Private University graduates",
+        "Faculty alumni"
+      ],
+      "fragments": [
+        "pages/faculties/alumni/hero.html",
+        "pages/faculties/alumni/content.html"
+      ]
+    },
+    {
+      "name": "faculty-petroleum-alumni",
+      "fileName": "facilities/petroleum/alumni/index.html",
+      "route": "/facilities/petroleum/alumni/",
+      "title": "Alumni | SPU Faculties",
+      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU alumni",
+        "Syrian Private University graduates",
+        "Faculty alumni"
+      ],
+      "fragments": [
+        "pages/faculties/alumni/hero.html",
+        "pages/faculties/alumni/content.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-alumni",
+      "fileName": "facilities/pharmacy/alumni/index.html",
+      "route": "/facilities/pharmacy/alumni/",
+      "title": "Alumni | SPU Faculties",
+      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU alumni",
+        "Syrian Private University graduates",
+        "Faculty alumni"
+      ],
+      "fragments": [
+        "pages/faculties/alumni/hero.html",
+        "pages/faculties/alumni/content.html"
       ]
     },
     {

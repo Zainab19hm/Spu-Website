@@ -375,6 +375,34 @@
         }
     }
 
+    @media (max-width: 420px) {
+        .site-nav-shell__main {
+            gap: 0.5rem;
+            padding: 0.55rem 0.75rem;
+        }
+
+        .site-nav-brand img {
+            width: 7.75rem !important;
+        }
+
+        .site-nav-actions {
+            gap: 0.35rem;
+        }
+
+        .site-nav-lang {
+            padding: 0.45rem;
+        }
+
+        .site-nav-lang span {
+            display: none;
+        }
+
+        .site-nav-menu-btn {
+            width: 2.35rem;
+            height: 2.35rem;
+        }
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .site-nav-link--active::after {
             animation: none;

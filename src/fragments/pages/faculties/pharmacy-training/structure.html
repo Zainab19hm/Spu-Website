@@ -1,0 +1,19 @@
+<section class="bg-white pb-14 font-hacen"
+    x-data="{ get programme() { return $store.pharmacyTrainingPage.programme }, get isAr() { return $store.app.currentLang === 'ar' } }">
+    <div class="container">
+        <h2 class="text-center text-[24px] font-bold text-spu-blue" x-text="isAr ? programme.titleAr : programme.titleEn"></h2>
+
+        <div class="relative mt-10 grid gap-7 md:grid-cols-4">
+            <div class="absolute left-0 right-0 top-6 hidden h-px bg-slate-200 md:block" aria-hidden="true"></div>
+            <template x-for="step in programme.steps" :key="step.number">
+                <article class="relative z-10 text-center">
+                    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-spu-blue text-[14px] font-bold text-white shadow-[0_10px_26px_rgba(32,39,89,0.18)]"
+                        x-text="step.number"></div>
+                    <h3 class="mt-4 text-[15px] font-bold text-spu-blue" x-text="isAr ? step.titleAr : step.titleEn"></h3>
+                    <p class="mx-auto mt-2 max-w-[210px] text-[11px] font-semibold leading-5 text-slate-500"
+                        x-text="isAr ? step.descriptionAr : step.descriptionEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>

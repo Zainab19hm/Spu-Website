@@ -161,7 +161,7 @@ export const newsPageContent = {
             summaryEn: 'View our latest photos and videos',
             summaryAr: 'شاهد أحدث الصور والفيديوهات لدينا',
             icon: 'image',
-            link: '#'
+            link: '/news/gallery/'
         },
         {
             id: 'press',

@@ -2,7 +2,10 @@
     :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'"
     x-data="{
     catalogReady: false,
-    faculties: $store.faculties?.items?.list || []
+    get faculties() {
+        const launchFacultyIds = ['ai-engineering', 'business', 'dentistry', 'pharmacy', 'medicine', 'Construction'];
+        return ($store.faculties?.items?.list || []).filter((faculty) => launchFacultyIds.includes(faculty.id));
+    }
 }" x-init="$nextTick(() => { setTimeout(() => catalogReady = true, 100) })">
 
     <div class="absolute inset-0">

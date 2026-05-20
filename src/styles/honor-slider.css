@@ -22,8 +22,8 @@
 
   .honor-filter:hover,
   .honor-filter--active {
-    border-color: #202759;
-    background: #202759;
+    border-color: #6f1616;
+    background: #6f1616;
     color: #ffffff;
   }
 
@@ -73,7 +73,7 @@
 
   .honor-card__media {
     position: relative;
-    aspect-ratio: 1.42 / 1;
+    aspect-ratio: 1.55 / 1;
     overflow: hidden;
     background: rgba(32, 39, 89, 0.06);
   }
@@ -109,7 +109,7 @@
   }
 
   .honor-card__body {
-    padding: 18px 18px 20px;
+    padding: 18px 20px 22px;
   }
 
   .honor-card__name {
@@ -120,7 +120,7 @@
   }
 
   .honor-card__semester {
-    color: rgba(32, 39, 89, 0.72);
+    color: #6f1616;
     font-size: 10px;
     font-weight: 700;
     line-height: 1;
@@ -133,6 +133,34 @@
     letter-spacing: 0.09em;
     line-height: 1;
     text-transform: uppercase;
+  }
+
+  .honor-page-btn {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(32, 39, 89, 0.14);
+    border-radius: 5px;
+    background: #ffffff;
+    color: #202759;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+  }
+
+  .honor-page-btn:hover:not(:disabled),
+  .honor-page-btn--active {
+    border-color: #6f1616;
+    background: #6f1616;
+    color: #ffffff;
+  }
+
+  .honor-page-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
   }
 
   .honor-quote {
