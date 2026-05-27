@@ -157,7 +157,7 @@ export const admissionsPageContent = {
                         titleAr: 'الطلاب المستجدون',
                         summaryEn: 'Prepare your secondary certificate, GPA, and English eligibility.',
                         summaryAr: 'جهز شهادة الثانوية، المعدل، وأهلية اللغة الإنجليزية.',
-                        linkUrl: '/admissions/how-to-apply.html',
+                        linkUrl: '/admissions/how-to-apply/',
                         linkTextEn: 'Start your application',
                         linkTextAr: 'ابدأ طلبك'
                     },
@@ -167,7 +167,7 @@ export const admissionsPageContent = {
                         titleAr: 'طلاب التحويل',
                         summaryEn: 'Submit previous transcripts, course descriptions, and academic clearance.',
                         summaryAr: 'قدم كشوفات سابقة، توصيف المقررات، وشهادة الحالة الأكاديمية.',
-                        linkUrl: '/admissions/transfer.html',
+                        linkUrl: '/admissions/transfer/',
                         linkTextEn: 'Review transfer rules',
                         linkTextAr: 'راجع قواعد التحويل'
                     },
@@ -177,7 +177,7 @@ export const admissionsPageContent = {
                         titleAr: 'المعادلة والدوليون',
                         summaryEn: 'Follow equivalency, translation and visa guidance for foreign credentials.',
                         summaryAr: 'اتبع إرشادات المعادلة والترجمة والتأشيرة للشهادات الأجنبية.',
-                        linkUrl: '/admissions/transfer.html',
+                        linkUrl: '/admissions/transfer/',
                         linkTextEn: 'See international guidance',
                         linkTextAr: 'عرض الإرشادات الدولية'
                     }

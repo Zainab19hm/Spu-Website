@@ -27,7 +27,7 @@
           </a>
 
           <div class="p-6">
-            <a :href="article.href" class="block">
+            <a :href="article.href" class="block" :aria-label="isAr ? article.titleAr : article.titleEn">
               <h2 class="text-[16px] font-bold leading-[21px] text-spu-blue"
                   x-text="isAr ? article.titleAr : article.titleEn"></h2>
             </a>

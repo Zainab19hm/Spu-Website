@@ -1,7 +1,7 @@
 <section class="bg-white py-14 font-hacen md:py-16"
          x-data="{ get page() { return $store.mediaGalleryPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
-  <div class="container max-w-[1180px]">
-    <div class="flex flex-wrap items-center justify-center gap-2">
+  <div class="container ">
+    <div class="flex flex-wrap items-center justify-center gap-2 ">
       <template x-for="category in page.categories" :key="category.id">
         <button type="button"
                 class="rounded-[5px] border px-4 py-2 text-[11px] font-bold transition"
@@ -14,7 +14,7 @@
     <template x-if="page.featuredItem()">
       <a :href="'#' + page.featuredItem().id"
          :id="page.featuredItem().id"
-         class="group relative mt-8 block min-h-[330px] overflow-hidden rounded-[6px] bg-spu-blue shadow-md">
+         class="group relative mt-8 block min-h-[400px] overflow-hidden rounded-[8px] bg-spu-blue shadow-md">
         <img :src="page.featuredItem().image"
              :alt="isAr ? page.featuredItem().titleAr : page.featuredItem().titleEn"
              loading="lazy"
@@ -41,11 +41,11 @@
       </button>
     </div>
 
-    <div class="mt-7 grid grid-cols-1 gap-7 md:grid-cols-2">
+    <div class="mt-7 grid grid-cols-1 gap-16 md:grid-cols-2">
       <template x-for="item in page.gridItems()" :key="item.id">
         <a :href="'#' + item.id"
            :id="item.id"
-           class="group relative block min-h-[230px] overflow-hidden rounded-[6px] bg-spu-blue shadow-sm">
+           class="group relative block min-h-[350px] overflow-hidden rounded-[10px] bg-spu-blue shadow-sm">
           <img :src="item.image"
                :alt="isAr ? item.titleAr : item.titleEn"
                loading="lazy"

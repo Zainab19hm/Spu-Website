@@ -54,7 +54,7 @@
                         <template x-for="(card, idx) in cards" :key="card.slug || card.titleEn">
                             <div>
                                 <template x-if="hasLink(card)">
-                                    <a :href="`/admissions/${card.slug}.html`"
+                                    <a :href="card.slug === 'transfer' ? '/admissions/transfer/' : `/admissions/${card.slug}.html`"
                                        class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
                                        :aria-label="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn">
                                         <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"
@@ -84,7 +84,7 @@
                                         <template x-for="(card, itemIndex) in slide" :key="card.slug || card.titleEn">
                                             <div>
                                                 <template x-if="hasLink(card)">
-                                                    <a :href="`/admissions/${card.slug}.html`"
+                                                    <a :href="card.slug === 'transfer' ? '/admissions/transfer/' : `/admissions/${card.slug}.html`"
                                                        class="group rounded-[6px] shadow shadow-md  relative flex h-[118px] flex-col items-center justify-center overflow-hidden  border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
                                                        :aria-label="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn">
                                                         <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"

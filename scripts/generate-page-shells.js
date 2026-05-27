@@ -183,6 +183,11 @@ const pageWarmupModules = {
   'campus-life-health-insurance': ['/src/alpine/pages/health-insurance-stores.js'],
   services: ['/src/alpine/pages/services-stores.js'],
   news: ['/src/alpine/pages/news-stores.js'],
+  'news-announcements': ['/src/alpine/pages/announcements-stores.js'],
+  'news-events': [
+    '/src/alpine/pages/news-events-stores.js',
+    '/src/features/calendar.js'
+  ],
   contact: ['/src/alpine/pages/contact-stores.js'],
   'campus-life-dental': ['/src/alpine/pages/dental-clinic-stores.js'],
   'campus-life-transport': ['/src/alpine/pages/transport-stores.js'],

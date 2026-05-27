@@ -1,0 +1,37 @@
+<section class="bg-white pb-14 font-hacen md:pb-16"
+         x-data="{ get page() { return $store.newsArticlePage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="mx-auto w-full max-w-[1050px] px-4 sm:px-6 lg:px-0">
+    <h2 class="text-[22px] font-bold text-spu-blue md:text-[28px]"
+        x-text="page.localized('labels', 'related')"></h2>
+
+    <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <template x-for="article in page.relatedArticles()" :key="article.id">
+        <article class="overflow-hidden rounded-[6px] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md">
+          <a :href="article.href" class="block">
+            <div class="relative aspect-[1.58] overflow-hidden bg-slate-100">
+              <img :src="article.image"
+                   :alt="isAr ? article.titleAr : article.titleEn"
+                   loading="lazy"
+                   class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]">
+              <span class="absolute left-3 top-3 rounded-[3px] bg-white px-2.5 py-1 text-[10px] font-bold text-spu-blue shadow-sm rtl:left-auto rtl:right-3"
+                    x-text="isAr ? article.categoryAr : article.categoryEn"></span>
+            </div>
+          </a>
+
+          <div class="p-4">
+            <h3 class="text-[15px] font-bold leading-[20px] text-spu-blue"
+                x-text="isAr ? article.titleAr : article.titleEn"></h3>
+            <p class="mt-2 text-[11px] font-bold text-spu-red" x-text="article.date"></p>
+            <p class="mt-3 min-h-[58px] text-[12px] font-medium leading-[20px] text-slate-600"
+               x-text="isAr ? article.summaryAr : article.summaryEn"></p>
+            <a :href="article.href"
+               class="mt-4 inline-flex items-center gap-2 text-[12px] font-bold text-spu-red transition hover:text-spu-blue">
+              <span x-text="page.localized('labels', 'readMore')"></span>
+              <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+            </a>
+          </div>
+        </article>
+      </template>
+    </div>
+  </div>
+</section>

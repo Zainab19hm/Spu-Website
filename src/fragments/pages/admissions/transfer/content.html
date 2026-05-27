@@ -1,50 +1,243 @@
-<style>
-    .info-block {
-        background: white;
-        border: 1px solid #f1f5f9;
-        border-radius: 3rem;
-        padding: 4rem;
-        position: relative;
-    }
-    .info-block::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 10px;
-        height: 100%;
-        background: #6f1616;
-        border-radius: 3rem 0 0 3rem;
-    }
-    [dir="rtl"] .info-block::before {
-        left: auto;
-        right: 0;
-        border-radius: 0 3rem 3rem 0;
-    }
-</style>
+<div class="font-hacen"
+     x-data="{
+        activeType: 'transfer',
+        page: {
+          titleEn: 'Transfer & International Students',
+          titleAr: 'التحويل والطلاب الدوليون',
+          image: '/images/admissions-hero-campus.webp',
+          tabs: [
+            { id: 'transfer', labelEn: 'Transfer Student', labelAr: 'طالب محوّل' },
+            { id: 'international', labelEn: 'International Student', labelAr: 'طالب دولي' }
+          ],
+          types: {
+            transfer: {
+              policiesTitleEn: 'Transfer Policies',
+              policiesTitleAr: 'سياسات التحويل',
+              policies: [
+                { 
+                  titleEn: 'Credit Transfer Policy', 
+                  titleAr: 'سياسة تحويل الساعات المعتمدة', 
+                  descEn: 'Credits are evaluated on a course-by-course basis. A minimum grade of C or equivalent is required for transfer consideration. Core curriculum courses undergo rigorous review by the respective college dean.', 
+                  descAr: 'يتم تقييم الساعات المعتمدة على أساس كل مقرر على حدة. يُشترط الحصول على حد أدنى من الدرجات C أو ما يعادلها للنظر في التحويل الأكاديمي. وتخضع مساقات المنهج الأساسي لمراجعة دقيقة من قبل عميد الكلية المختص.',
+                  iconSvg: `<svg class='h-6 w-6 text-spu-red' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4' /></svg>`
+                },
+                { 
+                  titleEn: 'Course Equivalency', 
+                  titleAr: 'تعادل المقررات الدراسية', 
+                  descEn: 'Applicants must provide detailed syllabi for courses seeking equivalency. The academic committee assesses content overlap, credit hours, and learning outcomes against SPU standards.', 
+                  descAr: 'يجب على المتقدمين تقديم توصيف تفصيلي للمقررات التي يطلبون معادلتها. وتقوم اللجنة الأكاديمية بتقييم تداخل المحتوى، والساعات المعتمدة، ومخرجات التعلم مقارنة بمعايير جامعة SPU.',
+                  iconSvg: `<svg class='h-6 w-6 text-spu-red' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' /></svg>`
+                }
+              ],
+              documentsTitleEn: 'Required Documents',
+              documentsTitleAr: 'الوثائق المطلوبة للتقديم',
+              documents: [
+                { titleEn: 'Original High School Transcript', titleAr: 'وثيقة شهادة الثانوية العامة الأصلية المصدقة', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Photocopy of ID Card / Passport', titleAr: 'صورة عن الهوية الشخصية أو جواز السفر', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Four (4) Recent Passport Photos', titleAr: 'أربع (4) صور شخصية ملونة حديثة', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Medical Fitness Certificate', titleAr: 'شهادة خلو من الأمراض السارية (شهادة صحية)', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Language Proficiency Test Scores', titleAr: 'درجات اختبار كفاءة اللغة الإنجليزية (إن وجد)', statusEn: 'Optional (if Applicable)', statusAr: 'اختياري (إذا توفر)', optional: true }
+              ],
+              processTitleEn: 'Application Process',
+              processTitleAr: 'خطوات وإجراءات التقديم',
+              steps: [
+                { titleEn: 'Choose Type', titleAr: 'اختر الفئة', descEn: 'Determine if you are applying as a transfer or international student.', descAr: 'تحديد ما إذا كنت تتقدم للدراسة كطالب محوّل أو طالب دولي.' },
+                { titleEn: 'Review Requirements', titleAr: 'مراجعة المتطلبات الأكاديمية', descEn: 'Gather all necessary documentation based on your applicant type.', descAr: 'جمع كافة المستندات والوثائق المطلوبة بناءً على فئة التقديم الخاصة بك.' },
+                { titleEn: 'Prepare Documents', titleAr: 'تحضير وتصديق الوثائق', descEn: 'Ensure transcripts, syllabi, and identification are certified.', descAr: 'التأكد من تصديق كشوف العلامات، وتوصيف المقررات الأكاديمية، والوثائق الشخصية رسمياً.' }
+              ]
+            },
+            international: {
+              policiesTitleEn: 'International Student Policies',
+              policiesTitleAr: 'سياسات الطلاب الدوليين',
+              policies: [
+                { 
+                  titleEn: 'Language Requirements', 
+                  titleAr: 'متطلبات الكفاءة اللغوية', 
+                  descEn: 'Applicants may be asked to provide Arabic or English language evidence depending on faculty requirements and the chosen academic programme.', 
+                  descAr: 'قد يُطلب من المتقدمين تقديم إثبات إتقان اللغة العربية أو الإنجليزية اعتماداً على شروط القبول في الكلية والبرنامج الأكاديمي المختار.',
+                  iconSvg: `<svg class='h-6 w-6 text-spu-red' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5c-.313 1.565-.953 3.053-1.892 4.38M11.25 9.077a11.39 11.39 0 01-2.978-2.543m-2.98 2.543A11.398 11.398 0 013 7.078M12 21h-2' /></svg>`
+                },
+                { 
+                  titleEn: 'Visa & Equivalency Guide', 
+                  titleAr: 'دليل التأشيرات ومعادلة الشهادات', 
+                  descEn: 'International applicants should confirm visa status, passport validity, and Ministry of Education equivalency requirements before final admission.', 
+                  descAr: 'يجب على المتقدمين الدوليين التأكد من حالة التأشيرة وصلاحية جواز السفر، واستيفاء متطلبات المعادلة لدى وزارة التعليم العالي السورية قبل القبول النهائي.',
+                  iconSvg: `<svg class='h-6 w-6 text-spu-red' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7' /></svg>`
+                }
+              ],
+              documentsTitleEn: 'Required Documents',
+              documentsTitleAr: 'الوثائق المطلوبة للطلاب الدوليين',
+              documents: [
+                { titleEn: 'Valid Passport Copy', titleAr: 'صورة واضحة عن جواز سفر ساري المفعول', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Certified Secondary School Certificate', titleAr: 'شهادة الدراسة الثانوية العامة مصدقة من وزارة الخارجية والسفارة السورية', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Ministry Equivalency Documents', titleAr: 'وثيقة معادلة الشهادة الثانوية الصادرة عن وزارة التعليم العالي السورية', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Four (4) Recent Passport Photos', titleAr: 'أربع (4) صور شخصية ملونة حديثة', statusEn: 'Required', statusAr: 'مطلوب' },
+                { titleEn: 'Visa or Residency Documents', titleAr: 'صورة عن التأشيرة الدراسية أو إقامة سارية المفعول في سوريا', statusEn: 'Optional (if Applicable)', statusAr: 'اختياري (إذا توفر)', optional: true }
+              ],
+              processTitleEn: 'Application Process',
+              processTitleAr: 'خطوات تقديم طلبات القبول الدولي',
+              steps: [
+                { titleEn: 'Confirm Eligibility', titleAr: 'التحقق من الأهلية والمعادلة', descEn: 'Review country-specific academic and equivalency requirements.', descAr: 'مراجعة المتطلبات الأكاديمية وشروط معادلة الشهادات المعتمدة لكل جنسية.' },
+                { titleEn: 'Submit Documents', titleAr: 'تقديم ملف الوثائق', descEn: 'Provide certified academic records, passport documents, and translations.', descAr: 'تقديم السجلات الأكاديمية المصدقة، وصور جواز السفر، والترجمات المعتمدة قانونياً.' },
+                { titleEn: 'Finalize Admission', titleAr: 'استكمال التسجيل والقبول', descEn: 'Coordinate with Admissions for acceptance, visa guidance, and registration steps.', descAr: 'التنسيق مع مكتب القبول والتسجيل لاستلام إشعار القبول الرسمي وإتمام إجراءات الإقامة.' }
+              ]
+            }
+          },
+          notes: {
+            titleEn: 'Important Institutional Notes',
+            titleAr: 'ملاحظات تنظيمية هامة للمتقدمين',
+            descEn: 'All admission requirements, including minimum GPA thresholds and accepted document formats, are subject to periodic review and may change based on directives from the Syrian Ministry of Higher Education. Applicants are strongly advised to consult the official university announcements or contact the Admissions Office directly for the most current information before submitting their application. The University reserves the right to request additional documentation to verify applicant eligibility.',
+            descAr: 'تخضع جميع شروط القبول والمعدلات الدنيا للقبول وصيغ الوثائق المعتمدة للمراجعة الدورية، وقد يطرأ عليها تعديل بموجب القرارات الناظمة الصادرة عن وزارة التعليم العالي والبحث العلمي السورية. ويُنصح المتقدمون بشدة بالاطلاع على لوائح الجامعة الرسمية المستجدة أو التواصل المباشر مع مديرية القبول والتسجيل للحصول على أدق المعلومات قبل التقديم. وتحتفظ الجامعة بالحق في طلب مستندات إضافية عند الحاجة للتحقق من أهلية المتقدم.'
+          }
+        },
+        get isAr() { return $store.app.currentLang === 'ar' },
+        get activeData() { return this.page.types[this.activeType] },
+        text(item, key) {
+          const suffix = this.isAr ? 'Ar' : 'En';
+          return item[`${key}${suffix}`] || item[`${key}En`] || '';
+        }
+      }">
+  
+  <!-- Hero Section -->
+  <section class="relative flex min-h-[360px] items-center overflow-hidden pt-28 text-white md:min-h-[420px]">
+    <div class="absolute inset-0">
+      <img :src="page.image" alt="Syrian Private University Admissions Campus" class="h-full w-full object-cover">
+      <div class="absolute inset-0 bg-spu-blue/70"></div>
+      <div class="absolute inset-x-0 bottom-0 h-32 "></div>
+    </div>
 
-<div x-data="{ page: $store.admissionsPage.transferPage }">
-    <!-- Hero Section -->
-    <section class="relative py-24 overflow-hidden bg-spu-blue">
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h1 class="reveal reveal-up text-4xl md:text-6xl font-black text-white mb-8"
-                x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
-        </div>
-    </section>
+    <div class="container relative z-10 text-center px-4">
+      <nav class="mb-4 flex items-center justify-center gap-2 text-[12px] font-bold text-white/80" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+        <a href="/admissions/" class="transition hover:text-white" x-text="isAr ? 'القبول والتسجيل' : 'Admissions'"></a>
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+        <span class="text-white" x-text="text(page, 'title')"></span>
+      </nav>
 
-    <!-- Content Sections -->
-    <section class="py-24 bg-slate-50">
-        <div class="container mx-auto px-6 max-w-5xl space-y-12">
-            <template x-for="(section, idx) in page.sections" :key="idx">
-                <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
-                    <div class="info-block">
-                        <h2 class="text-3xl font-black text-spu-blue mb-6"
-                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
-                        <p class="text-xl text-slate-500 leading-relaxed"
-                           x-text="$store.app.currentLang === 'ar' ? section.descAr : section.descEn"></p>
-                    </div>
+      <h1 class="text-[32px] font-bold leading-tight md:text-[48px] drop-shadow-md text-white mb-6" x-text="text(page, 'title')"></h1>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="/admissions/how-to-apply/"
+           class="inline-flex min-w-[160px] items-center justify-center rounded-[6px] bg-spu-red px-8 py-3.5 text-[11px] font-black uppercase tracking-wider text-white shadow-lg shadow-spu-red/30 transition-all hover:bg-spu-blue hover:-translate-y-0.5">
+          <span x-text="isAr ? 'قدّم الآن' : 'Apply Now'"></span>
+        </a>
+        <a href="/contact/"
+           class="inline-flex min-w-[160px] items-center justify-center rounded-[6px] border border-white/80 bg-white/10 px-8 py-3.5 text-[11px] font-black uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:bg-white hover:text-spu-blue hover:-translate-y-0.5">
+          <span x-text="isAr ? 'اطلب معلومات' : 'Request Info'"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="bg-slate-50 py-16 md:py-24">
+    <div class="container px-4">
+      
+      <!-- Segmented Tab Control Switcher -->
+      <div class="mx-auto mb-16 flex w-fit overflow-hidden rounded-[18px] border border-slate-200 bg-white p-1.5 shadow-[0_12px_30px_rgba(32,39,89,0.06)]">
+        <template x-for="tab in page.tabs" :key="tab.id">
+          <button type="button"
+                  @click="activeType = tab.id"
+                  class="rounded-[13px] px-6 py-3.5 text-[15px] font-bold transition-all duration-300 md:min-w-[200px] md:text-[18px] cursor-pointer"
+                  :class="activeType === tab.id ? 'bg-spu-red text-white shadow-md shadow-spu-red/10' : 'text-[#4b556b] hover:bg-slate-50'"
+                  x-text="text(tab, 'label')"></button>
+        </template>
+      </div>
+
+      <div class="mx-auto max-w-[1060px]">
+        
+        <!-- Policies Grid Section -->
+        <div class="mb-20 bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+          <h2 class="mb-8 text-2xl font-bold leading-tight text-spu-blue md:text-3xl border-b border-slate-100 pb-5"
+              x-text="text(activeData, 'policiesTitle')"></h2>
+          
+          <div class="grid gap-10 md:grid-cols-2 md:gap-12">
+            <template x-for="policy in activeData.policies" :key="policy.titleEn">
+              <article class="flex flex-col border-l-4 border-spu-red pl-6 py-1 rtl:border-l-0 rtl:border-r-4 rtl:pl-0 rtl:pr-6">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-spu-red/5 shrink-0" x-html="policy.iconSvg"></div>
+                  <h3 class="text-[18px] font-bold text-spu-red" x-text="text(policy, 'title')"></h3>
                 </div>
+                <p class="text-[14px] leading-[1.7] text-[#475569] font-medium" x-text="text(policy, 'desc')"></p>
+              </article>
             </template>
+          </div>
         </div>
-    </section>
+
+        <!-- Required Documents Grid List -->
+        <div class="mb-20 bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+          <h2 class="mb-8 text-2xl font-bold leading-tight text-spu-blue md:text-3xl border-b border-slate-100 pb-5"
+              x-text="text(activeData, 'documentsTitle')"></h2>
+
+          <div class="overflow-hidden rounded-xl border border-slate-100 bg-white">
+            <template x-for="documentItem in activeData.documents" :key="documentItem.titleEn">
+              <div class="flex min-h-[58px] items-center justify-between gap-6 border-b border-slate-100 px-6 py-4 last:border-b-0 transition-colors hover:bg-slate-50/50">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-2 w-2 rounded-full" :class="documentItem.optional ? 'bg-slate-400' : 'bg-spu-red'"></span>
+                  <span class="text-[14px] font-semibold text-slate-700" x-text="text(documentItem, 'title')"></span>
+                </div>
+                <span class="shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold border"
+                      :class="documentItem.optional ? 'bg-slate-50 text-slate-500 border-slate-200' : 'bg-red-50 text-spu-red border-red-100'"
+                      x-text="text(documentItem, 'status')"></span>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Application Process Timeline Section -->
+        <div class="mb-20">
+          <h2 class="mb-14 text-center text-2xl font-bold leading-tight text-spu-blue md:text-3xl"
+              x-text="text(activeData, 'processTitle')"></h2>
+
+          <!-- Vertical Alternating Timeline Container -->
+          <div class="relative mx-auto max-w-[960px] px-4 md:px-0">
+            <!-- Timeline Center Line -->
+            <div class="absolute top-0 bottom-0 left-6 w-0.5 bg-slate-200 md:left-1/2 -translate-x-1/2"></div>
+            
+            <div class="space-y-12">
+              <template x-for="(step, index) in activeData.steps" :key="step.titleEn">
+                <!-- Timeline Step Node -->
+                <div class="relative flex flex-col md:flex-row md:items-center">
+                  
+                  <!-- Circular Indicator Node -->
+                  <div class="absolute left-6 h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-slate-200 md:left-1/2 shadow transition-all duration-300"
+                       :class="index === 0 ? 'bg-spu-blue ring-4 ring-spu-blue/15' : ''"></div>
+                  
+                  <!-- Card Box -->
+                  <div class="w-full pl-12 md:pl-0 md:w-[45%]"
+                       :class="[
+                         index % 2 === 0 ? 'md:ml-auto md:pl-10' : 'md:mr-auto md:pr-10',
+                         isAr ? (index % 2 === 0 ? 'rtl:md:mr-auto rtl:md:ml-0 rtl:md:pr-10 rtl:md:pl-0' : 'rtl:md:ml-auto rtl:md:mr-0 rtl:md:pl-10 rtl:md:pr-0') : ''
+                       ]">
+                    <article class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-slate-200/50">
+                      <div class="flex items-center gap-3 mb-3">
+                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-spu-blue/5 text-[13px] font-bold text-spu-blue"
+                              x-text="'0' + (index + 1)"></span>
+                        <h3 class="text-[17px] font-bold text-spu-blue" x-text="text(step, 'title')"></h3>
+                      </div>
+                      <p class="text-[13px] leading-[1.65] text-[#64748b] font-medium" x-text="text(step, 'desc')"></p>
+                    </article>
+                  </div>
+                  
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <!-- Institutional Notes Section -->
+        <aside class="rounded-2xl border border-spu-red/10 bg-spu-red/5 p-6 md:p-8">
+          <div class="flex items-start gap-4">
+            <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-spu-red text-[13px] font-bold text-white shadow-sm shadow-spu-red/20">i</div>
+            <div>
+              <h4 class="mb-3 text-[18px] font-bold text-spu-blue" x-text="text(page.notes, 'title')"></h4>
+              <p class="text-[13px] leading-[1.7] text-slate-600 font-medium" x-text="text(page.notes, 'desc')"></p>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
 </div>

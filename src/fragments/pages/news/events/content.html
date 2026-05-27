@@ -1,0 +1,134 @@
+<section class="bg-white py-10 font-hacen md:py-12"
+         x-data="calendarApp()"
+         x-init="setEvents($store.newsEventsPage.events)">
+  <div class="container">
+    <div class="mb-11">
+      <h2 class="mb-5 text-[26px] font-bold leading-tight text-spu-blue md:text-[32px]"
+          x-text="$store.newsEventsPage.localized('labels', 'featured')"></h2>
+
+      <template x-if="$store.newsEventsPage.featuredEvent()">
+        <article class="grid overflow-hidden border border-[#e5e7ee] bg-white md:grid-cols-[84px_1fr_330px]">
+          <div class="flex min-h-[118px] flex-col items-center justify-center border-b border-[#e5e7ee] py-5 text-center md:border-b-0 md:border-r"
+               :class="$store.app.currentLang === 'ar' ? 'md:border-l md:border-r-0' : ''">
+            <span class="text-[11px] font-bold uppercase tracking-wide text-spu-red"
+                  x-text="$store.newsEventsPage.eventDateParts($store.newsEventsPage.featuredEvent().date).month"></span>
+            <span class="mt-1 text-[18px] font-bold text-spu-blue"
+                  x-text="$store.newsEventsPage.eventDateParts($store.newsEventsPage.featuredEvent().date).day"></span>
+            <span class="mt-2 text-[10px] font-semibold text-[#7a8196]"
+                  x-text="$store.newsEventsPage.eventDateParts($store.newsEventsPage.featuredEvent().date).year"></span>
+          </div>
+
+          <div class="border-l-2 border-spu-red px-5 py-5 md:px-6"
+               :class="$store.app.currentLang === 'ar' ? 'border-l-0 border-r-2' : ''">
+            <span class="inline-flex bg-spu-blue px-3 py-1 text-[10px] font-bold text-white"
+                  x-text="$store.newsEventsPage.featuredEvent().type"></span>
+            <h3 class="mt-3 text-[15px] font-bold leading-tight text-spu-blue md:text-[17px]"
+                x-text="$store.newsEventsPage.eventText($store.newsEventsPage.featuredEvent(), 'title')"></h3>
+            <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-semibold text-[#626b82]">
+              <span class="inline-flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full border border-[#9aa0b4]"></span>
+                <span x-text="$store.newsEventsPage.eventText($store.newsEventsPage.featuredEvent(), 'time')"></span>
+              </span>
+              <span class="inline-flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full border border-[#9aa0b4]"></span>
+                <span x-text="$store.newsEventsPage.eventText($store.newsEventsPage.featuredEvent(), 'location')"></span>
+              </span>
+            </div>
+            <p class="mt-4 max-w-[670px] text-[12px] leading-[1.75] text-[#4d5568]"
+               x-text="$store.newsEventsPage.eventText($store.newsEventsPage.featuredEvent(), 'description')"></p>
+          </div>
+
+          <div class="min-h-[180px] md:min-h-full">
+            <img :src="$store.newsEventsPage.featuredEvent().image"
+                 :alt="$store.newsEventsPage.eventText($store.newsEventsPage.featuredEvent(), 'title')"
+                 class="h-full min-h-[180px] w-full object-cover">
+          </div>
+        </article>
+      </template>
+    </div>
+
+    <div class="mb-12">
+      <div class="mb-5 flex items-center justify-between gap-4">
+        <h2 class="text-[26px] font-bold leading-tight text-spu-blue md:text-[32px]">
+          <span x-text="$store.app.ui.months[$store.app.currentLang][viewDate.month()]"></span>
+          <span translate="no" x-text="viewDate.format('YYYY')"></span>
+        </h2>
+        <div class="flex items-center gap-2">
+          <button type="button" @click="prevMonth()"
+                  class="flex h-8 w-8 items-center justify-center border border-[#e5e7ee] bg-white transition hover:bg-[#f7f8fb]"
+                  :aria-label="$store.newsEventsPage.localized('labels', 'previous')">
+            <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-right-outline.svg' : '/images/icon-chevron-left-outline.svg'"
+                 alt="" class="h-3 w-3">
+          </button>
+          <button type="button" @click="nextMonth()"
+                  class="flex h-8 w-8 items-center justify-center border border-[#e5e7ee] bg-white transition hover:bg-[#f7f8fb]"
+                  :aria-label="$store.newsEventsPage.localized('labels', 'next')">
+            <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-left-outline.svg' : '/images/icon-chevron-right-outline.svg'"
+                 alt="" class="h-3 w-3">
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-[4px] border border-[#e6e8ef]">
+        <div class="grid grid-cols-7 bg-[#f2f0f4] text-center text-[10px] font-semibold text-[#646b7d]">
+          <span class="py-2">Sun</span>
+          <span class="py-2">Mon</span>
+          <span class="py-2">Tue</span>
+          <span class="py-2">Wed</span>
+          <span class="py-2">Thu</span>
+          <span class="py-2">Fri</span>
+          <span class="py-2">Sat</span>
+        </div>
+        <div class="grid grid-cols-7 bg-white">
+          <template x-for="day in calendarDays" :key="day.date">
+            <button type="button"
+                    @click="selectDate(day.date)"
+                    class="min-h-[72px] border-t border-r border-[#eef0f5] p-2 text-left transition hover:bg-[#f9fafc] rtl:text-right"
+                    :class="[
+                      selectedDate === day.date ? 'bg-[#faf7f7]' : '',
+                      day.isCurrentMonth ? 'text-[#18244f]' : 'text-[#a5abb8]'
+                    ]">
+              <span class="block text-[10px] font-semibold" x-html="day.dayNumber"></span>
+              <template x-for="event in (eventsByDate[day.date] || []).slice(0, 1)" :key="event.id">
+                <span class="mt-2 block max-w-full truncate bg-spu-blue px-2 py-1 text-[10px] font-bold text-white"
+                      x-text="$store.app.currentLang === 'ar' ? event.titleAr : event.titleEn"></span>
+              </template>
+            </button>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mb-5 text-[26px] font-bold leading-tight text-spu-blue md:text-[32px]"
+          x-text="$store.newsEventsPage.localized('labels', 'upcoming')"></h2>
+      <div class="space-y-4">
+        <template x-for="event in rawEvents" :key="event.id">
+          <article class="grid items-center border border-[#e5e7ee] bg-white sm:grid-cols-[78px_1fr]">
+            <div class="flex min-h-[86px] flex-col items-center justify-center border-b border-[#e5e7ee] py-4 text-center sm:border-b-0 sm:border-r"
+                 :class="$store.app.currentLang === 'ar' ? 'sm:border-l sm:border-r-0' : ''">
+              <span class="text-[10px] font-bold uppercase tracking-wide text-spu-red"
+                    x-text="$store.newsEventsPage.eventDateParts(event.dateKey).month"></span>
+              <span class="mt-1 text-[15px] font-bold text-spu-blue"
+                    x-text="$store.newsEventsPage.eventDateParts(event.dateKey).day"></span>
+            </div>
+            <div class="px-5 py-4">
+              <h3 class="text-[13px] font-bold leading-tight text-spu-blue"
+                  x-text="$store.app.currentLang === 'ar' ? event.titleAr : event.titleEn"></h3>
+              <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-semibold text-[#626b82]">
+                <span class="inline-flex items-center gap-2">
+                  <span class="h-2 w-2 rounded-full border border-[#9aa0b4]"></span>
+                  <span x-text="$store.newsEventsPage.eventText($store.newsEventsPage.events.find((item) => item.id === event.id), 'time')"></span>
+                </span>
+                <span class="inline-flex items-center gap-2">
+                  <span class="h-2 w-2 rounded-full border border-[#9aa0b4]"></span>
+                  <span x-text="$store.newsEventsPage.eventText($store.newsEventsPage.events.find((item) => item.id === event.id), 'location')"></span>
+                </span>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>

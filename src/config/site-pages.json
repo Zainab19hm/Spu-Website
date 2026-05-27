@@ -369,6 +369,58 @@
       ]
     },
     {
+      "name": "news-article",
+      "fileName": "news/article/index.html",
+      "route": "/news/article/",
+      "title": "News Article | Syrian Private University",
+      "description": "Read a full Syrian Private University news article with headline, date, category, author, image, story body, sharing links, and related news.",
+      "ogImage": "/images/research-clinical-simulation.webp",
+      "keywords": [
+        "SPU news article",
+        "Syrian Private University article",
+        "SPU research news"
+      ],
+      "fragments": [
+        "pages/news/article/hero.html",
+        "pages/news/article/content.html",
+        "pages/news/article/related.html"
+      ]
+    },
+    {
+      "name": "news-announcements",
+      "fileName": "news/announcements/index.html",
+      "route": "/news/announcements/",
+      "title": "Announcements | Syrian Private University",
+      "description": "Browse official Syrian Private University announcements with dates, categories, details, and downloadable attachments where available.",
+      "ogImage": "/images/slider-1.webp",
+      "keywords": [
+        "SPU announcements",
+        "Syrian Private University announcements",
+        "SPU official notices"
+      ],
+      "fragments": [
+        "pages/news/announcements/hero.html",
+        "pages/news/announcements/content.html"
+      ]
+    },
+    {
+      "name": "news-events",
+      "fileName": "news/events/index.html",
+      "route": "/news/events/",
+      "title": "Events Calendar | Syrian Private University",
+      "description": "Browse Syrian Private University featured events, monthly calendar entries, and upcoming academic activities.",
+      "ogImage": "/images/DSC_0647.JPG",
+      "keywords": [
+        "SPU events calendar",
+        "Syrian Private University events",
+        "SPU academic calendar"
+      ],
+      "fragments": [
+        "pages/news/events/hero.html",
+        "pages/news/events/content.html"
+      ]
+    },
+    {
       "name": "news-gallery",
       "fileName": "news/gallery/index.html",
       "route": "/news/gallery/",
@@ -596,7 +648,7 @@
     },
     {
       "name": "admissions-transfer",
-      "fileName": "admissions/transfer.html",
+      "fileName": "admissions/transfer/index.html",
       "route": "/admissions/transfer/",
       "title": "Transfer & International | SPU",
       "description": "Pathways and policies for transfer and international students at SPU.",
@@ -606,8 +658,7 @@
         "International Students Syria"
       ],
       "fragments": [
-        "pages/admissions/transfer/content.html",
-        "pages/admissions/navigation.html"
+        "pages/admissions/transfer/content.html"
       ]
     },
     {

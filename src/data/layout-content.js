@@ -123,8 +123,8 @@ export const navigationMenuItems = [
         hasDropdown: true,
         children: [
             { labelAr: 'الأخبار', labelEn: 'News', url: siteRoutes.newsArticles },
-            { labelAr: 'الإعلانات', labelEn: 'Announcements', url: withHash(siteRoutes.news, 'announcements') },
-            { labelAr: 'تقويم الفعاليات', labelEn: 'Events Calendar', url: withHash(siteRoutes.news, 'events') },
+            { labelAr: 'الإعلانات', labelEn: 'Announcements', url: siteRoutes.newsAnnouncements },
+            { labelAr: 'تقويم الفعاليات', labelEn: 'Events Calendar', url: siteRoutes.newsEvents },
             { labelAr: 'معرض الوسائط', labelEn: 'Media Gallery', url: siteRoutes.newsGallery },
             { labelAr: 'غرفة الصحافة', labelEn: 'Press Room', url: withHash(siteRoutes.news, 'press-room') }
         ]

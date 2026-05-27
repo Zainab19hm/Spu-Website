@@ -1,0 +1,62 @@
+<article class="bg-white py-8 font-hacen md:py-10"
+         x-data="{ get page() { return $store.newsArticlePage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="mx-auto w-full max-w-[1050px] px-4 sm:px-6 lg:px-0">
+    <header class="mx-auto max-w-[820px] text-center">
+      <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-spu-red"
+         x-text="page.currentText('eyebrow')"></p>
+      <h1 class="mt-3 text-[24px] font-bold leading-tight text-spu-blue md:text-[30px]"
+          x-text="page.currentText('title')"></h1>
+      <p class="mx-auto mt-3 max-w-[720px] text-[13px] font-semibold leading-6 text-slate-500"
+         x-text="page.currentText('lead')"></p>
+
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] font-bold uppercase tracking-[0.06em] text-slate-500">
+        <span x-text="page.current?.date"></span>
+        <span class="h-1 w-1 rounded-full bg-slate-300" aria-hidden="true"></span>
+        <span x-text="page.currentText('author')"></span>
+        <span class="h-1 w-1 rounded-full bg-slate-300" aria-hidden="true"></span>
+        <span x-text="page.currentText('readTime')"></span>
+      </div>
+    </header>
+
+    <figure class="mt-7 overflow-hidden rounded-[4px] bg-spu-blue">
+      <img :src="page.current?.heroImage"
+           :alt="page.currentText('title')"
+           class="h-[250px] w-full object-cover md:h-[390px]">
+    </figure>
+
+    <div class="mx-auto mt-8 max-w-[960px] text-[14px] font-medium leading-7 text-slate-700">
+      <template x-for="paragraph in (isAr ? page.current?.paragraphsAr : page.current?.paragraphsEn)" :key="paragraph">
+        <p class="mb-5" x-text="paragraph"></p>
+      </template>
+
+      <div class="my-7 border-l-4 border-spu-red bg-slate-50 px-5 py-4 text-[14px] font-bold leading-7 text-spu-blue rtl:border-l-0 rtl:border-r-4">
+        <span x-text="page.currentText('keyStatement')"></span>
+      </div>
+    </div>
+
+    <footer class="mx-auto mt-9 flex max-w-[960px] flex-col gap-4 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
+      <a :href="page.previousArticle()?.href"
+         class="inline-flex items-center gap-2 text-[12px] font-bold text-spu-blue transition hover:text-spu-red">
+        <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+        <span x-text="page.localized('labels', 'previous')"></span>
+      </a>
+
+      <div class="flex items-center justify-center gap-3">
+        <span class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400"
+              x-text="page.localized('labels', 'share')"></span>
+        <a href="https://www.facebook.com/SPUpage.sy/?ref=bookmarks" class="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 transition hover:border-spu-blue" aria-label="Facebook">
+          <img src="/images/icon-facebook-outline.svg" alt="" class="h-3.5 w-3.5" aria-hidden="true">
+        </a>
+        <a href="https://telegram.me/SPUchannel" class="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 transition hover:border-spu-blue" aria-label="Telegram">
+          <img src="/images/icon-telegram-outline.svg" alt="" class="h-3.5 w-3.5" aria-hidden="true">
+        </a>
+      </div>
+
+      <a :href="page.nextArticle()?.href"
+         class="inline-flex items-center justify-end gap-2 text-[12px] font-bold text-spu-blue transition hover:text-spu-red">
+        <span x-text="page.localized('labels', 'next')"></span>
+        <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+      </a>
+    </footer>
+  </div>
+</article>

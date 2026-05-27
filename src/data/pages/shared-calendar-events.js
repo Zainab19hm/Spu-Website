@@ -1,0 +1,80 @@
+import { siteRoutes } from '../../config/site-routes.js';
+
+export const sharedCalendarEvents = [
+  {
+    id: 'event-faculty-meeting-2026',
+    type: 'Faculty Meeting',
+    titleEn: 'Faculty Meeting',
+    titleAr: 'Faculty Meeting',
+    date: '2026-11-02',
+    timeEn: '09:00 - 11:00',
+    timeAr: '09:00 - 11:00',
+    locationEn: 'Main Campus Meeting Hall',
+    locationAr: 'Main Campus Meeting Hall',
+    image: '/images/slider-1.webp',
+    descriptionEn: 'Academic departments meet to review semester priorities and upcoming student services.',
+    descriptionAr: 'Academic departments meet to review semester priorities and upcoming student services.',
+    link: siteRoutes.newsEvents
+  },
+  {
+    id: 'event-guest-lecture-2026',
+    type: 'Guest Lecture',
+    titleEn: 'Guest Lecture',
+    titleAr: 'Guest Lecture',
+    date: '2026-11-07',
+    timeEn: '10:00 - 12:00',
+    timeAr: '10:00 - 12:00',
+    locationEn: 'Main Auditorium',
+    locationAr: 'Main Auditorium',
+    image: '/images/IMG_6977 copy.jpg',
+    descriptionEn: 'A visiting speaker hosts a lecture for students and faculty across SPU programs.',
+    descriptionAr: 'A visiting speaker hosts a lecture for students and faculty across SPU programs.',
+    link: siteRoutes.newsEvents
+  },
+  {
+    id: 'event-research-symposium-2026',
+    type: 'Academic Event',
+    titleEn: 'Annual Research Symposium & Innovation Showcase',
+    titleAr: 'Annual Research Symposium & Innovation Showcase',
+    date: '2026-11-15',
+    timeEn: '09:00 AM - 05:00 PM',
+    timeAr: '09:00 AM - 05:00 PM',
+    locationEn: 'Main Campus Auditorium',
+    locationAr: 'Main Campus Auditorium',
+    image: '/images/DSC_0647.JPG',
+    descriptionEn: 'Annual symposium highlighting SPU research output through faculty presentations, graduate research sessions, and innovation showcases.',
+    descriptionAr: 'Annual symposium highlighting SPU research output through faculty presentations, graduate research sessions, and innovation showcases.',
+    link: siteRoutes.newsEvents,
+    featured: true
+  },
+  {
+    id: 'event-open-day-2026-a',
+    type: 'Academic Event',
+    titleEn: 'Undergraduate Open Day Fall 2026',
+    titleAr: 'Undergraduate Open Day Fall 2026',
+    date: '2026-11-20',
+    timeEn: '10:00 - 15:00',
+    timeAr: '10:00 - 15:00',
+    locationEn: 'Main Campus Plaza',
+    locationAr: 'Main Campus Plaza',
+    image: '/images/admissions-hero-campus.webp',
+    descriptionEn: 'Prospective students and families explore faculties, admissions services, and campus facilities.',
+    descriptionAr: 'Prospective students and families explore faculties, admissions services, and campus facilities.',
+    link: siteRoutes.admissions
+  },
+  {
+    id: 'event-open-day-2026-b',
+    type: 'Academic Event',
+    titleEn: 'Undergraduate Open Day Fall 2026',
+    titleAr: 'Undergraduate Open Day Fall 2026',
+    date: '2026-11-22',
+    timeEn: '10:00 - 15:00',
+    timeAr: '10:00 - 15:00',
+    locationEn: 'Main Campus Plaza',
+    locationAr: 'Main Campus Plaza',
+    image: '/images/admissions-timeline-campus.webp',
+    descriptionEn: 'Admissions teams host faculty tours, advising sessions, and program information desks.',
+    descriptionAr: 'Admissions teams host faculty tours, advising sessions, and program information desks.',
+    link: siteRoutes.admissions
+  }
+];

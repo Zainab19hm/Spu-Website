@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { mockCalendarEvents } from '../data/pages/home-content.js';
+import { sharedCalendarEvents } from '../data/pages/shared-calendar-events.js';
 
 const CALENDAR_GRID_DAYS = 35;
 
@@ -36,7 +36,7 @@ export function createCalendarApp() {
         activeEventIndex: 0,
 
         init() {
-            const incomingEvents = Array.isArray(window.spuEventsData) ? window.spuEventsData : mockCalendarEvents;
+            const incomingEvents = Array.isArray(window.spuEventsData) ? window.spuEventsData : sharedCalendarEvents;
             this.setEvents(incomingEvents);
         },
 
@@ -49,6 +49,18 @@ export function createCalendarApp() {
             const today = dayjs().format('YYYY-MM-DD');
             this.selectedDate = today;
             this.viewDate = dayjs(today).startOf('month');
+            this.activeEventIndex = 0;
+        },
+
+        focusDate(date) {
+            const parsedDate = dayjs(date);
+
+            if (!parsedDate.isValid()) {
+                return;
+            }
+
+            this.selectedDate = parsedDate.format('YYYY-MM-DD');
+            this.viewDate = parsedDate.startOf('month');
             this.activeEventIndex = 0;
         },
 
@@ -85,7 +97,7 @@ export function createCalendarApp() {
         get calendarDays() {
             const groupedEvents = this.eventsByDate;
             const monthStart = this.viewDate.startOf('month');
-            const gridStart = monthStart;
+            const gridStart = monthStart.startOf('week');
             const today = dayjs().format('YYYY-MM-DD');
 
             return Array.from({ length: CALENDAR_GRID_DAYS }, (_, index) => {
@@ -95,7 +107,7 @@ export function createCalendarApp() {
 
                 return {
                     date: dateKey,
-                    dayNumber: isCurrentMonth ? `<span translate="no">${currentDay.date()}</span>` : '', // !
+                    dayNumber: `<span translate="no">${currentDay.date()}</span>`, // !
                     isCurrentMonth: isCurrentMonth,
                     isToday: dateKey === today,
                     hasEvent: isCurrentMonth && (groupedEvents[dateKey] || []).length > 0
@@ -169,6 +181,9 @@ export function createCalendarApp() {
         selectDate(date) {
             this.selectedDate = date;
             this.activeEventIndex = 0; // Reset to first event of the new day
+            if (!dayjs(date).isSame(this.viewDate, 'month')) {
+                this.viewDate = dayjs(date).startOf('month');
+            }
             this.startCarousel();
         }
     };

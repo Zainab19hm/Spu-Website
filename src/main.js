@@ -41,17 +41,20 @@ function setAppReadyState(state) {
 }
 
 async function registerPageFeatureGlobals() {
-  if (pageName !== 'home') {
+  const usesCalendar = pageName === 'home' || pageName === 'news-events';
+
+  if (!usesCalendar) {
     return;
   }
 
-  const [{ createCalendarApp }, { createResearchSlider }] = await Promise.all([
-    import('./features/calendar.js'),
-    import('./features/research-slider.js')
-  ]);
+  const { createCalendarApp } = await import('./features/calendar.js');
 
   window.calendarApp = createCalendarApp;
-  window.researchSlider = createResearchSlider;
+
+  if (pageName === 'home') {
+    const { createResearchSlider } = await import('./features/research-slider.js');
+    window.researchSlider = createResearchSlider;
+  }
 }
 
 function renderBootstrapFailure() {
