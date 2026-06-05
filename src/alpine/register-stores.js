@@ -8,6 +8,7 @@ const pageStoreLoaders = {
     'about-leadership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorates': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-partnership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'about-staff-directory': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorate-scientific-research': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorate-student-affairs': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorate-it-services': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),

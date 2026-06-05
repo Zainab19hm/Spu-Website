@@ -583,6 +583,24 @@
       }
     },
     {
+      "name": "about-staff-directory",
+      "fileName": "about/directorates/staff.html",
+      "route": "/about/directorates/staff/",
+      "title": "Academic Staff Directory | Syrian Private University",
+      "description": "Browse the directory of all SPU academic staff including deans, faculty members, and research leads.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU academic staff",
+        "Syrian Private University faculty",
+        "SPU deans",
+        "SPU professors"
+      ],
+      "fragments": [
+        "pages/about/directorates/staff.html",
+        "pages/about/navigation.html"
+      ]
+    },
+    {
       "name": "admissions-requirements",
       "fileName": "admissions/requirements.html",
       "route": "/admissions/requirements/",

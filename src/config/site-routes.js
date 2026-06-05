@@ -56,6 +56,7 @@ export const siteRoutes = Object.freeze({
     aboutHistory: getPageRoute('about-history'),
     aboutLeadership: getPageRoute('about-leadership'),
     aboutDirectorates: getPageRoute('about-directorates'),
+    aboutStaffDirectory: getPageRoute('about-staff-directory'),
     aboutPartnership: getPageRoute('about-partnership'),
     facilities: getPageRoute('faculties'),
     faculties: getPageRoute('faculties'),

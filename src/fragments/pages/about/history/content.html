@@ -1,256 +1,266 @@
 <style>
-    /* Progressive Timeline Core */
-    .spu-history-track {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
+    .history-subpage-hero {
+        min-height: 365px;
     }
 
-    /* Central Spine */
-    .spu-history-track::before {
+    .history-subpage-hero::after {
         content: '';
         position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: rgba(32, 39, 89, 0.08);
-        transform: translateX(-50%);
-        z-index: 1;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(7, 10, 28, 0.12) 0%, rgba(32, 39, 89, 0.72) 100%);
     }
 
-    /* Dynamic Progress Fill */
-    .spu-progress-fill {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        width: 2px;
-        background: linear-gradient(to bottom, #6f1616, #202759);
-        transform: translateX(-50%);
-        z-index: 2;
-        transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    /* Timeline Item Layout */
-    .timeline-item {
-        position: relative;
-        margin-bottom: 6rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        z-index: 3;
-    }
-
-    .timeline-item:last-child {
-        margin-bottom: 0;
-    }
-
-    /* Year Node */
-    .year-node {
-        position: absolute;
-        left: 50%;
-        top: 2rem;
-        transform: translate(-50%, -50%);
-        width: 56px;
-        height: 56px;
-        background: white;
-        border: 2px solid rgba(32, 39, 89, 0.1);
-        border-radius: 18px;
-        display: flex;
+    .history-vision-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: 3rem;
         align-items: center;
-        justify-content: center;
-        z-index: 10;
-        transition: all 0.5s ease;
     }
 
-    .timeline-item.active .year-node {
-        border-color: #6f1616;
-        box-shadow: 0 0 0 8px rgba(111, 22, 22, 0.05);
-        transform: translate(-50%, -50%) scale(1.1);
+    .history-vision-image {
+        aspect-ratio: 1.18 / 1;
+        overflow: hidden;
+        border-radius: 4px;
+        background: #f8fafc;
     }
 
-    .year-node span {
-        font-weight: 900;
-        color: #202759;
-        font-size: 0.9rem;
-        transition: color 0.3s ease;
+    .history-quote {
+        border-inline-start: 2px solid #6f1616;
+        padding-inline-start: 1.25rem;
     }
 
-    .timeline-item.active .year-node span {
-        color: #6f1616;
-    }
-
-    /* Content Card */
-    .history-card-v2 {
-        width: 42%;
-        background: white;
-        padding: 3rem;
-        border-radius: 2.5rem;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
-        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    .history-timeline {
         position: relative;
+        display: grid;
+        max-width: 640px;
+        margin: 0 auto;
+        gap: 3.5rem;
     }
 
-    .timeline-item:nth-child(odd) .history-card-v2 {
-        margin-right: auto;
-        margin-left: 0;
-    }
-
-    .timeline-item:nth-child(even) .history-card-v2 {
-        margin-left: auto;
-        margin-right: 0;
-    }
-
-    .timeline-item.active .history-card-v2 {
-        border-color: rgba(111, 22, 22, 0.2);
-        box-shadow: 0 20px 60px rgba(111, 22, 22, 0.08);
-    }
-
-    /* Watermark Effect */
-    .card-watermark {
+    .history-timeline::before {
+        content: '';
         position: absolute;
-        top: 1.5rem;
-        right: 2rem;
-        font-size: 5rem;
-        font-weight: 900;
-        color: rgba(32, 39, 89, 0.03);
-        line-height: 1;
-        user-select: none;
-        pointer-events: none;
+        top: 1.25rem;
+        bottom: 1.25rem;
+        left: 50%;
+        width: 1px;
+        transform: translateX(-50%);
+        background: rgba(111, 22, 22, 0.28);
     }
 
-    [dir="rtl"] .card-watermark {
-        right: auto;
-        left: 2rem;
+    .history-timeline-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 5rem;
+        min-height: 128px;
     }
 
-    /* Mobile Adaptations */
+    .history-timeline-dot {
+        position: absolute;
+        left: 50%;
+        top: 2.45rem;
+        width: 10px;
+        height: 10px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        background: #bc2428;
+        box-shadow: 0 0 0 6px #f7fbff;
+    }
+
+    .history-timeline-content {
+        max-width: 260px;
+    }
+
+    .history-timeline-item:nth-child(odd) .history-timeline-content {
+        grid-column: 1;
+        justify-self: end;
+        text-align: end;
+    }
+
+    .history-timeline-item:nth-child(even) .history-timeline-content {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .history-row {
+        display: grid;
+        grid-template-columns: minmax(180px, 0.32fr) minmax(0, 0.68fr);
+        gap: 4rem;
+        padding: 4rem 0;
+        border-bottom: 1px solid rgba(32, 39, 89, 0.12);
+    }
+
+    .history-row:last-child {
+        border-bottom: 0;
+    }
+
+    .history-legacy {
+        border-inline-start: 6px solid #202759;
+        padding-inline-start: 3rem;
+    }
+
     @media (max-width: 1024px) {
-        .spu-history-track::before, .spu-progress-fill {
-            left: 28px;
+        .history-vision-grid,
+        .history-row {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .history-row {
+            padding: 3rem 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .history-subpage-hero {
+            min-height: 320px;
+        }
+
+        .history-timeline {
+            gap: 2.5rem;
+            margin-inline-start: 0;
+        }
+
+        .history-timeline::before {
+            left: 8px;
             transform: none;
         }
 
-        [dir="rtl"] .spu-history-track::before,
-        [dir="rtl"] .spu-progress-fill {
+        [dir="rtl"] .history-timeline::before {
+            right: 8px;
             left: auto;
-            right: 28px;
-        }
-        
-        .year-node {
-            left: 28px;
-            transform: translateY(-50%);
         }
 
-        [dir="rtl"] .year-node {
+        .history-timeline-item {
+            display: block;
+            min-height: 0;
+            padding-inline-start: 2.5rem;
+        }
+
+        [dir="rtl"] .history-timeline-item {
+            padding-inline-start: 0;
+            padding-inline-end: 2.5rem;
+        }
+
+        .history-timeline-dot {
+            left: 8px;
+        }
+
+        [dir="rtl"] .history-timeline-dot {
+            right: 8px;
             left: auto;
-            right: 28px;
+            transform: translate(50%, -50%);
         }
 
-        .timeline-item.active .year-node {
-            transform: translateY(-50%) scale(1.1);
+        .history-timeline-content,
+        .history-timeline-item:nth-child(odd) .history-timeline-content,
+        .history-timeline-item:nth-child(even) .history-timeline-content {
+            max-width: none;
+            text-align: start;
         }
 
-        .history-card-v2 {
-            width: calc(100% - 80px);
-            margin-left: 80px !important;
-            padding: 2rem;
-        }
-
-        [dir="rtl"] .history-card-v2 {
-            margin-left: 0 !important;
-            margin-right: 80px !important;
-        }
-
-        .timeline-item:nth-child(even) .history-card-v2 {
-            margin-right: 0;
+        .history-legacy {
+            padding-inline-start: 1.5rem;
         }
     }
 </style>
 
-<section id="history-section" x-cloak
-         class="relative py-32 overflow-hidden bg-white font-hacen"
-         x-data="{ 
-            scrollProgress: 0,
-            init() {
-                const updateProgress = () => {
-                    const rect = this.$refs.track.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
-                    const trackHeight = rect.height;
-                    const scrollPos = windowHeight / 2 - rect.top;
-                    
-                    let progress = (scrollPos / trackHeight) * 100;
-                    this.scrollProgress = Math.min(Math.max(progress, 0), 100);
-                };
-                window.addEventListener('scroll', updateProgress);
-                setTimeout(updateProgress, 100);
-            }
-         }">
-    
-    <!-- Immersive Header -->
-    <div class="container relative z-10 mx-auto px-6 mb-24 text-center">
-        <div class="reveal reveal-up inline-flex items-center gap-3 mb-6">
-            <span class="h-px w-10 bg-spu-red"></span>
-            <span class="text-spu-red font-black tracking-widest text-sm uppercase"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.eyebrowAr : $store.aboutPage.history.eyebrowEn"></span>
-            <span class="h-px w-10 bg-spu-red"></span>
-        </div>
-        
-        <h2 class="reveal reveal-up reveal-delay-1 text-5xl md:text-7xl font-black text-spu-blue tracking-tighter leading-tight"
-            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn"></h2>
-        
-        <p class="reveal reveal-up reveal-delay-2 mt-8 text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
-            x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.history.summaryAr : $store.aboutPage.history.summaryEn"></p>
+<section x-cloak class="history-subpage-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="$store.aboutPage.history.heroImage"
+         :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn"
+         class="absolute inset-0 h-full w-full object-cover">
+
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+        <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
+            <a href="/" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.breadcrumbHomeAr : $store.aboutPage.history.breadcrumbHomeEn"></a>
+            <span aria-hidden="true">›</span>
+            <a href="/about.html" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.breadcrumbParentAr : $store.aboutPage.history.breadcrumbParentEn"></a>
+            <span aria-hidden="true">›</span>
+            <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.breadcrumbCurrentAr : $store.aboutPage.history.breadcrumbCurrentEn"></span>
+        </nav>
+
+        <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn"></h1>
     </div>
+</section>
 
-    <!-- Timeline Track -->
-    <div class="container mx-auto px-6">
-        <div class="spu-history-track" x-ref="track">
-            <!-- Dynamic Progress Fill -->
-            <div class="spu-progress-fill" :style="`height: ${scrollProgress}%`"></div>
+<section id="history-section" x-cloak class="bg-white py-24 font-hacen">
+    <div class="container mx-auto ">
+        <h2 class="reveal reveal-up mb-16 text-center text-4xl font-black text-spu-blue md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.foundingTitleAr : $store.aboutPage.history.foundingTitleEn"></h2>
 
-            <template x-for="(point, index) in $store.aboutPage.historyPoints" :key="index">
-                <div class="timeline-item reveal" 
-                     :class="[
-                        index % 2 === 0 ? 'reveal-left' : 'reveal-right',
-                        (scrollProgress >= (index / $store.aboutPage.historyPoints.length) * 100) ? 'active' : ''
-                     ]">
-                    
-                    <!-- Year Badge Node -->
-                    <div class="year-node">
-                        <span x-text="point.year"></span>
-                    </div>
+        <div class="history-vision-grid">
+            <div class="history-vision-image reveal reveal-left">
+                <img :src="$store.aboutPage.history.foundingImage"
+                     :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.history.foundingTitleAr : $store.aboutPage.history.foundingTitleEn"
+                     class="h-full w-full object-cover">
+            </div>
 
-                    <!-- Content Card -->
-                    <div class="history-card-v2 group">
-                        <!-- Floating Year Watermark -->
-                        <div class="card-watermark" x-text="point.year"></div>
+            <div class="reveal reveal-right">
+                <blockquote class="history-quote mb-12 text-2xl font-black leading-relaxed text-slate-950"
+                            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.quoteAr : $store.aboutPage.history.quoteEn"></blockquote>
 
-                        <div class="relative z-10">
-                            <!-- Visual Accent -->
-                            <div class="w-12 h-1 bg-spu-red mb-6 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
-                            
-                            <h3 class="text-2xl md:text-3xl font-black text-spu-blue mb-4 leading-tight"
-                                x-text="$store.app.currentLang === 'ar' ? point.titleAr : point.titleEn"></h3>
-                            
-                            <p class="text-slate-500 text-lg leading-relaxed"
-                                x-text="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
-                        </div>
-
-                        <!-- Interactive Bottom Bar -->
-                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-slate-100 overflow-hidden rounded-b-full">
-                            <div class="h-full bg-spu-red transform -translate-x-full transition-transform duration-700 group-hover:translate-x-0"></div>
-                        </div>
-                    </div>
+                <div class="grid gap-6 text-base leading-relaxed text-slate-700">
+                    <template x-for="paragraph in ($store.app.currentLang === 'ar' ? $store.aboutPage.history.foundingBodyAr : $store.aboutPage.history.foundingBodyEn)" :key="paragraph">
+                        <p x-text="paragraph"></p>
+                    </template>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-section py-24 font-hacen">
+    <div class="container mx-auto px-6">
+        <h2 class="reveal reveal-up mb-16 text-center text-4xl font-black text-spu-blue md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.timelineTitleAr : $store.aboutPage.history.timelineTitleEn"></h2>
+
+        <div class="history-timeline">
+            <template x-for="(point, index) in $store.aboutPage.historyPoints" :key="point.year">
+                <article class="history-timeline-item reveal"
+                         :class="index % 2 === 0 ? 'reveal-left' : 'reveal-right'">
+                    <span class="history-timeline-dot" aria-hidden="true"></span>
+                    <div class="history-timeline-content">
+                        <p class="mb-3 text-4xl font-black leading-none text-spu-blue/35" translate="no" x-text="point.year"></p>
+                        <h3 class="text-xl font-black leading-tight text-spu-blue"
+                            x-text="$store.app.currentLang === 'ar' ? point.titleAr : point.titleEn"></h3>
+                        <p class="mt-5 text-sm leading-relaxed text-slate-700"
+                           x-text="$store.app.currentLang === 'ar' ? point.descAr : point.descEn"></p>
+                    </div>
+                </article>
             </template>
         </div>
     </div>
-
-    <!-- Decorative Elements -->
-    <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-radial from-spu-blue/5 to-transparent -z-10 blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-radial from-spu-red/5 to-transparent -z-10 blur-3xl"></div>
 </section>
 
+<section class="bg-white py-16 font-hacen">
+    <div class="container mx-auto max-w-6xl px-6">
+        <template x-for="(item, index) in $store.aboutPage.historyNarratives" :key="item.titleEn">
+            <article class="history-row reveal reveal-up" :class="`reveal-delay-${(index % 3) + 1}`">
+                <div>
+                    <h3 class="text-xl font-black text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                    <p class="mt-2 text-xs font-black uppercase tracking-widest text-spu-red"
+                       x-text="$store.app.currentLang === 'ar' ? item.eyebrowAr : item.eyebrowEn"></p>
+                </div>
 
+                <p class="max-w-3xl text-lg leading-relaxed text-slate-700"
+                   x-text="$store.app.currentLang === 'ar' ? item.bodyAr : item.bodyEn"></p>
+            </article>
+        </template>
+    </div>
+</section>
+
+<section class="py-20 font-hacen">
+    <div class="container mx-auto px-6">
+        <div class="history-legacy reveal reveal-up mx-auto max-w-4xl">
+            <h2 class="text-3xl font-black text-spu-blue"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.legacyTitleAr : $store.aboutPage.history.legacyTitleEn"></h2>
+            <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-700"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.history.legacyBodyAr : $store.aboutPage.history.legacyBodyEn"></p>
+        </div>
+    </div>
+</section>

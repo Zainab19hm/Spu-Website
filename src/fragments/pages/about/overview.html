@@ -67,13 +67,13 @@
 
                 <div class="mt-6 lg:ps-12">
                     <a :href="'/about/vision-mission.html'"
-                        class="inline-flex items-center gap-3 rounded-2xl bg-spu-blue px-8 py-4 font-black text-white shadow-xl transition-all hover:-translate-y-1 hover:bg-spu-red">
+                        class="inline-flex items-center gap-3 rounded-2xl  px-8 pb-5 font-black text-spu-blue hover:text-spu-red transition-all ">
                         <span x-text="$store.app.currentLang === 'ar' ? 'استكشف الرؤية والرسالة' : 'Explore Vision & Mission'"></span>
                         <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
                     </a>
                 </div>
 
-                <div class="grid grid-cols-2 gap-6 bg-section pt-4 lg:ps-12">
+                <div class="grid grid-cols-2 gap-6 bg-section py-4 lg:ps-12">
                     <div class="flex items-start gap-3">
                         <img src="/images/icon-check-circle-outline.svg" class="w-5 h-5 text-spu-red mt-1" alt="Check">
                         <div>
@@ -113,9 +113,9 @@
                         <img :src="stat.icon"
                             class="w-8 h-8 mb-6 mx-auto brightness-0 invert transition-all duration-300"
                             alt="Stat Icon">
-                        <div class="text-6xl font-black mb-3 flex items-center justify-center tracking-tighter">
+                        <div class="text-6xl font-normal mb-3 flex items-center justify-center tracking-tighter">
                             <span translate="no" x-text="stat.current"></span>
-                            <span class="text-spu-red" x-show="stat.id === 'papers'">+</span>
+                            <span class="" x-show="stat.id === 'papers'">+</span>
                         </div>
                         <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#799DD6] transition-colors"
                             x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>

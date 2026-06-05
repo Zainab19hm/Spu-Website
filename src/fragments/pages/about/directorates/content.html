@@ -1,142 +1,268 @@
 <style>
     /* Directorates Design System */
-    .directorate-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 3rem;
+    .directorates-hero {
+        min-height: 365px;
     }
 
-    .directorate-card {
-        background: white;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 3rem;
-        padding: 3rem 2.5rem;
-        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    .directorate-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 40px 80px -20px rgba(32, 39, 89, 0.15);
-        border-color: rgba(111, 22, 22, 0.2);
-    }
-
-    .directorate-icon-box {
-        width: 80px;
-        height: 80px;
-        background: #f8fafc;
-        border-radius: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 2.5rem;
-        font-size: 2rem;
-        color: #202759;
-        transition: all 0.5s ease;
-    }
-
-    .directorate-card:hover .directorate-icon-box {
-        background: #6f1616;
-        color: white;
-        transform: rotate(-10deg) scale(1.1);
-        box-shadow: 0 15px 30px rgba(111, 22, 22, 0.2);
-    }
-
-    .view-details-btn {
-        margin-top: auto;
-        padding-top: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-weight: 800;
-        font-size: 0.9rem;
-        color: #6f1616;
-        transition: all 0.3s ease;
-    }
-
-    .directorate-card:hover .view-details-btn {
-        gap: 1.25rem;
-        color: #202759;
-    }
-
-    /* Abstract background pattern for cards */
-    .directorate-card::after {
+    .directorates-hero::after {
         content: '';
         position: absolute;
-        top: -50px;
-        right: -50px;
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(circle, rgba(32, 39, 89, 0.02) 0%, transparent 70%);
-        border-radius: 50%;
-        z-index: 0;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(7, 10, 28, 0.1) 0%, rgba(32, 39, 89, 0.74) 100%);
+    }
+
+    .directorates-content-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 6rem 1.5rem;
+    }
+
+    .directorate-item {
+        display: flex;
+        gap: 3rem;
+        padding-bottom: 4rem;
+        margin-bottom: 4rem;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .directorate-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .directorate-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #e2e8f0;
+        line-height: 1;
+        flex-shrink: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .directorate-info {
+        flex-grow: 1;
+    }
+
+    .directorate-title {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #202759;
+        margin-bottom: 0.75rem;
+    }
+
+    .directorate-category {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        background: #f1f5f9;
+        color: #64748b;
+        font-size: 0.7rem;
+        font-weight: 800;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+    }
+
+    .directorate-desc {
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: #475569;
+    }
+
+    .correspondence-box {
+        margin-top: 6rem;
+        padding-left: 2rem;
+        border-left: 2px solid #6f1616;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .rtl .correspondence-box {
+        padding-left: 0;
+        padding-right: 2rem;
+        border-left: none;
+        border-right: 2px solid #6f1616;
+    }
+
+    .correspondence-icon {
+        color: #6f1616;
+        flex-shrink: 0;
+        margin-top: 0.25rem;
+    }
+
+    .correspondence-title {
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: #202759;
+        margin-bottom: 0.75rem;
+    }
+
+    .correspondence-text {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: #475569;
     }
 
     @media (max-width: 768px) {
-        .directorate-grid { grid-template-columns: 1fr; }
-        .directorate-card { padding: 2rem; }
+        .directorate-item {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .correspondence-box {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+
+    /* Staff Directory Nav Banner */
+    .staff-dir-nav-banner {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 3rem;
+        padding: 1.75rem 2rem;
+        background: #202759;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .staff-dir-nav-banner:hover {
+        background: #6f1616;
+        transform: translateY(-3px);
+        box-shadow: 0 14px 36px rgba(111, 22, 22, 0.22);
+    }
+
+    .staff-dir-nav-icon {
+        flex-shrink: 0;
+        opacity: 0.85;
+    }
+
+    .staff-dir-nav-text {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .staff-dir-nav-label {
+        font-size: 1rem;
+        font-weight: 900;
+        color: #fff;
+    }
+
+    .staff-dir-nav-sub {
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.65);
+        font-weight: 500;
+    }
+
+    .staff-dir-nav-arrow {
+        flex-shrink: 0;
+        color: rgba(255,255,255,0.6);
+        transition: color 0.2s, transform 0.2s;
+    }
+
+    .staff-dir-nav-banner:hover .staff-dir-nav-arrow {
+        color: #fff;
+        transform: translateX(4px);
+    }
+
+    .rtl .staff-dir-nav-banner:hover .staff-dir-nav-arrow {
+        transform: translateX(-4px);
+    }
+
+    @media (max-width: 640px) {
+        .staff-dir-nav-banner {
+            gap: 1rem;
+            padding: 1.25rem 1.25rem;
+        }
+
+        .staff-dir-nav-icon {
+            display: none;
+        }
     }
 </style>
 
-<section id="directorates-section" x-cloak
-         class="relative py-32 overflow-hidden bg-white font-hacen">
-    
-    <!-- Header Section -->
-    <div class="container relative z-10 mx-auto px-6 mb-24 text-center">
-        <div class="reveal reveal-up inline-flex items-center gap-3 mb-6">
-            <span class="h-px w-10 bg-spu-red"></span>
-            <span class="text-spu-red font-black tracking-widest text-sm uppercase"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.eyebrowAr : $store.aboutPage.directorates.eyebrowEn"></span>
-            <span class="h-px w-10 bg-spu-red"></span>
-        </div>
+<section x-cloak class="directorates-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="$store.aboutPage.directorates.heroImage || '/images/about-hero-3.webp'"
+         alt="Central Directorates Banner"
+         class="absolute inset-0 h-full w-full object-cover">
+
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+        <nav class="flex items-center justify-center gap-3 text-sm font-bold text-white/90 mb-4" aria-label="Breadcrumb">
+            <a href="/" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.breadcrumbHomeAr : $store.aboutPage.directorates.breadcrumbHomeEn"></a>
+            <span aria-hidden="true">›</span>
+            <a href="/about.html" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.breadcrumbParentAr : $store.aboutPage.directorates.breadcrumbParentEn"></a>
+            <span aria-hidden="true">›</span>
+            <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.breadcrumbCurrentAr : $store.aboutPage.directorates.breadcrumbCurrentEn"></span>
+        </nav>
         
-        <h2 class="reveal reveal-up reveal-delay-1 text-5xl md:text-7xl font-black text-spu-blue tracking-tighter leading-tight"
-            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.titleAr : $store.aboutPage.directorates.titleEn"></h2>
+        <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.titleAr : $store.aboutPage.directorates.titleEn"></h1>
     </div>
+</section>
 
-    <!-- Directorates Grid -->
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="directorate-grid">
+<section id="directorates-section" x-cloak class="bg-white font-hacen relative">
+    
+    <div class="directorates-content-wrapper relative z-10">
+        
+        <div class="directorates-list">
             <template x-for="(item, index) in $store.aboutPage.directorates.items" :key="index">
-                <div class="reveal reveal-up" :class="`reveal-delay-${(index % 4) + 1}`">
-                    <a :href="`/about/directorates/${item.slug}.html`" class="directorate-card group">
-                        <!-- Icon -->
-                        <div class="directorate-icon-box">
-                            <img :src="item.icon" alt="" class="h-6 w-6" aria-hidden="true">
-                        </div>
-
-                        <!-- Content -->
-                        <h3 class="text-2xl font-black text-spu-blue mb-4 leading-tight group-hover:text-spu-red transition-colors"
-                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
-                        
-                        <p class="text-slate-500 leading-relaxed mb-8"
-                            x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
-                        
-                        <!-- Action -->
-                        <div class="view-details-btn">
-                            <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
-                            <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
-                        </div>
-                    </a>
+                <div class="directorate-item reveal reveal-up" :class="`reveal-delay-${(index % 4) + 1}`">
+                    <div class="directorate-number" x-text="String(index + 1).padStart(2, '0')"></div>
+                    
+                    <div class="directorate-info">
+                        <h3 class="directorate-title" x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                        <div class="directorate-category" x-text="$store.app.currentLang === 'ar' ? item.categoryAr : item.categoryEn"></div>
+                        <p class="directorate-desc" x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
+                    </div>
                 </div>
             </template>
         </div>
 
-        <!-- Back Link -->
-        <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
-            <a :href="'/about.html'" 
-               class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
-                <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
-                <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
-            </a>
+        <div class="correspondence-box reveal reveal-up reveal-delay-2">
+            <div class="correspondence-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            <div>
+                <h4 class="correspondence-title" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.correspondenceTitleAr : $store.aboutPage.directorates.correspondenceTitleEn"></h4>
+                <p class="correspondence-text" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.correspondenceTextAr : $store.aboutPage.directorates.correspondenceTextEn"></p>
+            </div>
         </div>
+
+        <!-- Staff Directory Navigation Banner -->
+        <a href="/about/directorates/staff.html" class="staff-dir-nav-banner reveal reveal-up reveal-delay-3">
+            <div class="staff-dir-nav-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            </div>
+            <div class="staff-dir-nav-text">
+                <span class="staff-dir-nav-label" x-text="$store.app.currentLang === 'ar' ? 'دليل الهيئة الأكاديمية' : 'Academic Staff Directory'"></span>
+                <span class="staff-dir-nav-sub" x-text="$store.app.currentLang === 'ar' ? 'استعرض جميع أعضاء الهيئة الأكاديمية في الجامعة السورية الخاصة' : 'Browse all SPU academic staff members'"></span>
+            </div>
+            <div class="staff-dir-nav-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="rtl:rotate-180">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </a>
+
     </div>
 
-    <!-- Decorative Elements -->
-    <div class="absolute top-0 left-0 w-1/3 h-1/3 bg-radial from-spu-red/5 to-transparent -z-10 blur-3xl"></div>
-    <div class="absolute bottom-0 right-0 w-1/4 h-1/4 bg-radial from-spu-blue/5 to-transparent -z-10 blur-3xl"></div>
 </section>
+

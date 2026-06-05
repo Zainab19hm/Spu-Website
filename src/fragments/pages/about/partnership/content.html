@@ -1,232 +1,441 @@
 <style>
     /* Partnership Design System */
-    .partner-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 3rem;
+    .partnership-hero {
+        min-height: 365px;
+    }
+
+    .partnership-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(7, 10, 28, 0.1) 0%, rgba(32, 39, 89, 0.74) 100%);
+    }
+
+    .core-domains-section {
+        padding: 6rem 0;
+        background: #fff;
+    }
+
+    .core-domains-title {
+        text-align: center;
+        font-size: 2.25rem;
+        font-weight: 900;
+        color: #202759;
+        margin-bottom: 4rem;
     }
 
     .partner-goals-grid {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1rem;
-        margin-bottom: 4rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3rem 4rem;
+        max-width: 1000px;
+        margin: 0 auto;
     }
 
     .partner-goal-card {
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 1.75rem;
-        background: rgba(255, 255, 255, 0.88);
-        padding: 1.5rem;
-    }
-
-    .partner-card {
-        background: white;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 2.5rem;
-        padding: 2rem;
-        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        position: relative;
-        overflow: hidden;
         display: flex;
-        flex-direction: column;
-        height: 100%;
+        gap: 1.5rem;
     }
 
-    .partner-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 30px 60px -15px rgba(32, 39, 89, 0.12);
-        border-color: rgba(111, 22, 22, 0.2);
+    .partner-goal-icon {
+        flex-shrink: 0;
+        color: #6f1616;
     }
 
-    .partner-logo-box {
-        position: relative;
-        height: 180px;
-        background: #f8fafc;
-        border-radius: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 2rem;
-        padding: 2.5rem;
-        transition: all 0.5s ease;
-        border: 1px solid transparent;
+    .partner-goal-icon svg {
+        width: 32px;
+        height: 32px;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        fill: none;
     }
 
-    .partner-card:hover .partner-logo-box {
-        background: white;
-        border-color: rgba(111, 22, 22, 0.05);
-    }
-
-    .partner-logo-box img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        transition: all 0.5s ease;filter: grayscale(100%);
-        opacity: 0.7;
-        transition: all 0.5s ease;
-    }
-
-    .partner-card:hover .partner-logo-box img {
-        filter: grayscale(0%);
-        opacity: 1;
-        transform: scale(1.05);
-    }
-
-    /* Badge for partnership type */
-    .partner-badge {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        padding: 0.4rem 1rem;
-        background: white;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 999px;
-        font-size: 0.7rem;
+    .partner-goal-content h3 {
+        font-size: 1.25rem;
         font-weight: 900;
         color: #202759;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        z-index: 10;
+        margin-bottom: 0.75rem;
     }
 
-    [dir="rtl"] .partner-badge {
-        right: auto;
-        left: 1.5rem;
+    .partner-goal-content p {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.6;
     }
 
-    /* Action Links */
-    .partner-actions {
-        margin-top: auto;
-        padding-top: 2rem;
+    .filter-bar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-top: 1px solid #f1f5f9;
+        margin-bottom: 4rem;
+        flex-wrap: wrap;
+        gap: 1.5rem;
     }
 
-    .partner-link {
-        font-size: 0.85rem;
+    .filter-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.5rem;
+        border: 1px solid rgba(32, 39, 89, 0.12);
+        border-radius: 999px;
+        font-size: 0.75rem;
         font-weight: 800;
-        color: #6f1616;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
+        color: #202759;
+        background: #fff;
         transition: all 0.3s ease;
     }
 
-    .partner-link:hover {
-        gap: 0.8rem;
+    .filter-btn.active, .filter-btn:hover {
+        background: #6f1616;
+        color: #fff;
+        border-color: #6f1616;
+    }
+
+    .search-input-wrapper {
+        position: relative;
+        width: 300px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.6rem 1rem 0.6rem 2.5rem;
+        border: 1px solid rgba(32, 39, 89, 0.12);
+        border-radius: 6px;
+        font-size: 0.85rem;
         color: #202759;
+        background: #faf9fb;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+    
+    .search-input:focus {
+        border-color: #6f1616;
+    }
+
+    .rtl .search-input {
+        padding: 0.6rem 2.5rem 0.6rem 1rem;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        color: #999;
+    }
+
+    .rtl .search-icon {
+        left: auto;
+        right: 0.75rem;
+    }
+
+    .partner-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .partner-card {
+        background: #fff;
+        border: 1px solid rgba(32, 39, 89, 0.12);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .partner-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(32, 39, 89, 0.08);
+    }
+
+    .partner-logo-box {
+        padding: 3rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(32, 39, 89, 0.08);
+        height: 180px;
+    }
+
+    .partner-logo-box img {
+        max-width: 80%;
+        max-height: 80px;
+        object-fit: contain;
+    }
+
+    .partner-card-body {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .partner-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+    }
+
+    .partner-status {
+        color: #6f1616;
+    }
+
+    .partner-status.active {
+        color: #6f1616;
+    }
+
+    .partner-established {
+        color: #666;
+    }
+
+    .partner-title {
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: #202759;
+        margin-bottom: 0.5rem;
+    }
+
+    .partner-category {
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: #666;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .partner-desc {
+        font-size: 0.8rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        flex-grow: 1;
+    }
+
+    .partner-link {
+        font-size: 0.7rem;
+        font-weight: 900;
+        color: #202759;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+    }
+
+    .partner-link:hover {
+        color: #6f1616;
+    }
+
+    .load-more-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 2rem;
+        background: #f0eef3;
+        color: #202759;
+        font-size: 0.75rem;
+        font-weight: 900;
+        border-radius: 999px;
+        transition: background 0.3s ease;
+    }
+
+    .load-more-btn:hover {
+        background: #e2e0e8;
+    }
+
+    .propose-section {
+        text-align: center;
+        padding: 5rem 0;
+        border-top: 1px solid rgba(32, 39, 89, 0.1);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .propose-icon {
+        width: 32px;
+        height: 32px;
+        color: #6f1616;
+        margin: 0 auto 1.5rem;
+    }
+
+    .propose-title {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #202759;
+        margin-bottom: 1rem;
+    }
+
+    .propose-text {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .propose-btn {
+        display: inline-flex;
+        padding: 0.75rem 2rem;
+        border-bottom: 1px solid #202759;
+        color: #202759;
+        font-size: 0.75rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+    }
+
+    .propose-btn:hover {
+        border-color: #6f1616;
+        color: #6f1616;
+    }
+
+    @media (max-width: 1024px) {
+        .partner-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
 
     @media (max-width: 768px) {
-        .partner-grid,
-        .partner-goals-grid { grid-template-columns: 1fr; }
-        .partner-logo-box { height: 140px; }
+        .partner-goals-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .filter-bar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .search-input-wrapper {
+            width: 100%;
+        }
+
+        .partner-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
-<section id="partnership-section" x-cloak
-         class="relative py-32 overflow-hidden bg-white font-hacen">
+<section x-cloak class="partnership-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="$store.aboutPage.partnerships.heroImage"
+         alt="Partnerships Banner"
+         class="absolute inset-0 h-full w-full object-cover">
 
-    <!-- Background Connectivity Pattern -->
-    <div class="absolute inset-0 opacity-[0.03] pointer-events-none -z-10"
-         style="background-image: radial-gradient(#202759 1px, transparent 1px); background-size: 40px 40px;"></div>
-
-    <!-- Header Section -->
-    <div class="container relative z-10 mx-auto px-6 mb-24 text-center">
-        <div class="reveal reveal-up inline-flex items-center gap-3 mb-6">
-            <span class="h-px w-10 bg-spu-red"></span>
-            <span class="text-spu-red font-black tracking-widest text-sm uppercase"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.eyebrowAr : $store.aboutPage.partnerships.eyebrowEn"></span>
-            <span class="h-px w-10 bg-spu-red"></span>
-        </div>
-
-        <h2 class="reveal reveal-up reveal-delay-1 text-5xl md:text-7xl font-black text-spu-blue tracking-tighter leading-tight"
-            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn"></h2>
-
-        <p class="reveal reveal-up reveal-delay-2 mt-8 text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
-            x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.summaryAr : $store.aboutPage.partnerships.summaryEn"></p>
-
-        <p class="reveal reveal-up reveal-delay-3 mt-5 text-base text-slate-400 max-w-3xl mx-auto leading-relaxed"
-            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.subTextAr : $store.aboutPage.partnerships.subTextEn"></p>
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+        <nav class="flex items-center justify-center gap-3 text-sm font-bold text-white/90 mb-4" aria-label="Breadcrumb">
+            <a href="/" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbHomeAr : $store.aboutPage.partnerships.breadcrumbHomeEn"></a>
+            <span aria-hidden="true">›</span>
+            <a href="/about.html" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbParentAr : $store.aboutPage.partnerships.breadcrumbParentEn"></a>
+            <span aria-hidden="true">›</span>
+            <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbCurrentAr : $store.aboutPage.partnerships.breadcrumbCurrentEn"></span>
+        </nav>
+        
+        <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn"></h1>
     </div>
+</section>
 
-    <!-- Partners Grid -->
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="partner-goals-grid">
-            <template x-for="(goal, index) in $store.aboutPage.partnerships.goals" :key="goal.titleEn">
-                <article class="partner-goal-card reveal reveal-up" :class="`reveal-delay-${(index % 4) + 1}`">
-                    <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-spu-red/10 text-sm font-black text-spu-red"
-                         x-text="String(index + 1).padStart(2, '0')"></div>
-                    <h3 class="text-lg font-black text-spu-blue"
-                        x-text="$store.app.currentLang === 'ar' ? goal.titleAr : goal.titleEn"></h3>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-500"
-                        x-text="$store.app.currentLang === 'ar' ? goal.summaryAr : goal.summaryEn"></p>
+<section id="partnership-section" x-cloak class="core-domains-section font-hacen">
+    <div class="container mx-auto">
+        
+        <h2 class="core-domains-title reveal reveal-up"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.coreDomainsTitleAr : $store.aboutPage.partnerships.coreDomainsTitleEn"></h2>
+
+        <div class="partner-goals-grid mb-20">
+            <template x-for="(goal, index) in $store.aboutPage.partnerships.goals" :key="index">
+                <article class="partner-goal-card reveal reveal-up" :class="`reveal-delay-${(index % 2) + 1}`">
+                    <div class="partner-goal-icon">
+                        <svg viewBox="0 0 24 24" x-html="`<path d='${goal.iconPath}'/>`"></svg>
+                    </div>
+                    <div class="partner-goal-content">
+                        <h3 x-text="$store.app.currentLang === 'ar' ? goal.titleAr : goal.titleEn"></h3>
+                        <p x-text="$store.app.currentLang === 'ar' ? goal.summaryAr : goal.summaryEn"></p>
+                    </div>
                 </article>
             </template>
+        </div>
+
+        <div class="filter-bar reveal reveal-up">
+            <div class="filter-buttons">
+                <button class="filter-btn active" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.allAr : $store.aboutPage.partnerships.filters.allEn"></button>
+                <button class="filter-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.academicAr : $store.aboutPage.partnerships.filters.academicEn"></button>
+                <button class="filter-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.researchAr : $store.aboutPage.partnerships.filters.researchEn"></button>
+                <button class="filter-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.clinicalAr : $store.aboutPage.partnerships.filters.clinicalEn"></button>
+            </div>
+            
+            <div class="search-input-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="search-input" :placeholder="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.searchAr : $store.aboutPage.partnerships.filters.searchEn">
+            </div>
         </div>
 
         <div class="partner-grid">
             <template x-for="(partner, index) in $store.aboutPage.partnerships.list" :key="index">
                 <div class="reveal reveal-up" :class="`reveal-delay-${(index % 3) + 1}`">
                     <div class="partner-card">
-                        <!-- Badge -->
-                        <div class="partner-badge" x-text="$store.app.currentLang === 'ar' ? partner.categoryAr : partner.categoryEn"></div>
-
-                        <!-- Logo Box -->
                         <div class="partner-logo-box">
                             <img :src="partner.logo" :alt="partner.nameEn">
                         </div>
 
-                        <!-- Content -->
-                        <div class="flex flex-col grow">
-                            <h3 class="text-xl font-black text-spu-blue mb-4 leading-tight group-hover:text-spu-red transition-colors"
-                                x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
-
-                            <p class="text-slate-500 text-sm leading-relaxed mb-6"
-                                x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
-
-                            <!-- Actions -->
-                            <div class="partner-actions">
-                                <a :href="partner.newsLink" class="partner-link" :target="partner.newsLink.startsWith('http') ? '_blank' : null" :rel="partner.newsLink.startsWith('http') ? 'noopener' : null">
-                                    <span x-text="$store.app.currentLang === 'ar' ? 'المصدر' : 'Source'"></span>
-                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
-                                </a>
-
-                                <a :href="partner.website" target="_blank" class="text-slate-400 hover:text-spu-blue transition-colors">
-                                    <img src="/images/icon-globe-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                                </a>
+                        <div class="partner-card-body">
+                            <div class="partner-meta">
+                                <span class="partner-status" :class="partner.statusEn === 'ACTIVE' ? 'active' : ''" x-text="$store.app.currentLang === 'ar' ? partner.statusAr : partner.statusEn"></span>
+                                <span class="partner-established" x-text="$store.app.currentLang === 'ar' ? partner.establishedAr : partner.establishedEn"></span>
                             </div>
+                            
+                            <h3 class="partner-title" x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
+                            <p class="partner-category" x-text="$store.app.currentLang === 'ar' ? partner.categoryAr : partner.categoryEn"></p>
+                            
+                            <p class="partner-desc" x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
+
+                            <a :href="partner.website" class="partner-link">
+                                <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
+                                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+                            </a>
                         </div>
                     </div>
                 </div>
             </template>
         </div>
 
-        <!-- Pagination/CTA -->
-        <div class="reveal reveal-up reveal-delay-4 mt-24 text-center">
-            <div class="inline-flex items-center gap-6 p-2 pl-6 bg-slate-50 rounded-2xl border border-slate-100">
-                <span class="text-slate-500 font-bold text-sm"
-                      x-text="$store.app.currentLang === 'ar' ? 'هل تريد استكشاف المزيد من الأخبار؟' : 'Want to explore more news?'"></span>
-                <a :href="'/news.html'" class="px-6 py-3 bg-white border border-slate-200 text-spu-blue font-black rounded-xl hover:bg-spu-blue hover:text-white transition-all shadow-sm">
-                    <span x-text="$store.app.currentLang === 'ar' ? 'جميع الأخبار' : 'All News'"></span>
-                </a>
-            </div>
+        <div class="text-center reveal reveal-up">
+            <button class="load-more-btn">
+                <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.loadMoreAr : $store.aboutPage.partnerships.loadMoreEn"></span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
         </div>
 
-        <!-- Back Link -->
-        <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
-            <a :href="'/about.html'"
-               class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
-                <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
-                <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
-            </a>
+        <div class="propose-section reveal reveal-up">
+            <svg class="propose-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            
+            <h3 class="propose-title" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeTitleAr : $store.aboutPage.partnerships.proposeTitleEn"></h3>
+            
+            <p class="propose-text" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeTextAr : $store.aboutPage.partnerships.proposeTextEn"></p>
+            
+            <a href="#" class="propose-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeBtnAr : $store.aboutPage.partnerships.proposeBtnEn"></a>
         </div>
+
     </div>
-
-    <!-- Decorative Elements -->
-    <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-radial from-spu-blue/5 to-transparent -z-10 blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-radial from-spu-red/5 to-transparent -z-10 blur-3xl"></div>
 </section>

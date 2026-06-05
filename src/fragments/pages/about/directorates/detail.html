@@ -48,16 +48,19 @@
 </style>
 
 <div x-data="{ 
-    directorate: $store.aboutPage.directorates.items.find(d => d.slug === $el.closest('[data-slug]').dataset.slug) 
+    slug: $el.closest('[data-slug]')?.dataset?.slug || window.location.pathname.split('/').filter(Boolean).pop(),
+    directorate: $store.aboutPage.directorates.items.find(d => d.slug === ($el.closest('[data-slug]')?.dataset?.slug || window.location.pathname.split('/').filter(Boolean).pop()))
 }">
     <!-- Hero Section -->
     <section class="detail-hero">
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="reveal reveal-up inline-block px-6 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-xs font-black uppercase tracking-widest mb-8">
-                <span x-text="$store.app.currentLang === 'ar' ? 'المديريات المركزية' : 'Central Directorates'"></span>
+            <div
+                class="reveal reveal-up inline-block px-6 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-xs font-black uppercase tracking-widest mb-8">
+                <span
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.detailHeroTaglineAr : $store.aboutPage.directorates.detailHeroTaglineEn"></span>
             </div>
             <h1 class="reveal reveal-up reveal-delay-1 text-4xl md:text-6xl font-black text-white leading-tight mb-8"
-                x-text="$store.app.currentLang === 'ar' ? directorate.titleAr : directorate.titleEn"></h1>
+                x-text="$store.app.currentLang === 'ar' ? directorate?.titleAr : directorate?.titleEn"></h1>
             <div class="reveal reveal-up reveal-delay-2 h-1 w-24 bg-white/30 mx-auto rounded-full"></div>
         </div>
     </section>
@@ -69,81 +72,99 @@
                 <!-- Main Description -->
                 <div class="lg:col-span-3">
                     <h2 class="reveal reveal-up text-3xl font-black text-spu-blue mb-8"
-                        x-text="$store.app.currentLang === 'ar' ? 'نظرة عامة' : 'Overview'"></h2>
+                        x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.overviewTitleAr : $store.aboutPage.directorates.overviewTitleEn">
+                    </h2>
                     <p class="reveal reveal-up reveal-delay-1 text-xl text-slate-600 leading-relaxed mb-12"
-                       x-text="$store.app.currentLang === 'ar' ? directorate.descriptionAr : directorate.descriptionEn"></p>
-                    
+                        x-text="$store.app.currentLang === 'ar' ? directorate?.descriptionAr : directorate?.descriptionEn">
+                    </p>
+
                     <h2 class="reveal reveal-up text-3xl font-black text-spu-blue mb-8"
-                        x-text="$store.app.currentLang === 'ar' ? 'الخدمات الرئيسية' : 'Key Services'"></h2>
-                    
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <template x-for="(service, idx) in directorate.services" :key="idx">
-                            <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
-                                <div class="service-item h-full">
-                                    <div class="icon-circle">
-                                        <img src="/images/icon-check-circle-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                                    </div>
-                                    <h4 class="font-bold text-spu-blue text-lg"
-                                        x-text="$store.app.currentLang === 'ar' ? service.ar : service.en"></h4>
+                        x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.keyServicesTitleAr : $store.aboutPage.directorates.keyServicesTitleEn">
+                    </h2>
+                    <template x-for="(service, idx) in directorate?.services || []" :key="idx">
+                        <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
+                            <div class="service-item h-full">
+                                <div class="icon-circle">
+                                    <img src="/images/icon-check-circle-outline.svg" alt="" class="h-4 w-4"
+                                        aria-hidden="true">
                                 </div>
+                                <h4 class="font-bold text-spu-blue text-lg"
+                                    x-text="$store.app.currentLang === 'ar' ? service.ar : service.en"></h4>
                             </div>
-                        </template>
-                    </div>
-                </div>
-
-                <!-- Sidebar Info -->
-                <div class="lg:col-span-2">
-                    <div class="reveal reveal-right p-10 bg-slate-50 rounded-[3rem] border border-slate-100 sticky top-32">
-                        <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-3xl text-spu-red shadow-sm mb-8">
-                            <img :src="directorate.icon" alt="" class="h-6 w-6" aria-hidden="true">
                         </div>
-                        
-                        <h3 class="text-xl font-black text-spu-blue mb-6 border-b border-slate-200 pb-4"
-                            x-text="$store.app.currentLang === 'ar' ? 'معلومات التواصل' : 'Contact Information'"></h3>
-                        
-                        <ul class="space-y-6">
-                            <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-spu-blue shrink-0 shadow-sm">
-                                    <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                                </div>
-                                <div>
-                                    <p class="text-xs font-black text-spu-red uppercase tracking-widest mb-1"
-                                       x-text="$store.app.currentLang === 'ar' ? 'البريد الإلكتروني' : 'Email Address'"></p>
-                                    <p class="text-spu-blue font-bold truncate" x-text="directorate.slug + '@spu.edu.sy'"></p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-spu-blue shrink-0 shadow-sm">
-                                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                                </div>
-                                <div>
-                                    <p class="text-xs font-black text-spu-red uppercase tracking-widest mb-1"
-                                       x-text="$store.app.currentLang === 'ar' ? 'الموقع' : 'Location'"></p>
-                                    <p class="text-spu-blue font-bold" 
-                                       x-text="$store.app.currentLang === 'ar' ? 'المبنى الرئيسي - الطابق الثاني' : 'Main Building - 2nd Floor'"></p>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <div class="mt-12">
-                            <a :href="'/contact.html'" 
-                               class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20 group">
-                                <span x-text="$store.app.currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us'"></span>
-                                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180" aria-hidden="true">
-                            </a>
-                        </div>
-                    </div>
+                    </template>
                 </div>
             </div>
 
-            <!-- Navigation Back -->
-            <div class="reveal reveal-up reveal-delay-4 mt-24 pt-12 border-t border-slate-100 text-center">
-                <a :href="'/about/directorates.html'" 
-                   class="inline-flex items-center gap-3 text-spu-blue font-black hover:text-spu-red transition-colors group">
-                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
-                    <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى جميع المديريات' : 'Back to All Directorates'"></span>
-                </a>
+            <!-- Sidebar Info -->
+            <div class="lg:col-span-2">
+                <div class="reveal reveal-right p-10 bg-slate-50 rounded-[3rem] border border-slate-100 sticky top-32">
+                    <div
+                        class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-3xl text-spu-red shadow-sm mb-8">
+                        <img :src="directorate?.icon || '/images/icon-university-outline.svg'"
+                            :alt="directorate ? ($store.app.currentLang === 'ar' ? directorate.titleAr : directorate.titleEn) : ''"
+                            class="h-6 w-6" aria-hidden="true">
+                    </div>
+
+                    <h3 class="text-xl font-black text-spu-blue mb-6 border-b border-slate-200 pb-4"
+                        x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.contactTitleAr : $store.aboutPage.directorates.contactTitleEn">
+                    </h3>
+
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-spu-blue shrink-0 shadow-sm">
+                                <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+                            </div>
+                            <div>
+                                <p class="text-xs font-black text-spu-red uppercase tracking-widest mb-1"
+                                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.emailLabelAr : $store.aboutPage.directorates.emailLabelEn">
+                                </p>
+                                <p class="text-spu-blue font-bold truncate"
+                                    x-text="directorate?.slug ? directorate.slug + '@spu.edu.sy' : ''">
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-spu-blue shrink-0 shadow-sm">
+                                <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+                            </div>
+                            <div>
+                                <p class="text-xs font-black text-spu-red uppercase tracking-widest mb-1"
+                                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.locationLabelAr : $store.aboutPage.directorates.locationLabelEn">
+                                </p>
+                                <p class="text-spu-blue font-bold"
+                                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.locationDetailAr : $store.aboutPage.directorates.locationDetailEn">
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-12">
+                        <a href="/contact.html"
+                            class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20 group">
+                            <span
+                                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.contactButtonAr : $store.aboutPage.directorates.contactButtonEn"></span>
+                            <img src="/images/icon-arrow-right-outline.svg" alt=""
+                                class="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180"
+                                aria-hidden="true">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+
+        <!-- Navigation Back -->
+        <div class="reveal reveal-up reveal-delay-4 mt-24 pt-12 border-t border-slate-100 text-center">
+            <a :href="'/about/directorates.html'"
+                class="inline-flex items-center gap-3 text-spu-blue font-black hover:text-spu-red transition-colors group">
+                <img src="/images/icon-chevron-left-outline.svg" alt=""
+                    class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
+                <span
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.directorates.backLinkAr : $store.aboutPage.directorates.backLinkEn"></span>
+            </a>
+        </div>
+</div>
+</section>
 </div>

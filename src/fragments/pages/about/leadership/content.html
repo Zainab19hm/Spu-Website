@@ -1,228 +1,427 @@
 <style>
-    /* Leadership Design System */
-    .leadership-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 3rem;
+    .staff-directory-hero {
+        min-height: 365px;
     }
 
-    .president-spotlight {
-        max-width: 900px;
-        margin: 0 auto 6rem;
+    .staff-directory-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(7, 10, 28, 0.1) 0%, rgba(32, 39, 89, 0.74) 100%);
     }
 
-    /* Executive Card Styling */
-    .member-card {
-        background: white;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 2.5rem;
-        padding: 2.5rem;
-        text-align: center;
-        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        position: relative;
-        overflow: hidden;
+    .filter-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -2rem; /* Pull up into hero a bit, or just keep spacing */
+        margin-bottom: 4rem;
     }
 
-    .member-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px -12px rgba(32, 39, 89, 0.08);
-        border-color: rgba(111, 22, 22, 0.2);
+    .filter-label {
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        color: #666;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
     }
 
-    .member-photo-container {
-        position: relative;
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 2rem;
-        border-radius: 2rem;
-        overflow: hidden;
-        border: 4px solid white;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        transition: all 0.5s ease;
-    }
-
-    .member-card:hover .member-photo-container {
-        border-radius: 3rem;
-        box-shadow: 0 15px 35px rgba(111, 22, 22, 0.1);
-    }
-
-    .president-card .member-photo-container {
-        width: 240px;
-        height: 240px;
-    }
-
-    .leadership-icon-container {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 2rem;
-        border-radius: 2rem;
-        background: rgba(32, 39, 89, 0.05);
+    .filter-dropdown {
+        border: 1px solid rgba(32, 39, 89, 0.12);
+        background: #fff;
+        padding: 0.75rem 3rem 0.75rem 1.5rem;
+        border-radius: 6px;
         color: #202759;
+        font-weight: 600;
+        font-size: 0.9rem;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z' fill='rgba(32,39,89,1)'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        min-width: 280px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    
+    .rtl .filter-dropdown {
+        background-position: left 1rem center;
+        padding: 0.75rem 1.5rem 0.75rem 3rem;
+    }
+
+    .staff-spotlight {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+        min-height: 440px;
+        background: #fff;
+        border: 1px solid rgba(32, 39, 89, 0.12);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+
+    .staff-spotlight-media {
+        position: relative;
+        overflow: hidden;
+        background: #f0eef3;
+        aspect-ratio: 1 / 1;
+    }
+
+    .staff-spotlight-media::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        inset-inline-end: -2px;
+        width: 5px;
+        background: #6f1616;
+    }
+
+    .staff-spotlight-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4.5rem 5rem;
+    }
+
+    .staff-quote {
+        border-inline-start: 4px solid #6f1616;
+        padding-inline-start: 1.5rem;
+    }
+
+    .section-title-wrapper {
+        text-align: center;
+        margin: 5rem 0 4rem;
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.25rem;
-        transition: all 0.5s ease;
     }
-
-    .member-card:hover .leadership-icon-container {
+    
+    .section-title-wrapper::before {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
         background: #6f1616;
-        color: white;
-        transform: rotate(-8deg) scale(1.05);
+        max-width: 120px;
+        margin-inline-end: 2rem;
     }
 
-    /* Professional Background pattern for cards */
-    .card-bg-pattern {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100px;
-        background: linear-gradient(135deg, rgba(32, 39, 89, 0.03) 0%, rgba(111, 22, 22, 0.03) 100%);
-        z-index: 0;
+    .section-title-wrapper::after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background: #6f1616;
+        max-width: 120px;
+        margin-inline-start: 2rem;
     }
 
-    /* Bio quote styling for President */
-    .president-quote {
+    .section-title {
+        font-size: 2.25rem;
+        font-weight: 900;
+        color: #202759;
+    }
+
+    .vp-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3rem;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .vp-card {
+        border: 1px solid rgba(32, 39, 89, 0.12);
+        background: #fff;
+        padding: 3rem 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vp-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(32, 39, 89, 0.08);
+    }
+
+    .deans-carousel-wrapper {
         position: relative;
-        padding: 2rem;
-        background: rgba(32, 39, 89, 0.02);
-        border-radius: 2rem;
-        margin-top: 2rem;
-        border-left: 4px solid #6f1616;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
     }
 
-    [dir="rtl"] .president-quote {
-        border-left: none;
-        border-right: 4px solid #6f1616;
+    .deans-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+        flex-grow: 1;
+        overflow: hidden;
     }
 
-    .quote-icon {
+    .carousel-nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #202759;
+        transition: color 0.3s;
+    }
+
+    .carousel-nav-btn:hover {
+        color: #6f1616;
+    }
+
+    .carousel-nav-btn svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .dean-card {
+        border: 1px solid rgba(32, 39, 89, 0.12);
+        background: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dean-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(32, 39, 89, 0.08);
+    }
+
+    .dean-card-media {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        background: #f0eef3;
+    }
+    
+    .dean-card-media::after {
+        content: '';
         position: absolute;
-        top: -10px;
-        left: 20px;
-        font-size: 3rem;
-        color: rgba(111, 22, 22, 0.1);
-        font-family: serif;
+        inset-inline: 0;
+        bottom: 0;
+        height: 3px;
+        background: #202759;
     }
 
-    @media (max-width: 768px) {
-        .leadership-grid { grid-template-columns: 1fr; }
-        .president-card .member-photo-container { width: 180px; height: 180px; }
-        .member-card { padding: 1.5rem; }
+    .dean-card-media img,
+    .staff-spotlight-media img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        filter: grayscale(0.1);
+    }
+
+    .dean-card-body {
+        padding: 1.5rem 1rem;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    @media (max-width: 1024px) {
+        .staff-spotlight {
+            grid-template-columns: 1fr;
+        }
+
+        .staff-spotlight-media {
+            min-height: 320px;
+        }
+
+        .staff-spotlight-media::after {
+            top: auto;
+            bottom: 0;
+            inset-inline: 0;
+            width: auto;
+            height: 5px;
+        }
+
+        .staff-spotlight-content {
+            padding: 3rem;
+        }
+        
+        .vp-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .deans-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 640px) {
+        .staff-directory-hero {
+            min-height: 320px;
+        }
+
+        .deans-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .staff-spotlight-content {
+            padding: 2rem;
+        }
+        
+        .section-title-wrapper::before,
+        .section-title-wrapper::after {
+            display: none;
+        }
+        
+        .deans-carousel-wrapper {
+            flex-direction: column;
+        }
+        
+        .carousel-nav-btn {
+            display: none; /* Hide for mobile, maybe use swipe */
+        }
     }
 </style>
 
-<section id="leadership-section" x-cloak
-         class="relative py-32 overflow-hidden bg-white font-hacen">
-    
-    <!-- Header Section -->
-    <div class="container relative z-10 mx-auto px-6 mb-24 text-center">
-        <div class="reveal reveal-up inline-flex items-center gap-3 mb-6">
-            <span class="h-px w-10 bg-spu-red"></span>
-            <span class="text-spu-red font-black tracking-widest text-sm uppercase"
-                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.eyebrowAr : $store.aboutPage.leadership.eyebrowEn"></span>
-            <span class="h-px w-10 bg-spu-red"></span>
-        </div>
-        
-        <h2 class="reveal reveal-up reveal-delay-1 text-5xl md:text-7xl font-black text-spu-blue tracking-tighter leading-tight"
-            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.nameAr : $store.aboutPage.leadership.nameEn"></h2>
-        
-        <p class="reveal reveal-up reveal-delay-2 mt-8 text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
-            x-html="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.roleAr : $store.aboutPage.leadership.roleEn"></p>
+<section x-cloak class="staff-directory-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="$store.aboutPage.leadership.heroImage"
+         alt="Leadership Banner"
+         class="absolute inset-0 h-full w-full object-cover">
+
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+        <nav class="flex items-center justify-center gap-3 text-sm font-bold text-white/90" aria-label="Breadcrumb">
+            <a href="/" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.breadcrumbHomeAr : $store.aboutPage.leadership.breadcrumbHomeEn"></a>
+            <span aria-hidden="true">›</span>
+            <a href="/about.html" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.breadcrumbParentAr : $store.aboutPage.leadership.breadcrumbParentEn"></a>
+            <span aria-hidden="true">›</span>
+            <span>.....</span>
+        </nav>
     </div>
+</section>
 
-    <!-- Content Area -->
-    <div class="container mx-auto px-6 relative z-10">
+<section id="leadership-section"
+         x-cloak
+         x-data="{
+            get deans() {
+                return $store.aboutPage.leadership.deans || [];
+            },
+            currentDeanIndex: 0,
+            nextDean() {
+                if (this.currentDeanIndex < this.deans.length - 3) {
+                    this.currentDeanIndex++;
+                }
+            },
+            prevDean() {
+                if (this.currentDeanIndex > 0) {
+                    this.currentDeanIndex--;
+                }
+            },
+            get visibleDeans() {
+                return this.deans.slice(this.currentDeanIndex, this.currentDeanIndex + 3);
+            }
+         }"
+         class="bg-[#faf9fb] py-16 font-hacen">
+    <div class="container mx-auto max-w-7xl px-6">
         
-        <!-- President Spotlight -->
-        <template x-for="member in $store.aboutPage.leadershipMembers.filter(m => m.type === 'president')" :key="member.nameEn">
-            <div class="president-spotlight reveal reveal-up reveal-delay-3">
-                <div class="member-card president-card">
-                    <div class="card-bg-pattern"></div>
-                    
-                    <div class="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-                        <div class="member-photo-container shrink-0">
-                            <img :src="member.image" :alt="member.nameEn" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <div class="text-center md:text-start">
-                            <span class="inline-block px-4 py-1 bg-spu-red/10 text-spu-red text-xs font-black uppercase tracking-widest rounded-full mb-4"
-                                  x-text="$store.app.currentLang === 'ar' ? member.roleAr : member.roleEn"></span>
-                            
-                            <h3 class="text-3xl md:text-4xl font-black text-spu-blue mb-4"
-                                x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
+        <!-- Filter Dropdown -->
+        <div class="filter-container reveal reveal-up">
+            <label class="filter-label" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.filterLabelAr : $store.aboutPage.leadership.filterLabelEn"></label>
+            <select class="filter-dropdown">
+                <option x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.filterDefaultAr : $store.aboutPage.leadership.filterDefaultEn"></option>
+                <!-- Add other options as needed -->
+            </select>
+        </div>
 
-                            <p class="text-slate-500 leading-relaxed"
-                               x-text="$store.app.currentLang === 'ar' ? member.bioAr : member.bioEn"></p>
-                            
-                            <div class="president-quote">
-                                <span class="quote-icon">"</span>
-                                <p class="text-slate-600 text-lg leading-relaxed "
-                                   x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.quoteAr : $store.aboutPage.leadership.quoteEn"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </template>
-
-        <!-- Executive Council Grid -->
-        <div class="mb-16">
-            <div class="reveal reveal-up mb-12 flex items-center gap-4">
-                <h4 class="text-2xl font-black text-spu-blue" 
-                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.councilTitleAr : $store.aboutPage.leadership.councilTitleEn"></h4>
-                <div class="h-px grow bg-slate-100"></div>
+        <!-- Rector Spotlight -->
+        <article class="staff-spotlight reveal reveal-up mx-auto max-w-6xl">
+            <div class="staff-spotlight-media">
+                <template x-if="$store.aboutPage.leadership.rector?.image">
+                    <img :src="$store.aboutPage.leadership.rector.image"
+                         :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.nameAr : $store.aboutPage.leadership.rector.nameEn">
+                </template>
             </div>
 
-            <div class="reveal reveal-up mb-10 rounded-3xl border border-amber-200 bg-amber-50 px-6 py-5 text-sm leading-relaxed text-amber-950">
-                <p x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.noteAr : $store.aboutPage.leadership.noteEn"></p>
+            <div class="staff-spotlight-content">
+                <p class="mb-5 text-xs font-black uppercase tracking-[0.15em] text-spu-red"
+                   x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.titleAr : $store.aboutPage.leadership.rector.titleEn"></p>
+
+                <h2 class="text-3xl font-black leading-tight text-spu-blue md:text-4xl"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.nameAr : $store.aboutPage.leadership.rector.nameEn"></h2>
+
+                <blockquote class="staff-quote mt-8 max-w-xl text-[0.95rem] leading-[1.8] text-gray-600 font-medium"
+                            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.quoteAr : $store.aboutPage.leadership.rector.quoteEn"></blockquote>
+
+                <a :href="$store.aboutPage.leadership.rector.url"
+                   class="mt-12 inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-spu-blue transition hover:text-spu-red">
+                    <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.linkAr : $store.aboutPage.leadership.rector.linkEn"></span>
+                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
+                </a>
             </div>
+        </article>
 
-            <div class="leadership-grid">
-                <template x-for="(member, index) in $store.aboutPage.leadershipMembers.filter(m => m.type !== 'president')" :key="member.nameEn">
-                    <div class="reveal reveal-up" :class="`reveal-delay-${(index % 3) + 1}`">
-                        <div class="member-card h-full flex flex-col">
-                            <div class="card-bg-pattern"></div>
-                            
-                            <div class="relative z-10 flex flex-col h-full">
-                                <div class="leadership-icon-container">
-                                    <img :src="member.icon" alt="" class="h-5 w-5" aria-hidden="true">
-                                </div>
-                                
-                                <span class="text-spu-red text-xs font-black uppercase tracking-widest mb-3"
-                                      x-text="$store.app.currentLang === 'ar' ? member.roleAr : member.roleEn"></span>
-                                
-                                <h3 class="text-xl font-bold text-spu-blue mb-4"
-                                    x-text="$store.app.currentLang === 'ar' ? member.nameAr : member.nameEn"></h3>
-
-                                <p class="mb-6 text-sm leading-relaxed text-slate-500"
-                                   x-text="$store.app.currentLang === 'ar' ? member.bioAr : member.bioEn"></p>
-                                
-                                <div class="mt-auto pt-6 border-t border-slate-50 flex justify-center">
-                                    <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 px-4 py-2 text-xs font-black uppercase tracking-widest text-spu-blue">
-                                        <img src="/images/icon-sitemap-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                                        <span x-text="$store.app.currentLang === 'ar' ? 'حوكمة' : 'Governance'"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Vice Presidents -->
+        <div class="reveal reveal-up mt-10">
+            <div class="section-title-wrapper">
+                <h2 class="section-title" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.vicePresidentsTitleAr : $store.aboutPage.leadership.vicePresidentsTitleEn"></h2>
+            </div>
+            
+            <div class="vp-grid">
+                <template x-for="(vp, index) in $store.aboutPage.leadership.vicePresidents" :key="index">
+                    <div class="vp-card">
+                        <h3 class="text-xl font-black leading-tight text-spu-blue mb-2"
+                            x-text="$store.app.currentLang === 'ar' ? vp.nameAr : vp.nameEn"></h3>
+                        <p class="mb-6 text-[0.7rem] font-black uppercase tracking-[0.1em] text-spu-red"
+                           x-text="$store.app.currentLang === 'ar' ? vp.roleAr : vp.roleEn"></p>
+                        <p class="text-sm text-gray-600 leading-relaxed max-w-sm mx-auto"
+                           x-text="$store.app.currentLang === 'ar' ? vp.descriptionAr : vp.descriptionEn"></p>
                     </div>
                 </template>
             </div>
         </div>
 
-        <!-- Back Link -->
-        <div class="reveal reveal-up reveal-delay-5 mt-20 text-center">
-            <a :href="'/about.html'" 
-               class="inline-flex items-center gap-3 px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-xl hover:shadow-spu-red/20 group">
-                <img src="/images/icon-arrow-left-outline.svg" alt="" class="h-4 w-4 transition-transform group-hover:-translate-x-1 rtl:rotate-180" aria-hidden="true">
-                <span x-text="$store.app.currentLang === 'ar' ? 'العودة إلى نظرة عامة' : 'Back to Overview'"></span>
-            </a>
-        </div>
-    </div>
+        <!-- Faculty Deans -->
+        <div class="reveal reveal-up mt-10 mb-20">
+            <div class="section-title-wrapper">
+                <h2 class="section-title" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.deansTitleAr : $store.aboutPage.leadership.deansTitleEn"></h2>
+            </div>
+            
+            <div class="deans-carousel-wrapper">
+                <button @click="prevDean" class="carousel-nav-btn" aria-label="Previous">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="deans-grid">
+                    <template x-for="(dean, index) in visibleDeans" :key="index">
+                        <article class="dean-card">
+                            <div class="dean-card-media">
+                                <template x-if="dean.image">
+                                    <img :src="dean.image"
+                                         :alt="$store.app.currentLang === 'ar' ? dean.nameAr : dean.nameEn">
+                                </template>
+                            </div>
 
-    <!-- Decorative Elements -->
-    <div class="absolute top-0 left-0 w-1/3 h-1/3 bg-radial from-spu-red/5 to-transparent -z-10 blur-3xl"></div>
-    <div class="absolute bottom-0 right-0 w-1/4 h-1/4 bg-radial from-spu-blue/5 to-transparent -z-10 blur-3xl"></div>
+                            <div class="dean-card-body">
+                                <h3 class="text-lg font-black leading-tight text-spu-blue mb-2"
+                                    x-text="$store.app.currentLang === 'ar' ? dean.nameAr : dean.nameEn"></h3>
+                                <p class="text-[0.68rem] font-black uppercase tracking-[0.1em] text-spu-red"
+                                   x-text="$store.app.currentLang === 'ar' ? dean.roleAr : dean.roleEn"></p>
+                            </div>
+                        </article>
+                    </template>
+                </div>
+                
+                <button @click="nextDean" class="carousel-nav-btn" aria-label="Next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+    </div>
 </section>
