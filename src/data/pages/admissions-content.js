@@ -1,3 +1,6 @@
+import { admissionsTransferPage } from './admissions-transfer.js';
+import { admissionsFaqPage } from './admissions-faq.js';
+
 export const admissionsPageContent = {
     hero: {
         titleEn: 'Admissions',
@@ -293,24 +296,7 @@ export const admissionsPageContent = {
             { titleEn: 'Electronic Payment', titleAr: 'الدفع الإلكتروني', descEn: 'Via SPU Student Portal', descAr: 'عبر بوابة الطالب' }
         ]
     },
-    faqPage: {
-        titleEn: 'Admissions FAQ',
-        titleAr: 'الأسئلة الشائعة للقبول',
-        questions: [
-            {
-                qEn: 'When do applications for the Fall semester close?',
-                qAr: 'متى يغلق باب التقديم لفصل الخريف؟',
-                aEn: 'The primary deadline for the Fall 2026 semester is August 15, 2026.',
-                aAr: 'الموعد النهائي الرئيسي لفصل الخريف 2026 هو 15 آب 2026.'
-            },
-            {
-                qEn: 'Do you offer scholarships for international students?',
-                qAr: 'هل تقدمون منحاً دراسية للطلاب الدوليين؟',
-                aEn: 'Yes, SPU offer several merit-based scholarships covering up to 50% of tuition.',
-                aAr: 'نعم، تقدم الجامعة عدة منح دراسية قائمة على الاستحقاق تغطي حتى 50% من الرسوم.'
-            }
-        ]
-    },
+    faqPage: admissionsFaqPage,
     howToApplyPage: {
         titleEn: 'How to Apply',
         titleAr: 'كيفية التقديم',
@@ -345,24 +331,7 @@ export const admissionsPageContent = {
             }
         ]
     },
-    transferPage: {
-        titleEn: 'Transfer & International Students',
-        titleAr: 'طلاب التحويل والدوليون',
-        sections: [
-            {
-                titleEn: 'Credit Transfer Policy',
-                titleAr: 'سياسة تحويل الساعات',
-                descEn: 'Credits are evaluated on a case-by-case basis for courses completed with a minimum grade of C.',
-                descAr: 'يتم تقييم الساعات المعتمدة على أساس كل حالة على حدة للمقررات المكتملة بحد أدنى للدرجة C.'
-            },
-            {
-                titleEn: 'International Admissions',
-                titleAr: 'القبول الدولي',
-                descEn: 'Dedicated support for international students including visa guidance and housing assistance.',
-                descAr: 'دعم مخصص للطلاب الدوليين يشمل توجيهات التأشيرة والمساعدة في السكن.'
-            }
-        ]
-    },
+    transferPage: admissionsTransferPage,
     calendarPage: {
         titleEn: 'Academic Calendar 2026/2027',
         titleAr: 'التقويم الأكاديمي 2026/2027',

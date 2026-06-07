@@ -1,102 +1,166 @@
 <style>
+    .faq-section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .faq-section-title {
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        color: #0f1f4f;
+        margin: 0;
+    }
+    .faq-section-line {
+        flex: 1;
+        height: 1px;
+        background: #8f1525;
+        opacity: 0.35;
+    }
     .faq-item {
-        background: white;
-        border: 1px solid #f1f5f9;
-        border-radius: 2rem;
-        margin-bottom: 1.5rem;
+        background: #ffffff;
+        border: 1px solid #e5e9f2;
+        border-radius: 1.5rem;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
     .faq-item:hover {
-        border-color: #6f1616;
-        box-shadow: 0 15px 30px rgba(111, 22, 22, 0.05);
+        border-color: rgba(143, 21, 37, 0.4);
+        box-shadow: 0 18px 45px rgba(15, 31, 79, 0.08);
     }
     .faq-trigger {
         width: 100%;
-        padding: 2rem;
+        padding: 1.75rem 1.75rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1.5rem;
-        text-align: start;
+        gap: 1rem;
+        text-align: left;
         cursor: pointer;
     }
+    .faq-trigger span {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #132b6f;
+    }
     .faq-answer {
-        padding: 0 2rem 2rem;
-        color: #64748b;
-        line-height: 1.8;
+        padding: 1rem 1.75rem 1.75rem;
+        color: #475569;
+        line-height: 1.85;
+        font-size: 0.975rem;
     }
     .faq-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: #f8fafc;
+        width: 34px;
+        height: 34px;
+        border-radius: 9999px;
+        background: #f4f7fb;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: transform 0.25s ease, background 0.25s ease;
     }
     .faq-item.active .faq-icon {
-        background: #6f1616;
-        color: white;
-        transform: rotate(45deg);
+        background: #8f1525;
+        transform: rotate(180deg);
     }
 </style>
 
 <div x-data="{ 
     page: $store.admissionsPage.faqPage,
-    activeIndex: -1,
-    search: ''
+    activeId: null,
+    search: '',
+    filteredItems(section) {
+        return section.items.filter((item) => {
+            const query = this.search.trim().toLowerCase();
+            if (!query) return true;
+            return `${item.qEn}${item.qAr}${item.aEn}${item.aAr}`.toLowerCase().includes(query);
+        });
+    },
+    filteredSections() {
+        return this.page.sections
+            .map((section) => ({
+                ...section,
+                items: this.filteredItems(section)
+            }))
+            .filter((section) => section.items.length);
+    }
 }">
     <!-- Hero Section -->
-    <section class="relative py-24 overflow-hidden bg-spu-blue">
-        <div class="container mx-auto px-6 relative z-10 text-center">
+    <section class="relative overflow-hidden bg-spu-blue">
+        <div class="absolute inset-0">
+            <img :src="page.heroImage" alt="Admissions hero" class="h-full w-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-spu-blue/85"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 py-24 text-center">
+            <nav class="mb-6 inline-flex items-center gap-2 text-[13px] font-bold text-white/80" aria-label="Breadcrumb">
+                <a href="/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? 'الرئيسية' : 'Home'"></a>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+                <a href="/admissions/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'Admission'"></a>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+                <span class="text-white" x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></span>
+            </nav>
+
             <h1 class="reveal reveal-up text-4xl md:text-6xl font-black text-white mb-8"
                 x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
-            
-            <!-- Search Bar -->
-            <div class="reveal reveal-up reveal-delay-1 max-w-2xl mx-auto relative">
-                <input type="text" x-model="search"
-                       class="w-full px-8 py-5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:bg-white focus:text-spu-blue focus:outline-none transition-all"
-                       :placeholder="$store.app.currentLang === 'ar' ? 'ابحث عن إجابة...' : 'Search for an answer...'">
-                <div class="absolute inset-y-0 right-8 flex items-center text-white/40 pointer-events-none">
-                    <img src="/images/icon-search-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+        </div>
+    </section>
+
+    <section class="bg-white py-10">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto max-w-3xl">
+                <div class="relative">
+                    <input type="text" x-model="search"
+                           class="w-full rounded-[28px] border border-slate-200 bg-white py-4 pl-6 pr-14 text-slate-900 placeholder:text-slate-400 outline-none shadow-sm transition-all focus:border-spu-red focus:ring-4 focus:ring-spu-red/10"
+                           :placeholder="$store.app.currentLang === 'ar' ? 'ابحث عن إجابة...' : 'Search admissions questions...'" />
+                    <div class="absolute inset-y-0 right-5 flex items-center text-slate-400 pointer-events-none">
+                        <img src="/images/icon-search-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ List -->
+    <!-- FAQ Sections -->
     <section class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="space-y-4">
-                <template x-for="(item, idx) in page.questions.filter(q => 
-                    (item.qEn + item.qAr).toLowerCase().includes(search.toLowerCase())
-                )" :key="idx">
-                    <div class="reveal reveal-up" :class="`reveal-delay-${(idx % 5) + 1}`">
-                        <div class="faq-item" :class="{ 'active border-spu-red shadow-lg': activeIndex === idx }">
-                            <button class="faq-trigger" @click="activeIndex = activeIndex === idx ? -1 : idx">
-                                <span class="text-xl font-bold text-spu-blue"
-                                      x-text="$store.app.currentLang === 'ar' ? item.qAr : item.qEn"></span>
-                                <div class="faq-icon text-slate-400">
-                                    <img src="/images/icon-chevron-down-outline.svg" alt="" class="h-3.5 w-3.5" aria-hidden="true">
-                                </div>
-                            </button>
-                            <div class="faq-answer" x-show="activeIndex === idx" x-collapse>
-                                <p x-text="$store.app.currentLang === 'ar' ? item.aAr : item.aEn"></p>
-                            </div>
+        <div class="container mx-auto px-6 max-w-6xl space-y-16">
+            <template x-for="section in filteredSections()" :key="section.id">
+                <div class="space-y-8">
+                    <div class="faq-section-header">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#fef1f2] text-[#8f1525] shadow-sm">
+                            <img :src="section.icon" alt="" class="h-5 w-5" aria-hidden="true">
                         </div>
+                        <h2 class="faq-section-title"
+                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+                        <div class="faq-section-line"></div>
                     </div>
-                </template>
-            </div>
 
-            <!-- Empty State -->
-            <div x-show="page.questions.filter(q => (item.qEn + item.qAr).toLowerCase().includes(search.toLowerCase())).length === 0"
-                 class="text-center py-20">
-                <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-3xl text-slate-300 mx-auto mb-6">
+                    <div class="grid gap-4">
+                        <template x-for="(item, idx) in filteredItems(section)" :key="`${section.id}-${idx}`">
+                            <div class="reveal reveal-up">
+                                <div class="faq-item" :class="{ 'active border-spu-red shadow-lg': activeId === `${section.id}-${idx}` }">
+                                    <button class="faq-trigger" @click="activeId = activeId === `${section.id}-${idx}` ? null : `${section.id}-${idx}`">
+                                        <span class="text-lg font-bold text-spu-blue text-left"
+                                              x-text="$store.app.currentLang === 'ar' ? item.qAr : item.qEn"></span>
+                                        <div class="faq-icon text-slate-400">
+                                            <img src="/images/icon-chevron-down-outline.svg" alt="" class="h-3.5 w-3.5" aria-hidden="true">
+                                        </div>
+                                    </button>
+                                    <div class="faq-answer" x-show="activeId === `${section.id}-${idx}`" x-collapse>
+                                        <p x-text="$store.app.currentLang === 'ar' ? item.aAr : item.aEn"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+
+            <div x-show="filteredSections().length === 0" class="text-center py-20">
+                <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-50 text-3xl text-slate-300">
                     <img src="/images/icon-search-outline.svg" alt="" class="h-8 w-8 opacity-60" aria-hidden="true">
                 </div>
-                <p class="text-slate-500 font-bold" 
+                <p class="text-slate-500 font-bold"
                    x-text="$store.app.currentLang === 'ar' ? 'لم يتم العثور على نتائج للبحث.' : 'No results found for your search.'"></p>
             </div>
         </div>
