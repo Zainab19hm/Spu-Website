@@ -30,7 +30,7 @@ export const navigationMenuItems = [
             { labelAr: 'المديريات المركزية', labelEn: 'Central Directorates', url: siteRoutes.aboutDirectorates },
             { labelAr: 'دليل الهيئة الأكاديمية', labelEn: 'Academic Staff Directory', url: siteRoutes.aboutStaffDirectory },
             { labelAr: 'الشراكات', labelEn: 'Partnerships', url: siteRoutes.aboutPartnership },
-            { labelAr: 'الرؤية والرسالة', labelEn: 'Vision & Mission', url: siteRoutes.aboutVisionMission }
+            // { labelAr: 'الرؤية والرسالة', labelEn: 'Vision & Mission', url: siteRoutes.aboutVisionMission }
         ]
     },
     {

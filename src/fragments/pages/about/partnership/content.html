@@ -89,7 +89,8 @@
         transition: all 0.3s ease;
     }
 
-    .filter-btn.active, .filter-btn:hover {
+    .filter-btn.active,
+    .filter-btn:hover {
         background: #6f1616;
         color: #fff;
         border-color: #6f1616;
@@ -111,7 +112,7 @@
         outline: none;
         transition: border-color 0.3s;
     }
-    
+
     .search-input:focus {
         border-color: #6f1616;
     }
@@ -145,7 +146,7 @@
     .partner-card {
         background: #fff;
         border: 1px solid rgba(32, 39, 89, 0.12);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
         display: flex;
         flex-direction: column;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -313,7 +314,7 @@
         .partner-goals-grid {
             grid-template-columns: 1fr;
         }
-        
+
         .filter-bar {
             flex-direction: column;
             align-items: flex-start;
@@ -330,37 +331,62 @@
 </style>
 
 <section x-cloak class="partnership-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
-    <img :src="$store.aboutPage.partnerships.heroImage"
-         alt="Partnerships Banner"
-         class="absolute inset-0 h-full w-full object-cover">
+    <img :src="$store.aboutPage.partnerships.heroImage" alt="Partnerships Banner"
+        class="absolute inset-0 h-full w-full object-cover">
 
-    <div class="container relative z-10 mx-auto px-6 text-center text-white">
-        <nav class="flex items-center justify-center gap-3 text-sm font-bold text-white/90 mb-4" aria-label="Breadcrumb">
+    <div class="container relative z-10 mx-auto  text-center text-white">
+        <nav class="flex items-center justify-center gap-3 text-sm font-bold text-white/90 mb-4"
+            aria-label="Breadcrumb">
             <a href="/" class="transition hover:text-white"
-               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbHomeAr : $store.aboutPage.partnerships.breadcrumbHomeEn"></a>
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbHomeAr : $store.aboutPage.partnerships.breadcrumbHomeEn"></a>
             <span aria-hidden="true">›</span>
             <a href="/about.html" class="transition hover:text-white"
-               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbParentAr : $store.aboutPage.partnerships.breadcrumbParentEn"></a>
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbParentAr : $store.aboutPage.partnerships.breadcrumbParentEn"></a>
             <span aria-hidden="true">›</span>
-            <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbCurrentAr : $store.aboutPage.partnerships.breadcrumbCurrentEn"></span>
+            <span
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.breadcrumbCurrentAr : $store.aboutPage.partnerships.breadcrumbCurrentEn"></span>
         </nav>
-        
+
         <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
-            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn"></h1>
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.titleAr : $store.aboutPage.partnerships.titleEn">
+        </h1>
     </div>
 </section>
 
-<section id="partnership-section" x-cloak class="core-domains-section font-hacen">
+<section id="partnership-section" x-cloak class="core-domains-section font-hacen" x-data="{
+    activeFilter: 'all',
+    searchQuery: '',
+    
+    getFilteredPartners() {
+        const partners = $store.aboutPage.partnerships.list || [];
+        return partners.filter(partner => {
+            // Check filter category
+            const passesFilter = this.activeFilter === 'all' || partner.filterCategory === this.activeFilter;
+            
+            // Check search query
+            const query = this.searchQuery.toLowerCase();
+            if (!query) return passesFilter;
+            
+            const nameMatch = (partner.nameAr + partner.nameEn).toLowerCase().includes(query);
+            const categoryMatch = (partner.categoryAr + partner.categoryEn).toLowerCase().includes(query);
+            const descMatch = (partner.descAr + partner.descEn).toLowerCase().includes(query);
+            
+            return passesFilter && (nameMatch || categoryMatch || descMatch);
+        });
+    }
+}">
+
     <div class="container mx-auto">
-        
+
         <h2 class="core-domains-title reveal reveal-up"
-            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.coreDomainsTitleAr : $store.aboutPage.partnerships.coreDomainsTitleEn"></h2>
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.coreDomainsTitleAr : $store.aboutPage.partnerships.coreDomainsTitleEn">
+        </h2>
 
         <div class="partner-goals-grid mb-20">
             <template x-for="(goal, index) in $store.aboutPage.partnerships.goals" :key="index">
                 <article class="partner-goal-card reveal reveal-up" :class="`reveal-delay-${(index % 2) + 1}`">
                     <div class="partner-goal-icon">
-                        <svg viewBox="0 0 24 24" x-html="`<path d='${goal.iconPath}'/>`"></svg>
+                        <svg viewBox="0 0 24 24" x-html="`<path d='${goal.iconPath}'>`"></svg>
                     </div>
                     <div class="partner-goal-content">
                         <h3 x-text="$store.app.currentLang === 'ar' ? goal.titleAr : goal.titleEn"></h3>
@@ -372,23 +398,26 @@
 
         <div class="filter-bar reveal reveal-up">
             <div class="filter-buttons">
-                <button class="filter-btn active" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.allAr : $store.aboutPage.partnerships.filters.allEn"></button>
-                <button class="filter-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.academicAr : $store.aboutPage.partnerships.filters.academicEn"></button>
-                <button class="filter-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.researchAr : $store.aboutPage.partnerships.filters.researchEn"></button>
-                <button class="filter-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.clinicalAr : $store.aboutPage.partnerships.filters.clinicalEn"></button>
+                <template x-for="category in $store.aboutPage.partnerships.filters.categories" :key="category.id">
+                    <button class="filter-btn" :class="{ active: activeFilter === category.id }"
+                        @click="activeFilter = category.id"
+                        x-text="$store.app.currentLang === 'ar' ? category.labelAr : category.labelEn"></button>
+                </template>
             </div>
-            
+
             <div class="search-input-wrapper">
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" class="search-input" :placeholder="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.searchAr : $store.aboutPage.partnerships.filters.searchEn">
+                <input type="text" class="search-input" x-model="searchQuery"
+                    :placeholder="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.filters.searchAr : $store.aboutPage.partnerships.filters.searchEn">
             </div>
         </div>
 
         <div class="partner-grid">
-            <template x-for="(partner, index) in $store.aboutPage.partnerships.list" :key="index">
+            <template x-for="(partner, index) in getFilteredPartners()" :key="partner.nameEn">
                 <div class="reveal reveal-up" :class="`reveal-delay-${(index % 3) + 1}`">
                     <div class="partner-card">
                         <div class="partner-logo-box">
@@ -397,18 +426,24 @@
 
                         <div class="partner-card-body">
                             <div class="partner-meta">
-                                <span class="partner-status" :class="partner.statusEn === 'ACTIVE' ? 'active' : ''" x-text="$store.app.currentLang === 'ar' ? partner.statusAr : partner.statusEn"></span>
-                                <span class="partner-established" x-text="$store.app.currentLang === 'ar' ? partner.establishedAr : partner.establishedEn"></span>
+                                <span class="partner-status" :class="partner.statusEn === 'ACTIVE' ? 'active' : ''"
+                                    x-text="$store.app.currentLang === 'ar' ? partner.statusAr : partner.statusEn"></span>
+                                <span class="partner-established"
+                                    x-text="$store.app.currentLang === 'ar' ? partner.establishedAr : partner.establishedEn"></span>
                             </div>
-                            
-                            <h3 class="partner-title" x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
-                            <p class="partner-category" x-text="$store.app.currentLang === 'ar' ? partner.categoryAr : partner.categoryEn"></p>
-                            
-                            <p class="partner-desc" x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
+
+                            <h3 class="partner-title"
+                                x-text="$store.app.currentLang === 'ar' ? partner.nameAr : partner.nameEn"></h3>
+                            <p class="partner-category"
+                                x-text="$store.app.currentLang === 'ar' ? partner.categoryAr : partner.categoryEn"></p>
+
+                            <p class="partner-desc"
+                                x-text="$store.app.currentLang === 'ar' ? partner.descAr : partner.descEn"></p>
 
                             <a :href="partner.website" class="partner-link">
                                 <span x-text="$store.app.currentLang === 'ar' ? 'عرض التفاصيل' : 'View Details'"></span>
-                                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+                                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180"
+                                    aria-hidden="true">
                             </a>
                         </div>
                     </div>
@@ -418,23 +453,33 @@
 
         <div class="text-center reveal reveal-up">
             <button class="load-more-btn">
-                <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.loadMoreAr : $store.aboutPage.partnerships.loadMoreEn"></span>
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <span
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.loadMoreAr : $store.aboutPage.partnerships.loadMoreEn"></span>
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
             </button>
         </div>
 
         <div class="propose-section reveal reveal-up">
-            <svg class="propose-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="propose-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
             </svg>
-            
-            <h3 class="propose-title" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeTitleAr : $store.aboutPage.partnerships.proposeTitleEn"></h3>
-            
-            <p class="propose-text" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeTextAr : $store.aboutPage.partnerships.proposeTextEn"></p>
-            
-            <a href="#" class="propose-btn" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeBtnAr : $store.aboutPage.partnerships.proposeBtnEn"></a>
+
+            <h3 class="propose-title"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeTitleAr : $store.aboutPage.partnerships.proposeTitleEn">
+            </h3>
+
+            <p class="propose-text"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeTextAr : $store.aboutPage.partnerships.proposeTextEn">
+            </p>
+
+            <a href="#" class="propose-btn"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.partnerships.proposeBtnAr : $store.aboutPage.partnerships.proposeBtnEn"></a>
         </div>
 
     </div>

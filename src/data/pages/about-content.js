@@ -47,10 +47,17 @@ export const aboutPageContent = {
     },
 
     visionMission: {
+        heroImage: '/images/about-hero-2.webp',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'About',
+        breadcrumbParentAr: 'عن الجامعة',
+        breadcrumbCurrentEn: 'Vision & Mission',
+        breadcrumbCurrentAr: 'الرؤية والرسالة',
         eyebrowAr: 'الرؤية والرسالة',
         eyebrowEn: 'VISION & MISSION',
-        titleAr: 'بوصلة مؤسسية واضحة للتعليم والبحث وخدمة المجتمع.',
-        titleEn: 'A clear institutional compass for education, research, and community service.',
+        titleAr: 'الرؤية والرسالة',
+        titleEn: 'Vision and mission',
         summaryAr: 'تعكس هذه الصفحة الاتجاه الأكاديمي للجامعة السورية الخاصة كما يظهر في تعريفها الرسمي: دعم التعليم العالي، تحسين جودة التعليم، وتعزيز التعاون العلمي والثقافي.',
         summaryEn: 'This page translates SPU’s official direction into a clear design story: advancing higher education, improving educational quality, and strengthening scientific and cultural cooperation.',
         sourceNoteAr: 'بيانات أساسية مستندة إلى التعريف الرسمي للجامعة: الإحداث بالمرسوم الجمهوري رقم 339 لعام 2005، وتعديل الاسم بالمرسوم رقم 343 لعام 2012.',
@@ -104,11 +111,7 @@ export const aboutPageContent = {
                 summaryEn: 'The learning experience prepares graduates to compete and stand out in the labor market.'
             }
         ],
-        timeline: [
-            { year: '2005', labelAr: 'الإحداث', labelEn: 'Established' },
-            { year: '2009', labelAr: 'أول دفعة', labelEn: 'First cohort' },
-            { year: '2012', labelAr: 'تعديل الاسم', labelEn: 'Name updated' }
-        ]
+        
     },
 
     quickStats: [
@@ -181,7 +184,7 @@ export const aboutPageContent = {
         breadcrumbParentAr: 'عن الجامعة',
         breadcrumbCurrentEn: 'Leadership',
         breadcrumbCurrentAr: 'مجلس الجامعة',
-        titleEn: 'directory of all SPU academic staff',
+        titleEn: ' SPU leadership directory',
         titleAr: 'دليل جميع أعضاء الهيئة الأكاديمية في SPU',
         filterLabelEn: 'VIEW BY FACULTY',
         filterLabelAr: 'عرض حسب الكلية',
@@ -204,6 +207,7 @@ export const aboutPageContent = {
         vicePresidents: [
             {
                 nameEn: 'Dr. Full name',
+                image: '/images/medicine-dean.jpg',
                 nameAr: 'د. الاسم الكامل',
                 roleEn: 'VICE PRESIDENT FOR ACADEMIC AFFAIRS',
                 roleAr: 'نائب رئيس الجامعة للشؤون العلمية',
@@ -212,6 +216,7 @@ export const aboutPageContent = {
             },
             {
                 nameEn: 'Dr. Full name',
+                image: '/images/ai-dean.jpeg',
                 nameAr: 'د. الاسم الكامل',
                 roleEn: 'VICE PRESIDENT FOR ADMINISTRATIVE AFFAIRS',
                 roleAr: 'نائب رئيس الجامعة للشؤون الإدارية',
@@ -575,6 +580,24 @@ export const aboutPageContent = {
         proposeTextEn: 'Contact us to start an academic or research collaboration with shared impact.',
         proposeBtnAr: 'أرسل اقتراحك',
         proposeBtnEn: 'Submit Proposal',
+        filters: {
+            allAr: 'الكل',
+            allEn: 'All',
+            academicAr: 'أكاديمي',
+            academicEn: 'Academic',
+            researchAr: 'البحث العلمي',
+            researchEn: 'Research',
+            clinicalAr: 'طبي وسريري',
+            clinicalEn: 'Clinical',
+            searchAr: 'ابحث عن شريك...',
+            searchEn: 'Search partners...',
+            categories: [
+                { id: 'all', labelAr: 'الكل', labelEn: 'All' },
+                { id: 'academic', labelAr: 'أكاديمي', labelEn: 'Academic' },
+                { id: 'research', labelAr: 'البحث العلمي', labelEn: 'Research' },
+                { id: 'clinical', labelAr: 'طبي وسريري', labelEn: 'Clinical' },
+            ]
+        },
         goals: [
             {
                 titleAr: 'تبادل الخبرات',
@@ -613,6 +636,7 @@ export const aboutPageContent = {
                 logo: '/images/arab-uni.png',
                 categoryAr: 'عضوية أكاديمية',
                 categoryEn: 'Academic Membership',
+                filterCategory: 'academic',
                 statusAr: 'نشط',
                 statusEn: 'ACTIVE',
                 establishedAr: 'منذ 2020',
@@ -628,6 +652,7 @@ export const aboutPageContent = {
                 logo: '/images/icon-university-outline.svg',
                 categoryAr: 'اتفاقيات تعاون',
                 categoryEn: 'Cooperation Agreements',
+                filterCategory: 'academic',
                 statusAr: 'نشط',
                 statusEn: 'ACTIVE',
                 establishedAr: 'منذ 2018',
@@ -643,6 +668,7 @@ export const aboutPageContent = {
                 logo: '/images/corsera.png',
                 categoryAr: 'تعلم رقمي',
                 categoryEn: 'Digital Learning',
+                filterCategory: 'academic',
                 statusAr: 'نشط',
                 statusEn: 'ACTIVE',
                 establishedAr: 'منذ 2023',
@@ -658,6 +684,7 @@ export const aboutPageContent = {
                 logo: '/images/world-health.png',
                 categoryAr: 'صحة عامة',
                 categoryEn: 'Public Health',
+                filterCategory: 'clinical',
                 statusAr: 'نشط',
                 statusEn: 'ACTIVE',
                 establishedAr: 'منذ 2021',
@@ -672,8 +699,7 @@ export const aboutPageContent = {
                 nameEn: 'GitHub Education and Microsoft',
                 logo: '/images/spu-ai-logo.png',
                 categoryAr: 'تقنية وذكاء اصطناعي',
-                categoryEn: 'Technology & AI',
-                statusAr: 'نشط',
+                categoryEn: 'Technology & AI', filterCategory: 'research', statusAr: 'نشط',
                 statusEn: 'ACTIVE',
                 establishedAr: 'منذ 2024',
                 establishedEn: 'Since 2024',

@@ -14,7 +14,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: -2rem; /* Pull up into hero a bit, or just keep spacing */
+        margin-top: -2rem;
+        /* Pull up into hero a bit, or just keep spacing */
         margin-bottom: 4rem;
     }
 
@@ -41,9 +42,9 @@
         background-position: right 1rem center;
         min-width: 280px;
         cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
     }
-    
+
     .rtl .filter-dropdown {
         background-position: left 1rem center;
         padding: 0.75rem 1.5rem 0.75rem 3rem;
@@ -55,7 +56,7 @@
         min-height: 440px;
         background: #fff;
         border: 1px solid rgba(32, 39, 89, 0.12);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     }
 
     .staff-spotlight-media {
@@ -95,7 +96,7 @@
         align-items: center;
         justify-content: center;
     }
-    
+
     .section-title-wrapper::before {
         content: '';
         flex-grow: 1;
@@ -131,9 +132,30 @@
     .vp-card {
         border: 1px solid rgba(32, 39, 89, 0.12);
         background: #fff;
-        padding: 3rem 2rem;
+        padding: 0;
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vp-card-media {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        background: #f0eef3;
+    }
+
+    .vp-card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .vp-card-body {
+        padding: 2.5rem 2rem 3rem;
     }
 
     .vp-card:hover {
@@ -199,7 +221,7 @@
         aspect-ratio: 4 / 3;
         background: #f0eef3;
     }
-    
+
     .dean-card-media::after {
         content: '';
         position: absolute;
@@ -246,11 +268,11 @@
         .staff-spotlight-content {
             padding: 3rem;
         }
-        
+
         .vp-grid {
             grid-template-columns: 1fr;
         }
-        
+
         .deans-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -268,43 +290,47 @@
         .staff-spotlight-content {
             padding: 2rem;
         }
-        
+
         .section-title-wrapper::before,
         .section-title-wrapper::after {
             display: none;
         }
-        
+
         .deans-carousel-wrapper {
             flex-direction: column;
         }
-        
+
         .carousel-nav-btn {
-            display: none; /* Hide for mobile, maybe use swipe */
+            display: none;
+            /* Hide for mobile, maybe use swipe */
         }
     }
 </style>
 
-<section x-cloak class="staff-directory-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
-    <img :src="$store.aboutPage.leadership.heroImage"
-         alt="Leadership Banner"
-         class="absolute inset-0 h-full w-full object-cover">
+<section x-cloak
+    class="staff-directory-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="$store.aboutPage.leadership.heroImage" alt="Leadership Banner"
+        class="absolute inset-0 h-full w-full object-cover">
 
     <div class="container relative z-10 mx-auto px-6 text-center text-white">
         <nav class="flex items-center justify-center gap-3 text-sm font-bold text-white/90" aria-label="Breadcrumb">
             <a href="/" class="transition hover:text-white"
-               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.breadcrumbHomeAr : $store.aboutPage.leadership.breadcrumbHomeEn"></a>
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.breadcrumbHomeAr : $store.aboutPage.leadership.breadcrumbHomeEn"></a>
             <span aria-hidden="true">›</span>
             <a href="/about.html" class="transition hover:text-white"
-               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.breadcrumbParentAr : $store.aboutPage.leadership.breadcrumbParentEn"></a>
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.breadcrumbParentAr : $store.aboutPage.leadership.breadcrumbParentEn"></a>
             <span aria-hidden="true">›</span>
-            <span>.....</span>
+            <span
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.breadcrumbCurrentAr : $store.aboutPage.leadership.breadcrumbCurrentEn"></span>
         </nav>
+
+        <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.titleAr : $store.aboutPage.leadership.titleEn">
+        </h1>
     </div>
 </section>
 
-<section id="leadership-section"
-         x-cloak
-         x-data="{
+<section id="leadership-section" x-cloak x-data="{
             get deans() {
                 return $store.aboutPage.leadership.deans || [];
             },
@@ -322,15 +348,17 @@
             get visibleDeans() {
                 return this.deans.slice(this.currentDeanIndex, this.currentDeanIndex + 3);
             }
-         }"
-         class="bg-[#faf9fb] py-16 font-hacen">
+         }" class="bg-[#faf9fb] py-16 font-hacen">
     <div class="container mx-auto max-w-7xl px-6">
-        
+
         <!-- Filter Dropdown -->
         <div class="filter-container reveal reveal-up">
-            <label class="filter-label" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.filterLabelAr : $store.aboutPage.leadership.filterLabelEn"></label>
+            <label class="filter-label"
+                x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.filterLabelAr : $store.aboutPage.leadership.filterLabelEn"></label>
             <select class="filter-dropdown">
-                <option x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.filterDefaultAr : $store.aboutPage.leadership.filterDefaultEn"></option>
+                <option
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.filterDefaultAr : $store.aboutPage.leadership.filterDefaultEn">
+                </option>
                 <!-- Add other options as needed -->
             </select>
         </div>
@@ -340,24 +368,29 @@
             <div class="staff-spotlight-media">
                 <template x-if="$store.aboutPage.leadership.rector?.image">
                     <img :src="$store.aboutPage.leadership.rector.image"
-                         :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.nameAr : $store.aboutPage.leadership.rector.nameEn">
+                        :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.nameAr : $store.aboutPage.leadership.rector.nameEn">
                 </template>
             </div>
 
             <div class="staff-spotlight-content">
                 <p class="mb-5 text-xs font-black uppercase tracking-[0.15em] text-spu-red"
-                   x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.titleAr : $store.aboutPage.leadership.rector.titleEn"></p>
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.titleAr : $store.aboutPage.leadership.rector.titleEn">
+                </p>
 
                 <h2 class="text-3xl font-black leading-tight text-spu-blue md:text-4xl"
-                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.nameAr : $store.aboutPage.leadership.rector.nameEn"></h2>
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.nameAr : $store.aboutPage.leadership.rector.nameEn">
+                </h2>
 
                 <blockquote class="staff-quote mt-8 max-w-xl text-[0.95rem] leading-[1.8] text-gray-600 font-medium"
-                            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.quoteAr : $store.aboutPage.leadership.rector.quoteEn"></blockquote>
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.quoteAr : $store.aboutPage.leadership.rector.quoteEn">
+                </blockquote>
 
                 <a :href="$store.aboutPage.leadership.rector.url"
-                   class="mt-12 inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-spu-blue transition hover:text-spu-red">
-                    <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.linkAr : $store.aboutPage.leadership.rector.linkEn"></span>
-                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
+                    class="mt-12 inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-spu-blue transition hover:text-spu-red">
+                    <span
+                        x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.linkAr : $store.aboutPage.leadership.rector.linkEn"></span>
+                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180"
+                        aria-hidden="true">
                 </a>
             </div>
         </article>
@@ -365,18 +398,29 @@
         <!-- Vice Presidents -->
         <div class="reveal reveal-up mt-10">
             <div class="section-title-wrapper">
-                <h2 class="section-title" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.vicePresidentsTitleAr : $store.aboutPage.leadership.vicePresidentsTitleEn"></h2>
+                <h2 class="section-title"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.vicePresidentsTitleAr : $store.aboutPage.leadership.vicePresidentsTitleEn">
+                </h2>
             </div>
-            
+
             <div class="vp-grid">
                 <template x-for="(vp, index) in $store.aboutPage.leadership.vicePresidents" :key="index">
                     <div class="vp-card">
-                        <h3 class="text-xl font-black leading-tight text-spu-blue mb-2"
-                            x-text="$store.app.currentLang === 'ar' ? vp.nameAr : vp.nameEn"></h3>
-                        <p class="mb-6 text-[0.7rem] font-black uppercase tracking-[0.1em] text-spu-red"
-                           x-text="$store.app.currentLang === 'ar' ? vp.roleAr : vp.roleEn"></p>
-                        <p class="text-sm text-gray-600 leading-relaxed max-w-sm mx-auto"
-                           x-text="$store.app.currentLang === 'ar' ? vp.descriptionAr : vp.descriptionEn"></p>
+                        <div class="vp-card-media">
+                            <template x-if="vp.image">
+                                <img :src="vp.image"
+                                     :alt="$store.app.currentLang === 'ar' ? vp.nameAr : vp.nameEn">
+                            </template>
+                        </div>
+
+                        <div class="vp-card-body">
+                            <h3 class="text-xl font-black leading-tight text-spu-blue mb-2"
+                                x-text="$store.app.currentLang === 'ar' ? vp.nameAr : vp.nameEn"></h3>
+                            <p class="mb-6 text-[0.7rem] font-black uppercase tracking-[0.1em] text-spu-red"
+                                x-text="$store.app.currentLang === 'ar' ? vp.roleAr : vp.roleEn"></p>
+                            <p class="text-sm text-gray-600 leading-relaxed max-w-sm mx-auto"
+                                x-text="$store.app.currentLang === 'ar' ? vp.descriptionAr : vp.descriptionEn"></p>
+                        </div>
                     </div>
                 </template>
             </div>
@@ -385,23 +429,26 @@
         <!-- Faculty Deans -->
         <div class="reveal reveal-up mt-10 mb-20">
             <div class="section-title-wrapper">
-                <h2 class="section-title" x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.deansTitleAr : $store.aboutPage.leadership.deansTitleEn"></h2>
+                <h2 class="section-title"
+                    x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.deansTitleAr : $store.aboutPage.leadership.deansTitleEn">
+                </h2>
             </div>
-            
+
             <div class="deans-carousel-wrapper">
                 <button @click="prevDean" class="carousel-nav-btn" aria-label="Previous">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                 </button>
-                
+
                 <div class="deans-grid">
                     <template x-for="(dean, index) in visibleDeans" :key="index">
                         <article class="dean-card">
                             <div class="dean-card-media">
                                 <template x-if="dean.image">
                                     <img :src="dean.image"
-                                         :alt="$store.app.currentLang === 'ar' ? dean.nameAr : dean.nameEn">
+                                        :alt="$store.app.currentLang === 'ar' ? dean.nameAr : dean.nameEn">
                                 </template>
                             </div>
 
@@ -409,14 +456,15 @@
                                 <h3 class="text-lg font-black leading-tight text-spu-blue mb-2"
                                     x-text="$store.app.currentLang === 'ar' ? dean.nameAr : dean.nameEn"></h3>
                                 <p class="text-[0.68rem] font-black uppercase tracking-[0.1em] text-spu-red"
-                                   x-text="$store.app.currentLang === 'ar' ? dean.roleAr : dean.roleEn"></p>
+                                    x-text="$store.app.currentLang === 'ar' ? dean.roleAr : dean.roleEn"></p>
                             </div>
                         </article>
                     </template>
                 </div>
-                
+
                 <button @click="nextDean" class="carousel-nav-btn" aria-label="Next">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </button>
