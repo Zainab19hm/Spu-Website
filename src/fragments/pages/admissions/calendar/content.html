@@ -1,68 +1,114 @@
-<style>
-    .calendar-event {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-        padding: 2.5rem;
-        background: white;
-        border: 1px solid #f1f5f9;
-        border-radius: 2rem;
-        transition: all 0.3s ease;
+<div class="admissions-design" x-data="{
+  statCards: [
+    { titleEn: 'Current Academic Year', titleAr: 'العام الأكاديمي الحالي', descEn: 'Comprehensive timeline for Fall 2026 and Spring 2027 semesters.', descAr: 'جدول زمني شامل لفصلي خريف 2026 وربيع 2027.', icon: 'calendar' },
+    { titleEn: 'Downloadable PDF', titleAr: 'ملف PDF قابل للتنزيل', descEn: 'Prepare your portfolio with our comprehensive checklist.', descAr: 'حضّر ملفك اعتماداً على قائمة الوثائق الشاملة.', icon: 'download' },
+    { titleEn: 'Key Dates', titleAr: 'تواريخ مهمة', descEn: 'Quick access to essential deadlines, exams, and registration windows.', descAr: 'وصول سريع إلى المواعيد النهائية والامتحانات وفترات التسجيل.', icon: 'key' }
+  ],
+  deadlines: [
+    { typeEn: 'Classes', typeAr: 'الدروس', titleEn: 'First Day of Classes', titleAr: 'أول يوم دوام', dateEn: 'Sept 15, 2026', dateAr: '15 أيلول 2026' },
+    { typeEn: 'Registration', typeAr: 'التسجيل', titleEn: 'Registration Opens', titleAr: 'بدء التسجيل', dateEn: 'Sept 1, 2026', dateAr: '1 أيلول 2026' },
+    { typeEn: 'Exams', typeAr: 'الامتحانات', titleEn: 'Final Exams Begin', titleAr: 'بدء الامتحانات النهائية', dateEn: 'Jan 10, 2027', dateAr: '10 كانون الثاني 2027' }
+  ],
+  semesters: [
+    {
+      titleEn: 'First Semester (Fall 2026)', titleAr: 'الفصل الأول (خريف 2026)',
+      events: [
+        { dateEn: 'Sept 1 - Sept 10', dateAr: '1 - 10 أيلول', titleEn: 'Registration Period', titleAr: 'فترة التسجيل', descEn: 'Course registration for continuing and new students.', descAr: 'تسجيل المقررات للطلاب المستمرين والجدد.' },
+        { dateEn: 'Sept 15', dateAr: '15 أيلول', titleEn: 'Classes Begin', titleAr: 'بدء الدوام', descEn: 'Official start of Fall semester classes.', descAr: 'البداية الرسمية لمحاضرات فصل الخريف.' },
+        { dateEn: 'Oct 15', dateAr: '15 تشرين الأول', titleEn: 'Add/Drop Deadline', titleAr: 'آخر موعد للإضافة والحذف', descEn: 'Last day to add or drop courses without academic penalty.', descAr: 'آخر يوم لإضافة أو حذف المقررات دون عقوبة أكاديمية.' }
+      ]
+    },
+    {
+      titleEn: 'Second Semester (Spring 2027)', titleAr: 'الفصل الثاني (ربيع 2027)',
+      events: [
+        { dateEn: 'Feb 1 - Feb 10', dateAr: '1 - 10 شباط', titleEn: 'Registration Period', titleAr: 'فترة التسجيل', descEn: 'Course registration for continuing and new students.', descAr: 'تسجيل المقررات للطلاب المستمرين والجدد.' }
+      ]
     }
-    .calendar-event:hover {
-        border-color: #6f1616;
-        box-shadow: 0 20px 40px rgba(111, 22, 22, 0.05);
-    }
-    .event-date {
-        flex-shrink: 0;
-        width: 140px;
-        text-align: center;
-    }
-    .date-box {
-        padding: 1rem;
-        background: #f8fafc;
-        border-radius: 1.5rem;
-        color: #6f1616;
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-    }
-</style>
+  ]
+}">
+  <section class="admissions-hero-banner">
+    <div class="admissions-hero-banner__content">
+      <nav class="admissions-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" x-text="$store.app.currentLang === 'ar' ? 'الرئيسية' : 'Home'"></a>
+        <span class="admissions-breadcrumb__separator">›</span>
+        <a href="/admissions/" x-text="$store.app.currentLang === 'ar' ? 'القبول' : 'Admission'"></a>
+        <span class="admissions-breadcrumb__separator">›</span>
+        <span x-text="$store.app.currentLang === 'ar' ? 'التقويم الأكاديمي' : 'Academic Calendar'"></span>
+      </nav>
+      <h1 class="admissions-hero-banner__title" x-text="$store.app.currentLang === 'ar' ? 'التقويم الأكاديمي' : 'Academic Calendar'"></h1>
+    </div>
+  </section>
 
-<div x-data="{ page: $store.admissionsPage.calendarPage }">
-    <!-- Hero Section -->
-    <section class="relative py-24 overflow-hidden bg-spu-blue">
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h1 class="reveal reveal-up text-4xl md:text-6xl font-black text-white mb-4"
-                x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
-            <p class="reveal reveal-up reveal-delay-1 text-white/80 font-bold mb-8 uppercase tracking-widest"
-               x-text="$store.date.getFormattedDate($store.app.currentLang)"></p>
-            
-            <a href="#" class="reveal reveal-up reveal-delay-1 inline-flex items-center gap-3 px-8 py-3 bg-white/10 text-white rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <img src="/images/icon-file-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                <span x-text="$store.app.currentLang === 'ar' ? 'تحميل التقويم (PDF)' : 'Download Calendar (PDF)'"></span>
-            </a>
+  <section class="admissions-calendar-page">
+    <div class="admissions-shell">
+      <div class="admissions-stat-cards" aria-label="Calendar highlights">
+        <template x-for="card in statCards" :key="card.titleEn">
+          <article class="admissions-stat-card">
+            <h3 x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
+            <span class="admissions-stat-card__icon" aria-hidden="true">
+              <template x-if="card.icon === 'calendar'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M5 4h14v17H5z"></path><path d="M8 2v4"></path><path d="M16 2v4"></path><path d="M5 9h14"></path><path d="M8 13h3v3H8z" fill="currentColor" stroke="none"></path></svg></template>
+              <template x-if="card.icon === 'download'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 20h14"></path></svg></template>
+              <template x-if="card.icon === 'key'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M5 4h14v17H5z"></path><path d="M8 2v4"></path><path d="M16 2v4"></path><path d="M5 9h14"></path><path d="m8 15 2 2 5-5"></path></svg></template>
+            </span>
+            <p x-text="$store.app.currentLang === 'ar' ? card.descAr : card.descEn"></p>
+          </article>
+        </template>
+      </div>
+
+      <section class="admissions-deadlines" aria-labelledby="essential-deadlines-title">
+        <h2 id="essential-deadlines-title" class="admissions-page-title" x-text="$store.app.currentLang === 'ar' ? 'المواعيد الأساسية' : 'Essential Deadlines'"></h2>
+        <div class="admissions-deadline-grid">
+          <template x-for="deadline in deadlines" :key="deadline.titleEn">
+            <article class="admissions-deadline-card">
+              <span class="admissions-deadline-card__type" x-text="$store.app.currentLang === 'ar' ? deadline.typeAr : deadline.typeEn"></span>
+              <h3 x-text="$store.app.currentLang === 'ar' ? deadline.titleAr : deadline.titleEn"></h3>
+              <p x-text="$store.app.currentLang === 'ar' ? deadline.dateAr : deadline.dateEn"></p>
+            </article>
+          </template>
         </div>
-    </section>
+      </section>
 
-    <!-- Calendar Events -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="space-y-6">
-                <template x-for="(ev, idx) in page.events" :key="idx">
-                    <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
-                        <div class="calendar-event">
-                            <div class="event-date">
-                                <div class="date-box" x-text="$store.app.currentLang === 'ar' ? ev.dateAr : ev.dateEn"></div>
-                            </div>
-                            <div class="event-info">
-                                <h3 class="text-xl font-bold text-spu-blue"
-                                    x-text="$store.app.currentLang === 'ar' ? ev.eventAr : ev.eventEn"></h3>
-                            </div>
-                        </div>
+      <section aria-labelledby="detailed-timeline-title">
+        <h2 id="detailed-timeline-title" class="admissions-page-title" x-text="$store.app.currentLang === 'ar' ? 'الجدول الأكاديمي التفصيلي' : 'Detailed Academic Timeline'"></h2>
+        <div class="admissions-calendar-timeline-card">
+          <template x-for="semester in semesters" :key="semester.titleEn">
+            <section class="admissions-semester">
+              <h3 x-text="$store.app.currentLang === 'ar' ? semester.titleAr : semester.titleEn"></h3>
+              <div class="admissions-event-list">
+                <template x-for="event in semester.events" :key="event.titleEn + event.dateEn">
+                  <article class="admissions-event-row">
+                    <div class="admissions-event-date" x-text="$store.app.currentLang === 'ar' ? event.dateAr : event.dateEn"></div>
+                    <div>
+                      <h4 x-text="$store.app.currentLang === 'ar' ? event.titleAr : event.titleEn"></h4>
+                      <p x-text="$store.app.currentLang === 'ar' ? event.descAr : event.descEn"></p>
                     </div>
+                  </article>
                 </template>
-            </div>
+              </div>
+            </section>
+          </template>
         </div>
-    </section>
+      </section>
+
+      <article class="admissions-download-card">
+        <span class="admissions-download-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v20H6z"></path><path d="M15 2v6h5"></path><rect x="8" y="12" width="9" height="7" rx="1"></rect><path d="M10 14h2.5a1.5 1.5 0 0 1 0 3H10v-3Z"></path></svg></span>
+        <div>
+          <h3 x-text="$store.app.currentLang === 'ar' ? 'تحميل التقويم الرسمي' : 'Download Official Calendar'"></h3>
+          <p x-text="$store.app.currentLang === 'ar' ? 'احصل على تقويم 2026-2027 الأكاديمي كاملاً بصيغة PDF. (PDF، 2.4 MB)' : 'Get the complete 2026-2027 Academic Calendar in PDF format. (PDF, 2.4 MB)'"></p>
+        </div>
+        <a class="admissions-download-button" href="#" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 20h14"></path></svg>
+          <span x-text="$store.app.currentLang === 'ar' ? 'تحميل PDF' : 'Download PDF'"></span>
+        </a>
+      </article>
+
+      <article class="admissions-notice-card">
+        <span class="admissions-notice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01"></path><path d="M11 12h1v5h1"></path></svg></span>
+        <div>
+          <h3 x-text="$store.app.currentLang === 'ar' ? 'تنبيه رسمي' : 'Official Notice'"></h3>
+          <p x-text="$store.app.currentLang === 'ar' ? 'التواريخ في هذا التقويم الأكاديمي قابلة للتغيير. تحتفظ الجامعة بحق تعديل التقويم عند الضرورة، وسيتم إبلاغ أي تغييرات عبر البريد الجامعي ونشرها على الموقع الرسمي.' : 'Dates in this academic calendar are subject to change. The University reserves the right to modify the calendar as necessary. Official announcements regarding any changes will be communicated via university email and posted on the official website.'"></p>
+        </div>
+      </article>
+    </div>
+  </section>
 </div>
