@@ -1,196 +1,132 @@
-<style>
-    .req-card {
-        background: white;
-        border: 1px solid #f1f5f9;
-        border-radius: 2.5rem;
-        padding: 3rem;
-        transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        height: 100%;
-    }
+<div class="font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'"
+    x-data="{
+        page: $store.admissionsPage.requirementsPage,
+        activeTab: 'new',
+        get isAr() { return $store.app.currentLang === 'ar' },
+        get active() {
+            return this.page.tabs.find((tab) => tab.id === this.activeTab) || this.page.tabs[0];
+        },
+        text(item, key) {
+            return this.isAr ? item[key + 'Ar'] : item[key + 'En'];
+        }
+    }">
+    <section class="bg-white">
+        <div class="relative flex h-[370px] items-center justify-center overflow-hidden lg:h-[400px]">
+            <img :src="page.heroImage" :alt="text(page, 'title')" class="absolute inset-0 h-full w-full object-cover">
+            <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
 
-    .req-card:hover {
-        border-color: #6f1616;
-        box-shadow: 0 30px 60px -12px rgba(111, 22, 22, 0.1);
-        transform: translateY(-10px);
-    }
+            <div class="container relative z-10 mx-auto px-6 text-center text-white">
+                <nav class="mb-4 flex items-center justify-center gap-2 text-xs font-black text-white" aria-label="Breadcrumb">
+                    <a href="/" class="rounded bg-spu-blue/35 px-2 py-1 transition hover:bg-spu-blue/55"
+                        x-text="text(page, 'breadcrumbHome')"></a>
+                    <span aria-hidden="true" class="text-white/75">&gt;</span>
+                    <a href="/admissions.html" class="transition hover:text-white/80"
+                        x-text="text(page, 'breadcrumbParent')"></a>
+                    <span aria-hidden="true" class="text-white/75">&gt;</span>
+                    <span x-text="text(page, 'breadcrumbCurrent')"></span>
+                </nav>
 
-    .criteria-list li {
-        position: relative;
-        padding-inline-start: 2rem;
-        margin-bottom: 1rem;
-        color: #475569;
-        font-weight: 600;
-    }
+                <h1 class="text-[32px] font-black leading-tight text-white md:text-[42px]" x-text="text(page, 'title')"></h1>
 
-    .criteria-list li::before {
-        content: '→';
-        position: absolute;
-        inset-inline-start: 0;
-        color: #6f1616;
-        font-weight: 900;
-    }
-
-    [dir="rtl"] .criteria-list li::before {
-        content: '←';
-    }
-</style>
-
-<div x-data="{ page: $store.admissionsPage.requirementsPage }">
-    <!-- Hero Section -->
-    <section class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
-        <img :src="page.heroImage" :alt="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn" class="absolute inset-0 h-full w-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
-        <div class="container relative z-10 mx-auto px-6 text-center text-white">
-            <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
-                <a href="/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? page.breadcrumbHomeAr : page.breadcrumbHomeEn"></a>
-                <span aria-hidden="true">›</span>
-                <a href="/admissions.html" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? page.breadcrumbParentAr : page.breadcrumbParentEn"></a>
-                <span aria-hidden="true">›</span>
-                <span x-text="$store.app.currentLang === 'ar' ? page.breadcrumbCurrentAr : page.breadcrumbCurrentEn"></span>
-            </nav>
-            <h1 class="text-4xl font-black leading-tight text-white md:text-5xl" x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
+                <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+                    <a :href="page.applyUrl"
+                        class="inline-flex h-10 min-w-[136px] items-center justify-center rounded-md bg-spu-red px-8 text-xs font-black uppercase tracking-wide text-white transition hover:bg-spu-blue"
+                        x-text="text(page, 'applyLabel')"></a>
+                    <a :href="page.requestInfoUrl"
+                        class="inline-flex h-10 min-w-[136px] items-center justify-center rounded-md border border-white bg-white/5 px-8 text-xs font-black text-white transition hover:bg-white hover:text-spu-blue"
+                        x-text="text(page, 'requestInfoLabel')"></a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <section class="py-24 bg-slate-50">
+    <section class="bg-white pb-28 pt-11">
         <div class="container mx-auto px-6">
-            <template x-for="section in page.sections" :key="section.id">
-                <div class="mb-20" x-show="section.type === 'categories'">
-                    <div class="max-w-3xl mx-auto text-center mb-14">
-                        <p class="text-sm font-black uppercase tracking-[0.35em] text-spu-red mb-4"
-                            x-text="$store.app.currentLang === 'ar' ? 'المسارات' : 'Admission tracks'"></p>
-                        <h2 class="text-4xl font-black text-spu-blue"
-                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+            <div class="mx-auto flex max-w-[760px] items-center justify-center border-b border-slate-200 text-center text-xs font-black tracking-wide text-slate-700">
+                <template x-for="tab in page.tabs" :key="tab.id">
+                    <button type="button" class="px-7 pb-4 transition hover:text-spu-red"
+                        :class="activeTab === tab.id ? 'border-b-2 border-spu-red text-spu-red' : 'border-b-2 border-transparent'"
+                        :aria-selected="activeTab === tab.id"
+                        @click="activeTab = tab.id"
+                        x-text="text(tab, 'label')"></button>
+                </template>
+            </div>
+
+            <div class="mx-auto mt-8 max-w-[1010px] space-y-16">
+                <section class="border-s-2 border-spu-red ps-8 md:ps-10">
+                    <div class="mb-8 flex items-center gap-3">
+                        <span class="inline-flex h-6 w-6 items-center justify-center text-spu-red" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                                <path d="M12 2.5 14.3 5l3.4-.4 1.1 3.2 3 1.7-1.6 3 1.6 3-3 1.7-1.1 3.2-3.4-.4-2.3 2.5L9.7 20l-3.4.4-1.1-3.2-3-1.7 1.6-3-1.6-3 3-1.7 1.1-3.2 3.4.4L12 2.5Zm-1.1 12.9 5.2-5.2-1.4-1.4-3.8 3.8-1.6-1.6-1.4 1.4 3 3Z" />
+                            </svg>
+                        </span>
+                        <h2 class="text-2xl font-black text-spu-blue md:text-[28px]" x-text="text(page, 'eligibilityTitle')"></h2>
                     </div>
-                    <div class="grid gap-8 md:grid-cols-3">
-                        <template x-for="card in section.cards" :key="card.titleEn">
-                            <div
-                                class="reveal reveal-up rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                                <div
-                                    class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-slate-50 text-2xl text-spu-blue">
-                                    <img :src="card.icon" alt="" class="h-6 w-6" aria-hidden="true">
+
+                    <div class="space-y-7">
+                        <template x-for="criterion in active.criteria" :key="criterion.titleEn">
+                            <div class="flex gap-4">
+                                <span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-spu-blue" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20" class="h-3 w-3 fill-none stroke-spu-blue stroke-[2.5]">
+                                        <path d="m5 10 3 3 7-7" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <h3 class="text-base font-black text-slate-900" x-text="text(criterion, 'title')"></h3>
+                                    <p class="mt-1 max-w-[650px] text-sm font-bold leading-6 text-slate-700" x-text="text(criterion, 'desc')"></p>
                                 </div>
-                                <h3 class="text-2xl font-black text-spu-blue mb-3"
-                                    x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
-                                <p class="text-sm text-slate-500 leading-relaxed mb-8"
-                                    x-text="$store.app.currentLang === 'ar' ? card.summaryAr : card.summaryEn"></p>
-                                <a :href="card.linkUrl"
-                                    class="inline-flex items-center gap-2 font-black text-spu-red hover:text-spu-blue">
-                                    <span
-                                        x-text="$store.app.currentLang === 'ar' ? card.linkTextAr : card.linkTextEn"></span>
-                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
-                                </a>
                             </div>
                         </template>
                     </div>
-                </div>
+                </section>
 
-                <div class="mb-20" x-show="section.type === 'steps'">
-                    <div class="max-w-3xl mx-auto text-center mb-12">
-                        <h2 class="text-4xl font-black text-spu-blue"
-                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
+                <section class="border-s-2 border-slate-300 ps-8 md:ps-10">
+                    <div class="mb-7 flex items-center gap-3">
+                        <span class="inline-flex h-6 w-6 items-center justify-center text-spu-blue" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-[1.8]">
+                                <path d="M3 7.5h6l2 2h10v8.5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5Z" />
+                                <path d="M3 7.5V6a2 2 0 0 1 2-2h5l2 2h4" />
+                            </svg>
+                        </span>
+                        <h2 class="text-2xl font-black text-spu-blue md:text-[28px]" x-text="text(page, 'documentsTitle')"></h2>
                     </div>
-                    <div class="grid gap-8 md:grid-cols-2">
-                        <template x-for="item in section.steps" :key="item.number">
-                            <div
-                                class="reveal reveal-up rounded-[2rem] border border-slate-200 bg-white p-10 shadow-sm">
-                                <div class="mb-6 flex items-center gap-4">
-                                    <span
-                                        class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-spu-blue text-xl font-black text-white">
-                                        <span x-text="item.number"></span>
-                                    </span>
-                                    <h3 class="text-xl font-black text-spu-blue"
-                                        x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
-                                </div>
-                                <p class="text-slate-500 leading-relaxed"
-                                    x-text="$store.app.currentLang === 'ar' ? item.descAr : item.descEn"></p>
+
+                    <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+                        <template x-for="(documentItem, index) in active.documents" :key="documentItem.nameEn">
+                            <div class="flex items-center justify-between gap-4 px-4 py-4 text-sm text-black md:px-5"
+                                :class="index < active.documents.length - 1 ? 'border-b border-slate-200' : ''">
+                                <span x-text="text(documentItem, 'name')"></span>
+                                <span class="rounded px-2 py-1 text-[10px] font-black"
+                                    :class="documentItem.required ? 'bg-red-50 text-spu-red' : 'bg-slate-100 text-slate-700'"
+                                    x-text="documentItem.required ? text(page, 'requiredLabel') : text(page, 'optionalLabel')"></span>
                             </div>
                         </template>
                     </div>
-                </div>
+                </section>
 
-                <div class="mb-20" x-show="section.type === 'coverage'">
-                    <div class="max-w-3xl mx-auto text-center mb-12">
-                        <h2 class="text-4xl font-black text-spu-blue"
-                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
-                    </div>
-                    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                        <template x-for="card in section.cards" :key="card.titleEn">
-                            <div class="reveal reveal-up rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-                                <div
-                                    class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-slate-50 text-2xl text-spu-blue">
-                                    <img :src="card.icon" alt="" class="h-6 w-6" aria-hidden="true">
-                                </div>
-                                <h3 class="text-xl font-black text-spu-blue mb-3"
-                                    x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
-                                <p class="text-sm text-slate-500 leading-relaxed"
-                                    x-text="$store.app.currentLang === 'ar' ? card.descAr : card.descEn"></p>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-
-                <div class="mb-0" x-show="section.type === 'checklist'">
-                    <div class="max-w-3xl mx-auto text-center mb-12">
-                        <h2 class="text-4xl font-black text-spu-blue"
-                            x-text="$store.app.currentLang === 'ar' ? section.titleAr : section.titleEn"></h2>
-                    </div>
-                    <div class="grid gap-8 lg:grid-cols-[1.5fr_1fr]">
-                        <div class="rounded-[2rem] border border-slate-200 bg-white p-10 shadow-sm">
-                            <ul class="space-y-4">
-                                <template x-for="item in section.items" :key="item.en">
-                                    <li class="flex gap-4 text-slate-600 text-base leading-relaxed">
-                                        <span
-                                            class="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-spu-blue text-white">✓</span>
-                                        <span x-text="$store.app.currentLang === 'ar' ? item.ar : item.en"></span>
-                                    </li>
-                                </template>
-                            </ul>
-                        </div>
-                        <div class="rounded-[2rem] bg-spu-blue p-10 text-white shadow-xl">
-                            <h3 class="text-2xl font-black mb-6"
-                                x-text="$store.app.currentLang === 'ar' ? section.support.titleAr : section.support.titleEn">
-                            </h3>
-                            <div class="space-y-5 text-sm leading-relaxed">
-                                <div>
-                                    <p class="text-slate-300 font-semibold"
-                                        x-text="$store.app.currentLang === 'ar' ? 'الموقع' : 'Location'"></p>
-                                    <p
-                                        x-text="$store.app.currentLang === 'ar' ? section.support.locationAr : section.support.locationEn">
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-slate-300 font-semibold"
-                                        x-text="$store.app.currentLang === 'ar' ? 'الهاتف' : 'Phone'"></p>
-                                    <p x-text="section.support.phone"></p>
-                                </div>
-                                <div>
-                                    <p class="text-slate-300 font-semibold"
-                                        x-text="$store.app.currentLang === 'ar' ? 'البريد الإلكتروني' : 'Email'"></p>
-                                    <p x-text="section.support.email"></p>
-                                </div>
-                            </div>
+                <section class="border-s-2 border-spu-red ps-8 md:ps-10">
+                    <div class="rounded-lg border border-slate-200 bg-white px-5 py-5 md:px-6">
+                        <h2 class="border-b border-slate-200 pb-3 text-2xl font-black text-spu-blue md:text-[28px]" x-text="text(page, 'readyTitle')"></h2>
+                        <div class="mt-4 space-y-4 text-sm text-black">
+                            <template x-for="item in active.checklist" :key="item.en">
+                                <label class="flex items-center gap-3">
+                                    <input type="checkbox" class="h-4 w-4 rounded border-slate-400 text-spu-red focus:ring-spu-red">
+                                    <span x-text="isAr ? item.ar : item.en"></span>
+                                </label>
+                            </template>
                         </div>
                     </div>
-                </div>
-            </template>
+                </section>
 
-            <!-- Global Footer CTA -->
-            <div class="reveal reveal-up reveal-delay-3 mt-20 text-center">
-                <div
-                    class="inline-block p-10 bg-white rounded-[3rem] border border-slate-100 shadow-xl shadow-blue-900/5 max-w-2xl">
-                    <h4 class="text-xl font-bold text-spu-blue mb-4"
-                        x-text="$store.app.currentLang === 'ar' ? 'هل لديك سؤال محدد؟' : 'Have a specific question?'">
-                    </h4>
-                    <p class="text-slate-500 mb-8"
-                        x-text="$store.app.currentLang === 'ar' ? 'فريق القبول لدينا جاهز لمساعدتك في كل خطوة.' : 'Our admissions team is ready to assist you at every step.'">
-                    </p>
-                    <a :href="'/contact.html'"
-                        class="px-10 py-4 bg-spu-blue text-white font-black rounded-2xl hover:bg-spu-red transition-all shadow-lg hover:shadow-spu-red/20">
-                        <span x-text="$store.app.currentLang === 'ar' ? 'تواصل معنا' : 'Contact Us'"></span>
-                    </a>
-                </div>
+                <section class="border-s-2 border-slate-300 ps-8 md:ps-10">
+                    <div class="flex gap-5">
+                        <span class="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-spu-red text-sm font-black text-white" aria-hidden="true">i</span>
+                        <div>
+                            <h2 class="mb-3 text-2xl font-black text-spu-blue md:text-[28px]" x-text="text(page, 'notesTitle')"></h2>
+                            <p class="max-w-[900px] text-sm leading-6 text-black" x-text="isAr ? active.noteAr : active.noteEn"></p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </section>

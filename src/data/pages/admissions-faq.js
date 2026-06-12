@@ -1,5 +1,5 @@
 export const admissionsFaqPage = {
-  heroImage: '/images/admissions-hero-campus.webp',
+  heroImage: '/images/DSC_1015.JPG',
   breadcrumbHomeEn: 'Home',
   breadcrumbHomeAr: 'الرئيسية',
   breadcrumbParentEn: 'Admissions',

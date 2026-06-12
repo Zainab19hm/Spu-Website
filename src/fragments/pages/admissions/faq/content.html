@@ -9,18 +9,18 @@
     return category.items.filter((entry) => (entry.qEn + ' ' + entry.qAr + ' ' + entry.aEn + ' ' + entry.aAr).toLowerCase().includes(term));
   }
 }">
-  <section class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
+  <section class="relative flex h-[370px] items-center justify-center overflow-hidden font-hacen lg:h-[400px]">
     <img :src="$store.admissionsPage.faqPage.heroImage" :alt="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.titleAr : $store.admissionsPage.faqPage.titleEn" class="absolute inset-0 h-full w-full object-cover">
-    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
     <div class="container relative z-10 mx-auto px-6 text-center text-white">
-      <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
-        <a href="/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.breadcrumbHomeAr : $store.admissionsPage.faqPage.breadcrumbHomeEn"></a>
+      <nav class="mb-4 flex items-center justify-center gap-2 text-xs font-black text-white" aria-label="Breadcrumb">
+        <a href="/" class="rounded bg-spu-blue/35 px-2 py-1 transition hover:bg-spu-blue/55" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.breadcrumbHomeAr : $store.admissionsPage.faqPage.breadcrumbHomeEn"></a>
         <span aria-hidden="true">›</span>
-        <a href="/admissions.html" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.breadcrumbParentAr : $store.admissionsPage.faqPage.breadcrumbParentEn"></a>
+        <a href="/admissions.html" class="transition hover:text-white/80" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.breadcrumbParentAr : $store.admissionsPage.faqPage.breadcrumbParentEn"></a>
         <span aria-hidden="true">›</span>
         <span x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.breadcrumbCurrentAr : $store.admissionsPage.faqPage.breadcrumbCurrentEn"></span>
       </nav>
-      <h1 class="text-4xl font-black leading-tight text-white md:text-5xl" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.titleAr : $store.admissionsPage.faqPage.titleEn"></h1>
+      <h1 class="text-[32px] font-black leading-tight text-white md:text-[42px]" x-text="$store.app.currentLang === 'ar' ? $store.admissionsPage.faqPage.titleAr : $store.admissionsPage.faqPage.titleEn"></h1>
     </div>
   </section>
 

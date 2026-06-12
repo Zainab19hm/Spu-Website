@@ -647,8 +647,7 @@
         "Admission Requirements"
       ],
       "fragments": [
-        "pages/admissions/requirements/content.html",
-        "pages/admissions/navigation.html"
+        "pages/admissions/requirements/content.html"
       ]
     },
     {
@@ -663,8 +662,7 @@
         "University Fees Syria"
       ],
       "fragments": [
-        "pages/admissions/tuition/content.html",
-        "pages/admissions/navigation.html"
+        "pages/admissions/tuition/content.html"
       ]
     },
     {
@@ -679,8 +677,7 @@
         "Admissions Questions"
       ],
       "fragments": [
-        "pages/admissions/faq/content.html",
-        "pages/admissions/navigation.html"
+        "pages/admissions/faq/content.html"
       ]
     },
     {
@@ -695,8 +692,7 @@
         "How to apply SPU"
       ],
       "fragments": [
-        "pages/admissions/how-to-apply/content.html",
-        "pages/admissions/navigation.html"
+        "pages/admissions/how-to-apply/content.html"
       ]
     },
     {
@@ -726,8 +722,7 @@
         "Academic Dates Syria"
       ],
       "fragments": [
-        "pages/admissions/calendar/content.html",
-        "pages/admissions/navigation.html"
+        "pages/admissions/calendar/content.html"
       ]
     },
     {
@@ -742,8 +737,7 @@
         "Application Checklist"
       ],
       "fragments": [
-        "pages/admissions/documents/content.html",
-        "pages/admissions/navigation.html"
+        "pages/admissions/documents/content.html"
       ]
     },
     {

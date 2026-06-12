@@ -1,149 +1,135 @@
-<div class="font-hacen bg-slate-50 min-h-screen pb-24" x-data="{
-        activeType: 'transfer',
-        page: $store.admissionsPage.transferPage,
-        get isAr() { return $store.app.currentLang === 'ar' },
-        get activeData() { return this.page.types[this.activeType] },
-        text(item, key) {
-          const suffix = this.isAr ? 'Ar' : 'En';
-          return item[`${key}${suffix}`] || item[`${key}En`] || '';
-        }
-      }">
+<div class="font-hacen bg-white" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'"
+  x-data="{
+    page: $store.admissionsPage.transferPage,
+    activeTab: 'transfer',
+    get isAr() { return $store.app.currentLang === 'ar' },
+    get active() {
+      return this.page.tabs.find((tab) => tab.id === this.activeTab) || this.page.tabs[0];
+    },
+    text(item, key) {
+      return this.isAr ? item[key + 'Ar'] : item[key + 'En'];
+    }
+  }">
+  <section class="bg-white">
+    <div class="relative flex h-[370px] items-center justify-center overflow-hidden lg:h-[400px]">
+      <img :src="page.heroImage" :alt="text(page, 'title')" class="absolute inset-0 h-full w-full object-cover">
+      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
 
-  <section class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
-    <img :src="page.heroImage" :alt="$store.app.currentLang === 'ar' ? text(page, 'title') : text(page, 'title')" class="absolute inset-0 h-full w-full object-cover">
-    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
-    <div class="container relative z-10 mx-auto px-6 text-center text-white">
-      <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
-        <a href="/" class="transition hover:text-white" x-text="isAr ? page.breadcrumbHomeAr : page.breadcrumbHomeEn"></a>
-        <span aria-hidden="true">›</span>
-        <a href="/admissions.html" class="transition hover:text-white" x-text="isAr ? page.breadcrumbParentAr : page.breadcrumbParentEn"></a>
-        <span aria-hidden="true">›</span>
-        <span x-text="text(page, 'title')"></span>
-      </nav>
-      <h1 class="text-4xl font-black leading-tight text-white md:text-5xl" x-text="text(page, 'title')"></h1>
+      <div class="container relative z-10 mx-auto px-6 text-center text-white">
+        <nav class="mb-4 flex items-center justify-center gap-2 text-xs font-black text-white" aria-label="Breadcrumb">
+          <a href="/" class="rounded bg-spu-blue/35 px-2 py-1 transition hover:bg-spu-blue/55" x-text="text(page, 'breadcrumbHome')"></a>
+          <span aria-hidden="true" class="text-white/75">&gt;</span>
+          <a href="/admissions.html" class="transition hover:text-white/80" x-text="text(page, 'breadcrumbParent')"></a>
+          <span aria-hidden="true" class="text-white/75">&gt;</span>
+          <span x-text="text(page, 'breadcrumbCurrent')"></span>
+        </nav>
+
+        <h1 class="text-[32px] font-black leading-tight text-white md:text-[42px]" x-text="text(page, 'title')"></h1>
+
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <a :href="page.applyUrl"
+            class="inline-flex h-10 min-w-[136px] items-center justify-center rounded-md bg-spu-red px-8 text-xs font-black uppercase tracking-wide text-white transition hover:bg-spu-blue"
+            x-text="text(page, 'applyLabel')"></a>
+          <a :href="page.requestInfoUrl"
+            class="inline-flex h-10 min-w-[136px] items-center justify-center rounded-md border border-white bg-white/5 px-8 text-xs font-black text-white transition hover:bg-white hover:text-spu-blue"
+            x-text="text(page, 'requestInfoLabel')"></a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="relative z-20 -mt-8 md:-mt-16">
-    <div class="container mx-auto px-4">
-
-      <div
-        class="mx-auto mb-16 flex w-fit max-w-full overflow-x-auto rounded-[1.25rem] border border-slate-200 bg-white p-1.5 shadow-[0_12px_30px_rgba(32,39,89,0.06)]">
+  <section class="bg-white pb-28 pt-20">
+    <div class="container mx-auto max-w-[1060px] px-6">
+      <div class="mx-auto flex w-fit max-w-full items-center overflow-hidden rounded-xl border border-slate-200 bg-white p-1 shadow-[0_8px_24px_rgba(32,39,89,0.10)]">
         <template x-for="tab in page.tabs" :key="tab.id">
-          <button type="button" @click="activeType = tab.id"
-            class="whitespace-nowrap rounded-2xl px-8 py-3.5 text-[16px] font-bold transition-all duration-300 md:min-w-[200px]"
-            :class="activeType === tab.id ? 'bg-[#bc2428] text-white shadow-md shadow-[#bc2428]/20' : 'text-slate-500 hover:bg-slate-50 hover:text-[#1e2652]'"
+          <button type="button"
+            class="min-w-[180px] rounded-lg px-5 py-4 text-base font-black transition"
+            :class="activeTab === tab.id ? 'bg-spu-red text-white' : 'text-slate-600 hover:text-spu-red'"
+            :aria-selected="activeTab === tab.id"
+            @click="activeTab = tab.id"
             x-text="text(tab, 'label')"></button>
         </template>
       </div>
 
-      <div class="mx-auto max-w-[1060px]">
+      <section class="mt-20">
+        <h2 class="text-center text-[32px] font-black leading-tight text-spu-blue" x-text="text(active, 'policiesTitle')"></h2>
+        <div class="mt-5 border-t border-slate-200"></div>
 
-        <div class="mb-16 rounded-[2rem] bg-white border border-slate-100 p-8 md:p-12 shadow-sm reveal-up">
-          <h2 class="mb-10 text-2xl md:text-3xl font-black text-[#1e2652] border-b border-slate-100 pb-6"
-            x-text="text(activeData, 'policiesTitle')"></h2>
-
-          <div class="grid gap-10 md:grid-cols-2 md:gap-14">
-            <template x-for="policy in activeData.policies" :key="policy.titleEn">
-              <article class="flex flex-col border-s-4 border-[#bc2428] ps-6 py-1">
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#bc2428]/5 text-[#bc2428]"
-                    x-html="policy.iconSvg"></div>
-                  <h3 class="text-xl font-bold text-[#bc2428]" x-text="text(policy, 'title')"></h3>
-                </div>
-                <p class="text-[15px] leading-[1.8] text-slate-600 font-medium" x-text="text(policy, 'desc')"></p>
-              </article>
-            </template>
-          </div>
-        </div>
-
-        <div class="mb-16 rounded-[2rem] bg-white border border-slate-100 p-8 md:p-12 shadow-sm reveal-up">
-          <h2 class="mb-10 text-2xl md:text-3xl font-black text-[#1e2652] border-b border-slate-100 pb-6"
-            x-text="text(activeData, 'documentsTitle')"></h2>
-
-          <div class="overflow-hidden rounded-2xl border border-slate-100">
-            <template x-for="documentItem in activeData.documents" :key="documentItem.titleEn">
-              <div
-                class="flex min-h-[64px] items-center justify-between gap-6 border-b border-slate-100 px-6 py-4 last:border-b-0 transition-colors hover:bg-slate-50">
-                <div class="flex items-center gap-4">
-                  <span class="flex h-2.5 w-2.5 shrink-0 rounded-full"
-                    :class="documentItem.optional ? 'bg-slate-300' : 'bg-[#bc2428]'"></span>
-                  <span class="text-[16px] font-bold text-[#1e2652]" x-text="text(documentItem, 'title')"></span>
-                </div>
-                <span class="shrink-0 rounded-full px-4 py-1.5 text-[11px] font-black tracking-wider uppercase border"
-                  :class="documentItem.optional ? 'bg-slate-50 text-slate-500 border-slate-200' : 'bg-red-50 text-[#bc2428] border-red-100'"
-                  x-text="text(documentItem, 'status')"></span>
+        <div class="mt-8 grid gap-12 md:grid-cols-2">
+          <template x-for="policy in active.policies" :key="policy.titleEn">
+            <article class="border-s-2 border-spu-red ps-5">
+              <div class="mb-4 flex items-center gap-2 text-spu-red">
+                <span class="inline-flex h-4 w-4 items-center justify-center" aria-hidden="true">
+                  <template x-if="policy.icon === 'transfer'">
+                    <svg viewBox="0 0 20 20" class="h-4 w-4 fill-none stroke-current stroke-2">
+                      <path d="M4 6h10" />
+                      <path d="m11 3 3 3-3 3" />
+                      <path d="M16 14H6" />
+                      <path d="m9 11-3 3 3 3" />
+                    </svg>
+                  </template>
+                  <template x-if="policy.icon !== 'transfer'">
+                    <svg viewBox="0 0 20 20" class="h-4 w-4 fill-none stroke-current stroke-2">
+                      <path d="m4 10 3 3 9-9" />
+                      <path d="m14 10 2 2-5 5" />
+                    </svg>
+                  </template>
+                </span>
+                <h3 class="text-lg font-black" x-text="text(policy, 'title')"></h3>
               </div>
-            </template>
+              <p class="max-w-[390px] text-sm leading-6 text-black" x-text="text(policy, 'desc')"></p>
+            </article>
+          </template>
+        </div>
+      </section>
+
+      <section class="mt-24 border-s-2 border-slate-300 ps-8">
+        <h2 class="mb-8 text-center text-[32px] font-black leading-tight text-spu-blue" x-text="text(active, 'documentsTitle')"></h2>
+        <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+          <template x-for="(documentItem, index) in active.documents" :key="documentItem.titleEn">
+            <div class="flex items-center justify-between gap-4 px-4 py-4 text-sm text-black"
+              :class="index < active.documents.length - 1 ? 'border-b border-slate-200' : ''">
+              <span x-text="text(documentItem, 'title')"></span>
+              <span class="rounded px-2 py-1 text-[10px] font-black"
+                :class="documentItem.required ? 'bg-red-50 text-spu-red' : 'bg-slate-100 text-slate-700'"
+                x-text="documentItem.required ? text(page, 'requiredLabel') : text(page, 'optionalLabel')"></span>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <section class="mt-28">
+        <h2 class="text-center text-[32px] font-black leading-tight text-spu-blue" x-text="text(active, 'processTitle')"></h2>
+
+        <div class="relative mx-auto mt-16 min-h-[430px] max-w-[900px]">
+          <div class="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-slate-300 md:block" aria-hidden="true"></div>
+
+          <template x-for="(step, index) in active.steps" :key="step.titleEn">
+            <div class="relative mb-14 grid gap-8 md:grid-cols-2 md:items-center">
+              <div class="hidden md:block" :class="index % 2 === 0 ? 'order-1' : 'order-2'"></div>
+
+              <span class="absolute left-1/2 top-10 z-10 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white md:block"
+                :class="index === 0 ? 'bg-spu-blue' : 'bg-slate-300'" aria-hidden="true"></span>
+
+              <article class="rounded-lg border border-slate-200 bg-white px-8 py-8"
+                :class="index % 2 === 0 ? 'md:order-2 md:ms-16' : 'md:order-1 md:me-16'">
+                <h3 class="text-xl font-black text-spu-blue" x-text="text(step, 'title')"></h3>
+                <p class="mt-4 text-xs leading-6 text-black" x-text="text(step, 'desc')"></p>
+              </article>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <section class="mt-20 border-s-4 border-spu-red ps-6">
+        <div class="flex gap-5">
+          <span class="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-spu-red text-sm font-black text-white" aria-hidden="true">i</span>
+          <div>
+            <h2 class="mb-3 text-xl font-black text-spu-blue" x-text="text(page, 'notesTitle')"></h2>
+            <p class="max-w-[900px] text-sm leading-5 text-black" x-text="text(page, 'notesDesc')"></p>
           </div>
         </div>
-
-        <template x-if="activeType === 'international'">
-          <div class="mb-16 rounded-[2rem] bg-white border border-slate-100 p-8 md:p-12 shadow-sm reveal-up">
-            <h2 class="mb-10 text-2xl md:text-3xl font-black text-[#1e2652] border-b border-slate-100 pb-6"
-              x-text="text(activeData, 'notesTitle')"></h2>
-            <div class="grid gap-8 md:grid-cols-3">
-              <template x-for="note in activeData.notes" :key="note.titleEn">
-                <article class="rounded-2xl border border-slate-100 bg-slate-50 p-6 shadow-sm">
-                  <h3 class="mb-4 text-[18px] font-bold text-[#1e2652]" x-text="text(note, 'title')"></h3>
-                  <p class="text-[15px] leading-[1.8] text-slate-600 font-medium" x-text="text(note, 'desc')"></p>
-                </article>
-              </template>
-            </div>
-          </div>
-        </template>
-
-        <div class="mb-20 reveal-up">
-          <h2 class="mb-16 text-center text-3xl font-black text-[#1e2652] md:text-4xl"
-            x-text="text(activeData, 'processTitle')"></h2>
-
-          <div class="relative mx-auto max-w-[960px] px-4 md:px-0">
-            <div class="absolute top-0 bottom-0 start-8 w-1 bg-slate-200 md:start-1/2 md:-translate-x-1/2 rounded-full">
-            </div>
-
-            <div class="space-y-12">
-              <template x-for="(step, index) in activeData.steps" :key="step.titleEn">
-                <div class="relative flex flex-col md:flex-row md:items-center">
-
-                  <div
-                    class="absolute start-8 h-8 w-8 -translate-x-1/2 rounded-full border-[6px] border-slate-50 bg-slate-300 md:start-1/2 shadow-sm transition-all duration-300 z-10"
-                    :class="index === 0 ? '!bg-[#bc2428] !border-red-100' : ''"></div>
-
-                  <div class="w-full ps-16 md:ps-0 md:w-[45%]"
-                    :class="index % 2 === 0 ? 'md:ms-auto md:ps-12' : 'md:me-auto md:pe-12'">
-
-                    <article
-                      class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-lg hover:border-[#bc2428]/30">
-                      <div class="flex items-center gap-4 mb-4">
-                        <span
-                          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#1e2652]/5 text-[15px] font-black text-[#1e2652] transition-colors group-hover:bg-[#1e2652] group-hover:text-white"
-                          x-text="'0' + (index + 1)"></span>
-                        <h3 class="text-[19px] font-bold text-[#1e2652]" x-text="text(step, 'title')"></h3>
-                      </div>
-                      <p class="text-[15px] leading-[1.75] text-slate-600 font-medium" x-text="text(step, 'desc')"></p>
-                    </article>
-
-                  </div>
-                </div>
-              </template>
-            </div>
-          </div>
-        </div>
-
-        <aside class="rounded-[2rem] border border-[#bc2428]/20 bg-[#bc2428]/5 p-8 md:p-10 reveal-up">
-          <div class="flex flex-col sm:flex-row items-start gap-6">
-            <div
-              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#bc2428] text-xl font-bold text-white shadow-md shadow-[#bc2428]/30">
-              i</div>
-            <div>
-              <h4 class="mb-3 text-[20px] font-black text-[#1e2652]" x-text="text(page.notes, 'title')"></h4>
-              <p class="text-[15px] leading-[1.8] text-slate-700 font-medium" x-text="text(page.notes, 'desc')"></p>
-            </div>
-          </div>
-        </aside>
-
-      </div>
+      </section>
     </div>
   </section>
 </div>

@@ -63,7 +63,6 @@ export const navigationMenuItems = [
             { labelAr: 'كيفية التقديم', labelEn: 'How to Apply', url: siteRoutes.admissionsHowToApply },
             { labelAr: 'التحويل والطلاب الدوليون', labelEn: 'Transfer & International', url: siteRoutes.admissionsTransfer },
             { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: siteRoutes.admissionsCalendar },
-            { labelAr: 'قائمة الوثائق', labelEn: 'Documents Checklist', url: siteRoutes.admissionsDocuments },
             { labelAr: 'الأسئلة الشائعة', labelEn: 'FAQs', url: siteRoutes.admissionsFAQ }
         ]
     },

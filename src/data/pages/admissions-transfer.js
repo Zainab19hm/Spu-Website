@@ -1,5 +1,5 @@
 export const admissionsTransferPage = {
-    heroImage: '/images/admissions-hero-campus.webp',
+    heroImage: '/images/DSC_1015.JPG',
     breadcrumbHomeEn: 'Home',
     breadcrumbHomeAr: 'الرئيسية',
     breadcrumbParentEn: 'Admissions',
@@ -8,7 +8,7 @@ export const admissionsTransferPage = {
     breadcrumbCurrentAr: 'التحويل والطلاب الدوليون',
     titleEn: 'Transfer & International Students',
     titleAr: 'التحويل والطلاب الدوليون',
-    image: '/images/admissions-hero-campus.webp',
+    image: '/images/DSC_1015.JPG',
     tabs: [
         { id: 'transfer', labelEn: 'Transfer Student', labelAr: 'طالب محوّل' },
         { id: 'international', labelEn: 'International Student', labelAr: 'طالب دولي' }

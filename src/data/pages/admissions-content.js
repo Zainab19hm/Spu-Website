@@ -1,4 +1,3 @@
-import { admissionsTransferPage } from './admissions-transfer.js';
 import { admissionsFaqPage } from './admissions-faq.js';
 
 export const admissionsPageContent = {
@@ -145,174 +144,227 @@ export const admissionsPageContent = {
     },
     requirementsPage: {
         lastReviewed: 'May 2026',
-        heroImage: '/images/admissions-hero-campus.webp',
+        heroImage: '/images/DSC_1015.JPG',
         breadcrumbHomeEn: 'Home',
-        breadcrumbHomeAr: 'الرئيسية',
-        breadcrumbParentEn: 'Admissions',
-        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbHomeAr: 'Home',
+        breadcrumbParentEn: 'Admission',
+        breadcrumbParentAr: 'Admission',
         breadcrumbCurrentEn: 'Admission Requirements',
-        breadcrumbCurrentAr: 'متطلبات القبول',
-        titleEn: 'Admission Requirements',
-        titleAr: 'متطلبات القبول',
-        sections: [
+        breadcrumbCurrentAr: 'Admission Requirements',
+        titleEn: 'Admissions Requirements',
+        titleAr: 'Admissions Requirements',
+        applyLabelEn: 'APPLY NOW',
+        applyLabelAr: 'APPLY NOW',
+        applyUrl: '/admissions/how-to-apply.html',
+        requestInfoLabelEn: 'Request Info',
+        requestInfoLabelAr: 'Request Info',
+        requestInfoUrl: '/contact.html',
+        eligibilityTitleEn: 'Eligibility Criteria',
+        eligibilityTitleAr: 'Eligibility Criteria',
+        documentsTitleEn: 'Required Documents',
+        documentsTitleAr: 'Required Documents',
+        readyTitleEn: 'Are You Ready to Apply?',
+        readyTitleAr: 'Are You Ready to Apply?',
+        notesTitleEn: 'Important Institutional Notes',
+        notesTitleAr: 'Important Institutional Notes',
+        requiredLabelEn: 'Required',
+        requiredLabelAr: 'Required',
+        optionalLabelEn: 'Optional (If applicable)',
+        optionalLabelAr: 'Optional (If applicable)',
+        tabs: [
             {
-                id: 'requirements-categories',
-                type: 'categories',
-                titleEn: 'Admission tracks',
-                titleAr: 'مسارات القبول',
-                cards: [
+                id: 'new',
+                labelEn: 'New Entrants',
+                labelAr: 'New Entrants',
+                criteria: [
                     {
-                        icon: '/images/icon-user-graduate-outline.svg',
-                        titleEn: 'New Entrants',
-                        titleAr: 'الطلاب المستجدون',
-                        summaryEn: 'Prepare your secondary certificate, GPA, and English eligibility.',
-                        summaryAr: 'جهز شهادة الثانوية، المعدل، وأهلية اللغة الإنجليزية.',
-                        linkUrl: '/admissions/how-to-apply/',
-                        linkTextEn: 'Start your application',
-                        linkTextAr: 'ابدأ طلبك'
+                        titleEn: 'High School Diploma',
+                        titleAr: 'High School Diploma',
+                        descEn: 'Must hold a certified high school diploma or its equivalent recognized by the Syrian Ministry of Higher Education.',
+                        descAr: 'Must hold a certified high school diploma or its equivalent recognized by the Syrian Ministry of Higher Education.'
                     },
                     {
-                        icon: '/images/icons/exchange.svg',
-                        titleEn: 'Transfer Students',
-                        titleAr: 'طلاب التحويل',
-                        summaryEn: 'Submit previous transcripts, course descriptions, and academic clearance.',
-                        summaryAr: 'قدم كشوفات سابقة، توصيف المقررات، وشهادة الحالة الأكاديمية.',
-                        linkUrl: '/admissions/transfer/',
-                        linkTextEn: 'Review transfer rules',
-                        linkTextAr: 'راجع قواعد التحويل'
+                        titleEn: 'GPA Requirements',
+                        titleAr: 'GPA Requirements',
+                        descEn: 'Minimum GPA varies by faculty. Medical faculties typically require a higher threshold compared to humanities. Consult the specific faculty page for exact cutoffs.',
+                        descAr: 'Minimum GPA varies by faculty. Medical faculties typically require a higher threshold compared to humanities. Consult the specific faculty page for exact cutoffs.'
                     },
                     {
-                        icon: '/images/icon-check-circle-outline.svg',
-                        titleEn: 'Equivalency & International',
-                        titleAr: 'المعادلة والدوليون',
-                        summaryEn: 'Follow equivalency, translation and visa guidance for foreign credentials.',
-                        summaryAr: 'اتبع إرشادات المعادلة والترجمة والتأشيرة للشهادات الأجنبية.',
-                        linkUrl: '/admissions/transfer/',
-                        linkTextEn: 'See international guidance',
-                        linkTextAr: 'عرض الإرشادات الدولية'
+                        titleEn: 'Age Limit',
+                        titleAr: 'Age Limit',
+                        descEn: 'Applicants must generally be under a certain age limit as specified by annual university guidelines for initial enrollment.',
+                        descAr: 'Applicants must generally be under a certain age limit as specified by annual university guidelines for initial enrollment.'
                     }
-                ]
-            },
-            {
-                id: 'requirements-steps',
-                type: 'steps',
-                titleEn: 'How to Use Your Requirements',
-                titleAr: 'كيفية استخدام متطلبات القبول',
-                steps: [
-                    {
-                        number: '01',
-                        titleEn: 'Collect the documents',
-                        titleAr: 'جمع الوثائق',
-                        descEn: 'Gather all certificates, transcripts, and identification documents before applying.',
-                        descAr: 'اجمع جميع الشهادات والكشوفات ووثائق الهوية قبل التقديم.'
-                    },
-                    {
-                        number: '02',
-                        titleEn: 'Verify eligibility',
-                        titleAr: 'تحقق من الأهلية',
-                        descEn: 'Review faculty-specific GPA and program requirements to avoid surprises.',
-                        descAr: 'راجع متطلبات المعدل والبرنامج الخاصة بالكلية لتجنب المفاجآت.'
-                    },
-                    {
-                        number: '03',
-                        titleEn: 'Submit the application',
-                        titleAr: 'قدّم الطلب',
-                        descEn: 'Complete the online admission form and upload your documents securely.',
-                        descAr: 'أكمل نموذج القبول الإلكتروني وارفع وثائقك بشكل آمن.'
-                    },
-
-                    {
-                        number: '04',
-                        titleEn: 'Track the review',
-                        titleAr: 'تابع المراجعة',
-                        descEn: 'Follow status updates and prepare for any follow-up tests or interviews.',
-                        descAr: 'تابع تحديثات الحالة واستعد لأي اختبارات أو مقابلات لاحقة.'
-                    }
-                ]
-            },
-            {
-                id: 'requirements-coverage',
-                type: 'coverage',
-                titleEn: 'What is Covered',
-                titleAr: 'ما الذي يشمله',
-                cards: [
-                    {
-                        icon: '/images/icon-file-outline.svg',
-                        titleEn: 'Application Documents',
-                        titleAr: 'وثائق الطلب',
-                        descEn: 'All required papers for new, transfer, and international students.',
-                        descAr: 'كل الأوراق المطلوبة للطلاب المستجدين والمحولين والدوليين.'
-                    },
-                    {
-                        icon: '/images/icon-user-graduate-outline.svg',
-                        titleEn: 'Academic Criteria',
-                        titleAr: 'المعايير الأكاديمية',
-                        descEn: 'GPA, diploma type, and faculty-specific admissions standards.',
-                        descAr: 'المعدل، نوع الشهادة، والمعايير الخاصة بكل كلية.'
-                    },
-                    {
-                        icon: '/images/ic_outline-language.svg',
-                        titleEn: 'Language Requirements',
-                        titleAr: 'متطلبات اللغة',
-                        descEn: 'English and Arabic requirements for programmes and placement tests.',
-                        descAr: 'متطلبات الإنجليزية والعربية للبرامج واختبارات تحديد المستوى.'
-                    },
-                    {
-                        icon: '/images/icon-globe-outline.svg',
-                        titleEn: 'International Equivalency',
-                        titleAr: 'المعادلة الدولية',
-                        descEn: 'Guidance for international credentials and Syrian equivalency certificates.',
-                        descAr: 'إرشادات للشهادات الدولية وشهادات المعادلة السورية.'
-                    }
-                ]
-            },
-            {
-                id: 'requirements-documents',
-                type: 'checklist',
-                titleEn: 'Required Documents',
-                titleAr: 'الوثائق المطلوبة',
-                items: [
-                    { en: 'Completed admission form', ar: 'نموذج القبول مكتمل' },
-                    { en: 'Certified secondary school diploma', ar: 'شهادة الثانوية العامة مصدقة' },
-                    { en: 'Official transcripts from all institutions', ar: 'كشف علامات رسمي من جميع المؤسسات' },
-                    { en: 'Copy of national ID or passport', ar: 'صورة الهوية الوطنية أو جواز السفر' },
-                    { en: 'English proficiency proof if required', ar: 'إثبات كفاءة اللغة الإنجليزية عند الحاجة' }
                 ],
-                support: {
-                    titleEn: 'Admissions Support',
-                    titleAr: 'دعم القبول',
-                    locationEn: 'Admissions Office, Main Campus',
-                    locationAr: 'مكتب القبول، الحرم الجامعي الرئيسي',
-                    phone: '+963 11 123 4567',
-                    email: 'admissions@spu.edu.sy'
-                }
+                documents: [
+                    { nameEn: 'Original High School Transcript', nameAr: 'Original High School Transcript', required: true },
+                    { nameEn: 'Photocopy of ID Card / Passport', nameAr: 'Photocopy of ID Card / Passport', required: true },
+                    { nameEn: 'Four (4) Recent Passport Photos', nameAr: 'Four (4) Recent Passport Photos', required: true },
+                    { nameEn: 'Medical Fitness Certificate', nameAr: 'Medical Fitness Certificate', required: true },
+                    { nameEn: 'Language Proficiency Test Scores', nameAr: 'Language Proficiency Test Scores', required: false }
+                ],
+                checklist: [
+                    { en: 'I know my applicant type', ar: 'I know my applicant type' },
+                    { en: 'I reviewed the specific requirements for my chosen faculty', ar: 'I reviewed the specific requirements for my chosen faculty' },
+                    { en: 'I have prepared all required documents', ar: 'I have prepared all required documents' },
+                    { en: 'I checked the current application deadlines', ar: 'I checked the current application deadlines' }
+                ],
+                noteEn: 'All admission requirements, including minimum GPA thresholds and accepted document formats, are subject to periodic review and may change based on directives from the Syrian Ministry of Higher Education. Applicants are strongly advised to consult the official university announcements or contact the Admissions Office directly for the most current information before submitting their application. The University reserves the right to request additional documentation to verify applicant eligibility.',
+                noteAr: 'All admission requirements, including minimum GPA thresholds and accepted document formats, are subject to periodic review and may change based on directives from the Syrian Ministry of Higher Education. Applicants are strongly advised to consult the official university announcements or contact the Admissions Office directly for the most current information before submitting their application. The University reserves the right to request additional documentation to verify applicant eligibility.'
+            },
+            {
+                id: 'transfer',
+                labelEn: 'Transfer Students',
+                labelAr: 'Transfer Students',
+                criteria: [
+                    {
+                        titleEn: 'University Enrollment Record',
+                        titleAr: 'University Enrollment Record',
+                        descEn: 'Applicant must have been enrolled at a recognized university or higher education institution before requesting transfer to SPU.',
+                        descAr: 'Applicant must have been enrolled at a recognized university or higher education institution before requesting transfer to SPU.'
+                    },
+                    {
+                        titleEn: 'Academic Standing',
+                        titleAr: 'Academic Standing',
+                        descEn: 'The student should be in good academic and disciplinary standing, with no dismissal or unresolved academic restriction from the previous institution.',
+                        descAr: 'The student should be in good academic and disciplinary standing, with no dismissal or unresolved academic restriction from the previous institution.'
+                    },
+                    {
+                        titleEn: 'Course Compatibility',
+                        titleAr: 'Course Compatibility',
+                        descEn: 'Completed courses are reviewed by the relevant faculty. Transfer credit depends on course content, credit hours, grades, and current university regulations.',
+                        descAr: 'Completed courses are reviewed by the relevant faculty. Transfer credit depends on course content, credit hours, grades, and current university regulations.'
+                    }
+                ],
+                documents: [
+                    { nameEn: 'Official University Transcript', nameAr: 'Official University Transcript', required: true },
+                    { nameEn: 'Course Descriptions / Syllabi', nameAr: 'Course Descriptions / Syllabi', required: true },
+                    { nameEn: 'High School Certificate Copy', nameAr: 'High School Certificate Copy', required: true },
+                    { nameEn: 'Good Standing / Non-Disciplinary Letter', nameAr: 'Good Standing / Non-Disciplinary Letter', required: true },
+                    { nameEn: 'Transfer Credit Evaluation Form', nameAr: 'Transfer Credit Evaluation Form', required: false }
+                ],
+                checklist: [
+                    { en: 'I collected my official transcript from my previous university', ar: 'I collected my official transcript from my previous university' },
+                    { en: 'I prepared course descriptions for completed subjects', ar: 'I prepared course descriptions for completed subjects' },
+                    { en: 'I understand that accepted transfer credits are decided by the faculty', ar: 'I understand that accepted transfer credits are decided by the faculty' },
+                    { en: 'I checked the transfer application period', ar: 'I checked the transfer application period' }
+                ],
+                noteEn: 'Transfer admission and credit recognition are not automatic. Final placement, accepted courses, and remaining study load are determined after faculty review and according to the active Ministry of Higher Education and SPU regulations.',
+                noteAr: 'Transfer admission and credit recognition are not automatic. Final placement, accepted courses, and remaining study load are determined after faculty review and according to the active Ministry of Higher Education and SPU regulations.'
+            },
+            {
+                id: 'equivalency',
+                labelEn: 'Equivalency Students',
+                labelAr: 'Equivalency Students',
+                criteria: [
+                    {
+                        titleEn: 'Recognized External Certificate',
+                        titleAr: 'Recognized External Certificate',
+                        descEn: 'Applicants with non-Syrian or special-track certificates must provide documents eligible for equivalency review by the competent authorities.',
+                        descAr: 'Applicants with non-Syrian or special-track certificates must provide documents eligible for equivalency review by the competent authorities.'
+                    },
+                    {
+                        titleEn: 'Equivalency Approval',
+                        titleAr: 'Equivalency Approval',
+                        descEn: 'Admission is conditional on obtaining the required equivalency or recognition decision from the Syrian Ministry of Education or Ministry of Higher Education, as applicable.',
+                        descAr: 'Admission is conditional on obtaining the required equivalency or recognition decision from the Syrian Ministry of Education or Ministry of Higher Education, as applicable.'
+                    },
+                    {
+                        titleEn: 'Faculty Eligibility',
+                        titleAr: 'Faculty Eligibility',
+                        descEn: 'The equivalency result must satisfy the faculty-specific admission stream, subjects, and minimum score requirements announced for the academic year.',
+                        descAr: 'The equivalency result must satisfy the faculty-specific admission stream, subjects, and minimum score requirements announced for the academic year.'
+                    }
+                ],
+                documents: [
+                    { nameEn: 'Original External Certificate', nameAr: 'Original External Certificate', required: true },
+                    { nameEn: 'Certified Arabic Translation', nameAr: 'Certified Arabic Translation', required: true },
+                    { nameEn: 'Equivalency / Recognition Decision', nameAr: 'Equivalency / Recognition Decision', required: true },
+                    { nameEn: 'Passport or National ID Copy', nameAr: 'Passport or National ID Copy', required: true },
+                    { nameEn: 'Authentication from Relevant Authorities', nameAr: 'Authentication from Relevant Authorities', required: false }
+                ],
+                checklist: [
+                    { en: 'I verified that my certificate can be reviewed for equivalency', ar: 'I verified that my certificate can be reviewed for equivalency' },
+                    { en: 'I prepared certified translations where required', ar: 'I prepared certified translations where required' },
+                    { en: 'I obtained or started the official equivalency decision process', ar: 'I obtained or started the official equivalency decision process' },
+                    { en: 'I checked faculty-specific subject and score conditions', ar: 'I checked faculty-specific subject and score conditions' }
+                ],
+                noteEn: 'Equivalency cases require official verification before final admission. SPU may request additional authentication, translations, or ministry approvals before confirming eligibility or reserving a seat.',
+                noteAr: 'Equivalency cases require official verification before final admission. SPU may request additional authentication, translations, or ministry approvals before confirming eligibility or reserving a seat.'
             }
         ]
     },
     tuitionPage: {
         lastReviewed: 'May 2026',
-        heroImage: '/images/admissions-hero-campus.webp',
+        heroImage: '/images/DSC_1015.JPG',
         breadcrumbHomeEn: 'Home',
-        breadcrumbHomeAr: 'الرئيسية',
-        breadcrumbParentEn: 'Admissions',
-        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbHomeAr: 'Home',
+        breadcrumbParentEn: 'Admission',
+        breadcrumbParentAr: 'Admission',
         breadcrumbCurrentEn: 'Tuition & Fees',
-        breadcrumbCurrentAr: 'الرسوم والأقساط',
+        breadcrumbCurrentAr: 'Tuition & Fees',
         titleEn: 'Tuition & Fees',
-        titleAr: 'الرسوم والأقساط',
-        faculties: [
-            { nameEn: 'Faculty of Medicine', nameAr: 'كلية الطب', feeEn: '1,200,000 SYP/Credit', feeAr: '1,200,000 ل.س/ساعة' },
-            { nameEn: 'Faculty of Pharmacy', nameAr: 'كلية الصيدلة', feeEn: '950,000 SYP/Credit', feeAr: '950,000 ل.س/ساعة' },
-            { nameEn: 'Faculty of Engineering', nameAr: 'كلية الهندسة', feeEn: '750,000 SYP/Credit', feeAr: '750,000 ل.س/ساعة' }
+        titleAr: 'Tuition & Fees',
+        filters: {
+            facultyLabelEn: 'Select Faculty',
+            facultyLabelAr: 'Select Faculty',
+            studentTypeLabelEn: 'Select Student Type',
+            studentTypeLabelAr: 'Select Student Type'
+        },
+        overviewTitleEn: 'Tuition Fees Overview',
+        overviewTitleAr: 'Tuition Fees Overview',
+        tableHeaders: [
+            { key: 'faculty', labelEn: 'Faculty', labelAr: 'Faculty' },
+            { key: 'type', labelEn: 'Type', labelAr: 'Type' },
+            { key: 'tuitionFee', labelEn: 'Tuition Fee (Per Year)', labelAr: 'Tuition Fee (Per Year)' },
+            { key: 'registrationFee', labelEn: 'Registration Fee', labelAr: 'Registration Fee' },
+            { key: 'additionalFees', labelEn: 'Additional Fees', labelAr: 'Additional Fees' },
+            { key: 'notes', labelEn: 'Notes', labelAr: 'Notes' }
         ],
+        feeRows: [
+            { facultyEn: 'Medicine', facultyAr: 'Medicine', typeEn: 'New', typeAr: 'New', tuitionFeeEn: '$15,000', tuitionFeeAr: '$15,000', registrationFeeEn: '$500', registrationFeeAr: '$500', additionalFeesEn: '$250 (Lab)', additionalFeesAr: '$250 (Lab)', notesEn: 'Includes basic insurance', notesAr: 'Includes basic insurance' },
+            { facultyEn: 'Medicine', facultyAr: 'Medicine', typeEn: 'Transfer', typeAr: 'Transfer', tuitionFeeEn: '$15,000', tuitionFeeAr: '$15,000', registrationFeeEn: '$300', registrationFeeAr: '$300', additionalFeesEn: '$250 (Lab)', additionalFeesAr: '$250 (Lab)', notesEn: '-', notesAr: '-' },
+            { facultyEn: 'Dentistry', facultyAr: 'Dentistry', typeEn: 'New', typeAr: 'New', tuitionFeeEn: '$13,500', tuitionFeeAr: '$13,500', registrationFeeEn: '$500', registrationFeeAr: '$500', additionalFeesEn: '$350 (Materials)', additionalFeesAr: '$350 (Materials)', notesEn: 'Tool kit extra', notesAr: 'Tool kit extra' }
+        ],
+        emptyStateEn: 'No tuition rows match the selected filters.',
+        emptyStateAr: 'No tuition rows match the selected filters.',
+        paymentTitleEn: 'Payment Methods',
+        paymentTitleAr: 'Payment Methods',
         methods: [
-            { titleEn: 'Direct Bank Deposit', titleAr: 'إيداع بنكي مباشر', descEn: 'Commercial Bank of Syria', descAr: 'المصرف التجاري السوري' },
-            { titleEn: 'Electronic Payment', titleAr: 'الدفع الإلكتروني', descEn: 'Via SPU Student Portal', descAr: 'عبر بوابة الطالب' }
+            {
+                icon: 'bank',
+                titleEn: 'Bank Transfer',
+                titleAr: 'Bank Transfer',
+                descEn: 'Direct transfer to the university\'s official bank account. Takes 2-3 business days to clear.',
+                descAr: 'Direct transfer to the university\'s official bank account. Takes 2-3 business days to clear.',
+                details: [
+                    { labelEn: 'Account Name', labelAr: 'Account Name', valueEn: 'Syrian Private University', valueAr: 'Syrian Private University' },
+                    { labelEn: 'Bank', labelAr: 'Bank', valueEn: 'Main National Bank', valueAr: 'Main National Bank' },
+                    { labelEn: 'IBAN', labelAr: 'IBAN', valueEn: 'SY12345678901234567890', valueAr: 'SY12345678901234567890' }
+                ]
+            },
+            {
+                icon: 'card',
+                titleEn: 'Online Payment',
+                titleAr: 'Online Payment',
+                descEn: 'Instant processing via the Student Portal using major credit/debit cards.',
+                descAr: 'Instant processing via the Student Portal using major credit/debit cards.',
+                ctaEn: 'Access Portal',
+                ctaAr: 'Access Portal',
+                ctaUrl: '#'
+            }
+        ],
+        notesTitleEn: 'Important Financial Notes',
+        notesTitleAr: 'Important Financial Notes',
+        notes: [
+            { en: 'All fees are subject to annual review and may be adjusted in accordance with university policy and local regulations.', ar: 'All fees are subject to annual review and may be adjusted in accordance with university policy and local regulations.' },
+            { en: 'Registration fees are non-refundable once the academic semester commences.', ar: 'Registration fees are non-refundable once the academic semester commences.' },
+            { en: 'Students must clear all outstanding financial dues prior to final examinations or graduation.', ar: 'Students must clear all outstanding financial dues prior to final examinations or graduation.' }
         ]
     },
     faqPage: admissionsFaqPage,
     howToApplyPage: {
-        heroImage: '/images/admissions-hero-campus.webp',
+        heroImage: '/images/DSC_1015.JPG',
         breadcrumbHomeEn: 'Home',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbParentEn: 'Admissions',
@@ -373,9 +425,113 @@ export const admissionsPageContent = {
             }
         ]
     },
-    transferPage: admissionsTransferPage,
+    transferPage: {
+        heroImage: '/images/DSC_1015.JPG',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'Home',
+        breadcrumbParentEn: 'Admission',
+        breadcrumbParentAr: 'Admission',
+        breadcrumbCurrentEn: 'Transfer & International Students',
+        breadcrumbCurrentAr: 'Transfer & International Students',
+        titleEn: 'Transfer & International Students',
+        titleAr: 'Transfer & International Students',
+        applyLabelEn: 'APPLY NOW',
+        applyLabelAr: 'APPLY NOW',
+        applyUrl: '/admissions/how-to-apply.html',
+        requestInfoLabelEn: 'Request Info',
+        requestInfoLabelAr: 'Request Info',
+        requestInfoUrl: '/contact.html',
+        requiredLabelEn: 'Required',
+        requiredLabelAr: 'Required',
+        optionalLabelEn: 'Optional (If applicable)',
+        optionalLabelAr: 'Optional (If applicable)',
+        notesTitleEn: 'Important Institutional Notes',
+        notesTitleAr: 'Important Institutional Notes',
+        notesDescEn: 'All admission requirements, including minimum GPA thresholds and accepted document formats, are subject to periodic review and may change based on directives from the Syrian Ministry of Higher Education. Applicants are strongly advised to consult the official university announcements or contact the Admissions Office directly for the most current information before submitting their application. The University reserves the right to request additional documentation to verify applicant eligibility.',
+        notesDescAr: 'All admission requirements, including minimum GPA thresholds and accepted document formats, are subject to periodic review and may change based on directives from the Syrian Ministry of Higher Education. Applicants are strongly advised to consult the official university announcements or contact the Admissions Office directly for the most current information before submitting their application. The University reserves the right to request additional documentation to verify applicant eligibility.',
+        tabs: [
+            {
+                id: 'transfer',
+                labelEn: 'Transfer Student',
+                labelAr: 'Transfer Student',
+                policiesTitleEn: 'Transfer Policies',
+                policiesTitleAr: 'Transfer Policies',
+                policies: [
+                    {
+                        icon: 'transfer',
+                        titleEn: 'Credit Transfer Policy',
+                        titleAr: 'Credit Transfer Policy',
+                        descEn: 'Credits are evaluated on a course-by-course basis. A minimum grade of C or equivalent is required for transfer consideration. Core curriculum courses undergo rigorous review by the respective college dean.',
+                        descAr: 'Credits are evaluated on a course-by-course basis. A minimum grade of C or equivalent is required for transfer consideration. Core curriculum courses undergo rigorous review by the respective college dean.'
+                    },
+                    {
+                        icon: 'equivalency',
+                        titleEn: 'Course Equivalency',
+                        titleAr: 'Course Equivalency',
+                        descEn: 'Applicants must provide detailed syllabi for courses seeking equivalency. The academic committee assesses content overlap, credit hours, and learning outcomes against SPU standards.',
+                        descAr: 'Applicants must provide detailed syllabi for courses seeking equivalency. The academic committee assesses content overlap, credit hours, and learning outcomes against SPU standards.'
+                    }
+                ],
+                documentsTitleEn: 'Required Documents',
+                documentsTitleAr: 'Required Documents',
+                documents: [
+                    { titleEn: 'Original High School Transcript', titleAr: 'Original High School Transcript', required: true },
+                    { titleEn: 'Photocopy of ID Card / Passport', titleAr: 'Photocopy of ID Card / Passport', required: true },
+                    { titleEn: 'Four (4) Recent Passport Photos', titleAr: 'Four (4) Recent Passport Photos', required: true },
+                    { titleEn: 'Medical Fitness Certificate', titleAr: 'Medical Fitness Certificate', required: true },
+                    { titleEn: 'Language Proficiency Test Scores', titleAr: 'Language Proficiency Test Scores', required: false }
+                ],
+                processTitleEn: 'Application Process',
+                processTitleAr: 'Application Process',
+                steps: [
+                    { titleEn: 'Choose Type', titleAr: 'Choose Type', descEn: 'Determine if you are applying as a transfer or international student.', descAr: 'Determine if you are applying as a transfer or international student.' },
+                    { titleEn: 'Review Requirements', titleAr: 'Review Requirements', descEn: 'Gather all necessary documentation based on your applicant type.', descAr: 'Gather all necessary documentation based on your applicant type.' },
+                    { titleEn: 'Prepare Documents', titleAr: 'Prepare Documents', descEn: 'Ensure transcripts, syllabi, and identification are certified.', descAr: 'Ensure transcripts, syllabi, and identification are certified.' }
+                ]
+            },
+            {
+                id: 'international',
+                labelEn: 'International Student',
+                labelAr: 'International Student',
+                policiesTitleEn: 'International Student Policies',
+                policiesTitleAr: 'International Student Policies',
+                policies: [
+                    {
+                        icon: 'language',
+                        titleEn: 'Language Requirements',
+                        titleAr: 'Language Requirements',
+                        descEn: 'Applicants may be asked to provide Arabic or English language evidence depending on faculty requirements and the chosen academic programme.',
+                        descAr: 'Applicants may be asked to provide Arabic or English language evidence depending on faculty requirements and the chosen academic programme.'
+                    },
+                    {
+                        icon: 'visa',
+                        titleEn: 'Visa & Equivalency Guide',
+                        titleAr: 'Visa & Equivalency Guide',
+                        descEn: 'International applicants should confirm visa status, passport validity, and Ministry of Education equivalency requirements before final admission.',
+                        descAr: 'International applicants should confirm visa status, passport validity, and Ministry of Education equivalency requirements before final admission.'
+                    }
+                ],
+                documentsTitleEn: 'Required Documents',
+                documentsTitleAr: 'Required Documents',
+                documents: [
+                    { titleEn: 'Valid Passport Copy', titleAr: 'Valid Passport Copy', required: true },
+                    { titleEn: 'Certified Secondary School Certificate', titleAr: 'Certified Secondary School Certificate', required: true },
+                    { titleEn: 'Ministry Equivalency Documents', titleAr: 'Ministry Equivalency Documents', required: true },
+                    { titleEn: 'Four (4) Recent Passport Photos', titleAr: 'Four (4) Recent Passport Photos', required: true },
+                    { titleEn: 'Visa or Residency Documents', titleAr: 'Visa or Residency Documents', required: false }
+                ],
+                processTitleEn: 'Application Process',
+                processTitleAr: 'Application Process',
+                steps: [
+                    { titleEn: 'Confirm Eligibility', titleAr: 'Confirm Eligibility', descEn: 'Review country-specific academic and equivalency requirements.', descAr: 'Review country-specific academic and equivalency requirements.' },
+                    { titleEn: 'Submit Documents', titleAr: 'Submit Documents', descEn: 'Provide certified academic records, passport documents, and translations.', descAr: 'Provide certified academic records, passport documents, and translations.' },
+                    { titleEn: 'Finalize Admission', titleAr: 'Finalize Admission', descEn: 'Coordinate with Admissions for acceptance, visa guidance, and registration steps.', descAr: 'Coordinate with Admissions for acceptance, visa guidance, and registration steps.' }
+                ]
+            }
+        ]
+    },
     calendarPage: {
-        heroImage: '/images/admissions-hero-campus.webp',
+        heroImage: '/images/DSC_1015.JPG',
         breadcrumbHomeEn: 'Home',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbParentEn: 'Admissions',
@@ -434,7 +590,7 @@ export const admissionsPageContent = {
         ]
     },
     documentsPage: {
-        heroImage: '/images/admissions-hero-campus.webp',
+        heroImage: '/images/DSC_1015.JPG',
         breadcrumbHomeEn: 'Home',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbParentEn: 'Admissions',
