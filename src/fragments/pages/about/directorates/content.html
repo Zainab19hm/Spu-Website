@@ -1,16 +1,5 @@
 <style>
     /* Directorates Design System */
-    .directorates-hero {
-        min-height: 365px;
-    }
-
-    .directorates-hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(7, 10, 28, 0.1) 0%, rgba(32, 39, 89, 0.74) 100%);
-    }
-
     .directorates-content-wrapper {
         max-width: 900px;
         margin: 0 auto;
@@ -188,10 +177,11 @@
     }
 </style>
 
-<section x-cloak class="directorates-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+<section x-cloak class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
     <img :src="$store.aboutPage.directorates.heroImage || '/images/about-hero-3.webp'"
          alt="Central Directorates Banner"
          class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
 
     <div class="container relative z-10 mx-auto px-6 text-center text-white">
         <nav class="flex items-center justify-center gap-3 text-sm font-bold text-white/90 mb-4" aria-label="Breadcrumb">

@@ -69,6 +69,8 @@ export const siteRoutes = Object.freeze({
     admissionsCalendar: getPageRoute('admissions-calendar'),
     admissionsDocuments: getPageRoute('admissions-documents'),
     research: getPageRoute('research'),
+    researchRepository: getPageRoute('research-repository'),
+    researchCenters: getPageRoute('research-centers'),
     studentLife: getPageRoute('student-life'),
     virtualTour: getPageRoute('virtual-tour'),
     services: getPageRoute('services'),

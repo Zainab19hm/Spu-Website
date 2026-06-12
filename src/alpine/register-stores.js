@@ -32,6 +32,8 @@ const pageStoreLoaders = {
     'admissions-calendar': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
     'admissions-documents': () => import('./pages/admissions-stores.js').then((module) => module.registerAdmissionsStores),
     research: () => import('./pages/research-stores.js').then((module) => module.registerResearchStores),
+    'research-repository': () => import('./pages/research-stores.js').then((module) => module.registerResearchStores),
+    'research-centers': () => import('./pages/research-stores.js').then((module) => module.registerResearchStores),
     'student-life': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
     'virtual-tour': () => import('./pages/virtual-tour-stores.js').then((module) => module.registerVirtualTourStores),
     services: () => import('./pages/services-stores.js').then((module) => module.registerServicesStores),

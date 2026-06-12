@@ -75,13 +75,8 @@ export const navigationMenuItems = [
         page: 'research',
         hasDropdown: true,
         children: [
-            { labelAr: 'مكتب البحث العلمي', labelEn: 'Research Office', url: siteRoutes.research },
-            { labelAr: 'المنشورات', labelEn: 'Publications', url: withHash(siteRoutes.research, 'publications') },
-            { labelAr: 'المراكز والمخابر', labelEn: 'Research Centers & Labs', url: withHash(siteRoutes.research, 'centers') },
-            { labelAr: 'دليل الخبراء', labelEn: 'Expert Finder', url: withHash(siteRoutes.research, 'experts') },
-            { labelAr: 'المؤتمرات', labelEn: 'Conferences', url: withHash(siteRoutes.research, 'conferences') },
-            { labelAr: 'المكتبة', labelEn: 'Library', url: withHash(siteRoutes.services, 'library') },
-            { labelAr: 'السياسات والأخلاقيات', labelEn: 'Policies & Ethics', url: withHash(siteRoutes.research, 'policies') }
+            { labelAr: 'مستودع البحث', labelEn: 'Research Repository', url: siteRoutes.researchRepository },
+            { labelAr: 'مراكز ومخابر البحث', labelEn: 'Research Centers & Labs', url: siteRoutes.researchCenters }
         ]
     },
     {
@@ -97,10 +92,8 @@ export const navigationMenuItems = [
             { labelAr: 'الصحة والتأمين', labelEn: 'Health & Insurance', url: siteRoutes.campusLifeHealthInsurance },
             { labelAr: 'النوادي والأنشطة', labelEn: 'Clubs & Activities', url: siteRoutes.campusLifeClubsActivities },
             { labelAr: 'التطوير المهني', labelEn: 'Career Development', url: siteRoutes.campusLifeCareerDevelopment },
-            { labelAr: 'خدمة المجتمع', labelEn: 'Community Service', url: withHash(siteRoutes.studentLife, 'community-service') },
             { labelAr: 'المستشفى الجامعي', labelEn: 'University Hospital', url: siteRoutes.campusLifeHospital },
             { labelAr: 'عيادات الأسنان', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental },
-            { labelAr: 'الجولة الافتراضية', labelEn: 'Virtual Tour', url: siteRoutes.virtualTour }
         ]
     },
     {
@@ -109,11 +102,8 @@ export const navigationMenuItems = [
         labelEn: 'E-Services',
         url: siteRoutes.services,
         page: 'services',
-        hasDropdown: true,
-        children: [
-            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, protected: true },
-            { labelAr: 'الاعتراضات والنماذج', labelEn: 'Appeals & Forms', url: withHash(siteRoutes.services, 'appeals-forms') },
-        ]
+        hasDropdown: false,
+        
     },
     {
         id: 7,
@@ -127,7 +117,6 @@ export const navigationMenuItems = [
             { labelAr: 'الإعلانات', labelEn: 'Announcements', url: siteRoutes.newsAnnouncements },
             { labelAr: 'تقويم الفعاليات', labelEn: 'Events Calendar', url: siteRoutes.newsEvents },
             { labelAr: 'معرض الوسائط', labelEn: 'Media Gallery', url: siteRoutes.newsGallery },
-            { labelAr: 'غرفة الصحافة', labelEn: 'Press Room', url: withHash(siteRoutes.news, 'press-room') }
         ]
     },
     {
@@ -136,11 +125,8 @@ export const navigationMenuItems = [
         labelEn: 'Contact',
         url: siteRoutes.contact,
         page: 'contact',
-        hasDropdown: true,
-        children: [
-            { labelAr: 'معلومات التواصل', labelEn: 'Contact Information', url: siteRoutes.contact },
-            { labelAr: 'خريطة الحرم', labelEn: 'Campus Map', url: withHash(siteRoutes.contact, 'campus-map') }
-        ]
+        hasDropdown: false,
+        
     }
 ];
 

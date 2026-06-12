@@ -10,7 +10,6 @@ export const newsPageContent = {
             { id: 'announcements', labelEn: 'Announcements', labelAr: 'الإعلانات' },
             { id: 'events', labelEn: 'Events', labelAr: 'الفعاليات' },
             { id: 'media-gallery', labelEn: 'Media Gallery', labelAr: 'معرض الوسائط' },
-            { id: 'press-room', labelEn: 'Press Room', labelAr: 'غرفة الصحافة' }
         ]
     },
     featured: {
@@ -163,15 +162,7 @@ export const newsPageContent = {
             icon: 'image',
             link: '/news/gallery/'
         },
-        {
-            id: 'press',
-            titleEn: 'Press Room',
-            titleAr: 'غرفة الصحافة',
-            summaryEn: 'Official press releases and media kits',
-            summaryAr: 'البيانات الصحفية الرسمية والملفات الإعلامية',
-            icon: 'newspaper',
-            link: '#'
-        }
+        
     ]
 };
 

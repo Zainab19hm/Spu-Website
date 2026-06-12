@@ -1,19 +1,43 @@
-<section x-data class="page-hero relative overflow-hidden bg-spu-blue text-white font-hacen">
-    <div class="absolute inset-0 opacity-60" style="background: radial-gradient(circle at top right, rgba(202,169,73,0.28), transparent 42%), radial-gradient(circle at bottom left, rgba(43,125,179,0.24), transparent 34%);"></div>
-    <div class="container relative z-10 grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-        <div class="max-w-3xl">
-            <p class="text-sm font-bold uppercase tracking-[0.35em] text-white/60" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.eyebrowAr : $store.researchPage.hero.eyebrowEn"></p>
-            <h1 class="mt-6 text-4xl font-bold leading-tight md:text-5xl xl:text-6xl" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.titleAr : $store.researchPage.hero.titleEn"></h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/78" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.summaryAr : $store.researchPage.hero.summaryEn"></p>
-        </div>
+<section x-data class="bg-white font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="relative mx-auto h-[85vh] overflow-hidden ">
+        <img :src="$store.researchPage.hero.backgroundImage"
+             alt="SPU Campus"
+             class="absolute inset-0 h-full w-full object-cover"
+             aria-hidden="true">
+        <div class="absolute inset-0 bg-spu-blue/50"></div>
 
-        <div class="grid gap-4 sm:grid-cols-2">
-            <template x-for="metric in $store.researchPage.metrics" :key="metric.labelEn">
-                <article class="rounded-[28px] border border-white/12 bg-white/10 p-6 backdrop-blur-md shadow-[0_24px_70px_rgba(8,15,42,0.18)]">
-                    <p class="text-3xl font-bold text-white" x-html="metric.value"></p>
-                    <p class="mt-2 text-sm uppercase tracking-[0.2em] text-white/62" x-text="$store.app.currentLang === 'ar' ? metric.labelAr : metric.labelEn"></p>
-                </article>
-            </template>
+        <div class="container relative z-10 pt-14 flex md:min-h-[540px] items-center justify-center  min-h-[520px]">
+            <div class="relative mx-auto w-full max-w-[670px] px-8 py-11 text-center md:px-16 md:py-10">
+                <span class="pointer-events-none absolute left-0 top-0 h-full w-[4px] bg-white"></span>
+                <span class="pointer-events-none absolute right-0 top-0 h-full w-[4px] bg-white"></span>
+                <!-- <span class="pointer-events-none absolute left-0 top-0 h-[4px] w-[265px] max-w-[42%] bg-white"></span> -->
+                <span class="pointer-events-none absolute right-0 top-0 h-[4px] w-[265px] max-w-[42%] bg-white"></span>
+                <span class="pointer-events-none absolute bottom-0 left-0 h-[4px] w-[265px] max-w-[42%] bg-white"></span>
+                <!-- <span class="pointer-events-none absolute bottom-0 right-0 h-[4px] w-[265px] max-w-[42%] bg-white"></span> -->
+
+                <h1 class="text-[34px] font-bold leading-tight text-white md:text-[40px]"
+                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.titleAr : $store.researchPage.hero.titleEn">
+                </h1>
+
+                <p class="mt-5 text-[13px] font-bold leading-none text-white"
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.eyebrowAr : $store.researchPage.hero.eyebrowEn">
+                </p>
+
+                <p class="mx-auto mt-2 max-w-[590px] text-[14px] font-bold leading-[1.45] text-white"
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.summaryAr : $store.researchPage.hero.summaryEn">
+                </p>
+
+                <div class="mt-10 flex flex-wrap items-center justify-center gap-9">
+                    <a :href="$store.researchPage.hero.cta1Url"
+                       class="inline-flex h-[32px] min-w-[145px] items-center justify-center rounded-[2px] bg-spu-blue px-5 text-[10px] font-bold text-white transition hover:bg-[#171d47]">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.cta1Ar : $store.researchPage.hero.cta1En"></span>
+                    </a>
+                    <a :href="$store.researchPage.hero.cta2Url"
+                       class="inline-flex h-[32px] min-w-[145px] items-center justify-center rounded-[2px] bg-spu-blue px-5 text-[10px] font-bold text-white transition hover:bg-[#171d47]">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.hero.cta2Ar : $store.researchPage.hero.cta2En"></span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>

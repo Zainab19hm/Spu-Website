@@ -1,0 +1,71 @@
+<section id="publications" x-data class="bg-white pt-[65px] pb-[56px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="container">
+        <h2 class="mb-[38px] text-center text-[32px] font-bold uppercase leading-none tracking-[0.02em] text-spu-blue md:text-[37px]"
+            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.sectionTitleAr : $store.researchPage.featuredPublication.sectionTitleEn">
+        </h2>
+
+        <div class="mx-auto flex max-w-[1120px] flex-col overflow-hidden rounded-[5px] border border-[#d9dce7] bg-white shadow-[0_2px_4px_rgba(0,0,0,0.2)] lg:min-h-[400px] lg:flex-row">
+            <div class="flex-1 px-7 py-9 md:px-[54px] md:py-[68px]"
+                 :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
+                <p class="text-[12px] font-bold uppercase tracking-[0.12em] text-spu-red"
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.eyebrowAr : $store.researchPage.featuredPublication.eyebrowEn">
+                </p>
+
+                <h3 class="mt-5 text-[20px] font-bold leading-snug text-spu-blue md:text-[22px]"
+                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.titleAr : $store.researchPage.featuredPublication.titleEn">
+                </h3>
+
+                <p class="mt-4 max-w-[625px] text-[14px] leading-[1.55] text-[#333742]"
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.summaryAr : $store.researchPage.featuredPublication.summaryEn">
+                </p>
+
+                <div class="mt-9 flex flex-wrap items-center gap-8 border-s-2 border-[#c8ccd9] ps-8">
+                    <div class="min-w-[105px]">
+                        <p class="text-[9px] font-medium uppercase tracking-[0.12em] text-[#6f7280]"
+                           x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.authorLabelAr : $store.researchPage.featuredPublication.authorLabelEn"></p>
+                        <p class="mt-1 text-[11px] font-bold text-spu-blue"
+                           x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.authorNameAr : $store.researchPage.featuredPublication.authorNameEn"></p>
+                    </div>
+                    <div class="min-w-[120px]">
+                        <p class="text-[9px] font-medium uppercase tracking-[0.12em] text-[#6f7280]"
+                           x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.affiliationLabelAr : $store.researchPage.featuredPublication.affiliationLabelEn"></p>
+                        <p class="mt-1 text-[11px] font-bold text-spu-blue"
+                           x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.affiliationAr : $store.researchPage.featuredPublication.affiliationEn"></p>
+                    </div>
+                    <div class="min-w-[100px]">
+                        <p class="text-[9px] font-medium uppercase tracking-[0.12em] text-[#6f7280]"
+                           x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.publishedLabelAr : $store.researchPage.featuredPublication.publishedLabelEn"></p>
+                        <p class="mt-1 text-[11px] font-bold text-spu-blue"
+                           x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.dateAr : $store.researchPage.featuredPublication.dateEn"></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap items-center gap-[52px]">
+                    <a href="#"
+                       class="group inline-flex h-[37px] min-w-[150px] items-center justify-center gap-2 rounded-[6px] bg-spu-blue px-5 text-[11px] font-bold text-white transition hover:bg-[#171d47]">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.viewCtaAr : $store.researchPage.featuredPublication.viewCtaEn"></span>
+                        <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 group-hover:rtl:-translate-x-1" aria-hidden="true">
+                    </a>
+                    <a href="#"
+                       class="inline-flex h-[37px] min-w-[142px] items-center justify-center rounded-[6px] border border-[#202759] px-5 text-[11px] font-bold text-spu-blue transition hover:bg-spu-blue/5">
+                        <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.downloadCtaAr : $store.researchPage.featuredPublication.downloadCtaEn"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative min-h-[355px] w-full shrink-0 border-t-[5px] border-spu-red bg-[#7e86aa] lg:min-h-0 lg:w-[370px]">
+                <img :src="$store.researchPage.featuredPublication.image"
+                     :alt="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.titleAr : $store.researchPage.featuredPublication.titleEn"
+                     class="h-[305px] w-full object-cover">
+                <div class="absolute bottom-0 left-0 right-0 h-[76px] bg-[#858caf]"></div>
+                <div class="absolute bottom-0 left-[86px] right-0 rounded-t-[3px] bg-white px-4 py-3 shadow-sm"
+                     :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
+                    <p class="text-[8px] font-medium uppercase tracking-[0.14em] text-[#8a8a9a]"
+                       x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.doiLabelAr : $store.researchPage.featuredPublication.doiLabelEn"></p>
+                    <p class="mt-1 text-[11px] font-bold text-spu-blue"
+                       x-text="$store.researchPage.featuredPublication.doi"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

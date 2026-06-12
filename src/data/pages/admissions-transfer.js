@@ -1,4 +1,11 @@
 export const admissionsTransferPage = {
+    heroImage: '/images/admissions-hero-campus.webp',
+    breadcrumbHomeEn: 'Home',
+    breadcrumbHomeAr: 'الرئيسية',
+    breadcrumbParentEn: 'Admissions',
+    breadcrumbParentAr: 'القبول والتسجيل',
+    breadcrumbCurrentEn: 'Transfer & International Students',
+    breadcrumbCurrentAr: 'التحويل والطلاب الدوليون',
     titleEn: 'Transfer & International Students',
     titleAr: 'التحويل والطلاب الدوليون',
     image: '/images/admissions-hero-campus.webp',

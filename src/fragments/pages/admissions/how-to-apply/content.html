@@ -1,92 +1,53 @@
-<style>
-    .step-card {
-        background: white;
-        border: 1px solid #f1f5f9;
-        border-radius: 2.5rem;
-        padding: 3.5rem;
-        position: relative;
-        overflow: hidden;
-    }
-    .step-number {
-        position: absolute;
-        top: -10px;
-        right: 20px;
-        font-size: 8rem;
-        font-weight: 900;
-        color: rgba(111,22,22,0.03);
-        line-height: 1;
-        pointer-events: none;
-    }
-    [dir="rtl"] .step-number {
-        right: auto;
-        left: 20px;
-    }
-    .step-dot {
-        width: 12px;
-        height: 12px;
-        background: #6f1616;
-        border-radius: 50%;
-        position: absolute;
-        top: 4rem;
-        left: 0;
-        transform: translateX(-50%);
-    }
-    [dir="rtl"] .step-dot {
-        left: auto;
-        right: 0;
-        transform: translateX(50%);
-    }
-    .step-line {
-        position: absolute;
-        top: 4rem;
-        bottom: -4rem;
-        left: 0;
-        width: 2px;
-        background: repeating-linear-gradient(to bottom, #6f1616 0, #6f1616 10px, transparent 10px, transparent 20px);
-    }
-    [dir="rtl"] .step-line {
-        left: auto;
-        right: 0;
-    }
-</style>
+<div class="admissions-design" x-data="{ page: $store.admissionsPage.howToApplyPage, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <section class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="page.heroImage" :alt="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn" class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+      <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? page.breadcrumbHomeAr : page.breadcrumbHomeEn"></a>
+        <span aria-hidden="true">›</span>
+        <a href="/admissions.html" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? page.breadcrumbParentAr : page.breadcrumbParentEn"></a>
+        <span aria-hidden="true">›</span>
+        <span x-text="$store.app.currentLang === 'ar' ? page.breadcrumbCurrentAr : page.breadcrumbCurrentEn"></span>
+      </nav>
+      <h1 class="text-4xl font-black leading-tight text-white md:text-5xl" x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
+    </div>
+  </section>
 
-<div x-data="{ page: $store.admissionsPage.howToApplyPage }">
-    <!-- Hero Section -->
-    <section class="relative py-24 overflow-hidden bg-spu-blue">
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h1 class="reveal reveal-up text-4xl md:text-6xl font-black text-white mb-8"
-                x-text="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn"></h1>
-            <p class="reveal reveal-up reveal-delay-1 text-white/60 max-w-2xl mx-auto"
-               x-text="$store.app.currentLang === 'ar' ? 'اتبع هذه الخطوات البسيطة لبدء رحلتك الأكاديمية معنا.' : 'Follow these simple steps to begin your academic journey with us.'"></p>
+  <section class="admissions-overlap-intro" aria-labelledby="admissions-journey-title">
+    <h1 id="admissions-journey-title" x-text="isAr ? page.heroTitleAr : page.heroTitleEn"></h1>
+    <p x-text="isAr ? page.heroDescAr : page.heroDescEn"></p>
+  </section>
+
+  <section class="admissions-shell admissions-feature-cards" aria-label="Admissions journey highlights">
+    <template x-for="card in page.featureCards" :key="card.titleEn">
+      <article class="admissions-feature-card">
+        <div>
+          <h3 x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h3>
         </div>
-    </section>
+        <span class="admissions-feature-card__icon" aria-hidden="true">
+          <template x-if="card.icon === 'steps'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M6 5v14"></path><path d="M18 5v14"></path><circle cx="6" cy="7" r="2"></circle><circle cx="18" cy="17" r="2"></circle><path d="M10 7h4"></path><path d="M10 17h4"></path></svg></template>
+          <template x-if="card.icon === 'document'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v6h5"></path><path d="M10 13h6"></path><path d="M10 17h6"></path></svg></template>
+          <template x-if="card.icon === 'apply'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M5 13a7 7 0 0 1 14 0"></path><path d="M3 13h4v5H5a2 2 0 0 1-2-2z"></path><path d="M21 13h-4v5h2a2 2 0 0 0 2-2z"></path><path d="M12 6v4"></path></svg></template>
+        </span>
+        <p x-text="$store.app.currentLang === 'ar' ? card.descAr : card.descEn"></p>
+      </article>
+    </template>
+  </section>
 
-    <!-- Steps Timeline -->
-    <section class="py-24 bg-white overflow-hidden">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="space-y-16">
-                <template x-for="(step, idx) in page.steps" :key="idx">
-                    <div class="reveal reveal-up relative" :class="`reveal-delay-${idx + 1}`">
-                        <!-- Connecting Line -->
-                        <div x-show="idx < page.steps.length - 1" class="step-line hidden md:block"></div>
-                        <div class="step-dot hidden md:block"></div>
-
-                        <div class="step-card md:ms-12">
-                            <span class="step-number" x-text="step.number"></span>
-                            <div class="relative z-10">
-                                <h3 class="text-3xl font-black text-spu-blue mb-4"
-                                    x-text="$store.app.currentLang === 'ar' ? step.titleAr : step.titleEn"></h3>
-                                <p class="text-xl text-slate-500 leading-relaxed mb-8"
-                                   x-text="$store.app.currentLang === 'ar' ? step.descAr : step.descEn"></p>
-                                <a href="#" class="inline-flex items-center gap-3 px-8 py-3 bg-spu-red text-white font-bold rounded-xl hover:opacity-90 transition-all">
-                                    <span x-text="$store.app.currentLang === 'ar' ? 'ابدأ الآن' : 'Start Now'"></span>
-                                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </section>
+  <section class="admissions-shell admissions-journey" aria-labelledby="step-by-step-title">
+    <h2 id="step-by-step-title" class="admissions-page-title" x-text="isAr ? 'دليل خطوة بخطوة' : 'Step-by-Step Guide'"></h2>
+    <div class="admissions-timeline">
+      <template x-for="(step, idx) in page.steps" :key="step.number">
+        <article class="admissions-timeline-step" :class="[`admissions-timeline-step--${idx + 1}`, idx === page.steps.length - 1 ? 'admissions-timeline-step--final' : '']">
+          <span class="admissions-timeline-marker" x-text="step.number"></span>
+          <div class="admissions-step-card">
+            <h3 x-text="$store.app.currentLang === 'ar' ? step.titleAr : step.titleEn"></h3>
+            <p x-text="$store.app.currentLang === 'ar' ? step.descAr : step.descEn"></p>
+            <a class="admissions-step-card__button" :href="step.href" x-text="$store.app.currentLang === 'ar' ? step.ctaAr : step.ctaEn"></a>
+          </div>
+        </article>
+      </template>
+    </div>
+  </section>
 </div>

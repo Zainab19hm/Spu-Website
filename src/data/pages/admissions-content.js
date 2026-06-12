@@ -145,6 +145,13 @@ export const admissionsPageContent = {
     },
     requirementsPage: {
         lastReviewed: 'May 2026',
+        heroImage: '/images/admissions-hero-campus.webp',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'Admissions',
+        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbCurrentEn: 'Admission Requirements',
+        breadcrumbCurrentAr: 'متطلبات القبول',
         titleEn: 'Admission Requirements',
         titleAr: 'متطلبات القبول',
         sections: [
@@ -284,6 +291,13 @@ export const admissionsPageContent = {
     },
     tuitionPage: {
         lastReviewed: 'May 2026',
+        heroImage: '/images/admissions-hero-campus.webp',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'Admissions',
+        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbCurrentEn: 'Tuition & Fees',
+        breadcrumbCurrentAr: 'الرسوم والأقساط',
         titleEn: 'Tuition & Fees',
         titleAr: 'الرسوم والأقساط',
         faculties: [
@@ -298,43 +312,121 @@ export const admissionsPageContent = {
     },
     faqPage: admissionsFaqPage,
     howToApplyPage: {
+        heroImage: '/images/admissions-hero-campus.webp',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'Admissions',
+        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbCurrentEn: 'How to Apply',
+        breadcrumbCurrentAr: 'كيفية التقديم',
         titleEn: 'How to Apply',
         titleAr: 'كيفية التقديم',
+        heroTitleEn: 'Admissions Journey',
+        heroTitleAr: 'رحلة القبول',
+        heroDescEn: 'Your path to joining Syrian Private University is designed to be clear and supportive. We ensure no dead ends—our admissions team is here to guide you at every step toward your academic future.',
+        heroDescAr: 'تم تصميم طريقك للانضمام إلى الجامعة السورية الخاصة ليكون واضحاً وداعماً. نضمن عدم وجود طرق مسدودة، وفريق القبول لدينا هنا لإرشادك في كل خطوة نحو مستقبلك الأكاديمي.',
+        featureCards: [
+            { titleEn: 'Clear Steps', titleAr: 'خطوات واضحة', descEn: 'A straightforward, numbered process from application to enrollment.', descAr: 'عملية مرقمة وواضحة من التقديم حتى التسجيل.', icon: 'steps' },
+            { titleEn: 'Required Documents', titleAr: 'الوثائق المطلوبة', descEn: 'Prepare your portfolio with our comprehensive checklist.', descAr: 'حضّر ملفك اعتماداً على قائمة الوثائق الشاملة.', icon: 'document' },
+            { titleEn: 'Apply at Every Stage', titleAr: 'التقديم في كل مرحلة', descEn: 'Access the application portal immediately from any step in the journey.', descAr: 'ادخل إلى بوابة التقديم مباشرة من أي خطوة في الرحلة.', icon: 'apply' }
+        ],
         steps: [
             {
                 number: '01',
-                titleEn: 'Online Application',
-                titleAr: 'التقديم الإلكتروني',
-                descEn: 'Create an account on our admission portal and fill out the personal information section.',
-                descAr: 'أنشئ حساباً على بوابة القبول لدينا واملأ قسم المعلومات الشخصية.'
+                titleEn: 'Choose Faculty',
+                titleAr: 'اختر الكلية',
+                descEn: 'Explore our diverse range of faculties and programs to find the perfect fit for your career aspirations.',
+                descAr: 'استكشف كلياتنا وبرامجنا المتنوعة لتجد الخيار الأنسب لطموحاتك المهنية.',
+                ctaEn: 'Explore Programs',
+                ctaAr: 'استكشف البرامج',
+                href: '/facilities/'
             },
             {
                 number: '02',
-                titleEn: 'Upload Documents',
-                titleAr: 'رفع الوثائق',
-                descEn: 'Submit digital copies of your transcripts, ID, and personal statement.',
-                descAr: 'قدم نسخاً رقمية من كشوف العلامات والهوية والبيان الشخصي.'
+                titleEn: 'Review Requirements',
+                titleAr: 'راجع المتطلبات',
+                descEn: 'Ensure you meet the academic criteria and understand the specific prerequisites for your chosen degree program.',
+                descAr: 'تأكد من استيفاء المعايير الأكاديمية وفهم المتطلبات الخاصة بالبرنامج الذي اخترته.',
+                ctaEn: 'View Requirements',
+                ctaAr: 'عرض المتطلبات',
+                href: '/admissions/requirements/'
             },
             {
                 number: '03',
-                titleEn: 'Application Fee',
-                titleAr: 'رسوم الطلب',
-                descEn: 'Pay the non-refundable processing fee via one of our supported payment methods.',
-                descAr: 'ادفع رسوم المعالجة غير القابلة للاسترداد عبر إحدى طرق الدفع المدعومة لدينا.'
+                titleEn: 'Prepare Documents',
+                titleAr: 'حضّر الوثائق',
+                descEn: 'Gather necessary paperwork, including identification, transcripts, and certificates, to streamline your application.',
+                descAr: 'اجمع الأوراق اللازمة، بما في ذلك الهوية وكشوف العلامات والشهادات، لتسهيل طلبك.',
+                ctaEn: 'Checklist Below',
+                ctaAr: 'قائمة الوثائق',
+                href: '/admissions/documents/'
             },
             {
                 number: '04',
-                titleEn: 'Interview & Tests',
-                titleAr: 'المقابلة والاختبارات',
-                descEn: 'Attend an academic interview and complete any required placement exams.',
-                descAr: 'احضر مقابلة أكاديمية وأكمل أي اختبارات تحديد مستوى مطلوبة.'
+                titleEn: 'Submit Application',
+                titleAr: 'قدّم الطلب',
+                descEn: 'Complete the online form and upload your prepared documents through our secure portal.',
+                descAr: 'أكمل النموذج الإلكتروني وارفع وثائقك المحضّرة عبر بوابتنا الآمنة.',
+                ctaEn: 'Apply Now',
+                ctaAr: 'قدّم الآن',
+                href: '/admissions/how-to-apply/'
             }
         ]
     },
     transferPage: admissionsTransferPage,
     calendarPage: {
+        heroImage: '/images/admissions-hero-campus.webp',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'Admissions',
+        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbCurrentEn: 'Academic Calendar',
+        breadcrumbCurrentAr: 'التقويم الأكاديمي',
         titleEn: 'Academic Calendar 2026/2027',
         titleAr: 'التقويم الأكاديمي 2026/2027',
+        statCards: [
+            { titleEn: 'Current Academic Year', titleAr: 'العام الأكاديمي الحالي', descEn: 'Comprehensive timeline for Fall 2026 and Spring 2027 semesters.', descAr: 'جدول زمني شامل لفصلي خريف 2026 وربيع 2027.', icon: 'calendar' },
+            { titleEn: 'Downloadable PDF', titleAr: 'ملف PDF قابل للتنزيل', descEn: 'Prepare your portfolio with our comprehensive checklist.', descAr: 'حضّر ملفك اعتماداً على قائمة الوثائق الشاملة.', icon: 'download' },
+            { titleEn: 'Key Dates', titleAr: 'تواريخ مهمة', descEn: 'Quick access to essential deadlines, exams, and registration windows.', descAr: 'وصول سريع إلى المواعيد النهائية والامتحانات وفترات التسجيل.', icon: 'key' }
+        ],
+        deadlines: [
+            { typeEn: 'Classes', typeAr: 'الدروس', titleEn: 'First Day of Classes', titleAr: 'أول يوم دوام', dateEn: 'Sept 15, 2026', dateAr: '15 أيلول 2026' },
+            { typeEn: 'Registration', typeAr: 'التسجيل', titleEn: 'Registration Opens', titleAr: 'بدء التسجيل', dateEn: 'Sept 1, 2026', dateAr: '1 أيلول 2026' },
+            { typeEn: 'Exams', typeAr: 'الامتحانات', titleEn: 'Final Exams Begin', titleAr: 'بدء الامتحانات النهائية', dateEn: 'Jan 10, 2027', dateAr: '10 كانون الثاني 2027' }
+        ],
+        semesters: [
+            {
+                titleEn: 'First Semester (Fall 2026)',
+                titleAr: 'الفصل الأول (خريف 2026)',
+                events: [
+                    { dateEn: 'Sept 1 - Sept 10', dateAr: '1 - 10 أيلول', titleEn: 'Registration Period', titleAr: 'فترة التسجيل', descEn: 'Course registration for continuing and new students.', descAr: 'تسجيل المقررات للطلاب المستمرين والجدد.' },
+                    { dateEn: 'Sept 15', dateAr: '15 أيلول', titleEn: 'Classes Begin', titleAr: 'بدء الدوام', descEn: 'Official start of Fall semester classes.', descAr: 'البداية الرسمية لمحاضرات فصل الخريف.' },
+                    { dateEn: 'Oct 15', dateAr: '15 تشرين الأول', titleEn: 'Add/Drop Deadline', titleAr: 'آخر موعد للإضافة والحذف', descEn: 'Last day to add or drop courses without academic penalty.', descAr: 'آخر يوم لإضافة أو حذف المقررات دون عقوبة أكاديمية.' }
+                ]
+            },
+            {
+                titleEn: 'Second Semester (Spring 2027)',
+                titleAr: 'الفصل الثاني (ربيع 2027)',
+                events: [
+                    { dateEn: 'Feb 1 - Feb 10', dateAr: '1 - 10 شباط', titleEn: 'Registration Period', titleAr: 'فترة التسجيل', descEn: 'Course registration for continuing and new students.', descAr: 'تسجيل المقررات للطلاب المستمرين والجدد.' }
+                ]
+            }
+        ],
+        download: {
+            titleEn: 'Download Official Calendar',
+            titleAr: 'تحميل التقويم الرسمي',
+            descEn: 'Get the complete 2026-2027 Academic Calendar in PDF format. (PDF, 2.4 MB)',
+            descAr: 'احصل على تقويم 2026-2027 الأكاديمي كاملاً بصيغة PDF. (PDF، 2.4 MB)',
+            buttonEn: 'Download PDF',
+            buttonAr: 'تحميل PDF',
+            href: '#'
+        },
+        notice: {
+            titleEn: 'Official Notice',
+            titleAr: 'تنبيه رسمي',
+            descEn: 'Dates in this academic calendar are subject to change. The University reserves the right to modify the calendar as necessary. Official announcements regarding any changes will be communicated via university email and posted on the official website.',
+            descAr: 'التواريخ في هذا التقويم الأكاديمي قابلة للتغيير. تحتفظ الجامعة بحق تعديل التقويم عند الضرورة، وسيتم إبلاغ أي تغييرات عبر البريد الجامعي ونشرها على الموقع الرسمي.'
+        },
         events: [
             { dateEn: 'Sep 15, 2026', dateAr: '15 أيلول 2026', eventEn: 'Fall Semester Orientation', eventAr: 'لقاء توجيهي لفصل الخريف' },
             { dateEn: 'Oct 01, 2026', dateAr: '01 تشرين الأول 2026', eventEn: 'Start of Lectures', eventAr: 'بداية المحاضرات' },
@@ -342,6 +434,13 @@ export const admissionsPageContent = {
         ]
     },
     documentsPage: {
+        heroImage: '/images/admissions-hero-campus.webp',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'Admissions',
+        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbCurrentEn: 'Documents Checklist',
+        breadcrumbCurrentAr: 'قائمة الوثائق المطلوبة',
         titleEn: 'Documents Checklist',
         titleAr: 'قائمة الوثائق المطلوبة',
         categories: [

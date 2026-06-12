@@ -174,6 +174,8 @@ const pageWarmupModules = {
   'admissions-calendar': ['/src/alpine/pages/admissions-stores.js'],
   'admissions-documents': ['/src/alpine/pages/admissions-stores.js'],
   research: ['/src/alpine/pages/research-stores.js'],
+  'research-repository': ['/src/alpine/pages/research-stores.js'],
+  'research-centers': ['/src/alpine/pages/research-stores.js'],
   'student-life': ['/src/alpine/pages/student-life-stores.js'],
   'virtual-tour': ['/src/alpine/pages/virtual-tour-stores.js'],
   'campus-life-services': ['/src/alpine/pages/student-life-stores.js'],

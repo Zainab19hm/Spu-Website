@@ -1,28 +1,11 @@
 <main class="bg-slate-50 min-h-screen pb-24 font-hacen">
 
-    <style>
-        .vision-subpage-hero {
-            min-height: 365px;
-            position: relative;
-        }
-
-        .vision-subpage-hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(7, 10, 28, 0.12) 0%, rgba(32, 39, 89, 0.72) 100%);
-        }
-
-        .vision-subpage-hero h1 {
-            text-shadow: 0 6px 22px rgba(0,0,0,0.45);
-        }
-    </style>
-
     <section x-cloak
-        class="vision-subpage-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+        class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
         <img :src="$store.aboutPage.visionMission.heroImage"
             :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.visionMission.titleAr : $store.aboutPage.visionMission.titleEn"
             class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
 
         <div class="container relative z-10 mx-auto py-5 text-center text-white">
             <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85"

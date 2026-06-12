@@ -1,7 +1,13 @@
 export const admissionsFaqPage = {
+  heroImage: '/images/admissions-hero-campus.webp',
+  breadcrumbHomeEn: 'Home',
+  breadcrumbHomeAr: 'الرئيسية',
+  breadcrumbParentEn: 'Admissions',
+  breadcrumbParentAr: 'القبول والتسجيل',
+  breadcrumbCurrentEn: 'Admissions FAQ',
+  breadcrumbCurrentAr: 'الأسئلة الشائعة للقبول',
   titleEn: 'Admissions FAQ',
   titleAr: 'الأسئلة الشائعة للقبول',
-  heroImage: '/images/admissions-hero-campus.webp',
   sections: [
     {
       id: 'application-process',

@@ -1,0 +1,32 @@
+<section id="centers" x-data class="bg-white pt-[8px] pb-[106px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="container">
+        <h2 class="mb-[36px] text-center text-[31px] font-bold leading-tight text-spu-blue md:text-[38px]"
+            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.gateway.sectionTitleAr : $store.researchPage.gateway.sectionTitleEn">
+        </h2>
+
+        <div class="mx-auto grid max-w-[1140px] grid-cols-1 gap-x-[38px] gap-y-[36px] md:grid-cols-2 lg:grid-cols-3">
+            <template x-for="card in $store.researchPage.gateway.cards" :key="card.number">
+                <div class="group relative min-h-[205px] rounded-[6px] border border-[#d2d5df] bg-white px-[27px] pb-7 pt-10 shadow-[0_2px_4px_rgba(0,0,0,0.18)] transition hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(32,39,89,0.12)]"
+                     :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
+                    <div class="absolute -top-[24px] left-[42px] flex h-[50px] w-[50px] items-center justify-center rounded-full border border-[#d2d5df] bg-white text-[22px] font-bold leading-none text-spu-blue shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition group-hover:border-spu-blue group-hover:bg-spu-blue group-hover:text-white rtl:left-auto rtl:right-[42px]">
+                        <span x-text="card.number"></span>
+                    </div>
+
+                    <h3 class="text-[22px] font-bold leading-tight text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn">
+                    </h3>
+
+                    <p class="mt-3 max-w-[280px] text-[15px] leading-[1.7] text-[#50525c]"
+                       x-text="$store.app.currentLang === 'ar' ? card.summaryAr : card.summaryEn">
+                    </p>
+
+                    <a :href="card.url"
+                       class="mt-4 inline-flex items-center gap-2 text-[15px] font-bold text-spu-red transition hover:gap-3">
+                        <span x-text="$store.app.currentLang === 'ar' ? card.ctaAr : card.ctaEn"></span>
+                        <span class="rtl:rotate-180">&rarr;</span>
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>

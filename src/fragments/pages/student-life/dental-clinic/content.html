@@ -10,74 +10,76 @@
         <!-- Services Grid -->
         <div class="grid gap-6 grid-cols-1 md:grid-cols-3">
             <template x-for="(service, index) in $store.dentalClinicPage.services" :key="service.titleEn">
-                <div 
-                    class="bg-white border border-[#C3C6D180] rounded-[12px] p-10 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:border-slate-200"
+                <div class="bg-white border border-[#C3C6D180] rounded-[12px] p-10 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:border-slate-200"
                     :class="{
                         'md:col-span-2': index === 0 || index === 3,
                         'md:col-span-1': index === 1 || index === 2
                     }">
                     <div class="flex justify-between items-start mb-6">
-                        <h3 class="text-2xl font-bold text-[#1e2d5b]" 
+                        <h3 class="text-2xl font-bold text-[#1e2d5b]"
                             x-text="$store.app.currentLang === 'ar' ? service.titleAr : service.titleEn"></h3>
                         <div class="flex items-center justify-center">
-                            <img :src="service.icon" 
-                                 class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110"
-                                 alt="">
+                            <img :src="service.icon"
+                                class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110"
+                                alt="">
                         </div>
                     </div>
                     <p class="text-slate-500 text-lg leading-relaxed max-w-2xl"
-                       x-text="$store.app.currentLang === 'ar' ? service.descriptionAr : service.descriptionEn"></p>
+                        x-text="$store.app.currentLang === 'ar' ? service.descriptionAr : service.descriptionEn"></p>
                 </div>
             </template>
         </div>
     </div>
-<!-- schedule -->
+    <!-- schedule -->
     <div id="weekly-schedule" class="container mt-24 pb-20">
         <!-- Section Header -->
         <div class="text-center mb-16">
-            <h2 class="text-5xl font-bold text-[#1e2d5b]" 
+            <h2 class="text-5xl font-bold text-[#1e2d5b]"
                 x-text="$store.app.currentLang === 'ar' ? $store.dentalClinicPage.scheduleSection.titleAr : $store.dentalClinicPage.scheduleSection.titleEn">
             </h2>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-[94px] items-stretch ">
             <!-- Left Card: Status -->
-            <div class="bg-[#1e2d5b] rounded-[8px] p-10 text-white flex flex-col items-center justify-center text-center shadow-xl">
+            <div
+                class="bg-[#1e2d5b] rounded-[8px] p-10 text-white flex flex-col items-center justify-center text-center shadow-xl">
                 <div class="mb-6">
                     <img src="/images/time.svg" alt="" class="w-[97px] h-[97px] brightness-0 invert" aria-hidden="true">
                 </div>
                 <div :class="($store.dentalClinicPage.getCurrentSchedule().isEmergency || $store.dentalClinicPage.getCurrentSchedule().timeEn === 'Emergency Only') ? 'bg-red-600 text-white' : 'bg-white text-[#1e2d5b]'"
-                     class="px-6 py-1.5 rounded-full font-bold text-sm mb-8 inline-block shadow-sm transition-colors duration-300">
-                    <span x-text="$store.app.currentLang === 'ar' 
+                    class="px-6 py-1.5 rounded-full font-bold text-sm mb-8 inline-block shadow-sm transition-colors duration-300">
+                    <span
+                        x-text="$store.app.currentLang === 'ar' 
                         ? (($store.dentalClinicPage.getCurrentSchedule().isEmergency || $store.dentalClinicPage.getCurrentSchedule().timeEn === 'Emergency Only') ? $store.dentalClinicPage.scheduleSection.statusClosedAr : $store.dentalClinicPage.scheduleSection.statusAr) 
                         : (($store.dentalClinicPage.getCurrentSchedule().isEmergency || $store.dentalClinicPage.getCurrentSchedule().timeEn === 'Emergency Only') ? $store.dentalClinicPage.scheduleSection.statusClosedEn : $store.dentalClinicPage.scheduleSection.statusEn)"></span>
                 </div>
                 <h3 class="text-3xl font-bold mb-1">
                     <span x-text="$store.app.currentLang === 'ar' ? 'اليوم: ' : 'Today: '"></span>
-                    <span x-text="$store.app.currentLang === 'ar' ? $store.dentalClinicPage.getCurrentSchedule().timeAr : $store.dentalClinicPage.getCurrentSchedule().timeEn"></span>
+                    <span
+                        x-text="$store.app.currentLang === 'ar' ? $store.dentalClinicPage.getCurrentSchedule().timeAr : $store.dentalClinicPage.getCurrentSchedule().timeEn"></span>
                 </h3>
-                <p class="text-white/60 text-sm mb-4 font-medium" x-text="$store.date.getFormattedDate($store.app.currentLang)"></p>
+                <p class="text-white/60 text-sm mb-4 font-medium"
+                    x-text="$store.date.getFormattedDate($store.app.currentLang)"></p>
                 <p class="text-slate-300 text-lg max-w-sm"
-                   x-text="$store.app.currentLang === 'ar' ? $store.dentalClinicPage.scheduleDetailsAr : $store.dentalClinicPage.scheduleDetailsEn"></p>
+                    x-text="$store.app.currentLang === 'ar' ? $store.dentalClinicPage.scheduleDetailsAr : $store.dentalClinicPage.scheduleDetailsEn">
+                </p>
             </div>
 
             <!-- Right Card: Weekly Table -->
             <div class="bg-white border border-[#C3C6D180] rounded-[8px] p-10 shadow-sm">
                 <div class="space-y-6">
                     <template x-for="slot in $store.dentalClinicPage.schedule" :key="slot.dayEn">
-                        <div class="flex justify-between items-center pb-4 border-b border-slate-100 last:border-0 last:pb-0">
-                            <span class="text-slate-500 font-medium" 
-                                  :class="slot.isEmergency ? 'text-red-500' : ''"
-                                  x-text="$store.app.currentLang === 'ar' ? slot.dayAr : slot.dayEn"></span>
-                            <span class="font-semibold text-[#1e2d5b]"
-                                  :class="slot.isEmergency ? 'text-red-500' : ''"
-                                  x-text="$store.app.currentLang === 'ar' ? slot.timeAr : slot.timeEn"></span>
+                        <div
+                            class="flex justify-between items-center pb-4 border-b border-slate-100 last:border-0 last:pb-0">
+                            <span class="text-slate-500 font-medium" :class="slot.isEmergency ? 'text-red-500' : ''"
+                                x-text="$store.app.currentLang === 'ar' ? slot.dayAr : slot.dayEn"></span>
+                            <span class="font-semibold text-[#1e2d5b]" :class="slot.isEmergency ? 'text-red-500' : ''"
+                                x-text="$store.app.currentLang === 'ar' ? slot.timeAr : slot.timeEn"></span>
                         </div>
                     </template>
                 </div>
             </div>
         </div>
-        <p class="mt-8 text-center text-xs font-bold uppercase tracking-[0.16em] text-spu-blue/45"
-           x-text="$store.app.currentLang === 'ar' ? 'آخر مراجعة: أيار 2026' : 'Last reviewed: May 2026'"></p>
+
     </div>
 </section>

@@ -1,15 +1,4 @@
 <style>
-    .history-subpage-hero {
-        min-height: 365px;
-    }
-
-    .history-subpage-hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(7, 10, 28, 0.12) 0%, rgba(32, 39, 89, 0.72) 100%);
-    }
-
     .history-vision-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -113,10 +102,6 @@
     }
 
     @media (max-width: 768px) {
-        .history-subpage-hero {
-            min-height: 320px;
-        }
-
         .history-timeline {
             gap: 2.5rem;
             margin-inline-start: 0;
@@ -166,10 +151,11 @@
     }
 </style>
 
-<section x-cloak class="history-subpage-hero relative flex items-center justify-center overflow-hidden pt-28 font-hacen">
+<section x-cloak class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
     <img :src="$store.aboutPage.history.heroImage"
          :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.history.titleAr : $store.aboutPage.history.titleEn"
          class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
 
     <div class="container relative z-10 mx-auto px-6 text-center text-white">
         <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">

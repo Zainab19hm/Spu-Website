@@ -9,39 +9,18 @@
         }
       }">
 
-  <section
-    class="relative flex min-h-[360px] md:min-h-[460px] items-center justify-center overflow-hidden pt-28 pb-12 text-white">
-    <div class="absolute inset-0">
-      <img :src="page.image" alt="Syrian Private University Admissions" class="h-full w-full object-cover">
-      <div class="absolute inset-0 bg-[#1e2652]/80"></div>
-      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
-    </div>
-
-    <div class="container relative z-10 text-center px-4 -mt-10">
-      <nav class="mb-6 flex items-center justify-center gap-2 text-[13px] font-bold text-white/80"
-        aria-label="Breadcrumb">
-        <a href="/" class="transition hover:text-white" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
-        <img src="/images/icon-chevron-right-outline.svg" alt=""
-          class="h-2.5 w-2.5 brightness-0 invert opacity-80 rtl:rotate-180" aria-hidden="true">
-        <a href="/admissions/" class="transition hover:text-white" x-text="isAr ? 'القبول والتسجيل' : 'Admissions'"></a>
-        <img src="/images/icon-chevron-right-outline.svg" alt=""
-          class="h-2.5 w-2.5 brightness-0 invert opacity-80 rtl:rotate-180" aria-hidden="true">
-        <span class="text-white" x-text="text(page, 'title')"></span>
+  <section class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="page.heroImage" :alt="$store.app.currentLang === 'ar' ? text(page, 'title') : text(page, 'title')" class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+      <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
+        <a href="/" class="transition hover:text-white" x-text="isAr ? page.breadcrumbHomeAr : page.breadcrumbHomeEn"></a>
+        <span aria-hidden="true">›</span>
+        <a href="/admissions.html" class="transition hover:text-white" x-text="isAr ? page.breadcrumbParentAr : page.breadcrumbParentEn"></a>
+        <span aria-hidden="true">›</span>
+        <span x-text="text(page, 'title')"></span>
       </nav>
-
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-white mb-8 drop-shadow-lg"
-        x-text="text(page, 'title')"></h1>
-
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="/admissions/how-to-apply/"
-          class="inline-flex min-w-[180px] items-center justify-center rounded-xl bg-[#bc2428] px-8 py-4 text-sm font-black text-white shadow-lg shadow-[#bc2428]/30 transition-all hover:bg-[#a01e22] hover:-translate-y-1">
-          <span x-text="isAr ? 'قدّم الآن' : 'Apply Now'"></span>
-        </a>
-        <a href="/contact/"
-          class="inline-flex min-w-[180px] items-center justify-center rounded-xl border border-white/40 bg-white/10 backdrop-blur-md px-8 py-4 text-sm font-black text-white transition-all hover:bg-white hover:text-[#1e2652] hover:-translate-y-1">
-          <span x-text="isAr ? 'اطلب معلومات' : 'Request Info'"></span>
-        </a>
-      </div>
+      <h1 class="text-4xl font-black leading-tight text-white md:text-5xl" x-text="text(page, 'title')"></h1>
     </div>
   </section>
 

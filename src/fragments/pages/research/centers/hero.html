@@ -1,0 +1,35 @@
+<section x-data class="bg-white  font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="relative h-[370px] overflow-hidden">
+        <img :src="$store.researchPage.centersPage.hero.backgroundImage"
+             alt="SPU Campus"
+             class="absolute inset-0 h-full w-full object-cover"
+             aria-hidden="true">
+        <div class="absolute inset-0 bg-spu-blue/50"></div>
+
+        <div class="container relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
+            <nav class="flex flex-wrap items-center justify-center gap-2 text-[13px] font-bold" aria-label="Breadcrumb">
+                <template x-for="(item, index) in $store.researchPage.centersPage.hero.breadcrumbs" :key="item.labelEn">
+                    <span class="inline-flex items-center gap-2">
+                        <a :href="item.url"
+                           class="transition hover:text-white/75"
+                           x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></a>
+                        <span x-show="index < $store.researchPage.centersPage.hero.breadcrumbs.length - 1" class="text-white/85">›</span>
+                    </span>
+                </template>
+            </nav>
+
+            <h1 class="mt-6 text-[34px] font-bold leading-tight md:text-[42px]"
+                x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.hero.titleAr : $store.researchPage.centersPage.hero.titleEn">
+            </h1>
+
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+                <a href="javascript:void(0)"
+                   class="inline-flex h-[39px] min-w-[150px] items-center justify-center rounded-[3px] bg-spu-red px-6 text-[11px] font-bold uppercase tracking-[0.05em] text-white transition hover:bg-[#5c1111]"
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.hero.primaryCtaAr : $store.researchPage.centersPage.hero.primaryCtaEn"></a>
+                <a href="javascript:void(0)"
+                   class="inline-flex h-[39px] min-w-[195px] items-center justify-center rounded-[5px] border border-white bg-white/10 px-6 text-[11px] font-bold text-white transition hover:bg-white/20"
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.hero.secondaryCtaAr : $store.researchPage.centersPage.hero.secondaryCtaEn"></a>
+            </div>
+        </div>
+    </div>
+</section>

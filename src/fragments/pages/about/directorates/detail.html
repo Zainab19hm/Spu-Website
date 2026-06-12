@@ -1,58 +1,10 @@
-<style>
-    /* Directorate Detail Styling */
-    .detail-hero {
-        background: linear-gradient(135deg, #202759 0%, #6f1616 100%);
-        padding: 8rem 0;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .detail-hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        opacity: 0.3;
-    }
-
-    .service-item {
-        background: white;
-        border: 1px solid #f1f5f9;
-        border-radius: 2rem;
-        padding: 2rem;
-        transition: all 0.4s ease;
-    }
-
-    .service-item:hover {
-        border-color: #6f1616;
-        box-shadow: 0 20px 40px rgba(111, 22, 22, 0.05);
-        transform: translateY(-5px);
-    }
-
-    .icon-circle {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: rgba(111, 22, 22, 0.1);
-        color: #6f1616;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    [dir="rtl"] .service-item i {
-        transform: scaleX(-1);
-    }
-</style>
-
 <div x-data="{ 
     slug: $el.closest('[data-slug]')?.dataset?.slug || window.location.pathname.split('/').filter(Boolean).pop(),
     directorate: $store.aboutPage.directorates.items.find(d => d.slug === ($el.closest('[data-slug]')?.dataset?.slug || window.location.pathname.split('/').filter(Boolean).pop()))
 }">
     <!-- Hero Section -->
-    <section class="detail-hero">
+    <section class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen bg-gradient-to-br from-[#202759] to-[#6f1616]">
+        <div class="absolute inset-0 opacity-30" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
         <div class="container mx-auto px-6 relative z-10 text-center">
             <div
                 class="reveal reveal-up inline-block px-6 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-xs font-black uppercase tracking-widest mb-8">
@@ -83,8 +35,8 @@
                     </h2>
                     <template x-for="(service, idx) in directorate?.services || []" :key="idx">
                         <div class="reveal reveal-up" :class="`reveal-delay-${idx + 1}`">
-                            <div class="service-item h-full">
-                                <div class="icon-circle">
+                            <div class="h-full bg-white border border-slate-100 rounded-[2rem] p-8 transition-all duration-400 hover:border-spu-red hover:shadow-xl hover:-translate-y-1">
+                                <div class="w-[60px] h-[60px] rounded-full bg-spu-red/10 text-spu-red flex items-center justify-center text-2xl mb-6">
                                     <img src="/images/icon-check-circle-outline.svg" alt="" class="h-4 w-4"
                                         aria-hidden="true">
                                 </div>

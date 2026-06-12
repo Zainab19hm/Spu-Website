@@ -14,6 +14,7 @@
 @import "./styles/reveal.css";
 @import "./styles/faculty-hero.css";
 @import "./styles/utilities.css";
+@import "./styles/admissions-subpages.css";
 
 body{
     position: relative;

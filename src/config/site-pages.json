@@ -197,8 +197,43 @@
       ],
       "fragments": [
         "pages/research/hero.html",
-        "pages/research/priorities.html",
-        "pages/research/initiatives.html"
+        "pages/research/stats.html",
+        "pages/research/featured-publication.html",
+        "pages/research/gateway.html"
+      ]
+    },
+    {
+      "name": "research-repository",
+      "fileName": "research/repository.html",
+      "route": "/research/repository/",
+      "title": "Research Repository | Syrian Private University",
+      "description": "Browse Syrian Private University research publications with faculty, publication type, year, and keyword filters.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU research repository",
+        "Syrian Private University publications",
+        "SPU research articles"
+      ],
+      "fragments": [
+        "pages/research/repository/hero.html",
+        "pages/research/repository/content.html"
+      ]
+    },
+    {
+      "name": "research-centers",
+      "fileName": "research/centers.html",
+      "route": "/research/centers/",
+      "title": "Research Centers & Labs | Syrian Private University",
+      "description": "Explore Syrian Private University research centers, laboratories, projects, publications, and center director profiles.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU research centers",
+        "Syrian Private University labs",
+        "SPU laboratories"
+      ],
+      "fragments": [
+        "pages/research/centers/hero.html",
+        "pages/research/centers/content.html"
       ]
     },
     {
