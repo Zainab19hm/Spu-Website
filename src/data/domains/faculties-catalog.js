@@ -1,5 +1,65 @@
 import { siteRoutes } from '../../config/site-routes.js';
 export const facultiesCatalog = {
+    catalogPage: {
+        hero: {
+            titleEn: 'Academic Facilities',
+            titleAr: 'المرافق الأكاديمية',
+            applyLabelEn: 'Apply Now',
+            applyLabelAr: 'قدم الآن',
+            campusMapLabelEn: 'Explore Campus Map',
+            campusMapLabelAr: 'استكشف خريطة الحرم',
+            applyHref: '/admissions/how-to-apply.html',
+            image: '/images/campus-feature-01.webp',
+            facultyOrder: ['medicine', 'dentistry', 'pharmacy', 'business', 'petroleum', 'ai-engineering', 'Construction']
+        },
+        facts: [
+            { value: '24', labelEn: 'Total Programs', labelAr: 'إجمالي البرامج' },
+            { value: '7', labelEn: 'Academic Departments', labelAr: 'الأقسام الأكاديمية' },
+            { value: '120', labelEn: 'Laboratories', labelAr: 'المختبرات' },
+            { value: '5k+', labelEn: 'Enrolled Students', labelAr: 'الطلاب المسجلون' }
+        ],
+        model: {
+            titleEn: 'An Academic Model Built Around Practice and Research',
+            titleAr: 'نموذج أكاديمي مبني حول الممارسة والبحث',
+            cards: [
+                {
+                    titleEn: 'Clinical Learning',
+                    titleAr: 'التعلم السريري',
+                    descEn: 'Hands-on training supported by real academic, clinical, and professional environments.',
+                    descAr: 'تدريب عملي مدعوم ببيئات أكاديمية وسريرية ومهنية حقيقية.',
+                    featured: true
+                },
+                {
+                    titleEn: 'Applied Education',
+                    titleAr: 'التعليم التطبيقي',
+                    descEn: 'Programs designed to connect theoretical knowledge with practical skills and real-world problem solving.',
+                    descAr: 'برامج مصممة لربط المعرفة النظرية بالمهارات العملية وحل المشكلات الواقعية.',
+                    featured: false
+                },
+                {
+                    titleEn: 'Research-Led Teaching',
+                    titleAr: 'التدريس القائم على البحث',
+                    descEn: 'Learning shaped by academic inquiry, innovation, evidence-based knowledge, and research output.',
+                    descAr: 'تعلم يتشكل من خلال البحث الأكاديمي والابتكار والمعرفة القائمة على الأدلة والمخرجات البحثية.',
+                    featured: false
+                },
+                {
+                    titleEn: 'Professional Preparation',
+                    titleAr: 'الإعداد المهني',
+                    descEn: 'Academic pathways that prepare students for future careers, internships, advanced study, and professional practice.',
+                    descAr: 'مسارات أكاديمية تعد الطلاب للمهن المستقبلية والتدريب والدراسات المتقدمة والممارسة المهنية.',
+                    featured: false
+                },
+                {
+                    titleEn: 'Modern Learning Environments',
+                    titleAr: 'بيئات تعلم حديثة',
+                    descEn: 'Classrooms, laboratories, clinics, workshops, and digital spaces that support active learning.',
+                    descAr: 'فصول ومختبرات وعيادات وورش ومساحات رقمية تدعم التعلم النشط.',
+                    featured: false
+                }
+            ]
+        }
+    },
     list: [
 {
             id: 'medicine',
@@ -552,6 +612,10 @@ export const facultiesCatalog = {
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة الذكاء الاصطناعي',
             nameEn: 'Faculty of AI Engineering',
+            catalogTitleEn: 'Faculty of Artificial Intelligence Engineering',
+            catalogTitleAr: 'كلية هندسة الذكاء الاصطناعي',
+            catalogCardDescEn: 'A technology-focused facility for machine learning, robotics, data systems, and digital innovation.',
+            catalogCardDescAr: 'كلية تقنية متخصصة في تعلم الآلة والروبوتات وأنظمة البيانات والابتكار الرقمي.',
             catalogDescEn: 'Sustainable extraction and strategic global energy management.',
             catalogDescAr: 'الاستخراج المستدام وإدارة الطاقة العالمية الاستراتيجية.',
             logo: '/images/spu-ai-logo.png',
@@ -720,6 +784,10 @@ export const facultiesCatalog = {
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة التشييد والبناء',
             nameEn: 'Construction Engineering',
+            catalogTitleEn: 'Faculty of Building & Construction Engineering',
+            catalogTitleAr: 'كلية هندسة التشييد والبناء',
+            catalogCardDescEn: 'Preparing engineers for construction planning, infrastructure, project management, and reconstruction.',
+            catalogCardDescAr: 'إعداد مهندسين في تخطيط التشييد والبنى التحتية وإدارة المشاريع وإعادة الإعمار.',
             catalogDescEn: 'Driving profound innovation in the modern digital age.',
             catalogDescAr: 'قيادة الابتكار العميق في العصر الرقمي الحديث.',
             logo: '/images/spu-construction-logo.png',
@@ -879,6 +947,10 @@ export const facultiesCatalog = {
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية هندسة البترول',
             nameEn: 'Petroleum Engineering',
+            catalogTitleEn: 'Faculty of Petroleum Engineering',
+            catalogTitleAr: 'كلية هندسة البترول',
+            catalogCardDescEn: 'Provides specialized education in petroleum engineering and energy systems.',
+            catalogCardDescAr: 'تقدم تعليماً متخصصاً في هندسة البترول وأنظمة الطاقة.',
             catalogDescEn: 'Provides specialized education in petroleum engineering.',
             catalogDescAr: 'تقدم تعليماً متخصصاً في هندسة البترول.',
             logo: '/images/spu-petroleum-logo.png',
@@ -1025,6 +1097,10 @@ export const facultiesCatalog = {
             top_labelen: 'Syrian Private University',
             nameAr: 'كلية إدارة الأعمال',
             nameEn: 'Business Administration',
+            catalogTitleEn: 'Faculty of Business Administration',
+            catalogTitleAr: 'كلية إدارة الأعمال',
+            catalogCardDescEn: 'Developing visionary leaders for a dynamic global economy.',
+            catalogCardDescAr: 'تطوير قادة ذوي رؤية لاقتصاد عالمي ديناميكي.',
             catalogDescEn: 'Developing visionary leaders for a dynamic global economy.',
             catalogDescAr: 'تطوير قادة ذوي رؤية لاقتصاد عالمي ديناميكي.',
             logo: '/images/spu-business-logo.png',

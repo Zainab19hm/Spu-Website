@@ -154,15 +154,15 @@
         "SPU colleges"
       ],
       "fragments": [
-        "pages/faculties/catalog-hero.html",
-        "pages/faculties/catalog-facts.html",
-        "pages/faculties/catalog-model.html",
-        "pages/faculties/hero.html",
-        "pages/faculties/content.html",
-        "pages/faculties/dean.html",
-        "pages/faculties/stats.html",
-        "pages/faculties/additional.html",
-        "pages/faculties/highlights.html"
+        "pages/faculties/catalog/hero.html",
+        "pages/faculties/catalog/facts.html",
+        "pages/faculties/catalog/model.html",
+        "pages/faculties/hub/hero.html",
+        "pages/faculties/hub/content.html",
+        "pages/faculties/hub/dean.html",
+        "pages/faculties/hub/stats.html",
+        "pages/faculties/hub/additional.html",
+        "pages/faculties/hub/highlights.html"
       ]
     },
     {
@@ -180,7 +180,8 @@
       "fragments": [
         "pages/admissions/hero.html",
         "pages/admissions/process.html",
-        "pages/admissions/requirements.html"
+        "pages/admissions/requirements.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -647,7 +648,8 @@
         "Admission Requirements"
       ],
       "fragments": [
-        "pages/admissions/requirements/content.html"
+        "pages/admissions/requirements/content.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -662,7 +664,8 @@
         "University Fees Syria"
       ],
       "fragments": [
-        "pages/admissions/tuition/content.html"
+        "pages/admissions/tuition/content.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -677,7 +680,8 @@
         "Admissions Questions"
       ],
       "fragments": [
-        "pages/admissions/faq/content.html"
+        "pages/admissions/faq/content.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -692,7 +696,8 @@
         "How to apply SPU"
       ],
       "fragments": [
-        "pages/admissions/how-to-apply/content.html"
+        "pages/admissions/how-to-apply/content.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -707,7 +712,8 @@
         "International Students Syria"
       ],
       "fragments": [
-        "pages/admissions/transfer/content.html"
+        "pages/admissions/transfer/content.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -722,7 +728,8 @@
         "Academic Dates Syria"
       ],
       "fragments": [
-        "pages/admissions/calendar/content.html"
+        "pages/admissions/calendar/content.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -737,7 +744,8 @@
         "Application Checklist"
       ],
       "fragments": [
-        "pages/admissions/documents/content.html"
+        "pages/admissions/documents/content.html",
+        "pages/admissions/navigation.html"
       ]
     },
     {
@@ -753,7 +761,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/departments.html"
+        "pages/faculties/departments/content.html"
       ]
     },
     {
@@ -769,7 +777,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/departments.html"
+        "pages/faculties/departments/content.html"
       ]
     },
     {
@@ -785,7 +793,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/departments.html"
+        "pages/faculties/departments/content.html"
       ]
     },
     {
@@ -801,7 +809,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/departments.html"
+        "pages/faculties/departments/content.html"
       ]
     },
     {
@@ -817,7 +825,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/labs.html"
+        "pages/faculties/labs/content.html"
       ]
     },
 {
@@ -833,7 +841,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/labs.html"
+        "pages/faculties/labs/content.html"
       ]
     },
     {
@@ -849,7 +857,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/labs.html"
+        "pages/faculties/labs/content.html"
       ]
     },
     {
@@ -987,7 +995,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/labs.html"
+        "pages/faculties/labs/content.html"
       ]
     },
     {
@@ -1003,7 +1011,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/labs.html"
+        "pages/faculties/labs/content.html"
       ]
     },
     {
@@ -1019,7 +1027,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/labs.html"
+        "pages/faculties/labs/content.html"
       ]
     },
     {
@@ -1035,7 +1043,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/departments.html"
+        "pages/faculties/departments/content.html"
       ]
     },
     {
@@ -1051,7 +1059,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/departments.html"
+        "pages/faculties/departments/content.html"
       ]
     },
     {
@@ -1067,7 +1075,7 @@
         "Syrian Private University"
       ],
       "fragments": [
-        "pages/faculties/departments.html"
+        "pages/faculties/departments/content.html"
       ]
     },
     {

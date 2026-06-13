@@ -5,6 +5,7 @@ export const registerFacultiesPageStores = (Alpine) => {
         currentFaculty: null,
         loading: true,
         catalogMode: false,
+        catalogPage: facultiesCatalog.catalogPage,
 
         routeToIdMap: {
             'artificial-intelligence': 'ai-engineering',

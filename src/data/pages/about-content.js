@@ -1,8 +1,8 @@
 export const aboutPageContent = {
     hero: {
-        image1: '/images/about-hero-1.webp',
-        image2: '/images/about-hero-2.webp',
-        image: '/images/about-hero-1.webp',
+        image1: '/images/about/about-hero-1.webp',
+        image2: '/images/about/about-hero-2.jpg',
+        image: '/images/about/hero-img.jpg',
         badgeAr: 'نبذة عن SPU',
         badgeEn: 'ABOUT SPU',
         titleAr: 'مشروع علمي وثقافي وتنموي يدعم التعليم العالي في سوريا.',
@@ -47,7 +47,7 @@ export const aboutPageContent = {
     },
 
     visionMission: {
-        heroImage: '/images/about-hero-2.webp',
+        heroImage: '/images/about/hero-img.jpg',
         breadcrumbHomeEn: 'Home',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbParentEn: 'About',
@@ -177,7 +177,7 @@ export const aboutPageContent = {
         }
     ],
     leadership: {
-        heroImage: '/images/about-hero-2.webp',
+        heroImage: '/images/about/hero-img.jpg',
         breadcrumbHomeEn: 'Home',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbParentEn: 'About',
@@ -193,33 +193,33 @@ export const aboutPageContent = {
         rector: {
             titleEn: 'UNIVERSITY RECTOR',
             titleAr: 'رئيس الجامعة',
-            nameEn: 'Prof. Dr. Full Name',
-            nameAr: 'الأستاذ الدكتور الاسم الكامل',
+            nameEn: 'Prof. Dr.Abdul Razzaq Al-Hussein',
+            nameAr: 'الأستاذ الدكتور  عبد الرزاق الحسين',
             quoteEn: 'Our vision is to foster an academic environment that not only pursues excellence in research and education but also actively contributes to the sustainable development of our society. We are committed to empowering our students to become the leaders and innovators of tomorrow.',
             quoteAr: 'تتمثل رؤيتنا في بناء بيئة أكاديمية لا تسعى إلى التميز في البحث والتعليم فحسب، بل تسهم بفاعلية في التنمية المستدامة للمجتمع. نلتزم بتمكين طلابنا ليصبحوا قادة ومبتكرين في المستقبل.',
             linkEn: 'READ FULL PROFILE',
             linkAr: 'قراءة الملف الكامل',
             url: '#',
-            image: '/images/medicine-dean.jpg'
+            image: '/images/about/leadership/presedent.jpg'
         },
         vicePresidentsTitleEn: 'Vice Presidents',
         vicePresidentsTitleAr: 'نواب رئيس الجامعة',
         vicePresidents: [
             {
-                nameEn: 'Dr. Full name',
-                image: '/images/medicine-dean.jpg',
-                nameAr: 'د. الاسم الكامل',
+                nameEn: 'Dr.  Arwa Khair',
+                image: '/images/about/leadership/pre-presendent.jpg',
+                nameAr: 'د.اروى خير',
                 roleEn: 'VICE PRESIDENT FOR ACADEMIC AFFAIRS',
                 roleAr: 'نائب رئيس الجامعة للشؤون العلمية',
                 descriptionEn: 'Overseeing curriculum development, academic standards, and faculty excellence across all university departments, ensuring alignment with global educational benchmarks.',
                 descriptionAr: 'الإشراف على تطوير المناهج، والمعايير الأكاديمية، وتميز هيئة التدريس في جميع أقسام الجامعة، لضمان التوافق مع المعايير التعليمية العالمية.'
             },
             {
-                nameEn: 'Dr. Full name',
-                image: '/images/ai-dean.jpeg',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'VICE PRESIDENT FOR ADMINISTRATIVE AFFAIRS',
-                roleAr: 'نائب رئيس الجامعة للشؤون الإدارية',
+                nameEn: 'Dr. Mohammad Riad Alghazzi',
+                image: '/images/about/leadership/uni-pre.jpg',
+                nameAr: 'د.  محمد رياض الغزي',
+                roleEn: 'General Secretary',
+                roleAr: ' أمين الجامعة   ',
                 descriptionEn: 'Overseeing curriculum development, academic standards, and faculty excellence across all university departments, ensuring alignment with global educational benchmarks.',
                 descriptionAr: 'الإشراف على تطوير المناهج، والمعايير الأكاديمية، وتميز هيئة التدريس في جميع أقسام الجامعة، لضمان التوافق مع المعايير التعليمية العالمية.'
             }
@@ -228,44 +228,55 @@ export const aboutPageContent = {
         deansTitleAr: 'عمداء الكليات',
         deans: [
             {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
+                nameEn: 'Dr. Ayman Ali',
+                nameAr: 'د. ايمن علي ',
                 roleEn: 'DEAN OF MEDICINE',
                 roleAr: 'عميد كلية الطب',
-                image: '/images/medicine-dean.jpg'
+                image: '/images/about/leadership/medicine-dean.jpg'
             },
             {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF ENGINEERING',
-                roleAr: 'عميد كلية الهندسة',
-                image: '/images/spu-construction-logo.png'
-            },
-            {
-                nameEn: 'Dr. Full Nae',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF BUSINESS',
-                roleAr: 'عميد كلية إدارة الأعمال',
-                image: '/images/business-dean.jpg'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
+                nameEn: 'Dr. Talaat Abu Hatab',
+                nameAr: 'د. طلعت ابو حطب ',
                 roleEn: 'DEAN OF DENTISTRY',
                 roleAr: 'عميد كلية طب الأسنان',
-                image: '/images/dental-dean.jpg'
+                image: '/images/about/leadership/dental-dean.jpg'
+
             },
             {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
+                nameEn: 'Dr. Hossam Shahrour',
+                nameAr: 'د. حسام شحرور ',
                 roleEn: 'DEAN OF PHARMACY',
                 roleAr: 'عميد كلية الصيدلة',
-                image: '/images/pharmacy-dean.jpg'
-            }
+                image: '/images/about/leadership/pharmacy-dean.jpg'
+            },
+            {
+                nameEn: 'Dr.Mouhib Alnoukari',
+                nameAr: 'د. مهيب النقري   ',
+                roleEn: 'DEAN OF ENGINEERING',
+                roleAr: 'عميد كلية الهندسة',
+                image: '/images/about/leadership/Ai-dean.jpg'
+            },
+            {
+                nameEn: 'Dr. Mahmoud Hadid',
+                nameAr: 'د. محمود حديد ',
+                roleEn: 'DEAN OF petroleum engineering',
+                roleAr: 'عميد كلية هندسة البترول ',
+                image: '/images/about/leadership/petrol-dean.jpg'
+            },
+            
+            {
+                nameEn: 'Dr. Samar Habib',
+                nameAr: 'د. سمر حبيب  ',
+                roleEn: 'DEAN OF busnis administration',
+                roleAr: 'عميد كلية إدارة الأعمال',
+                image: '/images/about/leadership/busnins-dean.jpg'
+            },
+            
+            
         ]
     },
     history: {
-        heroImage: '/images/about-hero-2.webp',
+        heroImage: '/images/about/hero-img.jpg',
         foundingImage: '/images/uni-main-place.JPG',
         breadcrumbHomeEn: 'Home',
         breadcrumbHomeAr: 'الرئيسية',
@@ -350,8 +361,9 @@ export const aboutPageContent = {
             bodyEn: 'Beyond the campus borders, the university has established itself as a vital civic partner. Through free medical clinics, public policy research, and community extension programs, the institution continually reinvests its intellectual capital back into the society it was founded to serve.'
         }
     ],
+
     staffDirectory: {
-        heroImage: '/images/about-hero-2.webp',
+        heroImage: '/images/about/hero-img.jpg',
         breadcrumbHomeEn: 'Home',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbParentEn: 'Directorates',
@@ -372,7 +384,7 @@ export const aboutPageContent = {
                 roleEn: 'DEAN OF MEDICINE',
                 roleAr: 'عميد كلية الطب',
                 faculty: 'medicine',
-                image: '/images/medicine-dean.jpg'
+                image: '/images/about/medicine-dean.jpg'
             },
             {
                 nameEn: 'Dr. Full name',
@@ -442,7 +454,7 @@ export const aboutPageContent = {
     },
     directorates: {
 
-        heroImage: '/images/about-hero-2.webp',
+        heroImage: '/images/about/hero-img.jpg',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbHomeEn: 'Home',
         breadcrumbParentAr: 'عن الجامعة',
@@ -538,26 +550,10 @@ export const aboutPageContent = {
             }
         ]
     },
-    // partnerships: {
-    //     eyebrowAr: 'شبكة علاقاتنا',
-    //     eyebrowEn: 'OUR NETWORK',
-    //     titleAr: 'الشراكات والاتفاقيات الدولية',
-    //     titleEn: 'Global Partnerships & Agreements',
-    //     summaryAr: 'تفتخر الجامعة السورية الخاصة بشبكة واسعة من الشراكات الأكاديمية مع مؤسسات تعليمية مرموقة محلياً وعالمياً لتبادل الخبرات وتعزيز جودة التعليم.',
-    //     summaryEn: 'SPU takes pride in a wide network of academic partnerships with prestigious local and international educational institutions.',
-    //     list: [
-    //         { nameAr: 'منظمة الصحة العالمية', nameEn: 'World Health Organization' },
-    //         { nameAr: 'جامعة دمشق', nameEn: 'Damascus University' },
-    //         { nameAr: 'نقابة المهندسين السوريين', nameEn: 'Order of Syrian Engineers' },
-    //         { nameAr: 'اتحاد الجامعات العربية', nameEn: 'Association of Arab Universities' },
-    //         { nameAr: 'منصة كورسيرا للتعليم', nameEn: 'Coursera for Campus' },
-    //         { nameAr: 'مشفى دمشق (المجتهد)', nameEn: 'Damascus Hospital' }
-    //     ]
-    // },
 
 
     partnerships: {
-        heroImage: '/images/about-hero-2.webp',
+        heroImage: '/images/about/hero-img.jpg',
         breadcrumbHomeAr: 'الرئيسية',
         breadcrumbHomeEn: 'Home',
         breadcrumbParentAr: 'عن الجامعة',
@@ -633,7 +629,7 @@ export const aboutPageContent = {
             {
                 nameAr: 'اتحاد الجامعات العربية',
                 nameEn: 'Association of Arab Universities',
-                logo: '/images/arab-uni.png',
+                logo: '/images/about/partners/arab-uni.png',
                 categoryAr: 'عضوية أكاديمية',
                 categoryEn: 'Academic Membership',
                 filterCategory: 'academic',
@@ -665,7 +661,7 @@ export const aboutPageContent = {
             {
                 nameAr: 'منصة كورسيرا العالمية',
                 nameEn: 'Coursera',
-                logo: '/images/corsera.png',
+                logo: '/images/about/partners/corsera.png',
                 categoryAr: 'تعلم رقمي',
                 categoryEn: 'Digital Learning',
                 filterCategory: 'academic',
@@ -681,7 +677,7 @@ export const aboutPageContent = {
             {
                 nameAr: 'منظمة الصحة العالمية',
                 nameEn: 'World Health Organization',
-                logo: '/images/world-health.png',
+                logo: '/images/about/partners/world-health.png',
                 categoryAr: 'صحة عامة',
                 categoryEn: 'Public Health',
                 filterCategory: 'clinical',

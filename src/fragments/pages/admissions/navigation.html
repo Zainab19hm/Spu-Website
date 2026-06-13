@@ -1,5 +1,5 @@
 <!-- Admissions - Explore More navigation cards -->
-<section id="admissions-navigation" class="relative rounded-md bg-section py-20 font-hacen lg:py-28"
+<section id="admissions-navigation" class="relative bg-section rounded-md py-20 font-hacen lg:py-28"
          x-data="{
              activeSlide: 0,
              hasLink(card) {
@@ -21,6 +21,9 @@
              get maxSlide() {
                  return Math.max(this.slides.length - 1, 0);
              },
+             cardHref(card) {
+                 return card.slug === 'transfer' ? '/admissions/transfer/' : `/admissions/${card.slug}.html`;
+             },
              nextSlide() {
                  this.activeSlide = this.activeSlide >= this.maxSlide ? 0 : this.activeSlide + 1;
              },
@@ -32,39 +35,33 @@
         <div class="flex flex-col items-start gap-14 lg:flex-row lg:items-center lg:gap-20">
 
             <div class="w-full shrink-0 lg:w-[38%]">
-                <h3 class="text-[26px] font-bold leading-tight text-spu-blue md:text-[32px]">
+                <h3 class="text-[32px] font-bold leading-tight text-spu-blue md:text-[48px]">
                     <template x-if="$store.app.currentLang === 'ar'">
-                        <span>استكشف المزيد من <span class="text-spu-red">خيارات القبول</span></span>
+                        <span>&#1575;&#1587;&#1578;&#1603;&#1588;&#1601; &#1575;&#1604;&#1605;&#1586;&#1610;&#1583; &#1593;&#1606; <span class="text-spu-red">&#1575;&#1604;&#1602;&#1576;&#1608;&#1604;</span></span>
                     </template>
                     <template x-if="$store.app.currentLang !== 'ar'">
-                        <span>Explore More <span class="text-spu-red">Admissions</span> Options</span>
+                        <span>Learn More About <span class="text-spu-red">Admissions</span></span>
                     </template>
                 </h3>
-
-                <p class="mt-5 max-w-[480px] text-[16px] leading-8 text-slate-600"
-                   x-text="$store.app.currentLang === 'ar'
-                       ? 'تعرّف على الرسوم، المتطلبات، وكيفية التقديم للانضمام إلى أسرة الجامعة.'
-                       : 'Learn about tuition, requirements, and how to apply to join the SPU family.'">
-                </p>
             </div>
 
             <div class="w-full min-w-0 flex-1">
                 <template x-if="!shouldSlide">
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <template x-for="(card, idx) in cards" :key="card.slug || card.titleEn">
+                        <template x-for="card in cards" :key="card.slug || card.titleEn">
                             <div>
                                 <template x-if="hasLink(card)">
-                                    <a :href="card.slug === 'transfer' ? '/admissions/transfer/' : `/admissions/${card.slug}.html`"
-                                       class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
+                                    <a :href="cardHref(card)"
+                                       class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[6px] border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue hover:text-white"
                                        :aria-label="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn">
                                         <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"
                                             x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h4>
                                         <span class="mt-5 text-[8px] font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                                              x-text="$store.app.currentLang === 'ar' ? 'استكشف →' : 'Explore →'"></span>
+                                              x-text="$store.app.currentLang === 'ar' ? 'استكشف ->' : 'Explore ->'"></span>
                                     </a>
                                 </template>
                                 <template x-if="!hasLink(card)">
-                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
+                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[6px] border border-slate-200/70 bg-white p-6 text-center">
                                         <h4 class="text-[17px] font-bold leading-tight text-slate-950"
                                             x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h4>
                                     </div>
@@ -84,17 +81,18 @@
                                         <template x-for="(card, itemIndex) in slide" :key="card.slug || card.titleEn">
                                             <div>
                                                 <template x-if="hasLink(card)">
-                                                    <a :href="card.slug === 'transfer' ? '/admissions/transfer/' : `/admissions/${card.slug}.html`"
-                                                       class="group rounded-[6px] shadow shadow-md  relative flex h-[118px] flex-col items-center justify-center overflow-hidden  border border-slate-200/70 bg-white p-6 text-center transition-colors duration-300 hover:bg-spu-blue"
+                                                    <a :href="cardHref(card)"
+                                                       class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[6px] border border-slate-200/70 bg-white p-6 text-center shadow shadow-md transition-colors duration-300 hover:bg-spu-blue hover:text-white"
                                                        :aria-label="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn">
                                                         <h4 class="text-[17px] font-bold leading-tight transition-colors duration-300"
                                                             x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h4>
                                                         <span class="mt-5 text-[8px] font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                                                              x-text="$store.app.currentLang === 'ar' ? 'استكشف →' : 'Explore →'"></span>
+                                                              :class="itemIndex === 0 ? 'opacity-100' : ''"
+                                                              x-text="$store.app.currentLang === 'ar' ? 'استكشف ->' : 'Explore ->'"></span>
                                                     </a>
                                                 </template>
                                                 <template x-if="!hasLink(card)">
-                                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[2px] border border-slate-200/70 bg-white p-6 text-center">
+                                                    <div class="relative flex h-[118px] items-center justify-center overflow-hidden rounded-[6px] border border-slate-200/70 bg-white p-6 text-center">
                                                         <h4 class="text-[17px] font-bold leading-tight text-slate-950"
                                                             x-text="$store.app.currentLang === 'ar' ? card.titleAr : card.titleEn"></h4>
                                                     </div>
@@ -119,16 +117,18 @@
 
                             <div class="flex items-center gap-3">
                                 <button type="button"
-                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
+                                        class="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 transition-all hover:bg-slate-50"
                                         @click="previousSlide()"
                                         aria-label="Previous navigation card">
-                                    <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                                    <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-right-outline.svg' : '/images/icon-chevron-left-outline.svg'"
+                                         alt="" class="h-4 w-4" aria-hidden="true">
                                 </button>
                                 <button type="button"
-                                        class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
+                                        class="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 transition-all hover:bg-slate-50"
                                         @click="nextSlide()"
                                         aria-label="Next navigation card">
-                                    <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
+                                    <img :src="$store.app.currentLang === 'ar' ? '/images/icon-chevron-left-outline.svg' : '/images/icon-chevron-right-outline.svg'"
+                                         alt="" class="h-4 w-4" aria-hidden="true">
                                 </button>
                             </div>
                         </div>

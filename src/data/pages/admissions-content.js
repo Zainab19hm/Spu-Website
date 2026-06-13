@@ -30,7 +30,7 @@ export const admissionsPageContent = {
         ],
         images: {
             campus: '/images/admissions-hero-campus.webp',
-            students: '/images/admissions-hero-students.webp'
+            students: '/images/admission/front-img.jpg'
         }
     },
     trustBar: [
@@ -138,7 +138,6 @@ export const admissionsPageContent = {
             { titleEn: 'Tuition & Fees', titleAr: 'الرسوم والأقساط', icon: '/images/icon-file-outline.svg', descEn: 'Program costs and payment plans', descAr: 'تكاليف البرامج وخطط الدفع', active: false, slug: 'tuition' },
             { titleEn: 'FAQ', titleAr: 'الأسئلة الشائعة', icon: '/images/icon-envelope-outline.svg', descEn: 'Common questions answered', descAr: 'إجابات على الأسئلة الشائعة', active: false, slug: 'faq' },
             { titleEn: 'Academic Calendar', titleAr: 'التقويم الأكاديمي', icon: '/images/icon-calendar-outline.svg', descEn: 'Important dates and deadlines', descAr: 'تواريخ ومواعيد هامة', active: false, slug: 'calendar' },
-            { titleEn: 'Documents Checklist', titleAr: 'قائمة الوثائق', icon: '/images/icon-file-outline.svg', descEn: 'Required paperwork for all students', descAr: 'الأوراق المطلوبة لجميع الطلاب', active: false, slug: 'documents' },
             { titleEn: 'Transfer & International', titleAr: 'طلاب التحويل والدوليون', icon: '/images/icon-globe-outline.svg', descEn: 'Pathways for global students', descAr: 'مسارات للطلاب الدوليين', active: false, slug: 'transfer' }
         ]
     },

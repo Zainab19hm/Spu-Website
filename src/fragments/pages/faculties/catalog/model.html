@@ -1,0 +1,39 @@
+<section x-show="$store.facultiesPage.catalogMode" x-cloak
+    id="faculties-overview"
+    class="relative overflow-hidden bg-[#f3f8ff] py-20 font-hacen sm:py-24 lg:py-28"
+    :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'"
+    x-data="{
+        get isAr() {
+            return $store.app.currentLang === 'ar';
+        },
+        get model() {
+            return $store.facultiesPage.catalogPage?.model || {};
+        },
+        get cards() {
+            return this.model.cards || [];
+        }
+    }">
+    <div class="container">
+        <h2 class="mx-auto max-w-[760px] text-center text-[clamp(2rem,4vw,3.15rem)] font-bold leading-[1.08] tracking-normal text-[#091144]"
+            x-text="isAr ? model.titleAr : model.titleEn"></h2>
+
+        <div class="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
+            <template x-for="(card, idx) in cards" :key="card.titleEn">
+                <article
+                    class="flex min-h-[178px] flex-col items-center justify-center rounded-[7px] px-8 py-9 text-center shadow-[0_6px_26px_rgba(32,39,89,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(32,39,89,0.10)]"
+                    :class="[
+                        card.featured ? 'bg-spu-blue text-white' : 'bg-white text-[#091144]',
+                        idx < 3 ? 'lg:col-span-2' : 'lg:col-span-3',
+                        idx === 0 ? 'lg:-mt-3' : ''
+                    ]">
+                    <h3 class="text-[clamp(1.35rem,2.3vw,1.75rem)] font-bold leading-tight"
+                        :class="card.featured ? 'text-white' : 'text-[#091144]'"
+                        x-text="isAr ? card.titleAr : card.titleEn"></h3>
+                    <p class="mt-5 max-w-md text-[15px] leading-7 sm:text-base"
+                        :class="card.featured ? 'text-white/90' : 'text-[#46464F]'"
+                        x-text="isAr ? card.descAr : card.descEn"></p>
+                </article>
+            </template>
+        </div>
+    </div>
+</section>
