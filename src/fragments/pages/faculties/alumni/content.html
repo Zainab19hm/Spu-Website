@@ -96,15 +96,15 @@
                     <div class="p-4 text-center">
                         <h2 class="text-[14px] font-bold text-spu-blue" x-text="isAr ? person.fullNameAr : person.fullNameEn"></h2>
                         <p class="mt-2 text-[11px] font-bold text-spu-red">
-                            <span x-text="isAr ? 'سنة التخرج:' : 'Graduation Year:'"></span>
+                            <span x-text="isAr ? content.labels.graduationYearAr : content.labels.graduationYearEn"></span>
                             <span x-text="person.graduationYear"></span>
                         </p>
                         <p class="mt-1 text-[11px] font-bold text-spu-red">
-                            <span x-text="isAr ? 'الفصل:' : 'Semester:'"></span>
+                            <span x-text="isAr ? content.labels.semesterAr : content.labels.semesterEn"></span>
                             <span x-text="isAr ? person.semesterAr : person.semesterEn"></span>
                         </p>
                         <p class="mt-1 text-[11px] font-semibold text-slate-500">
-                            <span x-text="isAr ? 'القسم:' : 'Department:'"></span>
+                            <span x-text="isAr ? content.labels.departmentAr : content.labels.departmentEn"></span>
                             <span x-text="isAr ? person.departmentAr : person.departmentEn"></span>
                         </p>
                     </div>
@@ -113,7 +113,7 @@
         </div>
 
         <div x-show="filteredAlumni.length === 0" class="py-16 text-center">
-            <p class="text-sm font-semibold text-slate-500" x-text="isAr ? 'لا توجد نتائج مطابقة.' : 'No matching alumni found.'"></p>
+            <p class="text-sm font-semibold text-slate-500" x-text="isAr ? content.labels.emptyAr : content.labels.emptyEn"></p>
         </div>
 
         <div class="mt-10 flex items-center justify-center gap-2">

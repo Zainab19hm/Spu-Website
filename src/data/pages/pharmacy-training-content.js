@@ -1,4 +1,12 @@
 export const pharmacyTrainingPageContent = {
+    breadcrumb: {
+        homeEn: 'Home',
+        homeAr: 'الرئيسية',
+        facilitiesEn: 'Facilities',
+        facilitiesAr: 'الكليات',
+        pharmacyEn: 'Pharmacy',
+        pharmacyAr: 'الصيدلة'
+    },
     hero: {
         eyebrowEn: 'Faculty of Pharmacy',
         eyebrowAr: 'كلية الصيدلة',

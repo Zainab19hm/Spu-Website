@@ -3,48 +3,11 @@
          class="relative overflow-hidden bg-section py-20 font-hacen lg:py-28"
          x-data="{
              activeHighlight: 0,
-             routeSlug(faculty) {
-                 return {
-                     medicine: 'medicine',
-                     dentistry: 'dentistry',
-                     pharmacy: 'pharmacy',
-                     'ai-engineering': 'artificial-intelligence',
-                     Construction: 'building-construction-engineering',
-                     business: 'business-administration'
-                 }[faculty?.id] || '';
-             },
-             card(id, titleEn, titleAr, link, actionEn, actionAr) {
-                 return { id, titleEn, titleAr, link, actionEn, actionAr };
-             },
              get items() {
-                 const faculty = $store.facultiesPage.currentFaculty || {};
-                 const slug = this.routeSlug(faculty);
-
-                 if (!slug) {
-                     return [];
-                 }
-
-                 const baseRoute = `/facilities/${slug}`;
-                 const cards = [
-                     this.card('overview-nav', 'Overview', 'لمحة عامة', `${baseRoute}/overview/`, 'Explore Overview', 'استكشف اللمحة'),
-                     this.card('departments-nav', 'Departments', 'الأقسام الأكاديمية', faculty.departmentRoute || `${baseRoute}/departments/`, 'Explore Departments', 'استكشف الأقسام'),
-                     this.card('study-plan-nav', 'Study Plan', 'الخطة الدراسية', `${baseRoute}/study-plan/`, 'Explore Study Plan', 'استكشف الخطة'),
-                     this.card('calendar-nav', 'Calendar', 'التقويم الأكاديمي', `${baseRoute}/calendar/`, 'Explore Calendar', 'استكشف التقويم'),
-                     this.card('research-nav', 'Research', 'البحث العلمي', `${baseRoute}/research/`, 'Explore Research', 'استكشف البحث'),
-                     this.card('projects-nav', 'Projects', 'المشاريع', `${baseRoute}/projects/`, 'Explore Projects', 'استكشف المشاريع'),
-                     this.card('alumni-nav', 'Alumni', 'الخريجون', faculty.alumniRoute || `${baseRoute}/alumni/`, 'Explore Alumni', 'استكشف الخريجين'),
-                     this.card('valedictorians-nav', 'Honor List', 'قائمة الشرف', `${baseRoute}/valedictorians/`, 'Explore Honor List', 'استكشف قائمة الشرف')
-                 ];
-
-                 if (faculty.labsRoute) {
-                     cards.push(this.card('labs-nav', 'Laboratories', 'المخابر', faculty.labsRoute, 'Explore Laboratories', 'استكشف المخابر'));
-                 }
-
-                 if (faculty.trainingRoute) {
-                     cards.push(this.card('training-nav', 'Training', 'التدريب', faculty.trainingRoute, 'Explore Training', 'استكشف التدريب'));
-                 }
-
-                 return cards;
+                 return $store.facultiesPage.currentFaculty?.navigationCards || [];
+             },
+             get navigationCopy() {
+                 return $store.facultiesPage.pageContent.navigation;
              },
              get slides() {
                  const groups = [];
@@ -61,6 +24,9 @@
              },
              previousHighlight() {
                  this.activeHighlight = this.activeHighlight <= 0 ? this.maxHighlight : this.activeHighlight - 1;
+             },
+             localized(item, key) {
+                 return $store.app.currentLang === 'ar' ? (item?.[`${key}Ar`] || item?.[`${key}En`] || '') : (item?.[`${key}En`] || item?.[`${key}Ar`] || '');
              },
              init() {
                  this.$watch('$store.facultiesPage.currentFaculty', () => {
@@ -94,11 +60,11 @@
                                 <template x-for="item in slide" :key="item.id">
                                     <a :href="item.link"
                                        class="group relative flex h-[118px] flex-col items-center justify-center overflow-hidden rounded-[6px] border border-slate-200/70 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-spu-blue hover:shadow-md"
-                                       :aria-label="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn">
+                                       :aria-label="localized(item, 'title')">
                                         <h4 class="text-[17px] font-bold leading-tight text-spu-blue transition-colors duration-300 group-hover:text-white"
-                                            x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h4>
+                                            x-text="localized(item, 'title')"></h4>
                                         <span class="mt-5 text-[8px] font-bold uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                                              x-text="($store.app.currentLang === 'ar' ? item.actionAr : item.actionEn) + ' →'"></span>
+                                              x-text="localized(item, 'action') + ' ' + ($store.app.currentLang === 'ar' ? navigationCopy.suffixAr : navigationCopy.suffixEn)"></span>
                                     </a>
                                 </template>
                             </div>
@@ -113,7 +79,7 @@
                                     class="h-1.5 rounded-full transition-all duration-300"
                                     :class="activeHighlight === idx ? 'w-8 bg-spu-blue' : 'w-2 bg-spu-blue/20'"
                                     @click="activeHighlight = idx"
-                                    :aria-label="`Go to navigation card group ${idx + 1}`"></button>
+                                    :aria-label="($store.app.currentLang === 'ar' ? navigationCopy.ariaGroupAr : navigationCopy.ariaGroupEn) + ' ' + (idx + 1)"></button>
                         </template>
                     </div>
 
@@ -121,13 +87,13 @@
                         <button type="button"
                                 class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
                                 @click="previousHighlight()"
-                                aria-label="Previous navigation card">
+                                :aria-label="$store.app.currentLang === 'ar' ? navigationCopy.previousAr : navigationCopy.previousEn">
                             <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
                         </button>
                         <button type="button"
                                 class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white transition-colors hover:bg-slate-50"
                                 @click="nextHighlight()"
-                                aria-label="Next navigation card">
+                                :aria-label="$store.app.currentLang === 'ar' ? navigationCopy.nextAr : navigationCopy.nextEn">
                             <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true">
                         </button>
                     </div>

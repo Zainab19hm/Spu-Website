@@ -161,6 +161,7 @@
         "pages/faculties/hub/content.html",
         "pages/faculties/hub/dean.html",
         "pages/faculties/hub/stats.html",
+        "pages/faculties/hub/latest-research.html",
         "pages/faculties/hub/additional.html",
         "pages/faculties/hub/highlights.html"
       ]
@@ -180,7 +181,7 @@
       "fragments": [
         "pages/admissions/hero.html",
         "pages/admissions/process.html",
-        "pages/admissions/requirements.html",
+        "pages/admissions/requirements/content.html",
         "pages/admissions/navigation.html"
       ]
     },
@@ -337,7 +338,7 @@
       "route": "/campus-life/career-development/",
       "title": "Career Development | Syrian Private University",
       "description": "Explore SPU career guidance, CV workshops, internship listings, job opportunities, employer partnerships, and career events.",
-      "ogImage": "/images/campus-career.webp",
+      "ogImage": "/images/about/campus-career.webp",
       "keywords": [
         "SPU career development",
         "SPU internships",
@@ -749,6 +750,125 @@
       ]
     },
     {
+      "name": "faculty-artificial-intelligence-overview",
+      "fileName": "facilities/artificial-intelligence/overview/index.html",
+      "route": "/facilities/artificial-intelligence/overview/",
+      "title": "Artificial Intelligence Overview | SPU",
+      "description": "Overview, vision, mission, objectives, and dean message for the SPU Faculty of Artificial Intelligence.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU Artificial Intelligence overview",
+        "Faculty overview",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/overview/content.html",
+        "pages/faculties/hub/latest-research.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-overview",
+      "fileName": "facilities/business-administration/overview/index.html",
+      "route": "/facilities/business-administration/overview/",
+      "title": "Business Administration Overview | SPU",
+      "description": "Overview, vision, mission, objectives, and dean message for the SPU Faculty of Business Administration.",
+      "ogImage": "/images/about/campus-career.webp",
+      "keywords": [
+        "SPU Business Administration overview",
+        "Faculty overview",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/overview/content.html",
+        "pages/faculties/hub/latest-research.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-overview",
+      "fileName": "facilities/building-construction-engineering/overview/index.html",
+      "route": "/facilities/building-construction-engineering/overview/",
+      "title": "Building & Construction Engineering Overview | SPU",
+      "description": "Overview, vision, mission, objectives, and dean message for the SPU Faculty of Building and Construction Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU construction engineering overview",
+        "Faculty overview",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/overview/content.html",
+        "pages/faculties/hub/latest-research.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-overview",
+      "fileName": "facilities/dentistry/overview/index.html",
+      "route": "/facilities/dentistry/overview/",
+      "title": "Dentistry Overview | SPU",
+      "description": "Overview, vision, mission, objectives, and dean message for the SPU Faculty of Dentistry.",
+      "ogImage": "/images/dental-place.JPG",
+      "keywords": [
+        "SPU Dentistry overview",
+        "Faculty overview",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/overview/content.html",
+        "pages/faculties/hub/latest-research.html"
+      ]
+    },
+    {
+      "name": "faculty-medicine-overview",
+      "fileName": "facilities/medicine/overview/index.html",
+      "route": "/facilities/medicine/overview/",
+      "title": "Medicine Overview | SPU",
+      "description": "Overview, vision, mission, objectives, and dean message for the SPU Faculty of Medicine.",
+      "ogImage": "/images/slider-2.webp",
+      "keywords": [
+        "SPU Medicine overview",
+        "Faculty overview",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/overview/content.html",
+        "pages/faculties/hub/latest-research.html"
+      ]
+    },
+    {
+      "name": "faculty-petroleum-overview",
+      "fileName": "facilities/petroleum/overview/index.html",
+      "route": "/facilities/petroleum/overview/",
+      "title": "Petroleum Engineering Overview | SPU",
+      "description": "Overview, vision, mission, objectives, and dean message for the SPU Faculty of Petroleum Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU Petroleum Engineering overview",
+        "Faculty overview",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/overview/content.html",
+        "pages/faculties/hub/latest-research.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-overview",
+      "fileName": "facilities/pharmacy/overview/index.html",
+      "route": "/facilities/pharmacy/overview/",
+      "title": "Pharmacy Overview | SPU",
+      "description": "Overview, vision, mission, objectives, and dean message for the SPU Faculty of Pharmacy.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU Pharmacy overview",
+        "Faculty overview",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/overview/content.html",
+        "pages/faculties/hub/latest-research.html"
+      ]
+    },
+    {
       "name": "faculty-artificial-intelligence-departments",
       "fileName": "facilities/artificial-intelligence/departments/index.html",
       "route": "/facilities/artificial-intelligence/departments/",
@@ -903,7 +1023,7 @@
       "route": "/facilities/business-administration/projects/",
       "title": "Business Administration Student Projects | SPU",
       "description": "Student projects from the SPU Faculty of Business Administration.",
-      "ogImage": "/images/campus-career.webp",
+      "ogImage": "/images/about/campus-career.webp",
       "keywords": [
         "SPU student projects",
         "Business Administration projects",
@@ -1076,6 +1196,230 @@
       ],
       "fragments": [
         "pages/faculties/departments/content.html"
+      ]
+    },
+    {
+      "name": "faculty-artificial-intelligence-study-plan",
+      "fileName": "facilities/artificial-intelligence/study-plan/index.html",
+      "route": "/facilities/artificial-intelligence/study-plan/",
+      "title": "Artificial Intelligence Study Plan | SPU",
+      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Artificial Intelligence.",
+      "ogImage": "/images/faculities/ai/computer-lab.jpg",
+      "keywords": [
+        "SPU study plan",
+        "Artificial Intelligence study plan",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/study-plan/content.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-study-plan",
+      "fileName": "facilities/business-administration/study-plan/index.html",
+      "route": "/facilities/business-administration/study-plan/",
+      "title": "Business Administration Study Plan | SPU",
+      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Business Administration.",
+      "ogImage": "/images/about/campus-career.webp",
+      "keywords": [
+        "SPU study plan",
+        "Business Administration study plan",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/study-plan/content.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-study-plan",
+      "fileName": "facilities/building-construction-engineering/study-plan/index.html",
+      "route": "/facilities/building-construction-engineering/study-plan/",
+      "title": "Building and Construction Engineering Study Plan | SPU",
+      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Building and Construction Engineering.",
+      "ogImage": "/images/slider-3.webp",
+      "keywords": [
+        "SPU study plan",
+        "Construction Engineering study plan",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/study-plan/content.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-study-plan",
+      "fileName": "facilities/dentistry/study-plan/index.html",
+      "route": "/facilities/dentistry/study-plan/",
+      "title": "Dentistry Study Plan | SPU",
+      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Dentistry.",
+      "ogImage": "/images/dental-place.JPG",
+      "keywords": [
+        "SPU study plan",
+        "Dentistry study plan",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/study-plan/content.html"
+      ]
+    },
+    {
+      "name": "faculty-medicine-study-plan",
+      "fileName": "facilities/medicine/study-plan/index.html",
+      "route": "/facilities/medicine/study-plan/",
+      "title": "Medicine Study Plan | SPU",
+      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Medicine.",
+      "ogImage": "/images/slider-2.webp",
+      "keywords": [
+        "SPU study plan",
+        "Medicine study plan",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/study-plan/content.html"
+      ]
+    },
+    {
+      "name": "faculty-petroleum-study-plan",
+      "fileName": "facilities/petroleum/study-plan/index.html",
+      "route": "/facilities/petroleum/study-plan/",
+      "title": "Petroleum Engineering Study Plan | SPU",
+      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Petroleum Engineering.",
+      "ogImage": "/images/petroleom-dean.jpg",
+      "keywords": [
+        "SPU study plan",
+        "Petroleum Engineering study plan",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/study-plan/content.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-study-plan",
+      "fileName": "facilities/pharmacy/study-plan/index.html",
+      "route": "/facilities/pharmacy/study-plan/",
+      "title": "Pharmacy Study Plan | SPU",
+      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Pharmacy.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU study plan",
+        "Pharmacy study plan",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/study-plan/content.html"
+      ]
+    },
+    {
+      "name": "faculty-artificial-intelligence-course-lessons",
+      "fileName": "facilities/artificial-intelligence/study-plan/course/index.html",
+      "route": "/facilities/artificial-intelligence/study-plan/course/",
+      "title": "Artificial Intelligence Course Lessons | SPU",
+      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Artificial Intelligence.",
+      "ogImage": "/images/faculities/ai/computer-lab.jpg",
+      "keywords": [
+        "SPU course lessons",
+        "Artificial Intelligence lessons",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/course-lessons/content.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-course-lessons",
+      "fileName": "facilities/business-administration/study-plan/course/index.html",
+      "route": "/facilities/business-administration/study-plan/course/",
+      "title": "Business Administration Course Lessons | SPU",
+      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Business Administration.",
+      "ogImage": "/images/about/campus-career.webp",
+      "keywords": [
+        "SPU course lessons",
+        "Business Administration lessons",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/course-lessons/content.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-course-lessons",
+      "fileName": "facilities/building-construction-engineering/study-plan/course/index.html",
+      "route": "/facilities/building-construction-engineering/study-plan/course/",
+      "title": "Building and Construction Engineering Course Lessons | SPU",
+      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Building and Construction Engineering.",
+      "ogImage": "/images/slider-3.webp",
+      "keywords": [
+        "SPU course lessons",
+        "Construction Engineering lessons",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/course-lessons/content.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-course-lessons",
+      "fileName": "facilities/dentistry/study-plan/course/index.html",
+      "route": "/facilities/dentistry/study-plan/course/",
+      "title": "Dentistry Course Lessons | SPU",
+      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Dentistry.",
+      "ogImage": "/images/dental-place.JPG",
+      "keywords": [
+        "SPU course lessons",
+        "Dentistry lessons",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/course-lessons/content.html"
+      ]
+    },
+    {
+      "name": "faculty-medicine-course-lessons",
+      "fileName": "facilities/medicine/study-plan/course/index.html",
+      "route": "/facilities/medicine/study-plan/course/",
+      "title": "Medicine Course Lessons | SPU",
+      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Medicine.",
+      "ogImage": "/images/slider-2.webp",
+      "keywords": [
+        "SPU course lessons",
+        "Medicine lessons",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/course-lessons/content.html"
+      ]
+    },
+    {
+      "name": "faculty-petroleum-course-lessons",
+      "fileName": "facilities/petroleum/study-plan/course/index.html",
+      "route": "/facilities/petroleum/study-plan/course/",
+      "title": "Petroleum Engineering Course Lessons | SPU",
+      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Petroleum Engineering.",
+      "ogImage": "/images/petroleom-dean.jpg",
+      "keywords": [
+        "SPU course lessons",
+        "Petroleum Engineering lessons",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/course-lessons/content.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-course-lessons",
+      "fileName": "facilities/pharmacy/study-plan/course/index.html",
+      "route": "/facilities/pharmacy/study-plan/course/",
+      "title": "Pharmacy Course Lessons | SPU",
+      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Pharmacy.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU course lessons",
+        "Pharmacy lessons",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/course-lessons/content.html"
       ]
     },
     {

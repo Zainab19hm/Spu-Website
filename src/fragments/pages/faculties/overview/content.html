@@ -1,0 +1,190 @@
+<div class="font-hacen" x-data="{
+    get isAr() {
+        return $store.app.currentLang === 'ar';
+    },
+    get faculty() {
+        return $store.facultiesPage.currentFaculty || {};
+    },
+    get copy() {
+        return $store.facultiesPage.pageContent.overview;
+    },
+    get accent() {
+        const color = this.faculty.color || '202759';
+        return color.startsWith('#') ? color : `#${color}`;
+    },
+    get facultyName() {
+        return this.isAr ? this.faculty.nameAr : (this.faculty.catalogTitleEn || this.faculty.nameEn);
+    },
+    get description() {
+        return this.isAr ? this.faculty.catalogDescAr : this.faculty.catalogDescEn;
+    },
+    get tabs() {
+        return this.faculty.tabs || [];
+    },
+    get stats() {
+        return this.faculty.stats || [];
+    },
+    get dean() {
+        return this.faculty.dean || {};
+    },
+    get pathwayCards() {
+        return this.faculty.overviewPathwayCards || [];
+    },
+    tab(id) {
+        return this.tabs.find((item) => item.id === id) || {};
+    },
+    text(item, fallback = '') {
+        if (!item) return fallback;
+        return this.isAr ? (item.contentAr || item.labelAr || fallback) : (item.contentEn || item.labelEn || fallback);
+    },
+    localized(item, key) {
+        return this.isAr ? (item?.[`${key}Ar`] || item?.[`${key}En`] || '') : (item?.[`${key}En`] || item?.[`${key}Ar`] || '');
+    },
+    get overviewText() {
+        return this.text(this.tab('overview'), this.description);
+    },
+    get visionText() {
+        return this.text(this.tab('vision'), this.overviewText);
+    },
+    get missionText() {
+        return this.text(this.tab('mission'), this.overviewText);
+    },
+    get objectivesText() {
+        return this.text(this.tab('objectives'), this.overviewText);
+    },
+    get gallery() {
+        const images = [this.faculty.image_1, this.faculty.image_2, this.faculty.heroImage].filter(Boolean);
+        return [...new Set(images)];
+    },
+    get firstImage() {
+        return this.gallery[0] || '/images/uni-main-place.JPG';
+    },
+    get secondImage() {
+        return this.gallery[1] || this.firstImage;
+    },
+    get thirdImage() {
+        return this.gallery[2] || this.secondImage;
+    },
+    get facultyHomeHref() {
+        return `/facilities/?id=${this.faculty.id || 'medicine'}`;
+    }
+}">
+    <section class="relative flex min-h-[330px] items-end overflow-hidden pt-28">
+        <div class="absolute inset-0">
+            <img :src="faculty.heroImage || firstImage" alt="" class="h-full w-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/68 to-spu-blue/20"></div>
+        </div>
+
+        <div class="container relative z-10 pb-14 text-center text-white">
+            <nav class="mb-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-white/75">
+                <a href="/" class="transition-colors hover:text-white" x-text="localized(copy, 'home')"></a>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+                <a :href="facultyHomeHref" class="transition-colors hover:text-white" x-text="facultyName"></a>
+                <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+                <span class="text-white" x-text="localized(copy, 'breadcrumb')"></span>
+            </nav>
+
+            <h1 class="text-[34px] font-bold leading-tight md:text-[44px]" x-text="localized(copy, 'title')"></h1>
+            <p class="mx-auto mt-4 max-w-[780px] text-sm font-semibold leading-7 text-white/84" x-text="description"></p>
+        </div>
+    </section>
+
+    <section class="bg-white py-16 lg:py-24">
+        <div class="container space-y-20 lg:space-y-24">
+            <div class="grid items-center gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16">
+                <div>
+                    <h2 class="text-[30px] font-bold leading-tight text-spu-blue md:text-[38px]"
+                        x-text="localized(copy, 'facultyOverview')"></h2>
+                    <div class="mt-4 h-[3px] w-14 rounded-full" :style="`background-color: ${accent}`"></div>
+                    <p class="mt-6 text-[15px] leading-8 text-slate-600" x-text="overviewText"></p>
+                    <p class="mt-5 text-[15px] leading-8 text-slate-600" x-text="missionText"></p>
+                </div>
+                <div class="overflow-hidden rounded-[8px] shadow-[0_18px_45px_rgba(9,17,68,0.16)]">
+                    <img :src="firstImage" alt="" class="aspect-[16/7] w-full object-cover lg:aspect-[16/8]">
+                </div>
+            </div>
+
+            <div class="-mx-5 bg-section px-5 py-12 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12">
+                <div class="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+                    <div class="order-2 overflow-hidden rounded-[8px] shadow-[0_18px_45px_rgba(9,17,68,0.12)] lg:order-1">
+                        <img :src="secondImage" alt="" class="aspect-[16/8] w-full object-cover">
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-[30px] font-bold leading-tight text-spu-blue md:text-[38px]"
+                            x-text="localized(copy, 'visionMission')"></h2>
+                        <div class="mt-4 h-[3px] w-14 rounded-full" :style="`background-color: ${accent}`"></div>
+                        <p class="mt-6 text-[15px] leading-8 text-slate-600" x-text="visionText"></p>
+                        <p class="mt-5 text-[15px] leading-8 text-slate-600" x-text="missionText"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid items-center gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16">
+                <div>
+                    <h2 class="text-[30px] font-bold leading-tight text-spu-blue md:text-[38px]"
+                        x-text="localized(copy, 'objectives')"></h2>
+                    <div class="mt-4 h-[3px] w-14 rounded-full" :style="`background-color: ${accent}`"></div>
+                    <p class="mt-6 text-[15px] leading-8 text-slate-600" x-text="objectivesText"></p>
+                    <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                        <template x-for="stat in stats.slice(0, 4)" :key="stat.labelEn">
+                            <div class="rounded-[8px] border border-slate-100 bg-white p-5 shadow-[0_10px_28px_rgba(9,17,68,0.05)]">
+                                <p class="text-[28px] font-bold leading-none" :style="`color: ${accent}`" x-text="stat.value"></p>
+                                <p class="mt-2 text-[11px] font-bold uppercase tracking-[0.14em] text-spu-blue/50"
+                                   x-text="isAr ? stat.labelAr : stat.labelEn"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-[8px] shadow-[0_18px_45px_rgba(9,17,68,0.16)]">
+                    <img :src="thirdImage" alt="" class="aspect-[16/8] w-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-16 lg:py-24">
+        <div class="container">
+            <div class="mx-auto grid max-w-[1080px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+                <div class="min-h-[360px] overflow-hidden rounded-[8px] border border-slate-100 bg-slate-50 shadow-[0_16px_42px_rgba(9,17,68,0.05)]">
+                    <img :src="dean.image || firstImage" alt="" class="h-full min-h-[360px] w-full object-cover object-top">
+                </div>
+                <div class="border-l-[3px] pl-9 rtl:border-l-0 rtl:border-r-[3px] rtl:pl-0 rtl:pr-9" :style="`border-color: ${accent}`">
+                    <h2 class="text-[30px] font-bold leading-tight text-spu-blue md:text-[40px]"
+                        x-text="isAr ? (dean.sectionLabelAr || copy.deanFallbackAr) : (dean.sectionLabelEn || copy.deanFallbackEn)"></h2>
+                    <p class="mt-8 text-sm font-bold text-spu-blue" x-text="isAr ? dean.nameAr : dean.nameEn"></p>
+                    <div class="mt-6 space-y-5 text-[14px] leading-8 text-slate-600">
+                        <p x-text="isAr ? dean.messageAr : dean.messageEn"></p>
+                        <p x-text="missionText"></p>
+                        <p x-text="objectivesText"></p>
+                    </div>
+                    <div class="mt-8 border-t border-slate-100 pt-5">
+                        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-spu-blue"
+                           x-text="isAr ? dean.roleAr : dean.roleEn"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-section py-16 lg:py-20">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-[30px] font-bold leading-tight text-spu-blue md:text-[38px]"
+                    x-text="localized(copy, 'pathwaysTitle')"></h2>
+                <div class="mx-auto mt-4 h-[2px] w-72 max-w-full rounded-full" :style="`background-color: ${accent}`"></div>
+                <p class="mx-auto mt-7 max-w-[760px] text-[17px] leading-8 text-slate-600"
+                   x-text="localized(copy, 'pathwaysSummary')"></p>
+            </div>
+
+            <div class="mx-auto mt-12 grid max-w-[980px] gap-5 md:grid-cols-3">
+                <template x-for="card in pathwayCards" :key="card.id">
+                    <a :href="card.href" class="group rounded-[8px] bg-white p-7 text-center shadow-[0_14px_36px_rgba(9,17,68,0.06)] transition-all hover:-translate-y-1">
+                        <p class="text-[13px] font-bold uppercase tracking-[0.14em]" :style="`color: ${accent}`"
+                           x-text="localized(card, 'eyebrow')"></p>
+                        <h3 class="mt-4 text-xl font-bold text-spu-blue" x-text="localized(card, 'title')"></h3>
+                    </a>
+                </template>
+            </div>
+        </div>
+    </section>
+</div>

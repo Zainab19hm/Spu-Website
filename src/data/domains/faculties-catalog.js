@@ -61,7 +61,7 @@ export const facultiesCatalog = {
         }
     },
     list: [
-{
+        {
             id: 'medicine',
             departmentRoute: '/facilities/medicine/departments/',
             labsRoute: '/facilities/medicine/labs/',
@@ -76,9 +76,8 @@ export const facultiesCatalog = {
             color: 'bc2428',
             yearsAr: '<span>6</span> سنوات',
             yearsEn: '<span>6</span> Years',
-            heroImage: '/images/slider-2.webp',
-            image_1: '/images/slider-4.jpg',
-            image_2: '/images/campus-feature-01.webp',
+            heroImage: '/images/faculities/group-fac-building.jpg',
+            
             tabs: [
                 {
                     id: 'overview',
@@ -99,7 +98,7 @@ export const facultiesCatalog = {
                 nameEn: 'Dr. Ayman Ali',
                 roleAr: 'عميد كلية الطب البشري',
                 roleEn: 'Dean of the Faculty',
-                image: '/images/medicine-dean.jpg',
+                image: '/images/about/leadership/medicine-dean.jpg',
                 messageAr: 'نعمل على إعداد خريجين متميزين معرفياً ومهارياً، قادرين على المنافسة في سوق العمل الطبي محلياً ودولياً، مع التركيز على البحث العلمي والأخلاقيات المهنية.',
                 messageEn: 'We work to prepare graduates who are academically and professionally distinguished, capable of competing in the medical labor market with a focus on scientific research.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',
@@ -114,8 +113,8 @@ export const facultiesCatalog = {
             highlights: {
                 sectionTitleAr: 'اقسام الكلية',
                 sectionTitleEn: 'Faculty Highlights',
-                sectionPAr:'بيئة ديناميكية اكاديمية صممت لدعم تطور الطلاب , التعلم العملي و المستقبل',
-                sectionPEn:'A dynamic academic environment designed to support student growth, practical learning, and future',
+                sectionPAr: 'بيئة ديناميكية اكاديمية صممت لدعم تطور الطلاب , التعلم العملي و المستقبل',
+                sectionPEn: 'A dynamic academic environment designed to support student growth, practical learning, and future',
                 items: [
                     {
                         id: 1,
@@ -159,35 +158,7 @@ export const facultiesCatalog = {
                     }
                 ]
             },
-            events: [
-                {
-                    id: 1,
-                    titleAr: 'مؤتمر طبي دولي حول الجراحة التنظيرية',
-                    titleEn: 'International Conference on Laparoscopic Surgery',
-                    date: '15 May 2026',
-                    descriptionAr: 'يستضيف قسم الجراحة مؤتمراً طبياً دولياً لمناقشة أحدث التقنيات في الجراحة التنظيرية بمشاركة خبراء من مختلف أنحاء العالم. يهدف المؤتمر إلى تبادل الخبرات الأكاديمية والمهنية وتعزيز البحث العلمي في هذا المجال الحيوي.',
-                    descriptionEn: 'The Surgery Department hosts an international medical conference to discuss the latest techniques in laparoscopic surgery with experts from around the world. The conference aims to exchange academic and professional experiences and promote scientific research in this vital field.',
-                    image: '/images/slider-1.webp'
-                },
-                {
-                    id: 2,
-                    titleAr: 'ورشة عمل طب الطوارئ المتقدمة',
-                    titleEn: 'Advanced Emergency Medicine Workshop',
-                    date: '10 June 2026',
-                    descriptionAr: 'تنظم الكلية ورشة عمل متخصصة في طب الطوارئ والإسعافات الأولية المتقدمة لطلاب السنة السادسة، تشمل التدريب على أجهزة الإنعاش الحديثة وكيفية التعامل مع الحالات الحرجة بسرعة ودقة عالية.',
-                    descriptionEn: 'The faculty organizes a specialized workshop in emergency medicine and advanced first aid for sixth-year students, including training on modern resuscitation devices and how to deal with critical cases quickly and accurately.',
-                    image: '/images/slider-2.webp'
-                },
-                {
-                    id: 3,
-                    titleAr: 'يوم البحث العلمي لطلبة الطب',
-                    titleEn: 'Medical Students Scientific Research Day',
-                    date: '22 July 2026',
-                    descriptionAr: 'فعالية سنوية تتيح للطلاب عرض أبحاثهم المتميزة أمام لجنة من الأساتذة والخبراء، مع جوائز لأفضل الأبحاث المشاركة لتشجيع الطلاب على الابتكار والاكتشاف العلمي.',
-                    descriptionEn: 'An annual event that allows students to present their outstanding research to a committee of professors and experts, with awards for the best research to encourage innovation and scientific discovery.',
-                    image: '/images/slider-4.jpg'
-                }
-            ],
+           
             labs: [
                 {
                     id: 'med-lab-1',
@@ -264,7 +235,7 @@ export const facultiesCatalog = {
             ]
         },
 
-{
+        {
             id: 'dentistry',
             departmentRoute: '/facilities/dentistry/departments/',
             labsRoute: '/facilities/dentistry/labs/',
@@ -302,7 +273,7 @@ export const facultiesCatalog = {
                 nameEn: 'Dr. Talaat Abu Hatab',
                 roleAr: 'عميد كلية طب الأسنان',
                 roleEn: 'Dean of Dentistry Faculty',
-                image: '/images/dental-dean.jpg',
+                image: '/images/about/leadership/dental-dean.jpg',
                 messageAr: 'نلتزم بتوفير بيئة تعليمية تدمج بين العلوم الأساسية والتدريب العملي المتقدم في العيادات التخصصية لضمان كفاءة ممارسة المهنة.',
                 messageEn: 'We are committed to providing an educational environment that integrates basic sciences with advanced practical training in specialized clinics.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',
@@ -434,7 +405,7 @@ export const facultiesCatalog = {
                 }
             ]
         },
-{
+        {
             id: 'pharmacy',
             departmentRoute: '/facilities/pharmacy/departments/',
             labsRoute: '/facilities/pharmacy/labs/',
@@ -603,7 +574,7 @@ export const facultiesCatalog = {
                 }
             ]
         },
-{
+        {
             id: 'ai-engineering',
             departmentRoute: '/facilities/artificial-intelligence/departments/',
             labsRoute: '/facilities/artificial-intelligence/labs/',
@@ -622,7 +593,7 @@ export const facultiesCatalog = {
             color: '683695',
             yearsAr: '<span>5</span> سنوات',
             yearsEn: '<span>5</span> Years',
-            heroImage: '/images/slider-3.webp',
+            heroImage: '/images/faculities/group-fac-building.jpg',
             image_1: '/images/slider-4.jpg',
             image_2: '/images/campus-feature-01.webp',
             tabs: [
@@ -640,7 +611,7 @@ export const facultiesCatalog = {
                 nameEn: 'Dr. Mouhib Alnoukari',
                 roleAr: 'عميد كلية هندسة الذكاء الاصطناعي',
                 roleEn: 'Dean of the Faculty',
-                image: '/images/ai-dean.jpeg',
+                image: '/images/about/leadership/Ai-dean.jpg',
                 messageAr: 'نحن نؤمن بأن الذكاء الاصطناعي هو المحرك الأساسي للاقتصاد القادم، لذا نعد طلابنا ليكونوا صناع هذا المستقبل الرقمي.',
                 messageEn: 'We believe AI is the core engine of the future economy, preparing our students to be digital makers.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',
@@ -775,7 +746,7 @@ export const facultiesCatalog = {
                 }
             ]
         },
-{
+        {
             id: 'Construction',
             departmentRoute: '/facilities/building-construction-engineering/departments/',
             labsRoute: '/facilities/building-construction-engineering/labs/',
@@ -794,7 +765,7 @@ export const facultiesCatalog = {
             color: '7f8c8d',
             yearsAr: '<span>5</span> سنوات',
             yearsEn: '<span>5</span> Years',
-            heroImage: '/images/slider-3.webp',
+            heroImage: '/images/faculities/group-fac-building.jpg',
             image_1: '/images/slider-4.jpg',
             image_2: '/images/campus-feature-01.webp',
             tabs: [
@@ -938,7 +909,7 @@ export const facultiesCatalog = {
                 }
             ]
         },
-{
+        {
             id: 'petroleum',
             departmentRoute: '/facilities/petroleum/departments/',
             labsRoute: '/facilities/petroleum/labs/',
@@ -957,7 +928,7 @@ export const facultiesCatalog = {
             color: '0b5759',
             yearsAr: '<span>5</span> سنوات',
             yearsEn: '<span>5</span> Years',
-            heroImage: '/images/slider-3.webp',
+            heroImage: '/images/faculities/group-fac-building.jpg',
             image_1: '/images/slider-4.jpg',
             image_2: '/images/campus-feature-01.webp',
             tabs: [
@@ -1107,7 +1078,7 @@ export const facultiesCatalog = {
             color: 'caa949',
             yearsAr: '<span>4</span> سنوات',
             yearsEn: '<span>4</span> Years',
-            heroImage: '/images/slider-3.webp',
+            heroImage: '/images/faculities/group-fac-building.jpg',
             image_1: '/images/slider-4.jpg',
             image_2: '/images/campus-feature-01.webp',
             tabs: [
@@ -1125,7 +1096,7 @@ export const facultiesCatalog = {
                 nameEn: 'Dr. Samar Habib',
                 roleAr: 'عميد كلية إدارة الأعمال',
                 roleEn: 'Dean of the Faculty',
-                image: '/images/business-dean.jpg',
+                image: '/images/about/leadership/busnins-dean.jpg',
                 messageAr: 'كلية إدارة الأعمال هي حاضنة لقادة المستقبل، نوفر تخصصات مرنة تواكب التطور المتسارع في الأسواق المالية والإدارية.',
                 messageEn: 'The Faculty of Business is an incubator for future leaders, offering flexible specializations.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',

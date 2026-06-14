@@ -1,6 +1,6 @@
 <section class="bg-white pb-14 font-hacen md:pb-16"
          x-data="{ get page() { return $store.newsArticlePage }, get isAr() { return $store.app.currentLang === 'ar' } }">
-  <div class="mx-auto w-full max-w-[1050px] px-4 sm:px-6 lg:px-0">
+  <div class="mx-auto w-full container">
     <h2 class="text-[22px] font-bold text-spu-blue md:text-[28px]"
         x-text="page.localized('labels', 'related')"></h2>
 

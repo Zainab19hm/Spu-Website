@@ -7,11 +7,11 @@
 
     <div class="container relative z-10 pb-12 text-center text-white">
         <nav class="mb-4 flex items-center justify-center gap-2 text-[11px] font-semibold text-white/78">
-            <a href="/" class="transition-colors hover:text-white" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+            <a href="/" class="transition-colors hover:text-white" x-text="isAr ? content.breadcrumb.homeAr : content.breadcrumb.homeEn"></a>
             <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
-            <a href="/facilities/" class="transition-colors hover:text-white" x-text="isAr ? 'الكليات' : 'Faculty'"></a>
+            <a href="/facilities/" class="transition-colors hover:text-white" x-text="isAr ? content.breadcrumb.facultyAr : content.breadcrumb.facultyEn"></a>
             <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
-            <span x-text="isAr ? 'الخريجون' : 'Alumni'"></span>
+            <span x-text="isAr ? content.breadcrumb.alumniAr : content.breadcrumb.alumniEn"></span>
         </nav>
         
         <h1 class="mt-3 text-[30px] font-bold leading-tight md:text-[40px]"

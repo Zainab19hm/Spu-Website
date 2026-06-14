@@ -384,7 +384,7 @@ export const aboutPageContent = {
                 roleEn: 'DEAN OF MEDICINE',
                 roleAr: 'عميد كلية الطب',
                 faculty: 'medicine',
-                image: '/images/about/medicine-dean.jpg'
+                image: '/images/about/leadership/medicine-dean.jpg'
             },
             {
                 nameEn: 'Dr. Full name',
@@ -400,7 +400,7 @@ export const aboutPageContent = {
                 roleEn: 'DEAN OF BUSINESS',
                 roleAr: 'عميد كلية إدارة الأعمال',
                 faculty: 'business',
-                image: '/images/business-dean.jpg'
+                image: '/images/about/leadership/busnins-dean.jpg'
             },
             {
                 nameEn: 'Dr. Full name',
@@ -408,7 +408,7 @@ export const aboutPageContent = {
                 roleEn: 'DEAN OF DENTISTRY',
                 roleAr: 'عميد كلية طب الأسنان',
                 faculty: 'dentistry',
-                image: '/images/dental-dean.jpg'
+                image: '/images/about/leadership/dental-dean.jpg'
             },
             {
                 nameEn: 'Dr. Full name',
@@ -424,7 +424,7 @@ export const aboutPageContent = {
                 roleEn: 'DEAN OF MEDICINE',
                 roleAr: 'عميد كلية الطب',
                 faculty: 'medicine',
-                image: '/images/medicine-dean.jpg'
+                image: '/images/about/leadership/medicine-dean.jpg'
             },
             {
                 nameEn: 'Dr. Full name',
@@ -440,7 +440,7 @@ export const aboutPageContent = {
                 roleEn: 'DEAN OF BUSINESS',
                 roleAr: 'عميد كلية إدارة الأعمال',
                 faculty: 'business',
-                image: '/images/business-dean.jpg'
+                image: '/images/about/leadership/busnins-dean.jpg'
             },
             {
                 nameEn: 'Dr. Full name',
@@ -448,7 +448,7 @@ export const aboutPageContent = {
                 roleEn: 'DEAN OF DENTISTRY',
                 roleAr: 'عميد كلية طب الأسنان',
                 faculty: 'dentistry',
-                image: '/images/dental-dean.jpg'
+                image: '/images/about/leadership/dental-dean.jpg'
             }
         ]
     },

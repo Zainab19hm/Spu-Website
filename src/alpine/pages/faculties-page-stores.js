@@ -1,16 +1,16 @@
-import { facultiesCatalog } from '../../data/domains/faculties-catalog.js';
+import { createFacultyPageData, facultyContent } from '../../data/domains/faculty-content.js';
 
 export const registerFacultiesPageStores = (Alpine) => {
     Alpine.store('facultiesPage', {
         currentFaculty: null,
         loading: true,
         catalogMode: false,
-        catalogPage: facultiesCatalog.catalogPage,
-
-        routeToIdMap: {
-            'artificial-intelligence': 'ai-engineering',
-            'building-construction-engineering': 'Construction'
+        pageContent: {
+            ...facultyContent.copy,
+            departmentPages: facultyContent.departmentPages
         },
+        catalogPage: facultyContent.catalogPage,
+        routeToIdMap: facultyContent.routeToIdMap,
 
         init() {
             this.loadFacultyData();
@@ -27,12 +27,12 @@ export const registerFacultiesPageStores = (Alpine) => {
 
             if (!facultyId) {
                 this.catalogMode = true;
-                this.currentFaculty = facultiesCatalog.list[0];
+                this.currentFaculty = createFacultyPageData(facultyContent.list[0]);
             } else {
                 this.catalogMode = false;
-                const data = facultiesCatalog.list.find(f => f.id === facultyId);
+                const data = facultyContent.list.find(f => f.id === facultyId);
                 if (data) {
-                    this.currentFaculty = data;
+                    this.currentFaculty = createFacultyPageData(data);
                 } else {
                     console.error("Faculty not found:", facultyId);
                     window.location.href = './index.html';

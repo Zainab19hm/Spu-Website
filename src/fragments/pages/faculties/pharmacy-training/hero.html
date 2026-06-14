@@ -7,13 +7,13 @@
 
     <div class="container  z-10 pb-10 text-center text-white">
         <nav class="mb-4 flex items-center justify-center gap-2 text-[11px] font-semibold text-white/75">
-            <a href="/" class="transition-colors hover:text-white" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+            <a href="/" class="transition-colors hover:text-white" x-text="isAr ? content.breadcrumb.homeAr : content.breadcrumb.homeEn"></a>
             <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
             <a href="/facilities/" class="transition-colors hover:text-white"
-                x-text="isAr ? 'الكليات' : 'Facilities'"></a>
+                x-text="isAr ? content.breadcrumb.facilitiesAr : content.breadcrumb.facilitiesEn"></a>
             <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
             <a href="/facilities/?id=pharmacy" class="transition-colors hover:text-white"
-                x-text="isAr ? 'الصيدلة' : 'Pharmacy'"></a>
+                x-text="isAr ? content.breadcrumb.pharmacyAr : content.breadcrumb.pharmacyEn"></a>
         </nav>
 
         <div class="mx-auto absolute z-50 bottom-[-50px] left-1/2 transform -translate-x-1/2 max-w-[620px] bg-spu-blue px-6 py-8 shadow-[0_18px_46px_rgba(0,0,0,0.18)] sm:px-10">

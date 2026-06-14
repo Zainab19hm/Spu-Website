@@ -1,4 +1,12 @@
 export const facultyAlumniPageContent = {
+    breadcrumb: {
+        homeEn: 'Home',
+        homeAr: 'الرئيسية',
+        facultyEn: 'Faculty',
+        facultyAr: 'الكليات',
+        alumniEn: 'Alumni',
+        alumniAr: 'الخريجون'
+    },
     hero: {
         eyebrowEn: 'Faculty Alumni',
         eyebrowAr: 'خريجو الكليات',
@@ -19,6 +27,16 @@ export const facultyAlumniPageContent = {
         facultyLabelAr: 'الكلية',
         phaseLabelEn: 'Academic Phase',
         phaseLabelAr: 'المرحلة الأكاديمية'
+    },
+    labels: {
+        graduationYearEn: 'Graduation Year:',
+        graduationYearAr: 'سنة التخرج:',
+        semesterEn: 'Semester:',
+        semesterAr: 'الفصل:',
+        departmentEn: 'Department:',
+        departmentAr: 'القسم:',
+        emptyEn: 'No matching alumni found.',
+        emptyAr: 'لا توجد نتائج مطابقة.'
     },
     alumni: [
         {
@@ -79,7 +97,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'إدارة الأعمال',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/business-dean.jpg'
+            image: '/images/about/leadership/busnins-dean.jpg'
         },
         {
             id: 'alumni-005',
@@ -169,7 +187,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'إدارة الأعمال',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/campus-career.webp'
+            image: '/images/about/campus-career.webp'
         },
         {
             id: 'alumni-011',

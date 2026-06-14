@@ -131,7 +131,7 @@ export const honorListPageContent = {
       facultyAr: 'الذكاء الاصطناعي',
       accent: '#683695',
       honorees: [
-        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.95', image: '/images/ai-dean.jpeg' },
+        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.95', image: '/images/about/leadership/Ai-dean.jpg' },
         { id: 2, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.85', image: '/images/uni-main-place.JPG' },
         { id: 3, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.82', image: '/images/slider-1.webp' },
         { id: 4, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.78', image: '/images/slider-2.webp' },
@@ -144,7 +144,7 @@ export const honorListPageContent = {
       facultyAr: 'إدارة الأعمال',
       accent: '#caa949',
       honorees: [
-        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.90', image: '/images/business-dean.jpg' },
+        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.90', image: '/images/about/leadership/busnins-dean.jpg' },
         { id: 2, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.86', image: '/images/uni-main-place.JPG' },
         { id: 3, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.83', image: '/images/slider-1.webp' },
         { id: 4, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.81', image: '/images/slider-2.webp' },
@@ -183,7 +183,7 @@ export const honorListPageContent = {
       facultyAr: 'الطب البشري',
       accent: '#bc2428',
       honorees: [
-        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.96', image: '/images/medicine-dean.jpg' },
+        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.96', image: '/images/about/leadership/medicine-dean.jpg' },
         { id: 2, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.89', image: '/images/uni-main-place.JPG' },
         { id: 3, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.84', image: '/images/slider-2.webp' },
         { id: 4, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.81', image: '/images/slider-1.webp' },

@@ -13,14 +13,12 @@
         get galleryImages() {
             const f = $store.facultiesPage.currentFaculty;
             if (!f) return [];
-            const imgs = [];
-            if (f.image_1) imgs.push(f.image_1);
-            if (f.image_2) imgs.push(f.image_2);
-            if (f.heroImage) imgs.push(f.heroImage);
-            if (f.events) {
-                f.events.forEach(e => { if (e.image && !imgs.includes(e.image)) imgs.push(e.image); });
-            }
-            return imgs;
+            return f.sliderImages?.length ? f.sliderImages : [f.heroImage].filter(Boolean);
+        },
+
+        get overviewHref() {
+            const slug = $store.facultiesPage.currentFaculty?.routeSlug;
+            return slug ? `/facilities/${slug}/overview/` : '/facilities/';
         },
 
         init() {
@@ -158,10 +156,10 @@
 
                     <!-- CTA link -->
                     <div class="mt-8 border-t border-slate-100 pt-6">
-                        <a href="#" class="group inline-flex items-center gap-3 transition-all"
+                        <a :href="overviewHref" class="group inline-flex items-center gap-3 transition-all"
                            :style="`color: ${facultyColor}`">
                             <span class="text-base font-bold"
-                                  x-text="$store.app.currentLang === 'ar' ? 'الرؤية الاستراتيجية الكاملة' : 'Read the Full Strategic Vision'"></span>
+                                  x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.pageContent.hub.readMoreAr : $store.facultiesPage.pageContent.hub.readMoreEn"></span>
                             <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-2"
                                  :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-2' : ''" aria-hidden="true">
                         </a>

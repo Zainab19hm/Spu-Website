@@ -40,7 +40,7 @@ const facultyRoutes = {
 const imageSet = [
   '/images/research-clinical-simulation.webp',
   '/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp',
-  '/images/campus-career.webp',
+  '/images/about/campus-career.webp',
   '/images/research-digital-dentistry.webp',
   '/images/news/researches.jpeg',
   '/images/unsplash_VckdJzo7ig0.webp'

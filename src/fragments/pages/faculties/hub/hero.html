@@ -62,12 +62,12 @@
             <a href="#overview"
                class="group inline-flex h-[54px] items-center gap-2.5 rounded-[6px] bg-white px-8 text-sm font-bold uppercase tracking-[1.4px] shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
                :style="`color: #${$store.facultiesPage.currentFaculty?.color}`">
-                <span x-text="$store.app.currentLang === 'ar' ? 'استكشاف البرامج' : 'EXPLORE PROGRAMS'"></span>
+                <span x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.pageContent.hero.exploreProgramsAr : $store.facultiesPage.pageContent.hero.exploreProgramsEn"></span>
                 <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" :class="$store.app.currentLang === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''" aria-hidden="true">
             </a>
-            <a :href="'/admissions/how-to-apply.html'"
+            <a :href="$store.facultiesPage.pageContent.hero.admissionsHref"
                class="inline-flex h-[54px] items-center rounded-[6px] border border-white/30 bg-white/8 px-8 text-sm font-bold uppercase tracking-[1.4px] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15"
-               x-text="$store.app.currentLang === 'ar' ? 'القبول والتسجيل' : 'ADMISSIONS'">
+               x-text="$store.app.currentLang === 'ar' ? $store.facultiesPage.pageContent.hero.admissionsAr : $store.facultiesPage.pageContent.hero.admissionsEn">
             </a>
         </div>
     </div>
@@ -94,7 +94,7 @@
        x-text="$store.facultiesPage.currentFaculty?.nameAr"></p>
     <!-- English subtitle -->
     <p class="mt-1 text-center text-[11px] font-bold uppercase tracking-[2px] text-slate-400"
-       x-text="'FACULTY OF ' + ($store.facultiesPage.currentFaculty?.nameEn?.toUpperCase() || '')"></p>
+       x-text="$store.facultiesPage.pageContent.hero.logoSubtitlePrefixEn + ' ' + ($store.facultiesPage.currentFaculty?.nameEn?.toUpperCase() || '')"></p>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════════════

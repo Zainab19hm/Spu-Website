@@ -177,7 +177,7 @@ export const studentLifePageContent = {
             linkEn: 'Explore Portal',
             linkAr: 'استكشف البوابة',
             href: siteRoutes.campusLifeCareerDevelopment,
-            image: '/images/campus-career.webp',
+            image: '/images/about/campus-career.webp',
             imagePosition: 'right'
         },
         {

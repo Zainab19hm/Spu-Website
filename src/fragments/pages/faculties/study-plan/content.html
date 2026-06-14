@@ -1,0 +1,131 @@
+<section class="relative flex min-h-[330px] items-end overflow-hidden pt-28 font-hacen"
+         x-data="{ get page() { return $store.studyPlanPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="absolute inset-0">
+    <img :src="page.current?.heroImage || '/images/uni-main-place.JPG'" alt="" class="h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/94 via-spu-blue/70 to-spu-blue/15"></div>
+  </div>
+
+  <div class="container relative z-10 pb-14 text-center text-white">
+    <nav class="mb-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-white/75">
+      <a href="/" class="transition-colors hover:text-white" x-text="page.label('home')"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <a href="/facilities/" class="transition-colors hover:text-white" x-text="page.label('faculties')"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <span x-text="page.text(page.current, 'faculty')"></span>
+    </nav>
+
+    <p class="text-[12px] font-bold uppercase tracking-[0.16em] text-white/76"
+       x-text="page.text(page.activeDepartment(), 'name')"></p>
+    <h1 class="mt-3 text-[34px] font-bold leading-tight md:text-[44px]" x-text="page.label('title')"></h1>
+    <p class="mx-auto mt-4 max-w-[820px] text-sm font-semibold leading-7 text-white/84"
+       x-text="page.text(page.current, 'summary')"></p>
+  </div>
+</section>
+
+<section class="bg-white py-14 font-hacen lg:py-20"
+         x-data="{ get page() { return $store.studyPlanPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="container">
+    <template x-if="page.current">
+      <div>
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-[12px] font-bold uppercase tracking-[0.14em] text-spu-red"
+               x-text="page.label('tabs')"></p>
+            <h2 class="mt-2 text-[28px] font-bold leading-tight text-spu-blue md:text-[36px]"
+                x-text="page.text(page.activeDepartment(), 'name')"></h2>
+            <p class="mt-4 max-w-[760px] text-[14px] font-medium leading-7 text-slate-600"
+               x-text="page.text(page.activeDepartment(), 'summary')"></p>
+          </div>
+
+          <template x-if="page.hasDepartmentTabs()">
+            <div class="flex flex-wrap gap-2">
+              <template x-for="department in page.departments()" :key="department.id">
+                <button type="button"
+                        :data-department-id="department.id"
+                        class="rounded-[6px] border px-4 py-2 text-[12px] font-bold transition"
+                        :class="page.activeDepartmentId === department.id ? 'border-spu-blue bg-spu-blue text-white' : 'border-slate-200 bg-white text-spu-blue hover:border-spu-blue'"
+                        @click="page.setDepartment(department.id)"
+                        x-text="page.text(department, 'name')"></button>
+              </template>
+            </div>
+          </template>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <template x-for="item in page.legend" :key="item.id">
+            <div class="flex items-center gap-2 rounded-[6px] border border-slate-100 bg-white px-3 py-2 shadow-sm">
+              <span class="h-4 w-4 rounded-[2px] border-2" :class="item.className"></span>
+              <span class="text-[11px] font-bold text-spu-blue" x-text="page.text(item, 'label')"></span>
+            </div>
+          </template>
+          <div class="flex items-center gap-2 rounded-[6px] border border-slate-100 bg-white px-3 py-2 shadow-sm">
+            <span class="h-4 w-4 rounded-[2px] border-2 border-spu-red ring-2 ring-spu-red/20"></span>
+            <span class="text-[11px] font-bold text-spu-blue" x-text="page.label('forced')"></span>
+          </div>
+        </div>
+
+        <div class="mt-8 overflow-x-auto rounded-[8px] border border-slate-200 bg-[#f7f9fc] px-6 pb-10 pt-8 shadow-[0_18px_50px_rgba(9,17,68,0.08)]">
+          <div class="relative min-w-[2040px]" :style="`height: ${page.boardHeight()};`">
+            <svg class="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible"
+                 :viewBox="`0 0 2040 ${page.boardHeightValue()}`"
+                 preserveAspectRatio="none"
+                 :style="`height: ${page.boardHeight()};`"
+                 aria-hidden="true">
+              <defs>
+                <marker id="study-plan-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M 0 0 L 9 4.5 L 0 9 z" class="fill-slate-400"></path>
+                </marker>
+                <marker id="study-plan-arrow-forced" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M 0 0 L 9 4.5 L 0 9 z" class="fill-spu-red"></path>
+                </marker>
+              </defs>
+              <g x-html="page.dependencyMarkup()"></g>
+            </svg>
+
+            <div class="relative z-10 grid grid-cols-10 gap-10">
+            <template x-for="term in page.terms()" :key="term.id">
+              <div class="relative"
+                   :style="`height: ${page.termLayoutHeight(term)};`">
+                <div class="sticky top-0 z-30 flex h-11 items-center justify-center rounded-[6px] bg-slate-200 text-[13px] font-bold text-spu-blue shadow-sm"
+                     x-text="page.text(term, 'label')"></div>
+
+                <template x-for="layoutCourse in page.layoutCourses(term)" :key="layoutCourse.course.id">
+                  <button type="button"
+                          :data-course-id="layoutCourse.course.id"
+                          :class="page.courseClasses(layoutCourse.course)"
+                          :style="page.courseStyle(layoutCourse)"
+                          @click="page.selectCourse(layoutCourse.course.id)">
+                    <span class="text-[11px] font-bold uppercase text-slate-400" x-text="layoutCourse.course.code"></span>
+                    <span class="mt-2 block text-[13px] font-bold leading-[18px] text-spu-blue"
+                          x-text="page.text(layoutCourse.course, 'title')"></span>
+
+                    <span class="pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 z-[80] hidden w-72 -translate-x-1/2 rounded-[6px] border border-slate-200 bg-white p-4 text-left shadow-[0_22px_60px_rgba(9,17,68,0.22)] group-hover/course:block group-focus/course:block rtl:text-right">
+                      <span class="block text-[12px] font-bold text-spu-blue" x-text="page.text(layoutCourse.course, 'title')"></span>
+                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
+                            x-text="`${page.label('credits')}: ${layoutCourse.course.credits} | ${page.typeLabel(layoutCourse.course)}`"></span>
+                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
+                            x-text="`${page.label('prerequisites')}: ${page.prerequisites(layoutCourse.course).map(item => item.code).join(', ') || '-'}`"></span>
+                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
+                            x-text="`${page.label('opensAfter')}: ${page.openers(layoutCourse.course).join(', ') || '-'}`"></span>
+                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
+                            x-show="layoutCourse.course.forced"
+                            x-text="page.label('forced')"></span>
+                      <span class="mt-3 block text-[11px] font-bold text-spu-red" x-text="page.label('viewCourse')"></span>
+                    </span>
+                  </button>
+                </template>
+              </div>
+            </template>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </template>
+
+    <template x-if="!page.current">
+      <div class="rounded-[8px] border border-slate-200 bg-white p-8 text-center text-spu-blue shadow-sm"
+           x-text="page.label('empty')"></div>
+    </template>
+  </div>
+</section>
