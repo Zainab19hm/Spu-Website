@@ -145,13 +145,18 @@
     <section class="bg-white py-16 lg:py-24">
         <div class="container">
             <div class="mx-auto grid max-w-[1080px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
-                <div class="min-h-[360px] overflow-hidden rounded-[8px] border border-slate-100 bg-slate-50 shadow-[0_16px_42px_rgba(9,17,68,0.05)]">
+                <a :href="dean?.slug ? `/about/profile.html?id=${dean.slug}` : '#'"
+                   class="min-h-[360px] overflow-hidden rounded-[8px] border border-slate-100 bg-slate-50 shadow-[0_16px_42px_rgba(9,17,68,0.05)] block transition-all duration-300 hover:shadow-[0_20px_50px_rgba(9,17,68,0.1)] hover:-translate-y-1"
+                   :class="dean?.slug ? '' : 'pointer-events-none'">
                     <img :src="dean.image || firstImage" alt="" class="h-full min-h-[360px] w-full object-cover object-top">
-                </div>
+                </a>
                 <div class="border-l-[3px] pl-9 rtl:border-l-0 rtl:border-r-[3px] rtl:pl-0 rtl:pr-9" :style="`border-color: ${accent}`">
                     <h2 class="text-[30px] font-bold leading-tight text-spu-blue md:text-[40px]"
                         x-text="isAr ? (dean.sectionLabelAr || copy.deanFallbackAr) : (dean.sectionLabelEn || copy.deanFallbackEn)"></h2>
-                    <p class="mt-8 text-sm font-bold text-spu-blue" x-text="isAr ? dean.nameAr : dean.nameEn"></p>
+                    <a :href="dean?.slug ? `/about/profile.html?id=${dean.slug}` : '#"
+                       class="mt-8 inline-block text-sm font-bold text-spu-blue transition-colors hover:text-spu-red"
+                       :class="dean?.slug ? '' : 'pointer-events-none'"
+                       x-text="isAr ? dean.nameAr : dean.nameEn"></a>
                     <div class="mt-6 space-y-5 text-[14px] leading-8 text-slate-600">
                         <p x-text="isAr ? dean.messageAr : dean.messageEn"></p>
                         <p x-text="missionText"></p>

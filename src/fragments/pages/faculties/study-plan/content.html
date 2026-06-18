@@ -1,131 +1,333 @@
-<section class="relative flex min-h-[330px] items-end overflow-hidden pt-28 font-hacen"
-         x-data="{ get page() { return $store.studyPlanPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
-  <div class="absolute inset-0">
-    <img :src="page.current?.heroImage || '/images/uni-main-place.JPG'" alt="" class="h-full w-full object-cover">
-    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/94 via-spu-blue/70 to-spu-blue/15"></div>
-  </div>
+<div class="font-hacen" x-data="{
+    get page() { return $store.studyPlanPage },
+    get isAr() { return $store.app.currentLang === 'ar' }
+}" :dir="isAr ? 'rtl' : 'ltr'">
 
-  <div class="container relative z-10 pb-14 text-center text-white">
-    <nav class="mb-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-white/75">
-      <a href="/" class="transition-colors hover:text-white" x-text="page.label('home')"></a>
-      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
-      <a href="/facilities/" class="transition-colors hover:text-white" x-text="page.label('faculties')"></a>
-      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
-      <span x-text="page.text(page.current, 'faculty')"></span>
-    </nav>
+  <!-- ═══════════════════════════════════════════════════════
+       Hero: background image + gradient + breadcrumbs + title
+       ═══════════════════════════════════════════════════════ -->
+  <section class="relative flex min-h-[330px] justify-center items-center overflow-hidden pt-28">
+    <div class="absolute inset-0">
+      <img :src="page.heroImage()" alt="" class="h-full w-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/95 via-spu-blue/72 to-spu-blue/18"></div>
+    </div>
 
-    <p class="text-[12px] font-bold uppercase tracking-[0.16em] text-white/76"
-       x-text="page.text(page.activeDepartment(), 'name')"></p>
-    <h1 class="mt-3 text-[34px] font-bold leading-tight md:text-[44px]" x-text="page.label('title')"></h1>
-    <p class="mx-auto mt-4 max-w-[820px] text-sm font-semibold leading-7 text-white/84"
-       x-text="page.text(page.current, 'summary')"></p>
-  </div>
-</section>
+    <div class="container relative z-10 pb-14 text-center text-white">
+      <nav class="mb-4 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-white/75">
+        <a href="/" class="transition-colors hover:text-white" x-text="page.label('home')"></a>
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+        <a href="/facilities/" class="transition-colors hover:text-white" x-text="page.label('faculties')"></a>
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+        <span x-text="page.facultyName()"></span>
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+        <span x-text="page.label('title')"></span>
+      </nav>
 
-<section class="bg-white py-14 font-hacen lg:py-20"
-         x-data="{ get page() { return $store.studyPlanPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
-  <div class="container">
-    <template x-if="page.current">
-      <div>
-        <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p class="text-[12px] font-bold uppercase tracking-[0.14em] text-spu-red"
-               x-text="page.label('tabs')"></p>
-            <h2 class="mt-2 text-[28px] font-bold leading-tight text-spu-blue md:text-[36px]"
-                x-text="page.text(page.activeDepartment(), 'name')"></h2>
-            <p class="mt-4 max-w-[760px] text-[14px] font-medium leading-7 text-slate-600"
-               x-text="page.text(page.activeDepartment(), 'summary')"></p>
-          </div>
+      <template x-if="page.current">
+        <div>
 
+          <h1 class="mt-3 text-[34px] font-bold leading-tight md:text-[52px]"
+              x-text="page.label('title')"></h1>
+          
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Content: tabs + legend + board + info panels
+       ═══════════════════════════════════════════════════════ -->
+  <section class="bg-section py-16 lg:py-24">
+    <div class="container">
+      <template x-if="page.current">
+        <div class="space-y-10">
+
+          <!-- Department Tabs -->
           <template x-if="page.hasDepartmentTabs()">
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2.5 rounded-3xl bg-white p-1.5 shadow-sm border border-slate-100">
               <template x-for="department in page.departments()" :key="department.id">
-                <button type="button"
-                        :data-department-id="department.id"
-                        class="rounded-[6px] border px-4 py-2 text-[12px] font-bold transition"
-                        :class="page.activeDepartmentId === department.id ? 'border-spu-blue bg-spu-blue text-white' : 'border-slate-200 bg-white text-spu-blue hover:border-spu-blue'"
-                        @click="page.setDepartment(department.id)"
-                        x-text="page.text(department, 'name')"></button>
+                <button type="button" class="rounded-full px-6 py-3 text-[13px] font-bold transition-all duration-300"
+                  :class="page.activeDepartmentId === department.id
+                          ? 'bg-spu-blue text-white shadow-lg shadow-spu-blue/25'
+                          : 'bg-white text-spu-blue/80 hover:bg-slate-50'"
+                  @click="page.setDepartment(department.id)"
+                  x-text="page.text(department, 'name')"></button>
               </template>
             </div>
           </template>
-        </div>
 
-        <div class="mt-8 flex flex-wrap gap-3">
-          <template x-for="item in page.legend" :key="item.id">
-            <div class="flex items-center gap-2 rounded-[6px] border border-slate-100 bg-white px-3 py-2 shadow-sm">
-              <span class="h-4 w-4 rounded-[2px] border-2" :class="item.className"></span>
-              <span class="text-[11px] font-bold text-spu-blue" x-text="page.text(item, 'label')"></span>
+          <!-- Toolbar: Legend + Download Buttons -->
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap items-center gap-4">
+              <p class="text-[14px] font-semibold text-slate-500" x-text="page.label('courseTypes')"></p>
+              <template x-for="item in page.legend" :key="item.id">
+                <div
+                  class="flex items-center gap-2.5 rounded-full border border-slate-100 bg-white px-5 py-2.5 shadow-sm transition-all hover:shadow-md hover:border-slate-200 cursor-pointer">
+                  <span class="h-2.5 w-2.5 rounded-full" :class="item.dotClass || 'bg-slate-400'"></span>
+                  <span class="text-[12px] font-extrabold uppercase tracking-widest text-slate-700"
+                    x-text="page.text(item, 'label')"></span>
+                </div>
+              </template>
             </div>
-          </template>
-          <div class="flex items-center gap-2 rounded-[6px] border border-slate-100 bg-white px-3 py-2 shadow-sm">
-            <span class="h-4 w-4 rounded-[2px] border-2 border-spu-red ring-2 ring-spu-red/20"></span>
-            <span class="text-[11px] font-bold text-spu-blue" x-text="page.label('forced')"></span>
+
+            <div class="flex items-center gap-2">
+              <button type="button" @click="page.downloadHoursSummary()"
+                class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-[12px] font-bold text-spu-blue shadow-sm transition-all hover:border-spu-blue/30 hover:shadow-md">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span x-text="isAr ? 'تحميل الساعات' : 'Download Hours'"></span>
+              </button>
+              <button type="button" @click="page.printStudyPlan()"
+                class="inline-flex items-center gap-2 rounded-lg bg-spu-blue px-4 py-2.5 text-[12px] font-bold text-white shadow-md shadow-spu-blue/20 transition-all hover:bg-spu-blue/90 hover:shadow-lg">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                <span x-text="isAr ? 'طباعة الخطة' : 'Print Plan'"></span>
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div class="mt-8 overflow-x-auto rounded-[8px] border border-slate-200 bg-[#f7f9fc] px-6 pb-10 pt-8 shadow-[0_18px_50px_rgba(9,17,68,0.08)]">
-          <div class="relative min-w-[2040px]" :style="`height: ${page.boardHeight()};`">
-            <svg class="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible"
-                 :viewBox="`0 0 2040 ${page.boardHeightValue()}`"
-                 preserveAspectRatio="none"
-                 :style="`height: ${page.boardHeight()};`"
-                 aria-hidden="true">
-              <defs>
-                <marker id="study-plan-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth">
-                  <path d="M 0 0 L 9 4.5 L 0 9 z" class="fill-slate-400"></path>
-                </marker>
-                <marker id="study-plan-arrow-forced" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth">
-                  <path d="M 0 0 L 9 4.5 L 0 9 z" class="fill-spu-red"></path>
-                </marker>
-              </defs>
-              <g x-html="page.dependencyMarkup()"></g>
-            </svg>
+          <!-- Zoomable Board Viewport -->
+          <div
+            x-ref="viewport"
+            dir="ltr"
+            class="relative overflow-hidden w-full border border-slate-200/50 bg-white shadow-[0_8px_40px_rgba(32,39,89,0.04)]"
+            style="height: 80vh;"
+            x-init="$nextTick(() => page.initZoom($refs.viewport))"
+            @wheel.prevent="page.handleWheel($event)"
+            @mousedown="page.startPan($event)"
+            @mousemove="page.panBy($event)"
+            @mouseup="page.endPan()"
+            @mouseleave="page.endPan()">
 
-            <div class="relative z-10 grid grid-cols-10 gap-10">
-            <template x-for="term in page.terms()" :key="term.id">
-              <div class="relative"
-                   :style="`height: ${page.termLayoutHeight(term)};`">
-                <div class="sticky top-0 z-30 flex h-11 items-center justify-center rounded-[6px] bg-slate-200 text-[13px] font-bold text-spu-blue shadow-sm"
-                     x-text="page.text(term, 'label')"></div>
+            <!-- Zoom Controls -->
+            <div class="absolute top-4 right-4 z-50 flex flex-col gap-2 rtl:left-4 rtl:right-auto">
+              <button type="button" @click="page.zoomIn($refs.viewport)"
+                class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-lg font-black text-spu-blue shadow-md transition-colors hover:bg-slate-50">+</button>
+              <button type="button" @click="page.zoomOut($refs.viewport)"
+                class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-lg font-black text-spu-blue shadow-md transition-colors hover:bg-slate-50">−</button>
+              <button type="button" @click="page.fitToScreen($refs.viewport)"
+                class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-xs font-black text-spu-blue shadow-md transition-colors hover:bg-slate-50">⟲</button>
+            </div>
 
-                <template x-for="layoutCourse in page.layoutCourses(term)" :key="layoutCourse.course.id">
-                  <button type="button"
-                          :data-course-id="layoutCourse.course.id"
-                          :class="page.courseClasses(layoutCourse.course)"
+            <!-- World Layer -->
+            <div class="absolute top-0 left-0 origin-top-left select-none"
+              :class="{ 'cursor-grab': !page.isDragging, 'cursor-grabbing': page.isDragging }"
+              :style="page.transformStyle()">
+
+              <div class="relative" :style="`width: ${page.boardWidth()}px; height: ${page.boardHeight()};`">
+
+                <svg class="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible" aria-hidden="true">
+                  <defs>
+                    <marker id="sp-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                      <path d="M 0 0 L 6 3 L 0 6 z" fill="#cbd5e1"></path>
+                    </marker>
+                    <marker id="sp-arrow-path" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                      <path d="M 0 0 L 7 3.5 L 0 7 z" :fill="page.facultyAccent()"></path>
+                    </marker>
+                    <marker id="sp-arrow-ghost" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                      <path d="M 0 0 L 6 3 L 0 6 z" fill="#e2e8f0"></path>
+                    </marker>
+                  </defs>
+                  <g x-html="page.dependencyMarkup()"></g>
+                </svg>
+
+                <div class="relative z-10 grid"
+                  :style="`grid-template-columns: repeat(10, ${page.columnWidth()}px); gap: ${page.columnGap()}px;`">
+                  <template x-for="term in page.terms()" :key="term.id">
+                    <div class="relative" :style="`height: ${page.termLayoutHeight(term)};`">
+
+                      <div
+                        class="z-30 mb-8 flex h-12 items-center justify-center rounded-2xl bg-white text-[13px] font-black uppercase tracking-[0.2em] text-spu-blue shadow-lg border border-slate-100"
+                        x-text="page.text(term, 'label')"></div>
+
+                      <template x-for="layoutCourse in page.layoutCourses(term)" :key="layoutCourse.course.id">
+                        <button type="button" :data-course-id="layoutCourse.course.id"
                           :style="page.courseStyle(layoutCourse)"
-                          @click="page.selectCourse(layoutCourse.course.id)">
-                    <span class="text-[11px] font-bold uppercase text-slate-400" x-text="layoutCourse.course.code"></span>
-                    <span class="mt-2 block text-[13px] font-bold leading-[18px] text-spu-blue"
-                          x-text="page.text(layoutCourse.course, 'title')"></span>
+                          :dir="isAr ? 'rtl' : 'ltr'"
+                          class="group absolute w-full rounded-2xl border bg-white p-3 text-start shadow-sm transition-all duration-300 hover:shadow-xl focus:outline-none focus:ring-2"
+                          @mouseenter="page.setHoveredCourse(layoutCourse.course.id)"
+                          @mouseleave="page.setHoveredCourse('')"
+                          @click="page.openModal(layoutCourse.course.id)"
+                          :class="[
+                            page.hoveredCourseId === layoutCourse.course.id
+                              ? 'border-spu-blue ring-1 ring-spu-blue/20 shadow-[0_8px_24px_rgba(32,39,89,0.18)] z-50 scale-[1.03]'
+                              : page.hoveredPathIds.includes(layoutCourse.course.id)
+                                ? 'border-spu-blue/40 bg-spu-blue/[0.03]'
+                                : page.hoveredCourseId !== ''
+                                  ? 'opacity-50'
+                                  : '',
 
-                    <span class="pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 z-[80] hidden w-72 -translate-x-1/2 rounded-[6px] border border-slate-200 bg-white p-4 text-left shadow-[0_22px_60px_rgba(9,17,68,0.22)] group-hover/course:block group-focus/course:block rtl:text-right">
-                      <span class="block text-[12px] font-bold text-spu-blue" x-text="page.text(layoutCourse.course, 'title')"></span>
-                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
-                            x-text="`${page.label('credits')}: ${layoutCourse.course.credits} | ${page.typeLabel(layoutCourse.course)}`"></span>
-                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
-                            x-text="`${page.label('prerequisites')}: ${page.prerequisites(layoutCourse.course).map(item => item.code).join(', ') || '-'}`"></span>
-                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
-                            x-text="`${page.label('opensAfter')}: ${page.openers(layoutCourse.course).join(', ') || '-'}`"></span>
-                      <span class="mt-2 block text-[11px] font-semibold leading-5 text-slate-600"
-                            x-show="layoutCourse.course.forced"
-                            x-text="page.label('forced')"></span>
-                      <span class="mt-3 block text-[11px] font-bold text-spu-red" x-text="page.label('viewCourse')"></span>
-                    </span>
-                  </button>
+                            layoutCourse.course.type === 'university' ? 'border-spu-blue/30 focus:ring-spu-blue/50'
+                            : layoutCourse.course.type === 'faculty' ? 'border-slate-200 focus:ring-slate-300'
+                            : layoutCourse.course.type === 'specialization' ? 'border-sky-300 focus:ring-sky-400'
+                            : 'border-slate-200 focus:ring-slate-300'
+                          ]">
+
+                          <div class="flex items-center justify-between gap-2">
+                            <span
+                              class="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400 group-hover:text-spu-red"
+                              x-text="layoutCourse.course.code"></span>
+                            <span class="text-[10px] font-bold text-slate-400 bg-slate-50 px-2 py-0.5 rounded"
+                              x-text="layoutCourse.course.credits + 'cr'"></span>
+                          </div>
+
+                          <span
+                            class="mt-2.5 block text-[12px] font-extrabold leading-[1.5] text-slate-900 group-hover:text-spu-blue"
+                            x-text="page.text(layoutCourse.course, 'title')"></span>
+                        </button>
+                      </template>
+
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Panels Grid -->
+          <div class="grid gap-6 ">
+
+            <!-- Elective Requirements -->
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-8 shadow-[0_4px_24px_rgba(32,39,89,0.06)]">
+              <div class="flex items-center gap-3">
+                <div class="h-8 w-1 rounded-full bg-spu-red"></div>
+                <h3 class="text-[20px] font-black text-spu-blue" x-text="page.label('electiveRequirements')"></h3>
+              </div>
+              <p class="mt-3 text-[13px] font-medium leading-6 text-slate-500" x-text="page.label('electiveNote')"></p>
+
+              <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                <template x-for="pool in page.electivePools()" :key="pool.id">
+                  <div
+                    class="group relative rounded-xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:border-spu-blue/30 hover:shadow-[0_4px_16px_rgba(32,39,89,0.08)]">
+                    <div class="flex items-center gap-2.5">
+                      <span class="h-2.5 w-2.5 rounded-full"
+                        :class="pool.id === 'university' ? 'bg-spu-blue' : pool.id === 'faculty' ? 'bg-spu-blue/60' : 'bg-slate-400'"></span>
+                      <span class="text-[12px] font-bold uppercase tracking-wider text-slate-600"
+                        x-text="page.poolLabel(pool.id)"></span>
+                    </div>
+                    <div class="mt-4 flex items-baseline gap-1.5">
+                      <span class="text-[28px] font-black leading-none text-spu-red" x-text="pool.requiredHours"></span>
+                      <span class="text-[12px] font-bold text-slate-400" x-text="page.label('hoursRequired')"></span>
+                    </div>
+                    <p class="mt-2 text-[12px] leading-5 text-slate-500" x-text="page.text(pool, 'description')"></p>
+                  </div>
                 </template>
               </div>
-            </template>
             </div>
+
+            <!-- Year Promotion Requirements -->
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-8 shadow-[0_4px_24px_rgba(32,39,89,0.06)]">
+              <div class="flex items-center gap-3">
+                <div class="h-8 w-1 rounded-full bg-spu-red"></div>
+                <h3 class="text-[20px] font-black text-spu-blue" x-text="page.label('promotionRequirements')"></h3>
+              </div>
+
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <template x-for="req in page.promotionRequirements()" :key="req.fromYear">
+                  <div
+                    class="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:border-spu-blue/30 hover:shadow-[0_4px_12px_rgba(32,39,89,0.06)]">
+                    <div
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-spu-blue text-[13px] font-black text-white shadow-md shadow-spu-blue/20">
+                      <span x-text="req.fromYear"></span>
+                      <span class="mx-0.5 opacity-60" x-text="isAr ? '←' : '→'"></span>
+                      <span x-text="req.toYear"></span>
+                    </div>
+                    <div>
+                      <div class="text-[20px] font-black leading-none text-spu-red" x-text="req.requiredCredits"></div>
+                      <div class="mt-1 text-[11px] font-bold uppercase tracking-wider text-slate-400"
+                        x-text="page.label('creditsRequired')"></div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+
           </div>
+
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- Course Detail Modal -->
+  <template x-if="page.modalCourseId">
+    <div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      @click.self="page.closeModal()">
+      <div class="relative max-w-md w-[90%] rounded-2xl bg-white p-6 shadow-2xl border border-slate-200"
+        :dir="isAr ? 'rtl' : 'ltr'"
+        x-data="{ course: page.modalCourse() }">
+        <button @click="page.closeModal()"
+          class="absolute top-3 right-3 rtl:left-3 rtl:right-auto text-slate-400 hover:text-slate-600 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div class="flex items-center gap-2 mb-4 flex-wrap">
+          <span class="text-[11px] font-black uppercase tracking-wider text-spu-red" x-text="course.code"></span>
+          <span class="text-[10px] font-bold text-slate-400 bg-slate-50 px-2 py-0.5 rounded"
+            x-text="course.credits + 'cr'"></span>
+          <span class="text-[10px] font-bold uppercase tracking-wider"
+            :class="page._typeKey(course) === 'elective' ? 'text-slate-400' : 'text-spu-blue/60'"
+            x-text="page.typeShortLabel(course)"></span>
         </div>
 
-      </div>
-    </template>
+        <h3 class="text-[18px] font-black text-spu-blue leading-tight" x-text="page.text(course, 'title')"></h3>
 
-    <template x-if="!page.current">
-      <div class="rounded-[8px] border border-slate-200 bg-white p-8 text-center text-spu-blue shadow-sm"
-           x-text="page.label('empty')"></div>
-    </template>
-  </div>
-</section>
+        <div class="mt-5 space-y-4">
+          <template x-if="page.prerequisites(course).length">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5"
+                x-text="page.label('prerequisites')"></p>
+              <div class="flex flex-wrap gap-1.5">
+                <template x-for="prereq in page.prerequisites(course)" :key="prereq.id">
+                  <span
+                    class="text-[11px] font-bold text-spu-blue bg-spu-blue/5 px-2.5 py-1 rounded-md border border-spu-blue/10"
+                    x-text="prereq.code + ' – ' + page.text(prereq, 'title')"></span>
+                </template>
+              </div>
+            </div>
+          </template>
+
+          <template x-if="page.openerCourses(course).length">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5"
+                x-text="page.label('opensAfter')"></p>
+              <div class="flex flex-wrap gap-1.5">
+                <template x-for="opener in page.openerCourses(course)" :key="opener.id">
+                  <span
+                    class="text-[11px] font-bold text-spu-blue/70 bg-spu-blue/[0.03] px-2.5 py-1 rounded-md border border-spu-blue/10"
+                    x-text="opener.code + ' – ' + page.text(opener, 'title')"></span>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <a :href="page.courseHref(course.id)"
+            class="inline-flex items-center gap-2 rounded-lg bg-spu-blue px-4 py-2.5 text-[12px] font-bold text-white hover:bg-spu-blue/90 transition-colors">
+            <span x-text="page.label('viewDetails')"></span>
+            <svg class="w-3.5 h-3.5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <button @click="page.closeModal()"
+            class="inline-flex items-center rounded-lg border border-slate-200 px-4 py-2.5 text-[12px] font-bold text-slate-600 hover:bg-slate-50 transition-colors"
+            x-text="page.label('close')"></button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template x-if="!page.current">
+    <div class="container py-16">
+      <div class="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-sm">
+        <p class="text-[15px] font-bold text-spu-blue/40" x-text="page.label('empty')"></p>
+      </div>
+    </div>
+  </template>
+
+</div>

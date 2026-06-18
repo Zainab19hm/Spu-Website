@@ -108,6 +108,23 @@
       ]
     },
     {
+      "name": "about-profile",
+      "fileName": "about/profile.html",
+      "route": "/about/profile/",
+      "title": "Profile | Syrian Private University",
+      "description": "Read professional leadership and staff profiles from Syrian Private University, including role summaries, responsibilities, qualifications, and official contact channels.",
+      "ogImage": "/images/about/hero-img.jpg",
+      "keywords": [
+        "SPU profile",
+        "Syrian Private University staff",
+        "SPU leadership profile",
+        "SPU academic staff"
+      ],
+      "fragments": [
+        "pages/about/profile/content.html"
+      ]
+    },
+    {
       "name": "about-directorates",
       "fileName": "about/directorates.html",
       "route": "/about/directorates/",

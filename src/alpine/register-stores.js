@@ -6,6 +6,7 @@ const pageStoreLoaders = {
     'about-vision-mission': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-history': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-leadership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'about-profile': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorates': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-partnership': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-staff-directory': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
@@ -13,6 +14,7 @@ const pageStoreLoaders = {
     'about-directorate-student-affairs': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorate-it-services': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
     'about-directorate-public-relations': () => import('./pages/about-stores.js').then((module) => module.registerAboutStores),
+    'professor-profile': () => import('./pages/professor-profile-stores.js').then((module) => module.registerProfessorProfileStores),
     faculties: async () => {
         const [pageModule, customModule] = await Promise.all([
             import('./pages/faculties-page-stores.js'),

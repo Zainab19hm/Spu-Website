@@ -176,6 +176,9 @@ export const aboutPageContent = {
             summaryAr: 'تساعد الأنظمة الواضحة وإرشاد الطلبة وشفافية الإجراءات المتقدمين والطلاب الحاليين على التنقل في الحياة الجامعية بثقة.'
         }
     ],
+    profilePage: {
+        heroImage: '/images/about/DSC_1596.JPG'
+    },
     leadership: {
         heroImage: '/images/about/hero-img.jpg',
         breadcrumbHomeEn: 'Home',
@@ -191,6 +194,7 @@ export const aboutPageContent = {
         filterDefaultEn: 'All Leadership',
         filterDefaultAr: 'جميع أعضاء المجلس',
         rector: {
+            slug: 'rector',
             titleEn: 'UNIVERSITY RECTOR',
             titleAr: 'رئيس الجامعة',
             nameEn: 'Prof. Dr.Abdul Razzaq Al-Hussein',
@@ -199,80 +203,679 @@ export const aboutPageContent = {
             quoteAr: 'تتمثل رؤيتنا في بناء بيئة أكاديمية لا تسعى إلى التميز في البحث والتعليم فحسب، بل تسهم بفاعلية في التنمية المستدامة للمجتمع. نلتزم بتمكين طلابنا ليصبحوا قادة ومبتكرين في المستقبل.',
             linkEn: 'READ FULL PROFILE',
             linkAr: 'قراءة الملف الكامل',
-            url: '#',
-            image: '/images/about/leadership/presedent.jpg'
+            url: '/about/profile.html?id=rector',
+            email: 'rector@spu.edu.sy',
+            phone: '+963 11 9860 100',
+            scholarUrl: 'https://scholar.google.com/citations?user=rector123',
+            linkedinUrl: 'https://linkedin.com/in/abdulrazzaq-alhussein',
+            telegramUrl: 'https://t.me/spu_rector',
+            image: '/images/about/leadership/presedent.jpg',
+            coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'university',
+                    nameAr: 'رئاسة الجامعة',
+                    nameEn: 'University Presidency',
+                    slug: 'university',
+                    route: '#'
+                },
+            office: {
+                building: 'مبنى الإدارة المركزية',
+                floor: 'الطابق الأول',
+                room: 'مكتب رئيس الجامعة',
+                fullAddress: 'مبنى الإدارة المركزية، الطابق الأول، مكتب رئيس الجامعة'
+            },
+            officeHours: 'الأحد - الخميس: 9:00 - 13:00',
+            biography: [
+                'الأستاذ الدكتور عبد الرزاق الحسين هو رئيس الجامعة السورية الخاصة منذ عام 2018. يحمل دكتوراه في الهندسة الكهربائية من جامعة دمشق، وله خبرة واسعة في الإدارة الأكاديمية تزيد عن 25 عاماً.',
+                'تحت قيادته، شهدت الجامعة تطوراً كبيراً في البنية التحتية والبرامج الأكاديمية، كما تم إبرام العديد من اتفاقيات التعاون الدولي مع جامعات مرموقة حول العالم.',
+                'يهتم الدكتور الحسين بتطوير جودة التعليم العالي ودمج التقنيات الحديثة في العملية التعليمية، ويعمل على تعزيز روابط الجامعة مع المجتمع المحلي والقطاع الصناعي.'
+            ],
+            biographyEn: [
+                'Prof. Dr. Abdul Razzaq Al-Hussein has been the Rector of Syrian Private University since 2018. He holds a Ph.D. in Electrical Engineering from Damascus University, with over 25 years of extensive experience in academic administration.',
+                'Under his leadership, the university has witnessed significant development in infrastructure and academic programs, as well as the establishment of numerous international cooperation agreements with prestigious universities worldwide.',
+                'Dr. Al-Hussein is interested in developing the quality of higher education and integrating modern technologies into the educational process, and works to strengthen the university\'s ties with the local community and industrial sector.'
+            ],
+            education: [
+                {
+                    degree: 'دكتوراه في الهندسة الكهربائية',
+                    institution: 'جامعة دمشق',
+                    year: 1995
+                },
+                {
+                    degree: 'ماجستير في الهندسة الإلكترونية',
+                    institution: 'جامعة دمشق',
+                    year: 1990
+                },
+                {
+                    degree: 'بكالوريوس في الهندسة الكهربائية',
+                    institution: 'جامعة دمشق',
+                    year: 1987
+                }
+            ],
+            educationEn: [
+                {
+                    degree: 'Ph.D. in Electrical Engineering',
+                    institution: 'Damascus University',
+                    year: 1995
+                },
+                {
+                    degree: 'M.Sc. in Electronic Engineering',
+                    institution: 'Damascus University',
+                    year: 1990
+                },
+                {
+                    degree: 'B.Sc. in Electrical Engineering',
+                    institution: 'Damascus University',
+                    year: 1987
+                }
+            ],
+            researchStats: {
+                publications: 85,
+                citations: 2100,
+                hIndex: 24,
+                conferences: 45,
+                thesesSupervised: 25
+            },
+            courses: [
+                { id: 'eng-mgt-501', code: 'MGT501', nameAr: 'الإدارة الأكاديمية', nameEn: 'Academic Management', departmentId: 'university' }
+            ]
         },
         vicePresidentsTitleEn: 'Vice Presidents',
         vicePresidentsTitleAr: 'نواب رئيس الجامعة',
         vicePresidents: [
             {
-                nameEn: 'Dr.  Arwa Khair',
+                slug: 'arwa-khair',
+                nameEn: 'Dr. Arwa Khair',
                 image: '/images/about/leadership/pre-presendent.jpg',
-                nameAr: 'د.اروى خير',
+                nameAr: 'د. أروى خير',
                 roleEn: 'VICE PRESIDENT FOR ACADEMIC AFFAIRS',
                 roleAr: 'نائب رئيس الجامعة للشؤون العلمية',
                 descriptionEn: 'Overseeing curriculum development, academic standards, and faculty excellence across all university departments, ensuring alignment with global educational benchmarks.',
-                descriptionAr: 'الإشراف على تطوير المناهج، والمعايير الأكاديمية، وتميز هيئة التدريس في جميع أقسام الجامعة، لضمان التوافق مع المعايير التعليمية العالمية.'
+                descriptionAr: 'الإشراف على تطوير المناهج، والمعايير الأكاديمية، وتميز هيئة التدريس في جميع أقسام الجامعة، لضمان التوافق مع المعايير التعليمية العالمية.',
+                url: '/about/profile.html?id=arwa-khair',
+                email: 'arwa.khair@spu.edu.sy',
+                phone: '+963 11 9860 101',
+                scholarUrl: 'https://scholar.google.com/citations?user=arwa123',
+                linkedinUrl: 'https://linkedin.com/in/arwa-khair',
+                telegramUrl: 'https://t.me/arwa_khair',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'academic-affairs',
+                    nameAr: 'الشؤون العلمية',
+                    nameEn: 'Academic Affairs',
+                    slug: 'academic-affairs',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى الإدارة المركزية',
+                    floor: 'الطابق الثاني',
+                    room: 'مكتب نائب الرئيس',
+                    fullAddress: 'مبنى الإدارة المركزية، الطابق الثاني، مكتب نائب الرئيس'
+                },
+                officeHours: 'الأحد - الخميس: 9:00 - 14:00',
+                biography: [
+                    'د. أروى خير هي نائبة رئيس الجامعة للشؤون العلمية، وتحمل دكتوراه في الإدارة التعليمية. تتمتع بخبرة تزيد عن 15 عاماً في مجال التخطيط الأكاديمي وتطوير المناهج.',
+                    'تركز جهودها على تطوير جودة التعليم وضمان مطابقة البرامج الأكاديمية للمعايير الدولية، كما تشرف على اعتماد البرامج من الجهات المعنية.'
+                ],
+                biographyEn: [
+                    'Dr. Arwa Khair is the Vice President for Academic Affairs, holding a Ph.D. in Educational Administration. She has over 15 years of experience in academic planning and curriculum development.',
+                    'Her efforts focus on developing education quality and ensuring academic programs meet international standards, as well as overseeing program accreditation from relevant authorities.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في الإدارة التعليمية',
+                        institution: 'جامعة دمشق',
+                        year: 2008
+                    },
+                    {
+                        degree: 'ماجستير في علم النفس التربوي',
+                        institution: 'جامعة حلب',
+                        year: 2003
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Educational Administration',
+                        institution: 'Damascus University',
+                        year: 2008
+                    },
+                    {
+                        degree: 'M.Sc. in Educational Psychology',
+                        institution: 'Aleppo University',
+                        year: 2003
+                    }
+                ],
+                researchStats: {
+                    publications: 32,
+                    citations: 580,
+                    hIndex: 12,
+                    conferences: 18,
+                    thesesSupervised: 8
+                },
+                courses: [
+                    { id: 'bus-mgt-501', code: 'MGT501', nameAr: 'الإدارة التعليمية', nameEn: 'Educational Administration', departmentId: 'management' }
+                ]
             },
             {
+                slug: 'mohammad-riad-alghazzi',
                 nameEn: 'Dr. Mohammad Riad Alghazzi',
                 image: '/images/about/leadership/uni-pre.jpg',
-                nameAr: 'د.  محمد رياض الغزي',
+                nameAr: 'د. محمد رياض الغزي',
                 roleEn: 'General Secretary',
-                roleAr: ' أمين الجامعة   ',
-                descriptionEn: 'Overseeing curriculum development, academic standards, and faculty excellence across all university departments, ensuring alignment with global educational benchmarks.',
-                descriptionAr: 'الإشراف على تطوير المناهج، والمعايير الأكاديمية، وتميز هيئة التدريس في جميع أقسام الجامعة، لضمان التوافق مع المعايير التعليمية العالمية.'
+                roleAr: 'أمين الجامعة',
+                descriptionEn: 'Overseeing administrative operations, legal affairs, and institutional governance to ensure smooth functioning of university operations.',
+                descriptionAr: 'الإشراف على العمليات الإدارية والشؤون القانونية والحوكمة المؤسسية لضمان سير عمل الجامعة بسلاسة.',
+                url: '/about/profile.html?id=mohammad-riad-alghazzi',
+                email: 'mohammad.alghazzi@spu.edu.sy',
+                phone: '+963 11 9860 102',
+                scholarUrl: 'https://scholar.google.com/citations?user=riad123',
+                linkedinUrl: 'https://linkedin.com/in/mohammad-alghazzi',
+                telegramUrl: 'https://t.me/mohammad_alghazzi',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'secretary',
+                    nameAr: 'أمانة الجامعة',
+                    nameEn: 'University Secretary',
+                    slug: 'secretary',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى الإدارة المركزية',
+                    floor: 'الطابق الأول',
+                    room: 'مكتب أمين الجامعة',
+                    fullAddress: 'مبنى الإدارة المركزية، الطابق الأول، مكتب أمين الجامعة'
+                },
+                officeHours: 'الأحد - الخميس: 8:00 - 15:00',
+                biography: [
+                    'د. محمد رياض الغزي هو أمين الجامعة، ويحمل دكتوراه في القانون الدولي. يتمتع بخبرة واسعة في الشؤون الإدارية والقانونية للمؤسسات التعليمية.',
+                    'يشرف على جميع الجوانب القانونية والإدارية للجامعة، ويعمل على تطوير الأنظمة واللوائح الداخلية بما يتوافق مع القوانين والأنظمة النافذة.'
+                ],
+                biographyEn: [
+                    'Dr. Mohammad Riad Alghazzi is the University Secretary, holding a Ph.D. in International Law. He has extensive experience in administrative and legal affairs of educational institutions.',
+                    'He oversees all legal and administrative aspects of the university, and works on developing internal systems and regulations in accordance with applicable laws.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في القانون الدولي',
+                        institution: 'جامعة باريس',
+                        year: 2005
+                    },
+                    {
+                        degree: 'ماجستير في القانون العام',
+                        institution: 'جامعة دمشق',
+                        year: 1999
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in International Law',
+                        institution: 'University of Paris',
+                        year: 2005
+                    },
+                    {
+                        degree: 'M.Sc. in Public Law',
+                        institution: 'Damascus University',
+                        year: 1999
+                    }
+                ],
+                researchStats: {
+                    publications: 28,
+                    citations: 420,
+                    hIndex: 10,
+                    conferences: 22,
+                    thesesSupervised: 6
+                }
             }
         ],
         deansTitleEn: 'Faculty Deans',
         deansTitleAr: 'عمداء الكليات',
         deans: [
             {
+                slug: 'ayman-ali',
                 nameEn: 'Dr. Ayman Ali',
-                nameAr: 'د. ايمن علي ',
+                nameAr: 'د. أيمن علي',
                 roleEn: 'DEAN OF MEDICINE',
                 roleAr: 'عميد كلية الطب',
-                image: '/images/about/leadership/medicine-dean.jpg'
+                image: '/images/about/leadership/medicine-dean.jpg',
+                url: '/about/profile.html?id=ayman-ali',
+                email: 'ayman.ali@spu.edu.sy',
+                phone: '+963 11 9860 201',
+                scholarUrl: 'https://scholar.google.com/citations?user=ayman123',
+                linkedinUrl: 'https://linkedin.com/in/ayman-ali',
+                telegramUrl: 'https://t.me/ayman_ali',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'medicine',
+                    nameAr: 'كلية الطب',
+                    nameEn: 'Faculty of Medicine',
+                    slug: 'medicine',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى كلية الطب',
+                    floor: 'الطابق الأرضي',
+                    room: 'مكتب العميد',
+                    fullAddress: 'مبنى كلية الطب، الطابق الأرضي، مكتب العميد'
+                },
+                officeHours: 'الأحد - الخميس: 9:00 - 13:00',
+                biography: [
+                    'د. أيمن علي هو عميد كلية الطب البشري في الجامعة السورية الخاصة. حاصل على دكتوراه في جراحة القلب والصدر من جامعة دمشق.',
+                    'له خبرة تزيد عن 20 عاماً في المجال الطبي والتدريس الجامعي، ونشر أكثر من 40 بحثاً علمياً في مجالات جراحة القلب والأوعية الدموية.'
+                ],
+                biographyEn: [
+                    'Dr. Ayman Ali is the Dean of the Faculty of Medicine at Syrian Private University. He holds a Ph.D. in Cardiothoracic Surgery from Damascus University.',
+                    'He has over 20 years of experience in the medical field and university teaching, and has published more than 40 scientific papers in cardiovascular surgery.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في جراحة القلب والصدر',
+                        institution: 'جامعة دمشق',
+                        year: 2002
+                    },
+                    {
+                        degree: 'ماجستير في الجراحة العامة',
+                        institution: 'جامعة دمشق',
+                        year: 1995
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Cardiothoracic Surgery',
+                        institution: 'Damascus University',
+                        year: 2002
+                    },
+                    {
+                        degree: 'M.Sc. in General Surgery',
+                        institution: 'Damascus University',
+                        year: 1995
+                    }
+                ],
+                researchStats: {
+                    publications: 45,
+                    citations: 890,
+                    hIndex: 16,
+                    conferences: 32,
+                    thesesSupervised: 15
+                },
+                courses: [
+                    { id: 'med-surg-301', code: 'SURG301', nameAr: 'جراحة القلب', nameEn: 'Cardiac Surgery', departmentId: 'medicine-plan' },
+                    { id: 'med-surg-302', code: 'SURG302', nameAr: 'جراحة الصدر', nameEn: 'Thoracic Surgery', departmentId: 'medicine-plan' },
+                    { id: 'med-surg-201', code: 'SURG201', nameAr: 'الجراحة العامة', nameEn: 'General Surgery', departmentId: 'medicine-plan' }
+                ]
             },
             {
+                slug: 'talaat-abu-hatab',
                 nameEn: 'Dr. Talaat Abu Hatab',
-                nameAr: 'د. طلعت ابو حطب ',
+                nameAr: 'د. طلعت أبو حطب',
                 roleEn: 'DEAN OF DENTISTRY',
                 roleAr: 'عميد كلية طب الأسنان',
-                image: '/images/about/leadership/dental-dean.jpg'
-
+                image: '/images/about/leadership/dental-dean.jpg',
+                url: '/about/profile.html?id=talaat-abu-hatab',
+                email: 'talaat.abuhatab@spu.edu.sy',
+                phone: '+963 11 9860 202',
+                scholarUrl: 'https://scholar.google.com/citations?user=talaat123',
+                linkedinUrl: 'https://linkedin.com/in/talaat-abuhatab',
+                telegramUrl: 'https://t.me/talaat_abuhatab',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'dentistry',
+                    nameAr: 'كلية طب الأسنان',
+                    nameEn: 'Faculty of Dentistry',
+                    slug: 'dentistry',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى كلية طب الأسنان',
+                    floor: 'الطابق الأول',
+                    room: 'مكتب العميد',
+                    fullAddress: 'مبنى كلية طب الأسنان، الطابق الأول، مكتب العميد'
+                },
+                officeHours: 'الأحد - الخميس: 9:00 - 13:00',
+                biography: [
+                    'د. طلعت أبو حطب هو عميد كلية طب الأسنان. حاصل على دكتوراه في تقويم الأسنان، وله خبرة واسعة في مجال طب الأسنان التقويمي.',
+                    'يشرف على برامج الكلية الأكاديمية ويعمل على تطوير المناهج الدراسية بما يتوافق مع أحدث التطورات في مجال طب الأسنان.'
+                ],
+                biographyEn: [
+                    'Dr. Talaat Abu Hatab is the Dean of the Faculty of Dentistry. He holds a Ph.D. in Orthodontics, with extensive experience in the field of orthodontics.',
+                    'He oversees the college\'s academic programs and works to develop curricula in line with the latest developments in dentistry.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في تقويم الأسنان',
+                        institution: 'جامعة دمشق',
+                        year: 2005
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Orthodontics',
+                        institution: 'Damascus University',
+                        year: 2005
+                    }
+                ],
+                researchStats: {
+                    publications: 38,
+                    citations: 650,
+                    hIndex: 14,
+                    conferences: 28,
+                    thesesSupervised: 12
+                },
+                courses: [
+                    { id: 'den-orth-401', code: 'ORTH401', nameAr: 'تقويم الأسنان', nameEn: 'Orthodontics', departmentId: 'dentistry-plan' },
+                    { id: 'den-ped-401', code: 'PED401', nameAr: 'طب أسنان الأطفال', nameEn: 'Pediatric Dentistry', departmentId: 'dentistry-plan' }
+                ]
             },
             {
+                slug: 'hossam-shahrour',
                 nameEn: 'Dr. Hossam Shahrour',
-                nameAr: 'د. حسام شحرور ',
+                nameAr: 'د. حسام شحرور',
                 roleEn: 'DEAN OF PHARMACY',
                 roleAr: 'عميد كلية الصيدلة',
-                image: '/images/about/leadership/pharmacy-dean.jpg'
+                image: '/images/about/leadership/pharmacy-dean.jpg',
+                url: '/about/profile.html?id=hossam-shahrour',
+                email: 'hossam.shahrour@spu.edu.sy',
+                phone: '+963 11 9860 203',
+                scholarUrl: 'https://scholar.google.com/citations?user=hossam123',
+                linkedinUrl: 'https://linkedin.com/in/hossam-shahrour',
+                telegramUrl: 'https://t.me/hossam_shahrour',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'pharmacy',
+                    nameAr: 'كلية الصيدلة',
+                    nameEn: 'Faculty of Pharmacy',
+                    slug: 'pharmacy',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى كلية الصيدلة',
+                    floor: 'الطابق الثاني',
+                    room: 'مكتب العميد',
+                    fullAddress: 'مبنى كلية الصيدلة، الطابق الثاني، مكتب العميد'
+                },
+                officeHours: 'الأحد - الخميس: 10:00 - 14:00',
+                biography: [
+                    'د. حسام شحرور هو عميد كلية الصيدلة. حاصل على دكتوراه في الكيمياء الدوائية، وله إسهامات بحثية متميزة في مجال تصميم الأدوية.',
+                    'نشر أكثر من 50 بحثاً علمياً في مجلات عالمية مرموقة، ويشرف على العديد من رسائل الماجستير والدكتوراه.'
+                ],
+                biographyEn: [
+                    'Dr. Hossam Shahrour is the Dean of the Faculty of Pharmacy. He holds a Ph.D. in Pharmaceutical Chemistry, with distinguished research contributions in drug design.',
+                    'He has published more than 50 scientific papers in prestigious international journals, and supervises many master\'s and doctoral theses.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في الكيمياء الدوائية',
+                        institution: 'جامعة دمشق',
+                        year: 2008
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Pharmaceutical Chemistry',
+                        institution: 'Damascus University',
+                        year: 2008
+                    }
+                ],
+                researchStats: {
+                    publications: 52,
+                    citations: 1200,
+                    hIndex: 20,
+                    conferences: 35,
+                    thesesSupervised: 18
+                },
+                courses: [
+                    { id: 'pharm-chem-301', code: 'PHM301', nameAr: 'الكيمياء الدوائية', nameEn: 'Pharmaceutical Chemistry', departmentId: 'pharmacy-plan' },
+                    { id: 'pharm-des-401', code: 'PHM401', nameAr: 'تصميم الأدوية', nameEn: 'Drug Design', departmentId: 'pharmacy-plan' },
+                    { id: 'pharm-anal-305', code: 'PHM305', nameAr: 'التحليل الدوائي', nameEn: 'Pharmaceutical Analysis', departmentId: 'pharmacy-plan' }
+                ]
             },
             {
-                nameEn: 'Dr.Mouhib Alnoukari',
-                nameAr: 'د. مهيب النقري   ',
+                slug: 'mouhib-alnoukari',
+                nameEn: 'Dr. Mouhib Alnoukari',
+                nameAr: 'د. مهيب النقري',
                 roleEn: 'DEAN OF ENGINEERING',
                 roleAr: 'عميد كلية الهندسة',
-                image: '/images/about/leadership/Ai-dean.jpg'
+                image: '/images/about/leadership/Ai-dean.jpg',
+                url: '/about/profile.html?id=mouhib-alnoukari',
+                email: 'mouhib.alnoukari@spu.edu.sy',
+                phone: '+963 11 9860 204',
+                scholarUrl: 'https://scholar.google.com/citations?user=mouhib123',
+                linkedinUrl: 'https://linkedin.com/in/mouhib-alnoukari',
+                telegramUrl: 'https://t.me/mouhib_alnoukari',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'ai-engineering',
+                    nameAr: 'كلية الهندسة',
+                    nameEn: 'Faculty of Engineering',
+                    slug: 'ai-engineering',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى كلية الهندسة',
+                    floor: 'الطابق الأول',
+                    room: 'مكتب العميد',
+                    fullAddress: 'مبنى كلية الهندسة، الطابق الأول، مكتب العميد'
+                },
+                officeHours: 'الأحد - الخميس: 9:00 - 13:00',
+                biography: [
+                    'د. مهيب النقري هو عميد كلية الهندسة. متخصص في هندسة الذكاء الاصطناعي وعلم البيانات، وله خبرة واسعة في المجالات التقنية الحديثة.',
+                    'يعمل على تطوير برامج الكلية بما يتواكب مع متطلبات سوق العمل والتطورات التقنية العالمية.'
+                ],
+                biographyEn: [
+                    'Dr. Mouhib Alnoukari is the Dean of the Faculty of Engineering. He specializes in Artificial Intelligence Engineering and Data Science, with extensive experience in modern technical fields.',
+                    'He works on developing the college\'s programs to keep pace with labor market requirements and global technical developments.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في علوم الحاسوب',
+                        institution: 'جامعة مانشستر',
+                        year: 2010
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Computer Science',
+                        institution: 'University of Manchester',
+                        year: 2010
+                    }
+                ],
+                researchStats: {
+                    publications: 42,
+                    citations: 980,
+                    hIndex: 17,
+                    conferences: 38,
+                    thesesSupervised: 14
+                },
+                courses: [
+                    { id: 'ai-201', code: 'AI201', nameAr: 'الذكاء الاصطناعي', nameEn: 'Artificial Intelligence', departmentId: 'si' },
+                    { id: 'ml-301', code: 'ML301', nameAr: 'تعلم الآلة', nameEn: 'Machine Learning', departmentId: 'si' },
+                    { id: 'data-301', code: 'DATA301', nameAr: 'علم البيانات', nameEn: 'Data Science', departmentId: 'si' }
+                ]
             },
             {
+                slug: 'mahmoud-hadid',
                 nameEn: 'Dr. Mahmoud Hadid',
-                nameAr: 'د. محمود حديد ',
-                roleEn: 'DEAN OF petroleum engineering',
-                roleAr: 'عميد كلية هندسة البترول ',
-                image: '/images/about/leadership/petrol-dean.jpg'
+                nameAr: 'د. محمود حديد',
+                roleEn: 'DEAN OF PETROLEUM ENGINEERING',
+                roleAr: 'عميد كلية هندسة البترول',
+                image: '/images/about/leadership/petrol-dean.jpg',
+                url: '/about/profile.html?id=mahmoud-hadid',
+                email: 'mahmoud.hadid@spu.edu.sy',
+                phone: '+963 11 9860 205',
+                scholarUrl: 'https://scholar.google.com/citations?user=mahmoud123',
+                linkedinUrl: 'https://linkedin.com/in/mahmoud-hadid',
+                telegramUrl: 'https://t.me/mahmoud_hadid',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'petroleum',
+                    nameAr: 'كلية هندسة البترول',
+                    nameEn: 'Faculty of Petroleum Engineering',
+                    slug: 'petroleum',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى كلية هندسة البترول',
+                    floor: 'الطابق الأرضي',
+                    room: 'مكتب العميد',
+                    fullAddress: 'مبنى كلية هندسة البترول، الطابق الأرضي، مكتب العميد'
+                },
+                officeHours: 'الأحد - الخميس: 9:00 - 13:00',
+                biography: [
+                    'د. محمود حديد هو عميد كلية هندسة البترول. حاصل على دكتوراه في هندسة النفط، وله خبرة عملية في مجال استكشاف وإنتاج النفط.',
+                    'يعمل على تطوير البرامج الأكاديمية لكلية هندسة البترول وتعزيز التعاون مع الشركات النفطية.'
+                ],
+                biographyEn: [
+                    'Dr. Mahmoud Hadid is the Dean of the Faculty of Petroleum Engineering. He holds a Ph.D. in Petroleum Engineering, with practical experience in oil exploration and production.',
+                    'He works on developing the academic programs for the Faculty of Petroleum Engineering and enhancing cooperation with oil companies.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في هندسة النفط',
+                        institution: 'جامعة تكساس',
+                        year: 2006
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Petroleum Engineering',
+                        institution: 'University of Texas',
+                        year: 2006
+                    }
+                ],
+                researchStats: {
+                    publications: 35,
+                    citations: 720,
+                    hIndex: 13,
+                    conferences: 25,
+                    thesesSupervised: 10
+                },
+                courses: [
+                    { id: 'pet-well-401', code: 'PET401', nameAr: 'هندسة الآبار', nameEn: 'Well Engineering', departmentId: 'petroleum-plan' },
+                    { id: 'pet-prod-401', code: 'PET402', nameAr: 'إنتاج النفط', nameEn: 'Oil Production', departmentId: 'petroleum-plan' },
+                    { id: 'pet-res-401', code: 'PET403', nameAr: 'خواص الخزانات', nameEn: 'Reservoir Properties', departmentId: 'petroleum-plan' }
+                ]
             },
-            
             {
+                slug: 'samar-habib',
                 nameEn: 'Dr. Samar Habib',
-                nameAr: 'د. سمر حبيب  ',
-                roleEn: 'DEAN OF busnis administration',
+                nameAr: 'د. سمر حبيب',
+                roleEn: 'DEAN OF BUSINESS ADMINISTRATION',
                 roleAr: 'عميد كلية إدارة الأعمال',
-                image: '/images/about/leadership/busnins-dean.jpg'
+                image: '/images/about/leadership/busnins-dean.jpg',
+                url: '/about/profile.html?id=samar-habib',
+                email: 'samar.habib@spu.edu.sy',
+                phone: '+963 11 9860 206',
+                scholarUrl: 'https://scholar.google.com/citations?user=samar123',
+                linkedinUrl: 'https://linkedin.com/in/samar-habib',
+                telegramUrl: 'https://t.me/samar_habib',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'business',
+                    nameAr: 'كلية إدارة الأعمال',
+                    nameEn: 'Faculty of Business Administration',
+                    slug: 'business',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى كلية إدارة الأعمال',
+                    floor: 'الطابق الثاني',
+                    room: 'مكتب العميد',
+                    fullAddress: 'مبنى كلية إدارة الأعمال، الطابق الثاني، مكتب العميد'
+                },
+                officeHours: 'الأحد - الخميس: 9:00 - 13:00',
+                biography: [
+                    'د. سمر حبيب هي عميدة كلية إدارة الأعمال. حاصلة على دكتوراه في إدارة الأعمال، ومتخصصة في إدارة الموارد البشرية والسلوك التنظيمي.',
+                    'تهتم بتطوير قدرات الطلاب الإدارية والقيادية وإعدادهم لسوق العمل المحلي والإقليمي.'
+                ],
+                biographyEn: [
+                    'Dr. Samar Habib is the Dean of the Faculty of Business Administration. She holds a Ph.D. in Business Administration, specializing in Human Resource Management and Organizational Behavior.',
+                    'She is interested in developing students\' administrative and leadership capabilities and preparing them for the local and regional labor market.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في إدارة الأعمال',
+                        institution: 'جامعة دمشق',
+                        year: 2012
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Business Administration',
+                        institution: 'Damascus University',
+                        year: 2012
+                    }
+                ],
+                researchStats: {
+                    publications: 30,
+                    citations: 540,
+                    hIndex: 11,
+                    conferences: 20,
+                    thesesSupervised: 9
+                },
+                courses: [
+                    { id: 'bus-hrm-401', code: 'MGT401', nameAr: 'إدارة الموارد البشرية', nameEn: 'Human Resource Management', departmentId: 'management' },
+                    { id: 'bus-ob-401', code: 'MGT402', nameAr: 'السلوك التنظيمي', nameEn: 'Organizational Behavior', departmentId: 'management' },
+                    { id: 'bus-int-401', code: 'MGT403', nameAr: 'إدارة الأعمال الدولية', nameEn: 'International Business Management', departmentId: 'management' }
+                ]
             },
-            
-            
+            {
+                slug: 'ammar-ghada',
+                nameEn: 'Dr. Ammar Ghada',
+                nameAr: 'د. عمار غضة',
+                roleEn: 'DEAN OF BUILDING & CONSTRUCTION ENGINEERING',
+                roleAr: 'عميد كلية هندسة التشييد والبناء',
+                image: '/images/uni-main-place.JPG',
+                url: '/about/profile.html?id=ammar-ghada',
+                email: 'ammar.ghada@spu.edu.sy',
+                phone: '+963 11 9860 207',
+                coverImage: '/images/uni-main-place.JPG',
+                faculty: {
+                    id: 'Construction',
+                    nameAr: 'كلية هندسة التشييد والبناء',
+                    nameEn: 'Faculty of Building & Construction Engineering',
+                    slug: 'building-construction-engineering',
+                    route: '#'
+                },
+                office: {
+                    building: 'مبنى كلية هندسة التشييد',
+                    floor: 'الطابق الأول',
+                    room: 'مكتب العميد',
+                    fullAddress: 'مبنى كلية هندسة التشييد، الطابق الأول، مكتب العميد'
+                },
+                officeHours: 'الأحد - الخميس: 9:00 - 13:00',
+                biography: [
+                    'د. عمار غضة هو عميد كلية هندسة التشييد والبناء. يمتلك خبرة واسعة في مجال الهندسة الإنشائية والتصميم المعماري.',
+                    'يسعى لتطوير برامج الكلية لإعداد مهندسين مؤهلين للمساهمة في مشاريع الإعمار والتنمية.'
+                ],
+                biographyEn: [
+                    'Dr. Ammar Ghada is the Dean of the Faculty of Building and Construction Engineering. He has extensive experience in structural engineering and architectural design.',
+                    'He seeks to develop the college\'s programs to prepare qualified engineers to contribute to reconstruction and development projects.'
+                ],
+                education: [
+                    {
+                        degree: 'دكتوراه في الهندسة المدنية',
+                        institution: 'جامعة دمشق',
+                        year: 2009
+                    }
+                ],
+                educationEn: [
+                    {
+                        degree: 'Ph.D. in Civil Engineering',
+                        institution: 'Damascus University',
+                        year: 2009
+                    }
+                ],
+                researchStats: {
+                    publications: 28,
+                    citations: 480,
+                    hIndex: 10,
+                    conferences: 18,
+                    thesesSupervised: 8
+                },
+                courses: [
+                    { id: 'const-struct-401', code: 'CON401', nameAr: 'التحليل الإنشائي', nameEn: 'Structural Analysis', departmentId: 'construction-plan' },
+                    { id: 'const-meth-401', code: 'CON402', nameAr: 'طرق البناء', nameEn: 'Construction Methods', departmentId: 'construction-plan' }
+                ]
+            }
         ]
     },
     history: {
@@ -378,78 +981,15 @@ export const aboutPageContent = {
         filterAllEn: 'All Faculties',
         filterAllAr: 'جميع الكليات',
         staff: [
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF MEDICINE',
-                roleAr: 'عميد كلية الطب',
-                faculty: 'medicine',
-                image: '/images/about/leadership/medicine-dean.jpg'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF ENGINEERING',
-                roleAr: 'عميد كلية الهندسة',
-                faculty: 'engineering',
-                image: '/images/spu-construction-logo.png'
-            },
-            {
-                nameEn: 'Dr. Full Nae',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF BUSINESS',
-                roleAr: 'عميد كلية إدارة الأعمال',
-                faculty: 'business',
-                image: '/images/about/leadership/busnins-dean.jpg'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF DENTISTRY',
-                roleAr: 'عميد كلية طب الأسنان',
-                faculty: 'dentistry',
-                image: '/images/about/leadership/dental-dean.jpg'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF PHARMACY',
-                roleAr: 'عميد كلية الصيدلة',
-                faculty: 'pharmacy',
-                image: '/images/pharmacy-dean.jpg'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF MEDICINE',
-                roleAr: 'عميد كلية الطب',
-                faculty: 'medicine',
-                image: '/images/about/leadership/medicine-dean.jpg'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF ENGINEERING',
-                roleAr: 'عميد كلية الهندسة',
-                faculty: 'engineering',
-                image: '/images/spu-construction-logo.png'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF BUSINESS',
-                roleAr: 'عميد كلية إدارة الأعمال',
-                faculty: 'business',
-                image: '/images/about/leadership/busnins-dean.jpg'
-            },
-            {
-                nameEn: 'Dr. Full name',
-                nameAr: 'د. الاسم الكامل',
-                roleEn: 'DEAN OF DENTISTRY',
-                roleAr: 'عميد كلية طب الأسنان',
-                faculty: 'dentistry',
-                image: '/images/about/leadership/dental-dean.jpg'
-            }
+            { slug: 'dr-lina-khatib-100', faculty: 'medicine', image: '/images/about/leadership/medicine-dean.jpg' },
+            { slug: 'dr-omar-darwish-101', faculty: 'engineering', image: '/images/spu-construction-logo.png' },
+            { slug: 'dr-rania-mansour-102', faculty: 'business', image: '/images/about/leadership/busnins-dean.jpg' },
+            { slug: 'dr-nabil-haddad-103', faculty: 'dentistry', image: '/images/about/leadership/dental-dean.jpg' },
+            { slug: 'dr-maya-saleh-104', faculty: 'pharmacy', image: '/images/pharmacy-dean.jpg' },
+            { slug: 'dr-samer-qassem-105', faculty: 'medicine', image: '/images/about/leadership/medicine-dean.jpg' },
+            { slug: 'eng-karim-nasser-106', faculty: 'engineering', image: '/images/spu-construction-logo.png' },
+            { slug: 'ms-hiba-taha-107', faculty: 'business', image: '/images/about/leadership/busnins-dean.jpg' },
+            { slug: 'dr-nour-ibrahim-108', faculty: 'dentistry', image: '/images/about/leadership/dental-dean.jpg' }
         ]
     },
     directorates: {

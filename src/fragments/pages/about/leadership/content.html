@@ -127,6 +127,7 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        text-decoration: none;
     }
 
     .vp-card-media {
@@ -197,6 +198,7 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex;
         flex-direction: column;
+        text-decoration: none;
     }
 
     .dean-card:hover {
@@ -331,6 +333,9 @@
                     this.currentDeanIndex--;
                 }
             },
+            profileUrl(person) {
+                return `/about/profile.html?id=${encodeURIComponent(person?.slug || 'profile')}`;
+            },
             get visibleDeans() {
                 return this.deans.slice(this.currentDeanIndex, this.currentDeanIndex + 3);
             }
@@ -371,7 +376,7 @@
                     x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.quoteAr : $store.aboutPage.leadership.rector.quoteEn">
                 </blockquote>
 
-                <a :href="$store.aboutPage.leadership.rector.url"
+                <a :href="profileUrl($store.aboutPage.leadership.rector)"
                     class="mt-12 inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-spu-blue transition hover:text-spu-red">
                     <span
                         x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.leadership.rector.linkAr : $store.aboutPage.leadership.rector.linkEn"></span>
@@ -391,7 +396,7 @@
 
             <div class="vp-grid">
                 <template x-for="(vp, index) in $store.aboutPage.leadership.vicePresidents" :key="index">
-                    <div class="vp-card">
+                    <a class="vp-card" :href="profileUrl(vp)">
                         <div class="vp-card-media">
                             <template x-if="vp.image">
                                 <img :src="vp.image"
@@ -407,7 +412,7 @@
                             <p class="text-sm text-gray-600 leading-relaxed max-w-sm mx-auto"
                                 x-text="$store.app.currentLang === 'ar' ? vp.descriptionAr : vp.descriptionEn"></p>
                         </div>
-                    </div>
+                    </a>
                 </template>
             </div>
         </div>
@@ -430,7 +435,7 @@
 
                 <div class="deans-grid">
                     <template x-for="(dean, index) in visibleDeans" :key="index">
-                        <article class="dean-card">
+                        <a class="dean-card" :href="profileUrl(dean)">
                             <div class="dean-card-media">
                                 <template x-if="dean.image">
                                     <img :src="dean.image"
@@ -444,7 +449,7 @@
                                 <p class="text-[0.68rem] font-black uppercase tracking-[0.1em] text-spu-red"
                                     x-text="$store.app.currentLang === 'ar' ? dean.roleAr : dean.roleEn"></p>
                             </div>
-                        </article>
+                        </a>
                     </template>
                 </div>
 

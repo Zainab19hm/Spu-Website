@@ -155,6 +155,7 @@ const pageWarmupModules = {
   'about-vision-mission': ['/src/alpine/pages/about-stores.js'],
   'about-history': ['/src/alpine/pages/about-stores.js'],
   'about-leadership': ['/src/alpine/pages/about-stores.js'],
+  'about-profile': ['/src/alpine/pages/about-stores.js'],
   'about-directorates': ['/src/alpine/pages/about-stores.js'],
   'about-partnership': ['/src/alpine/pages/about-stores.js'],
   'about-directorate-scientific-research': ['/src/alpine/pages/about-stores.js'],

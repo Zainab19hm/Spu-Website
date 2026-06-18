@@ -90,6 +90,7 @@ export const facultiesCatalog = {
                 { id: 'objectives', labelAr: 'أهدافنا', labelEn: 'Objectives', contentAr: 'توفير بيئة تعليمية متطورة، تعزيز البحث العلمي لدى الطلاب، وربط الكلية بالمجتمع عبر تقديم خدمات رعاية صحية متميزة.', contentEn: 'Providing an advanced educational environment and promoting scientific research.' }
             ],
             dean: {
+                slug: 'ayman-ali',
                 sectionLabelAr: 'رسالة عميد الكلية',
                 sectionLabelEn: "Dean's Message",
                 titlePrefixAr: 'كلمة',
@@ -265,6 +266,7 @@ export const facultiesCatalog = {
                 { id: 'objectives', labelAr: 'أهدافنا', labelEn: 'Objectives', contentAr: 'تخريج أطباء أسنان قادرين على تقديم أفضل رعاية فموية ودمج التكنولوجيا في العلاج.', contentEn: 'Graduating dentists capable of providing best oral care.' }
             ],
             dean: {
+                slug: 'talaat-abu-hatab',
                 sectionLabelAr: 'رسالة عميد الكلية',
                 sectionLabelEn: "Dean's Message",
                 titlePrefixAr: 'كلمة',
@@ -431,15 +433,16 @@ export const facultiesCatalog = {
                 { id: 'objectives', labelAr: 'أهدافنا', labelEn: 'Objectives', contentAr: 'تطوير البحث الدوائي وخدمة الرعاية الصحية المجتمعية.', contentEn: 'Developing pharmaceutical research.' }
             ],
             dean: {
+                slug: 'hossam-shahrour',
                 sectionLabelAr: 'رسالة عميد الكلية',
                 sectionLabelEn: "Dean's Message",
                 titlePrefixAr: 'كلمة',
                 titlePrefixEn: 'The',
-                nameAr: 'أ.د. عصام عبود',
-                nameEn: 'Dr. Issam Aboud',
+                nameAr: 'أ.د. حسام شحرور',
+                nameEn: 'Dr. Hossam Shahrour',
                 roleAr: 'عميد كلية الصيدلة',
                 roleEn: 'Dean of the Faculty',
-                image: '/images/pharmacy-dean.jpg',
+                image: '/images/about/leadership/pharmacy-dean.jpg',
                 messageAr: 'نهدف إلى تخريج صيادلة ذوي كفاءة عالية في مجال الصناعة الدوائية والتحليل والرعاية الصيدلانية السريرية.',
                 messageEn: 'Our goal is to graduate highly efficient pharmacists in pharmaceutical industry and clinical pharmacy care.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',
@@ -603,6 +606,7 @@ export const facultiesCatalog = {
                 { id: 'objectives', labelAr: 'أهدافنا', labelEn: 'Objectives', contentAr: 'تمكين الطلاب من أدوات الحوسبة السحابية وهندسة البيانات.', contentEn: 'Empowering students with cloud tools.' }
             ],
             dean: {
+                slug: 'mouhib-alnoukari',
                 sectionLabelAr: 'رسالة عميد الكلية',
                 sectionLabelEn: "Dean's Message",
                 titlePrefixAr: 'كلمة',
@@ -775,6 +779,7 @@ export const facultiesCatalog = {
                 { id: 'objectives', labelAr: 'أهدافنا', labelEn: 'Objectives', contentAr: 'إتقان إدارة المشاريع الهندسية الحديثة.', contentEn: 'Mastering modern project management.' }
             ],
             dean: {
+                slug: 'ammar-ghada',
                 sectionLabelAr: 'رسالة عميد الكلية',
                 sectionLabelEn: "Dean's Message",
                 titlePrefixAr: 'كلمة',
@@ -938,15 +943,16 @@ export const facultiesCatalog = {
                 { id: 'objectives', labelAr: 'أهدافنا', labelEn: 'Objectives', contentAr: 'تعزيز مهارات الحفر وهندسة المكامن الجوفية.', contentEn: 'Enhancing drilling and reservoir skills.' }
             ],
             dean: {
+                slug: 'mahmoud-hadid',
                 sectionLabelAr: 'رسالة عميد الكلية',
                 sectionLabelEn: "Dean's Message",
                 titlePrefixAr: 'كلمة',
                 titlePrefixEn: 'The',
-                nameAr: 'أ.د. جان سعد',
-                nameEn: 'Dr. Jean Saad',
+                nameAr: 'د. محمود حديد',
+                nameEn: 'Dr. Mahmoud Hadid',
                 roleAr: 'عميد كلية هندسة البترول',
                 roleEn: 'Dean of the Faculty',
-                image: '/images/petroleom-dean.jpg',
+                image: '/images/about/leadership/petrol-dean.jpg',
                 messageAr: 'نعمل على تزويد طلابنا بالخبرات التقنية اللازمة للعمل في صناعة النفط والغاز مع مراعاة معايير السلامة والبيئة.',
                 messageEn: 'We work to provide students with the technical expertise for the oil industry with safety standards.',
                 ctaAr: 'الرؤية الاستراتيجية الكاملة',
@@ -1088,6 +1094,7 @@ export const facultiesCatalog = {
                 { id: 'objectives', labelAr: 'أهدافنا', labelEn: 'Objectives', contentAr: 'تنمية مهارات التخطيط الاستراتيجي والذكاء المالي.', contentEn: 'Developing strategic planning skills.' }
             ],
             dean: {
+                slug: 'samar-habib',
                 sectionLabelAr: 'رسالة عميد الكلية',
                 sectionLabelEn: "Dean's Message",
                 titlePrefixAr: 'كلمة',
