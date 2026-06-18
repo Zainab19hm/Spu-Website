@@ -1,48 +1,298 @@
 <div class="font-hacen bg-white" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'"
     x-data="{
         page: $store.admissionsPage.documentsPage,
+        activeTab: 'checklist',
+        activeSubTab: 'freshman',
         get isAr() { return $store.app.currentLang === 'ar' },
+        get activeTabData() { return this.page.tabs.find(t => t.id === this.activeTab) || this.page.tabs[0] },
+        get activeSubTabData() {
+            if (this.activeTab !== 'checklist') return null;
+            const checklist = this.page.tabs.find(t => t.id === 'checklist');
+            return checklist ? (checklist.subTabs.find(s => s.id === this.activeSubTab) || checklist.subTabs[0]) : null;
+        },
         text(item, key) {
             return this.isAr ? item[key + 'Ar'] : item[key + 'En'];
         }
     }">
+
+    <!-- Hero Banner -->
     <section class="bg-white">
-        <div class="relative flex h-[300px] items-center justify-center overflow-hidden lg:h-[310px]">
+        <div class="relative flex h-[370px] items-center justify-center overflow-hidden lg:h-[400px]">
             <img :src="page.heroImage" :alt="text(page, 'title')" class="absolute inset-0 h-full w-full object-cover">
             <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
             <div class="container relative z-10 mx-auto px-6 text-center text-white">
                 <nav class="mb-4 flex items-center justify-center gap-2 text-xs font-black text-white" aria-label="Breadcrumb">
                     <a href="/" class="rounded bg-spu-blue/35 px-2 py-1 transition hover:bg-spu-blue/55" x-text="text(page, 'breadcrumbHome')"></a>
-                    <span aria-hidden="true" class="text-white/75">&gt;</span>
+                    <span aria-hidden="true" class="text-white/75">›</span>
                     <a href="/admissions.html" class="transition hover:text-white/80" x-text="text(page, 'breadcrumbParent')"></a>
-                    <span aria-hidden="true" class="text-white/75">&gt;</span>
+                    <span aria-hidden="true" class="text-white/75">›</span>
                     <span x-text="text(page, 'breadcrumbCurrent')"></span>
                 </nav>
                 <h1 class="text-[32px] font-black leading-tight text-white md:text-[42px]" x-text="text(page, 'title')"></h1>
+                <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+                    <a :href="page.applyUrl"
+                        class="inline-flex h-10 min-w-[136px] items-center justify-center rounded-md bg-spu-red px-8 text-xs font-black uppercase tracking-wide text-white transition hover:bg-spu-blue"
+                        x-text="text(page, 'applyLabel')"></a>
+                    <a :href="page.requestInfoUrl"
+                        class="inline-flex h-10 min-w-[136px] items-center justify-center rounded-md border border-white bg-white/5 px-8 text-xs font-black text-white transition hover:bg-white hover:text-spu-blue"
+                        x-text="text(page, 'requestInfoLabel')"></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-white py-20">
-        <div class="container mx-auto max-w-[1010px] px-6">
-            <template x-for="cat in page.categories" :key="cat.nameEn">
-                <section class="mb-12 border-s-2 border-slate-300 ps-8 last:mb-0">
-                    <h2 class="mb-8 text-2xl font-black text-spu-blue md:text-[28px]" x-text="text(cat, 'name')"></h2>
+    <!-- Main Tab Navigation -->
+    <section class="border-b border-slate-200 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto flex max-w-[900px] items-center justify-center overflow-x-auto text-center text-xs font-black tracking-wide text-slate-700">
+                <template x-for="tab in page.tabs" :key="tab.id">
+                    <button type="button"
+                        class="whitespace-nowrap px-5 pb-4 pt-5 transition hover:text-spu-red md:px-8"
+                        :class="activeTab === tab.id ? 'border-b-2 border-spu-red text-spu-red' : 'border-b-2 border-transparent'"
+                        :aria-selected="activeTab === tab.id"
+                        @click="activeTab = tab.id; if(tab.id === 'checklist') activeSubTab = 'freshman'"
+                        x-text="text(tab, 'label')"></button>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab 1: Admission Checklist -->
+    <template x-if="activeTab === 'checklist'">
+        <section class="bg-white py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <!-- Sub-tabs -->
+                <div class="mx-auto mb-10 flex max-w-[760px] flex-wrap items-center justify-center gap-2">
+                    <template x-for="sub in activeTabData.subTabs" :key="sub.id">
+                        <button type="button"
+                            class="rounded-md px-5 py-2.5 text-xs font-black transition"
+                            :class="activeSubTab === sub.id ? 'bg-spu-blue text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
+                            @click="activeSubTab = sub.id"
+                            x-text="text(sub, 'label')"></button>
+                    </template>
+                </div>
+
+                <div class="mx-auto max-w-[1010px]" x-show="activeSubTabData" x-collapse>
+                    <!-- Description -->
+                    <p class="mb-8 text-center text-sm font-bold leading-7 text-slate-700" x-text="text(activeSubTabData, 'desc')"></p>
+
+                    <!-- Document List -->
                     <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
-                        <template x-for="(item, index) in cat.items" :key="item.en || item.titleEn">
-                            <div class="flex items-center gap-4 px-4 py-4 text-sm text-black md:px-5"
-                                :class="index < cat.items.length - 1 ? 'border-b border-slate-200' : ''">
-                                <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-spu-red text-spu-red" aria-hidden="true">
-                                    <svg viewBox="0 0 20 20" class="h-3 w-3 fill-none stroke-current stroke-[2.5]">
-                                        <path d="m5 10 3 3 7-7" />
-                                    </svg>
-                                </span>
-                                <span x-text="isAr ? (item.ar || item.titleAr) : (item.en || item.titleEn)"></span>
+                        <template x-for="(item, index) in activeSubTabData.items" :key="item.nameEn">
+                            <div class="flex flex-col gap-2 px-5 py-4 md:flex-row md:items-center md:justify-between md:gap-4"
+                                :class="index < activeSubTabData.items.length - 1 ? 'border-b border-slate-200' : ''">
+                                <div class="flex items-start gap-3">
+                                    <span class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2"
+                                        :class="item.required ? 'border-spu-red text-spu-red' : 'border-spu-blue text-spu-blue'"
+                                        aria-hidden="true">
+                                        <svg viewBox="0 0 20 20" class="h-3 w-3 fill-none stroke-current stroke-[2.5]">
+                                            <path d="m5 10 3 3 7-7" />
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <span class="text-sm font-black text-slate-900" x-text="text(item, 'name')"></span>
+                                        <p class="mt-0.5 text-xs text-slate-500" x-text="text(item, 'note')"></p>
+                                    </div>
+                                </div>
+                                <span class="self-start rounded px-2.5 py-1 text-[10px] font-black md:self-center"
+                                    :class="item.required ? 'bg-red-50 text-spu-red' : 'bg-slate-100 text-slate-600'"
+                                    x-text="item.required ? text(page, 'requiredLabel') : text(page, 'optionalLabel')"></span>
                             </div>
                         </template>
                     </div>
-                </section>
-            </template>
+
+                    <!-- Download Card -->
+                    <div class="admissions-download-card mt-10">
+                        <div class="admissions-download-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <path d="m7 10 5 5 5-5" />
+                                <path d="M12 15V3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 x-text="text(page, 'downloadLabel') + ' — ' + text(activeSubTabData, 'label')"></h3>
+                            <p x-text="isAr ? activeSubTabData.download.sizeAr : activeSubTabData.download.sizeEn"></p>
+                        </div>
+                        <a :href="activeSubTabData.download.href" class="admissions-download-button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <path d="m7 10 5 5 5-5" />
+                                <path d="M12 15V3" />
+                            </svg>
+                            <span x-text="text(page, 'downloadLabel')"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Tab 2: University Documents -->
+    <template x-if="activeTab === 'granted'">
+        <section class="bg-white py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="mx-auto max-w-[1010px]">
+                    <p class="mb-10 text-center text-sm font-bold leading-7 text-slate-700" x-text="text(activeTabData, 'intro')"></p>
+
+                    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        <template x-for="doc in activeTabData.items" :key="doc.titleEn">
+                            <article class="flex flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md">
+                                <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-spu-blue/10 text-spu-blue">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-2" aria-hidden="true">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                        <path d="M14 2v6h6" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-2 text-base font-black text-spu-blue" x-text="text(doc, 'title')"></h3>
+                                <p class="mb-4 flex-1 text-sm leading-6 text-slate-600" x-text="text(doc, 'desc')"></p>
+                                <span class="inline-block self-start rounded bg-slate-100 px-2.5 py-1 text-[10px] font-black text-slate-600" x-text="text(doc, 'availability')"></span>
+                            </article>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Tab 3: Study System & GPA -->
+    <template x-if="activeTab === 'studySystem'">
+        <section class="bg-white py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="mx-auto max-w-[1010px]">
+                    <p class="mb-10 text-center text-sm font-bold leading-7 text-slate-700" x-text="text(activeTabData, 'intro')"></p>
+
+                    <!-- GPA Scale Table -->
+                    <div class="admissions-section-heading admissions-section-heading--large mb-8">
+                        <span class="admissions-section-heading__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-spu-red stroke-2">
+                                <path d="M12 2.5 14.3 5l3.4-.4 1.1 3.2 3 1.7-1.6 3 1.6 3-3 1.7-1.1 3.2-3.4-.4-2.3 2.5L9.7 20l-3.4.4-1.1-3.2-3-1.7 1.6-3-1.6-3 3-1.7 1.1-3.2 3.4.4L12 2.5Z" />
+                            </svg>
+                        </span>
+                        <div class="admissions-section-heading__text">
+                            <h2 x-text="text(activeTabData, 'scaleTitle')"></h2>
+                            <span class="admissions-heading-line"></span>
+                        </div>
+                    </div>
+
+                    <div class="overflow-hidden rounded-lg border border-slate-200">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-spu-blue text-xs font-black uppercase tracking-wide text-white">
+                                    <tr>
+                                        <template x-for="h in activeTabData.scaleHeaders" :key="h.key">
+                                            <th class="px-4 py-3" :class="isAr ? 'text-right' : 'text-left'" x-text="text(h, 'label')"></th>
+                                        </template>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <template x-for="row in activeTabData.scaleRows" :key="row.gpa">
+                                        <tr class="bg-white hover:bg-slate-50">
+                                            <td class="px-4 py-3 font-bold text-slate-900" x-text="isAr ? row.percentageAr : row.percentageEn"></td>
+                                            <td class="px-4 py-3 font-black text-spu-blue" x-text="row.gpa"></td>
+                                            <td class="px-4 py-3 font-bold text-slate-900" x-text="isAr ? row.gradeAr : row.gradeEn"></td>
+                                            <td class="px-4 py-3 text-slate-600" x-text="isAr ? row.descriptorAr : row.descriptorEn"></td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="mt-8 space-y-3">
+                        <template x-for="note in activeTabData.notes" :key="note.en">
+                            <div class="flex items-start gap-3">
+                                <span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-spu-red/10 text-spu-red" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20" class="h-3 w-3 fill-none stroke-current stroke-2">
+                                        <path d="M10 6v4m0 4h.01M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z" />
+                                    </svg>
+                                </span>
+                                <p class="text-sm leading-6 text-slate-700" x-text="isAr ? note.ar : note.en"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Tab 4: Academic Warnings -->
+    <template x-if="activeTab === 'warnings'">
+        <section class="bg-white py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <div class="mx-auto max-w-[1010px]">
+                    <p class="mb-10 text-center text-sm font-bold leading-7 text-slate-700" x-text="text(activeTabData, 'intro')"></p>
+
+                    <div class="admissions-section-heading admissions-section-heading--large mb-8">
+                        <span class="admissions-section-heading__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-spu-red stroke-2">
+                                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+                                <path d="M12 9v4m0 4h.01" />
+                            </svg>
+                        </span>
+                        <div class="admissions-section-heading__text">
+                            <h2 x-text="text(activeTabData, 'levelsTitle')"></h2>
+                            <span class="admissions-heading-line"></span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <template x-for="level in activeTabData.levels" :key="level.levelEn">
+                            <div class="rounded-lg border-l-4 border-spu-red bg-white p-6 shadow-sm" :class="isAr ? 'border-l-0 border-r-4' : ''">
+                                <div class="mb-3 flex flex-wrap items-center gap-3">
+                                    <h3 class="text-lg font-black text-spu-blue" x-text="text(level, 'level')"></h3>
+                                    <span class="rounded bg-red-50 px-2.5 py-1 text-[10px] font-black text-spu-red" x-text="text(level, 'threshold')"></span>
+                                </div>
+                                <div class="grid gap-4 md:grid-cols-2">
+                                    <div>
+                                        <h4 class="mb-1 text-xs font-black uppercase tracking-wide text-slate-500" x-text="isAr ? 'العواقب' : 'Consequences'"></h4>
+                                        <p class="text-sm leading-6 text-slate-700" x-text="text(level, 'consequences')"></p>
+                                    </div>
+                                    <div>
+                                        <h4 class="mb-1 text-xs font-black uppercase tracking-wide text-slate-500" x-text="isAr ? 'طريق التعافي' : 'Recovery Path'"></h4>
+                                        <p class="text-sm leading-6 text-slate-700" x-text="text(level, 'recovery')"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Bottom: Download All + Last Reviewed -->
+    <section class="bg-slate-50 py-16">
+        <div class="container mx-auto px-6">
+            <div class="mx-auto max-w-[1010px]">
+                <div class="admissions-download-card mb-8">
+                    <div class="admissions-download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <path d="m7 10 5 5 5-5" />
+                            <path d="M12 15V3" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 x-text="text(page, 'downloadAllLabel')"></h3>
+                        <p x-text="text(page, 'downloadAllDesc')"></p>
+                    </div>
+                    <a href="#" class="admissions-download-button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <path d="m7 10 5 5 5-5" />
+                            <path d="M12 15V3" />
+                        </svg>
+                        <span x-text="text(page, 'downloadLabel')"></span>
+                    </a>
+                </div>
+
+                <p class="text-center text-xs font-bold text-slate-400">
+                    <span x-text="text(page, 'lastReviewedLabel') + ': '"></span>
+                    <span x-text="page.lastReviewed"></span>
+                </p>
+            </div>
         </div>
     </section>
 </div>

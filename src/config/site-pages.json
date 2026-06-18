@@ -754,12 +754,20 @@
       "name": "admissions-documents",
       "fileName": "admissions/documents.html",
       "route": "/admissions/documents/",
-      "title": "Documents Checklist | SPU",
-      "description": "Checklist of required documents for all SPU application categories.",
+      "title": "Documents & Checklists | Syrian Private University",
+      "description": "Complete admissions documents checklist and official university documents at Syrian Private University. Required documents for freshman, transfer, equivalency, and international applicants. Study system, GPA scale, and academic warnings policy.",
       "ogImage": "/images/logo-spu.png",
       "keywords": [
-        "SPU Documents",
-        "Application Checklist"
+        "SPU documents",
+        "admissions checklist",
+        "university documents Syria",
+        "SPU transcript",
+        "academic warnings",
+        "GPA scale",
+        "required documents",
+        "freshman application",
+        "transfer student documents",
+        "international student documents"
       ],
       "fragments": [
         "pages/admissions/documents/content.html",
