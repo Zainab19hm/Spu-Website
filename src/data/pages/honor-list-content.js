@@ -131,12 +131,12 @@ export const honorListPageContent = {
       facultyAr: 'الذكاء الاصطناعي',
       accent: '#683695',
       honorees: [
-        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.95', image: '/images/about/leadership/Ai-dean.jpg' },
-        { id: 2, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.85', image: '/images/uni-main-place.JPG' },
-        { id: 3, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.82', image: '/images/slider-1.webp' },
-        { id: 4, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.78', image: '/images/slider-2.webp' },
-        { id: 5, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.75', image: '/images/slider-3.webp' },
-        { id: 6, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.70', image: '/images/slider-4.webp' }
+        { id: 1, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.95', image: '/images/unkown.jpeg' },
+        { id: 2, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.85', image: '/images/unkown.jpeg' },
+        { id: 3, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'first', academicYear: '2025-2026', gpa: '3.82', image: '/images/unkown.jpeg' },
+        { id: 4, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.78', image: '/images/unkown.jpeg' },
+        { id: 5, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.75', image: '/images/unkown.jpeg' },
+        { id: 6, nameEn: 'Student Name', nameAr: 'اسم الطالب', semester: 'second', academicYear: '2024-2025', gpa: '3.70', image: '/images/unkown.jpeg' }
       ]
     },
     'faculty-business-administration-valedictorians': {

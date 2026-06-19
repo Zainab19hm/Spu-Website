@@ -52,7 +52,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'الصيدلة',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/news/pharmacy.jpg'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-002',
@@ -67,7 +67,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'الذكاء الاصطناعي',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/spu-ai-logo.webp'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-003',
@@ -82,7 +82,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'طب الأسنان',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/dental-clin-lab.jpg'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-004',
@@ -97,7 +97,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'إدارة الأعمال',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/about/leadership/busnins-dean.jpg'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-005',
@@ -112,7 +112,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'الطب البشري',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/slider-2.webp'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-006',
@@ -127,7 +127,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'هندسة البناء والتشييد',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/مبنى_كلية_الطب_الهندسة_العلوم_الإدارية_هندسة_البترول_copy.jpg'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-007',
@@ -142,7 +142,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'الصيدلة',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/pharmacy-place.jpg'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-008',
@@ -157,7 +157,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'الذكاء الاصطناعي',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-009',
@@ -172,7 +172,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'طب الأسنان',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/campus-dental.webp'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-010',
@@ -187,7 +187,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'إدارة الأعمال',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/about/campus-career.webp'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-011',
@@ -202,7 +202,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'الطب البشري',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/campus-hospital.webp'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-012',
@@ -217,7 +217,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'هندسة البناء والتشييد',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/campus-feature-01.webp'
+            image: '/images/unkown.jpeg'
         },
         {
             id: 'alumni-013',
@@ -232,7 +232,7 @@ export const facultyAlumniPageContent = {
             facultyAr: 'هندسة البترول',
             academicPhaseEn: 'Graduate',
             academicPhaseAr: 'خريج',
-            image: '/images/مخبر كلية هندسة البترول.jpg'
+            image: '/images/unkown.jpeg'
         }
     ]
 };
