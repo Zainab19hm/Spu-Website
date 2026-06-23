@@ -95,5 +95,6 @@ export const siteRoutes = Object.freeze({
     facultyDentistryValedictorians: getPageRoute('faculty-dentistry-valedictorians'),
     facultyMedicineValedictorians: getPageRoute('faculty-medicine-valedictorians'),
     facultyPetroleumValedictorians: getPageRoute('faculty-petroleum-valedictorians'),
-    facultyPharmacyValedictorians: getPageRoute('faculty-pharmacy-valedictorians')
+    facultyPharmacyValedictorians: getPageRoute('faculty-pharmacy-valedictorians'),
+    projectDetail: getPageRoute('project-detail')
 });

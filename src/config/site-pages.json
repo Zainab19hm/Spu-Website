@@ -1684,6 +1684,24 @@
         "pages/honor-list/hero.html",
         "pages/honor-list/content.html"
       ]
+    },
+    {
+      "name": "project-detail",
+      "fileName": "projects/detail/index.html",
+      "route": "/projects/detail/",
+      "title": "Project Detail | Syrian Private University",
+      "description": "Explore detailed student project information from SPU faculties including project overview, team members, supervisor details, gallery, and related projects.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU student projects",
+        "project detail",
+        "Syrian Private University projects",
+        "student research",
+        "faculty projects"
+      ],
+      "fragments": [
+        "pages/projects/detail/content.html"
+      ]
     }
   ]
 }

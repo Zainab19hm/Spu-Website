@@ -1,0 +1,193 @@
+<section class="bg-white py-16 font-hacen md:py-20"
+         x-data="{ get page() { return $store.projectDetailPage }, get isAr() { return $store.app.currentLang === 'ar' } }"
+         x-init="page.init()">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 flex items-center gap-2 text-[12px] font-bold text-slate-500">
+      <a href="/" class="transition hover:text-spu-blue" x-text="page.localized('labels', 'home')"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+      <a :href="`/facilities/${page.current.facultySlug}/projects/`" class="transition hover:text-spu-blue"
+         x-text="isAr ? page.current.facultyAr : page.current.facultyEn"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+      <span class="text-spu-blue" x-text="isAr ? page.current.titleAr : page.current.titleEn"></span>
+    </nav>
+
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_340px]">
+      <!-- Main Content -->
+      <div>
+        <!-- Hero Image -->
+        <div class="relative aspect-[2.1] overflow-hidden rounded-[6px] bg-slate-100">
+          <img :src="page.current.image"
+               :alt="isAr ? page.current.titleAr : page.current.titleEn"
+               class="h-full w-full object-cover">
+          <span class="absolute left-3 top-3 rounded-[3px] px-2 py-1 text-[10px] font-bold leading-none text-white rtl:left-auto rtl:right-3"
+                :style="`background-color: ${page.current.facultyColor}`"
+                x-text="isAr ? page.current.tagAr : page.current.tagEn"></span>
+        </div>
+
+        <!-- Title & Meta -->
+        <div class="mt-8">
+          <h1 class="text-[26px] font-bold leading-[34px] text-spu-blue md:text-[32px] md:leading-[42px]"
+              x-text="isAr ? page.current.titleAr : page.current.titleEn"></h1>
+          <p class="mt-4 text-[14px] font-medium leading-[26px] text-slate-600"
+             x-text="isAr ? page.current.summaryAr : page.current.summaryEn"></p>
+        </div>
+
+        <!-- Long Description -->
+        <div class="mt-8 space-y-4">
+          <template x-for="(paragraph, idx) in (isAr ? page.current.longDescAr : page.current.longDescEn)" :key="idx">
+            <p class="text-[14px] leading-[26px] text-slate-600" x-text="paragraph"></p>
+          </template>
+        </div>
+
+        <!-- Gallery -->
+        <div class="mt-12" x-show="page.current.gallery && page.current.gallery.length">
+          <h2 class="text-[18px] font-bold text-spu-blue"
+              x-text="page.localized('labels', 'gallery')"></h2>
+          <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <template x-for="(img, idx) in page.current.gallery" :key="idx">
+              <div class="aspect-[4/3] overflow-hidden rounded-[4px] bg-slate-100">
+                <img :src="img" alt="" class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]">
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Related Projects -->
+        <div class="mt-14 border-t border-slate-100 pt-10">
+          <h2 class="text-[18px] font-bold text-spu-blue"
+              x-text="page.localized('labels', 'related')"></h2>
+          <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <template x-for="project in page.relatedProjects()" :key="project.id">
+              <article class="overflow-hidden rounded-[6px] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div class="relative aspect-[1.72] overflow-hidden bg-slate-100">
+                  <img :src="project.image"
+                       :alt="isAr ? project.titleAr : project.titleEn"
+                       class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]">
+                </div>
+                <div class="p-4">
+                  <h3 class="text-[13px] font-bold leading-[20px] text-spu-blue line-clamp-2"
+                      x-text="isAr ? project.titleAr : project.titleEn"></h3>
+                  <a :href="project.detailRoute"
+                     class="mt-3 inline-flex items-center gap-1.5 text-[11px] font-bold text-spu-red transition hover:text-spu-blue">
+                    <span x-text="page.localized('labels', 'details')"></span>
+                    <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+                  </a>
+                </div>
+              </article>
+            </template>
+          </div>
+        </div>
+
+        <!-- Prev / Next -->
+        <div class="mt-10 flex items-center justify-between border-t border-slate-100 pt-6">
+          <a :href="page.previousProject().detailRoute"
+             class="group inline-flex items-center gap-2 text-[12px] font-bold text-slate-500 transition hover:text-spu-blue">
+            <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3 w-3 transition group-hover:-translate-x-0.5 rtl:rotate-180" aria-hidden="true">
+            <span x-text="page.localized('labels', 'previous')"></span>
+          </a>
+          <a :href="`/facilities/${page.current.facultySlug}/projects/`"
+             class="text-[12px] font-bold text-spu-red transition hover:text-spu-blue"
+             x-text="page.localized('labels', 'viewAll')"></a>
+          <a :href="page.nextProject().detailRoute"
+             class="group inline-flex items-center gap-2 text-[12px] font-bold text-slate-500 transition hover:text-spu-blue">
+            <span x-text="page.localized('labels', 'next')"></span>
+            <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3 w-3 transition group-hover:translate-x-0.5 rtl:rotate-180" aria-hidden="true">
+          </a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-8">
+        <!-- Faculty Info -->
+        <div class="rounded-[6px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-[13px] font-bold uppercase tracking-[0.04em] text-slate-400"
+              x-text="page.localized('labels', 'faculty')"></h3>
+          <div class="mt-3 flex items-center gap-3">
+            <div class="h-3 w-3 rounded-full" :style="`background-color: ${page.current.facultyColor}`"></div>
+            <span class="text-[14px] font-bold text-spu-blue"
+                  x-text="isAr ? page.current.facultyAr : page.current.facultyEn"></span>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100">
+            <div class="flex items-center justify-between text-[12px]">
+              <span class="text-slate-400" x-text="page.localized('labels', 'year')"></span>
+              <span class="font-bold text-spu-blue" x-text="page.current.year"></span>
+            </div>
+            <div class="mt-3 flex items-center justify-between text-[12px]">
+              <span class="text-slate-400" x-text="page.localized('labels', 'status')"></span>
+              <span class="rounded-[3px] bg-green-50 px-2 py-0.5 font-bold text-green-600"
+                    x-text="page.localized('labels', 'completed')"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supervisor -->
+        <div class="rounded-[6px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-[13px] font-bold uppercase tracking-[0.04em] text-slate-400"
+              x-text="page.localized('labels', 'supervisor')"></h3>
+          <a href="/" class="mt-3 flex items-center gap-3 transition hover:opacity-80">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-[12px] font-bold text-white"
+                 x-text="isAr ? page.current.supervisorAr.split(' ').map(w => w[0]).join('').slice(0,2) : page.current.supervisorEn.split(' ').map(w => w[0]).join('').slice(0,2)"></div>
+            <div>
+              <p class="text-[13px] font-bold text-spu-blue"
+                 x-text="isAr ? page.current.supervisorAr : page.current.supervisorEn"></p>
+              <p class="text-[11px] text-slate-400" x-text="page.localized('labels', 'supervisor')"></p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Created By -->
+        <div class="rounded-[6px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-[13px] font-bold uppercase tracking-[0.04em] text-slate-400"
+              x-text="page.localized('labels', 'createdBy')"></h3>
+          <a :href="`/facilities/${page.current.facultySlug}/alumni/`" class="mt-3 flex items-center gap-3 transition hover:opacity-80">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full text-[12px] font-bold text-white"
+                 :style="`background-color: ${page.current.facultyColor}`"
+                 x-text="isAr ? page.current.createdByAr.split(' ').map(w => w[0]).join('').slice(0,2) : page.current.createdByEn.split(' ').map(w => w[0]).join('').slice(0,2)"></div>
+            <div>
+              <p class="text-[13px] font-bold text-spu-blue"
+                 x-text="isAr ? page.current.createdByAr : page.current.createdByEn"></p>
+              <p class="text-[11px] text-slate-400" x-text="page.localized('labels', 'createdBy')"></p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Team Members -->
+        <div class="rounded-[6px] border border-slate-200 bg-white p-6 shadow-sm"
+             x-show="page.current.teamMembers && page.current.teamMembers.length">
+          <h3 class="text-[13px] font-bold uppercase tracking-[0.04em] text-slate-400"
+              x-text="page.localized('labels', 'team')"></h3>
+          <ul class="mt-4 space-y-3">
+            <template x-for="member in page.current.teamMembers" :key="member.nameEn">
+              <li>
+                <a :href="`/facilities/${page.current.facultySlug}/alumni/`" class="flex items-center gap-3 transition hover:opacity-80">
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-[11px] font-bold text-slate-500"
+                       x-text="isAr ? member.nameAr.split(' ').map(w => w[0]).join('').slice(0,2) : member.nameEn.split(' ').map(w => w[0]).join('').slice(0,2)"></div>
+                  <div>
+                    <p class="text-[12px] font-bold text-spu-blue"
+                       x-text="isAr ? member.nameAr : member.nameEn"></p>
+                    <p class="text-[10px] text-slate-400"
+                       x-text="isAr ? member.roleAr : member.roleEn"></p>
+                  </div>
+                </a>
+              </li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Technologies -->
+        <div class="rounded-[6px] border border-slate-200 bg-white p-6 shadow-sm"
+             x-show="page.current.technologies && page.current.technologies.length">
+          <h3 class="text-[13px] font-bold uppercase tracking-[0.04em] text-slate-400"
+              x-text="page.localized('labels', 'technologies')"></h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <template x-for="tech in page.current.technologies" :key="tech">
+              <span class="rounded-[3px] bg-slate-50 px-2.5 py-1 text-[11px] font-bold text-slate-600"
+                    x-text="tech"></span>
+            </template>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

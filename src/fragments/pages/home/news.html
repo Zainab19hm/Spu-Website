@@ -19,8 +19,8 @@
 
         <div class="grid grid-cols-1 gap-8 pb-10 md:grid-cols-2 xl:grid-cols-4">
             <template x-for="item in $store.news.items.slice(0, 4)" :key="item.id">
-                <div
-                    class="reveal-item w-full bg-white rounded-[25px] shadow-[0_15px_35px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col group cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
+                <a :href="item.href"
+                   class="reveal-item w-full bg-white rounded-[25px] shadow-[0_15px_35px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col group cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
 
                     <div class="relative h-[210px] overflow-hidden">
                         <img :src="item.image" :alt="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"
@@ -41,7 +41,7 @@
                         <p class="text-gray-700 text-[14px] leading-[1.6] line-clamp-3"
                             x-text="$store.app.currentLang === 'ar' ? item.summaryAr : item.summaryEn"></p>
                     </div>
-                </div>
+                </a>
             </template>
         </div>
     </div>

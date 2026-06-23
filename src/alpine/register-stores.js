@@ -107,7 +107,8 @@ const pageStoreLoaders = {
     'faculty-dentistry-valedictorians': () => import('./pages/honor-list-stores.js').then((module) => module.registerHonorListStores),
     'faculty-medicine-valedictorians': () => import('./pages/honor-list-stores.js').then((module) => module.registerHonorListStores),
     'faculty-petroleum-valedictorians': () => import('./pages/honor-list-stores.js').then((module) => module.registerHonorListStores),
-    'faculty-pharmacy-valedictorians': () => import('./pages/honor-list-stores.js').then((module) => module.registerHonorListStores)
+    'faculty-pharmacy-valedictorians': () => import('./pages/honor-list-stores.js').then((module) => module.registerHonorListStores),
+    'project-detail': () => import('./pages/project-detail-stores.js').then((module) => module.registerProjectDetailStores)
 };
 
 const pagesUsingFacultyCatalog = new Set(['home', 'faculties']);
