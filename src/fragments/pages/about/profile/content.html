@@ -8,7 +8,7 @@
             },
             updateFromUrl() {
                 const urlParams = new URLSearchParams(window.location.search);
-                const newId = urlParams.get('id') || 'rector';
+                const newId = urlParams.get('slug') || urlParams.get('id') || 'rector';
                 this.selectedId = newId;
                 console.log('Profile loaded:', this.selectedId);
             },
@@ -143,6 +143,18 @@
                                 <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0Z"/></svg>
                                 <span class="text-xs font-semibold">Google Scholar</span>
                             </a>
+                            <a :href="profile.orcidUrl" target="_blank" rel="noopener"
+                               class="flex items-center justify-center gap-2 px-4 h-10 rounded-[10px] bg-[#A6CE39] text-white transition-all hover:bg-[#8ba82e] hover:-translate-y-0.5"
+                               title="ORCID" x-show="profile.orcidUrl">
+                                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.859 0 3.722-2.4 3.722-3.722 0-1.909-1.581-3.722-4.097-3.722h-1.922z"/></svg>
+                                <span class="text-xs font-semibold">ORCID</span>
+                            </a>
+                            <a :href="profile.researchGateUrl" target="_blank" rel="noopener"
+                               class="flex items-center justify-center gap-2 px-4 h-10 rounded-[10px] bg-[#00CCBB] text-white transition-all hover:bg-[#00b3a3] hover:-translate-y-0.5"
+                               title="ResearchGate" x-show="profile.researchGateUrl">
+                                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a10.21 10.21 0 0 0-.36 1.838h-.002a6.512 6.512 0 0 0-.115.733h-.002a9.33 9.33 0 0 0-.072.736h-.002c-.02.23-.048.45-.068.672-.016.164-.028.33-.05.492h-.002a8.36 8.36 0 0 0-.064.57 11.04 11.04 0 0 0-.057.426c-.012.14-.03.272-.04.4-.02.16-.03.32-.045.473-.012.13-.022.25-.03.37-.016.18-.02.36-.03.53-.008.14-.016.28-.02.41-.01.15-.016.29-.02.43-.008.18-.008.35-.008.52v.71c0 .16.002.32.008.48.004.12.01.24.016.36.008.16.016.32.028.48.008.11.02.22.028.33.012.17.028.33.044.5.016.12.03.24.046.36.016.16.036.32.056.47.02.13.04.25.06.37.02.15.044.3.066.44l.03.17c.024.14.048.27.076.4.024.12.048.23.072.34.028.13.06.25.092.37l.024.1c.03.11.06.21.092.31.032.11.064.22.1.33.032.1.064.19.096.29.04.11.08.22.124.33.036.09.076.18.116.27.04.1.084.19.128.28.04.09.084.17.128.25.048.09.1.18.15.27l.12.21c.044.07.088.14.136.2.04.07.084.13.128.19.044.07.092.13.14.19.04.06.084.12.124.18.06.08.12.15.184.22.048.06.1.11.152.16.056.06.116.11.176.16.048.05.1.09.148.13.064.05.128.1.2.14.048.04.1.07.152.1.072.04.144.08.224.11.056.03.116.05.176.07.08.03.16.05.24.07.064.02.128.03.192.04.08.01.16.02.24.02.08 0 .16-.01.24-.02.064-.01.128-.02.192-.04.08-.02.16-.04.24-.07.056-.02.116-.04.176-.07.08-.03.152-.07.224-.11.052-.03.1-.06.152-.1.072-.04.136-.09.2-.14.048-.04.1-.08.148-.13.06-.05.12-.1.176-.16.052-.05.104-.1.152-.16.064-.07.124-.14.184-.22.04-.06.084-.12.124-.18.048-.06.096-.12.14-.19.044-.06.088-.12.128-.19.048-.06.092-.13.136-.2.044-.07.088-.14.132-.21.048-.09.1-.18.15-.27.044-.08.088-.16.128-.25.044-.09.088-.18.128-.28.04-.09.08-.18.116-.27.044-.11.084-.22.124-.33.032-.1.064-.19.096-.29.036-.11.068-.22.1-.33.032-.1.062-.2.092-.31l.024-.1c.032-.12.064-.24.092-.37.024-.11.048-.22.072-.34.028-.13.052-.26.076-.4l.03-.17c.022-.14.044-.29.066-.44.02-.12.04-.24.06-.37.02-.15.04-.31.056-.47.016-.12.03-.24.046-.36.016-.17.032-.33.044-.5.008-.11.02-.22.028-.33.012-.16.02-.32.028-.48.006-.12.012-.24.016-.36.006-.16.008-.32.008-.48v-.71c0-.17-.002-.34-.008-.52-.004-.14-.012-.28-.02-.43-.004-.13-.012-.27-.02-.41-.01-.17-.014-.35-.03-.53-.008-.12-.018-.24-.03-.37-.01-.13-.028-.26-.04-.4-.016-.14-.036-.28-.057-.426-.012-.17-.028-.37-.064-.57h-.002c-.02-.16-.036-.33-.05-.492-.02-.22-.048-.44-.068-.672h-.002c-.02-.24-.052-.48-.072-.736h-.002a6.53 6.53 0 0 0-.115-.733h-.002a10.17 10.17 0 0 0-.36-1.838c-.244-.744-.65-1.303-1.213-1.68C8.92.19 8.23 0 7.412 0h-.044z"/></svg>
+                                <span class="text-xs font-semibold">ResearchGate</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -207,7 +219,7 @@
                         </div>
 
                         <!-- Research Stats Card -->
-                        <!-- <div class="bg-white rounded-2xl p-6 border border-spu-blue/[0.08] shadow-[0_4px_24px_rgba(32,39,89,0.06)]" x-show="researchStats.publications">
+                        <div class="bg-white rounded-2xl p-6 border border-spu-blue/[0.08] shadow-[0_4px_24px_rgba(32,39,89,0.06)]" x-show="researchStats.publications">
                             <h3 class="text-base font-bold text-spu-blue mb-5 pb-3 border-b border-spu-blue/[0.08]" 
                                 x-text="isAr ? 'إحصائيات البحث' : 'Research Statistics'"></h3>
                             <div class="grid grid-cols-2 gap-4">
@@ -219,6 +231,10 @@
                                     <span class="block text-2xl font-extrabold text-spu-blue leading-none" x-text="researchStats.citations"></span>
                                     <span class="block text-xs text-spu-blue/60 mt-1" x-text="isAr ? 'استشهادات' : 'Citations'"></span>
                                 </div>
+                                <div class="text-center p-4 bg-spu-blue/[0.03] rounded-xl" x-show="researchStats.hIndex">
+                                    <span class="block text-2xl font-extrabold text-spu-blue leading-none" x-text="researchStats.hIndex"></span>
+                                    <span class="block text-xs text-spu-blue/60 mt-1">H-index</span>
+                                </div>
                                 <div class="text-center p-4 bg-spu-blue/[0.03] rounded-xl" x-show="researchStats.conferences">
                                     <span class="block text-2xl font-extrabold text-spu-blue leading-none" x-text="researchStats.conferences"></span>
                                     <span class="block text-xs text-spu-blue/60 mt-1" x-text="isAr ? 'مؤتمرات' : 'Conferences'"></span>
@@ -227,8 +243,12 @@
                                     <span class="block text-2xl font-extrabold text-spu-blue leading-none" x-text="researchStats.thesesSupervised"></span>
                                     <span class="block text-xs text-spu-blue/60 mt-1" x-text="isAr ? 'رسائل علمية' : 'Theses'"></span>
                                 </div>
+                                <div class="text-center p-4 bg-spu-blue/[0.03] rounded-xl" x-show="researchStats.ongoingProjects">
+                                    <span class="block text-2xl font-extrabold text-spu-blue leading-none" x-text="researchStats.ongoingProjects"></span>
+                                    <span class="block text-xs text-spu-blue/60 mt-1" x-text="isAr ? 'مشاريع نشطة' : 'Active Projects'"></span>
+                                </div>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="bg-white rounded-2xl p-6 md:p-10 border border-spu-blue/[0.08] shadow-[0_4px_24px_rgba(32,39,89,0.06)]"
                             x-show="courses.length > 0">
                             <h2 class="flex items-center justify-between flex-wrap gap-2 text-lg font-bold text-spu-blue mb-5 pb-3 border-b border-spu-blue/[0.08]"
@@ -290,8 +310,8 @@
                         <!-- Research Section -->
                         <div class="bg-white rounded-2xl p-6 md:p-10 border border-spu-blue/[0.08] shadow-[0_4px_24px_rgba(32,39,89,0.06)]" x-show="profile.publications && profile.publications.length > 0">
                             <h2 class="flex items-center justify-between flex-wrap gap-2 text-lg font-bold text-spu-blue mb-5 pb-3 border-b border-spu-blue/[0.08]">
-                                <span x-text="isAr ? 'الأبحاث العلمية' : 'Research Publications'"></span>
-                                <a :href="profile.scholarUrl" target="_blank" rel="noopener" 
+                                <span x-text="isAr ? 'الأبحاث المنشورة' : 'Published Researches'"></span>
+                                <a :href="profile.scholarUrl" target="_blank" rel="noopener"
                                    class="inline-flex items-center gap-1.5 text-xs font-semibold text-spu-red hover:text-spu-blue transition-colors"
                                    x-show="profile.scholarUrl">
                                     <span x-text="isAr ? 'عرض الكل على Google Scholar' : 'View all on Google Scholar'"></span>
@@ -300,18 +320,20 @@
                             </h2>
                             <div class="flex flex-col gap-5">
                                 <template x-for="(pub, index) in profile.publications" :key="index">
-                                    <div class="p-5 bg-spu-blue/[0.03] rounded-xl border border-spu-blue/[0.06] transition-all hover:bg-spu-blue/[0.05] hover:border-spu-blue/[0.1]">
-                                        <div class="flex items-start justify-between gap-4 mb-2">
-                                            <h4 class="text-[0.9375rem] font-semibold text-spu-blue leading-[1.5] flex-1" x-text="pub.title"></h4>
-                                            <span class="shrink-0 px-2 py-1 bg-spu-red text-white text-xs font-bold rounded" x-text="pub.year"></span>
-                                        </div>
-                                        <p class="text-sm text-spu-blue/60 italic mb-3" x-text="pub.journal"></p>
+                                    <div class="p-5 bg-spu-blue/[0.03] rounded-xl border border-spu-blue/[0.06] transition-all hover:bg-white hover:border-spu-blue/[0.15] hover:shadow-[0_8px_24px_rgba(32,39,89,0.1)] hover:-translate-y-0.5 group">
+                                        <a :href="pub.links?.local || '#'" class="block mb-3">
+                                            <div class="flex items-start justify-between gap-4 mb-2">
+                                                <h4 class="text-[0.9375rem] font-semibold text-spu-blue leading-[1.5] flex-1 group-hover:text-spu-red transition-colors" x-text="pub.title"></h4>
+                                                <span class="shrink-0 px-2 py-1 bg-spu-red text-white text-xs font-bold rounded" x-text="pub.year"></span>
+                                            </div>
+                                            <p class="text-sm text-spu-blue/60 italic" x-text="pub.journal"></p>
+                                        </a>
                                         <div class="flex items-center gap-4">
-                                            <a :href="pub.links?.local || '#" class="inline-flex items-center gap-1.5 text-sm font-semibold text-spu-blue hover:text-spu-red transition-colors">
-                                                <span x-text="isAr ? 'عرض في الموقع' : 'View on Site'"></span>
+                                            <a :href="pub.links?.local || '#'" class="inline-flex items-center gap-1.5 text-sm font-semibold text-spu-blue hover:text-spu-red transition-colors">
+                                                <span x-text="isAr ? 'عرض التفاصيل' : 'View Details'"></span>
                                                 <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                                             </a>
-                                            <a :href="pub.links?.scholar || profile.scholarUrl" target="_blank" rel="noopener" 
+                                            <a :href="pub.links?.scholar || profile.scholarUrl" target="_blank" rel="noopener"
                                                class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#4285f4] hover:text-[#3367d6] transition-colors"
                                                x-show="pub.links?.scholar || profile.scholarUrl">
                                                 <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0Z"/></svg>

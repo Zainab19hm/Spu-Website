@@ -353,7 +353,16 @@ export const leadershipProfileContent = {
             'Senior experience in higher education leadership',
             'Institutional governance and academic development background'
         ]),
-        courses: []
+        courses: [],
+        publications: [
+            {
+                id: 'res-005',
+                title: 'Clinical Simulation Training Impact on Medical Student Diagnostic Accuracy',
+                journal: 'Journal of Medical Education',
+                year: 2024,
+                links: { local: '/research/detail/?id=res-005', scholar: externalLink('scholar.google.com') }
+            }
+        ]
     },
     vicePresidents: [
         {
@@ -426,7 +435,16 @@ export const leadershipProfileContent = {
                 'Clinical and teaching leadership background',
                 'Experience in health-science program management'
             ]),
-            courses: toCourses(['Clinical Medicine', 'Medical Education Seminar'], 'medicine-plan')
+            courses: toCourses(['Clinical Medicine', 'Medical Education Seminar'], 'medicine-plan'),
+            publications: [
+                {
+                    id: 'res-005',
+                    title: 'Clinical Simulation Training Impact on Medical Student Diagnostic Accuracy',
+                    journal: 'Journal of Medical Education',
+                    year: 2024,
+                    links: { local: '/research/detail/?id=res-005', scholar: externalLink('scholar.google.com') }
+                }
+            ]
         },
         {
             email: 'talaat.abuhatab@spu.edu.sy',
@@ -444,7 +462,16 @@ export const leadershipProfileContent = {
                 'Senior clinical and academic experience',
                 'Experience in dental education leadership'
             ]),
-            courses: toCourses(['Advanced Clinical Dentistry', 'Dental Practice Management'], 'dentistry-plan')
+            courses: toCourses(['Advanced Clinical Dentistry', 'Dental Practice Management'], 'dentistry-plan'),
+            publications: [
+                {
+                    id: 'res-002',
+                    title: 'AI-Driven Predictive Models for Early Dental Caries Detection',
+                    journal: 'International Journal of Dental Informatics',
+                    year: 2024,
+                    links: { local: '/research/detail/?id=res-002', scholar: externalLink('scholar.google.com') }
+                }
+            ]
         },
         {
             email: 'hossam.shahrour@spu.edu.sy',
@@ -463,7 +490,16 @@ export const leadershipProfileContent = {
                 'Academic and laboratory leadership experience',
                 'Experience in health-science education'
             ]),
-            courses: toCourses(['Pharmaceutical Sciences Seminar', 'Applied Pharmacy Research'], 'pharmacy-plan')
+            courses: toCourses(['Pharmaceutical Sciences Seminar', 'Applied Pharmacy Research'], 'pharmacy-plan'),
+            publications: [
+                {
+                    id: 'res-001',
+                    title: 'Machine Learning Applications in Pharmaceutical Quality Control',
+                    journal: 'Journal of Pharmaceutical Analysis',
+                    year: 2024,
+                    links: { local: '/research/detail/?id=res-001', scholar: externalLink('scholar.google.com') }
+                }
+            ]
         },
         {
             email: 'mouhib.alnoukari@spu.edu.sy',
@@ -486,6 +522,15 @@ export const leadershipProfileContent = {
                 { id: 'ai-201', code: 'AI201', nameEn: 'Artificial Intelligence', nameAr: 'الذكاء الاصطناعي', departmentId: 'si' },
                 { id: 'ml-301', code: 'ML301', nameEn: 'Machine Learning', nameAr: 'تعلم الآلة', departmentId: 'si' },
                 { id: 'data-301', code: 'DATA301', nameEn: 'Data Science', nameAr: 'علم البيانات', departmentId: 'si' }
+            ],
+            publications: [
+                {
+                    id: 'res-006',
+                    title: 'Natural Language Processing for Arabic Medical Record Summarization',
+                    journal: 'ACM Transactions on Asian Language Information Processing',
+                    year: 2024,
+                    links: { local: '/research/detail/?id=res-006', scholar: externalLink('scholar.google.com') }
+                }
             ]
         },
         {
@@ -504,7 +549,16 @@ export const leadershipProfileContent = {
                 'Academic and technical leadership experience',
                 'Experience in applied engineering education'
             ]),
-            courses: toCourses(['Petroleum Engineering Systems', 'Field Training Seminar'], 'petroleum-plan')
+            courses: toCourses(['Petroleum Engineering Systems', 'Field Training Seminar'], 'petroleum-plan'),
+            publications: [
+                {
+                    id: 'res-004',
+                    title: 'Deep Learning Framework for Reservoir Permeability Prediction',
+                    journal: 'Journal of Petroleum Science and Engineering',
+                    year: 2023,
+                    links: { local: '/research/detail/?id=res-004', scholar: externalLink('scholar.google.com') }
+                }
+            ]
         },
         {
             email: 'samar.habib@spu.edu.sy',
@@ -523,7 +577,16 @@ export const leadershipProfileContent = {
                 'Academic leadership experience',
                 'Background in program development and advising'
             ]),
-            courses: toCourses(['Strategic Management', 'Business Leadership'], 'management')
+            courses: toCourses(['Strategic Management', 'Business Leadership'], 'management'),
+            publications: [
+                {
+                    id: 'res-001',
+                    title: 'Machine Learning Applications in Pharmaceutical Quality Control',
+                    journal: 'Journal of Pharmaceutical Analysis',
+                    year: 2024,
+                    links: { local: '/research/detail/?id=res-001', scholar: externalLink('scholar.google.com') }
+                }
+            ]
         },
         {
             email: 'ammar.ghada@spu.edu.sy',
@@ -541,7 +604,16 @@ export const leadershipProfileContent = {
                 'Academic leadership experience',
                 'Background in structural design and project delivery'
             ]),
-            courses: toCourses(['Structural Analysis', 'Construction Methods'], 'construction-plan')
+            courses: toCourses(['Structural Analysis', 'Construction Methods'], 'construction-plan'),
+            publications: [
+                {
+                    id: 'res-003',
+                    title: 'Structural Performance of Fiber-Reinforced Concrete in Seismic Zones',
+                    journal: 'Engineering Structures',
+                    year: 2023,
+                    links: { local: '/research/detail/?id=res-003', scholar: externalLink('scholar.google.com') }
+                }
+            ]
         }
     ]
 };

@@ -1,0 +1,25 @@
+<section class="relative flex min-h-[420px] items-end overflow-hidden pt-24 font-hacen"
+         x-data="{ get page() { return $store.expertFinderPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="absolute inset-0">
+    <img :src="page.hero.backgroundImage"
+         alt="Syrian Private University Research"
+         class="h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/92 via-spu-blue/72 to-spu-blue/30"></div>
+  </div>
+
+  <div class="mx-auto w-full z-[100] max-w-[1180px] px-4 pb-10 text-center text-white sm:px-6 lg:px-0">
+    <nav class="mb-3 flex items-center justify-center gap-2 text-[11px] font-semibold text-white/74">
+      <a href="/" class="transition-colors hover:text-white" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <a href="/research.html" class="transition-colors hover:text-white" x-text="isAr ? 'البحث' : 'Research'"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <span x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></span>
+    </nav>
+
+    <h1 class="text-[26px] font-bold leading-tight md:text-[36px] max-w-[900px] mx-auto"
+        x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
+
+    <p class="mx-auto mt-3 max-w-[800px] text-[13px] font-semibold leading-6 text-white/80"
+       x-text="isAr ? page.hero.summaryAr : page.hero.summaryEn"></p>
+  </div>
+</section>

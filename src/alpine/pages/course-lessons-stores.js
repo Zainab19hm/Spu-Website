@@ -118,6 +118,11 @@ export function registerCourseLessonsStores(Alpine) {
       params.set('department', this.departmentId);
       params.set('course', courseId);
       return `/facilities/${slug}/study-plan/course/?${params.toString()}`;
+    },
+
+    instructorHref(course) {
+      if (!course?.instructor?.staffSlug) return null;
+      return `/about/profile/?slug=${course.instructor.staffSlug}`;
     }
   });
 }

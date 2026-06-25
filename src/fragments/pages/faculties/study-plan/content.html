@@ -26,9 +26,8 @@
       <template x-if="page.current">
         <div>
 
-          <h1 class="mt-3 text-[34px] font-bold leading-tight md:text-[52px]"
-              x-text="page.label('title')"></h1>
-          
+          <h1 class="mt-3 text-[34px] font-bold leading-tight md:text-[52px]" x-text="page.label('title')"></h1>
+
         </div>
       </template>
     </div>
@@ -49,8 +48,7 @@
                 <button type="button" class="rounded-full px-6 py-3 text-[13px] font-bold transition-all duration-300"
                   :class="page.activeDepartmentId === department.id
                           ? 'bg-spu-blue text-white shadow-lg shadow-spu-blue/25'
-                          : 'bg-white text-spu-blue/80 hover:bg-slate-50'"
-                  @click="page.setDepartment(department.id)"
+                          : 'bg-white text-spu-blue/80 hover:bg-slate-50'" @click="page.setDepartment(department.id)"
                   x-text="page.text(department, 'name')"></button>
               </template>
             </div>
@@ -74,14 +72,16 @@
               <button type="button" @click="page.downloadHoursSummary()"
                 class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-[12px] font-bold text-spu-blue shadow-sm transition-all hover:border-spu-blue/30 hover:shadow-md">
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 <span x-text="isAr ? 'تحميل الساعات' : 'Download Hours'"></span>
               </button>
               <button type="button" @click="page.printStudyPlan()"
                 class="inline-flex items-center gap-2 rounded-lg bg-spu-blue px-4 py-2.5 text-[12px] font-bold text-white shadow-md shadow-spu-blue/20 transition-all hover:bg-spu-blue/90 hover:shadow-lg">
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                 </svg>
                 <span x-text="isAr ? 'طباعة الخطة' : 'Print Plan'"></span>
               </button>
@@ -89,26 +89,22 @@
           </div>
 
           <!-- Zoomable Board Viewport -->
-          <div
-            x-ref="viewport"
-            dir="ltr"
+          <div x-ref="viewport" dir="ltr"
             class="relative overflow-hidden w-full border border-slate-200/50 bg-white shadow-[0_8px_40px_rgba(32,39,89,0.04)]"
-            style="height: 80vh;"
-            x-init="$nextTick(() => page.initZoom($refs.viewport))"
-            @wheel.prevent="page.handleWheel($event)"
-            @mousedown="page.startPan($event)"
-            @mousemove="page.panBy($event)"
-            @mouseup="page.endPan()"
-            @mouseleave="page.endPan()">
+            style="height: 80vh;" x-init="$nextTick(() => page.initZoom($refs.viewport))"
+            @mousedown="page.startPan($event)" @mousemove="page.panBy($event)"
+            @mouseup="page.endPan()" @mouseleave="page.endPan()"
+            @touchstart="page.startPan($event)" @touchmove="page.panBy($event)"
+            @touchend="page.endPan()">
 
             <!-- Zoom Controls -->
             <div class="absolute top-4 right-4 z-50 flex flex-col gap-2 rtl:left-4 rtl:right-auto">
-              <button type="button" @click="page.zoomIn($refs.viewport)"
+              <button type="button" @click.stop="page.zoomIn($refs.viewport)"
                 class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-lg font-black text-spu-blue shadow-md transition-colors hover:bg-slate-50">+</button>
-              <button type="button" @click="page.zoomOut($refs.viewport)"
+              <button type="button" @click.stop="page.zoomOut($refs.viewport)"
                 class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-lg font-black text-spu-blue shadow-md transition-colors hover:bg-slate-50">−</button>
-              <button type="button" @click="page.fitToScreen($refs.viewport)"
-                class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-xs font-black text-spu-blue shadow-md transition-colors hover:bg-slate-50">⟲</button>
+              <button type="button" @click.stop="page.fitToScreen($refs.viewport)"
+                class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-lg font-black text-spu-blue shadow-md transition-colors hover:bg-slate-50">⟲</button>
             </div>
 
             <!-- World Layer -->
@@ -144,12 +140,10 @@
 
                       <template x-for="layoutCourse in page.layoutCourses(term)" :key="layoutCourse.course.id">
                         <button type="button" :data-course-id="layoutCourse.course.id"
-                          :style="page.courseStyle(layoutCourse)"
-                          :dir="isAr ? 'rtl' : 'ltr'"
+                          :style="page.courseStyle(layoutCourse)" :dir="isAr ? 'rtl' : 'ltr'"
                           class="group absolute w-full rounded-2xl border bg-white p-3 text-start shadow-sm transition-all duration-300 hover:shadow-xl focus:outline-none focus:ring-2"
                           @mouseenter="page.setHoveredCourse(layoutCourse.course.id)"
-                          @mouseleave="page.setHoveredCourse('')"
-                          @click="page.openModal(layoutCourse.course.id)"
+                          @mouseleave="page.setHoveredCourse('')" @click="page.handleCourseClick(layoutCourse.course.id)"
                           :class="[
                             page.hoveredCourseId === layoutCourse.course.id
                               ? 'border-spu-blue ring-1 ring-spu-blue/20 shadow-[0_8px_24px_rgba(32,39,89,0.18)] z-50 scale-[1.03]'
@@ -256,8 +250,7 @@
     <div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm"
       @click.self="page.closeModal()">
       <div class="relative max-w-md w-[90%] rounded-2xl bg-white p-6 shadow-2xl border border-slate-200"
-        :dir="isAr ? 'rtl' : 'ltr'"
-        x-data="{ course: page.modalCourse() }">
+        :dir="isAr ? 'rtl' : 'ltr'" x-data="{ course: page.modalCourse() }">
         <button @click="page.closeModal()"
           class="absolute top-3 right-3 rtl:left-3 rtl:right-auto text-slate-400 hover:text-slate-600 transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

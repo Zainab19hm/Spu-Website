@@ -1,4 +1,4 @@
-<header id="site-header" class="absolute top-0 z-50 w-full pt-3 font-hacen"
+<header id="site-header" class="absolute top-0 z-[200] w-full pt-3 font-hacen"
         x-data="{
             openMenu: null,
             stickyNav: false,
@@ -71,7 +71,7 @@
                                     <template x-for="child in item.children" :key="child.url">
                                         <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
                                            @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }"
-                                           class="site-nav-dropdown-link"
+                                           class="site-nav-dropdown-link z-[100]"
                                            x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
                                     </template>
                                 </div>

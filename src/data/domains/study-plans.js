@@ -11,7 +11,8 @@ const course = ({
   required = true,
   forced = false,
   credits = 3,
-  prerequisites = []
+  prerequisites = [],
+  instructor = null
 }) => ({
   id,
   code,
@@ -24,6 +25,7 @@ const course = ({
   forced,
   credits,
   prerequisites,
+  instructor,
   hours: {
     theory: credits,
     practical: type === 'specialization' ? 1 : 0
@@ -35,9 +37,9 @@ const course = ({
 
 const informaticsBaseCourses = () => [
   // Term 1
-  course({ id: 'eng-101', code: 'ENG101', title: 'English Language I', titleAr: 'اللغة الإنجليزية 1', term: 1, row: 1, type: 'university', credits: 2 }),
-  course({ id: 'phy-101', code: 'PHY101', title: 'Physics I', titleAr: 'الفيزياء 1', term: 1, row: 3, type: 'faculty', credits: 4 }),
-  course({ id: 'math-101', code: 'MATH101', title: 'Discrete Mathematics', titleAr: 'الرياضيات المتقطعة', term: 1, row: 5, type: 'faculty' }),
+  course({ id: 'eng-101', code: 'ENG101', title: 'English Language I', titleAr: 'اللغة الإنجليزية 1', term: 1, row: 1, type: 'university', credits: 2, instructor: { staffSlug: 'dr-lina-khatib-100', nameEn: 'Dr. Lina Khatib', nameAr: 'د. لينا خطيب' } }),
+  course({ id: 'phy-101', code: 'PHY101', title: 'Physics I', titleAr: 'الفيزياء 1', term: 1, row: 3, type: 'faculty', credits: 4, instructor: { staffSlug: 'dr-omar-darwish-101', nameEn: 'Dr. Omar Darwish', nameAr: 'د. عمر darwish' } }),
+  course({ id: 'math-101', code: 'MATH101', title: 'Discrete Mathematics', titleAr: 'الرياضيات المتقطعة', term: 1, row: 5, type: 'faculty', instructor: { staffSlug: 'dr-rania-mansour-102', nameEn: 'Dr. Rania Mansour', nameAr: 'د. رانيا منصور' } }),
   course({ id: 'math-102', code: 'MATH102', title: 'Calculus I', titleAr: 'التفاضل والتكامل 1', term: 1, row: 7, type: 'faculty' }),
   course({ id: 'alg-101', code: 'ALG101', title: 'Introduction to Algorithms and Programming', titleAr: 'مدخل إلى الخوارزميات والبرمجة', term: 1, row: 9, type: 'specialization', forced: true, credits: 4 }),
   course({ id: 'math-103', code: 'MATH103', title: 'Linear Algebra and Matrix Theory', titleAr: 'الجبر الخطي ونظرية المصفوفات', term: 1, row: 11, type: 'faculty' }),

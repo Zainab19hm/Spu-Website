@@ -124,6 +124,9 @@ export function registerStudyPlanStores(Alpine) {
     hoveredCourseId: '',
     hoveredPathIds: [],
     modalCourseId: '',
+    searchQuery: '',
+    mobilePathCourseId: '',
+    activeLegendType: '',
     scale: 1,
     panX: 0,
     panY: 0,
@@ -152,6 +155,55 @@ export function registerStudyPlanStores(Alpine) {
 
     isAr() {
       return Alpine.store('app').currentLang === 'ar';
+    },
+
+    yearForTerm(termIndex) {
+      return Math.floor(termIndex / 2) + 1;
+    },
+
+    termYearLabel(termIndex) {
+      const year = this.yearForTerm(termIndex);
+      const suffixes = { 1: 'st', 2: 'nd', 3: 'rd', 4: 'th', 5: 'th' };
+      const suffix = suffixes[year] || 'th';
+      return this.isAr() ? `السنة ${year}` : `${year}${suffix} Year`;
+    },
+
+    termIsYearStart(termIndex) {
+      return termIndex % 2 === 0;
+    },
+
+    stats() {
+      const courses = this.courses();
+      const totalCourses = courses.length;
+      const totalCredits = courses.reduce((s, c) => s + (c.credits || 0), 0);
+      const terms = this.terms();
+      const avgCredits = terms.length ? Math.round(totalCredits / terms.length) : 0;
+      const typeCount = (type) => courses.filter((c) => this._typeKey(c) === type).length;
+      return {
+        totalCourses,
+        totalCredits,
+        avgCredits,
+        universityCount: typeCount('university'),
+        facultyCount: typeCount('faculty'),
+        specializationCount: typeCount('specialization'),
+        electiveCount: typeCount('elective')
+      };
+    },
+
+    prereqCount(course) {
+      return (course?.prerequisites || []).length;
+    },
+
+    hasPrerequisites(course) {
+      return this.prereqCount(course) > 0;
+    },
+
+    jumpToYear(year, viewportEl) {
+      const termIndex = (year - 1) * 2;
+      const colLeft = planLayout.sidePadding + termIndex * (planLayout.columnWidth + planLayout.columnGap);
+      const vw = viewportEl.clientWidth;
+      this.panX = (vw / 2) - (colLeft * this.scale) - ((planLayout.columnWidth * this.scale) / 2);
+      this.saveViewState();
     },
 
     label(key) {
@@ -218,6 +270,22 @@ export function registerStudyPlanStores(Alpine) {
 
     columnGap() {
       return planLayout.columnGap;
+    },
+
+    sidePadding() {
+      return planLayout.sidePadding;
+    },
+
+    yearBandLeft(termIndex) {
+      return planLayout.sidePadding + termIndex * (planLayout.columnWidth + planLayout.columnGap) - planLayout.columnGap / 2;
+    },
+
+    yearBandWidth() {
+      return planLayout.columnWidth * 2 + planLayout.columnGap;
+    },
+
+    yearLabelLeft(termIndex) {
+      return planLayout.sidePadding + termIndex * (planLayout.columnWidth + planLayout.columnGap) + planLayout.columnWidth / 2 + planLayout.columnGap / 2;
     },
 
     courseLayoutMap() {
@@ -311,35 +379,77 @@ export function registerStudyPlanStores(Alpine) {
       const accent = this.facultyAccent();
       return this.dependencyPaths()
         .map((connector) => {
+          const sourceCourse = this.courseById(connector.sourceId);
+          const targetCourse = this.courseById(connector.targetId);
+          if (!sourceCourse || !targetCourse) return '';
+
+          const isSourceDimmed = this.isCourseDimmed(sourceCourse);
+          const isTargetDimmed = this.isCourseDimmed(targetCourse);
           const isInPath = pathIds.includes(connector.sourceId) && pathIds.includes(connector.targetId);
 
-          let stroke, width, marker, shadow, opacity;
-
-          if (isInPath) {
-            stroke = accent;
-            width = '2.5';
-            marker = 'url(#sp-arrow-path)';
-            shadow = `filter: drop-shadow(0 2px 6px ${accent}50);`;
-            opacity = '';
-          } else if (hasHover) {
-            // Ghost mode: subdued when another path is active
-            stroke = '#cbd5e1';
-            width = '1';
-            marker = 'url(#sp-arrow-ghost)';
-            shadow = '';
-            opacity = 'opacity: 0.45;';
-          } else {
-            // Default ghost mode: subtle but readable
-            stroke = '#94a3b8';
-            width = '1';
-            marker = 'url(#sp-arrow)';
-            shadow = '';
-            opacity = 'opacity: 0.50;';
+          let opacity = '';
+          if (hasHover && !isInPath) {
+            opacity = 'opacity: 0.12; filter: blur(0.5px);';
+          } else if (isSourceDimmed || isTargetDimmed) {
+            opacity = 'opacity: 0.08; filter: blur(0.5px);';
           }
 
-          return `<path d="${connector.path}" fill="none" stroke="${stroke}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" marker-end="${marker}" style="${shadow} ${opacity} transition: all 0.3s;"></path>`;
+          if (isInPath) {
+            // Glow path underneath (dual-layer: wide glow and animated dash on top)
+            const glowPath = `<path d="${connector.path}" fill="none" stroke="${accent}" stroke-width="6" stroke-opacity="0.25" stroke-linecap="round" stroke-linejoin="round" class="sp-path-glow" style="${opacity}"></path>`;
+            const mainPath = `<path d="${connector.path}" fill="none" stroke="${accent}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#sp-arrow-path)" class="sp-path-animated" style="${opacity} transition: all 0.3s;"></path>`;
+            return glowPath + mainPath;
+          } else {
+            const stroke = '#94a3b8';
+            const width = '1.2';
+            const marker = 'url(#sp-arrow)';
+            return `<path d="${connector.path}" fill="none" stroke="${stroke}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" marker-end="${marker}" style="${opacity} transition: all 0.3s;"></path>`;
+          }
         })
         .join('');
+    },
+
+    courseMatchesSearch(course) {
+      if (!this.searchQuery) return true;
+      const query = this.searchQuery.toLowerCase().trim();
+      const code = (course.code || '').toLowerCase();
+      const titleEn = (course.titleEn || '').toLowerCase();
+      const titleAr = (course.titleAr || '').toLowerCase();
+      return code.includes(query) || titleEn.includes(query) || titleAr.includes(query);
+    },
+
+    courseMatchesLegend(course) {
+      if (!this.activeLegendType) return true;
+      const key = this._typeKey(course);
+      return key === this.activeLegendType;
+    },
+
+    isCourseDimmed(course) {
+      if (this.hoveredCourseId !== '' && !this.hoveredPathIds.includes(course.id)) {
+        return true;
+      }
+      if (!this.courseMatchesSearch(course)) {
+        return true;
+      }
+      if (!this.courseMatchesLegend(course)) {
+        return true;
+      }
+      return false;
+    },
+
+    isCourseHighlighted(course) {
+      if (this.hoveredCourseId === course.id) return true;
+      if (this.searchQuery && this.courseMatchesSearch(course)) return true;
+      if (this.activeLegendType && this.courseMatchesLegend(course)) return true;
+      return false;
+    },
+
+    setSearchQuery(q) {
+      this.searchQuery = q;
+    },
+
+    toggleLegendType(typeId) {
+      this.activeLegendType = this.activeLegendType === typeId ? '' : typeId;
     },
 
     courses() {
@@ -357,6 +467,8 @@ export function registerStudyPlanStores(Alpine) {
     setDepartment(departmentId) {
       this.activeDepartmentId = departmentId;
       this.selectedCourseId = '';
+      this.searchQuery = '';
+      this.activeLegendType = '';
       const params = new URLSearchParams(window.location.search);
       params.set('department', departmentId);
       params.delete('course');
@@ -434,10 +546,39 @@ export function registerStudyPlanStores(Alpine) {
       this.hoveredPathIds = this.computePath(courseId);
     },
 
+    isMobile() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    },
+
+    handleCourseClick(courseId) {
+      if (this.isMobile()) {
+        if (this.modalCourseId === courseId) {
+          this.closeModal();
+          this.mobilePathCourseId = '';
+          return;
+        }
+        
+        if (this.mobilePathCourseId === courseId) {
+          this.openModal(courseId);
+          this.mobilePathCourseId = '';
+        } else {
+          this.mobilePathCourseId = courseId;
+          this.hoveredCourseId = courseId;
+          this.hoveredPathIds = this.computePath(courseId);
+          if (this.modalCourseId) {
+            this.modalCourseId = '';
+          }
+        }
+      } else {
+        this.openModal(courseId);
+      }
+    },
+
     closeModal() {
       this.modalCourseId = '';
       this.hoveredCourseId = '';
       this.hoveredPathIds = [];
+      this.mobilePathCourseId = '';
     },
 
     modalCourse() {
@@ -478,27 +619,32 @@ export function registerStudyPlanStores(Alpine) {
     },
 
     courseClasses(course) {
-      const key = this._typeKey(course);
-      const style = TYPE_STYLES[key];
-      const isHovered = this.hoveredCourseId === course?.id;
-      const isInPath = this.hoveredPathIds.includes(course?.id);
-      const hasHover = this.hoveredCourseId !== '';
-      const isDimmed = hasHover && !isInPath;
+      if (!course) return '';
+      const isHovered = this.hoveredCourseId === course.id;
+      const isInPath = this.hoveredPathIds.includes(course.id);
+      const isDimmed = this.isCourseDimmed(course);
+      const isSearchMatch = this.searchQuery && this.courseMatchesSearch(course);
 
       const classes = [
-        'group/course absolute left-1/2 z-10 flex w-[140px] -translate-x-1/2 flex-col items-center justify-center rounded-[6px] border bg-white p-3 text-center transition-all duration-200',
-        style.border,
-        style.hoverBorder,
-        'shadow-[0_1px_4px_rgba(32,39,89,0.05)]',
-        'hover:shadow-[0_4px_16px_rgba(32,39,89,0.12)] hover:z-50'
+        'sp-course-card group absolute w-full rounded-2xl bg-white dark:bg-slate-800 p-3.5 text-start border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2',
+        course.type === 'university' ? 'sp-card-accent-uni border-spu-blue/20 dark:border-spu-blue/40 focus:ring-spu-blue'
+        : course.type === 'faculty' ? 'sp-card-accent-fac border-slate-200 dark:border-slate-700 focus:ring-slate-400'
+        : course.type === 'specialization' ? 'sp-card-accent-spec border-indigo-200 dark:border-indigo-800 focus:ring-indigo-400'
+        : 'sp-card-accent-elec border-slate-200 dark:border-slate-700 focus:ring-amber-400'
       ];
 
       if (isHovered) {
-        classes.push('border-spu-blue ring-1 ring-spu-blue/20 shadow-[0_8px_24px_rgba(32,39,89,0.18)] z-50 scale-[1.03]');
+        classes.push('ring-2 ring-indigo-400 z-50 scale-[1.03]');
       } else if (isInPath) {
-        classes.push('border-spu-blue/40 bg-spu-blue/[0.03]');
-      } else if (isDimmed) {
-        classes.push('opacity-40 blur-[0.5px]');
+        classes.push('ring-1 ring-indigo-300/40 bg-indigo-50/5 dark:bg-indigo-900/5 z-40');
+      }
+
+      if (isSearchMatch) {
+        classes.push('sp-search-match');
+      }
+
+      if (isDimmed) {
+        classes.push('opacity-25 scale-[0.97] blur-[0.4px]');
       }
 
       return classes.join(' ');
@@ -552,9 +698,21 @@ export function registerStudyPlanStores(Alpine) {
     },
 
     initZoom(viewportEl) {
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      
       this.restoreViewState();
+      
       if (this.scale === 1 && this.panX === 0 && this.panY === 0) {
-        this.fitToScreen(viewportEl);
+        if (isMobile) {
+          const vh = viewportEl.clientHeight;
+          const bh = this.boardHeightValue();
+          this.scale = Math.max(this.minScale, vh / bh);
+          this.panX = 0;
+          this.panY = (vh - bh * this.scale) / 2;
+        } else {
+          this.fitToScreen(viewportEl);
+        }
+        this.saveViewState();
       }
     },
 
@@ -591,35 +749,42 @@ export function registerStudyPlanStores(Alpine) {
     },
 
     startPan(e) {
-      if (e.button !== 0) return; // only left click
+      const touch = e.touches?.[0];
+      const clientX = touch?.clientX ?? e.clientX;
+      const clientY = touch?.clientY ?? e.clientY;
+      
+      if (e.button !== undefined && e.button !== 0) return; // only left click for mouse events
       if (e.target.closest('button')) return; // don't drag from buttons
+      
+      e.preventDefault(); // prevent page scroll only when actually panning
       this.isDragging = true;
-      this.lastMouseX = e.clientX;
-      this.lastMouseY = e.clientY;
+      this.lastMouseX = clientX;
+      this.lastMouseY = clientY;
     },
 
     panBy(e) {
       if (!this.isDragging) return;
-      const dx = e.clientX - this.lastMouseX;
-      const dy = e.clientY - this.lastMouseY;
+      
+      if (e.touches) e.preventDefault(); // prevent page scroll only for touch events
+      
+      const touch = e.touches?.[0];
+      const clientX = touch?.clientX ?? e.clientX;
+      const clientY = touch?.clientY ?? e.clientY;
+      
+      const dx = clientX - this.lastMouseX;
+      const dy = clientY - this.lastMouseY;
+      
       this.panX += dx;
       this.panY += dy;
-      this.lastMouseX = e.clientX;
-      this.lastMouseY = e.clientY;
+      
+      this.lastMouseX = clientX;
+      this.lastMouseY = clientY;
     },
 
     endPan() {
       if (!this.isDragging) return;
       this.isDragging = false;
       this.saveViewState();
-    },
-
-    handleWheel(e) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-      const delta = e.deltaY > 0 ? 0.12 : -0.12;
-      this.zoomToPoint(delta, mouseX, mouseY);
     },
 
     transformStyle() {

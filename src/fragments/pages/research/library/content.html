@@ -1,0 +1,86 @@
+<section class="bg-white py-12 font-hacen md:py-16"
+         x-data="{ get page() { return $store.libraryPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+
+    <div class="container mx-auto px-6">
+        <div class="mx-auto mb-12 max-w-[1200px]">
+            <h2 class="mb-2 text-center text-lg font-bold text-spu-red"
+                x-text="isAr ? page.library.resourcesSection.titleAr : page.library.resourcesSection.titleEn"></h2>
+            <p class="mb-8 text-center text-sm text-spu-blue/60"
+               x-text="isAr ? page.library.resourcesSection.subtitleAr : page.library.resourcesSection.subtitleEn"></p>
+
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <template x-for="db in page.library.databases" :key="db.nameEn">
+                    <a :href="db.url" target="_blank" rel="noopener"
+                       class="group overflow-hidden rounded-xl border border-spu-blue/10 bg-white p-6 shadow-sm transition-all hover:border-spu-blue/30 hover:shadow-lg">
+                        <div class="mb-4 flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-spu-blue group-hover:text-spu-red transition-colors"
+                                x-text="isAr ? db.nameAr : db.nameEn"></h3>
+                            <span class="inline-flex items-center rounded-full bg-spu-blue/5 px-2.5 py-1 text-[10px] font-semibold"
+                                  :class="db.accessTypeEn === 'Open Access' ? 'text-green-600 bg-green-50' : 'text-spu-blue/60 bg-spu-blue/5'"
+                                  x-text="isAr ? db.accessTypeAr : db.accessTypeEn"></span>
+                        </div>
+                        <p class="text-sm text-spu-blue/70"
+                           x-text="isAr ? db.descriptionAr : db.descriptionEn"></p>
+                        <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-spu-red transition group-hover:text-spu-blue">
+                            <span x-text="isAr ? 'افتح الآن' : 'Access Now'"></span>
+                            <svg class="h-3 w-3 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </div>
+                    </a>
+                </template>
+            </div>
+        </div>
+
+        <div class="mx-auto mb-12 max-w-[1200px]">
+            <h2 class="mb-8 text-center text-lg font-bold text-spu-blue"
+                x-text="isAr ? page.library.borrowingSection.titleAr : page.library.borrowingSection.titleEn"></h2>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <template x-for="rule in page.library.borrowingSection.rules" :key="rule.titleEn">
+                    <div class="rounded-xl border border-spu-blue/10 bg-spu-blue/[0.02] p-6">
+                        <h3 class="mb-2 flex items-center gap-2 text-base font-bold text-spu-blue">
+                            <svg class="h-5 w-5 text-spu-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span x-text="isAr ? rule.titleAr : rule.titleEn"></span>
+                        </h3>
+                        <p class="text-sm text-spu-blue/70"
+                           x-text="isAr ? rule.descriptionAr : rule.descriptionEn"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="mx-auto mb-12 max-w-[1200px]">
+            <h2 class="mb-8 text-center text-lg font-bold text-spu-blue"
+                x-text="isAr ? page.library.specialCollections.titleAr : page.library.specialCollections.titleEn"></h2>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <template x-for="collection in page.library.specialCollections.items" :key="collection.titleEn">
+                    <div class="rounded-xl border border-spu-blue/10 bg-white p-6 shadow-sm">
+                        <h3 class="mb-2 text-base font-bold text-spu-blue"
+                            x-text="isAr ? collection.titleAr : collection.titleEn"></h3>
+                        <p class="text-sm text-spu-blue/70"
+                           x-text="isAr ? collection.descriptionAr : collection.descriptionEn"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-[600px] rounded-xl border border-spu-blue/20 bg-spu-blue/[0.02] p-8 text-center">
+            <h2 class="mb-4 text-lg font-bold text-spu-blue"
+                x-text="isAr ? page.library.librarianSection.titleAr : page.library.librarianSection.titleEn"></h2>
+            <div class="mb-4">
+                <p class="text-sm font-bold text-spu-blue" x-text="isAr ? page.library.librarianSection.nameAr : page.library.librarianSection.nameEn"></p>
+                <p class="text-sm text-spu-blue/70" x-text="isAr ? page.library.librarianSection.hoursAr : page.library.librarianSection.hoursEn"></p>
+            </div>
+            <div class="flex flex-col gap-2 text-sm text-spu-blue/70">
+                <a :href="'mailto:' + page.library.librarianSection.email" class="flex items-center justify-center gap-2 hover:text-spu-red">
+                    <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4">
+                    <span x-text="page.library.librarianSection.email"></span>
+                </a>
+                <div class="flex items-center justify-center gap-2">
+                    <img src="/images/icon-phone-outline.svg" alt="" class="h-4 w-4">
+                    <span x-text="page.library.librarianSection.phone"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

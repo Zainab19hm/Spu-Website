@@ -1,0 +1,92 @@
+<section class="bg-white py-12 font-hacen md:py-16"
+         x-data="{ get page() { return $store.conferencesPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+
+    <div class="container mx-auto px-6">
+        <div class="mx-auto mb-12 max-w-[1200px]">
+            <h2 class="mb-2 text-center text-lg font-bold text-spu-red"
+                x-text="isAr ? page.conferences.upcomingSection.titleAr : page.conferences.upcomingSection.titleEn"></h2>
+            <p class="mb-8 text-center text-sm text-spu-blue/60"
+               x-text="isAr ? 'سجل واحجز في الفعاليات العلمية القادمة' : 'Register and attend upcoming scientific events'"></p>
+
+            <div class="grid gap-8 md:grid-cols-2">
+                <template x-for="event in page.conferences.upcoming" :key="event.id">
+                    <div class="group overflow-hidden rounded-xl border border-spu-blue/10 bg-white shadow-sm transition-all hover:shadow-lg">
+                        <div class="relative">
+                            <img :src="event.image"
+                                 :alt="isAr ? event.titleAr : event.titleEn"
+                                 class="h-[200px] w-full object-cover">
+                            <div class="absolute left-0 top-0 bg-spu-red px-3 py-1.5 text-xs font-bold text-white">
+                                <span x-text="isAr ? event.eventTypeAr : event.eventTypeEn"></span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="mb-3 flex items-center gap-4 text-sm text-spu-blue/60">
+                                <div class="flex items-center gap-1.5">
+                                    <img src="/images/icon-calendar-outline.svg" alt="" class="h-4 w-4">
+                                    <span x-text="isAr ? event.dateAr : event.dateEn"></span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4">
+                                    <span x-text="isAr ? event.locationAr : event.locationEn"></span>
+                                </div>
+                            </div>
+                            <h3 class="mb-2 text-lg font-bold text-spu-blue"
+                                x-text="isAr ? event.titleAr : event.titleEn"></h3>
+                            <p class="mb-5 text-sm text-spu-blue/70"
+                               x-text="isAr ? event.descriptionAr : event.descriptionEn"></p>
+                            <a :href="event.registrationUrl"
+                               class="inline-flex h-10 items-center justify-center rounded-lg bg-spu-red px-6 text-xs font-bold text-white transition hover:bg-spu-blue">
+                                <span x-text="isAr ? 'سجل الآن' : 'Register Now'"></span>
+                                <svg class="ms-2 h-4 w-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-[1200px]">
+            <h2 class="mb-8 text-center text-lg font-bold text-spu-blue"
+                x-text="isAr ? page.conferences.pastSection.titleAr : page.conferences.pastSection.titleEn"></h2>
+
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <template x-for="conf in page.conferences.past" :key="conf.id">
+                    <div class="group overflow-hidden rounded-xl border border-spu-blue/10 bg-white shadow-sm transition-all hover:shadow-lg">
+                        <div class="relative">
+                            <img :src="conf.image"
+                                 :alt="isAr ? conf.titleAr : conf.titleEn"
+                                 class="h-[160px] w-full object-cover opacity-80">
+                        </div>
+                        <div class="p-5">
+                            <div class="mb-2 flex items-center gap-3 text-xs text-spu-blue/60">
+                                <span class="flex items-center gap-1">
+                                    <img src="/images/icon-calendar-outline.svg" alt="" class="h-3.5 w-3.5">
+                                    <span x-text="isAr ? conf.dateAr : conf.dateEn"></span>
+                                </span>
+                                <span x-show="conf.participantsEn" class="flex items-center gap-1">
+                                    <img src="/images/icon-user-outline.svg" alt="" class="h-3.5 w-3.5">
+                                    <span x-text="isAr ? conf.participantsAr : conf.participantsEn"></span>
+                                </span>
+                            </div>
+                            <h3 class="mb-2 text-base font-bold text-spu-blue"
+                                x-text="isAr ? conf.titleAr : conf.titleEn"></h3>
+                            <p class="mb-4 text-sm text-spu-blue/70"
+                               x-text="isAr ? conf.descriptionAr : conf.descriptionEn"></p>
+                            <div class="flex items-center justify-between border-t border-spu-blue/10 pt-4">
+                                <span class="flex items-center gap-1.5 text-xs font-semibold text-spu-blue/60" x-show="conf.hasProceedings">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                    <span x-text="isAr ? 'وقائع متاحة' : 'Proceedings'"></span>
+                                </span>
+                                <a href="#" x-show="conf.hasProceedings"
+                                   class="inline-flex items-center gap-1 text-xs font-bold text-spu-red transition hover:text-spu-blue">
+                                    <span x-text="isAr ? 'تحميل' : 'Download'"></span>
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>

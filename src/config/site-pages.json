@@ -256,6 +256,115 @@
       ]
     },
     {
+      "name": "research-detail",
+      "fileName": "research/detail/index.html",
+      "route": "/research/detail/",
+      "title": "Research Publication | Syrian Private University",
+      "description": "Read a full Syrian Private University research publication with abstract, methodology, findings, author details, and related publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU research publication",
+        "Syrian Private University research article",
+        "SPU academic publication"
+      ],
+      "fragments": [
+        "pages/research/detail/hero.html",
+        "pages/research/detail/content.html"
+      ]
+    },
+    {
+      "name": "research-expert-finder",
+      "fileName": "research/expert-finder/index.html",
+      "route": "/research/expert-finder/",
+      "title": "Expert Finder | Syrian Private University",
+      "description": "Find and connect with SPU academic researchers and faculty experts. Search by name, faculty, department, or research expertise.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU researchers",
+        "Syrian Private University faculty",
+        "research experts",
+        "academic directory"
+      ],
+      "fragments": [
+        "pages/research/expert-finder/hero.html",
+        "pages/research/expert-finder/content.html"
+      ]
+    },
+    {
+      "name": "research-conferences",
+      "fileName": "research/conferences/index.html",
+      "route": "/research/conferences/",
+      "title": "Conferences & Seminars | Syrian Private University",
+      "description": "Explore SPU scientific conferences, past proceedings, and upcoming academic events. View symposiums and seminars hosted by our faculties.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU conferences",
+        "Syrian Private University events",
+        "academic symposiums",
+        "research seminars"
+      ],
+      "fragments": [
+        "pages/research/conferences/hero.html",
+        "pages/research/conferences/content.html"
+      ]
+    },
+    {
+      "name": "research-library",
+      "fileName": "research/library/index.html",
+      "route": "/research/library/",
+      "title": "Research Library | Syrian Private University",
+      "description": "Access SPU research library resources including e-books, licensed databases, academic journals, and special collections.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU library",
+        "Syrian Private University library",
+        "academic databases",
+        "e-books",
+        "research resources"
+      ],
+      "fragments": [
+        "pages/research/library/hero.html",
+        "pages/research/library/content.html"
+      ]
+    },
+    {
+      "name": "research-policies",
+      "fileName": "research/policies/index.html",
+      "route": "/research/policies/",
+      "title": "Research Policies & Ethics | Syrian Private University",
+      "description": "Access SPU research ethics policies, publication guidelines, institutional review board protocols, and research integrity standards.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU research ethics",
+        "research policies",
+        "publication guidelines",
+        "institutional review board",
+        "research integrity"
+      ],
+      "fragments": [
+        "pages/research/policies/hero.html",
+        "pages/research/policies/content.html"
+      ]
+    },
+    {
+      "name": "research-office",
+      "fileName": "research/office/index.html",
+      "route": "/research/office/",
+      "title": "Research Office | Syrian Private University",
+      "description": "SPU Research Office supports and coordinates research activities across all faculties, fostering innovation and academic excellence.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU research office",
+        "research administration",
+        "research support",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/research/office/hero.html",
+        "pages/research/office/content.html"
+      ]
+    },
+    {
       "name": "student-life",
       "fileName": "student-life.html",
       "route": "/campus-life/",

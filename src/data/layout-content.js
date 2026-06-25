@@ -75,8 +75,13 @@ export const navigationMenuItems = [
         page: 'research',
         hasDropdown: true,
         children: [
+            { labelAr: 'مكتب البحث', labelEn: 'Research Office', url: siteRoutes.researchOffice },
             { labelAr: 'مستودع البحث', labelEn: 'Research Repository', url: siteRoutes.researchRepository },
-            { labelAr: 'مراكز ومخابر البحث', labelEn: 'Research Centers & Labs', url: siteRoutes.researchCenters }
+            { labelAr: 'مراكز ومخابر البحث', labelEn: 'Research Centers & Labs', url: siteRoutes.researchCenters },
+            { labelAr: 'الباحث عن الخبراء', labelEn: 'Expert Finder', url: siteRoutes.researchExpertFinder },
+            { labelAr: 'المؤتمرات والندوات', labelEn: 'Conferences & Seminars', url: siteRoutes.researchConferences },
+            { labelAr: 'مكتبة البحث', labelEn: 'Research Library', url: siteRoutes.researchLibrary },
+            { labelAr: 'السياسات والأخلاقيات', labelEn: 'Policies & Ethics', url: siteRoutes.researchPolicies }
         ]
     },
     {
