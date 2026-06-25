@@ -2,6 +2,7 @@
          x-data="{ get page() { return $store.conferencesPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
 
     <div class="container mx-auto px-6">
+        <h1 class="sr-only" x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
         <div class="mx-auto mb-12 max-w-[1200px]">
             <h2 class="mb-2 text-center text-lg font-bold text-spu-red"
                 x-text="isAr ? page.conferences.upcomingSection.titleAr : page.conferences.upcomingSection.titleEn"></h2>
@@ -22,11 +23,11 @@
                         <div class="p-6">
                             <div class="mb-3 flex items-center gap-4 text-sm text-spu-blue/60">
                                 <div class="flex items-center gap-1.5">
-                                    <img src="/images/icon-calendar-outline.svg" alt="" class="h-4 w-4">
+                                    <img src="/images/icon-calendar-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                                     <span x-text="isAr ? event.dateAr : event.dateEn"></span>
                                 </div>
                                 <div class="flex items-center gap-1.5">
-                                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4">
+                                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                                     <span x-text="isAr ? event.locationAr : event.locationEn"></span>
                                 </div>
                             </div>
@@ -60,11 +61,11 @@
                         <div class="p-5">
                             <div class="mb-2 flex items-center gap-3 text-xs text-spu-blue/60">
                                 <span class="flex items-center gap-1">
-                                    <img src="/images/icon-calendar-outline.svg" alt="" class="h-3.5 w-3.5">
+                                    <img src="/images/icon-calendar-outline.svg" alt="" class="h-3.5 w-3.5" aria-hidden="true">
                                     <span x-text="isAr ? conf.dateAr : conf.dateEn"></span>
                                 </span>
                                 <span x-show="conf.participantsEn" class="flex items-center gap-1">
-                                    <img src="/images/icon-user-outline.svg" alt="" class="h-3.5 w-3.5">
+                                    <img src="/images/icon-user-outline.svg" alt="" class="h-3.5 w-3.5" aria-hidden="true">
                                     <span x-text="isAr ? conf.participantsAr : conf.participantsEn"></span>
                                 </span>
                             </div>

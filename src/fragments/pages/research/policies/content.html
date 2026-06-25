@@ -2,7 +2,9 @@
          x-data="{ get page() { return $store.policiesPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
 
     <div class="container mx-auto px-6">
+        <h1 class="sr-only" x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
         <div class="mx-auto max-w-[1200px]">
+            <h2 class="mb-6 text-center text-xl font-bold text-spu-blue" x-text="isAr ? 'السياسات والأخلاقيات البحثية' : 'Research Policies & Ethics'"></h2>
             <div class="grid gap-8 md:grid-cols-2">
                 <template x-for="section in page.policies.sections" :key="section.id">
                     <div class="rounded-xl border border-spu-blue/10 bg-white p-6 shadow-sm">
@@ -55,15 +57,15 @@
             <div class="flex flex-col items-center gap-3 text-sm text-spu-blue">
                 <a :href="'mailto:' + page.policies.contactSection.email"
                    class="flex items-center gap-2 font-semibold hover:text-spu-red">
-                    <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4">
+                    <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                     <span x-text="page.policies.contactSection.email"></span>
                 </a>
                 <div class="flex items-center gap-2">
-                    <img src="/images/icon-phone-outline.svg" alt="" class="h-4 w-4">
+                    <img src="/images/icon-phone-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                     <span x-text="page.policies.contactSection.phone"></span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4">
+                    <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                     <span x-text="isAr ? page.policies.contactSection.locationAr : page.policies.contactSection.locationEn"></span>
                 </div>
             </div>

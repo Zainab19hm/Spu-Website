@@ -2,6 +2,7 @@
          x-data="{ get page() { return $store.officePage }, get isAr() { return $store.app.currentLang === 'ar' } }">
 
     <div class="container mx-auto px-6">
+        <h1 class="sr-only" x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
         <div class="mx-auto mb-12 max-w-[1200px]">
             <h2 class="mb-8 text-center text-lg font-bold text-spu-blue"
                 x-text="isAr ? page.office.leadership.titleAr : page.office.leadership.titleEn"></h2>
@@ -20,7 +21,7 @@
                            x-text="isAr ? leader.roleAr : leader.roleEn"></p>
                         <a :href="'mailto:' + leader.email"
                            class="inline-flex items-center gap-1 text-xs text-spu-blue/60 hover:text-spu-red">
-                            <img src="/images/icon-envelope-outline.svg" alt="" class="h-3 w-3">
+                            <img src="/images/icon-envelope-outline.svg" alt="" class="h-3 w-3" aria-hidden="true">
                             <span x-text="leader.email"></span>
                         </a>
                     </div>
@@ -77,15 +78,15 @@
                 <div class="flex flex-col items-center gap-2 text-sm text-spu-blue">
                     <a :href="'mailto:' + page.office.contact.email"
                        class="flex items-center gap-2 font-semibold hover:text-spu-red">
-                        <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4">
+                        <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                         <span x-text="page.office.contact.email"></span>
                     </a>
                     <div class="flex items-center gap-2">
-                        <img src="/images/icon-phone-outline.svg" alt="" class="h-4 w-4">
+                        <img src="/images/icon-phone-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                         <span x-text="page.office.contact.phone"></span>
                     </div>
                     <div class="flex items-center gap-2 text-spu-blue/60">
-                        <img src="/images/icon-calendar-outline.svg" alt="" class="h-4 w-4">
+                        <img src="/images/icon-calendar-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                         <span x-text="isAr ? page.office.contact.hoursAr : page.office.contact.hoursEn"></span>
                     </div>
                 </div>

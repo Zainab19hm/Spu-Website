@@ -1285,6 +1285,118 @@
       ]
     },
     {
+      "name": "faculty-medicine-research",
+      "fileName": "facilities/medicine/research/index.html",
+      "route": "/facilities/medicine/research/",
+      "title": "Medicine Research | SPU",
+      "description": "Explore research publications and projects from the SPU Faculty of Medicine.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU medicine research",
+        "Medical research",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/research/content.html"
+      ]
+    },
+    {
+      "name": "faculty-dentistry-research",
+      "fileName": "facilities/dentistry/research/index.html",
+      "route": "/facilities/dentistry/research/",
+      "title": "Dentistry Research | SPU",
+      "description": "Explore research publications and projects from the SPU Faculty of Dentistry.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU dentistry research",
+        "Dental research",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/research/content.html"
+      ]
+    },
+    {
+      "name": "faculty-pharmacy-research",
+      "fileName": "facilities/pharmacy/research/index.html",
+      "route": "/facilities/pharmacy/research/",
+      "title": "Pharmacy Research | SPU",
+      "description": "Explore research publications and projects from the SPU Faculty of Pharmacy.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU pharmacy research",
+        "Pharmaceutical research",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/research/content.html"
+      ]
+    },
+    {
+      "name": "faculty-artificial-intelligence-research",
+      "fileName": "facilities/artificial-intelligence/research/index.html",
+      "route": "/facilities/artificial-intelligence/research/",
+      "title": "AI Engineering Research | SPU",
+      "description": "Explore research publications and projects from the SPU Faculty of Artificial Intelligence Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU AI research",
+        "Artificial intelligence research",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/research/content.html"
+      ]
+    },
+    {
+      "name": "faculty-petroleum-research",
+      "fileName": "facilities/petroleum/research/index.html",
+      "route": "/facilities/petroleum/research/",
+      "title": "Petroleum Engineering Research | SPU",
+      "description": "Explore research publications and projects from the SPU Faculty of Petroleum Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU petroleum research",
+        "Oil and gas research",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/research/content.html"
+      ]
+    },
+    {
+      "name": "faculty-building-construction-engineering-research",
+      "fileName": "facilities/building-construction-engineering/research/index.html",
+      "route": "/facilities/building-construction-engineering/research/",
+      "title": "Construction Engineering Research | SPU",
+      "description": "Explore research publications and projects from the SPU Faculty of Building and Construction Engineering.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU construction research",
+        "Civil engineering research",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/research/content.html"
+      ]
+    },
+    {
+      "name": "faculty-business-administration-research",
+      "fileName": "facilities/business-administration/research/index.html",
+      "route": "/facilities/business-administration/research/",
+      "title": "Business Administration Research | SPU",
+      "description": "Explore research publications and projects from the SPU Faculty of Business Administration.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU business research",
+        "Business studies research",
+        "Syrian Private University"
+      ],
+      "fragments": [
+        "pages/faculties/research/content.html"
+      ]
+    },
+    {
       "name": "faculty-medicine-departments",
       "fileName": "facilities/medicine/departments/index.html",
       "route": "/facilities/medicine/departments/",
@@ -1336,13 +1448,13 @@
       "name": "faculty-artificial-intelligence-study-plan",
       "fileName": "facilities/artificial-intelligence/study-plan/index.html",
       "route": "/facilities/artificial-intelligence/study-plan/",
-      "title": "Artificial Intelligence Study Plan | SPU",
-      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Artificial Intelligence.",
+      "title": "AI Engineering Study Plan | SPU",
+      "description": "Explore the AI engineering curriculum covering machine learning, robotics, data science, and neural networks with detailed course sequencing.",
       "ogImage": "/images/faculities/ai/computer-lab.jpg",
       "keywords": [
-        "SPU study plan",
-        "Artificial Intelligence study plan",
-        "Syrian Private University"
+        "AI engineering curriculum",
+        "Machine learning courses Syria",
+        "SPU AI program"
       ],
       "fragments": [
         "pages/faculties/study-plan/content.html"
@@ -1353,12 +1465,12 @@
       "fileName": "facilities/business-administration/study-plan/index.html",
       "route": "/facilities/business-administration/study-plan/",
       "title": "Business Administration Study Plan | SPU",
-      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Business Administration.",
+      "description": "View the comprehensive business curriculum including finance, marketing, management, and entrepreneurship with clear prerequisite pathways.",
       "ogImage": "/images/about/campus-career.webp",
       "keywords": [
-        "SPU study plan",
-        "Business Administration study plan",
-        "Syrian Private University"
+        "Business management curriculum",
+        "Marketing degree Syria",
+        "SPU business program"
       ],
       "fragments": [
         "pages/faculties/study-plan/content.html"
@@ -1368,13 +1480,13 @@
       "name": "faculty-building-construction-engineering-study-plan",
       "fileName": "facilities/building-construction-engineering/study-plan/index.html",
       "route": "/facilities/building-construction-engineering/study-plan/",
-      "title": "Building and Construction Engineering Study Plan | SPU",
-      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Building and Construction Engineering.",
+      "title": "Construction Engineering Study Plan | SPU",
+      "description": "Access the civil and construction engineering program featuring structural analysis, project management, and sustainable design courses.",
       "ogImage": "/images/slider-3.webp",
       "keywords": [
-        "SPU study plan",
-        "Construction Engineering study plan",
-        "Syrian Private University"
+        "Civil engineering curriculum",
+        "Construction management Syria",
+        "SPU engineering program"
       ],
       "fragments": [
         "pages/faculties/study-plan/content.html"
@@ -1385,12 +1497,12 @@
       "fileName": "facilities/dentistry/study-plan/index.html",
       "route": "/facilities/dentistry/study-plan/",
       "title": "Dentistry Study Plan | SPU",
-      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Dentistry.",
+      "description": "Review the dental medicine program with clinical simulation, oral surgery, and restorative dentistry training sequences.",
       "ogImage": "/images/dental-place.JPG",
       "keywords": [
-        "SPU study plan",
-        "Dentistry study plan",
-        "Syrian Private University"
+        "Dental medicine curriculum",
+        "Oral healthcare training Syria",
+        "SPU dentistry program"
       ],
       "fragments": [
         "pages/faculties/study-plan/content.html"
@@ -1401,12 +1513,12 @@
       "fileName": "facilities/medicine/study-plan/index.html",
       "route": "/facilities/medicine/study-plan/",
       "title": "Medicine Study Plan | SPU",
-      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Medicine.",
+      "description": "Explore the medical degree pathway from basic sciences through clinical rotations to residency preparation with detailed course flow.",
       "ogImage": "/images/slider-2.webp",
       "keywords": [
-        "SPU study plan",
-        "Medicine study plan",
-        "Syrian Private University"
+        "Medical school curriculum",
+        "Clinical training Syria",
+        "SPU medicine program"
       ],
       "fragments": [
         "pages/faculties/study-plan/content.html"
@@ -1417,12 +1529,12 @@
       "fileName": "facilities/petroleum/study-plan/index.html",
       "route": "/facilities/petroleum/study-plan/",
       "title": "Petroleum Engineering Study Plan | SPU",
-      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Petroleum Engineering.",
+      "description": "Discover the petroleum engineering program covering reservoir analysis, drilling technology, and production optimization coursework.",
       "ogImage": "/images/petroleom-dean.jpg",
       "keywords": [
-        "SPU study plan",
-        "Petroleum Engineering study plan",
-        "Syrian Private University"
+        "Oil and gas engineering curriculum",
+        "Reservoir engineering Syria",
+        "SPU petroleum program"
       ],
       "fragments": [
         "pages/faculties/study-plan/content.html"
@@ -1433,12 +1545,12 @@
       "fileName": "facilities/pharmacy/study-plan/index.html",
       "route": "/facilities/pharmacy/study-plan/",
       "title": "Pharmacy Study Plan | SPU",
-      "description": "Dynamic study plan, prerequisites, course details, and lesson PDFs for the SPU Faculty of Pharmacy.",
+      "description": "View the pharmaceutical sciences curriculum including drug formulation, clinical pharmacy, and pharmacology with structured course progression.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU study plan",
-        "Pharmacy study plan",
-        "Syrian Private University"
+        "Pharmaceutical sciences curriculum",
+        "Clinical pharmacy Syria",
+        "SPU pharmacy program"
       ],
       "fragments": [
         "pages/faculties/study-plan/content.html"
@@ -1448,13 +1560,13 @@
       "name": "faculty-artificial-intelligence-course-lessons",
       "fileName": "facilities/artificial-intelligence/study-plan/course/index.html",
       "route": "/facilities/artificial-intelligence/study-plan/course/",
-      "title": "Artificial Intelligence Course Lessons | SPU",
-      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Artificial Intelligence.",
+      "title": "AI Course Lessons & Materials | SPU",
+      "description": "Access deep learning, neural networks, and data science course materials with lecture notes and programming assignments.",
       "ogImage": "/images/faculities/ai/computer-lab.jpg",
       "keywords": [
-        "SPU course lessons",
-        "Artificial Intelligence lessons",
-        "Syrian Private University"
+        "AI course materials",
+        "Deep learning lectures Syria",
+        "Machine learning resources"
       ],
       "fragments": [
         "pages/faculties/course-lessons/content.html"
@@ -1464,13 +1576,13 @@
       "name": "faculty-business-administration-course-lessons",
       "fileName": "facilities/business-administration/study-plan/course/index.html",
       "route": "/facilities/business-administration/study-plan/course/",
-      "title": "Business Administration Course Lessons | SPU",
-      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Business Administration.",
+      "title": "Business Course Lessons & Materials | SPU",
+      "description": "Download accounting, economics, and management lecture notes with case studies and business plan templates.",
       "ogImage": "/images/about/campus-career.webp",
       "keywords": [
-        "SPU course lessons",
-        "Business Administration lessons",
-        "Syrian Private University"
+        "Business course materials",
+        "Management lectures Syria",
+        "Finance textbooks"
       ],
       "fragments": [
         "pages/faculties/course-lessons/content.html"
@@ -1480,13 +1592,13 @@
       "name": "faculty-building-construction-engineering-course-lessons",
       "fileName": "facilities/building-construction-engineering/study-plan/course/index.html",
       "route": "/facilities/building-construction-engineering/study-plan/course/",
-      "title": "Building and Construction Engineering Course Lessons | SPU",
-      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Building and Construction Engineering.",
+      "title": "Construction Engineering Lessons & Materials | SPU",
+      "description": "Access structural analysis, concrete design, and surveying course materials with engineering problem sets.",
       "ogImage": "/images/slider-3.webp",
       "keywords": [
-        "SPU course lessons",
-        "Construction Engineering lessons",
-        "Syrian Private University"
+        "Civil engineering materials",
+        "Structural design lectures Syria",
+        "Construction textbooks"
       ],
       "fragments": [
         "pages/faculties/course-lessons/content.html"
@@ -1496,13 +1608,13 @@
       "name": "faculty-dentistry-course-lessons",
       "fileName": "facilities/dentistry/study-plan/course/index.html",
       "route": "/facilities/dentistry/study-plan/course/",
-      "title": "Dentistry Course Lessons | SPU",
-      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Dentistry.",
+      "title": "Dentistry Course Lessons & Materials | SPU",
+      "description": "Explore dental anatomy, periodontology, and clinical dentistry course materials with practical guides.",
       "ogImage": "/images/dental-place.JPG",
       "keywords": [
-        "SPU course lessons",
-        "Dentistry lessons",
-        "Syrian Private University"
+        "Dental course materials",
+        "Oral health lectures Syria",
+        "Clinical dentistry resources"
       ],
       "fragments": [
         "pages/faculties/course-lessons/content.html"
@@ -1512,13 +1624,13 @@
       "name": "faculty-medicine-course-lessons",
       "fileName": "facilities/medicine/study-plan/course/index.html",
       "route": "/facilities/medicine/study-plan/course/",
-      "title": "Medicine Course Lessons | SPU",
-      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Medicine.",
+      "title": "Medical Course Lessons & Materials | SPU",
+      "description": "Access pathology, pharmacology, and clinical medicine lectures with medical case studies and diagnostic guides.",
       "ogImage": "/images/slider-2.webp",
       "keywords": [
-        "SPU course lessons",
-        "Medicine lessons",
-        "Syrian Private University"
+        "Medical course materials",
+        "Clinical medicine lectures Syria",
+        "Medical textbooks"
       ],
       "fragments": [
         "pages/faculties/course-lessons/content.html"
@@ -1528,13 +1640,13 @@
       "name": "faculty-petroleum-course-lessons",
       "fileName": "facilities/petroleum/study-plan/course/index.html",
       "route": "/facilities/petroleum/study-plan/course/",
-      "title": "Petroleum Engineering Course Lessons | SPU",
-      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Petroleum Engineering.",
+      "title": "Petroleum Engineering Lessons & Materials | SPU",
+      "description": "Download reservoir engineering, drilling technology, and petroleum geology course materials and lab manuals.",
       "ogImage": "/images/petroleom-dean.jpg",
       "keywords": [
-        "SPU course lessons",
-        "Petroleum Engineering lessons",
-        "Syrian Private University"
+        "Petroleum engineering materials",
+        "Oil gas lectures Syria",
+        "Reservoir engineering resources"
       ],
       "fragments": [
         "pages/faculties/course-lessons/content.html"
@@ -1544,13 +1656,13 @@
       "name": "faculty-pharmacy-course-lessons",
       "fileName": "facilities/pharmacy/study-plan/course/index.html",
       "route": "/facilities/pharmacy/study-plan/course/",
-      "title": "Pharmacy Course Lessons | SPU",
-      "description": "Course lessons, prerequisite links, and PDF resources for the SPU Faculty of Pharmacy.",
+      "title": "Pharmacy Course Lessons & Materials | SPU",
+      "description": "Access pharmaceutical chemistry, pharmacokinetics, and clinical pharmacy lectures with drug formulas and protocols.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU course lessons",
-        "Pharmacy lessons",
-        "Syrian Private University"
+        "Pharmacy course materials",
+        "Pharmacology lectures Syria",
+        "Drug development resources"
       ],
       "fragments": [
         "pages/faculties/course-lessons/content.html"
@@ -1560,13 +1672,13 @@
       "name": "faculty-artificial-intelligence-alumni",
       "fileName": "facilities/artificial-intelligence/alumni/index.html",
       "route": "/facilities/artificial-intelligence/alumni/",
-      "title": "Alumni | SPU Faculties",
-      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "title": "AI Engineering Alumni | SPU",
+      "description": "Connect with SPU Faculty of AI Engineering graduates working in tech companies, research labs, and AI startups worldwide.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU alumni",
-        "Syrian Private University graduates",
-        "Faculty alumni"
+        "SPU AI alumni",
+        "Artificial Intelligence graduates",
+        "Machine learning engineers Syria"
       ],
       "fragments": [
         "pages/faculties/alumni/hero.html",
@@ -1577,13 +1689,13 @@
       "name": "faculty-business-administration-alumni",
       "fileName": "facilities/business-administration/alumni/index.html",
       "route": "/facilities/business-administration/alumni/",
-      "title": "Alumni | SPU Faculties",
-      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "title": "Business Administration Alumni | SPU",
+      "description": "Explore career paths of SPU Faculty of Business Administration alumni in finance, marketing, and management sectors.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU alumni",
-        "Syrian Private University graduates",
-        "Faculty alumni"
+        "SPU business alumni",
+        "Business administration graduates",
+        "Management professionals Syria"
       ],
       "fragments": [
         "pages/faculties/alumni/hero.html",
@@ -1594,13 +1706,13 @@
       "name": "faculty-building-construction-engineering-alumni",
       "fileName": "facilities/building-construction-engineering/alumni/index.html",
       "route": "/facilities/building-construction-engineering/alumni/",
-      "title": "Alumni | SPU Faculties",
-      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "title": "Construction Engineering Alumni | SPU",
+      "description": "Meet SPU Faculty of Construction Engineering graduates leading infrastructure and sustainable building projects.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU alumni",
-        "Syrian Private University graduates",
-        "Faculty alumni"
+        "SPU construction alumni",
+        "Civil engineering graduates",
+        "Building projects Syria"
       ],
       "fragments": [
         "pages/faculties/alumni/hero.html",
@@ -1611,13 +1723,13 @@
       "name": "faculty-dentistry-alumni",
       "fileName": "facilities/dentistry/alumni/index.html",
       "route": "/facilities/dentistry/alumni/",
-      "title": "Alumni | SPU Faculties",
-      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "title": "Dentistry Alumni | SPU",
+      "description": "Discover how SPU Faculty of Dentistry graduates are transforming oral healthcare across Syria and the region.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU alumni",
-        "Syrian Private University graduates",
-        "Faculty alumni"
+        "SPU dentistry alumni",
+        "Dental graduates Syria",
+        "Oral healthcare professionals"
       ],
       "fragments": [
         "pages/faculties/alumni/hero.html",
@@ -1628,13 +1740,13 @@
       "name": "faculty-medicine-alumni",
       "fileName": "facilities/medicine/alumni/index.html",
       "route": "/facilities/medicine/alumni/",
-      "title": "Alumni | SPU Faculties",
-      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "title": "Medicine Alumni | SPU",
+      "description": "Meet the distinguished physicians and medical researchers who graduated from SPU Faculty of Medicine.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU alumni",
-        "Syrian Private University graduates",
-        "Faculty alumni"
+        "SPU medicine alumni",
+        "Medical doctors Syria",
+        "Healthcare professionals graduates"
       ],
       "fragments": [
         "pages/faculties/alumni/hero.html",
@@ -1645,13 +1757,13 @@
       "name": "faculty-petroleum-alumni",
       "fileName": "facilities/petroleum/alumni/index.html",
       "route": "/facilities/petroleum/alumni/",
-      "title": "Alumni | SPU Faculties",
-      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "title": "Petroleum Engineering Alumni | SPU",
+      "description": "Connect with SPU Faculty of Petroleum Engineering alumni working in oil, gas, and energy companies regionally.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU alumni",
-        "Syrian Private University graduates",
-        "Faculty alumni"
+        "SPU petroleum alumni",
+        "Oil and gas engineers Syria",
+        "Energy sector graduates"
       ],
       "fragments": [
         "pages/faculties/alumni/hero.html",
@@ -1662,13 +1774,13 @@
       "name": "faculty-pharmacy-alumni",
       "fileName": "facilities/pharmacy/alumni/index.html",
       "route": "/facilities/pharmacy/alumni/",
-      "title": "Alumni | SPU Faculties",
-      "description": "Browse SPU alumni records across all faculties, departments, graduation years, and academic phases.",
+      "title": "Pharmacy Alumni | SPU",
+      "description": "Explore how SPU Faculty of Pharmacy graduates are advancing pharmaceutical sciences and healthcare.",
       "ogImage": "/images/pharmacy-place.jpg",
       "keywords": [
-        "SPU alumni",
-        "Syrian Private University graduates",
-        "Faculty alumni"
+        "SPU pharmacy alumni",
+        "Pharmaceutical sciences graduates",
+        "Pharmacists Syria"
       ],
       "fragments": [
         "pages/faculties/alumni/hero.html",

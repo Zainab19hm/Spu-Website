@@ -2,6 +2,7 @@
          x-data="{ get page() { return $store.libraryPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
 
     <div class="container mx-auto px-6">
+        <h1 class="sr-only" x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
         <div class="mx-auto mb-12 max-w-[1200px]">
             <h2 class="mb-2 text-center text-lg font-bold text-spu-red"
                 x-text="isAr ? page.library.resourcesSection.titleAr : page.library.resourcesSection.titleEn"></h2>
@@ -73,11 +74,11 @@
             </div>
             <div class="flex flex-col gap-2 text-sm text-spu-blue/70">
                 <a :href="'mailto:' + page.library.librarianSection.email" class="flex items-center justify-center gap-2 hover:text-spu-red">
-                    <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4">
+                    <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                     <span x-text="page.library.librarianSection.email"></span>
                 </a>
                 <div class="flex items-center justify-center gap-2">
-                    <img src="/images/icon-phone-outline.svg" alt="" class="h-4 w-4">
+                    <img src="/images/icon-phone-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
                     <span x-text="page.library.librarianSection.phone"></span>
                 </div>
             </div>

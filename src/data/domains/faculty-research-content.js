@@ -1,61 +1,14 @@
-const researchTopicsByFaculty = {
-    medicine: [
-        { titleEn: 'Clinical Simulation and Preventive Health', titleAr: 'Clinical Simulation and Preventive Health' },
-        { titleEn: 'Hospital Training Outcomes', titleAr: 'Hospital Training Outcomes' },
-        { titleEn: 'Community Medicine Studies', titleAr: 'Community Medicine Studies' }
-    ],
-    dentistry: [
-        { titleEn: 'Digital Dentistry and Oral Regeneration', titleAr: 'Digital Dentistry and Oral Regeneration' },
-        { titleEn: 'Dental Imaging and Diagnosis', titleAr: 'Dental Imaging and Diagnosis' },
-        { titleEn: 'Evidence Based Oral Care', titleAr: 'Evidence Based Oral Care' }
-    ],
-    pharmacy: [
-        { titleEn: 'Drug Formulation and Quality Control', titleAr: 'Drug Formulation and Quality Control' },
-        { titleEn: 'Clinical Pharmacy Practice', titleAr: 'Clinical Pharmacy Practice' },
-        { titleEn: 'Natural Products and Therapeutics', titleAr: 'Natural Products and Therapeutics' }
-    ],
-    petroleum: [
-        { titleEn: 'Reservoir Characterization Models', titleAr: 'Reservoir Characterization Models' },
-        { titleEn: 'Energy Production Optimization', titleAr: 'Energy Production Optimization' },
-        { titleEn: 'Petroleum Geology Applications', titleAr: 'Petroleum Geology Applications' }
-    ],
-    'ai-engineering': [
-        { titleEn: 'Applied AI and Machine Learning', titleAr: 'Applied AI and Machine Learning' },
-        { titleEn: 'Computer Vision and Natural Language Processing', titleAr: 'Computer Vision and Natural Language Processing' },
-        { titleEn: 'Cloud Systems and Smart Data', titleAr: 'Cloud Systems and Smart Data' }
-    ],
-    Construction: [
-        { titleEn: 'Sustainable Construction Materials', titleAr: 'Sustainable Construction Materials' },
-        { titleEn: 'Structural Performance and Safety', titleAr: 'Structural Performance and Safety' },
-        { titleEn: 'Project Delivery and BIM Methods', titleAr: 'Project Delivery and BIM Methods' }
-    ],
-    business: [
-        { titleEn: 'Market Intelligence and Decision Systems', titleAr: 'Market Intelligence and Decision Systems' },
-        { titleEn: 'Finance and Banking Research', titleAr: 'Finance and Banking Research' },
-        { titleEn: 'Entrepreneurship and Organizational Leadership', titleAr: 'Entrepreneurship and Organizational Leadership' }
-    ]
+import { researchPageContent } from '../pages/research-content.js';
+
+const facultyIdToPublicationFacultyMap = {
+    'medicine': { facultyEn: 'Faculty of Medicine', facultyAr: 'كلية الطب' },
+    'dentistry': { facultyEn: 'Faculty of Dentistry', facultyAr: 'كلية طب الأسنان' },
+    'pharmacy': { facultyEn: 'Faculty of Pharmacy', facultyAr: 'كلية الصيدلة' },
+    'ai-engineering': { facultyEn: 'Faculty of Artificial Intelligence', facultyAr: 'كلية الذكاء الاصطناعي' },
+    'petroleum': { facultyEn: 'Faculty of Petroleum Engineering', facultyAr: 'كلية هندسة البترول' },
+    'Construction': { facultyEn: 'Faculty of Construction Engineering', facultyAr: 'كلية هندسة التشييد' },
+    'business': { facultyEn: 'Faculty of Business Administration', facultyAr: 'كلية إدارة الأعمال' }
 };
-
-const fallbackTopics = [
-    { titleEn: 'Applied Faculty Research', titleAr: 'Applied Faculty Research' },
-    { titleEn: 'Practice Based Innovation', titleAr: 'Practice Based Innovation' },
-    { titleEn: 'Student Research Development', titleAr: 'Student Research Development' }
-];
-
-const publicationTypes = [
-    { typeEn: 'Research Article', typeAr: 'Research Article' },
-    { typeEn: 'Applied Study', typeAr: 'Applied Study' },
-    { typeEn: 'Faculty Project', typeAr: 'Faculty Project' }
-];
-
-const publicationYears = ['2026', '2025', '2025'];
-
-function getTabContent(faculty, id, lang) {
-    const tab = (faculty.tabs || []).find((item) => item.id === id) || {};
-    return lang === 'ar'
-        ? (tab.contentAr || tab.contentEn || '')
-        : (tab.contentEn || tab.contentAr || '');
-}
 
 function getFacultyName(faculty, lang) {
     if (lang === 'ar') {
@@ -65,57 +18,51 @@ function getFacultyName(faculty, lang) {
     return faculty.catalogTitleEn || faculty.nameEn || '';
 }
 
-function getGallery(faculty) {
-    return [...new Set([
-        faculty.image_1,
-        faculty.image_2,
-        faculty.heroImage,
-        faculty.dean?.image
-    ].filter(Boolean))];
-}
-
-function buildResearchItems(faculty) {
-    const topics = researchTopicsByFaculty[faculty.id] || fallbackTopics;
-    const gallery = getGallery(faculty);
-    const summariesEn = [
-        getTabContent(faculty, 'objectives', 'en'),
-        getTabContent(faculty, 'mission', 'en'),
-        faculty.dean?.messageEn || faculty.catalogDescEn || ''
-    ];
-    const summariesAr = [
-        getTabContent(faculty, 'objectives', 'ar'),
-        getTabContent(faculty, 'mission', 'ar'),
-        faculty.dean?.messageAr || faculty.catalogDescAr || ''
-    ];
-
-    return topics.map((topic, index) => ({
-        id: `${faculty.id || 'faculty'}-research-${index + 1}`,
-        titleEn: topic.titleEn,
-        titleAr: topic.titleAr,
-        summaryEn: summariesEn[index] || faculty.catalogDescEn || '',
-        summaryAr: summariesAr[index] || faculty.catalogDescAr || summariesEn[index] || '',
-        image: gallery[index % Math.max(gallery.length, 1)] || '/images/news/researches.jpeg',
-        date: publicationYears[index] || publicationYears[publicationYears.length - 1],
-        typeEn: publicationTypes[index]?.typeEn || 'Research',
-        typeAr: publicationTypes[index]?.typeAr || publicationTypes[index]?.typeEn || 'Research',
-        doi: `SPU-${String(faculty.id || 'faculty').toUpperCase()}-${index + 1}`,
-        href: '/research/repository.html',
-        ctaEn: index === 0 ? 'View Research' : 'Research Details',
-        ctaAr: index === 0 ? 'View Research' : 'Research Details'
-    }));
-}
-
 export function createFacultyResearchSection(faculty) {
     const facultyNameEn = getFacultyName(faculty, 'en');
     const facultyNameAr = getFacultyName(faculty, 'ar');
+    const facultyMapping = facultyIdToPublicationFacultyMap[faculty.id];
+
+    let filteredPublications = [];
+
+    if (facultyMapping) {
+        filteredPublications = (researchPageContent.repository.publications || []).filter(pub =>
+            pub.facultyEn === facultyMapping.facultyEn
+        );
+    }
+
+    const items = filteredPublications.length > 0 ? filteredPublications.map(pub => ({
+        id: pub.id,
+        titleEn: pub.titleEn,
+        titleAr: pub.titleAr,
+        summaryEn: pub.summaryEn,
+        summaryAr: pub.summaryAr,
+        image: pub.image,
+        date: pub.year,
+        typeEn: pub.typeEn,
+        typeAr: pub.typeAr,
+        authorEn: pub.authorEn,
+        authorAr: pub.authorAr,
+        facultyEn: pub.facultyEn,
+        facultyAr: pub.facultyAr,
+        href: pub.href,
+        ctaEn: pub.viewCtaEn,
+        ctaAr: pub.viewCtaAr,
+        downloadCtaEn: pub.downloadCtaEn,
+        downloadCtaAr: pub.downloadCtaAr
+    })) : [];
 
     return {
         eyebrowEn: 'Faculty Research',
         eyebrowAr: 'Faculty Research',
         titleEn: 'Latest Research',
         titleAr: 'Latest Research',
-        summaryEn: `Recent faculty-led work connects ${facultyNameEn || 'the faculty'} programs with applied study, laboratory practice, and community impact.`,
-        summaryAr: `Recent faculty-led work connects ${facultyNameAr || 'the faculty'} programs with applied study, laboratory practice, and community impact.`,
-        items: buildResearchItems(faculty)
+        summaryEn: items.length > 0
+            ? `Explore ${facultyNameEn} research publications, articles, and conference papers.`
+            : `No research publications available for ${facultyNameEn} at this time.`,
+        summaryAr: items.length > 0
+            ? `استكشف منشورات وأبحاث ومقالات كلية ${facultyNameAr}.`
+            : `لا توجد منشورات بحثية متاحة لكلية ${facultyNameAr} في الوقت الحالي.`,
+        items: items
     };
 }

@@ -102,5 +102,12 @@ export const siteRoutes = Object.freeze({
     facultyMedicineValedictorians: getPageRoute('faculty-medicine-valedictorians'),
     facultyPetroleumValedictorians: getPageRoute('faculty-petroleum-valedictorians'),
     facultyPharmacyValedictorians: getPageRoute('faculty-pharmacy-valedictorians'),
+    facultyMedicineResearch: getPageRoute('faculty-medicine-research'),
+    facultyDentistryResearch: getPageRoute('faculty-dentistry-research'),
+    facultyPharmacyResearch: getPageRoute('faculty-pharmacy-research'),
+    facultyArtificialIntelligenceResearch: getPageRoute('faculty-artificial-intelligence-research'),
+    facultyPetroleumResearch: getPageRoute('faculty-petroleum-research'),
+    facultyBuildingConstructionEngineeringResearch: getPageRoute('faculty-building-construction-engineering-research'),
+    facultyBusinessAdministrationResearch: getPageRoute('faculty-business-administration-research'),
     projectDetail: getPageRoute('project-detail')
 });

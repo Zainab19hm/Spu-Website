@@ -74,7 +74,7 @@ const allFacultyNavigationCards = [
         id: 'research-nav',
         titleEn: 'Research',
         titleAr: 'البحث العلمي',
-        path: 'research/',
+        routeField: 'researchRoute',
         actionEn: 'Explore Research',
         actionAr: 'استكشف البحث'
     },

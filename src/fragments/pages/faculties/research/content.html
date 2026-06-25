@@ -1,0 +1,127 @@
+<section x-show="!$store.facultiesPage.catalogMode && $store.facultiesPage.currentFaculty?.latestResearch" x-cloak
+         id="faculty-research"
+         class="bg-white pt-[92px] pb-[86px] font-hacen"
+         x-data="{
+             currentPage: 1,
+             itemsPerPage: 6,
+             get isAr() {
+                 return $store.app.currentLang === 'ar';
+             },
+             get currentFaculty() {
+                 return $store.facultiesPage.currentFaculty || {};
+             },
+             get research() {
+                 return this.currentFaculty.latestResearch || {};
+             },
+             get items() {
+                 return this.research.items || [];
+             },
+             get totalPages() {
+                 return Math.ceil(this.items.length / this.itemsPerPage);
+             },
+             get visibleItems() {
+                 const start = (this.currentPage - 1) * this.itemsPerPage;
+                 return this.items.slice(start, start + this.itemsPerPage);
+             },
+             get hasResearch() {
+                 return this.items && this.items.length > 0;
+             },
+             get accent() {
+                 const color = this.currentFaculty.color || '202759';
+                 return color.startsWith('#') ? color : `#${color}`;
+             },
+             localized(item, key) {
+                 return this.isAr ? (item?.[`${key}Ar`] || item?.[`${key}En`] || '') : (item?.[`${key}En`] || item?.[`${key}Ar`] || '');
+             },
+             nextPage() {
+                 if (this.canGoNext) this.currentPage++;
+             },
+             prevPage() {
+                 if (this.canGoPrev) this.currentPage--;
+             },
+             goToPage(page) {
+                 this.currentPage = page;
+             },
+             get canGoNext() {
+                 return this.currentPage < this.totalPages;
+             },
+             get canGoPrev() {
+                 return this.currentPage > 1;
+             },
+             get paginationRange() {
+                 const range = [];
+                 const delta = 2;
+                 const current = this.currentPage;
+                 const total = this.totalPages;
+                 
+                 for (let i = Math.max(1, current - delta); i <= Math.min(total, current + delta); i++) {
+                     range.push(i);
+                 }
+                 return range;
+             }
+         }">
+    <div class="container">
+        <h1 class="sr-only" x-text="localized(research, 'title')"></h1>
+        <div class="mx-auto mt-[48px] grid max-w-[1168px] grid-cols-1 gap-x-[38px] gap-y-[38px] lg:grid-cols-2">
+            <template x-for="item in visibleItems" :key="item.id">
+                <a :href="item.href"
+                   class="group block overflow-hidden rounded-[10px] border border-[#d5d9e2] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(32,39,89,0.12)]">
+                    <img :src="item.image"
+                         :alt="localized(item, 'title')"
+                         class="h-[169px] w-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                    <div class="px-[18px] pb-[20px] pt-[20px]">
+                        <div class="flex flex-wrap gap-[7px]">
+                            <span class="rounded-[5px] border border-[#c8ceda] px-[12px] py-[5px] text-[9px] font-bold text-spu-blue"
+                                  x-text="localized(item, 'type')"></span>
+                            <span class="rounded-[5px] border border-[#c8ceda] px-[12px] py-[5px] text-[9px] font-bold text-spu-blue"
+                                  x-text="item.date"></span>
+                        </div>
+
+                        <h2 class="mt-[14px] text-[22px] font-bold leading-tight text-spu-blue group-hover:text-spu-red transition-colors"
+                            x-text="localized(item, 'title')"></h2>
+                        <p class="mt-[10px] max-w-[500px] text-[16px] leading-[1.75] text-[#263650]"
+                           x-text="localized(item, 'summary')"></p>
+
+                        <div class="mt-[20px] flex flex-wrap gap-[8px]">
+                            <span class="inline-flex h-[27px] min-w-[87px] items-center justify-center rounded-[6px] bg-spu-blue px-4 text-[8px] font-bold text-white transition group-hover:bg-[#171d47]"
+                                  x-text="localized(item, 'cta')"></span>
+                            <span class="inline-flex h-[27px] min-w-[87px] items-center justify-center rounded-[6px] border border-spu-blue bg-white px-4 text-[8px] font-bold text-spu-blue transition group-hover:bg-spu-blue/5"
+                                  x-text="localized(item, 'downloadCta')"></span>
+                        </div>
+                    </div>
+                </a>
+            </template>
+        </div>
+
+        <div x-show="hasResearch && totalPages > 1" class="mt-[46px] flex items-center justify-center gap-[13px]">
+            <button @click="prevPage()"
+                    :disabled="!canGoPrev"
+                    class="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[#c8ceda] bg-white text-spu-blue transition-colors hover:border-spu-blue hover:bg-spu-blue hover:text-white disabled:cursor-not-allowed disabled:opacity-50">
+                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
+            </button>
+
+            <template x-for="page in paginationRange" :key="page">
+                <button @click="goToPage(page)"
+                        :class="page === currentPage ? 'border-spu-red bg-spu-red text-white' : 'border-[#c8ceda] bg-white text-spu-blue hover:border-spu-blue'"
+                        class="flex h-[44px] w-[44px] items-center justify-center rounded-full border text-sm font-bold transition-colors">
+                    <span x-text="page"></span>
+                </button>
+            </template>
+
+            <button @click="nextPage()"
+                    :disabled="!canGoNext"
+                    class="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[#c8ceda] bg-white text-spu-blue transition-colors hover:border-spu-blue hover:bg-spu-blue hover:text-white disabled:cursor-not-allowed disabled:opacity-50">
+                <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-4 w-4 rtl:rotate-180" aria-hidden="true">
+            </button>
+        </div>
+
+        <div x-show="!hasResearch && !$store.facultiesPage.loading" class="py-12 text-center">
+            <p class="text-lg text-slate-500" x-text="localized(research, 'summary')"></p>
+        </div>
+
+        <div x-cloak x-show="$store.facultiesPage.loading" class="py-12 text-center">
+            <p class="text-lg text-slate-500" x-text="isAr ? 'جارٍ التحميل...' : 'Loading...'"></p>
+        </div>
+    </div>
+</section>

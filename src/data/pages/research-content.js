@@ -8,7 +8,7 @@ export const researchPageContent = {
         summaryAr: 'تدعم الجامعة السورية الخاصة البحث الأكاديمي الذي يوسع المعرفة ويشجع الابتكار ويساهم في التنمية العلمية والمجتمعية.',
         cta1En: 'Explore Publications',
         cta1Ar: 'استكشف المنشورات',
-        cta1Url: 'javascript:void(0)',
+        cta1Url: '/research/repository.html',
         cta2En: 'Research Centers',
         cta2Ar: 'مراكز البحث',
         cta2Url: '/research/centers.html',
@@ -184,7 +184,7 @@ export const researchPageContent = {
                 summaryAr: 'اطلع على المؤتمرات العلمية والندوات القادمة والوقائع السابقة المستضافة عالمياً.',
                 ctaEn: 'Explore',
                 ctaAr: 'استكشف',
-                url: 'javascript:void(0)'
+                url: '/research/conferences/'
             },
             {
                 number: '04',
@@ -194,7 +194,7 @@ export const researchPageContent = {
                 summaryAr: 'الوصول إلى إرشادات البحث وطلبات التمويل وبروتوكولات مجلس المراجعة المؤسسي.',
                 ctaEn: 'Explore',
                 ctaAr: 'استكشف',
-                url: 'javascript:void(0)'
+                url: '/research/policies/'
             },
             {
                 number: '05',
@@ -204,7 +204,7 @@ export const researchPageContent = {
                 summaryAr: 'ابحث عن الباحثين والخبراء من أعضاء الهيئة التدريسية والمشرفين الأكاديميين المحتملين.',
                 ctaEn: 'Explore',
                 ctaAr: 'استكشف',
-                url: 'javascript:void(0)'
+                url: '/research/expert-finder/'
             },
             {
                 number: '06',
@@ -214,7 +214,7 @@ export const researchPageContent = {
                 summaryAr: 'استكشف المراجع الأكاديمية والمجموعات الخاصة والأرشيفات الرقمية المتاحة للباحثين.',
                 ctaEn: 'Explore',
                 ctaAr: 'استكشف',
-                url: 'javascript:void(0)'
+                url: '/research/library/'
             }
         ]
     },
@@ -435,26 +435,28 @@ export const researchPageContent = {
             titleAr: 'مخابر البحث',
             viewDirectoryEn: 'View Full Directory',
             viewDirectoryAr: 'عرض الدليل الكامل',
-            items: Array.from({ length: 3 }, (_, index) => ({
-                id: index + 1,
-                facultyEn: 'Faculty of Artificial Intelligence',
-                facultyAr: 'كلية الذكاء الاصطناعي',
-                titleEn: 'Artificial Intelligence & Data Science Lab',
-                titleAr: 'مخبر الذكاء الاصطناعي وعلوم البيانات',
-                summaryEn: 'Advancing applied AI research, data science, and intelligent systems to solve complex regional challenges.',
-                summaryAr: 'تطوير أبحاث الذكاء الاصطناعي وعلوم البيانات والأنظمة الذكية لمعالجة تحديات إقليمية معقدة.',
-                directorEn: 'Director: Dr. Full Name',
-                directorAr: 'المدير: د. الاسم الكامل',
-                projectsEn: 'Projects: 3 Active Projects',
-                projectsAr: 'المشاريع: 3 مشاريع نشطة',
-                publicationsEn: 'Publications: 8 Related Publications',
-                publicationsAr: 'المنشورات: 8 منشورات مرتبطة',
-                contactEn: 'Contact: ai.lab@spu.edu.sy',
-                contactAr: 'التواصل: ai.lab@spu.edu.sy',
-                ctaEn: 'View Center Profile',
-                ctaAr: 'عرض ملف المركز',
-                image: '/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp'
-            }))
+            items: [
+                {
+                    id: 1,
+                    facultyEn: 'Faculty of Artificial Intelligence',
+                    facultyAr: 'كلية الذكاء الاصطناعي',
+                    titleEn: 'Artificial Intelligence & Data Science Lab',
+                    titleAr: 'مخبر الذكاء الاصطناعي وعلوم البيانات',
+                    summaryEn: 'Advancing applied AI research, data science, and intelligent systems to solve complex regional challenges.',
+                    summaryAr: 'تطوير أبحاث الذكاء الاصطناعي وعلوم البيانات والأنظمة الذكية لمعالجة تحديات إقليمية معقدة.',
+                    directorEn: 'Director: Dr. Full Name',
+                    directorAr: 'المدير: د. الاسم الكامل',
+                    projectsEn: 'Projects: 3 Active Projects',
+                    projectsAr: 'المشاريع: 3 مشاريع نشطة',
+                    publicationsEn: 'Publications: 8 Related Publications',
+                    publicationsAr: 'المنشورات: 8 منشورات مرتبطة',
+                    contactEn: 'Contact: ai.lab@spu.edu.sy',
+                    contactAr: 'التواصل: ai.lab@spu.edu.sy',
+                    ctaEn: 'View Center Profile',
+                    ctaAr: 'عرض ملف المركز',
+                    image: '/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp'
+                }
+            ]
         },
         profile: {
             eyebrowEn: 'Center Profile Highlight',
