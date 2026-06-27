@@ -68,11 +68,24 @@
                                      x-transition:leave-end="opacity-0 -translate-y-1 scale-[0.97]"
                                      style="display: none;"
                                      class="site-nav-dropdown">
-                                    <template x-for="child in item.children" :key="child.url">
-                                        <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
-                                           @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }"
-                                           class="site-nav-dropdown-link z-[100]"
-                                           x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                     <template x-for="(child, idx) in item.children" :key="child.divider ? 'divider-' + idx : (child.url || child.labelEn)">
+                                        <div x-show="!child.divider && !child.featured">
+                                            <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
+                                               @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }"
+                                               class="site-nav-dropdown-link z-[100]"
+                                               x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                        </div>
+                                        <div x-show="child.divider" class="my-2 border-t border-spu-blue/10"></div>
+                                        <div x-show="!child.divider && child.featured" class="site-nav-dropdown-group">
+                                            <a :href="child.url"
+                                               class="site-nav-dropdown-group-header z-[100]"
+                                               x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                            <template x-for="feat in child.featured" :key="feat.url">
+                                                <a :href="feat.url"
+                                                   class="site-nav-dropdown-featured z-[100]"
+                                                   x-text="$store.app.currentLang === 'ar' ? feat.labelAr : feat.labelEn"></a>
+                                            </template>
+                                        </div>
                                     </template>
                                 </div>
                             </li>
@@ -180,11 +193,26 @@
                                  x-transition:leave-end="opacity-0 -translate-y-1"
                                  style="display: none;"
                                  class="site-nav-mobile-children">
-                                <template x-for="child in item.children" :key="`mobile-${child.url}`">
-                                    <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
-                                       @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null"
-                                       class="site-nav-mobile-child"
-                                       x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                <template x-for="(child, index) in item.children" :key="child.divider ? 'divider-' + index : (child.url || child.labelEn)">
+                                    <div x-show="!child.divider && !child.featured">
+                                        <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
+                                           @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null"
+                                           class="site-nav-mobile-child"
+                                           x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                    </div>
+                                    <div x-show="child.divider" class="my-2 border-t border-spu-blue/10"></div>
+                                    <div x-show="!child.divider && child.featured" class="site-nav-mobile-group">
+                                        <a :href="child.url"
+                                           @click="mobileNav = false; openMenu = null"
+                                           class="site-nav-mobile-group-header"
+                                           x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
+                                        <template x-for="feat in child.featured" :key="`mobile-${feat.url}`">
+                                            <a :href="feat.url"
+                                               @click="mobileNav = false; openMenu = null"
+                                               class="site-nav-mobile-child site-nav-mobile-featured"
+                                               x-text="$store.app.currentLang === 'ar' ? feat.labelAr : feat.labelEn"></a>
+                                        </template>
+                                    </div>
                                 </template>
                             </div>
                         </div>

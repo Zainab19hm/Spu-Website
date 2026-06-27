@@ -126,6 +126,35 @@ const pageStoreLoaders = {
 
 const pagesUsingFacultyCatalog = new Set(['home', 'faculties']);
 
+/**
+ * Research section fallback loader.
+ *
+ * Listing pages such as research-publications / research-projects and every
+ * slug-based detail page (publication-*, project-*, researcher-*, theme-*,
+ * center-*) all need the shared researchPage store. Explicit entries in
+ * pageStoreLoaders (e.g. research-expert-finder, research-library) take
+ * precedence because the lookup checks that object first.
+ */
+function getResearchStoreLoader(pageName) {
+    const researchPrefixes = [
+        'research-publications',
+        'research-projects',
+        'research-researchers',
+        'research-themes',
+        'publication-',
+        'project-',
+        'researcher-',
+        'theme-',
+        'center-'
+    ];
+
+    if (researchPrefixes.some(prefix => pageName === prefix || pageName.startsWith(prefix))) {
+        return pageStoreLoaders.research;
+    }
+
+    return null;
+}
+
 export async function registerStores(Alpine, { pageName = 'home' } = {}) {
     registerLayoutStores(Alpine, { pageName });
 
@@ -134,7 +163,9 @@ export async function registerStores(Alpine, { pageName = 'home' } = {}) {
         registerFacultyCatalogStore(Alpine);
     }
 
-    const loadPageStoreRegistrar = pageStoreLoaders[pageName] || pageStoreLoaders.home;
+    const loadPageStoreRegistrar = pageStoreLoaders[pageName]
+        || getResearchStoreLoader(pageName)
+        || pageStoreLoaders.home;
     const registerPageStores = await loadPageStoreRegistrar();
     registerPageStores(Alpine);
 }

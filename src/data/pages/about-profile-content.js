@@ -1,3 +1,5 @@
+﻿import { researchPageContent } from './research-content.js';
+
 const externalLink = (host) => host ? `https://${host}` : '';
 
 export const sharedProfileHeroImage = '/images/DSC_1596.JPG';
@@ -360,7 +362,7 @@ export const leadershipProfileContent = {
                 title: 'Clinical Simulation Training Impact on Medical Student Diagnostic Accuracy',
                 journal: 'Journal of Medical Education',
                 year: 2024,
-                links: { local: '/research/detail/?id=res-005', scholar: externalLink('scholar.google.com') }
+                links: { local: '/research/publications/clinical-simulation-training-medical-students/', scholar: externalLink('scholar.google.com') }
             }
         ]
     },
@@ -442,7 +444,7 @@ export const leadershipProfileContent = {
                     title: 'Clinical Simulation Training Impact on Medical Student Diagnostic Accuracy',
                     journal: 'Journal of Medical Education',
                     year: 2024,
-                    links: { local: '/research/detail/?id=res-005', scholar: externalLink('scholar.google.com') }
+                    links: { local: '/research/publications/clinical-simulation-training-medical-students/', scholar: externalLink('scholar.google.com') }
                 }
             ]
         },
@@ -469,7 +471,7 @@ export const leadershipProfileContent = {
                     title: 'AI-Driven Predictive Models for Early Dental Caries Detection',
                     journal: 'International Journal of Dental Informatics',
                     year: 2024,
-                    links: { local: '/research/detail/?id=res-002', scholar: externalLink('scholar.google.com') }
+                    links: { local: '/research/publications/ai-dental-diagnostics/', scholar: externalLink('scholar.google.com') }
                 }
             ]
         },
@@ -497,7 +499,7 @@ export const leadershipProfileContent = {
                     title: 'Machine Learning Applications in Pharmaceutical Quality Control',
                     journal: 'Journal of Pharmaceutical Analysis',
                     year: 2024,
-                    links: { local: '/research/detail/?id=res-001', scholar: externalLink('scholar.google.com') }
+                    links: { local: '/research/publications/machine-learning-pharmaceutical-quality-control/', scholar: externalLink('scholar.google.com') }
                 }
             ]
         },
@@ -529,7 +531,7 @@ export const leadershipProfileContent = {
                     title: 'Natural Language Processing for Arabic Medical Record Summarization',
                     journal: 'ACM Transactions on Asian Language Information Processing',
                     year: 2024,
-                    links: { local: '/research/detail/?id=res-006', scholar: externalLink('scholar.google.com') }
+                    links: { local: '/research/publications/arabic-medical-record-nlp/', scholar: externalLink('scholar.google.com') }
                 }
             ]
         },
@@ -556,7 +558,7 @@ export const leadershipProfileContent = {
                     title: 'Deep Learning Framework for Reservoir Permeability Prediction',
                     journal: 'Journal of Petroleum Science and Engineering',
                     year: 2023,
-                    links: { local: '/research/detail/?id=res-004', scholar: externalLink('scholar.google.com') }
+                    links: { local: '/research/publications/deep-learning-reservoir-permeability/', scholar: externalLink('scholar.google.com') }
                 }
             ]
         },
@@ -584,7 +586,7 @@ export const leadershipProfileContent = {
                     title: 'Machine Learning Applications in Pharmaceutical Quality Control',
                     journal: 'Journal of Pharmaceutical Analysis',
                     year: 2024,
-                    links: { local: '/research/detail/?id=res-001', scholar: externalLink('scholar.google.com') }
+                    links: { local: '/research/publications/machine-learning-pharmaceutical-quality-control/', scholar: externalLink('scholar.google.com') }
                 }
             ]
         },
@@ -611,7 +613,7 @@ export const leadershipProfileContent = {
                     title: 'Structural Performance of Fiber-Reinforced Concrete in Seismic Zones',
                     journal: 'Engineering Structures',
                     year: 2023,
-                    links: { local: '/research/detail/?id=res-003', scholar: externalLink('scholar.google.com') }
+                    links: { local: '/research/publications/structural-analysis-earthquake-resistant-concrete/', scholar: externalLink('scholar.google.com') }
                 }
             ]
         }
@@ -645,6 +647,51 @@ export function mergeProfileContent(content) {
             Object.assign(person, match);
         }
     });
+
+    // Make researchers from the research module discoverable on the shared staff
+    // profile page. This lets the expert finder link to /about/profile.html?id=...
+    // without maintaining a separate researcher profile design.
+    const researcherFacultyMap = {
+        medicine: facultyMap.medicine,
+        dentistry: facultyMap.dentistry,
+        pharmacy: facultyMap.pharmacy,
+        ai: facultyMap['ai-engineering'],
+        petroleum: facultyMap.petroleum,
+        business: facultyMap.business,
+        construction: facultyMap.Construction
+    };
+
+    const researcherProfiles = (researchPageContent.expertFinder?.researchers || [])
+        .filter((r) => r && r.id)
+        .map((r) => ({
+            slug: r.id,
+            nameEn: r.nameEn,
+            nameAr: r.nameAr,
+            roleEn: r.titleEn,
+            roleAr: r.titleAr,
+            faculty: researcherFacultyMap[r.facultyId] || null,
+            email: r.email,
+            orcidUrl: r.orcidUrl,
+            scholarUrl: r.scholarUrl,
+            image: r.image,
+            researchStats: {
+                publications: r.publications || 0,
+                citations: r.citations || 0
+            },
+            expertiseEn: r.expertiseEn,
+            expertiseAr: r.expertiseAr,
+            isResearcher: true
+        }));
+
+    const existingSlugs = new Set((content.staffDirectory?.staff || []).map((p) => p.slug));
+    const newResearchers = researcherProfiles.filter((p) => !existingSlugs.has(p.slug));
+
+    if (newResearchers.length > 0) {
+        if (!content.staffDirectory) {
+            content.staffDirectory = { staff: [] };
+        }
+        content.staffDirectory.staff.push(...newResearchers);
+    }
 
     return content;
 }

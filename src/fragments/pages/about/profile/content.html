@@ -218,6 +218,19 @@
                             </a>
                         </div>
 
+                        <!-- Expertise Card -->
+                        <div class="bg-white rounded-2xl p-6 border border-spu-blue/[0.08] shadow-[0_4px_24px_rgba(32,39,89,0.06)]"
+                             x-show="(isAr ? profile.expertiseAr : profile.expertiseEn)?.length > 0">
+                            <h3 class="text-base font-bold text-spu-blue mb-5 pb-3 border-b border-spu-blue/[0.08]"
+                                x-text="isAr ? 'مجالات الخبرة' : 'Expertise'"></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="item in (isAr ? profile.expertiseAr : profile.expertiseEn)" :key="item">
+                                    <span class="inline-flex items-center rounded-full bg-spu-blue/5 px-3 py-1.5 text-xs font-semibold text-spu-blue"
+                                          x-text="item"></span>
+                                </template>
+                            </div>
+                        </div>
+
                         <!-- Research Stats Card -->
                         <div class="bg-white rounded-2xl p-6 border border-spu-blue/[0.08] shadow-[0_4px_24px_rgba(32,39,89,0.06)]" x-show="researchStats.publications">
                             <h3 class="text-base font-bold text-spu-blue mb-5 pb-3 border-b border-spu-blue/[0.08]" 

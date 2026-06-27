@@ -75,13 +75,60 @@ export const navigationMenuItems = [
         page: 'research',
         hasDropdown: true,
         children: [
-            { labelAr: 'مكتب البحث', labelEn: 'Research Office', url: siteRoutes.researchOffice },
-            { labelAr: 'مستودع البحث', labelEn: 'Research Repository', url: siteRoutes.researchRepository },
-            { labelAr: 'مراكز ومخابر البحث', labelEn: 'Research Centers & Labs', url: siteRoutes.researchCenters },
-            { labelAr: 'الباحث عن الخبراء', labelEn: 'Expert Finder', url: siteRoutes.researchExpertFinder },
+            {
+                labelAr: 'المنشورات البحثية',
+                labelEn: 'Publications',
+                url: siteRoutes.researchPublications,
+                featured: [
+                    { labelAr: 'تطبيقات تعلم الآلة في مراقبة جودة الأدوية', labelEn: 'Machine Learning in Pharmaceutical Quality Control', url: '/research/publications/machine-learning-pharmaceutical-quality-control/' },
+                    { labelAr: 'نماذج الذكاء الاصطناعي للكشف المبكر عن تسوس الأسنان', labelEn: 'AI for Early Dental Caries Detection', url: '/research/publications/ai-dental-diagnostics/' },
+                    { labelAr: 'إطار التعلم العميق للتنبؤ بنفاذية المكامن', labelEn: 'Deep Learning for Reservoir Permeability', url: '/research/publications/deep-learning-reservoir-permeability/' }
+                ]
+            },
+            {
+                labelAr: 'الباحثون',
+                labelEn: 'Researchers',
+                url: siteRoutes.researchResearchers,
+                featured: [
+                    { labelAr: 'د. مهيب النقري - الذكاء الاصطناعي', labelEn: 'Dr. Mouhib Alnoukari - AI', url: '/about/profile.html?id=mouhib-alnoukari' },
+                    { labelAr: 'د. أيمن علي - الطب', labelEn: 'Dr. Ayman Ali - Medicine', url: '/about/profile.html?id=ayman-ali' },
+                    { labelAr: 'د. محمود حديد - هندسة البترول', labelEn: 'Dr. Mahmoud Hadid - Petroleum', url: '/about/profile.html?id=mahmoud-hadid' }
+                ]
+            },
+            {
+                labelAr: 'مجالات البحث',
+                labelEn: 'Research Themes',
+                url: siteRoutes.researchThemes,
+                featured: [
+                    { labelAr: 'الذكاء الاصطناعي وتعلم الآلة', labelEn: 'Artificial Intelligence & Machine Learning', url: '/research/themes/ai-ml/' },
+                    { labelAr: 'العلوم الصيدلانية', labelEn: 'Pharmaceutical Sciences', url: '/research/themes/pharmaceutical-sciences/' },
+                    { labelAr: 'الطب السريري', labelEn: 'Clinical Medicine', url: '/research/themes/clinical-medicine/' }
+                ]
+            },
+            {
+                labelAr: 'مشاريع البحث',
+                labelEn: 'Research Projects',
+                url: siteRoutes.researchProjects,
+                featured: [
+                    { labelAr: 'نظام الكشف عن تسوس الأسنان بالذكاء الاصطناعي', labelEn: 'AI Dental Caries Detection System', url: '/research/projects/ai-dental-diagnostics-system/' },
+                    { labelAr: 'إطار NLP العربي للسجلات الطبية', labelEn: 'Arabic Clinical NLP System', url: '/research/projects/arabic-clinical-nlp-system/' }
+                ]
+            },
+            {
+                labelAr: 'مراكز البحث',
+                labelEn: 'Research Centers',
+                url: siteRoutes.researchCenters,
+                featured: [
+                    { labelAr: 'مركز الذكاء الاصطناعي والابتكار الرقمي', labelEn: 'Center for AI & Digital Innovation', url: '/research/centers/ai-digital-innovation/' },
+                    { labelAr: 'مختبر البحث السريري والمحاكاة', labelEn: 'Clinical Research & Simulation Lab', url: '/research/centers/clinical-research-simulation/' }
+                ]
+            },
+            { divider: true },
+            { labelAr: 'الباحث عن الخبراء', labelEn: 'Expert Finder', url: siteRoutes.researchResearchers },
             { labelAr: 'المؤتمرات والندوات', labelEn: 'Conferences & Seminars', url: siteRoutes.researchConferences },
             { labelAr: 'مكتبة البحث', labelEn: 'Research Library', url: siteRoutes.researchLibrary },
-            { labelAr: 'السياسات والأخلاقيات', labelEn: 'Policies & Ethics', url: siteRoutes.researchPolicies }
+            { labelAr: 'السياسات والأخلاقيات', labelEn: 'Policies & Ethics', url: siteRoutes.researchPolicies },
+            { labelAr: 'مكتب البحث', labelEn: 'Research Office', url: siteRoutes.researchOffice }
         ]
     },
     {
@@ -108,7 +155,7 @@ export const navigationMenuItems = [
         url: siteRoutes.services,
         page: 'services',
         hasDropdown: false,
-        
+
     },
     {
         id: 7,
@@ -131,7 +178,7 @@ export const navigationMenuItems = [
         url: siteRoutes.contact,
         page: 'contact',
         hasDropdown: false,
-        
+
     }
 ];
 

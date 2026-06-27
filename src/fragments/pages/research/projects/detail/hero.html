@@ -1,0 +1,29 @@
+<section x-data class="bg-white font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="relative h-[50vh] min-h-[350px] overflow-hidden">
+        <img :src="$store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.image || '/images/uni-main-place.JPG'"
+             alt=""
+             class="absolute inset-0 h-full w-full object-cover"
+             aria-hidden="true">
+        <div class="absolute inset-0 bg-spu-blue/60"></div>
+        <div class="container relative z-10 flex h-full items-end pb-12">
+            <div :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
+                <div class="flex items-center gap-3">
+                    <span class="rounded-[6px] px-3 py-1 text-[10px] font-bold"
+                          :class="$store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.status === 'ongoing' ? 'bg-green-500 text-white' : $store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.status === 'completed' ? 'bg-spu-blue text-white' : 'bg-yellow-500 text-white'"
+                          x-text="$store.app.currentLang === 'ar'
+                              ? ($store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.status === 'ongoing' ? 'جاري' : $store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.status === 'completed' ? 'مكتمل' : 'معلق')
+                              : ($store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.status || '')">
+                    </span>
+                    <span class="text-[11px] font-medium uppercase tracking-[0.1em] text-white/80"
+                          x-text="$store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.facultyEn || ''">
+                    </span>
+                </div>
+                <h1 class="mt-4 text-[28px] font-bold text-white md:text-[36px]"
+                    x-text="$store.app.currentLang === 'ar'
+                        ? ($store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.titleAr || '')
+                        : ($store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug)?.titleEn || '')">
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>

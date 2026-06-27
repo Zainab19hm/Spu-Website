@@ -1,31 +1,34 @@
-<section x-data class="bg-white pt-[92px] pb-[86px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+﻿<section x-data class="bg-white pt-[92px] pb-[86px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
     <div class="container">
         <div class="mx-auto grid max-w-[1210px] grid-cols-1 gap-8 md:grid-cols-[220px_220px_220px_1fr]">
             <label class="relative block">
-                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.repository.filters.facultyLabelAr : $store.researchPage.repository.filters.facultyLabelEn"></span>
+                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.filters.facultyLabelAr : $store.researchPage.publications.filters.facultyLabelEn"></span>
                 <select class="h-[49px] w-full appearance-none rounded-[8px] border border-[#dde2ea] bg-white px-5 text-[15px] font-bold text-[#344054] shadow-[0_8px_18px_rgba(16,24,40,0.08)] outline-none transition focus:border-spu-blue">
-                    <template x-for="option in $store.researchPage.repository.filters.faculties" :key="option">
-                        <option x-text="option"></option>
+                    <template x-for="option in $store.researchPage.publications.filters.faculties" :key="option.value">
+                        <option :value="option.value"
+                                x-text="$store.app.currentLang === 'ar' ? option.labelAr : option.labelEn"></option>
                     </template>
                 </select>
                 <img src="/images/icon-chevron-down-outline.svg" alt="" class="pointer-events-none absolute right-5 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-5 rtl:right-auto" aria-hidden="true">
             </label>
 
             <label class="relative block">
-                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.repository.filters.typeLabelAr : $store.researchPage.repository.filters.typeLabelEn"></span>
+                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.filters.typeLabelAr : $store.researchPage.publications.filters.typeLabelEn"></span>
                 <select class="h-[49px] w-full appearance-none rounded-[8px] border border-[#dde2ea] bg-white px-5 text-[15px] font-bold text-[#344054] shadow-[0_8px_18px_rgba(16,24,40,0.08)] outline-none transition focus:border-spu-blue">
-                    <template x-for="option in $store.researchPage.repository.filters.publicationTypes" :key="option">
-                        <option x-text="option"></option>
+                    <template x-for="option in $store.researchPage.publications.filters.publicationTypes" :key="option.value">
+                        <option :value="option.value"
+                                x-text="$store.app.currentLang === 'ar' ? option.labelAr : option.labelEn"></option>
                     </template>
                 </select>
                 <img src="/images/icon-chevron-down-outline.svg" alt="" class="pointer-events-none absolute right-5 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-5 rtl:right-auto" aria-hidden="true">
             </label>
 
             <label class="relative block">
-                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.repository.filters.yearLabelAr : $store.researchPage.repository.filters.yearLabelEn"></span>
+                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.filters.yearLabelAr : $store.researchPage.publications.filters.yearLabelEn"></span>
                 <select class="h-[49px] w-full appearance-none rounded-[8px] border border-[#dde2ea] bg-white px-5 text-[15px] font-bold text-[#344054] shadow-[0_8px_18px_rgba(16,24,40,0.08)] outline-none transition focus:border-spu-blue">
-                    <template x-for="option in $store.researchPage.repository.filters.years" :key="option">
-                        <option x-text="option"></option>
+                    <template x-for="option in $store.researchPage.publications.filters.years" :key="option.value">
+                        <option :value="option.value"
+                                x-text="$store.app.currentLang === 'ar' ? option.labelAr : option.labelEn"></option>
                     </template>
                 </select>
                 <img src="/images/icon-chevron-down-outline.svg" alt="" class="pointer-events-none absolute right-5 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-5 rtl:right-auto" aria-hidden="true">
@@ -36,40 +39,44 @@
                 <img src="/images/icon-search-outline.svg" alt="" class="pointer-events-none absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 opacity-70 rtl:left-auto rtl:right-5" aria-hidden="true">
                 <input type="search"
                        class="h-[49px] w-full rounded-[8px] border border-[#dde2ea] bg-white ps-12 pe-5 text-[13px] font-medium text-[#344054] shadow-[0_8px_18px_rgba(16,24,40,0.08)] outline-none transition placeholder:text-[#5b6473] focus:border-spu-blue"
-                       :placeholder="$store.app.currentLang === 'ar' ? $store.researchPage.repository.filters.searchPlaceholderAr : $store.researchPage.repository.filters.searchPlaceholderEn">
+                       :placeholder="$store.app.currentLang === 'ar' ? $store.researchPage.publications.filters.searchPlaceholderAr : $store.researchPage.publications.filters.searchPlaceholderEn">
             </label>
         </div>
 
         <div class="mx-auto mt-[48px] grid max-w-[1168px] grid-cols-1 gap-x-[38px] gap-y-[38px] lg:grid-cols-2">
-            <template x-for="publication in $store.researchPage.repository.publications" :key="publication.id">
-                <a :href="publication.href"
+            <template x-for="pub in $store.researchPage.publications.items" :key="pub.id">
+                <a :href="'/research/publications/' + pub.slug + '/'"
                    class="group block overflow-hidden rounded-[10px] border border-[#d5d9e2] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.16)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(32,39,89,0.12)]">
-                    <img :src="publication.image"
-                         :alt="$store.app.currentLang === 'ar' ? publication.titleAr : publication.titleEn"
+                    <img :src="pub.image"
+                         :alt="$store.app.currentLang === 'ar' ? pub.titleAr : pub.titleEn"
                          class="h-[169px] w-full object-cover transition-transform duration-500 group-hover:scale-105">
 
                     <div class="px-[18px] pb-[20px] pt-[20px]">
                         <div class="flex flex-wrap gap-[7px]">
                             <span class="rounded-[5px] border border-[#c8ceda] px-[12px] py-[5px] text-[9px] font-bold text-spu-blue"
-                                  x-text="$store.app.currentLang === 'ar' ? publication.typeAr : publication.typeEn"></span>
+                                  x-text="$store.app.currentLang === 'ar' ? pub.typeAr : pub.typeEn"></span>
                             <span class="rounded-[5px] border border-[#c8ceda] px-[12px] py-[5px] text-[9px] font-bold text-spu-blue"
-                                  x-text="$store.app.currentLang === 'ar' ? publication.facultyAr : publication.facultyEn"></span>
+                                  x-text="$store.app.currentLang === 'ar' ? pub.facultyAr : pub.facultyEn"></span>
                             <span class="rounded-[5px] border border-[#c8ceda] px-[12px] py-[5px] text-[9px] font-bold text-spu-blue"
-                                  x-text="$store.app.currentLang === 'ar' ? publication.authorAr : publication.authorEn"></span>
+                                  x-text="$store.app.currentLang === 'ar' ? pub.authorAr : pub.authorEn"></span>
                             <span class="rounded-[5px] border border-[#c8ceda] px-[12px] py-[5px] text-[9px] font-bold text-spu-blue"
-                                  x-text="publication.year"></span>
+                                  x-text="pub.year"></span>
+                            <span x-show="pub.isOpenAccess"
+                                  class="rounded-[5px] bg-green-100 px-[12px] py-[5px] text-[9px] font-bold text-green-700"
+                                  x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.cardLabels.openAccessAr : $store.researchPage.publications.cardLabels.openAccessEn"></span>
                         </div>
 
                         <h2 class="mt-[14px] text-[22px] font-bold leading-tight text-spu-blue group-hover:text-spu-red transition-colors"
-                            x-text="$store.app.currentLang === 'ar' ? publication.titleAr : publication.titleEn"></h2>
+                            x-text="$store.app.currentLang === 'ar' ? pub.titleAr : pub.titleEn"></h2>
                         <p class="mt-[10px] max-w-[500px] text-[16px] leading-[1.75] text-[#263650]"
-                           x-text="$store.app.currentLang === 'ar' ? publication.summaryAr : publication.summaryEn"></p>
+                           x-text="$store.app.currentLang === 'ar' ? pub.summaryAr : pub.summaryEn"></p>
 
                         <div class="mt-[20px] flex flex-wrap gap-[8px]">
                             <span class="inline-flex h-[27px] min-w-[87px] items-center justify-center rounded-[6px] bg-spu-blue px-4 text-[8px] font-bold text-white transition group-hover:bg-[#171d47]"
-                                  x-text="$store.app.currentLang === 'ar' ? publication.viewCtaAr : publication.viewCtaEn"></span>
-                            <span class="inline-flex h-[27px] min-w-[87px] items-center justify-center rounded-[6px] border border-spu-blue bg-white px-4 text-[8px] font-bold text-spu-blue transition group-hover:bg-spu-blue/5"
-                                  x-text="$store.app.currentLang === 'ar' ? publication.downloadCtaAr : publication.downloadCtaEn"></span>
+                                  x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.cardLabels.viewPublicationAr : $store.researchPage.publications.cardLabels.viewPublicationEn"></span>
+                            <span x-show="pub.doi"
+                                  class="inline-flex h-[27px] min-w-[87px] items-center justify-center rounded-[6px] border border-spu-blue bg-white px-4 text-[8px] font-bold text-spu-blue transition group-hover:bg-spu-blue/5"
+                                  x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.cardLabels.downloadPdfAr : $store.researchPage.publications.cardLabels.downloadPdfEn"></span>
                         </div>
                     </div>
                 </a>
@@ -79,20 +86,20 @@
         <nav class="mt-[46px] flex items-center justify-center gap-[13px]" aria-label="Pagination">
             <a href="javascript:void(0)"
                class="flex h-[36px] w-[36px] items-center justify-center rounded-[7px] border border-[#c8ceda] bg-white text-spu-blue transition hover:border-spu-blue">
-                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.repository.pagination.previousLabelAr : $store.researchPage.repository.pagination.previousLabelEn"></span>
+                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.pagination.previousLabelAr : $store.researchPage.publications.pagination.previousLabelEn"></span>
                 <span aria-hidden="true">‹</span>
             </a>
 
-            <template x-for="page in $store.researchPage.repository.pagination.pages" :key="page">
+            <template x-for="page in $store.researchPage.publications.pagination.pages" :key="page">
                 <a href="javascript:void(0)"
                    class="flex h-[36px] w-[36px] items-center justify-center rounded-[7px] border text-[14px] font-bold transition"
-                   :class="page === $store.researchPage.repository.pagination.current ? 'border-spu-red bg-spu-red text-white' : 'border-[#c8ceda] bg-white text-spu-blue hover:border-spu-blue'"
+                   :class="page === $store.researchPage.publications.pagination.current ? 'border-spu-red bg-spu-red text-white' : 'border-[#c8ceda] bg-white text-spu-blue hover:border-spu-blue'"
                    x-text="page"></a>
             </template>
 
             <a href="javascript:void(0)"
                class="flex h-[36px] w-[36px] items-center justify-center rounded-[7px] border border-[#c8ceda] bg-white text-spu-blue transition hover:border-spu-blue">
-                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.repository.pagination.nextLabelAr : $store.researchPage.repository.pagination.nextLabelEn"></span>
+                <span class="sr-only" x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.pagination.nextLabelAr : $store.researchPage.publications.pagination.nextLabelEn"></span>
                 <span aria-hidden="true">›</span>
             </a>
         </nav>

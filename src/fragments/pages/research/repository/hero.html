@@ -1,6 +1,6 @@
 <section x-data class="bg-white font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
     <div class="relative h-[365px] overflow-hidden">
-        <img :src="$store.researchPage.repository.hero.backgroundImage"
+        <img :src="$store.researchPage.publications.hero.backgroundImage"
              alt="SPU Campus"
              class="absolute inset-0 h-full w-full object-cover"
              aria-hidden="true">
@@ -8,18 +8,18 @@
 
         <div class="container relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
             <nav class="flex flex-wrap items-center justify-center gap-2 text-[13px] font-bold" aria-label="Breadcrumb">
-                <template x-for="(item, index) in $store.researchPage.repository.hero.breadcrumbs" :key="item.labelEn">
+                <template x-for="(item, index) in $store.researchPage.publications.hero.breadcrumbs" :key="item.labelEn">
                     <span class="inline-flex items-center gap-2">
                         <a :href="item.url"
                            class="transition hover:text-white/75"
                            x-text="$store.app.currentLang === 'ar' ? item.labelAr : item.labelEn"></a>
-                        <span x-show="index < $store.researchPage.repository.hero.breadcrumbs.length - 1" class="text-white/85">›</span>
+                        <span x-show="index < $store.researchPage.publications.hero.breadcrumbs.length - 1" class="text-white/85">›</span>
                     </span>
                 </template>
             </nav>
 
             <h1 class="mt-6 text-[34px] font-bold leading-tight md:text-[41px]"
-                x-text="$store.app.currentLang === 'ar' ? $store.researchPage.repository.hero.titleAr : $store.researchPage.repository.hero.titleEn">
+                x-text="$store.app.currentLang === 'ar' ? $store.researchPage.publications.hero.titleAr : $store.researchPage.publications.hero.titleEn">
             </h1>
         </div>
     </div>

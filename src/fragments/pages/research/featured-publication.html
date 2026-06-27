@@ -41,12 +41,13 @@
                 </div>
 
                 <div class="mt-6 flex flex-wrap items-center gap-[52px]">
-                    <a href="#"
+                    <a :href="'/research/publications/' + $store.researchPage.featuredPublication.slug + '/'"
                        class="group inline-flex h-[37px] min-w-[150px] items-center justify-center gap-2 rounded-[6px] bg-spu-blue px-5 text-[11px] font-bold text-white transition hover:bg-[#171d47]">
                         <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.viewCtaAr : $store.researchPage.featuredPublication.viewCtaEn"></span>
                         <img src="/images/icon-arrow-right-outline.svg" alt="" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 group-hover:rtl:-translate-x-1" aria-hidden="true">
                     </a>
-                    <a href="#"
+                    <a :href="'https://doi.org/' + $store.researchPage.featuredPublication.doi"
+                       target="_blank" rel="noopener"
                        class="inline-flex h-[37px] min-w-[142px] items-center justify-center rounded-[6px] border border-[#202759] px-5 text-[11px] font-bold text-spu-blue transition hover:bg-spu-blue/5">
                         <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.featuredPublication.downloadCtaAr : $store.researchPage.featuredPublication.downloadCtaEn"></span>
                     </a>

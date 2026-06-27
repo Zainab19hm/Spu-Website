@@ -4,15 +4,15 @@
             <div>
                 <div class="h-[2px] w-[185px] bg-spu-red"></div>
                 <h2 class="mt-8 max-w-[470px] text-[30px] font-bold leading-[1.35] text-spu-blue"
-                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.intro.titleAr : $store.researchPage.centersPage.intro.titleEn"></h2>
+                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.intro.titleAr : $store.researchPage.centers.intro.titleEn"></h2>
                 <p class="mt-7 whitespace-pre-line text-[17px] leading-[1.55] text-[#33405d]"
-                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.intro.summaryAr : $store.researchPage.centersPage.intro.summaryEn"></p>
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.intro.summaryAr : $store.researchPage.centers.intro.summaryEn"></p>
             </div>
 
             <div class="hidden h-[184px] bg-[#b9bfcc] lg:block"></div>
 
             <div class="grid gap-10">
-                <template x-for="item in $store.researchPage.centersPage.intro.highlights" :key="item.titleEn">
+                <template x-for="item in $store.researchPage.centers.intro.highlights" :key="item.titleEn">
                     <article class="grid grid-cols-[28px_1fr] gap-6">
                         <img :src="item.icon" alt="" class="mt-1 h-[20px] w-[20px]" aria-hidden="true">
                         <div>
@@ -29,16 +29,16 @@
         <div id="research-laboratories" class="mx-auto mt-[92px] max-w-[1090px]">
             <div class="mb-[48px] flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <h2 class="text-[39px] font-bold leading-tight text-spu-blue"
-                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.laboratories.titleAr : $store.researchPage.centersPage.laboratories.titleEn"></h2>
-                <a href="javascript:void(0)"
+                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.laboratories.titleAr : $store.researchPage.centers.laboratories.titleEn"></h2>
+                <a :href="$store.researchPage.centers.laboratories.viewDirectoryUrl"
                    class="inline-flex items-center gap-2 text-[16px] font-bold text-spu-red transition hover:gap-3">
-                    <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.laboratories.viewDirectoryAr : $store.researchPage.centersPage.laboratories.viewDirectoryEn"></span>
+                    <span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.laboratories.viewDirectoryAr : $store.researchPage.centers.laboratories.viewDirectoryEn"></span>
                     <span class="rtl:rotate-180">→</span>
                 </a>
             </div>
 
             <div class="grid grid-cols-1 gap-[52px] lg:grid-cols-3">
-                <template x-for="lab in $store.researchPage.centersPage.laboratories.items" :key="lab.id">
+                <template x-for="lab in $store.researchPage.centers.laboratories.items" :key="lab.id">
                     <article class="overflow-hidden rounded-[8px] border border-[#d4d8e2] bg-white shadow-sm">
                         <div class="relative h-[170px] overflow-hidden">
                             <img :src="lab.image"
@@ -61,7 +61,7 @@
                                 <p><span class="me-2 text-spu-red">✉</span><span x-text="$store.app.currentLang === 'ar' ? lab.contactAr : lab.contactEn"></span></p>
                             </div>
 
-                            <a href="javascript:void(0)"
+                            <a :href="lab.ctaUrl"
                                class="mt-5 inline-flex h-[39px] w-full items-center justify-center rounded-[9px] bg-spu-blue text-[11px] font-bold text-white transition hover:bg-[#171d47]"
                                x-text="$store.app.currentLang === 'ar' ? lab.ctaAr : lab.ctaEn"></a>
                         </div>
@@ -73,31 +73,31 @@
         <div id="center-profile" class="mx-auto mt-[76px] grid max-w-[1090px] gap-14 lg:grid-cols-[1fr_315px] lg:items-start">
             <div>
                 <span class="inline-flex bg-[#f4f5f8] px-3 py-1.5 text-[10px] font-medium text-spu-blue"
-                      x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.eyebrowAr : $store.researchPage.centersPage.profile.eyebrowEn"></span>
+                      x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.eyebrowAr : $store.researchPage.centers.featuredCenter.eyebrowEn"></span>
                 <h2 class="mt-6 text-[27px] font-bold leading-tight text-spu-blue"
-                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.titleAr : $store.researchPage.centersPage.profile.titleEn"></h2>
+                    x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.titleAr : $store.researchPage.centers.featuredCenter.titleEn"></h2>
                 <p class="mt-9 max-w-[670px] text-[12px] leading-[1.85] text-[#33405d]"
-                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.summaryAr : $store.researchPage.centersPage.profile.summaryEn"></p>
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.summaryAr : $store.researchPage.centers.featuredCenter.summaryEn"></p>
 
                 <div class="mt-12 grid gap-7 md:grid-cols-2">
                     <article class="border border-[#d9dde6] p-6">
                         <h3 class="text-[11px] font-bold uppercase tracking-[0.12em] text-spu-blue"
-                            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.projectsTitleAr : $store.researchPage.centersPage.profile.projectsTitleEn"></h3>
+                            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.projectsTitleAr : $store.researchPage.centers.featuredCenter.projectsTitleEn"></h3>
                         <div class="mt-4 h-px bg-[#d9dde6]"></div>
                         <div class="mt-5 grid gap-4 text-[13px] text-[#33405d]">
-                            <template x-for="project in $store.researchPage.centersPage.profile.projects" :key="project">
-                                <p><span class="me-2 text-spu-red">◎</span><span x-text="project"></span></p>
+                            <template x-for="project in $store.researchPage.centers.featuredCenter.projects" :key="project.labelEn">
+                                <p><span class="me-2 text-spu-red">◎</span><span x-text="$store.app.currentLang === 'ar' ? project.labelAr : project.labelEn"></span></p>
                             </template>
                         </div>
                     </article>
 
                     <article class="border border-[#d9dde6] p-6">
                         <h3 class="text-[11px] font-bold uppercase tracking-[0.12em] text-spu-blue"
-                            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.publicationsTitleAr : $store.researchPage.centersPage.profile.publicationsTitleEn"></h3>
+                            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.publicationsTitleAr : $store.researchPage.centers.featuredCenter.publicationsTitleEn"></h3>
                         <div class="mt-4 h-px bg-[#d9dde6]"></div>
                         <div class="mt-5 grid gap-4 text-[13px] text-[#33405d]">
-                            <template x-for="publication in $store.researchPage.centersPage.profile.publications" :key="publication">
-                                <p><span class="me-2 text-spu-red">▤</span><span x-text="publication"></span></p>
+                            <template x-for="publication in $store.researchPage.centers.featuredCenter.publications" :key="publication.labelEn">
+                                <p><span class="me-2 text-spu-red">▤</span><span x-text="$store.app.currentLang === 'ar' ? publication.labelAr : publication.labelEn"></span></p>
                             </template>
                         </div>
                     </article>
@@ -106,20 +106,22 @@
 
             <aside class="overflow-hidden rounded-[10px] border border-[#d9dde6] bg-white">
                 <div class="p-8">
-                    <div class="h-[84px] w-[84px] rounded-[9px] bg-[#c7c5d0]"></div>
+                    <img :src="$store.researchPage.centers.featuredCenter.director.image"
+                         :alt="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.director.nameAr : $store.researchPage.centers.featuredCenter.director.nameEn"
+                         class="h-[84px] w-[84px] rounded-[9px] object-cover bg-[#c7c5d0]">
                     <h3 class="mt-7 text-[22px] font-bold text-spu-blue"
-                        x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.director.nameAr : $store.researchPage.centersPage.profile.director.nameEn"></h3>
+                        x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.director.nameAr : $store.researchPage.centers.featuredCenter.director.nameEn"></h3>
                     <p class="mt-3 text-[12px] text-[#33405d]"
-                       x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.director.roleAr : $store.researchPage.centersPage.profile.director.roleEn"></p>
+                       x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.director.roleAr : $store.researchPage.centers.featuredCenter.director.roleEn"></p>
                     <div class="mt-7 h-px bg-[#d9dde6]"></div>
                     <div class="mt-7 grid gap-5 text-[12px] text-[#33405d]">
-                        <p><span class="me-3 text-spu-blue">▦</span><span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.director.facultyAr : $store.researchPage.centersPage.profile.director.facultyEn"></span></p>
-                        <p><span class="me-3 text-spu-blue">✉</span><span x-text="$store.researchPage.centersPage.profile.director.email"></span></p>
+                        <p><span class="me-3 text-spu-blue">▦</span><span x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.director.facultyAr : $store.researchPage.centers.featuredCenter.director.facultyEn"></span></p>
+                        <p><span class="me-3 text-spu-blue">✉</span><span x-text="$store.researchPage.centers.featuredCenter.director.email"></span></p>
                     </div>
                 </div>
-                <a href="javascript:void(0)"
+                <a :href="$store.researchPage.centers.featuredCenter.director.ctaUrl"
                    class="flex h-[39px] items-center justify-center bg-spu-red text-[10px] font-bold text-white transition hover:bg-[#5c1111]"
-                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centersPage.profile.director.ctaAr : $store.researchPage.centersPage.profile.director.ctaEn"></a>
+                   x-text="$store.app.currentLang === 'ar' ? $store.researchPage.centers.featuredCenter.director.ctaAr : $store.researchPage.centers.featuredCenter.director.ctaEn"></a>
             </aside>
         </div>
     </div>

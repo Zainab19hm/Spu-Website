@@ -67,6 +67,7 @@ export function registerLayoutStores(Alpine, { pageName = 'home' } = {}) {
     Alpine.store('app', {
         currentLang: savedLang,
         currentPage: pageName,
+        currentSlug: document.querySelector('main[data-page-content]')?.dataset?.slug || '',
         ui: appUi,
         setLang(lang) {
             this.currentLang = lang;

@@ -1,0 +1,96 @@
+<section x-data class="bg-white pt-[60px] pb-[80px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="container" x-data="{ center: $store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug) }">
+        <div class="mx-auto grid max-w-[1100px] grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">
+            <div>
+                <div class="prose max-w-none">
+                    <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red"
+                        x-text="$store.app.currentLang === 'ar' ? 'الرسالة' : 'Mission'"></h2>
+                    <p class="mt-4 text-[16px] leading-[1.8] text-[#333742]"
+                       x-text="$store.app.currentLang === 'ar' ? center?.missionAr : center?.missionEn"></p>
+                </div>
+
+                <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
+                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.labs || 0"></p>
+                        <p class="mt-1 text-[11px] text-[#6f7280]"
+                           x-text="$store.app.currentLang === 'ar' ? 'مختبر' : 'Labs'"></p>
+                    </div>
+                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.researchers || 0"></p>
+                        <p class="mt-1 text-[11px] text-[#6f7280]"
+                           x-text="$store.app.currentLang === 'ar' ? 'باحث' : 'Researchers'"></p>
+                    </div>
+                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.projects || 0"></p>
+                        <p class="mt-1 text-[11px] text-[#6f7280]"
+                           x-text="$store.app.currentLang === 'ar' ? 'مشروع' : 'Projects'"></p>
+                    </div>
+                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.publications || 0"></p>
+                        <p class="mt-1 text-[11px] text-[#6f7280]"
+                           x-text="$store.app.currentLang === 'ar' ? 'منشور' : 'Publications'"></p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h2 class="text-[16px] font-bold text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? 'المنشورات' : 'Publications'"></h2>
+                    <div class="mt-6 grid gap-[24px] lg:grid-cols-2">
+                        <template x-for="pub in $store.researchPage.publications.items.slice(0, 4)" :key="pub.id">
+                            <a :href="'/research/publications/' + pub.slug + '/'"
+                               class="group block overflow-hidden rounded-[10px] border border-[#d5d9e2] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(32,39,89,0.12)]">
+                                <img :src="pub.image"
+                                     :alt="$store.app.currentLang === 'ar' ? pub.titleAr : pub.titleEn"
+                                     class="h-[130px] w-full object-cover">
+                                <div class="p-4">
+                                    <h3 class="text-[14px] font-bold leading-snug text-spu-blue group-hover:text-spu-red line-clamp-2"
+                                        x-text="$store.app.currentLang === 'ar' ? pub.titleAr : pub.titleEn"></h3>
+                                    <p class="mt-2 text-[12px] text-[#6f7280]"
+                                       x-text="pub.authorEn + ' | ' + pub.year"></p>
+                                </div>
+                            </a>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="lg:sticky lg:top-8 lg:self-start">
+                <div class="rounded-[12px] border border-[#dde2ea] bg-white p-6 shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+                    <h3 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? 'المدير' : 'Director'"></h3>
+
+                    <div class="mt-4 flex items-center gap-4">
+                        <div class="h-16 w-16 rounded-full bg-spu-blue/10 flex items-center justify-center">
+                            <svg class="h-8 w-8 text-spu-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-bold text-spu-blue"
+                               x-text="$store.app.currentLang === 'ar' ? center?.directorNameAr : center?.directorNameEn"></p>
+                            <p class="text-[12px] text-[#6f7280]"
+                               x-text="$store.app.currentLang === 'ar' ? 'المدير' : 'Director'"></p>
+                        </div>
+                    </div>
+
+                    <dl class="mt-6 space-y-3 border-t border-[#e5e7eb] pt-4">
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'الكلية' : 'Faculty'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="center?.facultyEn"></dd>
+                        </div>
+                        <div x-show="center?.contactEmail">
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'البريد الإلكتروني' : 'Email'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue">
+                                <a :href="'mailto:' + center?.contactEmail"
+                                   x-text="center?.contactEmail"></a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

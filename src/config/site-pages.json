@@ -256,21 +256,632 @@
       ]
     },
     {
-      "name": "research-detail",
-      "fileName": "research/detail/index.html",
-      "route": "/research/detail/",
-      "title": "Research Publication | Syrian Private University",
-      "description": "Read a full Syrian Private University research publication with abstract, methodology, findings, author details, and related publications.",
-      "ogImage": "/images/uni-main-place.JPG",
+      "name": "center-ai-digital-innovation",
+      "fileName": "research/centers/ai-digital-innovation/index.html",
+      "route": "/research/centers/ai-digital-innovation/",
+      "title": "Center for AI & Digital Innovation | SPU Research",
+      "description": "Read detailed information about the Center for AI & Digital Innovation, including focus areas, projects, publications, and leadership.",
+      "ogImage": "/images/slider-2.webp",
       "keywords": [
-        "SPU research publication",
-        "Syrian Private University research article",
-        "SPU academic publication"
+        "SPU research center",
+        "AI digital innovation",
+        "machine learning center"
       ],
       "fragments": [
-        "pages/research/detail/hero.html",
-        "pages/research/detail/content.html"
+        "pages/research/centers/detail/hero.html",
+        "pages/research/centers/detail/content.html"
+      ],
+      "data": {
+        "slug": "ai-digital-innovation"
+      }
+    },
+    {
+      "name": "center-clinical-research-simulation",
+      "fileName": "research/centers/clinical-research-simulation/index.html",
+      "route": "/research/centers/clinical-research-simulation/",
+      "title": "Clinical Research & Simulation Lab | SPU Research",
+      "description": "Read detailed information about the Clinical Research & Simulation Lab, including focus areas, projects, publications, and leadership.",
+      "ogImage": "/images/research-clinical-simulation.webp",
+      "keywords": [
+        "SPU research center",
+        "clinical simulation lab",
+        "medical training"
+      ],
+      "fragments": [
+        "pages/research/centers/detail/hero.html",
+        "pages/research/centers/detail/content.html"
+      ],
+      "data": {
+        "slug": "clinical-research-simulation"
+      }
+    },
+    {
+      "name": "center-energy-sustainable-systems",
+      "fileName": "research/centers/energy-sustainable-systems/index.html",
+      "route": "/research/centers/energy-sustainable-systems/",
+      "title": "Energy & Sustainable Systems Research | SPU Research",
+      "description": "Read detailed information about the Energy & Sustainable Systems Research center, including focus areas, projects, publications, and leadership.",
+      "ogImage": "/images/slider-4.webp",
+      "keywords": [
+        "SPU research center",
+        "energy sustainable systems",
+        "renewable energy research"
+      ],
+      "fragments": [
+        "pages/research/centers/detail/hero.html",
+        "pages/research/centers/detail/content.html"
+      ],
+      "data": {
+        "slug": "energy-sustainable-systems"
+      }
+    },
+    {
+      "name": "research-projects",
+      "fileName": "research/projects/index.html",
+      "route": "/research/projects/",
+      "title": "Research Projects | Syrian Private University",
+      "description": "Browse Syrian Private University research projects, funded initiatives, interdisciplinary work, and applied research outcomes.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU research projects",
+        "Syrian Private University projects",
+        "applied research projects"
+      ],
+      "fragments": [
+        "pages/research/projects/hero.html",
+        "pages/research/projects/content.html"
       ]
+    },
+    {
+      "name": "project-earthquake-resistant-concrete-syria",
+      "fileName": "research/projects/earthquake-resistant-concrete-syria/index.html",
+      "route": "/research/projects/earthquake-resistant-concrete-syria/",
+      "title": "Earthquake-Resistant Concrete Development for Syrian Construction | SPU",
+      "description": "Review the earthquake-resistant concrete development research project with objectives, team, timeline, outputs, and related publications.",
+      "ogImage": "/images/campus-feature-01.webp",
+      "keywords": [
+        "SPU research project",
+        "earthquake resistant concrete Syria",
+        "construction engineering"
+      ],
+      "fragments": [
+        "pages/research/projects/detail/hero.html",
+        "pages/research/projects/detail/content.html"
+      ],
+      "data": {
+        "slug": "earthquake-resistant-concrete-syria"
+      }
+    },
+    {
+      "name": "project-ai-dental-diagnostics-system",
+      "fileName": "research/projects/ai-dental-diagnostics-system/index.html",
+      "route": "/research/projects/ai-dental-diagnostics-system/",
+      "title": "AI-Powered Dental Caries Detection System | SPU",
+      "description": "Review the AI-powered dental caries detection system research project with objectives, team, timeline, outputs, and related publications.",
+      "ogImage": "/images/research-digital-dentistry.webp",
+      "keywords": [
+        "SPU research project",
+        "AI dental diagnostics",
+        "dentistry AI"
+      ],
+      "fragments": [
+        "pages/research/projects/detail/hero.html",
+        "pages/research/projects/detail/content.html"
+      ],
+      "data": {
+        "slug": "ai-dental-diagnostics-system"
+      }
+    },
+    {
+      "name": "project-arabic-clinical-nlp-system",
+      "fileName": "research/projects/arabic-clinical-nlp-system/index.html",
+      "route": "/research/projects/arabic-clinical-nlp-system/",
+      "title": "Arabic Clinical NLP for Medical Records Summarization | SPU",
+      "description": "Review the Arabic clinical NLP system research project with objectives, team, timeline, outputs, and related publications.",
+      "ogImage": "/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp",
+      "keywords": [
+        "SPU research project",
+        "Arabic clinical NLP",
+        "medical records AI"
+      ],
+      "fragments": [
+        "pages/research/projects/detail/hero.html",
+        "pages/research/projects/detail/content.html"
+      ],
+      "data": {
+        "slug": "arabic-clinical-nlp-system"
+      }
+    },
+    {
+      "name": "project-pharmaceutical-quality-monitoring",
+      "fileName": "research/projects/pharmaceutical-quality-monitoring/index.html",
+      "route": "/research/projects/pharmaceutical-quality-monitoring/",
+      "title": "Real-Time Pharmaceutical Quality Monitoring System | SPU",
+      "description": "Review the real-time pharmaceutical quality monitoring research project with objectives, team, timeline, outputs, and related publications.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU research project",
+        "pharmaceutical quality monitoring",
+        "pharma AI"
+      ],
+      "fragments": [
+        "pages/research/projects/detail/hero.html",
+        "pages/research/projects/detail/content.html"
+      ],
+      "data": {
+        "slug": "pharmaceutical-quality-monitoring"
+      }
+    },
+    {
+      "name": "project-reservoir-characterization-ai",
+      "fileName": "research/projects/reservoir-characterization-ai/index.html",
+      "route": "/research/projects/reservoir-characterization-ai/",
+      "title": "AI Framework for Carbonate Reservoir Permeability Prediction | SPU",
+      "description": "Review the AI framework for reservoir permeability prediction research project with objectives, team, timeline, outputs, and related publications.",
+      "ogImage": "/images/slider-3.webp",
+      "keywords": [
+        "SPU research project",
+        "reservoir characterization AI",
+        "petroleum engineering"
+      ],
+      "fragments": [
+        "pages/research/projects/detail/hero.html",
+        "pages/research/projects/detail/content.html"
+      ],
+      "data": {
+        "slug": "reservoir-characterization-ai"
+      }
+    },
+    {
+      "name": "research-publications",
+      "fileName": "research/publications/index.html",
+      "route": "/research/publications/",
+      "title": "Research Publications | Syrian Private University",
+      "description": "Browse Syrian Private University publications by faculty, type, year, author, and research theme.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU publications",
+        "Syrian Private University research publications",
+        "academic publications"
+      ],
+      "fragments": [
+        "pages/research/publications/hero.html",
+        "pages/research/publications/content.html"
+      ]
+    },
+    {
+      "name": "publication-machine-learning-pharmaceutical-quality-control",
+      "fileName": "research/publications/machine-learning-pharmaceutical-quality-control/index.html",
+      "route": "/research/publications/machine-learning-pharmaceutical-quality-control/",
+      "title": "Machine Learning Applications in Pharmaceutical Quality Control | SPU",
+      "description": "Read detailed publication on machine learning applications in pharmaceutical quality control, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/pharmacy-place.jpg",
+      "keywords": [
+        "SPU publication",
+        "machine learning pharmaceutical quality control",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "machine-learning-pharmaceutical-quality-control"
+      }
+    },
+    {
+      "name": "publication-ai-dental-diagnostics",
+      "fileName": "research/publications/ai-dental-diagnostics/index.html",
+      "route": "/research/publications/ai-dental-diagnostics/",
+      "title": "AI-Driven Predictive Models for Early Dental Caries Detection | SPU",
+      "description": "Read detailed publication on AI-driven predictive models for early dental caries detection, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/research-digital-dentistry.webp",
+      "keywords": [
+        "SPU publication",
+        "AI dental diagnostics",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "ai-dental-diagnostics"
+      }
+    },
+    {
+      "name": "publication-structural-analysis-earthquake-resistant-concrete",
+      "fileName": "research/publications/structural-analysis-earthquake-resistant-concrete/index.html",
+      "route": "/research/publications/structural-analysis-earthquake-resistant-concrete/",
+      "title": "Structural Performance of Fiber-Reinforced Concrete in Seismic Zones | SPU",
+      "description": "Read detailed publication on structural performance of fiber-reinforced concrete in seismic zones, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/campus-feature-01.webp",
+      "keywords": [
+        "SPU publication",
+        "earthquake resistant concrete",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "structural-analysis-earthquake-resistant-concrete"
+      }
+    },
+    {
+      "name": "publication-deep-learning-reservoir-permeability",
+      "fileName": "research/publications/deep-learning-reservoir-permeability/index.html",
+      "route": "/research/publications/deep-learning-reservoir-permeability/",
+      "title": "Deep Learning Framework for Reservoir Permeability Prediction | SPU",
+      "description": "Read detailed publication on deep learning framework for reservoir permeability prediction, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/slider-3.webp",
+      "keywords": [
+        "SPU publication",
+        "deep learning reservoir permeability",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "deep-learning-reservoir-permeability"
+      }
+    },
+    {
+      "name": "publication-clinical-simulation-training-medical-students",
+      "fileName": "research/publications/clinical-simulation-training-medical-students/index.html",
+      "route": "/research/publications/clinical-simulation-training-medical-students/",
+      "title": "Clinical Simulation Training Impact on Medical Student Diagnostic Accuracy | SPU",
+      "description": "Read detailed publication on clinical simulation training impact on medical student diagnostic accuracy, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/research-clinical-simulation.webp",
+      "keywords": [
+        "SPU publication",
+        "clinical simulation training",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "clinical-simulation-training-medical-students"
+      }
+    },
+    {
+      "name": "publication-arabic-medical-record-nlp",
+      "fileName": "research/publications/arabic-medical-record-nlp/index.html",
+      "route": "/research/publications/arabic-medical-record-nlp/",
+      "title": "Natural Language Processing for Arabic Medical Record Summarization | SPU",
+      "description": "Read detailed publication on NLP for Arabic medical record summarization, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp",
+      "keywords": [
+        "SPU publication",
+        "Arabic medical record NLP",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "arabic-medical-record-nlp"
+      }
+    },
+    {
+      "name": "publication-business-analytics-healthcare-supply-chain",
+      "fileName": "research/publications/business-analytics-healthcare-supply-chain/index.html",
+      "route": "/research/publications/business-analytics-healthcare-supply-chain/",
+      "title": "Business Analytics for Healthcare Supply Chain Resilience | SPU",
+      "description": "Read detailed publication on business analytics for healthcare supply chain resilience, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/campus-feature-02.webp",
+      "keywords": [
+        "SPU publication",
+        "healthcare supply chain",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "business-analytics-healthcare-supply-chain"
+      }
+    },
+    {
+      "name": "publication-renewable-energy-integration-syrian-grid",
+      "fileName": "research/publications/renewable-energy-integration-syrian-grid/index.html",
+      "route": "/research/publications/renewable-energy-integration-syrian-grid/",
+      "title": "Renewable Energy Integration Challenges in the Syrian Power Grid | SPU",
+      "description": "Read detailed publication on renewable energy integration challenges in the Syrian power grid, including abstract, authors, methodology, findings, and related themes.",
+      "ogImage": "/images/slider-4.webp",
+      "keywords": [
+        "SPU publication",
+        "renewable energy Syria",
+        "Syrian Private University research"
+      ],
+      "fragments": [
+        "pages/research/publications/detail/hero.html",
+        "pages/research/publications/detail/content.html"
+      ],
+      "data": {
+        "slug": "renewable-energy-integration-syrian-grid"
+      }
+    },
+    {
+      "name": "research-researchers",
+      "fileName": "research/researchers/index.html",
+      "route": "/research/researchers/",
+      "title": "Researchers | Syrian Private University",
+      "description": "Find Syrian Private University researchers, faculty experts, publication profiles, and research interests.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU researchers",
+        "Syrian Private University faculty experts",
+        "researcher directory"
+      ],
+      "fragments": [
+        "pages/research/researchers/hero.html",
+        "pages/research/researchers/content.html"
+      ]
+    },
+    {
+      "name": "research-themes",
+      "fileName": "research/themes/index.html",
+      "route": "/research/themes/",
+      "title": "Research Themes | Syrian Private University",
+      "description": "Explore Syrian Private University research themes, priority areas, related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU research themes",
+        "Syrian Private University research areas",
+        "research priorities"
+      ],
+      "fragments": [
+        "pages/research/themes/hero.html",
+        "pages/research/themes/content.html"
+      ]
+    },
+    {
+      "name": "theme-ai-ml",
+      "fileName": "research/themes/ai-ml/index.html",
+      "route": "/research/themes/ai-ml/",
+      "title": "Artificial Intelligence & Machine Learning | SPU Research",
+      "description": "Explore SPU's Artificial Intelligence & Machine Learning research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU AI research",
+        "machine learning Syria",
+        "Artificial Intelligence research"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "ai-ml"
+      }
+    },
+    {
+      "name": "theme-pharmaceutical-sciences",
+      "fileName": "research/themes/pharmaceutical-sciences/index.html",
+      "route": "/research/themes/pharmaceutical-sciences/",
+      "title": "Pharmaceutical Sciences | SPU Research",
+      "description": "Explore SPU's Pharmaceutical Sciences research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU pharmacy research",
+        "pharmaceutical sciences Syria",
+        "drug development"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "pharmaceutical-sciences"
+      }
+    },
+    {
+      "name": "theme-clinical-medicine",
+      "fileName": "research/themes/clinical-medicine/index.html",
+      "route": "/research/themes/clinical-medicine/",
+      "title": "Clinical Medicine | SPU Research",
+      "description": "Explore SPU's Clinical Medicine research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU clinical medicine research",
+        "clinical research Syria",
+        "medical research"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "clinical-medicine"
+      }
+    },
+    {
+      "name": "theme-dental-sciences",
+      "fileName": "research/themes/dental-sciences/index.html",
+      "route": "/research/themes/dental-sciences/",
+      "title": "Dental Sciences | SPU Research",
+      "description": "Explore SPU's Dental Sciences research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU dental research",
+        "dental sciences Syria",
+        "oral health research"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "dental-sciences"
+      }
+    },
+    {
+      "name": "theme-petroleum-engineering",
+      "fileName": "research/themes/petroleum-engineering/index.html",
+      "route": "/research/themes/petroleum-engineering/",
+      "title": "Petroleum Engineering | SPU Research",
+      "description": "Explore SPU's Petroleum Engineering research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU petroleum engineering research",
+        "reservoir engineering Syria",
+        "energy research"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "petroleum-engineering"
+      }
+    },
+    {
+      "name": "theme-construction-engineering",
+      "fileName": "research/themes/construction-engineering/index.html",
+      "route": "/research/themes/construction-engineering/",
+      "title": "Construction Engineering | SPU Research",
+      "description": "Explore SPU's Construction Engineering research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU construction engineering research",
+        "civil engineering Syria",
+        "building research"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "construction-engineering"
+      }
+    },
+    {
+      "name": "theme-business-administration",
+      "fileName": "research/themes/business-administration/index.html",
+      "route": "/research/themes/business-administration/",
+      "title": "Business Administration | SPU Research",
+      "description": "Explore SPU's Business Administration research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU business research",
+        "management research Syria",
+        "organizational behavior"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "business-administration"
+      }
+    },
+    {
+      "name": "theme-medical-education",
+      "fileName": "research/themes/medical-education/index.html",
+      "route": "/research/themes/medical-education/",
+      "title": "Medical Education | SPU Research",
+      "description": "Explore SPU's Medical Education research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU medical education research",
+        "simulation training Syria",
+        "clinical skills assessment"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "medical-education"
+      }
+    },
+    {
+      "name": "theme-biomedical-engineering",
+      "fileName": "research/themes/biomedical-engineering/index.html",
+      "route": "/research/themes/biomedical-engineering/",
+      "title": "Biomedical Engineering | SPU Research",
+      "description": "Explore SPU's Biomedical Engineering research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU biomedical engineering research",
+        "medical devices Syria",
+        "tissue engineering"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "biomedical-engineering"
+      }
+    },
+    {
+      "name": "theme-energy-systems",
+      "fileName": "research/themes/energy-systems/index.html",
+      "route": "/research/themes/energy-systems/",
+      "title": "Energy & Sustainable Systems | SPU Research",
+      "description": "Explore SPU's Energy & Sustainable Systems research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU energy research",
+        "renewable energy Syria",
+        "sustainable development"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "energy-systems"
+      }
+    },
+    {
+      "name": "theme-data-science",
+      "fileName": "research/themes/data-science/index.html",
+      "route": "/research/themes/data-science/",
+      "title": "Data Science | SPU Research",
+      "description": "Explore SPU's Data Science research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU data science research",
+        "big data Syria",
+        "analytics research"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "data-science"
+      }
+    },
+    {
+      "name": "theme-structural-engineering",
+      "fileName": "research/themes/structural-engineering/index.html",
+      "route": "/research/themes/structural-engineering/",
+      "title": "Structural Engineering | SPU Research",
+      "description": "Explore SPU's Structural Engineering research theme, including related projects, researchers, and publications.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU structural engineering research",
+        "earthquake resistant design Syria",
+        "infrastructure resilience"
+      ],
+      "fragments": [
+        "pages/research/themes/detail/hero.html",
+        "pages/research/themes/detail/content.html"
+      ],
+      "data": {
+        "slug": "structural-engineering"
+      }
     },
     {
       "name": "research-expert-finder",

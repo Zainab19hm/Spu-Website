@@ -1,0 +1,125 @@
+<section x-data class="bg-white pt-[60px] pb-[80px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="container" x-data="{ pub: $store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug) }">
+        <div class="mx-auto grid max-w-[1100px] grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">
+            <div x-show="pub">
+                <div class="prose max-w-none">
+                    <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red"
+                        x-text="$store.app.currentLang === 'ar' ? 'الملخص' : 'Abstract'"></h2>
+                    <p class="mt-4 text-[16px] leading-[1.8] text-[#333742]"
+                       x-text="$store.app.currentLang === 'ar' ? pub?.summaryAr : pub?.summaryEn"></p>
+
+                    <div class="mt-10">
+                        <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red"
+                            x-text="$store.app.currentLang === 'ar' ? 'الكلمات المفتاحية' : 'Keywords'"></h2>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <template x-for="theme in (pub?.themes || [])" :key="theme">
+                                <a :href="'/research/themes/' + theme + '/'"
+                                   class="rounded-[6px] bg-spu-blue/10 px-4 py-2 text-[12px] font-medium text-spu-blue hover:bg-spu-blue/20">
+                                    <span x-text="$store.researchPage.themes.items.find(t => t.slug === theme)?.nameEn || theme"></span>
+                                </a>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="mt-10" x-show="pub?.doi">
+                        <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red"
+                            x-text="$store.app.currentLang === 'ar' ? 'معرف الكائن الرقمي' : 'DOI'"></h2>
+                        <p class="mt-2 text-[15px] text-spu-blue">
+                            <a :href="'https://doi.org/' + pub?.doi" target="_blank" rel="noopener"
+                               x-text="pub?.doi"></a>
+                        </p>
+                    </div>
+
+                    <div class="mt-10 border-t border-[#dde2ea] pt-10">
+                        <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red mb-4"
+                            x-text="$store.app.currentLang === 'ar' ? 'المنشور كاملاً' : 'Full Publication'"></h2>
+                        <div class="flex flex-wrap gap-4">
+                            <a :href="'https://doi.org/' + pub?.doi"
+                               target="_blank" rel="noopener"
+                               class="inline-flex h-[44px] items-center gap-2 rounded-[8px] bg-spu-blue px-6 text-[13px] font-bold text-white transition hover:bg-[#171d47]">
+                                <span x-text="$store.app.currentLang === 'ar' ? 'تحميل PDF' : 'Download PDF'"></span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                </svg>
+                            </a>
+                            <a :href="pub?.scholarUrl || '#'"
+                               target="_blank" rel="noopener"
+                               class="inline-flex h-[44px] items-center gap-2 rounded-[8px] border border-[#dde2ea] bg-white px-6 text-[13px] font-bold text-spu-blue transition hover:bg-spu-blue/5">
+                                <span x-text="$store.app.currentLang === 'ar' ? 'Google Scholar' : 'Google Scholar'"></span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="lg:sticky lg:top-8 lg:self-start">
+                <div class="rounded-[10px] border border-[#dde2ea] bg-white p-6 shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+                    <h3 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? 'معلومات المنشور' : 'Publication Info'"></h3>
+
+                    <dl class="mt-5 space-y-4">
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'المؤلف' : 'Author'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="$store.app.currentLang === 'ar' ? pub?.authorAr : pub?.authorEn"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'الكلية' : 'Faculty'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="pub?.facultyEn"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'السنة' : 'Year'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="pub?.year"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'النوع' : 'Type'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="pub?.typeEn"></dd>
+                        </div>
+                        <div x-show="pub?.doi">
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]">DOI</dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue">
+                                <a :href="'https://doi.org/' + pub?.doi" target="_blank" rel="noopener"
+                                   x-text="pub?.doi"></a>
+                            </dd>
+                        </div>
+                        <div x-show="pub?.isOpenAccess">
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'الوصول' : 'Access'"></dt>
+                            <dd class="mt-1">
+                                <span class="inline-flex items-center gap-1 rounded-[4px] bg-green-100 px-2 py-1 text-[11px] font-bold text-green-700">
+                                    <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="$store.app.currentLang === 'ar' ? 'وصول مفتوح' : 'Open Access'"></span>
+                                </span>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="mt-6 rounded-[10px] border border-[#dde2ea] bg-white p-6 shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+                    <h3 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? 'مجالات البحث' : 'Research Themes'"></h3>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <template x-for="theme in (pub?.themes || [])" :key="theme">
+                            <a :href="'/research/themes/' + theme + '/'"
+                               class="rounded-[6px] bg-spu-blue/10 px-3 py-1.5 text-[11px] font-medium text-spu-blue hover:bg-spu-blue/20">
+                                <span x-text="$store.researchPage.themes.items.find(t => t.slug === theme)?.nameEn || theme"></span>
+                            </a>
+                        </template>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

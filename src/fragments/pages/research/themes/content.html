@@ -1,0 +1,40 @@
+<section x-data class="bg-white pt-[60px] pb-[80px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="container">
+        <div class="mx-auto grid max-w-[1200px] grid-cols-1 gap-[30px] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <template x-for="theme in $store.researchPage.themes.items" :key="theme.id">
+                <a :href="'/research/themes/' + theme.slug + '/'"
+                   class="group block overflow-hidden rounded-[12px] border border-[#d5d9e2] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(32,39,89,0.15)]">
+                    <div class="flex h-[120px] items-center justify-center bg-spu-blue/5 p-6">
+                        <div class="text-center">
+                            <h3 class="text-[16px] font-bold leading-tight text-spu-blue"
+                                x-text="$store.app.currentLang === 'ar' ? theme.nameAr : theme.nameEn"></h3>
+                        </div>
+                    </div>
+
+                    <div class="p-5">
+                        <p class="text-[13px] leading-[1.6] text-[#50525c] line-clamp-3"
+                           x-text="$store.app.currentLang === 'ar' ? theme.descriptionAr : theme.descriptionEn"></p>
+
+                        <div class="mt-4 flex items-center justify-between border-t border-[#e5e7eb] pt-4">
+                            <div class="text-[11px] text-[#6f7280]">
+                                <span class="font-medium text-spu-blue" x-text="theme.publicationCount"></span>
+                                <span x-text="$store.app.currentLang === 'ar' ? 'منشور' : 'Publications'"></span>
+                            </div>
+                            <div class="text-[11px] text-[#6f7280]">
+                                <span class="font-medium text-spu-blue" x-text="theme.projectCount"></span>
+                                <span x-text="$store.app.currentLang === 'ar' ? 'مشروع' : 'Projects'"></span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 flex items-center gap-2 text-[12px] font-bold text-spu-red">
+                            <span x-text="$store.app.currentLang === 'ar' ? 'استكشف' : 'Explore'"></span>
+                            <svg class="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </template>
+        </div>
+    </div>
+</section>

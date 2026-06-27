@@ -1,0 +1,85 @@
+<section x-data class="bg-white pt-[60px] pb-[80px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="container" x-data="{ project: $store.researchPage.projects.items.find(p => p.slug === $store.app.currentSlug) }">
+        <div class="mx-auto grid max-w-[1100px] grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">
+            <div x-show="project">
+                <div class="prose max-w-none">
+                    <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red"
+                        x-text="$store.app.currentLang === 'ar' ? 'نظرة عامة' : 'Overview'"></h2>
+                    <p class="mt-4 text-[16px] leading-[1.8] text-[#333742]"
+                       x-text="$store.app.currentLang === 'ar' ? project?.summaryAr : project?.summaryEn"></p>
+
+                    <div class="mt-10">
+                        <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red"
+                            x-text="$store.app.currentLang === 'ar' ? 'معلومات المشروع' : 'Project Information'"></h2>
+                        <dl class="mt-4 space-y-3">
+                            <div class="flex gap-4">
+                                <dt class="w-[140px] text-[12px] font-medium text-[#6f7280]"
+                                    x-text="$store.app.currentLang === 'ar' ? 'الكلية' : 'Faculty'"></dt>
+                                <dd class="text-[14px] font-medium text-spu-blue"
+                                    x-text="project?.facultyEn"></dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="w-[140px] text-[12px] font-medium text-[#6f7280]"
+                                    x-text="$store.app.currentLang === 'ar' ? 'المجال البحثي' : 'Research Theme'"></dt>
+                                <dd class="text-[14px] font-medium text-spu-blue"
+                                    x-text="project?.themeEn"></dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="w-[140px] text-[12px] font-medium text-[#6f7280]"
+                                    x-text="$store.app.currentLang === 'ar' ? 'سنة البدء' : 'Start Year'"></dt>
+                                <dd class="text-[14px] font-medium text-spu-blue"
+                                    x-text="project?.startYear"></dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="w-[140px] text-[12px] font-medium text-[#6f7280]"
+                                    x-text="$store.app.currentLang === 'ar' ? 'جهة التمويل' : 'Funding'"></dt>
+                                <dd class="text-[14px] font-medium text-spu-blue"
+                                    x-text="$store.app.currentLang === 'ar' ? project?.fundingAr : project?.fundingEn"></dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="lg:sticky lg:top-8 lg:self-start">
+                <div class="rounded-[10px] border border-[#dde2ea] bg-white p-6 shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+                    <h3 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? 'معلومات المشروع' : 'Project Info'"></h3>
+
+                    <dl class="mt-5 space-y-4">
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'الحالة' : 'Status'"></dt>
+                            <dd class="mt-1">
+                                <span class="inline-flex items-center gap-1 rounded-[4px] px-2 py-1 text-[11px] font-bold"
+                                      :class="project?.status === 'ongoing' ? 'bg-green-100 text-green-700' : project?.status === 'completed' ? 'bg-spu-blue/10 text-spu-blue' : 'bg-yellow-100 text-yellow-700'"
+                                      x-text="$store.app.currentLang === 'ar'
+                                          ? (project?.status === 'ongoing' ? 'جاري' : project?.status === 'completed' ? 'مكتمل' : 'معلق')
+                                          : (project?.status || '')">
+                                </span>
+                            </dd>
+                        </div>
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'الكلية' : 'Faculty'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="project?.facultyEn"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'سنة البدء' : 'Start Year'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="project?.startYear"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
+                                x-text="$store.app.currentLang === 'ar' ? 'جهة التمويل' : 'Funding Source'"></dt>
+                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
+                                x-text="$store.app.currentLang === 'ar' ? project?.fundingAr : project?.fundingEn"></dd>
+                        </div>
+                    </dl>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

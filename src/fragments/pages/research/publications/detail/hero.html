@@ -1,0 +1,33 @@
+<section x-data class="bg-white font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="relative h-[50vh] min-h-[350px] overflow-hidden">
+        <img :src="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.image || '/images/uni-main-place.JPG'"
+             alt=""
+             class="absolute inset-0 h-full w-full object-cover"
+             aria-hidden="true">
+        <div class="absolute inset-0 bg-spu-blue/60"></div>
+        <div class="container relative z-10 flex h-full items-end pb-12">
+            <div :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
+                <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-white/80"
+                   x-text="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.typeEn || ''">
+                </p>
+                <h1 class="mt-2 text-[28px] font-bold text-white md:text-[36px]"
+                    x-text="$store.app.currentLang === 'ar'
+                        ? ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.titleAr || '')
+                        : ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.titleEn || '')">
+                </h1>
+                <div class="mt-4 flex flex-wrap items-center gap-6 text-[13px] text-white/80">
+                    <span x-text="$store.app.currentLang === 'ar' ? 'بواسطة' : 'By'"></span>
+                    <span class="font-bold text-white"
+                          x-text="$store.app.currentLang === 'ar'
+                              ? ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.authorAr || '')
+                              : ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.authorEn || '')">
+                    </span>
+                    <span class="text-white/60">|</span>
+                    <span x-text="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.year || ''"></span>
+                    <span class="text-white/60">|</span>
+                    <span x-text="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.facultyEn || ''"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

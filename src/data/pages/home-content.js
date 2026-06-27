@@ -1,4 +1,27 @@
 import { siteRoutes, withHash } from '../../config/site-routes.js';
+import { researchPageContent } from './research-content.js';
+
+const RESEARCH_FACULTY_COLORS = {
+    'Faculty of Medicine': '#d32f2f',
+    'Faculty of Dentistry': '#1976d2',
+    'Faculty of Pharmacy': '#388e3c',
+    'Faculty of Artificial Intelligence': '#7b1fa2',
+    'Faculty of Construction Engineering': '#7e8b8c',
+    'Faculty of Petroleum Engineering': '#f57c00',
+    'Faculty of Business Administration': '#5c6bc0',
+    'University Administration': '#455a64'
+};
+
+const RESEARCH_SHORT_CATEGORIES = {
+    'Faculty of Medicine': 'Medicine',
+    'Faculty of Dentistry': 'Dentistry',
+    'Faculty of Pharmacy': 'Pharmacy',
+    'Faculty of Artificial Intelligence': 'AI',
+    'Faculty of Construction Engineering': 'Construction',
+    'Faculty of Petroleum Engineering': 'Petroleum',
+    'Faculty of Business Administration': 'Business',
+    'University Administration': 'Administration'
+};
 
 export const heroContent = {
     titleAr: 'الجامعة السورية الخاصة',
@@ -209,13 +232,19 @@ export const newsItems = [
     { id: 4, category: 'Community', categoryColor: 'bg-[#912b2b]', titleEn: 'Community Outreach Partnership', titleAr: 'شراكة التواصل المجتمعي', date: 'March <span translate="no">1, 2026</span>', summaryEn: 'Collaborating with regional partners to support local social growth.', summaryAr: 'التعاون مع الشركاء الإقليميين لدعم النمو الاجتماعي المحلي.', image: '/images/slider-4.webp', href: '/news/article/?id=news-004' }
 ];
 
-export const researchItems = [
-    { id: 1, category: 'Medicine', tagColor: '#d32f2f', metaEn: 'Faculty of Medicine', metaAr: 'كلية الطب', titleEn: 'Clinical Simulation and Preventive Health Research', titleAr: 'أبحاث المحاكاة السريرية والصحة الوقائية', summaryEn: 'Faculty-led work highlights early diagnosis and community health studies.', summaryAr: 'تسلط أعمال الكلية الضوء على دراسات التشخيص المبكر وصحة المجتمع.', image: '/images/frame-114.webp', link: siteRoutes.researchRepository },
-    { id: 2, category: 'Dentistry', tagColor: '#1976d2', metaEn: 'Faculty of Dentistry', metaAr: 'كلية طب الأسنان', titleEn: 'Digital Dentistry and Oral Regeneration Studies', titleAr: 'دراسات طب الأسنان الرقمي وتجديد الأنسجة الفموية', summaryEn: 'Research themes include restorative techniques and evidence-based planning.', summaryAr: 'تشمل محاور البحث تقنيات الترميم والتخطيط القائم على الأدلة.', image: '/images/unsplash_s9CC2SKySJM.webp', link: siteRoutes.researchRepository },
-    { id: 3, category: 'Pharmacy', tagColor: '#388e3c', metaEn: 'Faculty of Pharmacy', metaAr: 'كلية الصيدلة', titleEn: 'Drug Formulation, Quality Control, and Therapeutics', titleAr: 'صياغة الأدوية، مراقبة الجودة، والعلاجات', summaryEn: 'Projects focus on safe and effective medication use studies.', summaryAr: 'تركز المشاريع على دراسات الاستخدام الآمن والفعال للأدوية.', image: '/images/unsplash_VckdJzo7ig0.webp', link: siteRoutes.research },
-    { id: 4, category: 'AI', tagColor: '#7b1fa2', metaEn: 'Faculty of AI Engineering', metaAr: 'كلية هندسة الذكاء الاصطناعي', titleEn: 'Applied AI for Industrial Systems', titleAr: 'الذكاء الاصطناعي التطبيقي للأنظمة الصناعية', summaryEn: 'Exploring intelligent systems and data-driven decision support.', summaryAr: 'استكشاف الأنظمة الذكية ودعم القرار القائم على البيانات.', image: '/images/Gemini_Generated_Image_c89yjwc89yjwc89y.webp', link: siteRoutes.researchRepository },
-    { id: 5, category: 'Construction', tagColor: '#7e8b8c', metaEn: 'Faculty of Construction Engineering', metaAr: 'كلية هندسة البناء', titleEn: 'Smart Construction and Sustainable Design', titleAr: 'البناء الذكي والتصميم المستدام', summaryEn: 'Investigating structural performance and site efficiency.', summaryAr: 'التحقيق في الأداء الإنشائي وكفاءة الموقع.', image: '/images/Gemini_Generated_Image_rrcjc2rrcjc2rrcj.webp', link: siteRoutes.researchRepository }
-];
+export const researchItems = (researchPageContent.publications?.items || [])
+    .slice(0, 6)
+    .map((pub) => ({
+        id: pub.id,
+        category: RESEARCH_SHORT_CATEGORIES[pub.facultyEn] || 'Research',
+        tagColor: RESEARCH_FACULTY_COLORS[pub.facultyEn] || '#202759',
+        titleEn: pub.titleEn,
+        titleAr: pub.titleAr,
+        summaryEn: pub.summaryEn,
+        summaryAr: pub.summaryAr,
+        image: pub.image,
+        link: `${siteRoutes.researchPublications}${pub.slug}/`
+    }));
 
 export const healthcareContent = {
     mainCard: {
