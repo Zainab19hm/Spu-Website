@@ -1,0 +1,209 @@
+<section class="bg-slate-50 py-16 font-hacen md:py-24"
+         x-data="{
+           get page() { return $store.servicesPage.suggestionsComplaints },
+           get isAr() { return $store.app.currentLang === 'ar' },
+           attachmentName: '',
+           handleFile(e) {
+             const file = e.target.files?.[0];
+             this.attachmentName = file ? file.name : '';
+           }
+         }">
+  <div class="container">
+    <div class="grid gap-10 lg:grid-cols-[1fr_380px] lg:gap-12">
+
+      <!-- Right column: Form -->
+      <article class="order-1 rounded-[8px] border border-slate-200 bg-white p-6 shadow-[0_12px_34px_rgba(32,39,89,0.06)] md:p-8 lg:order-2 lg:rtl:order-1">
+        <h2 class="text-2xl font-bold text-spu-blue"
+            x-text="isAr ? page.form.titleAr : page.form.titleEn"></h2>
+        <p class="mt-2 text-sm text-slate-500"
+           x-text="isAr ? 'جميع الحقول المطلوبة محددة بعلامة *' : 'Required fields are marked with *'"></p>
+
+        <form class="mt-8 grid gap-6" onsubmit="event.preventDefault();">
+          <!-- Full Name -->
+          <div class="space-y-2">
+            <label for="sc-full-name" class="block text-sm font-bold text-slate-700"
+                   x-text="(isAr ? page.form.fullName.labelAr : page.form.fullName.labelEn) + (page.form.fullName.required ? ' *' : '')"></label>
+            <input id="sc-full-name"
+                   type="text"
+                   :required="page.form.fullName.required"
+                   class="h-12 w-full rounded-lg border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition-all placeholder:text-slate-400 focus:border-spu-blue/50 focus:ring-4 focus:ring-spu-blue/8"
+                   :placeholder="isAr ? page.form.fullName.placeholderAr : page.form.fullName.placeholderEn">
+          </div>
+
+          <!-- Email + Phone -->
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="space-y-2">
+              <label for="sc-email" class="block text-sm font-bold text-slate-700"
+                     x-text="(isAr ? page.form.email.labelAr : page.form.email.labelEn) + (page.form.email.required ? ' *' : '')"></label>
+              <input id="sc-email"
+                     type="email"
+                     :required="page.form.email.required"
+                     class="h-12 w-full rounded-lg border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition-all placeholder:text-slate-400 focus:border-spu-blue/50 focus:ring-4 focus:ring-spu-blue/8"
+                     :placeholder="isAr ? page.form.email.placeholderAr : page.form.email.placeholderEn">
+            </div>
+            <div class="space-y-2">
+              <label for="sc-phone" class="block text-sm font-bold text-slate-700"
+                     x-text="(isAr ? page.form.phone.labelAr : page.form.phone.labelEn) + (page.form.phone.required ? ' *' : '')"></label>
+              <input id="sc-phone"
+                     type="tel"
+                     :required="page.form.phone.required"
+                     class="h-12 w-full rounded-lg border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition-all placeholder:text-slate-400 focus:border-spu-blue/50 focus:ring-4 focus:ring-spu-blue/8"
+                     :placeholder="isAr ? page.form.phone.placeholderAr : page.form.phone.placeholderEn">
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="space-y-2">
+            <label for="sc-subject" class="block text-sm font-bold text-slate-700"
+                   x-text="(isAr ? page.form.subject.labelAr : page.form.subject.labelEn) + (page.form.subject.required ? ' *' : '')"></label>
+            <input id="sc-subject"
+                   type="text"
+                   :required="page.form.subject.required"
+                   class="h-12 w-full rounded-lg border border-slate-200 bg-white px-4 text-sm text-slate-700 outline-none transition-all placeholder:text-slate-400 focus:border-spu-blue/50 focus:ring-4 focus:ring-spu-blue/8"
+                   :placeholder="isAr ? page.form.subject.placeholderAr : page.form.subject.placeholderEn">
+          </div>
+
+          <!-- Request Type -->
+          <div class="space-y-2">
+            <label for="sc-type" class="block text-sm font-bold text-slate-700"
+                   x-text="(isAr ? page.form.requestType.labelAr : page.form.requestType.labelEn) + (page.form.requestType.required ? ' *' : '')"></label>
+            <div class="relative">
+              <select id="sc-type"
+                      :required="page.form.requestType.required"
+                      class="h-12 w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 text-sm font-bold text-spu-blue outline-none transition-all focus:border-spu-blue/50 focus:ring-4 focus:ring-spu-blue/8">
+                <option value="" disabled selected
+                        x-text="isAr ? 'اختر نوع الطلب' : 'Select request type'"></option>
+                <template x-for="option in page.form.requestType.options" :key="option.value">
+                  <option :value="option.value" x-text="isAr ? option.labelAr : option.labelEn"></option>
+                </template>
+              </select>
+              <img src="/images/icon-chevron-down-outline.svg" alt="" class="pointer-events-none absolute right-4 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-4 rtl:right-auto" aria-hidden="true">
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="space-y-2">
+            <label for="sc-message" class="block text-sm font-bold text-slate-700"
+                   x-text="(isAr ? page.form.message.labelAr : page.form.message.labelEn) + (page.form.message.required ? ' *' : '')"></label>
+            <textarea id="sc-message"
+                      rows="5"
+                      :required="page.form.message.required"
+                      class="w-full resize-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition-all placeholder:text-slate-400 focus:border-spu-blue/50 focus:ring-4 focus:ring-spu-blue/8"
+                      :placeholder="isAr ? page.form.message.placeholderAr : page.form.message.placeholderEn"></textarea>
+          </div>
+
+          <!-- Attachment -->
+          <div class="space-y-2">
+            <label for="sc-attachment" class="block text-sm font-bold text-slate-700"
+                   x-text="(isAr ? page.form.attachment.labelAr : page.form.attachment.labelEn) + (page.form.attachment.required ? ' *' : '')"></label>
+            <div class="relative">
+              <input id="sc-attachment"
+                     type="file"
+                     class="sr-only"
+                     @change="handleFile($event)">
+              <label for="sc-attachment"
+                     class="flex cursor-pointer items-center gap-3 rounded-lg border border-dashed border-slate-300 bg-white px-4 py-3 text-sm text-slate-600 transition hover:border-spu-blue/50 hover:bg-slate-50">
+                <span class="inline-flex h-9 items-center justify-center rounded-md bg-spu-blue px-4 text-[11px] font-bold text-white transition hover:bg-[#171d47]"
+                      x-text="isAr ? 'اختر ملفاً' : 'Choose File'"></span>
+                <span class="text-xs" x-text="attachmentName || (isAr ? 'لم يتم اختيار ملف' : 'No file chosen')"></span>
+              </label>
+            </div>
+            <p class="text-xs text-slate-500"
+               x-text="isAr ? page.form.attachment.helperAr : page.form.attachment.helperEn"></p>
+          </div>
+
+          <!-- Submit -->
+          <div class="pt-2">
+            <button type="submit"
+                    class="inline-flex h-12 items-center justify-center bg-spu-red px-8 text-sm font-bold text-white transition-all hover:bg-spu-red/90 hover:shadow-lg active:scale-95"
+                    x-text="isAr ? page.form.submitAr : page.form.submitEn">
+            </button>
+          </div>
+        </form>
+      </article>
+
+      <!-- Left column: Information -->
+      <aside class="order-2 space-y-6 lg:order-1 lg:rtl:order-2">
+        <!-- Intro card -->
+        <div class="rounded-[8px] border border-spu-blue/10 bg-white p-6 shadow-[0_12px_34px_rgba(32,39,89,0.06)]">
+          <h2 class="text-xl font-bold text-spu-blue"
+              x-text="isAr ? page.info.titleAr : page.info.titleEn"></h2>
+          <p class="mt-3 text-sm leading-7 text-slate-600"
+             x-text="isAr ? page.info.paragraphAr : page.info.paragraphEn"></p>
+        </div>
+
+        <!-- Info cards -->
+        <div class="space-y-4">
+          <template x-for="(card, index) in page.info.cards" :key="index">
+            <div class="flex gap-4 rounded-[8px] border border-slate-200 bg-white p-5 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:shadow-[0_12px_34px_rgba(32,39,89,0.06)]">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-spu-blue/8 text-spu-blue">
+                <template x-if="card.icon === 'lock'">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="5" y="11" width="14" height="10" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                  </svg>
+                </template>
+                <template x-if="card.icon === 'clock'">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </template>
+                <template x-if="card.icon === 'clipboard'">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  </svg>
+                </template>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-spu-blue"
+                    x-text="isAr ? card.titleAr : card.titleEn"></h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600"
+                   x-text="isAr ? card.bodyAr : card.bodyEn"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- Timeline -->
+        <div class="rounded-[8px] border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-spu-blue"
+              x-text="isAr ? 'مراحل المعالجة' : 'Processing Steps'"></h3>
+          <ul class="relative mt-5 space-y-0">
+            <div class="absolute top-2 bottom-2 h-auto w-px bg-slate-200"
+                 :class="isAr ? 'right-5' : 'left-5'"
+                 aria-hidden="true"></div>
+            <template x-for="(step, index) in page.info.timeline" :key="index">
+              <li class="relative flex gap-4 py-3"
+                  :class="isAr ? 'flex-row-reverse' : ''">
+                <div class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white bg-spu-blue text-[11px] font-bold text-white shadow-sm"
+                     x-text="index + 1"></div>
+                <div class="flex-1">
+                  <p class="text-sm font-bold text-slate-700"
+                     x-text="isAr ? step.labelAr : step.labelEn"></p>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Note -->
+        <div class="rounded-[8px] border border-spu-red/10 bg-spu-red/5 p-5">
+          <div class="flex gap-3"
+               :class="isAr ? 'flex-row-reverse' : ''">
+            <div class="shrink-0 text-spu-red">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <p class="text-sm leading-6 text-slate-700"
+               x-text="isAr ? page.info.noteAr : page.info.noteEn"></p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

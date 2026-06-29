@@ -75,7 +75,123 @@ export const servicesPageContent = {
                 url: withHash(siteRoutes.contact, 'it-support'),
                 buttonEn: 'Launch Service',
                 buttonAr: 'تفعيل الخدمة'
+            },
+            {
+                id: 6,
+                titleEn: 'Suggestions & Complaints',
+                titleAr: 'الاقتراحات والشكاوى',
+                summaryEn: 'Submit feedback, suggestions, or complaints to help improve university services and student experience.',
+                summaryAr: 'تقديم الملاحظات والاقتراحات أو الشكاوى للمساعدة في تحسين خدمات الجامعة وتجربة الطلاب.',
+                icon: '/images/icons/check-circle.svg',
+                url: siteRoutes.servicesSuggestionsComplaints,
+                buttonEn: 'Submit Request',
+                buttonAr: 'تقديم طلب'
             }
         ]
+    },
+    suggestionsComplaints: {
+        hero: {
+            eyebrowEn: 'E-Services',
+            eyebrowAr: 'الخدمات الإلكترونية',
+            titleEn: 'Suggestions & Complaints',
+            titleAr: 'الاقتراحات والشكاوى',
+            summaryEn: 'Share your feedback, suggestions, or concerns to help us improve university services and student experience.',
+            summaryAr: 'شاركنا ملاحظاتك واقتراحاتك أو مخاوفك للمساعدة في تحسين خدمات الجامعة وتجربة الطلاب.',
+            heroImage: '/images/slider-3.webp'
+        },
+        form: {
+            titleEn: 'Submit Your Request',
+            titleAr: 'قدّم طلبك',
+            fullName: {
+                labelEn: 'Full Name',
+                labelAr: 'الاسم الكامل',
+                placeholderEn: 'Enter your full name',
+                placeholderAr: 'أدخل اسمك الكامل',
+                required: true
+            },
+            email: {
+                labelEn: 'Email',
+                labelAr: 'البريد الالكتروني',
+                placeholderEn: 'name@mail.com',
+                placeholderAr: 'name@mail.com',
+                required: true
+            },
+            phone: {
+                labelEn: 'Phone Number',
+                labelAr: 'رقم الهاتف',
+                placeholderEn: '0912345678',
+                placeholderAr: '0912345678',
+                required: false
+            },
+            subject: {
+                labelEn: 'Subject',
+                labelAr: 'الموضوع',
+                placeholderEn: 'Brief subject line',
+                placeholderAr: 'موضوع مختصر',
+                required: true
+            },
+            requestType: {
+                labelEn: 'Request Type',
+                labelAr: 'نوع الطلب',
+                required: true,
+                options: [
+                    { value: 'suggestion', labelEn: 'Suggestion', labelAr: 'اقتراح' },
+                    { value: 'complaint', labelEn: 'Complaint', labelAr: 'شكوى' },
+                    { value: 'inquiry', labelEn: 'Inquiry', labelAr: 'استفسار' }
+                ]
+            },
+            message: {
+                labelEn: 'Message',
+                labelAr: 'الرسالة',
+                placeholderEn: 'Please describe your request in detail...',
+                placeholderAr: 'يرجى وصف طلبك بالتفصيل...',
+                required: true
+            },
+            attachment: {
+                labelEn: 'Attachment',
+                labelAr: 'المرفق',
+                helperEn: 'Optional. PDF, DOC, or image up to 5MB.',
+                helperAr: 'اختياري. PDF أو DOC أو صورة حتى 5 ميجابايت.',
+                required: false
+            },
+            submitEn: 'Submit Request',
+            submitAr: 'إرسال الطلب'
+        },
+        info: {
+            titleEn: 'We Value Your Feedback',
+            titleAr: 'نقدّر ملاحظاتك',
+            paragraphEn: 'Your opinions help us identify opportunities for improvement and ensure that university services meet student expectations. Every submission is reviewed carefully by the relevant department.',
+            paragraphAr: 'تساعدنا آراؤك في تحديد فرص التحسين وضمان تلبية خدمات الجامعة لتوقعات الطلاب. يتم مراجعة كل تقديم بعناية من قبل القسم المعني.',
+            cards: [
+                {
+                    icon: 'lock',
+                    titleEn: 'Confidentiality',
+                    titleAr: 'السرية',
+                    bodyEn: 'All submitted information is handled confidentially and shared only with the responsible department.',
+                    bodyAr: 'يتم التعامل مع جميع المعلومات المقدمة بسرية تامة ومشاركتها فقط مع القسم المسؤول.'
+                },
+                {
+                    icon: 'clock',
+                    titleEn: 'Response Time',
+                    titleAr: 'مدة الرد',
+                    bodyEn: 'You can expect a response within 3–5 business days after submission.',
+                    bodyAr: 'يمكنك توقع رد خلال 3 إلى 5 أيام عمل بعد التقديم.'
+                },
+                {
+                    icon: 'clipboard',
+                    titleEn: 'Review Process',
+                    titleAr: 'عملية المراجعة',
+                    bodyEn: 'Your request is logged, reviewed by the relevant department, and a response is sent to your university email.',
+                    bodyAr: 'يتم تسجيل طلبك ومراجعته من قبل القسم المعني وإرسال الرد إلى بريدك الجامعي.'
+                }
+            ],
+            timeline: [
+                { labelEn: 'Submit Request', labelAr: 'تقديم الطلب' },
+                { labelEn: 'Review by Responsible Department', labelAr: 'مراجعة القسم المسؤول' },
+                { labelEn: 'Response Sent', labelAr: 'إرسال الرد' }
+            ],
+            noteEn: 'Please provide complete and accurate information so we can assist you effectively.',
+            noteAr: 'يرجى تقديم معلومات كاملة ودقيقة حتى نتمكن من مساعدتك بفعالية.'
+        }
     }
 };

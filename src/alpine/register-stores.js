@@ -45,6 +45,7 @@ const pageStoreLoaders = {
     'student-life': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
     'virtual-tour': () => import('./pages/virtual-tour-stores.js').then((module) => module.registerVirtualTourStores),
     services: () => import('./pages/services-stores.js').then((module) => module.registerServicesStores),
+    'services-suggestions-complaints': () => import('./pages/services-stores.js').then((module) => module.registerServicesStores),
     news: () => import('./pages/news-stores.js').then((module) => module.registerNewsStores),
     'news-articles': () => import('./pages/news-listing-stores.js').then((module) => module.registerNewsListingStores),
     'news-article': () => import('./pages/news-article-stores.js').then((module) => module.registerNewsArticleStores),

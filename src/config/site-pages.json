@@ -1124,6 +1124,24 @@
       ]
     },
     {
+      "name": "services-suggestions-complaints",
+      "fileName": "e-services/suggestions-complaints.html",
+      "route": "/e-services/suggestions-complaints/",
+      "title": "Suggestions & Complaints | Syrian Private University",
+      "description": "Submit suggestions, complaints, or inquiries to help improve Syrian Private University services.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU suggestions",
+        "SPU complaints",
+        "Syrian Private University feedback",
+        "SPU student voice"
+      ],
+      "fragments": [
+        "pages/services/suggestions-complaints/hero.html",
+        "pages/services/suggestions-complaints/content.html"
+      ]
+    },
+    {
       "name": "news",
       "fileName": "news.html",
       "route": "/news/",

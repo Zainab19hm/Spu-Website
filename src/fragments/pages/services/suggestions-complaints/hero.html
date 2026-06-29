@@ -1,0 +1,32 @@
+<section x-cloak
+         x-data="{ get page() { return $store.servicesPage.suggestionsComplaints }, get isAr() { return $store.app.currentLang === 'ar' } }"
+         class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
+  <img :src="page.hero.heroImage"
+       :alt="isAr ? page.hero.titleAr : page.hero.titleEn"
+       class="absolute inset-0 h-full w-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
+
+  <div class="container relative z-10 mx-auto py-5 text-center text-white">
+    <!-- Breadcrumb -->
+    <nav class="mb-6 flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-white/85"
+         aria-label="Breadcrumb">
+      <a href="/" class="transition hover:text-white"
+         x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+      <span aria-hidden="true">›</span>
+      <a href="/e-services/" class="transition hover:text-white"
+         x-text="isAr ? 'الخدمات الإلكترونية' : 'E-Services'"></a>
+      <span aria-hidden="true">›</span>
+      <span x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></span>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
+        x-text="isAr ? page.hero.titleAr : page.hero.titleEn">
+    </h1>
+
+    <!-- Summary -->
+    <p class="mx-auto mt-5 max-w-[640px] text-base leading-relaxed text-white/90"
+       x-text="isAr ? page.hero.summaryAr : page.hero.summaryEn">
+    </p>
+  </div>
+</section>
