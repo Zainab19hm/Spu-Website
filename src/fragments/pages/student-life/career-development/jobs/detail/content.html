@@ -1,0 +1,106 @@
+<section id="job-description" class="bg-white py-16 font-hacen md:py-20"
+         x-data="{
+           get page() { return $store.careersPage },
+           get isAr() { return $store.app.currentLang === 'ar' },
+           slug: document.querySelector('main[data-page-content]')?.dataset?.slug || '',
+           get job() { return this.slug ? this.page.jobs.find(j => j.slug === this.slug) : this.page.currentJob() }
+         }">
+  <div class="container">
+    <div class="mx-auto max-w-[1100px]">
+      <!-- Main content -->
+      <article x-show="job" x-cloak>
+        <!-- Meta info -->
+        <div class="grid gap-4 rounded-md border border-slate-200 bg-white p-5 shadow-[0_10px_24px_rgba(15,23,42,0.06)] sm:grid-cols-2 md:grid-cols-4">
+          <div>
+            <dt class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="page.localized('labels', 'department')"></dt>
+            <dd class="mt-1 text-sm font-bold text-spu-blue"
+                x-text="isAr ? job?.departmentAr : job?.departmentEn"></dd>
+          </div>
+          <div>
+            <dt class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="page.localized('labels', 'location')"></dt>
+            <dd class="mt-1 text-sm font-bold text-spu-blue"
+                x-text="isAr ? job?.locationAr : job?.locationEn"></dd>
+          </div>
+          <div>
+            <dt class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="page.localized('labels', 'jobType')"></dt>
+            <dd class="mt-1 text-sm font-bold text-spu-blue"
+                x-text="page.labelForType(job?.type)"></dd>
+          </div>
+          <div>
+            <dt class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="page.localized('labels', 'postedOn')"></dt>
+            <dd class="mt-1 text-sm font-bold text-spu-blue" x-text="job?.postedDate"></dd>
+          </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="mt-10">
+          <h2 class="text-2xl font-bold text-spu-blue md:text-3xl"
+              x-text="page.localized('labels', 'overview')"></h2>
+          <div class="mt-5 space-y-4 text-sm leading-7 text-slate-700">
+            <template x-for="paragraph in (isAr ? job?.overviewAr : job?.overviewEn)" :key="paragraph">
+              <p x-text="paragraph"></p>
+            </template>
+          </div>
+        </div>
+
+        <!-- Responsibilities -->
+        <div class="mt-10">
+          <h2 class="text-2xl font-bold text-spu-blue md:text-3xl"
+              x-text="page.localized('labels', 'responsibilities')"></h2>
+          <ul class="mt-5 list-inside list-disc space-y-2 text-sm leading-7 text-slate-700">
+            <template x-for="item in (isAr ? job?.responsibilitiesAr : job?.responsibilitiesEn)" :key="item">
+              <li x-text="item"></li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Requirements -->
+        <div class="mt-10">
+          <h2 class="text-2xl font-bold text-spu-blue md:text-3xl"
+              x-text="page.localized('labels', 'requirements')"></h2>
+          <ul class="mt-5 list-inside list-disc space-y-2 text-sm leading-7 text-slate-700">
+            <template x-for="item in (isAr ? job?.requirementsAr : job?.requirementsEn)" :key="item">
+              <li x-text="item"></li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Benefits -->
+        <div class="mt-10">
+          <h2 class="text-2xl font-bold text-spu-blue md:text-3xl"
+              x-text="page.localized('labels', 'benefits')"></h2>
+          <ul class="mt-5 list-inside list-disc space-y-2 text-sm leading-7 text-slate-700">
+            <template x-for="item in (isAr ? job?.benefitsAr : job?.benefitsEn)" :key="item">
+              <li x-text="item"></li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Apply button -->
+        <div class="mt-10">
+          <button type="button"
+                  disabled
+                  class="group relative inline-flex h-12 cursor-not-allowed items-center justify-center rounded-md bg-spu-red px-8 text-sm font-bold text-white opacity-70 transition"
+                  :title="page.localized('labels', 'applyDisabled')">
+            <span x-text="page.localized('labels', 'applyNow')"></span>
+            <span class="ms-2 inline-block rounded bg-white/20 px-2 py-0.5 text-[10px]"
+                  x-text="page.localized('labels', 'applyDisabled')"></span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Not found -->
+      <div class="text-center" x-show="!job" x-cloak>
+        <p class="text-sm font-bold text-slate-500" x-text="page.localized('labels', 'notFound')"></p>
+        <a href="/campus-life/career-development/jobs/"
+           class="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-spu-blue px-6 text-xs font-bold text-white transition hover:bg-[#171d47]"
+           x-text="page.localized('labels', 'learnMore')">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

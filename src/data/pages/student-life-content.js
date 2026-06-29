@@ -363,7 +363,7 @@ export const studentLifePageContent = {
                     summaryAr: 'الوصول إلى فرص عمل بدوام كامل للخريجين عبر أصحاب عمل موثوقين.',
                     linkEn: 'Open Job Board',
                     linkAr: 'فتح لوحة الوظائف',
-                    href: withHash(siteRoutes.campusLifeCareerDevelopment, 'job-board')
+                    href: siteRoutes.campusLifeCareerDevelopmentJobs
                 },
                 {
                     id: 'employer-partners',

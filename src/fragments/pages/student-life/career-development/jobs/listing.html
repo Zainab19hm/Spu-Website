@@ -1,0 +1,122 @@
+<section id="jobs-listing" class="bg-white py-16 font-hacen md:py-20"
+         x-data="{ get page() { return $store.careersPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="container">
+    <!-- Filters -->
+    <div class="mx-auto grid max-w-[1100px] grid-cols-1 gap-4 md:grid-cols-[1fr_1fr_1.5fr]">
+      <label class="relative block">
+        <span class="sr-only" x-text="page.localized('labels', 'categoryLabel')"></span>
+        <select class="h-12 w-full appearance-none rounded-md border border-slate-200 bg-white px-4 text-sm font-bold text-spu-blue shadow-[0_8px_18px_rgba(16,24,40,0.06)] outline-none transition focus:border-spu-blue"
+                x-model="page.activeCategory"
+                @change="page.setCategory($event.target.value)">
+          <template x-for="option in page.categories" :key="option.id">
+            <option :value="option.id"
+                    x-text="isAr ? option.labelAr : option.labelEn"></option>
+          </template>
+        </select>
+        <img src="/images/icon-chevron-down-outline.svg" alt="" class="pointer-events-none absolute right-4 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-4 rtl:right-auto" aria-hidden="true">
+      </label>
+
+      <label class="relative block">
+        <span class="sr-only" x-text="page.localized('labels', 'typeLabel')"></span>
+        <select class="h-12 w-full appearance-none rounded-md border border-slate-200 bg-white px-4 text-sm font-bold text-spu-blue shadow-[0_8px_18px_rgba(16,24,40,0.06)] outline-none transition focus:border-spu-blue"
+                x-model="page.activeType"
+                @change="page.setType($event.target.value)">
+          <template x-for="option in page.types" :key="option.id">
+            <option :value="option.id"
+                    x-text="isAr ? option.labelAr : option.labelEn"></option>
+          </template>
+        </select>
+        <img src="/images/icon-chevron-down-outline.svg" alt="" class="pointer-events-none absolute right-4 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-4 rtl:right-auto" aria-hidden="true">
+      </label>
+
+      <label class="relative block">
+        <span class="sr-only">Search</span>
+        <img src="/images/icon-search-outline.svg" alt="" class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 opacity-60 rtl:left-auto rtl:right-4" aria-hidden="true">
+        <input type="search"
+               class="h-12 w-full rounded-md border border-slate-200 bg-white ps-11 pe-4 text-sm font-medium text-slate-700 shadow-[0_8px_18px_rgba(16,24,40,0.06)] outline-none transition placeholder:text-slate-400 focus:border-spu-blue"
+               :placeholder="page.localized('labels', 'searchPlaceholder')"
+               x-model="page.searchQuery"
+               @input.debounce.300ms="page.setSearch($event.target.value)">
+      </label>
+    </div>
+
+    <!-- Results count -->
+    <p class="mx-auto mt-6 max-w-[1100px] text-xs font-bold text-slate-500"
+       x-show="page.filteredJobs().length > 0">
+      <span x-text="page.localized('labels', 'showing')"></span>
+      <span x-text="page.filteredJobs().length"></span>
+      <span x-text="page.localized('labels', 'of')"></span>
+      <span x-text="page.jobs.length"></span>
+      <span x-text="isAr ? 'وظيفة' : 'positions'"></span>
+    </p>
+
+    <!-- Grid -->
+    <div class="mx-auto mt-6 grid max-w-[1280px] grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <template x-for="job in page.visibleJobs()" :key="job.id">
+        <article class="group flex flex-col overflow-hidden rounded-md border border-slate-200 bg-white shadow-[0_10px_24px_rgba(15,23,42,0.08)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(15,23,42,0.12)]">
+          <!-- Top accent banner -->
+          <div class="relative h-16 overflow-hidden bg-spu-blue px-5 py-4">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/8 to-transparent"></div>
+            <div class="relative flex h-full  justify-between">
+              <span class="w-fit rounded-[3px] bg-white px-2 h-fit text-[10px] font-bold text-spu-blue shadow-sm"
+                    x-text="page.labelForCategory(job.category)">
+              </span>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-white/90"
+                    x-text="page.labelForType(job.type)">
+              </span>
+            </div>
+          </div>
+
+          <div class="flex flex-1 flex-col p-5">
+            <h2 class="text-base font-bold leading-tight text-spu-blue"
+                x-text="isAr ? job.titleAr : job.titleEn"></h2>
+            <p class="mt-2 line-clamp-2 text-xs leading-5 text-slate-600"
+               x-text="isAr ? job.shortDescriptionAr : job.shortDescriptionEn"></p>
+
+            <div class="mt-auto pt-5">
+              <a :href="page.jobHref(job.slug)"
+                 class="inline-flex h-9 items-center justify-center rounded-md bg-spu-blue px-4 text-[11px] font-bold text-white transition hover:bg-spu-red">
+                <span x-text="page.localized('labels', 'learnMore')"></span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </template>
+    </div>
+
+    <!-- No results -->
+    <div class="mx-auto mt-12 max-w-[1100px] text-center"
+         x-show="page.filteredJobs().length === 0"
+         x-cloak>
+      <p class="text-sm font-bold text-slate-500" x-text="page.localized('labels', 'noResults')"></p>
+    </div>
+
+    <!-- Pagination -->
+    <nav class="mt-12 flex items-center justify-center gap-2" aria-label="Pagination"
+         x-show="page.totalPages() > 1">
+      <button type="button"
+              class="flex h-8 w-8 items-center justify-center rounded-[4px] border border-slate-200 text-spu-blue transition hover:border-spu-blue disabled:opacity-40"
+              :aria-label="page.localized('labels', 'previous')"
+              :disabled="page.currentPage === 1"
+              @click="page.goToPage(page.currentPage - 1)">
+        <img src="/images/icon-chevron-left-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+      </button>
+
+      <template x-for="pageNumber in Array.from({ length: page.totalPages() }, (_, index) => index + 1)" :key="pageNumber">
+        <button type="button"
+                class="h-8 min-w-8 rounded-[4px] border px-3 text-[12px] font-bold transition"
+                :class="page.currentPage === pageNumber ? 'border-spu-red bg-spu-red text-white' : 'border-slate-200 bg-white text-spu-blue hover:border-spu-blue'"
+                @click="page.goToPage(pageNumber)"
+                x-text="pageNumber"></button>
+      </template>
+
+      <button type="button"
+              class="flex h-8 w-8 items-center justify-center rounded-[4px] border border-slate-200 text-spu-blue transition hover:bg-spu-red disabled:opacity-40"
+              :aria-label="page.localized('labels', 'next')"
+              :disabled="page.currentPage === page.totalPages()"
+              @click="page.goToPage(page.currentPage + 1)">
+        <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-3 w-3 rtl:rotate-180" aria-hidden="true">
+      </button>
+    </nav>
+  </div>
+</section>

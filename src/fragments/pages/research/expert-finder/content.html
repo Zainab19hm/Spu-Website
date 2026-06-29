@@ -4,34 +4,32 @@
              get isAr() { return $store.app.currentLang === 'ar' },
              searchQuery: '',
              selectedFaculty: 'all',
-             selectedExpertise: 'all',
              get filteredResearchers() {
-                 let results = page.expertFinder.researchers;
+                 const researchers = this.page?.expertFinder?.researchers || [];
+                 let results = researchers;
                  if (this.selectedFaculty !== 'all') {
                      results = results.filter(r => r.facultyId === this.selectedFaculty);
                  }
-                 if (this.selectedExpertise !== 'all') {
-                     results = results.filter(r => {
-                         const expertiseIds = r.expertiseEn.map(e => e.toLowerCase().replace(/\s+/g, '-'));
-                         return expertiseIds.includes(this.selectedExpertise);
-                     });
-                 }
                  if (this.searchQuery.length >= 2) {
                      const query = this.searchQuery.toLowerCase();
+                     const lang = this.isAr ? 'Ar' : 'En';
                      results = results.filter(r => {
-                         const nameMatch = (isAr ? r.nameAr : r.nameEn).toLowerCase().includes(query);
-                         const facultyMatch = (isAr ? r.facultyAr : r.facultyEn).toLowerCase().includes(query);
-                         const expertiseMatch = (isAr ? r.expertiseAr : r.expertiseEn).some(e => e.toLowerCase().includes(query));
+                         const nameMatch = (r[`name${lang}`] || '').toLowerCase().includes(query);
+                         const facultyMatch = (r[`faculty${lang}`] || '').toLowerCase().includes(query);
+                         const expertiseMatch = (r[`expertise${lang}`] || []).some(e => e.toLowerCase().includes(query));
                          return nameMatch || facultyMatch || expertiseMatch;
                      });
                  }
                  return results;
              },
              text(item, key) {
-                 return isAr ? item[key + 'Ar'] : item[key + 'En'];
+                 return this.isAr ? item[key + 'Ar'] : item[key + 'En'];
              },
-             expertiseText(expertise) {
-                 return isAr ? expertise.expertiseAr : expertise.expertiseEn;
+             publicationsLabel(count) {
+                 if (this.isAr) {
+                     return count === 1 ? 'منشور' : 'منشورات';
+                 }
+                 return count === 1 ? 'Publication' : 'Publications';
              }
          }">
 
@@ -58,15 +56,6 @@
                             <option :value="faculty.id" x-text="isAr ? faculty.nameAr : faculty.nameEn"></option>
                         </template>
                     </select>
-                    <select
-                        x-model="selectedExpertise"
-                        class="h-12 min-w-[160px] rounded-lg border border-spu-blue/10 bg-white px-4 text-sm text-spu-blue focus:border-spu-blue focus:outline-none focus:ring-2 focus:ring-spu-blue/20 cursor-pointer"
-                    >
-                        <option value="all" x-text="isAr ? 'جميع المجالات' : 'All Areas'"></option>
-                        <template x-for="area in page.expertFinder.expertiseAreas" :key="area.id">
-                            <option :value="area.id" x-text="isAr ? area.nameAr : area.nameEn"></option>
-                        </template>
-                    </select>
                 </div>
             </div>
 
@@ -76,61 +65,24 @@
             </p>
         </div>
 
-        <div class="mx-auto grid max-w-[1200px] gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="mx-auto grid max-w-[1200px] gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             <template x-for="researcher in filteredResearchers" :key="researcher.id">
-                <div class="group overflow-hidden rounded-xl border border-spu-blue/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-                    <div class="relative">
+                <a :href="'/about/profile.html?id=' + researcher.slug"
+                   class="group flex flex-col items-center text-center">
+                    <div class="relative mb-4 h-28 w-28 overflow-hidden rounded-full border-2 border-spu-blue/10 transition-all group-hover:border-spu-red">
                         <img :src="researcher.image"
                              :alt="isAr ? researcher.nameAr : researcher.nameEn"
-                             class="h-[180px] w-full object-cover object-top">
-                        <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-                        <div class="absolute bottom-3 flex gap-2 px-3 opacity-0 transition-opacity group-hover:opacity-100">
-                            <a :href="researcher.orcidUrl" target="_blank" rel="noopener"
-                               class="flex h-8 w-8 items-center justify-center rounded-full bg-[#A6CE39] text-white transition hover:scale-110"
-                               title="ORCID">
-                                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.859 0 3.722-2.4 3.722-3.722 0-1.909-1.581-3.722-4.097-3.722h-1.922z"/></svg>
-                            </a>
-                            <a :href="researcher.scholarUrl" target="_blank" rel="noopener"
-                               class="flex h-8 w-8 items-center justify-center rounded-full bg-[#4285f4] text-white transition hover:scale-110"
-                               title="Google Scholar">
-                                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0Z"/></svg>
-                            </a>
-                        </div>
+                             class="h-full w-full object-cover object-top">
                     </div>
-                    <div class="p-5">
-                        <div class="mb-1 text-[10px] font-bold uppercase tracking-wider text-spu-red"
-                             x-text="isAr ? researcher.facultyAr : researcher.facultyEn"></div>
-                        <h3 class="mb-1 text-lg font-bold text-spu-blue"
-                            x-text="isAr ? researcher.nameAr : researcher.nameEn"></h3>
-                        <p class="mb-3 text-sm text-spu-blue/70"
-                           x-text="isAr ? researcher.titleAr : researcher.titleEn"></p>
-
-                        <div class="mb-4 flex flex-wrap gap-1.5">
-                            <template x-for="expertise in (isAr ? researcher.expertiseAr : researcher.expertiseEn)" :key="expertise">
-                                <span class="inline-flex items-center rounded-full bg-spu-blue/5 px-2.5 py-1 text-[10px] font-semibold text-spu-blue"
-                                      x-text="expertise"></span>
-                            </template>
-                        </div>
-
-                        <div class="flex items-center justify-between border-t border-spu-blue/10 pt-4">
-                            <div class="flex gap-4 text-xs text-spu-blue/60">
-                                <span>
-                                    <span x-text="researcher.publications"></span>
-                                    <span x-text="isAr ? 'منشورات' : 'Publications'"></span>
-                                </span>
-                                <span>
-                                    <span x-text="researcher.citations"></span>
-                                    <span x-text="isAr ? 'استشهادات' : 'Citations'"></span>
-                                </span>
-                            </div>
-                            <a :href="'/about/profile.html?id=' + researcher.slug"
-                               class="inline-flex items-center gap-1 text-xs font-bold text-spu-red transition hover:text-spu-blue">
-                                <span x-text="isAr ? 'عرض الملف' : 'View Profile'"></span>
-                                <svg class="h-3 w-3 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    <h3 class="mb-1 text-base font-bold text-spu-blue transition-colors group-hover:text-spu-red"
+                        x-text="isAr ? researcher.nameAr : researcher.nameEn"></h3>
+                    <p class="mb-2 text-sm text-spu-blue/70"
+                       x-text="isAr ? researcher.facultyAr : researcher.facultyEn"></p>
+                    <p class="text-xs font-semibold text-spu-blue/60">
+                        <span x-text="researcher.publications"></span>
+                        <span x-text="publicationsLabel(researcher.publications)"></span>
+                    </p>
+                </a>
             </template>
         </div>
 

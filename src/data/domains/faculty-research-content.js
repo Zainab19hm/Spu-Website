@@ -26,7 +26,7 @@ export function createFacultyResearchSection(faculty) {
     let filteredPublications = [];
 
     if (facultyMapping) {
-        filteredPublications = (researchPageContent.repository.publications || []).filter(pub =>
+        filteredPublications = (researchPageContent.publications?.items || []).filter(pub =>
             pub.facultyEn === facultyMapping.facultyEn
         );
     }
@@ -39,17 +39,16 @@ export function createFacultyResearchSection(faculty) {
         summaryAr: pub.summaryAr,
         image: pub.image,
         date: pub.year,
+        doi: pub.doi,
         typeEn: pub.typeEn,
         typeAr: pub.typeAr,
         authorEn: pub.authorEn,
         authorAr: pub.authorAr,
         facultyEn: pub.facultyEn,
         facultyAr: pub.facultyAr,
-        href: pub.href,
-        ctaEn: pub.viewCtaEn,
-        ctaAr: pub.viewCtaAr,
-        downloadCtaEn: pub.downloadCtaEn,
-        downloadCtaAr: pub.downloadCtaAr
+        href: pub.links?.local || `/research/publications/${pub.slug}/`,
+        ctaEn: 'View Publication',
+        ctaAr: 'عرض المنشور'
     })) : [];
 
     return {

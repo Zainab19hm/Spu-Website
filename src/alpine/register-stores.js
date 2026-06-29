@@ -59,6 +59,7 @@ const pageStoreLoaders = {
     'campus-life-transport': () => import('./pages/transport-stores.js').then((module) => module.registerTransportStores),
     'campus-life-clubs-activities': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
     'campus-life-career-development': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
+    'campus-life-career-development-jobs': () => import('./pages/careers-stores.js').then((module) => module.registerCareersStores),
     'faculty-artificial-intelligence-departments': () => import('./pages/faculties-page-stores.js').then((module) => module.registerFacultiesPageStores),
     'faculty-artificial-intelligence-overview': () => import('./pages/faculties-page-stores.js').then((module) => module.registerFacultiesPageStores),
     'faculty-business-administration-departments': () => import('./pages/faculties-page-stores.js').then((module) => module.registerFacultiesPageStores),
@@ -155,6 +156,14 @@ function getResearchStoreLoader(pageName) {
     return null;
 }
 
+function getCareerJobStoreLoader(pageName) {
+    if (pageName.startsWith('campus-life-career-development-job-')) {
+        return pageStoreLoaders['campus-life-career-development-jobs'];
+    }
+
+    return null;
+}
+
 export async function registerStores(Alpine, { pageName = 'home' } = {}) {
     registerLayoutStores(Alpine, { pageName });
 
@@ -164,6 +173,7 @@ export async function registerStores(Alpine, { pageName = 'home' } = {}) {
     }
 
     const loadPageStoreRegistrar = pageStoreLoaders[pageName]
+        || getCareerJobStoreLoader(pageName)
         || getResearchStoreLoader(pageName)
         || pageStoreLoaders.home;
     const registerPageStores = await loadPageStoreRegistrar();

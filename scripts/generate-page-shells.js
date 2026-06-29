@@ -223,6 +223,7 @@ const pageWarmupModules = {
   'campus-life-services': ['/src/alpine/pages/student-life-stores.js'],
   'campus-life-clubs-activities': ['/src/alpine/pages/student-life-stores.js'],
   'campus-life-career-development': ['/src/alpine/pages/student-life-stores.js'],
+  'campus-life-career-development-jobs': ['/src/alpine/pages/careers-stores.js'],
   'campus-life-hospital': ['/src/alpine/pages/university-hospital-stores.js'],
   'campus-life-health-insurance': ['/src/alpine/pages/health-insurance-stores.js'],
   services: ['/src/alpine/pages/services-stores.js'],
@@ -280,7 +281,13 @@ const pageWarmupModules = {
 };
 
 function renderWarmupScript(pageName) {
-  const modulePaths = pageWarmupModules[pageName] || [];
+  let modulePaths = pageWarmupModules[pageName];
+
+  if (!modulePaths && pageName.startsWith('campus-life-career-development-job-')) {
+    modulePaths = pageWarmupModules['campus-life-career-development-jobs'];
+  }
+
+  modulePaths = modulePaths || [];
 
   if (!modulePaths.length) {
     return '';
@@ -520,7 +527,65 @@ function renderBootScreen(site) {
   </div>`;
 }
 
-function loadSiteRegistry() {
+function normalizePageEntry(site, page, index, seenNames, seenRoutes, seenFileNames) {
+  const normalizedPage = {
+    ...page,
+    name: ensureNonEmptyString(page.name, `pages[${index}].name`),
+    fileName: ensureRelativeFile(page.fileName, `pages[${index}].fileName`),
+    route: ensureRoute(page.route, `pages[${index}].route`),
+    title: ensureNonEmptyString(page.title, `pages[${index}].title`),
+    description: ensureNonEmptyString(page.description, `pages[${index}].description`),
+    ogImage: ensurePublicAssetExists(page.ogImage || site.defaultOgImage, `pages[${index}].ogImage`),
+    keywords: Array.isArray(page.keywords) ? page.keywords.filter(Boolean) : [],
+    fragments: ensureArray(page.fragments, `pages[${index}].fragments`).map((fragmentPath, fragmentIndex) => ensureRelativeFile(fragmentPath, `pages[${index}].fragments[${fragmentIndex}]`))
+  };
+
+  if (seenNames.has(normalizedPage.name)) {
+    throw new Error(`Duplicate page name '${normalizedPage.name}'.`);
+  }
+
+  if (seenRoutes.has(normalizedPage.route)) {
+    throw new Error(`Duplicate page route '${normalizedPage.route}'.`);
+  }
+
+  if (seenFileNames.has(normalizedPage.fileName)) {
+    throw new Error(`Duplicate page fileName '${normalizedPage.fileName}'.`);
+  }
+
+  seenNames.add(normalizedPage.name);
+  seenRoutes.add(normalizedPage.route);
+  seenFileNames.add(normalizedPage.fileName);
+
+  normalizedPage.fragments.forEach((fragmentPath) => readFragment(fragmentPath));
+  return normalizedPage;
+}
+
+async function loadCareerJobPages(site, seenNames, seenRoutes, seenFileNames) {
+  try {
+    const careersModule = await import('../src/data/pages/careers-content.js');
+    const jobs = careersModule.careersPageContent?.jobs || [];
+
+    return jobs.map((job, index) => normalizePageEntry(site, {
+      name: `campus-life-career-development-job-${job.slug}`,
+      fileName: `campus-life/career-development/jobs/${job.slug}/index.html`,
+      route: `/campus-life/career-development/jobs/${job.slug}/`,
+      title: `${job.titleEn} | Syrian Private University`,
+      description: job.shortDescriptionEn,
+      ogImage: job.image,
+      keywords: ['SPU careers', 'Syrian Private University jobs', job.category, job.titleEn],
+      fragments: [
+        'pages/student-life/career-development/jobs/detail/hero.html',
+        'pages/student-life/career-development/jobs/detail/content.html'
+      ],
+      data: { slug: job.slug }
+    }, `careers[${index}]`, seenNames, seenRoutes, seenFileNames));
+  } catch (error) {
+    console.warn('[generate-page-shells] Could not auto-generate career job pages:', error.message);
+    return [];
+  }
+}
+
+async function loadSiteRegistry() {
   const siteRegistry = readJson(registryPath);
   const site = siteRegistry.site || {};
   const layout = siteRegistry.layout || {};
@@ -541,43 +606,17 @@ function loadSiteRegistry() {
   const seenNames = new Set();
   const seenRoutes = new Set();
   const seenFileNames = new Set();
-  const normalizedPages = ensureArray(pages, 'pages').map((page, index) => {
-    const normalizedPage = {
-      ...page,
-      name: ensureNonEmptyString(page.name, `pages[${index}].name`),
-      fileName: ensureRelativeFile(page.fileName, `pages[${index}].fileName`),
-      route: ensureRoute(page.route, `pages[${index}].route`),
-      title: ensureNonEmptyString(page.title, `pages[${index}].title`),
-      description: ensureNonEmptyString(page.description, `pages[${index}].description`),
-      ogImage: ensurePublicAssetExists(page.ogImage || site.defaultOgImage, `pages[${index}].ogImage`),
-      keywords: Array.isArray(page.keywords) ? page.keywords.filter(Boolean) : [],
-      fragments: ensureArray(page.fragments, `pages[${index}].fragments`).map((fragmentPath, fragmentIndex) => ensureRelativeFile(fragmentPath, `pages[${index}].fragments[${fragmentIndex}]`))
-    };
 
-    if (seenNames.has(normalizedPage.name)) {
-      throw new Error(`Duplicate page name '${normalizedPage.name}'.`);
-    }
+  const normalizedPages = ensureArray(pages, 'pages').map((page, index) => (
+    normalizePageEntry(site, page, index, seenNames, seenRoutes, seenFileNames)
+  ));
 
-    if (seenRoutes.has(normalizedPage.route)) {
-      throw new Error(`Duplicate page route '${normalizedPage.route}'.`);
-    }
-
-    if (seenFileNames.has(normalizedPage.fileName)) {
-      throw new Error(`Duplicate page fileName '${normalizedPage.fileName}'.`);
-    }
-
-    seenNames.add(normalizedPage.name);
-    seenRoutes.add(normalizedPage.route);
-    seenFileNames.add(normalizedPage.fileName);
-
-    normalizedPage.fragments.forEach((fragmentPath) => readFragment(fragmentPath));
-    return normalizedPage;
-  });
+  const careerJobPages = await loadCareerJobPages(site, seenNames, seenRoutes, seenFileNames);
 
   return {
     site,
     layout,
-    pages: normalizedPages
+    pages: [...normalizedPages, ...careerJobPages]
   };
 }
 
@@ -699,8 +738,8 @@ function writeManifest(site) {
   fs.writeFileSync(path.join(publicRoot, 'site.webmanifest'), `${JSON.stringify(manifest, null, 2)}\n`);
 }
 
-function main() {
-  const { site, layout, pages } = loadSiteRegistry();
+async function main() {
+  const { site, layout, pages } = await loadSiteRegistry();
   writePageShells(site, layout, pages);
   writeSitemap(site, pages);
   writeRobots(site);
@@ -714,5 +753,8 @@ module.exports = {
 };
 
 if (require.main === module) {
-  main();
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 }

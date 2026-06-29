@@ -1,0 +1,50 @@
+<section class="relative overflow-hidden bg-white font-hacen"
+         x-data="{ get page() { return $store.careersPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <!-- Decorative watermark -->
+  <div class="pointer-events-none absolute inset-0 flex select-none items-center justify-center overflow-hidden"
+       aria-hidden="true">
+   
+  </div>
+
+
+
+  <!-- Content -->
+  <div class="container relative z-10 py-20 md:pt-30 md:pb-20">
+    <div class="mx-auto max-w-[900px] text-center">
+
+      <!-- Breadcrumb -->
+      <nav class="flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-slate-500"
+           aria-label="Breadcrumb">
+        <template x-for="(crumb, index) in page.hero.breadcrumbs" :key="crumb.href">
+          <span class="inline-flex items-center gap-2">
+            <a :href="crumb.href"
+               class="transition hover:text-spu-blue"
+               x-text="isAr ? crumb.labelAr : crumb.labelEn"></a>
+            <img x-show="index < page.hero.breadcrumbs.length - 1"
+                 src="/images/icon-chevron-right-outline.svg"
+                 alt=""
+                 class="h-2.5 w-2.5 rtl:rotate-180"
+                 aria-hidden="true">
+          </span>
+        </template>
+      </nav>
+
+      <!-- Title -->
+      <h1 class="mt-5 text-4xl font-black leading-[1.1] tracking-tight text-spu-blue md:text-5xl lg:text-[58px]">
+        <span x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></span>
+        <span class="relative inline-block text-spu-red">
+          <span x-text="isAr ? 'معنا' : 'With Us'"></span>
+          <span class="absolute -bottom-2 left-0 h-1.5 w-full rounded-full bg-spu-red/20"></span>
+        </span>
+      </h1>
+
+      <!-- Subtitle / panel summary -->
+      <p class="mx-auto mt-6 max-w-[640px] text-base leading-relaxed text-slate-600 md:text-lg"
+         x-text="isAr ? page.hero.panel.summaryAr : page.hero.panel.summaryEn">
+      </p>
+
+    
+     
+    </div>
+  </div>
+</section>

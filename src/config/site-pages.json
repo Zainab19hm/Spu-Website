@@ -1088,6 +1088,24 @@
       ]
     },
     {
+      "name": "campus-life-career-development-jobs",
+      "fileName": "campus-life/career-development/jobs/index.html",
+      "route": "/campus-life/career-development/jobs/",
+      "title": "Job Board | Syrian Private University",
+      "description": "Explore current job openings across academic, administrative, technical, and support roles at Syrian Private University.",
+      "ogImage": "/images/career-development-hero.webp",
+      "keywords": [
+        "SPU jobs",
+        "Syrian Private University careers",
+        "SPU job board",
+        "university jobs Syria"
+      ],
+      "fragments": [
+        "pages/student-life/career-development/jobs/hero.html",
+        "pages/student-life/career-development/jobs/listing.html"
+      ]
+    },
+    {
       "name": "services",
       "fileName": "services.html",
       "route": "/e-services/",

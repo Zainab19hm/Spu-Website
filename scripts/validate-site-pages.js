@@ -234,11 +234,14 @@ function validateAssetReferences() {
   );
 }
 
-function main() {
-  const { pages } = loadSiteRegistry();
+async function main() {
+  const { pages } = await loadSiteRegistry();
   validateInternalReferences(pages);
   validateAssetReferences();
   console.log(`Validated site registry, internal links, and asset references for ${pages.length} pages.`);
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

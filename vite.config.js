@@ -3,10 +3,16 @@ import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
+import { careersPageContent } from './src/data/pages/careers-content.js';
 
 const sitePages = JSON.parse(readFileSync(new URL('./src/config/site-pages.json', import.meta.url), 'utf8'));
+const careerJobPages = (careersPageContent.jobs || []).map((job) => ({
+  name: `campus-life-career-development-job-${job.slug}`,
+  fileName: `campus-life/career-development/jobs/${job.slug}/index.html`
+}));
+
 const input = Object.fromEntries(
-  sitePages.pages.map((page) => [page.name, fileURLToPath(new URL(`./${page.fileName}`, import.meta.url))])
+  [...sitePages.pages, ...careerJobPages].map((page) => [page.name, fileURLToPath(new URL(`./${page.fileName}`, import.meta.url))])
 );
 
 const __filename = fileURLToPath(import.meta.url);

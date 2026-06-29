@@ -95,6 +95,7 @@ export const siteRoutes = Object.freeze({
     campusLifeServices: getPageRoute('campus-life-services'),
     campusLifeClubsActivities: getPageRoute('campus-life-clubs-activities'),
     campusLifeCareerDevelopment: getPageRoute('campus-life-career-development'),
+    campusLifeCareerDevelopmentJobs: getPageRoute('campus-life-career-development-jobs'),
     facultyArtificialIntelligenceValedictorians: getPageRoute('faculty-artificial-intelligence-valedictorians'),
     facultyBusinessAdministrationValedictorians: getPageRoute('faculty-business-administration-valedictorians'),
     facultyBuildingConstructionEngineeringValedictorians: getPageRoute('faculty-building-construction-engineering-valedictorians'),

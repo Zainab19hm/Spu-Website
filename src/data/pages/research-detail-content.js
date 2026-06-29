@@ -1,6 +1,6 @@
 import { researchPageContent } from './research-content.js';
 
-const publications = researchPageContent.repository.publications;
+const publications = researchPageContent.publications?.items || [];
 
 const detailBodies = {
   'res-001': {

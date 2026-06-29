@@ -1,123 +1,107 @@
-<section x-data class="bg-white pt-[60px] pb-[80px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
-    <div class="container">
-        <div class="mx-auto max-w-[1210px]">
-            <div class="mb-8">
-                <label class="relative block">
-                    <span class="sr-only">Search</span>
-                    <img src="/images/icon-search-outline.svg" alt=""
-                        class="pointer-events-none absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 opacity-70 rtl:left-auto rtl:right-5"
-                        aria-hidden="true">
-                    <input type="search"
-                        class="h-[54px] w-full rounded-[10px] border border-[#dde2ea] bg-white ps-12 pe-5 text-[15px] font-medium text-[#344054] shadow-[0_8px_18px_rgba(16,24,40,0.08)] outline-none transition placeholder:text-[#5b6473] focus:border-spu-blue"
-                        :placeholder="$store.app.currentLang === 'ar' ? $store.researchPage.researchers.searchPlaceholder.ar : $store.researchPage.researchers.searchPlaceholder.en">
-                </label>
-            </div>
+<section class="bg-white py-12 font-hacen md:py-16"
+         x-data="{
+             get page() { return $store.researchPage.researchers },
+             get isAr() { return $store.app.currentLang === 'ar' },
+             searchQuery: '',
+             selectedFaculty: 'all',
+             selectedExpertise: 'all',
+             get filteredResearchers() {
+                 const researchers = this.page?.items || [];
+                 let results = researchers;
+                 if (this.selectedFaculty !== 'all') {
+                     results = results.filter(r => r.facultyId === this.selectedFaculty);
+                 }
+                 if (this.selectedExpertise !== 'all') {
+                     results = results.filter(r => (r.expertiseSlugs || []).includes(this.selectedExpertise));
+                 }
+                 if (this.searchQuery.length >= 2) {
+                     const query = this.searchQuery.toLowerCase();
+                     const lang = this.isAr ? 'Ar' : 'En';
+                     results = results.filter(r => {
+                         const nameMatch = (r[`name${lang}`] || '').toLowerCase().includes(query);
+                         const facultyMatch = (r[`faculty${lang}`] || '').toLowerCase().includes(query);
+                         const expertiseMatch = (r[`expertise${lang}`] || []).some(e => e.toLowerCase().includes(query));
+                         return nameMatch || facultyMatch || expertiseMatch;
+                     });
+                 }
+                 return results;
+             },
+             publicationsLabel(count) {
+                 if (this.isAr) {
+                     return count === 1 ? 'منشور' : 'منشورات';
+                 }
+                 return count === 1 ? 'Publication' : 'Publications';
+             }
+         }">
 
-            <div class="mb-6 flex flex-wrap gap-4">
-                <label class="relative block">
-                    <span class="sr-only"
-                        x-text="$store.app.currentLang === 'ar' ? $store.researchPage.researchers.filters.facultyLabelAr : $store.researchPage.researchers.filters.facultyLabelEn"></span>
+    <div class="container mx-auto px-6">
+        <h1 class="sr-only" x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
+        <div class="mx-auto mb-10 max-w-[1200px]">
+            <div class="flex flex-col gap-4 rounded-xl bg-spu-blue/[0.04] p-4 md:flex-row md:items-center">
+                <div class="relative flex-1">
+                    <img src="/images/icon-search-outline.svg" alt="" class="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-spu-blue/40 rtl:right-4 rtl:left-auto rtl:rotate-180" aria-hidden="true">
+                    <input
+                        type="text"
+                        x-model="searchQuery"
+                        :placeholder="isAr ? page.searchPlaceholder.ar : page.searchPlaceholder.en"
+                        class="h-12 w-full rounded-lg border border-spu-blue/10 bg-white py-3 pl-12 pr-4 text-sm text-spu-blue placeholder:text-spu-blue/40 focus:border-spu-blue focus:outline-none focus:ring-2 focus:ring-spu-blue/20 rtl:pl-4 rtl:pr-12 rtl:text-right"
+                    >
+                </div>
+                <div class="flex gap-3 md:w-auto">
                     <select
-                        class="h-[44px] appearance-none rounded-[8px] border border-[#dde2ea] bg-white px-4 text-[13px] font-bold text-[#344054] shadow-[0_4px_12px_rgba(16,24,40,0.06)] outline-none transition focus:border-spu-blue">
-                        <option
-                            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.researchers.filters.allFacultiesAr : $store.researchPage.researchers.filters.allFacultiesEn">
-                        </option>
-                        <template x-for="faculty in $store.researchPage.researchers.faculties" :key="faculty.id">
-                            <option :value="faculty.id"
-                                x-text="$store.app.currentLang === 'ar' ? faculty.nameAr : faculty.nameEn"></option>
+                        x-model="selectedFaculty"
+                        class="h-12 min-w-[160px] rounded-lg border border-spu-blue/10 bg-white px-4 text-sm text-spu-blue focus:border-spu-blue focus:outline-none focus:ring-2 focus:ring-spu-blue/20 cursor-pointer"
+                    >
+                        <option value="all" x-text="isAr ? page.filters.allFacultiesAr : page.filters.allFacultiesEn"></option>
+                        <template x-for="faculty in page.faculties" :key="faculty.id">
+                            <option :value="faculty.id" x-text="isAr ? faculty.nameAr : faculty.nameEn"></option>
                         </template>
                     </select>
-                    <img src="/images/icon-chevron-down-outline.svg" alt=""
-                        class="pointer-events-none absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-3 rtl:right-auto"
-                        aria-hidden="true">
-                </label>
-
-                <label class="relative block">
-                    <span class="sr-only"
-                        x-text="$store.app.currentLang === 'ar' ? $store.researchPage.researchers.filters.expertiseLabelAr : $store.researchPage.researchers.filters.expertiseLabelEn"></span>
                     <select
-                        class="h-[44px] appearance-none rounded-[8px] border border-[#dde2ea] bg-white px-4 text-[13px] font-bold text-[#344054] shadow-[0_4px_12px_rgba(16,24,40,0.06)] outline-none transition focus:border-spu-blue">
-                        <option
-                            x-text="$store.app.currentLang === 'ar' ? $store.researchPage.researchers.filters.allExpertiseAr : $store.researchPage.researchers.filters.allExpertiseEn">
-                        </option>
-                        <template x-for="area in $store.researchPage.researchers.expertiseAreas" :key="area.id">
-                            <option :value="area.id"
-                                x-text="$store.app.currentLang === 'ar' ? area.nameAr : area.nameEn"></option>
+                        x-model="selectedExpertise"
+                        class="h-12 min-w-[160px] rounded-lg border border-spu-blue/10 bg-white px-4 text-sm text-spu-blue focus:border-spu-blue focus:outline-none focus:ring-2 focus:ring-spu-blue/20 cursor-pointer"
+                    >
+                        <option value="all" x-text="isAr ? page.filters.allExpertiseAr : page.filters.allExpertiseEn"></option>
+                        <template x-for="area in page.expertiseAreas" :key="area.id">
+                            <option :value="area.id" x-text="isAr ? area.nameAr : area.nameEn"></option>
                         </template>
                     </select>
-                    <img src="/images/icon-chevron-down-outline.svg" alt=""
-                        class="pointer-events-none absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 rtl:left-3 rtl:right-auto"
-                        aria-hidden="true">
-                </label>
+                </div>
             </div>
+
+            <p class="mt-4 text-sm text-spu-blue/60">
+                <span x-text="filteredResearchers.length"></span>
+                <span x-text="isAr ? page.resultsLabel.ar : page.resultsLabel.en"></span>
+            </p>
         </div>
 
-        <div class="mx-auto grid max-w-[1210px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-3">
-            <template x-for="researcher in $store.researchPage.researchers.items" :key="researcher.id">
+        <div class="mx-auto grid max-w-[1200px] gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <template x-for="researcher in filteredResearchers" :key="researcher.id">
                 <a :href="'/about/profile.html?id=' + researcher.slug"
-                    class="group block overflow-hidden rounded-[12px] border border-[#dde2ea] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(32,39,89,0.15)]">
-                    <div class="relative bg-gradient-to-br from-spu-blue/10 to-spu-blue/5 p-6 pt-8">
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-                            <img :src="researcher.image"
-                                :alt="$store.app.currentLang === 'ar' ? researcher.nameAr : researcher.nameEn"
-                                class="h-[90px] w-[90px] rounded-full border-4 border-white object-cover shadow-md">
-                        </div>
+                   class="group flex flex-col items-center text-center">
+                    <div class="relative mb-4 h-28 w-28 overflow-hidden rounded-full border-2 border-spu-blue/10 transition-all group-hover:border-spu-red">
+                        <img :src="researcher.image"
+                             :alt="isAr ? researcher.nameAr : researcher.nameEn"
+                             class="h-full w-full object-cover object-top">
                     </div>
-
-                    <div class="p-6 pt-4 text-center">
-                        <h3 class="text-[17px] font-bold text-spu-blue"
-                            x-text="$store.app.currentLang === 'ar' ? researcher.nameAr : researcher.nameEn"></h3>
-                        <p class="mt-1 text-[12px] text-spu-red" x-text="researcher.titleEn"></p>
-                        <p class="mt-1 text-[12px] text-[#6f7280]" x-text="researcher.facultyEn"></p>
-
-                        <div class="mt-4 flex flex-wrap justify-center gap-2">
-                            <template x-for="(expertise, idx) in researcher.expertiseEn.slice(0, 3)" :key="idx">
-                                <span
-                                    class="rounded-[4px] bg-spu-blue/10 px-2 py-1 text-[10px] font-medium text-spu-blue"
-                                    x-text="expertise"></span>
-                            </template>
-                        </div>
-
-                        <div
-                            class="mt-5 flex items-center justify-center gap-6 border-t border-[#e5e7eb] pt-4 text-[12px] text-[#6f7280]">
-                            <span>
-                                <span class="font-bold text-spu-blue" x-text="researcher.publications"></span>
-                                <span x-text="$store.app.currentLang === 'ar' ? 'منشور' : 'Publications'"></span>
-                            </span>
-                            <span>
-                                <span class="font-bold text-spu-blue" x-text="researcher.citations"></span>
-                                <span x-text="$store.app.currentLang === 'ar' ? 'استشهاد' : 'Citations'"></span>
-                            </span>
-                        </div>
-
-                        <div class="mt-4 flex items-center justify-center gap-3">
-                            <a x-show="researcher.orcidId" :href="'https://orcid.org/' + researcher.orcidId"
-                                target="_blank" rel="noopener"
-                                class="flex h-8 w-8 items-center justify-center rounded-full bg-[#a6cf7853] text-[#6f6415] transition hover:bg-[#a6cf7853]/80"
-                                @click.stop>
-                                <svg class="h-4 w-4" viewBox="0 0 256 256" fill="currentColor">
-                                    <path
-                                        d="M128 0C57.4 0 0 57.4 0 128s57.4 128 128 128 128-57.4 128-128S198.6 0 128 0zm-16.5 184.5v-44.8H84.9v44.8H55.9V71.5h29v98.2h36.6v-98.2h29v113z" />
-                                </svg>
-                            </a>
-                            <a x-show="researcher.scholarUrl" :href="researcher.scholarUrl" target="_blank"
-                                rel="noopener"
-                                class="flex h-8 w-8 items-center justify-center rounded-full bg-[#4285f4]/10 text-[#4285f4] transition hover:bg-[#4285f4]/20"
-                                @click.stop>
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
-                                </svg>
-                            </a>
-                            <a x-show="researcher.scopusId" href="#" target="_blank" rel="noopener"
-                                class="flex h-8 w-8 items-center justify-center rounded-full bg-[#e14922]/10 text-[#e14922] transition hover:bg-[#e14922]/20"
-                                @click.stop>
-                                <span class="text-[10px] font-bold">S</span>
-                            </a>
-                        </div>
-                    </div>
+                    <h3 class="mb-1 text-base font-bold text-spu-blue transition-colors group-hover:text-spu-red"
+                        x-text="isAr ? researcher.nameAr : researcher.nameEn"></h3>
+                    <p class="mb-2 text-sm text-spu-blue/70"
+                       x-text="isAr ? researcher.facultyAr : researcher.facultyEn"></p>
+                    <p class="text-xs font-semibold text-spu-blue/60">
+                        <span x-text="researcher.publications"></span>
+                        <span x-text="publicationsLabel(researcher.publications)"></span>
+                    </p>
                 </a>
             </template>
+        </div>
+
+        <div class="mt-12 text-center" x-show="filteredResearchers.length === 0">
+            <div class="mx-auto max-w-[400px] rounded-xl bg-spu-blue/5 py-12 px-6">
+                <img src="/images/icon-search-outline.svg" alt="" class="mx-auto mb-4 h-12 w-12 text-spu-blue/20" aria-hidden="true">
+                <h3 class="mb-2 text-lg font-bold text-spu-blue" x-text="isAr ? 'لا توجد نتائج' : 'No Results Found'"></h3>
+                <p class="text-sm text-spu-blue/60" x-text="isAr ? 'جرب تغيير كلمات البحث أو الفلاتر' : 'Try changing your search terms or filters'"></p>
+            </div>
         </div>
     </div>
 </section>

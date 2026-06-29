@@ -144,6 +144,7 @@ export const navigationMenuItems = [
             { labelAr: 'الصحة والتأمين', labelEn: 'Health & Insurance', url: siteRoutes.campusLifeHealthInsurance },
             { labelAr: 'النوادي والأنشطة', labelEn: 'Clubs & Activities', url: siteRoutes.campusLifeClubsActivities },
             { labelAr: 'التطوير المهني', labelEn: 'Career Development', url: siteRoutes.campusLifeCareerDevelopment },
+            { labelAr: 'لوحة الوظائف', labelEn: 'Job Board', url: siteRoutes.campusLifeCareerDevelopmentJobs },
             { labelAr: 'المستشفى الجامعي', labelEn: 'University Hospital', url: siteRoutes.campusLifeHospital },
             { labelAr: 'عيادات الأسنان', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental },
         ]
@@ -214,6 +215,7 @@ export const footerContent = {
             { labelEn: 'Admissions', labelAr: 'القبول والتسجيل', url: siteRoutes.admissions },
             { labelEn: 'Research', labelAr: 'البحث العلمي', url: siteRoutes.research },
             { labelEn: 'Campus Life', labelAr: 'الحياة الجامعية', url: siteRoutes.studentLife },
+            { labelEn: 'Job Board', labelAr: 'لوحة الوظائف', url: siteRoutes.campusLifeCareerDevelopmentJobs },
             { labelEn: 'E-Services', labelAr: 'الخدمات الإلكترونية', url: siteRoutes.services },
             { labelEn: 'News', labelAr: 'الأخبار', url: siteRoutes.news }
         ]
