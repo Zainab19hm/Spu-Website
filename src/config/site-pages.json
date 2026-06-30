@@ -240,7 +240,7 @@
     },
     {
       "name": "research-centers",
-      "fileName": "research/centers.html",
+      "fileName": "research/centers/index.html",
       "route": "/research/centers/",
       "title": "Research Centers & Labs | Syrian Private University",
       "description": "Explore Syrian Private University research centers, laboratories, projects, publications, and center director profiles.",

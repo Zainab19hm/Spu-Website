@@ -2,6 +2,20 @@ import { researchPageContent } from './research-content.js';
 
 const publications = researchPageContent.publications?.items || [];
 
+const themeLabels = {
+  'ai-ml': { en: 'AI & Machine Learning', ar: 'الذكاء الاصطناعي وتعلم الآلة' },
+  'pharmaceutical-sciences': { en: 'Pharmaceutical Sciences', ar: 'العلوم الصيدلانية' },
+  'clinical-medicine': { en: 'Clinical Medicine', ar: 'الطب السريري' },
+  'dental-sciences': { en: 'Dental Sciences', ar: 'علوم طب الأسنان' },
+  'petroleum-engineering': { en: 'Petroleum Engineering', ar: 'هندسة البترول' },
+  'construction-engineering': { en: 'Construction Engineering', ar: 'هندسة التشييد' },
+  'structural-engineering': { en: 'Structural Engineering', ar: 'الهندسة الإنشائية' },
+  'medical-education': { en: 'Medical Education', ar: 'التعليم الطبي' },
+  'data-science': { en: 'Data Science', ar: 'علم البيانات' },
+  'energy-systems': { en: 'Energy Systems', ar: 'أنظمة الطاقة' },
+  'business-administration': { en: 'Business Administration', ar: 'إدارة الأعمال' }
+};
+
 const detailBodies = {
   'res-001': {
     leadEn: 'This study evaluates the effectiveness of various machine learning algorithms in real-time pharmaceutical quality control, with particular focus on tablet and capsule production lines.',
@@ -157,10 +171,37 @@ export const researchDetailContent = {
     shareEn: 'Share publication',
     shareAr: 'مشاركة المنشور',
     readMoreEn: 'Read More',
-    readMoreAr: 'اقرأ المزيد'
+    readMoreAr: 'اقرأ المزيد',
+    categoryEn: 'Category',
+    categoryAr: 'الفئة',
+    authorEn: 'Author',
+    authorAr: 'المؤلف',
+    yearEn: 'Year',
+    yearAr: 'السنة',
+    facultyEn: 'Faculty',
+    facultyAr: 'الكلية',
+    rateEn: 'Quartile',
+    rateAr: 'الربع',
+    linkEn: 'View Publication',
+    linkAr: 'عرض المنشور',
+    typeEn: 'Type',
+    typeAr: 'النوع',
+    themesEn: 'Research Themes',
+    themesAr: 'مجالات البحث',
+    keywordsEn: 'Keywords',
+    keywordsAr: 'الكلمات المفتاحية',
+    viewOnScholarEn: 'View on Google Scholar',
+    viewOnScholarAr: 'عرض على Google Scholar',
+    openAccessEn: 'Open Access',
+    openAccessAr: 'وصول مفتوح'
   },
   publications: publications.map((pub) => {
     const body = detailBodies[pub.id] || fallbackBodyFor(pub);
+    const resolvedThemes = (pub.themes || []).map((slug) => ({
+      slug,
+      labelEn: themeLabels[slug]?.en || slug,
+      labelAr: themeLabels[slug]?.ar || slug
+    }));
     return {
       ...pub,
       ...body,
@@ -168,7 +209,14 @@ export const researchDetailContent = {
       titleAr: body.titleAr || pub.titleAr,
       authorHref: pub.authorHref || '#',
       facultyHref: pub.facultyHref || '#',
-      href: `/research/detail/?id=${pub.id}`
+      href: `/research/detail/?id=${pub.id}`,
+      scholarUrl: `https://scholar.google.com/scholar?q=${encodeURIComponent(pub.titleEn)}`,
+      scopusUrl: `https://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=${encodeURIComponent(pub.titleEn)}`,
+      resolvedThemes,
+      categoryEn: pub.typeEn || 'Research Article',
+      categoryAr: pub.typeAr || 'مقال بحثي',
+      rateEn: pub.quartile || 'To be verified',
+      rateAr: pub.quartile || 'To be verified'
     };
   })
 };

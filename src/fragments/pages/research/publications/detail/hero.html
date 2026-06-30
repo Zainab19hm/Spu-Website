@@ -1,33 +1,23 @@
-<section x-data class="bg-white font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
-    <div class="relative h-[50vh] min-h-[350px] overflow-hidden">
-        <img :src="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.image || '/images/uni-main-place.JPG'"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover"
-             aria-hidden="true">
-        <div class="absolute inset-0 bg-spu-blue/60"></div>
-        <div class="container relative z-10 flex h-full items-end pb-12">
-            <div :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
-                <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-white/80"
-                   x-text="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.typeEn || ''">
-                </p>
-                <h1 class="mt-2 text-[28px] font-bold text-white md:text-[36px]"
-                    x-text="$store.app.currentLang === 'ar'
-                        ? ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.titleAr || '')
-                        : ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.titleEn || '')">
-                </h1>
-                <div class="mt-4 flex flex-wrap items-center gap-6 text-[13px] text-white/80">
-                    <span x-text="$store.app.currentLang === 'ar' ? 'بواسطة' : 'By'"></span>
-                    <span class="font-bold text-white"
-                          x-text="$store.app.currentLang === 'ar'
-                              ? ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.authorAr || '')
-                              : ($store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.authorEn || '')">
-                    </span>
-                    <span class="text-white/60">|</span>
-                    <span x-text="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.year || ''"></span>
-                    <span class="text-white/60">|</span>
-                    <span x-text="$store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug)?.facultyEn || ''"></span>
-                </div>
-            </div>
-        </div>
-    </div>
+<section x-data="{ get isAr() { return $store.app.currentLang === 'ar' }, get pub() { return $store.researchPage.publications.items.find(p => p.slug === $store.app.currentSlug) } }"
+         class="bg-white pt-28 pb-10 font-hacen md:pt-32 md:pb-14"
+         :dir="isAr ? 'rtl' : 'ltr'">
+  <div class="container mx-auto">
+    <nav class="mb-6 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-slate-500"
+         aria-label="Breadcrumb">
+      <a href="/" class="transition hover:text-spu-blue">Home</a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
+      <a href="/research.html" class="transition hover:text-spu-blue">Research</a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
+      <a href="/research/publications/" class="transition hover:text-spu-blue">Publications</a>
+    </nav>
+
+    <figure class="mx-auto container overflow-hidden rounded-[8px]">
+      <img :src="pub?.image || '/images/uni-main-place.JPG'"
+           :alt="isAr ? pub?.titleAr : pub?.titleEn"
+           class="h-[220px] mx-auto w-[80%] object-top md:h-[400px]">
+    </figure>
+
+    <h1 class="mx-auto mt-8 max-w-[820px] text-center text-2xl font-bold leading-snug text-spu-blue md:text-[32px] md:leading-tight"
+        x-text="isAr ? pub?.titleAr : pub?.titleEn"></h1>
+  </div>
 </section>

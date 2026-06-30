@@ -1,96 +1,235 @@
-<section x-data class="bg-white pt-[60px] pb-[80px] font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
-    <div class="container" x-data="{ center: $store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug) }">
-        <div class="mx-auto grid max-w-[1100px] grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">
-            <div>
-                <div class="prose max-w-none">
-                    <h2 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-red"
-                        x-text="$store.app.currentLang === 'ar' ? 'الرسالة' : 'Mission'"></h2>
-                    <p class="mt-4 text-[16px] leading-[1.8] text-[#333742]"
-                       x-text="$store.app.currentLang === 'ar' ? center?.missionAr : center?.missionEn"></p>
-                </div>
+<section x-data="{
+            get isAr() { return $store.app.currentLang === 'ar' },
+            get center() { return $store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug) },
+            get centerPubs() {
+                const slug = this.center?.slug || '';
+                return ($store.researchPage.publications?.items || []).filter(p =>
+                    p.facultySlug === (this.center?.facultyEn || '').toLowerCase().replace('faculty of ', '').replace(' ', '-')
+                ).slice(0, 4);
+            },
+            get centerProjects() {
+                return ($store.researchPage.projects?.items || []).filter(p =>
+                    p.facultySlug === (this.center?.facultyEn || '').toLowerCase().replace('faculty of ', '').replace(' ', '-')
+                ).slice(0, 3);
+            },
+            affiliatedFaculty: [
+                { nameEn: 'Dr. Sarah Mansour', nameAr: 'د. سارة منصور', titleEn: 'Associate Professor', titleAr: 'أستاذ مشارك', departmentEn: 'Computer Science', departmentAr: 'علوم الحاسوب', image: '/images/pharmacy-dean.jpg' },
+                { nameEn: 'Dr. Khaled Al-Hussein', nameAr: 'د. خالد الحسين', titleEn: 'Assistant Professor', titleAr: 'محاضر', departmentEn: 'Data Science', departmentAr: 'علم البيانات', image: '/images/uni-main-place.JPG' },
+                { nameEn: 'Dr. Fatima Al-Zahra', nameAr: 'د. فاطمة الزهراء', titleEn: 'Lecturer', titleAr: 'محاضر', departmentEn: 'Machine Learning', departmentAr: 'تعلم الآلة', image: '/images/pharmacy-dean.jpg' }
+            ]
+         }" class="bg-slate-50 py-10 font-hacen md:py-14" :dir="isAr ? 'rtl' : 'ltr'">
 
-                <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
-                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.labs || 0"></p>
-                        <p class="mt-1 text-[11px] text-[#6f7280]"
-                           x-text="$store.app.currentLang === 'ar' ? 'مختبر' : 'Labs'"></p>
-                    </div>
-                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
-                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.researchers || 0"></p>
-                        <p class="mt-1 text-[11px] text-[#6f7280]"
-                           x-text="$store.app.currentLang === 'ar' ? 'باحث' : 'Researchers'"></p>
-                    </div>
-                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
-                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.projects || 0"></p>
-                        <p class="mt-1 text-[11px] text-[#6f7280]"
-                           x-text="$store.app.currentLang === 'ar' ? 'مشروع' : 'Projects'"></p>
-                    </div>
-                    <div class="rounded-[10px] border border-[#dde2ea] bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
-                        <p class="text-[28px] font-bold text-spu-blue" x-text="center?.publications || 0"></p>
-                        <p class="mt-1 text-[11px] text-[#6f7280]"
-                           x-text="$store.app.currentLang === 'ar' ? 'منشور' : 'Publications'"></p>
-                    </div>
-                </div>
+  <div class="container mx-auto max-w-[1120px] px-4 sm:px-6" x-show="center">
 
-                <div class="mt-10">
-                    <h2 class="text-[16px] font-bold text-spu-blue"
-                        x-text="$store.app.currentLang === 'ar' ? 'المنشورات' : 'Publications'"></h2>
-                    <div class="mt-6 grid gap-[24px] lg:grid-cols-2">
-                        <template x-for="pub in $store.researchPage.publications.items.slice(0, 4)" :key="pub.id">
-                            <a :href="'/research/publications/' + pub.slug + '/'"
-                               class="group block overflow-hidden rounded-[10px] border border-[#d5d9e2] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(32,39,89,0.12)]">
-                                <img :src="pub.image"
-                                     :alt="$store.app.currentLang === 'ar' ? pub.titleAr : pub.titleEn"
-                                     class="h-[130px] w-full object-cover">
-                                <div class="p-4">
-                                    <h3 class="text-[14px] font-bold leading-snug text-spu-blue group-hover:text-spu-red line-clamp-2"
-                                        x-text="$store.app.currentLang === 'ar' ? pub.titleAr : pub.titleEn"></h3>
-                                    <p class="mt-2 text-[12px] text-[#6f7280]"
-                                       x-text="pub.authorEn + ' | ' + pub.year"></p>
-                                </div>
-                            </a>
-                        </template>
-                    </div>
-                </div>
-            </div>
+    <!-- Breadcrumb -->
+    <nav class="mb-6 text-[12px] text-spu-blue/60" aria-label="Breadcrumb">
+        <span class="flex items-center gap-2">
+            <a href="/" class="hover:text-spu-blue" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+            <span>/</span>
+            <a href="/research/" class="hover:text-spu-blue" x-text="isAr ? 'البحث' : 'Research'"></a>
+            <span>/</span>
+            <a href="/research/centers/" class="hover:text-spu-blue" x-text="isAr ? 'المراكز' : 'Centers'"></a>
+            <span>/</span>
+            <span class="text-spu-blue font-semibold" x-text="isAr ? center?.nameAr : center?.nameEn"></span>
+        </span>
+    </nav>
 
-            <aside class="lg:sticky lg:top-8 lg:self-start">
-                <div class="rounded-[12px] border border-[#dde2ea] bg-white p-6 shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
-                    <h3 class="text-[14px] font-bold uppercase tracking-[0.1em] text-spu-blue"
-                        x-text="$store.app.currentLang === 'ar' ? 'المدير' : 'Director'"></h3>
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(280px,3fr)] lg:items-start">
 
-                    <div class="mt-4 flex items-center gap-4">
-                        <div class="h-16 w-16 rounded-full bg-spu-blue/10 flex items-center justify-center">
-                            <svg class="h-8 w-8 text-spu-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-spu-blue"
-                               x-text="$store.app.currentLang === 'ar' ? center?.directorNameAr : center?.directorNameEn"></p>
-                            <p class="text-[12px] text-[#6f7280]"
-                               x-text="$store.app.currentLang === 'ar' ? 'المدير' : 'Director'"></p>
-                        </div>
-                    </div>
+      <!-- Main Content -->
+      <section class="space-y-6">
 
-                    <dl class="mt-6 space-y-3 border-t border-[#e5e7eb] pt-4">
-                        <div>
-                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
-                                x-text="$store.app.currentLang === 'ar' ? 'الكلية' : 'Faculty'"></dt>
-                            <dd class="mt-1 text-[14px] font-medium text-spu-blue"
-                                x-text="center?.facultyEn"></dd>
-                        </div>
-                        <div x-show="center?.contactEmail">
-                            <dt class="text-[10px] font-medium uppercase tracking-[0.1em] text-[#6f7280]"
-                                x-text="$store.app.currentLang === 'ar' ? 'البريد الإلكتروني' : 'Email'"></dt>
-                            <dd class="mt-1 text-[14px] font-medium text-spu-blue">
-                                <a :href="'mailto:' + center?.contactEmail"
-                                   x-text="center?.contactEmail"></a>
-                            </dd>
-                        </div>
-                    </dl>
-                </div>
-            </aside>
+        <!-- Mission Statement -->
+        <div class="rounded-[8px] border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] md:p-8">
+          <h2 class="text-[13px] font-bold uppercase tracking-[0.12em] text-spu-red"
+              x-text="isAr ? 'الرسالة' : 'Mission Statement'"></h2>
+          <p class="mt-4 text-[15px] leading-8 text-slate-700"
+             x-text="isAr ? center?.missionAr : center?.missionEn"></p>
         </div>
+
+        <!-- Stats Strip -->
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div class="rounded-[8px] border border-slate-200 bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+            <p class="text-[28px] font-bold text-spu-blue" x-text="center?.labs || 0"></p>
+            <p class="mt-1 text-[11px] font-medium text-slate-500" x-text="isAr ? 'مختبر' : 'Labs'"></p>
+          </div>
+          <div class="rounded-[8px] border border-slate-200 bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+            <p class="text-[28px] font-bold text-spu-blue" x-text="center?.researchers || 0"></p>
+            <p class="mt-1 text-[11px] font-medium text-slate-500" x-text="isAr ? 'باحث' : 'Researchers'"></p>
+          </div>
+          <div class="rounded-[8px] border border-slate-200 bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+            <p class="text-[28px] font-bold text-spu-blue" x-text="center?.projects || 0"></p>
+            <p class="mt-1 text-[11px] font-medium text-slate-500" x-text="isAr ? 'مشروع' : 'Projects'"></p>
+          </div>
+          <div class="rounded-[8px] border border-slate-200 bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+            <p class="text-[28px] font-bold text-spu-blue" x-text="center?.publications || 0"></p>
+            <p class="mt-1 text-[11px] font-medium text-slate-500" x-text="isAr ? 'منشور' : 'Publications'"></p>
+          </div>
+        </div>
+
+        <!-- Affiliated Faculty -->
+        <div class="rounded-[8px] border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
+          <h2 class="text-[13px] font-bold uppercase tracking-[0.12em] text-spu-red"
+              x-text="isAr ? 'أعضاء هيئة التدريس' : 'Affiliated Faculty'"></h2>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
+            <template x-for="faculty in affiliatedFaculty" :key="faculty.nameEn">
+              <div class="flex items-center gap-4 rounded-[8px] border border-slate-100 p-4 transition hover:border-spu-blue/20 hover:shadow-[0_4px_12px_rgba(32,39,89,0.06)]">
+                <img :src="faculty.image" :alt="isAr ? faculty.nameAr : faculty.nameEn"
+                     class="h-12 w-12 shrink-0 rounded-full object-cover">
+                <div class="min-w-0">
+                  <p class="text-[14px] font-bold text-spu-blue truncate"
+                     x-text="isAr ? faculty.nameAr : faculty.nameEn"></p>
+                  <p class="text-[11px] text-slate-500 truncate"
+                     x-text="isAr ? faculty.titleAr : faculty.titleEn"></p>
+                  <p class="text-[10px] text-slate-400 truncate"
+                     x-text="isAr ? faculty.departmentAr : faculty.departmentEn"></p>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Publications -->
+        <div class="rounded-[8px] border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
+          <div class="flex items-center justify-between">
+            <h2 class="text-[13px] font-bold uppercase tracking-[0.12em] text-spu-red"
+                x-text="isAr ? 'المنشورات المرتبطة' : 'Related Publications'"></h2>
+            <a href="/research/publications/" class="text-[11px] font-bold text-spu-blue hover:text-spu-red transition"
+               x-text="isAr ? 'عرض الكل' : 'View All'">→</a>
+          </div>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
+            <template x-for="pub in centerPubs" :key="pub.id">
+              <a :href="'/research/publications/' + pub.slug + '/'"
+                 class="group block rounded-[8px] border border-slate-100 p-4 transition hover:border-spu-blue/20 hover:shadow-[0_4px_12px_rgba(32,39,89,0.06)]">
+                <h3 class="text-[14px] font-bold leading-snug text-spu-blue group-hover:text-spu-red line-clamp-2"
+                    x-text="isAr ? pub.titleAr : pub.titleEn"></h3>
+                <p class="mt-2 text-[12px] text-slate-500">
+                  <span x-text="isAr ? pub.authorAr : pub.authorEn"></span>
+                  <span class="mx-1">|</span>
+                  <span x-text="pub.year"></span>
+                </p>
+                <div class="mt-2 flex flex-wrap gap-1">
+                  <span class="rounded-full bg-spu-blue/5 px-2 py-0.5 text-[9px] font-semibold text-spu-blue"
+                        x-text="isAr ? pub.typeAr : pub.typeEn"></span>
+                  <span x-show="pub.isOpenAccess"
+                        class="rounded-full bg-green-50 px-2 py-0.5 text-[9px] font-semibold text-green-700">OA</span>
+                </div>
+              </a>
+            </template>
+            <p x-show="centerPubs.length === 0" class="text-[13px] text-slate-400 italic sm:col-span-2"
+               x-text="isAr ? 'لا توجد منشورات مرتبطه بعد' : 'No publications linked yet'"></p>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="rounded-[8px] border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
+          <div class="flex items-center justify-between">
+            <h2 class="text-[13px] font-bold uppercase tracking-[0.12em] text-spu-red"
+                x-text="isAr ? 'المشاريع المرتبطة' : 'Related Projects'"></h2>
+            <a href="/research/projects/" class="text-[11px] font-bold text-spu-blue hover:text-spu-red transition"
+               x-text="isAr ? 'عرض الكل' : 'View All'">→</a>
+          </div>
+          <div class="mt-5 grid gap-4">
+            <template x-for="proj in centerProjects" :key="proj.id">
+              <a :href="'/research/projects/' + proj.slug + '/'"
+                 class="group block rounded-[8px] border border-slate-100 p-4 transition hover:border-spu-blue/20 hover:shadow-[0_4px_12px_rgba(32,39,89,0.06)]">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-[14px] font-bold leading-snug text-spu-blue group-hover:text-spu-red"
+                        x-text="isAr ? proj.titleAr : proj.titleEn"></h3>
+                    <p class="mt-1 text-[12px] text-slate-500 line-clamp-2"
+                       x-text="isAr ? proj.summaryAr : proj.summaryEn"></p>
+                  </div>
+                  <span class="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold"
+                        :class="proj.status === 'ongoing' ? 'bg-green-100 text-green-700' : proj.status === 'completed' ? 'bg-spu-blue/10 text-spu-blue' : 'bg-yellow-100 text-yellow-700'"
+                        x-text="isAr ? (proj.status === 'ongoing' ? 'جاري' : proj.status === 'completed' ? 'مكتمل' : 'معلق') : proj.status"></span>
+                </div>
+                <p class="mt-2 text-[11px] text-slate-400">
+                  <span x-text="isAr ? proj.facultyAr : proj.facultyEn"></span>
+                  <span class="mx-1">|</span>
+                  <span x-text="proj.startYear"></span>
+                </p>
+              </a>
+            </template>
+            <p x-show="centerProjects.length === 0" class="text-[13px] text-slate-400 italic"
+               x-text="isAr ? 'لا توجد مشاريع مرتبطه بعد' : 'No projects linked yet'"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="rounded-[8px] border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] lg:sticky lg:top-28">
+        <h2 class="text-[13px] font-bold uppercase tracking-[0.12em] text-spu-red"
+            x-text="isAr ? 'معلومات المركز' : 'Center Info'"></h2>
+
+        <!-- Director -->
+        <div class="mt-5 flex items-center gap-4">
+          <div class="h-16 w-16 shrink-0 rounded-full bg-spu-blue/10 flex items-center justify-center">
+            <svg class="h-8 w-8 text-spu-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+          </div>
+          <div class="min-w-0">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+               x-text="isAr ? 'المدير' : 'Director'"></p>
+            <p class="mt-0.5 text-[14px] font-bold text-spu-blue truncate"
+               x-text="isAr ? center?.directorNameAr : center?.directorNameEn"></p>
+          </div>
+        </div>
+
+        <dl class="mt-5 divide-y divide-slate-100">
+          <div class="py-3 first:pt-0">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="isAr ? 'الكلية' : 'Faculty'"></dt>
+            <dd class="mt-1 text-[14px] font-bold text-spu-blue"
+                x-text="isAr ? center?.facultyAr : center?.facultyEn"></dd>
+          </div>
+          <div class="py-3" x-show="center?.contactEmail">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="isAr ? 'البريد الإلكتروني' : 'Email'"></dt>
+            <dd class="mt-1">
+              <a :href="'mailto:' + center?.contactEmail"
+                 class="break-all text-[14px] font-bold text-spu-blue transition hover:text-spu-red hover:underline"
+                 x-text="center?.contactEmail"></a>
+            </dd>
+          </div>
+          <div class="py-3" x-show="center?.contactPhone">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="isAr ? 'الهاتف' : 'Phone'"></dt>
+            <dd class="mt-1 text-[14px] font-bold text-spu-blue"
+                x-text="center?.contactPhone"></dd>
+          </div>
+          <div class="py-3" x-show="center?.externalWebsite">
+            <dt class="text-[11px] font-bold uppercase tracking-wider text-slate-400"
+                x-text="isAr ? 'الموقع الإلكتروني' : 'Website'"></dt>
+            <dd class="mt-1">
+              <a :href="center?.externalWebsite" target="_blank" rel="noopener"
+                 class="text-[14px] font-bold text-spu-blue transition hover:text-spu-red hover:underline"
+                 x-text="isAr ? 'زيارة الموقع' : 'Visit Website'"></a>
+            </dd>
+          </div>
+        </dl>
+
+        <!-- Quick Stats -->
+        <div class="mt-5 grid grid-cols-2 gap-3">
+          <div class="rounded-[6px] bg-spu-blue/[0.04] p-3 text-center">
+            <span class="block text-[20px] font-bold text-spu-blue" x-text="center?.labs || 0"></span>
+            <span class="text-[10px] text-slate-500" x-text="isAr ? 'مختبر' : 'Labs'"></span>
+          </div>
+          <div class="rounded-[6px] bg-spu-blue/[0.04] p-3 text-center">
+            <span class="block text-[20px] font-bold text-spu-blue" x-text="center?.researchers || 0"></span>
+            <span class="text-[10px] text-slate-500" x-text="isAr ? 'باحث' : 'Researchers'"></span>
+          </div>
+          <div class="rounded-[6px] bg-spu-blue/[0.04] p-3 text-center">
+            <span class="block text-[20px] font-bold text-spu-blue" x-text="center?.projects || 0"></span>
+            <span class="text-[10px] text-slate-500" x-text="isAr ? 'مشروع' : 'Projects'"></span>
+          </div>
+          <div class="rounded-[6px] bg-spu-blue/[0.04] p-3 text-center">
+            <span class="block text-[20px] font-bold text-spu-blue" x-text="center?.publications || 0"></span>
+            <span class="text-[10px] text-slate-500" x-text="isAr ? 'منشور' : 'Publications'"></span>
+          </div>
+        </div>
+      </aside>
     </div>
+  </div>
 </section>

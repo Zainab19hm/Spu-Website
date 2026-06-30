@@ -1,23 +1,30 @@
-<section x-data class="bg-white font-hacen" :dir="$store.app.currentLang === 'ar' ? 'rtl' : 'ltr'">
+<section x-data="{
+            get isAr() { return $store.app.currentLang === 'ar' },
+            get center() { return $store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug) }
+         }" class="bg-white font-hacen" :dir="isAr ? 'rtl' : 'ltr'">
     <div class="relative h-[50vh] min-h-[350px] overflow-hidden">
-        <img :src="$store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug)?.image || '/images/uni-main-place.JPG'"
+        <img :src="center?.image || '/images/uni-main-place.JPG'"
              alt=""
              class="absolute inset-0 h-full w-full object-cover"
              aria-hidden="true">
         <div class="absolute inset-0 bg-spu-blue/60"></div>
         <div class="container relative z-10 flex h-full items-end pb-12">
-            <div :class="$store.app.currentLang === 'ar' ? 'text-right' : 'text-left'">
+            <div :class="isAr ? 'text-right' : 'text-left'">
+                <nav class="mb-4 flex items-center gap-2 text-[12px] text-white/60" aria-label="Breadcrumb">
+                    <a href="/" class="hover:text-white" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+                    <span>/</span>
+                    <a href="/research/" class="hover:text-white" x-text="isAr ? 'البحث' : 'Research'"></a>
+                    <span>/</span>
+                    <a href="/research/centers/" class="hover:text-white" x-text="isAr ? 'المراكز' : 'Centers'"></a>
+                    <span>/</span>
+                    <span class="text-white/80" x-text="isAr ? center?.nameAr : center?.nameEn"></span>
+                </nav>
                 <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-white/80"
-                   x-text="$store.app.currentLang === 'ar' ? 'مركز بحثي' : 'Research Center'">
-                </p>
+                   x-text="isAr ? 'مركز بحثي' : 'Research Center'"></p>
                 <h1 class="mt-2 text-[28px] font-bold text-white md:text-[36px]"
-                    x-text="$store.app.currentLang === 'ar'
-                        ? ($store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug)?.nameAr || '')
-                        : ($store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug)?.nameEn || '')">
-                </h1>
+                    x-text="isAr ? center?.nameAr : center?.nameEn"></h1>
                 <p class="mt-2 text-[14px] text-white/80"
-                   x-text="$store.researchPage.centers.items.find(c => c.slug === $store.app.currentSlug)?.facultyEn || ''">
-                </p>
+                   x-text="isAr ? center?.facultyAr : center?.facultyEn"></p>
             </div>
         </div>
     </div>

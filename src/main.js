@@ -106,6 +106,10 @@ async function bootstrap() {
     initRevealSections();
     mutationObserver = observeRevealSections();
 
+    if (pageName === 'research-detail' || pageName.startsWith('publication-')) {
+        import('./features/research-citation-meta.js').then(m => m.initResearchCitationMeta());
+    }
+
     window.addEventListener('beforeunload', () => {
       if (mutationObserver) {
         disconnectRevealSections(mutationObserver);

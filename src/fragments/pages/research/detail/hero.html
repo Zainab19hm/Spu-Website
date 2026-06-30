@@ -1,35 +1,27 @@
-<section class="relative flex min-h-[420px] items-end overflow-hidden pt-24 font-hacen"
+<section class="bg-white pt-28 pb-10 font-hacen md:pt-32 md:pb-14"
          x-data="{ get page() { return $store.researchDetailPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
-  <div class="absolute inset-0">
-    <img :src="page.hero.image"
-         alt="Syrian Private University research publication"
-         class="h-full w-full object-cover">
-    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/92 via-spu-blue/72 to-spu-blue/30"></div>
-  </div>
+  <div class="container mx-auto max-w-[960px] px-4 sm:px-6">
 
-  <div class="mx-auto w-full z-[100] max-w-[1180px] px-4 pb-10 text-center text-white sm:px-6 lg:px-0">
-    <nav class="mb-3 flex items-center justify-center gap-2 text-[11px] font-semibold text-white/74">
-      <a href="/" class="transition-colors hover:text-white" x-text="page.localized('labels', 'home')"></a>
-      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
-      <a href="/research.html" class="transition-colors hover:text-white" x-text="page.localized('labels', 'research')"></a>
-      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
-      <span x-text="isAr ? page.current?.typeAr : page.current?.typeEn"></span>
+    <!-- Breadcrumb -->
+    <nav class="mb-6 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-slate-500"
+         aria-label="Breadcrumb">
+      <a href="/" class="transition hover:text-spu-blue" x-text="page.localized('labels', 'home')"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
+      <a href="/research.html" class="transition hover:text-spu-blue" x-text="page.localized('labels', 'research')"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true">
+      <span class="text-spu-blue" x-text="isAr ? page.current?.typeAr : page.current?.typeEn"></span>
     </nav>
 
-    <h1 class="text-[26px] font-bold leading-tight md:text-[36px] max-w-[900px] mx-auto"
+    <!-- Centered Image -->
+    <figure class="mx-auto max-w-[780px] overflow-hidden rounded-[6px]">
+      <img :src="page.current?.heroImage || page.current?.image"
+           :alt="page.currentText('title')"
+           class="h-[220px] w-full object-cover md:h-[360px]">
+    </figure>
+
+    <!-- Title -->
+    <h1 class="mx-auto mt-8 max-w-[820px] text-center text-2xl font-bold leading-snug text-spu-blue md:text-[32px] md:leading-tight"
         x-text="page.currentText('title')"></h1>
 
-    <p class="mx-auto mt-3 max-w-[800px] text-[13px] font-semibold leading-6 text-white/80"
-       x-text="page.currentText('lead')"></p>
-
-    <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] font-bold uppercase tracking-[0.06em] text-white/70">
-      <span x-text="page.current?.year"></span>
-      <span class="h-1 w-1 rounded-full bg-white/50" aria-hidden="true"></span>
-      <a :href="page.current?.authorHref || '#'" class="transition-colors hover:text-white hover:underline"
-         x-text="isAr ? page.current?.authorAr : page.current?.authorEn"></a>
-      <span class="h-1 w-1 rounded-full bg-white/50" aria-hidden="true"></span>
-      <a :href="page.current?.facultyHref || '#'" class="transition-colors hover:text-white hover:underline"
-         x-text="isAr ? page.current?.facultyAr : page.current?.facultyEn"></a>
-    </div>
   </div>
 </section>
