@@ -30,6 +30,11 @@ export const navigationMenuItems = [
             { labelAr: 'المديريات المركزية', labelEn: 'Central Directorates', url: siteRoutes.aboutDirectorates },
             { labelAr: 'دليل الهيئة الأكاديمية', labelEn: 'Academic Staff Directory', url: siteRoutes.aboutStaffDirectory },
             { labelAr: 'الشراكات', labelEn: 'Partnerships', url: siteRoutes.aboutPartnership },
+            { labelAr: 'سياسة الجودة', labelEn: 'Quality Policy', url: siteRoutes.aboutQualityPolicy },
+            { labelAr: 'الميثاق الأخلاقي', labelEn: 'Ethical Charter', url: siteRoutes.aboutEthicalCharter },
+            { labelAr: 'الهيكل التنظيمي', labelEn: 'Organizational Structure', url: siteRoutes.aboutOrganizationalStructure },
+            { labelAr: 'الاعتمادية', labelEn: 'Accreditation', url: siteRoutes.aboutAccreditation },
+            { labelAr: 'لماذا SPU', labelEn: 'Why SPU', url: siteRoutes.aboutWhySpu },
             // { labelAr: 'الرؤية والرسالة', labelEn: 'Vision & Mission', url: siteRoutes.aboutVisionMission }
         ]
     },
@@ -64,6 +69,8 @@ export const navigationMenuItems = [
             { labelAr: 'التحويل والطلاب الدوليون', labelEn: 'Transfer & International', url: siteRoutes.admissionsTransfer },
             { labelAr: 'التقويم الأكاديمي', labelEn: 'Academic Calendar', url: siteRoutes.admissionsCalendar },
             { labelAr: 'الوثائق وقوائم التحقق', labelEn: 'Documents & Checklists', url: siteRoutes.admissionsDocuments },
+            { labelAr: 'ملء الشواغر', labelEn: 'Filling Vacancies', url: siteRoutes.admissionsFillingVacancies },
+            { labelAr: 'التخرج والامتحانات الوطنية', labelEn: 'Graduation & National Exams', url: siteRoutes.admissionsGraduationExams },
             { labelAr: 'الأسئلة الشائعة', labelEn: 'FAQs', url: siteRoutes.admissionsFAQ }
         ]
     },
@@ -147,6 +154,11 @@ export const navigationMenuItems = [
             { labelAr: 'لوحة الوظائف', labelEn: 'Job Board', url: siteRoutes.campusLifeCareerDevelopmentJobs },
             { labelAr: 'المستشفى الجامعي', labelEn: 'University Hospital', url: siteRoutes.campusLifeHospital },
             { labelAr: 'عيادات الأسنان', labelEn: 'Dental Clinics', url: siteRoutes.campusLifeDental },
+            { labelAr: 'منشورات مركز دمشق للأبحاث', labelEn: 'Damascus Research Center', url: siteRoutes.campusLifeDamascusResearchPub },
+            { labelAr: 'أنظمة وتعليمات', labelEn: 'Rules & Regulations', url: siteRoutes.campusLifeRulesRegulations },
+            { labelAr: 'قواعد وتعليمات عامة', labelEn: 'General Rules', url: siteRoutes.campusLifeGeneralRules },
+            { labelAr: 'التعليمات الامتحانية', labelEn: 'Exam Instructions', url: siteRoutes.campusLifeExamInstructions },
+            { labelAr: 'العقوبات الامتحانية', labelEn: 'Exam Penalties', url: siteRoutes.campusLifeExamPenalties },
         ]
     },
     {
@@ -155,8 +167,14 @@ export const navigationMenuItems = [
         labelEn: 'E-Services',
         url: siteRoutes.services,
         page: 'services',
-        hasDropdown: false,
-     
+        hasDropdown: true,
+        children: [
+            { labelAr: 'بوابة الطالب', labelEn: 'Student Portal', url: portalAccessConfig.defaultDestination, external: true },
+            { labelAr: 'المكتبة الإلكترونية', labelEn: 'E-Library', url: siteRoutes.servicesLibrary },
+            { labelAr: 'دعم تكنولوجيا المعلومات', labelEn: 'IT Support', url: siteRoutes.servicesItSupport },
+            { labelAr: 'البريد الإلكتروني للموظفين', labelEn: 'Staff Email', url: siteRoutes.servicesStaffEmail },
+            { labelAr: 'الاقتراحات والشكاوى', labelEn: 'Suggestions & Complaints', url: siteRoutes.servicesSuggestionsComplaints },
+        ]
     },
     {
         id: 7,

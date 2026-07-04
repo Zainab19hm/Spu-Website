@@ -6,50 +6,81 @@ export const contactPageContent = {
         titleAr: 'تواصل معنا',
         bgImage: '/images/slider-3.webp'
     },
+    subtitle: {
+        en: 'If you have any questions, please feel free to get in touch with us via phone, text, email, the form below, or even on social media!',
+        ar: 'إذا كان لديك أي أسئلة، لا تتردد في التواصل معنا عبر الهاتف أو الرسالة النصية أو البريد الإلكتروني أو النموذج أدناه أو حتى على وسائل التواصل الاجتماعي!'
+    },
     info: {
-        titleEn: 'Get In Touch',
-        titleAr: 'ابق على تواصل',
-        callUs: {
-            labelEn: 'CALL US',
-            labelAr: 'اتصل بنا',
-            value: '+963 11 123 4567',
+        titleEn: 'CONTACT INFORMATION',
+        titleAr: 'معلومات الاتصال',
+        phone: {
+            labelEn: 'PHONE',
+            labelAr: 'الهاتف',
+            value: '773-365-1240',
             icon: 'images/icon-phone-outline.svg'
-        },
-        emailUs: {
-            labelEn: 'EMAIL US',
-            labelAr: 'راسلنا',
-            value: 'info@spu.edu.sy'
         },
         address: {
             labelEn: 'ADDRESS',
             labelAr: 'العنوان',
-            valueEn: 'Syrian Private University Campus, Daraa Highway, Damascus, Syria',
-            valueAr: 'مقر الجامعة السورية الخاصة، طريق درعا الدولي، دمشق، سوريا'
+            value: '1425 N McLean Blvd, Elgin, IL',
+            icon: '/images/icon-map-outline.svg'
         },
-        officeHours: {
-            labelEn: 'OFFICE HOURS',
-            labelAr: 'ساعات العمل',
-            valueEn: 'Sunday - Thursday 8:00 AM - 4:00 PM',
-            valueAr: 'الأحد - الخميس 8:00 صباحاً - 4:00 مساءً'
+        email: {
+            labelEn: 'EMAIL',
+            labelAr: 'البريد الإلكتروني',
+            value: 'office@steponetrans.com',
+            icon: '/images/icon-envelope-outline.svg'
         }
     },
-    socialsTitleEn: 'CONNECT WITH US',
-    socialsTitleAr: 'تواصل معنا عبر',
-    socials: [
-        { icon: '/images/icon-facebook-outline.svg', url: 'https://www.facebook.com/SPUpage.sy' },
-        { icon: '/images/icon-instagram-outline.svg', url: 'https://www.instagram.com/spu_syrian_private_university/' },
-        { icon: '/images/icon-youtube-outline.svg', url: 'https://youtube.com/@spusyrianprivateuniversity755?si=xW_6Zru4wvjHnm6R' }
-    ],
-    form: {
-        titleEn: 'Send us a Message',
-        titleAr: 'أرسل لنا رسالة',
-        fields: {
-            name: { labelEn: 'Your Name', labelAr: 'اسمك' },
-            email: { labelEn: 'Your Email', labelAr: 'بريدك الإلكتروني' },
-            subject: { labelEn: 'Subject', labelAr: 'الموضوع' },
-            message: { labelEn: 'Your Message', labelAr: 'رسالتك' }
+    businessHours: {
+        titleEn: 'BUSINESS HOURS',
+        titleAr: 'ساعات العمل',
+        mondayFriday: {
+            labelEn: 'MONDAY - FRIDAY',
+            labelAr: 'الاثنين - الجمعة',
+            value: '9:00 am - 8:00 pm'
         },
-        submitEn: 'Send Message',
+        saturday: {
+            labelEn: 'SATURDAY',
+            labelAr: 'السبت',
+            value: '9:00 am - 6:00 pm'
+        },
+        sunday: {
+            labelEn: 'SUNDAY',
+            labelAr: 'الأحد',
+            value: '9:00 am - 5:00 pm'
+        }
+    },
+    form: {
+        titleEn: 'GET IN TOUCH',
+        titleAr: 'تواصل معنا',
+        fields: {
+            name: { 
+                labelEn: 'NAME', 
+                labelAr: 'الاسم',
+                placeholderEn: 'Enter your name*',
+                placeholderAr: 'أدخل اسمك*'
+            },
+            phone: { 
+                labelEn: 'PHONE NUMBER', 
+                labelAr: 'رقم الهاتف',
+                placeholderEn: 'Enter your phone number*',
+                placeholderAr: 'أدخل رقم هاتفك*'
+            },
+            email: { 
+                labelEn: 'EMAIL', 
+                labelAr: 'البريد الإلكتروني',
+                placeholderEn: 'Enter your email*',
+                placeholderAr: 'أدخل بريدك الإلكتروني*'
+            },
+            message: { 
+                labelEn: 'YOUR MESSAGE', 
+                labelAr: 'رسالتك',
+                placeholderEn: 'Enter your message',
+                placeholderAr: 'أدخل رسالتك'
+            }
+        },
+        submitEn: 'SEND MESSAGE',
         submitAr: 'إرسال الرسالة'
     },
     location: {
@@ -61,4 +92,3 @@ export const contactPageContent = {
         mapUrl: 'https://www.google.com/maps?q=Syrian+Private+University'
     }
 };
-

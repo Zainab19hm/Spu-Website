@@ -1,0 +1,62 @@
+<section x-cloak class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
+    <img :src="$store.aboutPage.accreditation.heroImage"
+         :alt="$store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.titleAr : $store.aboutPage.accreditation.titleEn"
+         class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+        <nav class="mb-6 flex items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
+            <a href="/" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.breadcrumbHomeAr : $store.aboutPage.accreditation.breadcrumbHomeEn"></a>
+            <span aria-hidden="true">›</span>
+            <a href="/about.html" class="transition hover:text-white"
+               x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.breadcrumbParentAr : $store.aboutPage.accreditation.breadcrumbParentEn"></a>
+            <span aria-hidden="true">›</span>
+            <span x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.breadcrumbCurrentAr : $store.aboutPage.accreditation.breadcrumbCurrentEn"></span>
+        </nav>
+        <p class="mb-3 text-xs font-black uppercase tracking-widest text-white/70"
+           x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.badgeAr : $store.aboutPage.accreditation.badgeEn"></p>
+        <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.titleAr : $store.aboutPage.accreditation.titleEn"></h1>
+    </div>
+</section>
+
+<section x-cloak class="bg-white py-20 font-hacen">
+    <div class="container mx-auto max-w-5xl px-6">
+        <div class="grid gap-6 text-base leading-relaxed text-slate-700">
+            <template x-for="paragraph in ($store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.introAr : $store.aboutPage.accreditation.introEn)" :key="paragraph">
+                <p x-text="paragraph" class="text-lg leading-relaxed"></p>
+            </template>
+        </div>
+    </div>
+</section>
+
+<section x-cloak class="bg-section py-16 font-hacen">
+    <div class="container mx-auto px-6">
+        <div class="mx-auto grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-4">
+            <template x-for="stat in $store.aboutPage.accreditation.stats" :key="stat.labelEn">
+                <div class="text-center">
+                    <p class="text-3xl font-black text-spu-red" x-text="stat.value"></p>
+                    <p class="mt-2 text-sm font-bold text-slate-600"
+                       x-text="$store.app.currentLang === 'ar' ? stat.labelAr : stat.labelEn"></p>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>
+
+<section x-cloak class="bg-white py-20 font-hacen">
+    <div class="container mx-auto max-w-5xl px-6">
+        <h2 class="mb-14 text-center text-3xl font-black text-spu-blue md:text-4xl"
+            x-text="$store.app.currentLang === 'ar' ? $store.aboutPage.accreditation.qualityTitleAr : $store.aboutPage.accreditation.qualityTitleEn"></h2>
+        <div class="grid gap-8 md:grid-cols-2">
+            <template x-for="item in $store.aboutPage.accreditation.qualityItems" :key="item.titleEn">
+                <div class="rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
+                    <h3 class="mb-4 text-xl font-black text-spu-blue"
+                        x-text="$store.app.currentLang === 'ar' ? item.titleAr : item.titleEn"></h3>
+                    <p class="text-sm leading-relaxed text-slate-600"
+                       x-text="$store.app.currentLang === 'ar' ? item.bodyAr : item.bodyEn"></p>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+<div class="admissions-design" x-data="{ page: $store.admissionsPage.graduationExamsPage, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <section class="relative flex h-[370px] items-center justify-center overflow-hidden font-hacen lg:h-[380px]">
+    <img :src="page.heroImage" alt="" class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+      <nav class="mb-4 flex items-center justify-center gap-2 text-xs font-black text-white" aria-label="Breadcrumb">
+        <a href="/" class="rounded bg-spu-blue/35 px-2 py-1 transition hover:bg-spu-blue/55" x-text="isAr ? page.breadcrumbHomeAr : page.breadcrumbHomeEn"></a>
+        <span aria-hidden="true">›</span>
+        <a href="/admissions.html" class="transition hover:text-white/80" x-text="isAr ? page.breadcrumbParentAr : page.breadcrumbParentEn"></a>
+        <span aria-hidden="true">›</span>
+        <span x-text="isAr ? page.breadcrumbCurrentAr : page.breadcrumbCurrentEn"></span>
+      </nav>
+      <h1 class="text-[32px] font-black leading-tight text-white md:text-[42px]" x-text="isAr ? page.titleAr : page.titleEn"></h1>
+    </div>
+  </section>
+
+  <section class="bg-white pb-4 pt-12">
+    <div class="container mx-auto px-6">
+      <div class="mx-auto max-w-3xl space-y-4 text-center text-base leading-relaxed text-slate-600 md:text-lg">
+        <template x-for="paragraph in (isAr ? page.introAr : page.introEn)" :key="paragraph">
+          <p x-text="paragraph"></p>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <section class="admissions-shell py-20">
+    <div class="container mx-auto max-w-4xl px-6">
+      <div class="relative">
+        <template x-for="(step, idx) in page.steps" :key="step.titleEn">
+          <div class="mb-10 flex gap-6 last:mb-0">
+            <div class="flex flex-col items-center">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-spu-blue text-sm font-bold text-white" x-text="idx + 1"></div>
+              <div class="mt-2 w-px flex-1 bg-slate-200" x-show="idx < page.steps.length - 1"></div>
+            </div>
+            <div class="flex-1 pb-10">
+              <h3 class="text-lg font-black text-spu-blue" x-text="isAr ? step.titleAr : step.titleEn"></h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600" x-text="isAr ? step.bodyAr : step.bodyEn"></p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+</div>

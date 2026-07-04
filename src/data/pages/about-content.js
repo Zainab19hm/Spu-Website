@@ -988,6 +988,308 @@ export const aboutPageContent = {
         }
     ],
 
+    accreditation: {
+        heroImage: '/images/about/hero-img.jpg',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'About',
+        breadcrumbParentAr: 'عن الجامعة',
+        breadcrumbCurrentEn: 'Accreditation',
+        breadcrumbCurrentAr: 'الاعتماد',
+        titleEn: 'Accreditation & Quality Assurance',
+        titleAr: 'الاعتماد وضمان الجودة',
+        badgeEn: 'ACCREDITED EXCELLENCE',
+        badgeAr: 'تميز معتمد',
+        introEn: [
+            'Syrian Private University holds official accreditation from the Syrian Ministry of Higher Education and Scientific Research, affirming that all academic programs meet national quality standards. Our commitment to accreditation extends beyond compliance — it reflects a continuous pursuit of educational excellence.',
+            'All faculties operate under licensed curricula reviewed regularly by the Ministry. Program-specific accreditations and professional recognitions further validate the quality of SPU\'s academic offerings across medicine, dentistry, pharmacy, engineering, and business administration.'
+        ],
+        introAr: [
+            'تحصل الجامعة السورية الخاصة على الاعتماد الرسمي من وزارة التعليم العالي والبحث العلمي في الجمهورية العربية السورية، مما يؤكد أن جميع البرامج الأكاديمية تلتزم بمعايير الجودة الوطنية. يمتد التزامنا بالاعتماد إلى ما هو أبعد من الامتثال — فهو يعكس سعياً مستمراً نحو التميز التعليمي.',
+            'جميع الكليات تعمل بموجب مناهج مرخصة تراجعها الوزارة بشكل دوري. كما أن الاعتمادات البرامجية والتقديرات المهنية الخاصة تعزز جودة ما تقدمه SPU في مجالات الطب وطب الأسنان والصيدلة والهندسة والعلوم الإدارية.'
+        ],
+        stats: [
+            { value: '2005', labelEn: 'Year Established', labelAr: 'عام التأسيس' },
+            { value: '7', labelEn: 'Accredited Faculties', labelAr: 'كليات معتمدة' },
+            { value: 'Ministry', labelEn: 'Accrediting Body', labelAr: 'الجهة المانحة' },
+            { value: 'Ongoing', labelEn: 'Review Cycle', labelAr: 'دورة المراجعة' }
+        ],
+        qualityTitleEn: 'Quality Assurance Framework',
+        qualityTitleAr: 'إطار ضمان الجودة',
+        qualityItems: [
+            {
+                titleEn: 'Program Licensing',
+                titleAr: 'ترخيص البرامج',
+                bodyEn: 'Every academic program is licensed by the Ministry of Higher Education after a rigorous review of curriculum, faculty qualifications, facilities, and learning outcomes.',
+                bodyAr: 'كل برنامج أكاديمي مرخص من وزارة التعليم العالي بعد مراجعة دقيقة للمنهاج ومؤهلات أعضاء الهيئة التدريسية والمرافق ومخرجات التعلم.'
+            },
+            {
+                titleEn: 'Periodic Review',
+                titleAr: 'المراجعة الدورية',
+                bodyEn: 'Programs undergo periodic review cycles to ensure continued compliance with evolving national standards and international best practices.',
+                bodyAr: 'تخضع البرامج لدورات مراجعة دورية لضمان الامتثال المستمر للمعايير الوطنية المتطورة وأفضل الممارسات الدولية.'
+            },
+            {
+                titleEn: 'Faculty Qualifications',
+                titleAr: 'مؤهلات أعضاء الهيئة التدريسية',
+                bodyEn: 'All faculty members hold advanced degrees from recognized universities. Appointment and promotion follow transparent criteria approved by the Ministry.',
+                bodyAr: 'جميع أعضاء الهيئة التدريسية حاصلون على درجات عليا من جامعات معترف بها. التعيين والترقية يتبعان معايير شفافة معتمدة من الوزارة.'
+            },
+            {
+                titleEn: 'Student Assessment',
+                titleAr: 'تقييم الطلاب',
+                bodyEn: 'Assessment methods adhere to university-wide standards, including unified examination regulations and transparent grading policies.',
+                bodyAr: 'تتبع طرق التقييم معايير جامعة على مستوى الجامعة، بما في ذلك أنظمة الامتحانات الموحدة وسياسات التصحيح الشفافة.'
+            }
+        ],
+        highlights: [
+            { labelEn: 'History & Founding', labelAr: 'التاريخ والتأسيس', url: '/about/history/', icon: 'clock' },
+            { labelEn: 'Leadership', labelAr: 'القيادة', url: '/about/leadership/', icon: 'users' },
+            { labelEn: 'Why SPU', labelAr: 'لماذا SPU', url: '/about/why-spu/', icon: 'star' },
+            { labelEn: 'Partnerships', labelAr: 'الشراكات', url: '/about/partnership/', icon: 'globe' }
+        ]
+    },
+
+    whySpu: {
+        heroImage: '/images/about/hero-img.jpg',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'About',
+        breadcrumbParentAr: 'عن الجامعة',
+        breadcrumbCurrentEn: 'Why SPU',
+        breadcrumbCurrentAr: 'لماذا SPU',
+        titleEn: 'Why Choose Syrian Private University?',
+        titleAr: 'لماذا تختار الجامعة السورية الخاصة؟',
+        badgeEn: 'YOUR FUTURE STARTS HERE',
+        badgeAr: 'مستقبلك يبدأ هنا',
+        introEn: 'Choosing a university is one of the most important decisions in a student\'s life. Syrian Private University offers a distinctive educational experience built on accreditation, clinical excellence, research, and student support.',
+        introAr: 'اختيار الجامعة هو أحد أهم القرارات في حياة الطالب. تقدم الجامعة السورية الخاصة تجربة تعليمية متميزة قائمة على الاعتماد والتميز السريري والبحث العلمي ودعم الطلاب.',
+        advantages: [
+            {
+                titleEn: 'Accredited Programs',
+                titleAr: 'برامج معتمدة',
+                summaryEn: 'All SPU programs are fully licensed and periodically reviewed by the Syrian Ministry of Higher Education and Scientific Research.',
+                summaryAr: 'جميع برامج SPU مرخصة بالكامل وتخضع للمراجعة الدورية من قبل وزارة التعليم العالي والبحث العلمي.',
+                icon: '/images/icons/award.svg'
+            },
+            {
+                titleEn: 'Clinical Excellence',
+                titleAr: 'التميز السريري',
+                summaryEn: 'SPU operates a university hospital and dental clinics that serve the community while providing hands-on clinical training for medical and dental students.',
+                summaryAr: 'تدير SPU مستشفى جامعي وعيادات سنية تخدم المجتمع مع توفير تدريب سريري عملي لطلاب الطب وطب الأسنان.',
+                icon: '/images/icons/hospital.svg'
+            },
+            {
+                titleEn: 'Research & Innovation',
+                titleAr: 'البحث والابتكار',
+                summaryEn: 'Active research centers and publications across multiple disciplines, with a growing open-access repository indexed in Google Scholar.',
+                summaryAr: 'مراكز بحثية نشطة ومنشورات في تخصصات متعددة، مع مستودع مفتوح الوصول متزايد ومفهرس في Google Scholar.',
+                icon: '/images/icons/dept.svg'
+            },
+            {
+                titleEn: 'Modern Campus & Facilities',
+                titleAr: 'حرم جامعي ومرافق حديثة',
+                summaryEn: 'State-of-the-art labs, simulation centres, libraries, and sports facilities across a purpose-built campus in Damascus.',
+                summaryAr: 'مخابر متطورة ومراكز محاكاة ومكتبات ومرافق رياضية في حرم جامعي مخصص في دمشق.',
+                icon: '/images/icons/university.svg'
+            },
+            {
+                titleEn: 'Student Support',
+                titleAr: 'دعم الطلاب',
+                summaryEn: 'Comprehensive student services including academic advising, career development, health insurance, transport, and extracurricular activities.',
+                summaryAr: 'خدمات طلابية شاملة تشمل الإرشاد الأكاديمي والتطوير المهني والتأمين الصحي والنقل والأنشطة اللاصفية.',
+                icon: '/images/icons/users.svg'
+            },
+            {
+                titleEn: 'Community Engagement',
+                titleAr: 'المشاركة المجتمعية',
+                summaryEn: 'SPU is deeply rooted in the Damascus community through free medical services, volunteer programmes, and cultural events.',
+                summaryAr: 'SPU منغمسة في المجتمع الدمشقي من خلال الخدمات الطبية المجانية وبرامج التطوع والفعاليات الثقافية.',
+                icon: '/images/icons/globe.svg'
+            }
+        ],
+        statsTitleEn: 'SPU by the Numbers',
+        statsTitleAr: 'SPU بالأرقام',
+        stats: [
+            { value: '2005', labelEn: 'Founded', labelAr: 'تأسست' },
+            { value: '7', labelEn: 'Faculties', labelAr: 'كليات' },
+            { value: '10,000+', labelEn: 'Students', labelAr: 'طالب' },
+            { value: '25+', labelEn: 'Research Centers', labelAr: 'مركز بحثي' }
+        ],
+        highlights: [
+            { labelEn: 'Accreditation', labelAr: 'الاعتمادية', url: '/about/accreditation/', icon: 'award' },
+            { labelEn: 'Directorates', labelAr: 'المديريات', url: '/about/directorates/', icon: 'building' },
+            { labelEn: 'History & Founding', labelAr: 'التاريخ والتأسيس', url: '/about/history/', icon: 'clock' },
+            { labelEn: 'Partnerships', labelAr: 'الشراكات', url: '/about/partnership/', icon: 'globe' }
+        ]
+    },
+
+    qualityPolicy: {
+        heroImage: '/images/about/hero-img.jpg',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'About',
+        breadcrumbParentAr: 'عن الجامعة',
+        breadcrumbCurrentEn: 'Quality Policy',
+        breadcrumbCurrentAr: 'سياسة الجودة',
+        titleEn: 'Quality Policy at SPU',
+        titleAr: 'سياسة الجودة في الجامعة السورية الخاصة',
+        badgeEn: 'COMMITMENT TO EXCELLENCE',
+        badgeAr: 'الالتزام بالتميز',
+        introEn: [
+            'Syrian Private University is committed to a comprehensive quality policy that ensures continuous improvement across all academic, administrative, and research activities. Our quality framework is aligned with national standards set by the Syrian Ministry of Higher Education and Scientific Research.',
+            'The university adopts a systematic approach to quality assurance, encompassing program development, faculty performance, student services, and institutional governance. Regular internal and external audits ensure compliance with established benchmarks.',
+            'Quality is embedded in SPU\'s institutional culture — from classroom teaching and laboratory work to administrative processes and community engagement. Every member of the university community contributes to maintaining and enhancing our quality standards.'
+        ],
+        introAr: [
+            'تلتزم الجامعة السورية الخاصة بسياسة جودة شاملة تضمن التحسين المستمر في جميع الأنشطة الأكاديمية والإدارية والبحثية. يتوافق إطار الجودة لدينا مع المعايير الوطنية التي وضعتها وزارة التعليم العالي والبحث العلمي.',
+            'تعتمد الجامعة نهجاً منظماً لضمان الجودة، يشمل تطوير البرامج وأداء أعضاء الهيئة التدريسية والخدمات الطلابية والحوكمة المؤسسية. تضمن المراجعات الداخلية والخارجية المنتظمة الامتثال للمعايير المحددة.',
+            'الجودة جزء من الثقافة المؤسسية لـ SPU — من التدريس في القاعات الدراسية والعمل المخبري إلى العمليات الإدارية والمشاركة المجتمعية. يساهم كل فرد في مجتمع الجامعة في الحفاظ على معايير الجودة وتعزيزها.'
+        ],
+        pillars: [
+            {
+                titleEn: 'Academic Excellence',
+                titleAr: 'التميز الأكاديمي',
+                bodyEn: 'Continuous review and development of curricula to meet evolving educational standards and labor market requirements.',
+                bodyAr: 'المراجعة والتطوير المستمر للمناهج لتلبية المعايير التعليمية المتطورة ومتطلبات سوق العمل.'
+            },
+            {
+                titleEn: 'Administrative Efficiency',
+                titleAr: 'الكفاءة الإدارية',
+                bodyEn: 'Streamlined administrative processes with clear procedures, accountability, and regular performance evaluation.',
+                bodyAr: 'عمليات إدارية مبسطة مع إجراءات واضحة والمساءلة والتقييم الدوري للأداء.'
+            },
+            {
+                titleEn: 'Student Satisfaction',
+                titleAr: 'رضا الطلاب',
+                bodyEn: 'Regular assessment of student feedback to improve services, learning environments, and support systems.',
+                bodyAr: 'تقييم منتظم لملاحظات الطلاب لتحسين الخدمات وبيئات التعلم وأنظمة الدعم.'
+            },
+            {
+                titleEn: 'Continuous Improvement',
+                titleAr: 'التحسين المستمر',
+                bodyEn: 'Adoption of best practices and innovative approaches to enhance institutional performance and outcomes.',
+                bodyAr: 'اعتماد أفضل الممارسات والأساليب المبتكرة لتعزيز الأداء المؤسسي والنتائج.'
+            }
+        ],
+        highlights: [
+            { labelEn: 'Accreditation', labelAr: 'الاعتمادية', url: '/about/accreditation/', icon: 'award' },
+            { labelEn: 'Leadership', labelAr: 'القيادة', url: '/about/leadership/', icon: 'users' },
+            { labelEn: 'Why SPU', labelAr: 'لماذا SPU', url: '/about/why-spu/', icon: 'star' },
+            { labelEn: 'Directorates', labelAr: 'المديريات', url: '/about/directorates/', icon: 'building' }
+        ]
+    },
+
+    ethicalCharter: {
+        heroImage: '/images/about/hero-img.jpg',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'About',
+        breadcrumbParentAr: 'عن الجامعة',
+        breadcrumbCurrentEn: 'Ethical Charter',
+        breadcrumbCurrentAr: 'الميثاق الأخلاقي',
+        titleEn: 'Ethical Charter of SPU',
+        titleAr: 'الميثاق الأخلاقي للجامعة السورية الخاصة',
+        badgeEn: 'INTEGRITY & ETHICS',
+        badgeAr: 'النزاهة والأخلاقيات',
+        introEn: [
+            'The Ethical Charter of Syrian Private University defines the fundamental values and principles that guide the conduct of all members of the university community — students, faculty, administrators, and staff.',
+            'Rooted in academic tradition and social responsibility, the charter emphasizes integrity, transparency, respect, and accountability as the cornerstones of university life. It serves as a reference for ethical decision-making in teaching, research, and administrative practice.',
+            'All members of SPU are expected to uphold these principles in their daily activities, fostering an environment of mutual respect, academic honesty, and professional responsibility.'
+        ],
+        introAr: [
+            'يحدد الميثاق الأخلاقي للجامعة السورية الخاصة القيم والمبادئ الأساسية التي توجه سلوك جميع أعضاء مجتمع الجامعة — الطلاب وأعضاء الهيئة التدريسية والإداريين والموظفين.',
+            'استناداً إلى التقاليد الأكاديمية والمسؤولية الاجتماعية، يؤكد الميثاق على النزاهة والشفافية والاحترام والمساءلة كركائز للحياة الجامعية. وهو يمثل مرجعاً لاتخاذ القرارات الأخلاقية في التدريس والبحث والممارسة الإدارية.',
+            'من المتوقع أن يلتزم جميع أعضاء SPU بهذه المبادئ في أنشطتهم اليومية، مما يعزز بيئة من الاحترام المتبادل والنزاهة الأكاديمية والمسؤولية المهنية.'
+        ],
+        principles: [
+            {
+                titleEn: 'Academic Integrity',
+                titleAr: 'النزاهة الأكاديمية',
+                bodyEn: 'Honesty and fairness in all academic work, including teaching, research, examinations, and grading.',
+                bodyAr: 'الصدق والإنصاف في جميع الأعمال الأكاديمية، بما في ذلك التدريس والبحث والامتحانات والتصحيح.'
+            },
+            {
+                titleEn: 'Transparency',
+                titleAr: 'الشفافية',
+                bodyEn: 'Open communication and clear disclosure of policies, procedures, and decisions affecting the university community.',
+                bodyAr: 'التواصل المفتوح والإفصاح الواضح عن السياسات والإجراءات والقرارات التي تؤثر على مجتمع الجامعة.'
+            },
+            {
+                titleEn: 'Respect & Diversity',
+                titleAr: 'الاحترام والتنوع',
+                bodyEn: 'Respect for the dignity, rights, and diversity of all individuals regardless of background, belief, or affiliation.',
+                bodyAr: 'احترام كرامة وحقوق وتنوع جميع الأفراد بغض النظر عن خلفيتهم أو معتقداتهم أو انتماءاتهم.'
+            },
+            {
+                titleEn: 'Social Responsibility',
+                titleAr: 'المسؤولية الاجتماعية',
+                bodyEn: 'Commitment to serving the community and contributing to societal development through knowledge and expertise.',
+                bodyAr: 'الالتزام بخدمة المجتمع والمساهمة في التنمية المجتمعية من خلال المعرفة والخبرة.'
+            }
+        ],
+        highlights: [
+            { labelEn: 'History & Founding', labelAr: 'التاريخ والتأسيس', url: '/about/history/', icon: 'clock' },
+            { labelEn: 'Leadership', labelAr: 'القيادة', url: '/about/leadership/', icon: 'users' },
+            { labelEn: 'Why SPU', labelAr: 'لماذا SPU', url: '/about/why-spu/', icon: 'star' },
+            { labelEn: 'Partnerships', labelAr: 'الشراكات', url: '/about/partnership/', icon: 'globe' }
+        ]
+    },
+
+    organizationalStructure: {
+        heroImage: '/images/about/hero-img.jpg',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'About',
+        breadcrumbParentAr: 'عن الجامعة',
+        breadcrumbCurrentEn: 'Organizational Structure',
+        breadcrumbCurrentAr: 'الهيكل التنظيمي',
+        titleEn: 'Organizational Structure of SPU',
+        titleAr: 'الهيكل التنظيمي للجامعة السورية الخاصة',
+        badgeEn: 'INSTITUTIONAL FRAMEWORK',
+        badgeAr: 'الإطار المؤسسي',
+        introEn: [
+            'Syrian Private University operates within a well-defined organizational structure designed to ensure effective governance, clear lines of authority, and efficient delivery of academic and administrative services.',
+            'The university\'s structure encompasses the University Council, the University President, the Vice Presidents, the faculties, the central directorates, and various advisory and administrative units — all working in coordination to achieve SPU\'s strategic objectives.'
+        ],
+        introAr: [
+            'تعمل الجامعة السورية الخاصة ضمن هيكل تنظيمي محدد جيداً مصمم لضمان الحوكمة الفعالة وخطوط السلطة الواضحة والتوصيل الفعال للخدمات الأكاديمية والإدارية.',
+            'يشمل هيكل الجامعة مجلس الجامعة ورئيس الجامعة ونواب الرئيس والكليات والمديريات المركزية والوحدات الاستشارية والإدارية المختلفة — جميعها تعمل بتنسيق لتحقيق الأهداف الاستراتيجية لـ SPU.'
+        ],
+        levels: [
+            {
+                titleEn: 'University Council',
+                titleAr: 'مجلس الجامعة',
+                bodyEn: 'The highest governing body responsible for strategic direction, policy approval, and institutional oversight.',
+                bodyAr: 'أعلى هيئة حاكمة مسؤولة عن التوجه الاستراتيجي واعتماد السياسات والإشراف المؤسسي.'
+            },
+            {
+                titleEn: 'University President',
+                titleAr: 'رئيس الجامعة',
+                bodyEn: 'The chief executive officer who leads the university\'s academic and administrative operations.',
+                bodyAr: 'الرئيس التنفيذي الذي يقود العمليات الأكاديمية والإدارية للجامعة.'
+            },
+            {
+                titleEn: 'Vice Presidents',
+                titleAr: 'نواب الرئيس',
+                bodyEn: 'Senior administrators overseeing academic affairs, administrative affairs, research, and student development.',
+                bodyAr: 'إداريون كبار يشرفون على الشؤون الأكاديمية والشؤون الإدارية والبحث العلمي وتطوير الطلاب.'
+            },
+            {
+                titleEn: 'Faculties & Directorates',
+                titleAr: 'الكليات والمديريات',
+                bodyEn: 'Academic faculties deliver degree programs while central directorates provide administrative and support services.',
+                bodyAr: 'تقدم الكليات الأكاديمية برامج الدرجات العلمية بينما تقدم المديريات المركزية الخدمات الإدارية والداعمة.'
+            }
+        ],
+        highlights: [
+            { labelEn: 'Accreditation', labelAr: 'الاعتمادية', url: '/about/accreditation/', icon: 'award' },
+            { labelEn: 'Directorates', labelAr: 'المديريات', url: '/about/directorates/', icon: 'building' },
+            { labelEn: 'History & Founding', labelAr: 'التاريخ والتأسيس', url: '/about/history/', icon: 'clock' },
+            { labelEn: 'Leadership', labelAr: 'القيادة', url: '/about/leadership/', icon: 'users' }
+        ]
+    },
+
     staffDirectory: {
         heroImage: '/images/about/hero-img.jpg',
         breadcrumbHomeEn: 'Home',
@@ -1311,6 +1613,27 @@ export const aboutPageContent = {
             titleEn: 'Leadership',
             icon: '/images/icon-university-outline.svg',
             link: '/about/leadership.html'
+        },
+        {
+            id: 'quality-policy',
+            titleAr: 'سياسة الجودة',
+            titleEn: 'Quality Policy',
+            icon: '/images/icon-award-outline.svg',
+            link: '/about/quality-policy.html'
+        },
+        {
+            id: 'ethical-charter',
+            titleAr: 'الميثاق الأخلاقي',
+            titleEn: 'Ethical Charter',
+            icon: '/images/icon-handshake-outline.svg',
+            link: '/about/ethical-charter.html'
+        },
+        {
+            id: 'organizational-structure',
+            titleAr: 'الهيكل التنظيمي',
+            titleEn: 'Organizational Structure',
+            icon: '/images/icon-sitemap-outline.svg',
+            link: '/about/organizational-structure.html'
         },
         {
             id: 'directorates',

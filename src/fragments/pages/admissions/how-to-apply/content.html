@@ -1,5 +1,5 @@
 <div class="admissions-design" x-data="{ page: $store.admissionsPage.howToApplyPage, get isAr() { return $store.app.currentLang === 'ar' } }">
-  <section class="relative flex h-[370px] items-center justify-center overflow-hidden font-hacen lg:h-[400px]">
+  <section class="relative flex h-[370px] items-center justify-center overflow-hidden font-hacen lg:h-[380px]">
     <img :src="page.heroImage" :alt="$store.app.currentLang === 'ar' ? page.titleAr : page.titleEn" class="absolute inset-0 h-full w-full object-cover">
     <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
     <div class="container relative z-10 mx-auto px-6 text-center text-white">
@@ -14,9 +14,13 @@
     </div>
   </section>
 
-  <section class="admissions-overlap-intro" aria-labelledby="admissions-journey-title">
-    <h1 id="admissions-journey-title" x-text="isAr ? page.heroTitleAr : page.heroTitleEn"></h1>
-    <p x-text="isAr ? page.heroDescAr : page.heroDescEn"></p>
+  <section class="bg-white pb-4 pt-12">
+    <div class="container mx-auto px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="mb-4 text-[28px] font-black text-spu-blue md:text-[34px]" x-text="isAr ? page.heroTitleAr : page.heroTitleEn"></h2>
+        <p class="text-base leading-relaxed text-slate-600 md:text-lg" x-text="isAr ? page.heroDescAr : page.heroDescEn"></p>
+      </div>
+    </div>
   </section>
 
   <section class="admissions-shell admissions-feature-cards" aria-label="Admissions journey highlights">

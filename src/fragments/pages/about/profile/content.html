@@ -101,17 +101,16 @@
                     </div>
 
                     <!-- Profile Info -->
-                    <div class="flex-1 ">
-                        <h1 class="text-[1.875rem] font-bold text-white/90 leading-tight " x-text="pageTitle"></h1>
+                    <div class="flex-1">
+                        <h1 class="text-[1.875rem] mb-4 font-bold text-white/90 leading-tight " x-text="pageTitle"></h1>
                         <!-- <p class="text-base text-spu-blue/60 mb-4" x-text="profile.nameEn" x-show="profile.nameEn && profile.nameEn !== pageTitle"></p> -->
                         
-                        <div class="flex flex-wrap items-center gap-2 my-1">
+                        <div class="flex flex-wrap mt-4 items-center gap-2 my-1">
                             <span class="inline-flex items-center px-3 py-1 bg-spu-red text-white text-xs font-bold uppercase tracking-[0.05em] rounded-full" x-text="pageRole"></span>
                             <span class="text-spu-blue/30" x-show="pageDepartment">•</span>
                             <span class="text-sm font-semibold text-spu-blue" x-text="pageDepartment" x-show="pageDepartment"></span>
                         </div>
 
-                        <p class="text-base text-spu-blue/70 mb-3" x-text="localize(profile, 'description')" x-show="profile.descriptionAr || profile.descriptionEn"></p>
 
                         <div class="mb-4" x-show="profile.office">
                             <div class="flex items-center gap-2 text-sm text-spu-blue/60">

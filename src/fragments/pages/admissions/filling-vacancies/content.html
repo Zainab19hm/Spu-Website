@@ -1,0 +1,35 @@
+<div class="admissions-design" x-data="{ page: $store.admissionsPage.fillingVacanciesPage, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <section class="relative flex h-[370px] items-center justify-center overflow-hidden font-hacen lg:h-[380px]">
+    <img :src="page.heroImage" alt="" class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+      <nav class="mb-4 flex items-center justify-center gap-2 text-xs font-black text-white" aria-label="Breadcrumb">
+        <a href="/" class="rounded bg-spu-blue/35 px-2 py-1 transition hover:bg-spu-blue/55" x-text="isAr ? page.breadcrumbHomeAr : page.breadcrumbHomeEn"></a>
+        <span aria-hidden="true">›</span>
+        <a href="/admissions.html" class="transition hover:text-white/80" x-text="isAr ? page.breadcrumbParentAr : page.breadcrumbParentEn"></a>
+        <span aria-hidden="true">›</span>
+        <span x-text="isAr ? page.breadcrumbCurrentAr : page.breadcrumbCurrentEn"></span>
+      </nav>
+      <h1 class="text-[32px] font-black leading-tight text-white md:text-[42px]" x-text="isAr ? page.titleAr : page.titleEn"></h1>
+    </div>
+  </section>
+
+  <section class="bg-white pb-4 pt-12">
+    <div class="container mx-auto px-6">
+      <p class="mx-auto max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-lg" x-text="isAr ? page.introAr : page.introEn"></p>
+    </div>
+  </section>
+
+  <section class="admissions-shell py-20">
+    <div class="container mx-auto max-w-5xl px-6">
+      <div class="grid gap-8 md:grid-cols-2">
+        <template x-for="item in page.requirements" :key="item.titleEn">
+          <div class="rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
+            <h3 class="mb-4 text-xl font-black text-spu-blue" x-text="isAr ? item.titleAr : item.titleEn"></h3>
+            <p class="text-sm leading-relaxed text-slate-600" x-text="isAr ? item.bodyAr : item.bodyEn"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+</div>

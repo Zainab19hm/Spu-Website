@@ -71,6 +71,8 @@
                                      <template x-for="(child, idx) in item.children" :key="child.divider ? 'divider-' + idx : (child.url || child.labelEn)">
                                         <div x-show="!child.divider && !child.featured">
                                             <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
+                                               :target="child.external ? '_blank' : undefined"
+                                               :rel="child.external ? 'noopener noreferrer' : undefined"
                                                @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); }"
                                                class="site-nav-dropdown-link z-[100]"
                                                x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>
@@ -196,6 +198,8 @@
                                 <template x-for="(child, index) in item.children" :key="child.divider ? 'divider-' + index : (child.url || child.labelEn)">
                                     <div x-show="!child.divider && !child.featured">
                                         <a :href="child.protected ? $store.auth.servicesHubPath : child.url"
+                                           :target="child.external ? '_blank' : undefined"
+                                           :rel="child.external ? 'noopener noreferrer' : undefined"
                                            @click="if (child.protected) { $event.preventDefault(); $store.auth.requestProtectedAccess(child.url); } mobileNav = false; openMenu = null"
                                            class="site-nav-mobile-child"
                                            x-text="$store.app.currentLang === 'ar' ? child.labelAr : child.labelEn"></a>

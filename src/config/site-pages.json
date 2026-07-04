@@ -1142,6 +1142,60 @@
       ]
     },
     {
+      "name": "services-library",
+      "fileName": "e-services/library.html",
+      "route": "/e-services/library/",
+      "title": "E-Library Access | Syrian Private University",
+      "description": "Access SPU e-library resources including e-books, licensed databases, academic journals, and research tools.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU e-library",
+        "Syrian Private University e-library",
+        "SPU digital library",
+        "SPU databases"
+      ],
+      "fragments": [
+        "pages/services/library/content.html",
+        "pages/services/library/highlights.html"
+      ]
+    },
+    {
+      "name": "services-staff-email",
+      "fileName": "e-services/staff-email.html",
+      "route": "/e-services/staff-email/",
+      "title": "Staff Email | Syrian Private University",
+      "description": "Create and access your official SPU staff email account with step-by-step guidance and IT support.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU staff email",
+        "Syrian Private University email",
+        "SPU webmail",
+        "SPU faculty email"
+      ],
+      "fragments": [
+        "pages/services/staff-email/content.html",
+        "pages/services/staff-email/highlights.html"
+      ]
+    },
+    {
+      "name": "services-it-support",
+      "fileName": "e-services/it-support.html",
+      "route": "/e-services/it-support/",
+      "title": "IT Support | Syrian Private University",
+      "description": "Get technical assistance for SPU systems, network connectivity, account issues, and digital services.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU IT support",
+        "Syrian Private University IT",
+        "SPU technical support",
+        "SPU help desk"
+      ],
+      "fragments": [
+        "pages/services/it-support/content.html",
+        "pages/services/it-support/highlights.html"
+      ]
+    },
+    {
       "name": "news",
       "fileName": "news.html",
       "route": "/news/",
@@ -1317,6 +1371,91 @@
       ]
     },
     {
+      "name": "campus-life-damascus-research-pub",
+      "fileName": "campus-life/damascus-research-pub.html",
+      "route": "/campus-life/damascus-research-pub/",
+      "title": "Damascus Research Center Publications | Syrian Private University",
+      "description": "Explore Damascus Research Center publications at SPU. Academic journals, research papers, conference proceedings, and specialized studies.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "Damascus Research Center",
+        "SPU publications",
+        "academic research Syria",
+        "university journals"
+      ],
+      "fragments": [
+        "pages/campus-life/damascus-research-pub/content.html"
+      ]
+    },
+    {
+      "name": "campus-life-rules-regulations",
+      "fileName": "campus-life/rules-regulations.html",
+      "route": "/campus-life/rules-regulations/",
+      "title": "Rules & Regulations | Syrian Private University",
+      "description": "Review SPU rules and regulations covering academic, student conduct, administrative procedures, and faculty policies.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU rules",
+        "university regulations Syria",
+        "academic regulations",
+        "student conduct"
+      ],
+      "fragments": [
+        "pages/campus-life/rules-regulations/content.html"
+      ]
+    },
+    {
+      "name": "campus-life-general-rules",
+      "fileName": "campus-life/general-rules.html",
+      "route": "/campus-life/general-rules/",
+      "title": "General Rules | Syrian Private University",
+      "description": "Review general rules and instructions for SPU students. Attendance, ID cards, facility use, academic honesty, and communication.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU general rules",
+        "student guidelines Syria",
+        "university instructions",
+        "academic honesty"
+      ],
+      "fragments": [
+        "pages/campus-life/general-rules/content.html"
+      ]
+    },
+    {
+      "name": "campus-life-exam-instructions",
+      "fileName": "campus-life/exam-instructions.html",
+      "route": "/campus-life/exam-instructions/",
+      "title": "Exam Instructions | Syrian Private University",
+      "description": "Review SPU exam instructions. Arrival time, identification, permitted materials, exam conduct, and submission rules.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU exam instructions",
+        "university exams Syria",
+        "examination rules",
+        "student exam conduct"
+      ],
+      "fragments": [
+        "pages/campus-life/exam-instructions/content.html"
+      ]
+    },
+    {
+      "name": "campus-life-exam-penalties",
+      "fileName": "campus-life/exam-penalties.html",
+      "route": "/campus-life/exam-penalties/",
+      "title": "Exam Penalties | Syrian Private University",
+      "description": "Review SPU exam penalties. First violation, second violation, cheating, impersonation, and repeated offenses.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU exam penalties",
+        "academic integrity Syria",
+        "exam violations",
+        "university disciplinary action"
+      ],
+      "fragments": [
+        "pages/campus-life/exam-penalties/content.html"
+      ]
+    },
+    {
       "name": "about-directorate-scientific-research",
       "fileName": "about/directorates/scientific-research.html",
       "route": "/about/directorates/scientific-research/",
@@ -1407,6 +1546,101 @@
       ],
       "fragments": [
         "pages/about/directorates/staff.html",
+        "pages/about/navigation.html"
+      ]
+    },
+    {
+      "name": "about-accreditation",
+      "fileName": "about/accreditation.html",
+      "route": "/about/accreditation/",
+      "title": "Accreditation | Syrian Private University",
+      "description": "Learn about SPU official accreditation from the Ministry of Higher Education and our commitment to academic quality.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU accreditation",
+        "Syrian Private University accreditation",
+        "SPU quality assurance",
+        "academic accreditation Syria"
+      ],
+      "fragments": [
+        "pages/about/accreditation/content.html",
+        "pages/about/accreditation/highlights.html",
+        "pages/about/navigation.html"
+      ]
+    },
+    {
+      "name": "about-why-spu",
+      "fileName": "about/why-spu.html",
+      "route": "/about/why-spu/",
+      "title": "Why SPU | Syrian Private University",
+      "description": "Discover why Syrian Private University is the right choice: accreditation, clinical excellence, research, and student support.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "Why SPU",
+        "Syrian Private University advantages",
+        "SPU highlights",
+        "choose SPU"
+      ],
+      "fragments": [
+        "pages/about/why-spu/content.html",
+        "pages/about/why-spu/highlights.html",
+        "pages/about/navigation.html"
+      ]
+    },
+    {
+      "name": "about-quality-policy",
+      "fileName": "about/quality-policy.html",
+      "route": "/about/quality-policy/",
+      "title": "Quality Policy | Syrian Private University",
+      "description": "Learn about SPU quality policy, commitment to academic excellence, continuous improvement, and quality assurance framework.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU quality policy",
+        "Syrian Private University quality",
+        "quality assurance Syria",
+        "SPU excellence"
+      ],
+      "fragments": [
+        "pages/about/quality-policy/content.html",
+        "pages/about/quality-policy/highlights.html",
+        "pages/about/navigation.html"
+      ]
+    },
+    {
+      "name": "about-ethical-charter",
+      "fileName": "about/ethical-charter.html",
+      "route": "/about/ethical-charter/",
+      "title": "Ethical Charter | Syrian Private University",
+      "description": "Review the Ethical Charter of Syrian Private University outlining principles of integrity, transparency, respect, and academic ethics.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU ethical charter",
+        "Syrian Private University ethics",
+        "academic integrity Syria",
+        "SPU values"
+      ],
+      "fragments": [
+        "pages/about/ethical-charter/content.html",
+        "pages/about/ethical-charter/highlights.html",
+        "pages/about/navigation.html"
+      ]
+    },
+    {
+      "name": "about-organizational-structure",
+      "fileName": "about/organizational-structure.html",
+      "route": "/about/organizational-structure/",
+      "title": "Organizational Structure | Syrian Private University",
+      "description": "Explore SPU organizational structure including University Council, President, Vice Presidents, faculties, and directorates.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU organizational structure",
+        "Syrian Private University governance",
+        "university administration Syria",
+        "SPU leadership"
+      ],
+      "fragments": [
+        "pages/about/organizational-structure/content.html",
+        "pages/about/organizational-structure/highlights.html",
         "pages/about/navigation.html"
       ]
     },
@@ -1527,6 +1761,78 @@
       ],
       "fragments": [
         "pages/admissions/documents/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-study-system",
+      "fileName": "admissions/study-system.html",
+      "route": "/admissions/study-system/",
+      "title": "Study System & GPA | Syrian Private University",
+      "description": "SPU study system, grading scale, GPA calculation, and academic policies.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU study system", "GPA scale", "grading system Syria"],
+      "fragments": [
+        "pages/redirect.html"
+      ]
+    },
+    {
+      "name": "admissions-academic-warnings",
+      "fileName": "admissions/academic-warnings.html",
+      "route": "/admissions/academic-warnings/",
+      "title": "Academic Warnings | Syrian Private University",
+      "description": "SPU academic warning system, warning levels, GPA thresholds, and recovery paths.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU academic warnings", "academic probation", "university warnings Syria"],
+      "fragments": [
+        "pages/redirect.html"
+      ]
+    },
+    {
+      "name": "about-university-council",
+      "fileName": "about/university-council.html",
+      "route": "/about/university-council/",
+      "title": "University Council | Syrian Private University",
+      "description": "SPU University Council, leadership, governance, and institutional decision-making.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": ["SPU University Council", "university governance", "SPU leadership"],
+      "fragments": [
+        "pages/redirect.html"
+      ]
+    },
+    {
+      "name": "admissions-filling-vacancies",
+      "fileName": "admissions/filling-vacancies.html",
+      "route": "/admissions/filling-vacancies/",
+      "title": "Filling Vacancies | Syrian Private University",
+      "description": "Apply for vacant seats at SPU after the initial enrollment period. Check eligibility, required documents, and application process.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU vacant seats",
+        "filling vacancies Syria",
+        "SPU late admission",
+        "university enrollment Syria"
+      ],
+      "fragments": [
+        "pages/admissions/filling-vacancies/content.html",
+        "pages/admissions/navigation.html"
+      ]
+    },
+    {
+      "name": "admissions-graduation-exams",
+      "fileName": "admissions/graduation-exams.html",
+      "route": "/admissions/graduation-exams/",
+      "title": "Graduation & National Exams | Syrian Private University",
+      "description": "Learn about SPU graduation requirements, national examinations, and the steps to complete your degree.",
+      "ogImage": "/images/logo-spu.png",
+      "keywords": [
+        "SPU graduation",
+        "national exams Syria",
+        "university graduation requirements",
+        "SPU degree completion"
+      ],
+      "fragments": [
+        "pages/admissions/graduation-exams/content.html",
         "pages/admissions/navigation.html"
       ]
     },

@@ -1,138 +1,127 @@
 <section x-data class="bg-white py-16 font-hacen lg:py-24">
     <div class="container">
-        <div class="grid gap-16 lg:grid-cols-2">
+        <!-- Subtitle -->
+        <div class="mb-12 text-center">
+            <p class="mx-auto max-w-3xl text-lg text-gray-600 leading-relaxed"
+               x-text="$store.app.currentLang === 'ar' ? $store.contactPage.subtitle.ar : $store.contactPage.subtitle.en"></p>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-2">
 
             <!-- Left: Contact Form -->
-            <div class="space-y-8">
-                <h2 class="text-3xl font-bold text-spu-blue"
+            <div class="bg-gray-50 rounded-2xl p-6 sm:p-8">
+                <h2 class="mb-6 pb-4 border-b border-gray-200 text-xl font-bold text-gray-900"
                     x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.titleAr : $store.contactPage.form.titleEn">
                 </h2>
 
-                <form class="grid gap-6">
-                    <div class="grid gap-6 md:grid-cols-2">
+                <form class="space-y-5">
+                    <div class="grid gap-5 sm:grid-cols-2">
                         <div class="space-y-2">
-                            <label class="text-sm font-medium text-slate-600"
+                            <label class="text-xs font-bold uppercase tracking-wide text-gray-700"
                                 x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.name.labelAr : $store.contactPage.form.fields.name.labelEn"></label>
                             <input type="text"
-                                class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 outline-none transition-all focus:border-spu-red/50 focus:ring-4 focus:ring-spu-red/5">
+                                :placeholder="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.name.placeholderAr : $store.contactPage.form.fields.name.placeholderEn"
+                                class="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-all focus:border-spu-red focus:ring-2 focus:ring-spu-red/10">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-sm font-medium text-slate-600"
-                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.email.labelAr : $store.contactPage.form.fields.email.labelEn"></label>
-                            <input type="email"
-                                class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 outline-none transition-all focus:border-spu-red/50 focus:ring-4 focus:ring-spu-red/5">
+                            <label class="text-xs font-bold uppercase tracking-wide text-gray-700"
+                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.phone.labelAr : $store.contactPage.form.fields.phone.labelEn"></label>
+                            <input type="tel"
+                                :placeholder="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.phone.placeholderAr : $store.contactPage.form.fields.phone.placeholderEn"
+                                class="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-all focus:border-spu-red focus:ring-2 focus:ring-spu-red/10">
                         </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-sm font-medium text-slate-600"
-                            x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.subject.labelAr : $store.contactPage.form.fields.subject.labelEn"></label>
-                        <input type="text"
-                            class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 outline-none transition-all focus:border-spu-red/50 focus:ring-4 focus:ring-spu-red/5">
+                        <label class="text-xs font-bold uppercase tracking-wide text-gray-700"
+                            x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.email.labelAr : $store.contactPage.form.fields.email.labelEn"></label>
+                        <input type="email"
+                            :placeholder="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.email.placeholderAr : $store.contactPage.form.fields.email.placeholderEn"
+                            class="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-all focus:border-spu-red focus:ring-2 focus:ring-spu-red/10">
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-sm font-medium text-slate-600"
+                        <label class="text-xs font-bold uppercase tracking-wide text-gray-700"
                             x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.message.labelAr : $store.contactPage.form.fields.message.labelEn"></label>
-                        <textarea rows="6"
-                            class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 outline-none transition-all focus:border-spu-red/50 focus:ring-4 focus:ring-spu-red/5"></textarea>
+                        <textarea rows="5"
+                            :placeholder="$store.app.currentLang === 'ar' ? $store.contactPage.form.fields.message.placeholderAr : $store.contactPage.form.fields.message.placeholderEn"
+                            class="w-full resize-none rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-all focus:border-spu-red focus:ring-2 focus:ring-spu-red/10"></textarea>
                     </div>
 
-                    <div>
-                        <button type="submit"
-                            class="bg-spu-red px-8 py-3 font-bold text-white transition-all hover:bg-spu-red/90 hover:shadow-lg active:scale-95"
-                            x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.submitAr : $store.contactPage.form.submitEn"></button>
-                    </div>
+                    <button type="submit"
+                        class="w-full rounded-lg bg-spu-red px-8 py-4 font-bold text-white transition-all hover:bg-spu-red/90 hover:shadow-lg active:scale-[0.98]"
+                        x-text="$store.app.currentLang === 'ar' ? $store.contactPage.form.submitAr : $store.contactPage.form.submitEn"></button>
                 </form>
             </div>
 
-            <!-- Right: Contact Info -->
-            <div class="space-y-4">
-                <p class="text-spu-red font-bold uppercase tracking-widest text-xs"
-                    x-text="$store.date.getFormattedDate($store.app.currentLang)"></p>
-                <h2 class="text-3xl font-bold text-spu-blue"
-                    x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.titleAr : $store.contactPage.info.titleEn">
-                </h2>
+            <!-- Right: Contact Info & Business Hours -->
+            <div class="space-y-6">
+                <!-- Contact Information -->
+                <div class="bg-gray-50 rounded-2xl p-6 sm:p-8">
+                    <h2 class="mb-6 pb-4 border-b border-gray-200 text-xl font-bold text-gray-900"
+                        x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.titleAr : $store.contactPage.info.titleEn">
+                    </h2>
 
-                <div class="grid gap-10 sm:grid-cols-2">
-                    <!-- Call Us -->
-                    <div class="flex gap-4">
-                        <div
-                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-white">
-                            <img :src="$store.contactPage.info.icon" alt="" class="h-4 w-4" aria-hidden="true">
+                    <div class="space-y-5">
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-white">
+                                <img :src="$store.contactPage.info.phone.icon" alt="" class="h-4 w-4" aria-hidden="true">
+                            </div>
+                            <div>
+                                <p class="mb-1 text-[10px] font-bold uppercase tracking-widest text-slate-400"
+                                    x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.phone.labelAr : $store.contactPage.info.phone.labelEn"></p>
+                                <p class="text-sm font-bold text-spu-blue" x-text="$store.contactPage.info.phone.value"></p>
+                            </div>
                         </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400"
-                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.callUs.labelAr : $store.contactPage.info.callUs.labelEn">
-                            </p>
-                            <p class="text-sm font-bold text-spu-blue" x-text="$store.contactPage.info.callUs.value">
-                            </p>
+
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-white">
+                                <img :src="$store.contactPage.info.address.icon" alt="" class="h-4 w-4" aria-hidden="true">
+                            </div>
+                            <div>
+                                <p class="mb-1 text-[10px] font-bold uppercase tracking-widest text-slate-400"
+                                    x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.address.labelAr : $store.contactPage.info.address.labelEn"></p>
+                                <p class="text-[13px] font-medium leading-relaxed text-slate-600" x-text="$store.contactPage.info.address.value"></p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-4">
+                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-white">
+                                <img :src="$store.contactPage.info.email.icon" alt="" class="h-4 w-4" aria-hidden="true">
+                            </div>
+                            <div>
+                                <p class="mb-1 text-[10px] font-bold uppercase tracking-widest text-slate-400"
+                                    x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.email.labelAr : $store.contactPage.info.email.labelEn"></p>
+                                <p class="text-sm font-bold text-spu-blue" x-text="$store.contactPage.info.email.value"></p>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Address -->
-                    <div class="flex gap-4">
-                        <div
-                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-white">
-                            <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400"
-                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.address.labelAr : $store.contactPage.info.address.labelEn">
-                            </p>
-                            <p class="text-[13px] font-medium leading-relaxed text-slate-600"
-                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.address.valueAr : $store.contactPage.info.address.valueEn">
-                            </p>
-                        </div>
-                    </div>
+                <!-- Business Hours -->
+                <div class="bg-gray-50 rounded-2xl p-6 sm:p-8">
+                    <h2 class="mb-6 pb-4 border-b border-gray-200 text-xl font-bold text-gray-900"
+                        x-text="$store.app.currentLang === 'ar' ? $store.contactPage.businessHours.titleAr : $store.contactPage.businessHours.titleEn">
+                    </h2>
 
-                    <!-- Email Us -->
-                    <div class="flex gap-4">
-                        <div
-                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-white">
-                            <img src="/images/icon-envelope-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <p class="mb-1 text-xs font-bold uppercase tracking-wide text-gray-700"
+                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.businessHours.mondayFriday.labelAr : $store.contactPage.businessHours.mondayFriday.labelEn"></p>
+                            <p class="text-sm text-gray-600" x-text="$store.contactPage.businessHours.mondayFriday.value"></p>
                         </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400"
-                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.emailUs.labelAr : $store.contactPage.info.emailUs.labelEn">
-                            </p>
-                            <p class="text-sm font-bold text-spu-blue" x-text="$store.contactPage.info.emailUs.value">
-                            </p>
+                        <div>
+                            <p class="mb-1 text-xs font-bold uppercase tracking-wide text-gray-700"
+                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.businessHours.saturday.labelAr : $store.contactPage.businessHours.saturday.labelEn"></p>
+                            <p class="text-sm text-gray-600" x-text="$store.contactPage.businessHours.saturday.value"></p>
                         </div>
-                    </div>
-
-                    <!-- Office Hours -->
-                    <div class="flex gap-4">
-                        <div
-                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-spu-blue text-white">
-                            <img src="/images/time.svg" alt="" class="h-4 w-4" aria-hidden="true">
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400"
-                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.officeHours.labelAr : $store.contactPage.info.officeHours.labelEn">
-                            </p>
-                            <p class="text-[13px] font-medium leading-relaxed text-slate-600"
-                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.info.officeHours.valueAr : $store.contactPage.info.officeHours.valueEn">
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="h-px w-full bg-slate-100"></div>
-
-                    <!-- Socials -->
-                    <div class="space-y-4">
-                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400"
-                            x-text="$store.app.currentLang === 'ar' ? $store.contactPage.socialsTitleAr : $store.contactPage.socialsTitleEn">
-                        </p>
-                        <div class="flex gap-3">
-                            <template x-for="social in $store.contactPage.socials">
-                                <a :href="social.url"
-                                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#1e2756] text-white transition-all hover:bg-spu-red">
-                                    <img :src="social.icon" alt=""
-                                        class="h-5 w-5 brightness-0 invert transition-opacity" aria-hidden="true">
-                                </a>
-                            </template>
+                        <div>
+                            <p class="mb-1 text-xs font-bold uppercase tracking-wide text-gray-700"
+                                x-text="$store.app.currentLang === 'ar' ? $store.contactPage.businessHours.sunday.labelAr : $store.contactPage.businessHours.sunday.labelEn"></p>
+                            <p class="text-sm text-gray-600" x-text="$store.contactPage.businessHours.sunday.value"></p>
                         </div>
                     </div>
                 </div>
@@ -140,5 +129,4 @@
 
         </div>
     </div>
-
 </section>

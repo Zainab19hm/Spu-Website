@@ -1,0 +1,36 @@
+<div x-data="{ page: $store.rulesRegulationsPage, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <section class="relative flex h-[370px] items-center justify-center overflow-hidden font-hacen lg:h-[400px]">
+    <img :src="page.hero.image" alt="" class="absolute inset-0 h-full w-full object-cover">
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,39,89,0.80)_0%,rgba(32,39,89,0.50)_50%,rgba(32,39,89,0)_100%)]"></div>
+    <div class="container relative z-10 mx-auto px-6 text-center text-white">
+      <nav class="mb-4 flex items-center justify-center gap-2 text-xs font-bold text-white" aria-label="Breadcrumb">
+        <a :href="page.hero.breadcrumbHomeUrl" class="rounded bg-spu-blue/35 px-2 py-1 transition hover:bg-spu-blue/55" x-text="isAr ? page.hero.breadcrumbHomeAr : page.hero.breadcrumbHomeEn"></a>
+        <span aria-hidden="true">›</span>
+        <a :href="page.hero.breadcrumbCampusUrl" class="transition hover:text-white/80" x-text="isAr ? page.hero.breadcrumbCampusAr : page.hero.breadcrumbCampusEn"></a>
+        <span aria-hidden="true">›</span>
+        <span x-text="isAr ? page.hero.breadcrumbCurrentAr : page.hero.breadcrumbCurrentEn"></span>
+      </nav>
+      <h1 class="text-[32px] font-bold leading-tight text-white md:text-[42px]" x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 font-hacen">
+    <div class="container mx-auto max-w-4xl px-6 text-center">
+      <h2 class="mb-6 text-[38px] font-bold leading-tight text-spu-blue md:text-[48px]" x-text="isAr ? page.overview.titleAr : page.overview.titleEn"></h2>
+      <p class="mx-auto max-w-3xl text-lg leading-relaxed text-[#5B6277]" x-text="isAr ? page.overview.summaryAr : page.overview.summaryEn"></p>
+    </div>
+  </section>
+
+  <section class="bg-section py-20 font-hacen">
+    <div class="container mx-auto max-w-5xl px-6">
+      <div class="grid gap-8 md:grid-cols-2">
+        <template x-for="item in page.categories" :key="item.titleEn">
+          <div class="border border-[#DCE1ED] rounded-[8px] bg-white p-6 shadow-[0px_4px_12px_0px_rgba(51,51,51,0.06)]">
+            <h3 class="mb-3 text-[19px] font-bold text-spu-blue" x-text="isAr ? item.titleAr : item.titleEn"></h3>
+            <p class="text-sm leading-relaxed text-[#5B6277]" x-text="isAr ? item.bodyAr : item.bodyEn"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+</div>

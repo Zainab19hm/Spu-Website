@@ -1,0 +1,133 @@
+<section x-cloak
+         x-data="{ get page() { return $store.servicesPage.staffEmail }, get isAr() { return $store.app.currentLang === 'ar' } }"
+         class="relative flex min-h-[365px] items-center justify-center overflow-hidden pt-28 font-hacen">
+  <img :src="page.hero.heroImage"
+       :alt="isAr ? page.hero.titleAr : page.hero.titleEn"
+       class="absolute inset-0 h-full w-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-b from-[rgba(7,10,28,0.12)] to-[rgba(32,39,89,0.72)]"></div>
+  <div class="container relative z-10 mx-auto py-5 text-center text-white">
+    <nav class="mb-6 flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-white/85" aria-label="Breadcrumb">
+      <a href="/" class="transition hover:text-white"
+         x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+      <span aria-hidden="true">›</span>
+      <a href="/e-services/" class="transition hover:text-white"
+         x-text="isAr ? 'الخدمات الإلكترونية' : 'E-Services'"></a>
+      <span aria-hidden="true">›</span>
+      <span x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></span>
+    </nav>
+    <p class="mb-3 text-xs font-black uppercase tracking-widest text-white/70"
+       x-text="isAr ? page.hero.eyebrowAr : page.hero.eyebrowEn"></p>
+    <h1 class="text-4xl font-black leading-tight text-white md:text-5xl"
+        x-text="isAr ? page.hero.titleAr : page.hero.titleEn"></h1>
+    <p class="mx-auto mt-5 max-w-[640px] text-base leading-relaxed text-white/90"
+       x-text="isAr ? page.hero.summaryAr : page.hero.summaryEn"></p>
+  </div>
+</section>
+
+<section x-cloak class="bg-white py-20 font-hacen"
+         x-data="{ get page() { return $store.servicesPage.staffEmail }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="container mx-auto max-w-4xl px-6 text-center">
+    <h2 class="mb-6 text-3xl font-black text-spu-blue md:text-4xl"
+        x-text="isAr ? page.intro.titleAr : page.intro.titleEn"></h2>
+    <p class="mx-auto max-w-3xl text-lg leading-relaxed text-slate-700"
+       x-text="isAr ? page.intro.paragraphAr : page.intro.paragraphEn"></p>
+  </div>
+</section>
+
+<section x-cloak class="bg-section py-20 font-hacen"
+         x-data="{ get page() { return $store.servicesPage.staffEmail }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="container mx-auto max-w-4xl px-6">
+    <h2 class="mb-14 text-center text-3xl font-black text-spu-blue md:text-4xl"
+        x-text="isAr ? 'خطوات إنشاء البريد الإلكتروني' : 'Setup Steps'"></h2>
+    <div class="relative">
+      <div class="absolute left-[22px] top-0 h-full w-px bg-slate-200 md:left-1/2 md:-translate-x-px"
+           aria-hidden="true"></div>
+      <div class="space-y-12">
+        <template x-for="(step, index) in page.steps" :key="step.number">
+          <div class="relative flex flex-col md:flex-row"
+               :class="index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'">
+            <div class="flex w-full items-center md:w-1/2"
+                 :class="index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'">
+              <div class="w-full">
+                <div class="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-full bg-spu-blue text-lg font-black text-white shadow-md"
+                     x-text="step.number"></div>
+                <h3 class="mb-2 text-xl font-black text-spu-blue"
+                    x-text="isAr ? step.titleAr : step.titleEn"></h3>
+                <p class="text-sm leading-relaxed text-slate-600"
+                   x-text="isAr ? step.bodyAr : step.bodyEn"></p>
+              </div>
+            </div>
+            <div class="hidden md:block md:w-1/2"></div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section x-cloak class="bg-white py-20 font-hacen"
+         x-data="{ get page() { return $store.servicesPage.staffEmail }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="container mx-auto max-w-6xl px-6">
+    <h2 class="mb-14 text-center text-3xl font-black text-spu-blue md:text-4xl"
+        x-text="isAr ? 'ميزات البريد الإلكتروني' : 'Email Features'"></h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <template x-for="feature in page.features" :key="feature.titleEn">
+        <div class="rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:shadow-md">
+          <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-spu-blue/5">
+            <template x-if="feature.icon === 'mail'">
+              <svg class="h-8 w-8 text-spu-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </template>
+            <template x-if="feature.icon === 'smartphone'">
+              <svg class="h-8 w-8 text-spu-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </template>
+            <template x-if="feature.icon === 'shield'">
+              <svg class="h-8 w-8 text-spu-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </template>
+          </div>
+          <h3 class="mb-3 text-lg font-black text-spu-blue"
+              x-text="isAr ? feature.titleAr : feature.titleEn"></h3>
+          <p class="text-sm leading-relaxed text-slate-600"
+             x-text="isAr ? feature.bodyAr : feature.bodyEn"></p>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<section x-cloak class="bg-spu-blue py-14 font-hacen"
+         x-data="{ get page() { return $store.servicesPage.staffEmail }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="container mx-auto max-w-4xl px-6 text-center">
+    <h2 class="mb-6 text-2xl font-black text-white"
+        x-text="isAr ? page.contact.titleAr : page.contact.titleEn"></h2>
+    <div class="flex flex-wrap justify-center gap-8 text-white/90">
+      <div class="flex items-center gap-2">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        <span class="text-sm font-bold" x-text="page.contact.email"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+        </svg>
+        <span class="text-sm font-bold" x-text="page.contact.phone"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path>
+        </svg>
+        <span class="text-sm font-bold" x-text="isAr ? page.contact.hoursAr : page.contact.hoursEn"></span>
+      </div>
+    </div>
+  </div>
+</section>

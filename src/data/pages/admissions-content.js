@@ -139,7 +139,9 @@ export const admissionsPageContent = {
             { titleEn: 'FAQ', titleAr: 'الأسئلة الشائعة', icon: '/images/icon-envelope-outline.svg', descEn: 'Common questions answered', descAr: 'إجابات على الأسئلة الشائعة', active: false, slug: 'faq' },
             { titleEn: 'Academic Calendar', titleAr: 'التقويم الأكاديمي', icon: '/images/icon-calendar-outline.svg', descEn: 'Important dates and deadlines', descAr: 'تواريخ ومواعيد هامة', active: false, slug: 'calendar' },
             { titleEn: 'Documents & Checklists', titleAr: 'الوثائق وقوائم التحقق', icon: '/images/icon-file-outline.svg', descEn: 'Required documents and official forms', descAr: 'الوثائق المطلوبة والنماذج الرسمية', active: false, slug: 'documents' },
-            { titleEn: 'Transfer & International', titleAr: 'طلاب التحويل والدوليون', icon: '/images/icon-globe-outline.svg', descEn: 'Pathways for global students', descAr: 'مسارات للطلاب الدوليين', active: false, slug: 'transfer' }
+            { titleEn: 'Transfer & International', titleAr: 'طلاب التحويل والدوليون', icon: '/images/icon-globe-outline.svg', descEn: 'Pathways for global students', descAr: 'مسارات للطلاب الدوليين', active: false, slug: 'transfer' },
+            { titleEn: 'Filling Vacancies', titleAr: 'ملء الشواغر', icon: '/images/icon-user-plus-outline.svg', descEn: 'Apply for vacant seats after initial enrollment', descAr: 'التقديم على المقاعد الشاغرة بعد التسجيل الأولي', active: false, slug: 'filling-vacancies' },
+            { titleEn: 'Graduation & National Exams', titleAr: 'التخرج والامتحانات الوطنية', icon: '/images/icon-award-outline.svg', descEn: 'Graduation requirements and national exam info', descAr: 'متطلبات التخرج والامتحانات الوطنية', active: false, slug: 'graduation-exams' }
         ]
     },
     requirementsPage: {
@@ -785,6 +787,96 @@ export const admissionsPageContent = {
                         recoveryAr: 'استئناف ناجح مع ظروف استثنائية موثقة، أو إعادة قبول بعد عام أكاديمي بموافقة العميد.'
                     }
                 ]
+            }
+        ]
+    },
+    fillingVacanciesPage: {
+        heroImage: '/images/admission/front-img.jpg',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'Admissions',
+        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbCurrentEn: 'Filling Vacancies',
+        breadcrumbCurrentAr: 'ملء الشواغر',
+        titleEn: 'Filling Vacant Seats',
+        titleAr: 'ملء الشواغر',
+        introEn: 'SPU offers the opportunity to apply for vacant seats in certain faculties after the initial enrollment period has closed. This process allows qualified students who missed the regular admission cycle to secure a place in their desired program, subject to availability.',
+        introAr: 'تتيح الجامعة السورية الخاصة فرصة التقديم على المقاعد الشاغرة في بعض الكليات بعد انتهاء فترة التسجيل الأولي. تتيح هذه العملية للطلاب المؤهلين الذين فاتتهم دورة القبول العادية تأمين مقعد في البرنامج الذي يرغبون فيه، حسب التوفر.',
+        requirements: [
+            {
+                titleEn: 'Eligibility',
+                titleAr: 'الأهلية',
+                bodyEn: 'Applicants must meet the same academic requirements as regular admission candidates, including minimum high school GPA and faculty-specific prerequisites.',
+                bodyAr: 'يجب أن يستوفي المتقدمون نفس المتطلبات الأكاديمية لمرشحي القبول العادي، بما في ذلك الحد الأدنى لمعدل الثانوية العامة والمتطلبات الخاصة بكل كلية.'
+            },
+            {
+                titleEn: 'Available Faculties',
+                titleAr: 'الكليات المتاحة',
+                bodyEn: 'Vacant seats vary by faculty and academic year. The list of faculties with open seats is announced after the regular enrollment period ends.',
+                bodyAr: 'تختلف المقاعد الشاغرة حسب الكلية والعام الأكاديمي. يتم الإعلان عن قائمة الكليات ذات المقاعد الشاغرة بعد انتهاء فترة التسجيل العادي.'
+            },
+            {
+                titleEn: 'Application Period',
+                titleAr: 'فترة التقديم',
+                bodyEn: 'Applications for vacant seats are accepted during a specified period announced on the official university website and through university announcements.',
+                bodyAr: 'يتم استقبال طلبات ملء الشواغر خلال فترة محددة تُعلن على الموقع الرسمي للجامعة وعبر إعلانات الجامعة.'
+            },
+            {
+                titleEn: 'Required Documents',
+                titleAr: 'الوثائق المطلوبة',
+                bodyEn: 'Applicants must submit all standard admission documents along with a vacancy application form available from the Admissions Office.',
+                bodyAr: 'يجب على المتقدمين تقديم جميع وثائق القبول القياسية بالإضافة إلى نموذج طلب الشواغر المتاح من مكتب القبول والتسجيل.'
+            }
+        ]
+    },
+    graduationExamsPage: {
+        heroImage: '/images/admission/front-img.jpg',
+        breadcrumbHomeEn: 'Home',
+        breadcrumbHomeAr: 'الرئيسية',
+        breadcrumbParentEn: 'Admissions',
+        breadcrumbParentAr: 'القبول والتسجيل',
+        breadcrumbCurrentEn: 'Graduation & National Exams',
+        breadcrumbCurrentAr: 'التخرج والامتحانات الوطنية',
+        titleEn: 'Graduation & National Examinations',
+        titleAr: 'التخرج والامتحانات الوطنية',
+        introEn: [
+            'SPU follows the graduation requirements and national examination regulations set by the Syrian Ministry of Higher Education and Scientific Research. Students must fulfill all academic, administrative, and financial obligations before being cleared for graduation.',
+            'In addition to faculty-specific graduation requirements, certain programs require students to pass national examinations administered by the Ministry. These exams assess the competency of graduates and are a prerequisite for professional licensing in fields such as medicine, dentistry, and pharmacy.'
+        ],
+        introAr: [
+            'تتبع SPU متطلبات التخرج وأنظمة الامتحانات الوطنية التي وضعتها وزارة التعليم العالي والبحث العلمي. يجب على الطلاب استيفاء جميع الالتزامات الأكاديمية والإدارية والمالية قبل الموافقة على تخرجهم.',
+            'بالإضافة إلى متطلبات التخرج الخاصة بكل كلية، تتطلب بعض البرامج من الطلاب اجتياز امتحانات وطنية تديرها الوزارة. تقيّم هذه الامتحانات كفاءة الخريجين وهي شرط أساسي للترخيص المهني في مجالات مثل الطب وطب الأسنان والصيدلة.'
+        ],
+        steps: [
+            {
+                titleEn: 'Complete Course Requirements',
+                titleAr: 'استكمال متطلبات المساقات',
+                bodyEn: 'Successfully pass all required courses, credit hours, and practical training as specified by the faculty study plan.',
+                bodyAr: 'اجتياز جميع المساقات المطلوبة والساعات المعتمدة والتدريب العملي بنجاح حسب الخطة الدراسية للكلية.'
+            },
+            {
+                titleEn: 'Clear Financial Obligations',
+                titleAr: 'تسوية الالتزامات المالية',
+                bodyEn: 'Settle all tuition fees and any outstanding financial dues to the university.',
+                bodyAr: 'تسديد جميع الرسوم الدراسية وأي مستحقات مالية متبقية للجامعة.'
+            },
+            {
+                titleEn: 'Submit Graduation Documents',
+                titleAr: 'تقديم وثائق التخرج',
+                bodyEn: 'Submit all required graduation documents including the graduation notice, academic status document, and other forms to the faculty administration.',
+                bodyAr: 'تقديم جميع وثائق التخرج المطلوبة بما في ذلك إشعار التخرج ووثيقة الحالة الأكاديمية والنماذج الأخرى إلى إدارة الكلية.'
+            },
+            {
+                titleEn: 'National Examinations',
+                titleAr: 'الامتحانات الوطنية',
+                bodyEn: 'Pass the national examinations required for certain professional programs as mandated by the Ministry of Higher Education.',
+                bodyAr: 'اجتياز الامتحانات الوطنية المطلوبة لبعض البرامج المهنية وفقاً لما تحدده وزارة التعليم العالي.'
+            },
+            {
+                titleEn: 'Graduation Approval',
+                titleAr: 'الموافقة على التخرج',
+                bodyEn: 'Upon fulfilling all requirements, the faculty council recommends graduation and the university issues the official graduation certificate and transcript.',
+                bodyAr: 'عند استيفاء جميع المتطلبات، يوصي مجلس الكلية بالتخرج وتصدر الجامعة شهادة التخرج الرسمية وكشف الدرجات.'
             }
         ]
     }
