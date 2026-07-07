@@ -1,0 +1,25 @@
+<section class="relative bg-white font-hacen" x-data>
+  <div class="relative h-[320px] overflow-hidden md:h-[360px]">
+    <img src="/images/uni-main-place.JPG"
+         alt="Syrian Private University"
+         class="h-full w-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-spu-blue/80 via-spu-blue/50 to-spu-blue/0"></div>
+    <div class="absolute inset-0">
+      <div class="container flex h-full flex-col items-center justify-center pt-16 text-center text-white">
+        <nav class="flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-white/85">
+          <a href="/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? 'الرئيسية' : 'Home'"></a>
+          <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+          <a href="/campus-life/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? 'الحياة الجامعية' : 'Campus Life'"></a>
+          <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+          <a href="/campus-life/career-development/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? 'التطوير المهني' : 'Career Development'"></a>
+          <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+          <a href="/campus-life/career-development/jobs/" class="transition hover:text-white" x-text="$store.app.currentLang === 'ar' ? 'لوحة الوظائف' : 'Job Board'"></a>
+          <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2.5 w-2.5 brightness-0 invert rtl:rotate-180" aria-hidden="true">
+          <span x-text="$store.app.currentLang === 'ar' ? 'التقديم على الوظيفة' : 'Apply for Job'"></span>
+        </nav>
+        <h1 class="mt-2 text-4xl font-bold leading-tight md:text-5xl"
+            x-text="$store.app.currentLang === 'ar' ? 'التقديم على الوظيفة' : 'Apply for Job'"></h1>
+      </div>
+    </div>
+  </div>
+</section>

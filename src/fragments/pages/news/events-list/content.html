@@ -1,0 +1,126 @@
+<section class="bg-white py-10 font-hacen md:py-14"
+         x-data="eventsListApp()"
+         x-init="init()">
+  <div class="container">
+    <div class="mb-6 flex flex-wrap items-center gap-3">
+      <template x-for="cat in $store.eventsPage.categories" :key="cat.id">
+        <button type="button"
+                @click="selectedCategory = cat.id"
+                class="rounded-[4px] border px-4 py-2 text-[12px] font-bold transition"
+                :class="selectedCategory === cat.id
+                  ? 'border-spu-blue bg-spu-blue text-white'
+                  : 'border-[#e5e7ee] bg-white text-[#626b82] hover:border-spu-blue hover:text-spu-blue'"
+                x-text="isAr ? cat.labelAr : cat.labelEn"></button>
+      </template>
+    </div>
+
+    <div class="mb-10">
+      <h2 class="mb-5 text-[24px] font-bold leading-tight text-spu-blue md:text-[28px]"
+          x-text="isAr ? $store.eventsPage.upcomingSection.titleAr : $store.eventsPage.upcomingSection.titleEn"></h2>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <template x-for="event in filteredUpcoming" :key="event.id">
+          <article class="group flex flex-col overflow-hidden rounded-[6px] border border-[#e5e7ee] bg-white transition-shadow hover:shadow-lg">
+            <div class="relative h-[180px] overflow-hidden">
+              <img :src="event.image"
+                   :alt="isAr ? event.titleAr : event.titleEn"
+                   class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+              <div class="absolute left-3 top-3">
+                <span class="inline-flex rounded-[3px] bg-spu-blue px-2.5 py-1 text-[10px] font-bold text-white"
+                      x-text="isAr ? event.categoryAr : event.categoryEn"></span>
+              </div>
+              <div class="absolute right-3 top-3" x-show="event.fee === 'free'">
+                <span class="inline-flex rounded-[3px] bg-green-600 px-2.5 py-1 text-[10px] font-bold text-white"
+                      x-text="isAr ? $store.eventsPage.labels.freeAr : $store.eventsPage.labels.freeEn"></span>
+              </div>
+            </div>
+
+            <div class="flex flex-col flex-1 p-4">
+              <h3 class="mb-3 text-[14px] font-bold leading-snug text-spu-blue line-clamp-2"
+                  x-text="isAr ? event.titleAr : event.titleEn"></h3>
+
+              <div class="mb-4 space-y-2">
+                <div class="flex items-center gap-2 text-[11px] font-semibold text-[#626b82]">
+                  <img src="/images/icon-calendar-outline.svg" alt="" class="h-3.5 w-3.5 opacity-50">
+                  <span x-text="isAr ? event.dateAr : event.dateEn"></span>
+                </div>
+                <div class="flex items-center gap-2 text-[11px] font-semibold text-[#626b82]">
+                  <img src="/images/icon-history-outline.svg" alt="" class="h-3.5 w-3.5 opacity-50">
+                  <span x-text="isAr ? event.timeAr : event.timeEn"></span>
+                </div>
+                <div class="flex items-center gap-2 text-[11px] font-semibold text-[#626b82]">
+                  <img src="/images/icon-map-outline.svg" alt="" class="h-3.5 w-3.5 opacity-50">
+                  <span x-text="isAr ? event.locationAr : event.locationEn"></span>
+                </div>
+              </div>
+
+              <p class="mb-4 text-[12px] leading-relaxed text-[#4d5568] line-clamp-3"
+                 x-text="isAr ? event.descriptionAr : event.descriptionEn"></p>
+
+              <div class="mt-auto flex items-center justify-between border-t border-[#f0f1f5] pt-3">
+                <div class="text-[11px] font-semibold text-[#626b82]">
+                  <span x-text="event.capacity - event.registered"></span>
+                  <span x-text="isAr ? $store.eventsPage.labels.spotsLeftAr : $store.eventsPage.labels.spotsLeftEn"></span>
+                </div>
+                <a :href="'/news/events-list/register/?event=' + event.id"
+                   class="inline-flex items-center gap-1.5 rounded-[4px] bg-spu-red px-4 py-2 text-[11px] font-bold text-white transition hover:bg-spu-red/90"
+                   x-text="isAr ? $store.eventsPage.labels.registerAr : $store.eventsPage.labels.registerEn"></a>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+
+      <div x-show="filteredUpcoming.length === 0"
+           class="rounded-[6px] border border-[#e5e7ee] bg-[#f9fafc] py-12 text-center">
+        <p class="text-[14px] font-semibold text-[#626b82]">No events found in this category.</p>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mb-5 text-[24px] font-bold leading-tight text-spu-blue md:text-[28px]"
+          x-text="isAr ? $store.eventsPage.pastSection.titleAr : $store.eventsPage.pastSection.titleEn"></h2>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <template x-for="event in $store.eventsPage.past" :key="event.id">
+          <a :href="'/news/events-list/past/?event=' + event.id"
+             class="group flex items-center gap-4 rounded-[6px] border border-[#e5e7ee] bg-white p-4 opacity-70 transition hover:border-spu-blue/30 hover:shadow-md hover:opacity-100">
+            <div class="flex h-[60px] w-[60px] flex-shrink-0 flex-col items-center justify-center rounded-[4px] bg-[#f5f6fa] text-center transition group-hover:bg-spu-blue/5">
+              <span class="text-[10px] font-bold uppercase tracking-wide text-spu-red"
+                    x-text="(isAr ? event.dateAr : event.dateEn).split(' ')[0]"></span>
+              <span class="text-[16px] font-bold text-spu-blue"
+                    x-text="(isAr ? event.dateAr : event.dateEn).split(' ')[1]?.replace(',','')"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="text-[13px] font-bold leading-snug text-spu-blue line-clamp-2 group-hover:text-spu-red"
+                  x-text="isAr ? event.titleAr : event.titleEn"></h3>
+              <p class="mt-1 text-[11px] font-semibold text-[#626b82]"
+                 x-text="isAr ? event.participantsAr : event.participantsEn"></p>
+              <span class="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-spu-red opacity-0 transition group-hover:opacity-100">
+                <span x-text="isAr ? 'عرض التفاصيل' : 'View Details'"></span>
+                <svg class="h-3 w-3 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function eventsListApp() {
+  return {
+    selectedCategory: 'all',
+    get isAr() {
+      return Alpine.store('app').currentLang === 'ar';
+    },
+    get filteredUpcoming() {
+      const events = Alpine.store('eventsPage').upcoming;
+      if (this.selectedCategory === 'all') return events;
+      return events.filter(e => e.category === this.selectedCategory);
+    },
+    init() {}
+  };
+}
+</script>

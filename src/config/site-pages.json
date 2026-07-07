@@ -920,6 +920,23 @@
       ]
     },
     {
+      "name": "research-conferences-register",
+      "fileName": "research/conferences/register/index.html",
+      "route": "/research/conferences/register/",
+      "title": "Conference Registration | Syrian Private University",
+      "description": "Register for SPU scientific conferences, symposiums, and academic seminars. Complete your registration online.",
+      "ogImage": "/images/uni-main-place.JPG",
+      "keywords": [
+        "SPU conference registration",
+        "Syrian Private University events",
+        "academic symposium registration"
+      ],
+      "fragments": [
+        "pages/research/conferences/register/hero.html",
+        "pages/research/conferences/register/content.html"
+      ]
+    },
+    {
       "name": "research-library",
       "fileName": "research/library/index.html",
       "route": "/research/library/",
@@ -1106,6 +1123,24 @@
       ]
     },
     {
+      "name": "campus-life-career-development-jobs-apply",
+      "fileName": "campus-life/career-development/jobs/apply/index.html",
+      "route": "/campus-life/career-development/jobs/apply/",
+      "title": "Job Application | Syrian Private University",
+      "description": "Apply for job openings at Syrian Private University. Complete your application online across academic, administrative, and technical roles.",
+      "ogImage": "/images/career-development-hero.webp",
+      "keywords": [
+        "SPU job application",
+        "Syrian Private University careers",
+        "apply for SPU jobs",
+        "university job application Syria"
+      ],
+      "fragments": [
+        "pages/student-life/career-development/jobs/apply/hero.html",
+        "pages/student-life/career-development/jobs/apply/content.html"
+      ]
+    },
+    {
       "name": "services",
       "fileName": "services.html",
       "route": "/e-services/",
@@ -1282,6 +1317,58 @@
       "fragments": [
         "pages/news/events/hero.html",
         "pages/news/events/content.html"
+      ]
+    },
+    {
+      "name": "news-events-list",
+      "fileName": "news/events-list/index.html",
+      "route": "/news/events-list/",
+      "title": "University Events | Syrian Private University",
+      "description": "Discover and register for upcoming academic events, workshops, seminars, and campus activities at Syrian Private University.",
+      "ogImage": "/images/DSC_0647.JPG",
+      "keywords": [
+        "SPU events",
+        "Syrian Private University events",
+        "academic workshops",
+        "university seminars"
+      ],
+      "fragments": [
+        "pages/news/events-list/hero.html",
+        "pages/news/events-list/content.html"
+      ]
+    },
+    {
+      "name": "news-events-list-register",
+      "fileName": "news/events-list/register/index.html",
+      "route": "/news/events-list/register/",
+      "title": "Event Registration | Syrian Private University",
+      "description": "Register for upcoming events at Syrian Private University. Complete your event registration online.",
+      "ogImage": "/images/DSC_0647.JPG",
+      "keywords": [
+        "SPU event registration",
+        "Syrian Private University events",
+        "university workshop registration"
+      ],
+      "fragments": [
+        "pages/news/events-list/register/hero.html",
+        "pages/news/events-list/register/content.html"
+      ]
+    },
+    {
+      "name": "news-events-list-past",
+      "fileName": "news/events-list/past/index.html",
+      "route": "/news/events-list/past/",
+      "title": "Past Event Details | Syrian Private University",
+      "description": "View details, highlights, and results of past events at Syrian Private University.",
+      "ogImage": "/images/DSC_0647.JPG",
+      "keywords": [
+        "SPU past events",
+        "Syrian Private University event history",
+        "university event results"
+      ],
+      "fragments": [
+        "pages/news/events-list/past/hero.html",
+        "pages/news/events-list/past/content.html"
       ]
     },
     {

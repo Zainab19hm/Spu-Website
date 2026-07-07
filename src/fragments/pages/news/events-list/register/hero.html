@@ -1,0 +1,20 @@
+<section class="bg-white pt-28 pb-4 font-hacen md:pt-36"
+         x-data="{ get page() { return $store.eventsPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+  <div class="container mx-auto text-center">
+    <nav class="mb-3 flex items-center gap-2 text-[11px] text-center justify-center font-semibold text-spu-blue/50">
+      <a href="/" class="transition-colors hover:text-spu-blue" x-text="isAr ? 'الرئيسية' : 'Home'"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <a href="/news/" class="transition-colors hover:text-spu-blue" x-text="isAr ? 'الأخبار' : 'News'"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <a href="/news/events-list/" class="transition-colors hover:text-spu-blue" x-text="isAr ? 'الفعاليات' : 'Events'"></a>
+      <img src="/images/icon-chevron-right-outline.svg" alt="" class="h-2 w-2 rtl:rotate-180" aria-hidden="true">
+      <span class="text-spu-blue/80" x-text="isAr ? 'التسجيل' : 'Register'"></span>
+    </nav>
+
+    <h1 class="text-[28px] font-bold leading-tight text-spu-blue md:text-[36px]"
+        x-text="isAr ? page.registerEvent?.titleAr : page.registerEvent?.titleEn" ></h1>
+    <p class="mt-2 text-base font-semibold text-spu-blue/70 md:text-lg"
+      
+       x-text="isAr ? 'تسجيل في الفعالية' : 'Event Registration'"></p>
+  </div>
+</section>

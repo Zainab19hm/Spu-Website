@@ -18,7 +18,7 @@
                 <!-- First Row: 3 items -->
                 <div class="flex flex-wrap items-center justify-center gap-4">
                     <template x-for="link in $store.newsPage.hero.links.slice(0, 3)" :key="link.id">
-                        <a :href="'#' + link.id" 
+                        <a :href="link.href || ('#' + link.id)" 
                            class="px-10 py-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-md text-sm font-bold transition-all hover:bg-white/20 hover:border-white/40"
                            x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn">
                         </a>
@@ -27,7 +27,7 @@
                 <!-- Second Row: 2 items -->
                 <div class="flex flex-wrap items-center justify-center gap-4">
                     <template x-for="link in $store.newsPage.hero.links.slice(3, 5)" :key="link.id">
-                        <a :href="'#' + link.id" 
+                        <a :href="link.href || ('#' + link.id)" 
                            class="px-10 py-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-md text-sm font-bold transition-all hover:bg-white/20 hover:border-white/40"
                            x-text="$store.app.currentLang === 'ar' ? link.labelAr : link.labelEn">
                         </a>

@@ -1,4 +1,5 @@
 import { registerLayoutStores } from './register-layout-stores.js';
+import { registerDynamicFormStore } from './dynamic-form-store.js';
 
 const pageStoreLoaders = {
     home: () => import('./pages/home-stores.js').then((module) => module.registerHomeStores),
@@ -49,6 +50,7 @@ const pageStoreLoaders = {
     'research-detail': () => import('./pages/research-detail-stores.js').then((module) => module.registerResearchDetailStores),
     'research-expert-finder': () => import('./pages/research-expert-finder-stores.js').then((module) => module.registerExpertFinderStores),
     'research-conferences': () => import('./pages/research-conferences-stores.js').then((module) => module.registerConferencesStores),
+    'research-conferences-register': () => import('./pages/research-conferences-stores.js').then((module) => module.registerConferencesStores),
     'research-library': () => import('./pages/research-library-stores.js').then((module) => module.registerLibraryStores),
     'research-policies': () => import('./pages/research-policies-stores.js').then((module) => module.registerPoliciesStores),
     'research-office': () => import('./pages/research-office-stores.js').then((module) => module.registerOfficeStores),
@@ -64,6 +66,9 @@ const pageStoreLoaders = {
     'news-article': () => import('./pages/news-article-stores.js').then((module) => module.registerNewsArticleStores),
     'news-announcements': () => import('./pages/announcements-stores.js').then((module) => module.registerAnnouncementsStores),
     'news-events': () => import('./pages/news-events-stores.js').then((module) => module.registerNewsEventsStores),
+    'news-events-list': () => import('./pages/events-list-stores.js').then((module) => module.registerEventsListStores),
+    'news-events-list-register': () => import('./pages/events-list-stores.js').then((module) => module.registerEventsListStores),
+    'news-events-list-past': () => import('./pages/events-list-stores.js').then((module) => module.registerEventsListStores),
     'news-gallery': () => import('./pages/media-gallery-stores.js').then((module) => module.registerMediaGalleryStores),
     contact: () => import('./pages/contact-stores.js').then((module) => module.registerContactStores),
     'campus-life-services': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
@@ -74,6 +79,7 @@ const pageStoreLoaders = {
     'campus-life-clubs-activities': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
     'campus-life-career-development': () => import('./pages/student-life-stores.js').then((module) => module.registerStudentLifeStores),
     'campus-life-career-development-jobs': () => import('./pages/careers-stores.js').then((module) => module.registerCareersStores),
+    'campus-life-career-development-jobs-apply': () => import('./pages/careers-stores.js').then((module) => module.registerCareersStores),
     'campus-life-damascus-research-pub': () => import('./pages/damascus-research-stores.js').then((module) => module.registerDamascusResearchStores),
     'campus-life-rules-regulations': () => import('./pages/rules-regulations-stores.js').then((module) => module.registerRulesRegulationsStores),
     'campus-life-general-rules': () => import('./pages/general-rules-stores.js').then((module) => module.registerGeneralRulesStores),
@@ -185,6 +191,7 @@ function getCareerJobStoreLoader(pageName) {
 
 export async function registerStores(Alpine, { pageName = 'home' } = {}) {
     registerLayoutStores(Alpine, { pageName });
+    registerDynamicFormStore(Alpine);
 
     if (pagesUsingFacultyCatalog.has(pageName)) {
         const { registerFacultyCatalogStore } = await import('./register-faculty-catalog-store.js');

@@ -1187,8 +1187,69 @@
         upcomingSection: { titleEn: 'Upcoming Events', titleAr: 'الفعاليات القادمة', viewAllEn: 'View All Events', viewAllAr: 'عرض جميع الفعاليات' },
         pastSection: { titleEn: 'Past Conferences', titleAr: 'المؤتمرات السابقة', proceedingsEn: 'Proceedings Available', proceedingsAr: 'الوقائع متاحة' },
         upcoming: [
-            { id: 'conf-001', titleEn: 'International Conference on AI in Healthcare 2026', titleAr: 'المؤتمر الدولي حول الذكاء الاصطناعي في الرعاية الصحية 2026', dateEn: 'March 15-17, 2026', dateAr: '15-17 مارس 2026', locationEn: 'Damascus, Syria', locationAr: 'دمشق، سوريا', descriptionEn: 'Join leading experts in artificial intelligence and healthcare professionals for three days of keynote talks, workshops, and panel discussions.', descriptionAr: 'انضم إلى خبراء الذكاء الاصطناعي والمهنيين في مجال الرعاية الصحية لثلاثة أيام من المحاضرات الرئيسية وورش العمل والنقاشات.', image: '/images/research-clinical-simulation.webp', registrationUrl: '#', eventTypeEn: 'International Conference', eventTypeAr: 'مؤتمر دولي' },
-            { id: 'conf-002', titleEn: 'Symposium on Pharmaceutical Innovation', titleAr: 'ندوة الابتكار الصيدلاني', dateEn: 'April 22, 2026', dateAr: '22 أبريل 2026', locationEn: 'SPU Campus, Damascus', locationAr: 'حرم الجامعة، دمشق', descriptionEn: 'A one-day symposium focusing on cutting-edge developments in pharmaceutical sciences, drug delivery, and quality assurance.', descriptionAr: 'ندوة يومية تركز على التطورات المتقدمة في العلوم الصيدلانية وإيصال الدواء وضمان الجودة.', image: '/images/pharmacy-place.jpg', registrationUrl: '#', eventTypeEn: 'Symposium', eventTypeAr: 'ندوة' }
+            { id: 'conf-001', titleEn: 'International Conference on AI in Healthcare 2026', titleAr: 'المؤتمر الدولي حول الذكاء الاصطناعي في الرعاية الصحية 2026', dateEn: 'March 15-17, 2026', dateAr: '15-17 مارس 2026', locationEn: 'Damascus, Syria', locationAr: 'دمشق، سوريا', descriptionEn: 'Join leading experts in artificial intelligence and healthcare professionals for three days of keynote talks, workshops, and panel discussions.', descriptionAr: 'انضم إلى خبراء الذكاء الاصطناعي والمهنيين في مجال الرعاية الصحية لثلاثة أيام من المحاضرات الرئيسية وورش العمل والنقاشات.', image: '/images/research-clinical-simulation.webp', registrationUrl: '#', eventTypeEn: 'International Conference', eventTypeAr: 'مؤتمر دولي', formId: 'conference-registration',
+                highlightsEn: ['3 Days of Keynote Talks', 'Hands-on Workshops', 'Panel Discussions', 'Networking Sessions', 'Research Paper Presentations', 'Exhibition Area'],
+                highlightsAr: ['3 أيام من المحاضرات الرئيسية', 'ورش عمل تطبيقية', 'نقاشات لجنة', 'جلسات التواصل', 'عرض أوراق بحثية', 'منطقة معرض'],
+                topicsEn: ['AI-Powered Diagnostics', 'Medical Imaging & Deep Learning', 'Electronic Health Records', 'Drug Discovery with AI', 'Telemedicine & Remote Monitoring', 'Ethics in Healthcare AI'],
+                topicsAr: ['التشخيص بالذكاء الاصطناعي', 'التصوير الطبي والتعلم العميق', 'السجلات الصحية الإلكترونية', 'اكتشاف الأدوية بالذكاء الاصطناعي', 'الطب عن بُعد والمراقبة عن بعد', 'أخلاقيات الذكاء الاصطناعي في الرعاية الصحية'],
+                program: [
+                    { dayEn: 'Day 1 — March 15', dayAr: 'اليوم الأول — 15 مارس', items: [
+                        { timeEn: '09:00 - 09:30', timeAr: '09:00 - 09:30', titleEn: 'Registration & Welcome Coffee', titleAr: 'التسجيل وقهوة الترحيب' },
+                        { timeEn: '09:30 - 10:30', timeAr: '09:30 - 10:30', titleEn: 'Opening Ceremony & Keynote: The Future of AI in Medicine', titleAr: 'حفل الافتتاح والمحاضرة الرئيسية: مستقبل الذكاء الاصطناعي في الطب' },
+                        { timeEn: '11:00 - 12:30', timeAr: '11:00 - 12:30', titleEn: 'Panel: AI-Powered Diagnostics — Current State & Challenges', titleAr: 'جنة: التشخيص بالذكاء الاصطناعي — الوضع الحالي والتحديات' },
+                        { timeEn: '12:30 - 14:00', timeAr: '12:30 - 14:00', titleEn: 'Lunch Break & Networking', titleAr: 'استراحة الغداء والتواصل' },
+                        { timeEn: '14:00 - 15:30', timeAr: '14:00 - 15:30', titleEn: 'Workshop: Medical Imaging with Deep Learning', titleAr: 'ورشة عمل: التصوير الطبي بالتعلم العميق' }
+                    ]},
+                    { dayEn: 'Day 2 — March 16', dayAr: 'اليوم الثاني — 16 مارس', items: [
+                        { timeEn: '09:00 - 10:30', timeAr: '09:00 - 10:30', titleEn: 'Keynote: Transforming EHR with Machine Learning', titleAr: 'المحاضرة الرئيسية: تحويل السجلات الصحية الإلكترونية بتعلم الآلة' },
+                        { timeEn: '11:00 - 12:30', timeAr: '11:00 - 12:30', titleEn: 'Paper Presentations: Clinical AI Applications', titleAr: 'عرض الأوراق: تطبيقات الذكاء الاصطناعي السريري' },
+                        { timeEn: '14:00 - 15:30', timeAr: '14:00 - 15:30', titleEn: 'Workshop: Drug Discovery with AI', titleAr: 'ورشة عمل: اكتشاف الأدوية بالذكاء الاصطناعي' }
+                    ]},
+                    { dayEn: 'Day 3 — March 17', dayAr: 'اليوم الثالث — 17 مارس', items: [
+                        { timeEn: '09:00 - 10:30', timeAr: '09:00 - 10:30', titleEn: 'Panel: Ethics & Regulation in Healthcare AI', titleAr: 'جنة: أخلاقيات وتنظيم الذكاء الاصطناعي في الرعاية الصحية' },
+                        { timeEn: '11:00 - 12:30', timeAr: '11:00 - 12:30', titleEn: 'Telemedicine & Remote Patient Monitoring', titleAr: 'الطب عن بُعد ومراقبة المرضى عن بعد' },
+                        { timeEn: '12:30 - 13:30', timeAr: '12:30 - 13:30', titleEn: 'Closing Ceremony & Awards', titleAr: 'حفل الختام والجوائز' }
+                    ]}
+                ],
+                speakersEn: [
+                    { nameEn: 'Dr. Sarah Mitchell', nameAr: 'د. سارة ميتشل', titleEn: 'Professor of Biomedical AI, MIT', titleAr: 'أستاذة الذكاء الاصطناعي الطبي، MIT' },
+                    { nameEn: 'Dr. Ahmad Al-Hassan', nameAr: 'د. أحمد الحسن', titleEn: 'Director of AI Research, SPU', titleAr: 'مدير أبحاث الذكاء الاصطناعي، الجامعة السورية الخاصة' },
+                    { nameEn: 'Dr. Maria Costa', nameAr: 'د. ماريا كوستا', titleEn: 'Head of Digital Health, WHO', titleAr: 'رئيسة الصحة الرقمية، منظمة الصحة العالمية' }
+                ],
+                speakersAr: [
+                    { nameEn: 'Dr. Sarah Mitchell', nameAr: 'د. سارة ميتشل', titleEn: 'Professor of Biomedical AI, MIT', titleAr: 'أستاذة الذكاء الاصطناعي الطبي، MIT' },
+                    { nameEn: 'Dr. Ahmad Al-Hassan', nameAr: 'د. أحمد الحسن', titleEn: 'Director of AI Research, SPU', titleAr: 'مدير أبحاث الذكاء الاصطناعي، الجامعة السورية الخاصة' },
+                    { nameEn: 'Dr. Maria Costa', nameAr: 'د. ماريا كوستا', titleEn: 'Head of Digital Health, WHO', titleAr: 'رئيسة الصحة الرقمية، منظمة الصحة العالمية' }
+                ],
+                registrationDeadlineEn: 'March 10, 2026', registrationDeadlineAr: '10 مارس 2026',
+                feesEn: 'Free for SPU affiliates / $50 external participants', feesAr: 'مجاني لأعضاء الجامعة / 50$ للمشاركين الخارجيين'
+            },
+            { id: 'conf-002', titleEn: 'Symposium on Pharmaceutical Innovation', titleAr: 'ندوة الابتكار الصيدلاني', dateEn: 'April 22, 2026', dateAr: '22 أبريل 2026', locationEn: 'SPU Campus, Damascus', locationAr: 'حرم الجامعة، دمشق', descriptionEn: 'A one-day symposium focusing on cutting-edge developments in pharmaceutical sciences, drug delivery, and quality assurance.', descriptionAr: 'ندوة يومية تركز على التطورات المتقدمة في العلوم الصيدلانية وإيصال الدواء وضمان الجودة.', image: '/images/pharmacy-place.jpg', registrationUrl: '#', eventTypeEn: 'Symposium', eventTypeAr: 'ندوة', formId: 'symposium-registration',
+                highlightsEn: ['Expert Speakers', 'Live Demonstrations', 'Poster Sessions', 'Q&A Panels', 'Certificate of Attendance'],
+                highlightsAr: ['محاضرون خبراء', 'عروض حية', 'جلسات ملصقات', 'جلسات أسئلة وأجوبة', 'شهادة حضور'],
+                topicsEn: ['Novel Drug Delivery Systems', 'Pharmaceutical Quality Control', 'Biopharmaceuticals', 'Nanotechnology in Pharmacy', 'Regulatory Affairs'],
+                topicsAr: ['أنظمة إيصال الأدوية الجديدة', 'ضمان جودة الأدوية', 'الأدوية الحيوية', 'النانوتكنولوجيا في الصيدلة', 'الشؤون التنظيمية'],
+                program: [
+                    { dayEn: 'Full Day — April 22', dayAr: 'يوم كامل — 22 أبريل', items: [
+                        { timeEn: '09:00 - 09:30', timeAr: '09:00 - 09:30', titleEn: 'Registration & Welcome', titleAr: 'التسجيل والترحيب' },
+                        { timeEn: '09:30 - 10:30', timeAr: '09:30 - 10:30', titleEn: 'Keynote: Future of Drug Delivery', titleAr: 'المحاضرة الرئيسية: مستقبل إيصال الأدوية' },
+                        { timeEn: '10:45 - 12:00', timeAr: '10:45 - 12:00', titleEn: 'Session: Nanotechnology in Pharmacy', titleAr: 'جلسة: النانوتكنولوجيا في الصيدلة' },
+                        { timeEn: '12:00 - 13:30', timeAr: '12:00 - 13:30', titleEn: 'Lunch & Poster Presentations', titleAr: 'الغداء وعرض الملصقات' },
+                        { timeEn: '13:30 - 15:00', timeAr: '13:30 - 15:00', titleEn: 'Workshop: Quality Control Methods', titleAr: 'ورشة عمل: طرق ضمان الجودة' },
+                        { timeEn: '15:00 - 16:00', timeAr: '15:00 - 16:00', titleEn: 'Closing Panel & Certificates', titleAr: 'الجلسة الختامية والشهادات' }
+                    ]}
+                ],
+                speakersEn: [
+                    { nameEn: 'Prof. Huda Al-Khatib', nameAr: 'أ.د. هدى الخطيب', titleEn: 'Dean of Pharmacy Faculty, SPU', titleAr: 'عميدة كلية الصيدلة، الجامعة السورية الخاصة' },
+                    { nameEn: 'Dr. Omar Fadel', nameAr: 'د. عمر فضل', titleEn: 'Pharmaceutical Researcher, SPU', titleAr: 'باحث صيدلاني، الجامعة السورية الخاصة' }
+                ],
+                speakersAr: [
+                    { nameEn: 'Prof. Huda Al-Khatib', nameAr: 'أ.د. هدى الخطيب', titleEn: 'Dean of Pharmacy Faculty, SPU', titleAr: 'عميدة كلية الصيدلة، الجامعة السورية الخاصة' },
+                    { nameEn: 'Dr. Omar Fadel', nameAr: 'د. عمر فضل', titleEn: 'Pharmaceutical Researcher, SPU', titleAr: 'باحث صيدلاني، الجامعة السورية الخاصة' }
+                ],
+                registrationDeadlineEn: 'April 18, 2026', registrationDeadlineAr: '18 أبريل 2026',
+                feesEn: 'Free for all participants', feesAr: 'مجاني لجميع المشاركين'
+            }
         ],
         past: [
             { id: 'conf-past-001', titleEn: 'Regional Conference on Dental Sciences', titleAr: 'مؤتمر العلوم الطبية السنية الإقليمي', dateEn: 'November 2025', dateAr: 'نوفمبر 2025', locationEn: 'Damascus, Syria', locationAr: 'دمشق، سوريا', descriptionEn: 'Three-day conference featuring presentations from leading dental researchers across the region.', descriptionAr: 'مؤتمر ثلاثة أيام يتضمن عروضاً من أبرز باحثي طب الأسنان في المنطقة.', image: '/images/research-digital-dentistry.webp', hasProceedings: true, proceedingsUrl: '#', participantsEn: '150+ Participants', participantsAr: '+150 مشارك' },

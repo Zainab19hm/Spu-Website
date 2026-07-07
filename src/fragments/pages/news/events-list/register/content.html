@@ -1,0 +1,106 @@
+<section class="bg-white py-10 font-hacen"
+         x-data="{ get page() { return $store.eventsPage }, get isAr() { return $store.app.currentLang === 'ar' } }">
+
+  <!-- Event not found -->
+  <div x-show="!page.registerEvent"
+       class="container mx-auto ">
+    <div class="mx-auto text-center py-20">
+      <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+        <svg class="h-10 w-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+      <h2 class="text-xl font-bold text-spu-blue"
+          x-text="isAr ? 'الفعالية غير موجودة' : 'Event Not Found'"></h2>
+      <p class="mt-2 text-sm text-spu-blue/60"
+         x-text="isAr ? 'لم يتم العثور على الفعالية المطلوبة.' : 'The requested event could not be found.'"></p>
+      <a href="/news/events-list/"
+         class="mt-6 inline-flex items-center gap-2 rounded-lg bg-spu-red px-6 py-3 text-sm font-bold text-white transition hover:bg-spu-blue">
+        <span x-text="isAr ? 'العودة للفعاليات' : 'Back to Events'"></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Full width image -->
+  <div x-show="page.registerEvent" class="relative h-[250px] container overflow-hidden md:h-[400px]">
+    <img :src="page.registerEvent?.image"
+         :alt="isAr ? page.registerEvent?.titleAr : page.registerEvent?.titleEn"
+         class="h-full w-full object-cover">
+    <div class="absolute  top-0 bg-spu-red px-4 py-2 text-xs font-bold text-white">
+      <span x-text="isAr ? page.registerEvent?.categoryAr : page.registerEvent?.categoryEn"></span>
+    </div>
+  </div>
+
+  <!-- Content: left details + right form -->
+  <div x-show="page.registerEvent" class="container mx-auto px-6">
+    <div class="mx-auto container">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_400px]">
+
+        <!-- Left: Event details -->
+        <div>
+          <div class="mb-6 flex flex-wrap mt-5 items-center gap-4 text-sm text-spu-blue/60">
+            <div class="flex items-center gap-1.5">
+              <img src="/images/icon-calendar-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+              <span x-text="isAr ? page.registerEvent?.dateAr : page.registerEvent?.dateEn"></span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="/images/icon-history-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+              <span x-text="isAr ? page.registerEvent?.timeAr : page.registerEvent?.timeEn"></span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="/images/icon-map-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+              <span x-text="isAr ? page.registerEvent?.locationAr : page.registerEvent?.locationEn"></span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="/images/icon-users-outline.svg" alt="" class="h-4 w-4" aria-hidden="true">
+              <span x-text="(page.registerEvent?.capacity - page.registerEvent?.registered) + ' ' + (isAr ? 'أماكن متبقية' : 'spots left')"></span>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-8">
+            <h2 class="mb-4 flex items-center gap-2 text-lg font-bold text-spu-blue">
+              <svg class="h-5 w-5 text-spu-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span x-text="isAr ? 'نظرة عامة على الفعالية' : 'Event Overview'"></span>
+            </h2>
+            <p class="text-[14px] leading-relaxed text-[#4d5568]"
+               x-text="isAr ? page.registerEvent?.descriptionAr : page.registerEvent?.descriptionEn"></p>
+          </div>
+
+          <!-- Registration info -->
+          <div class="rounded-2xl border border-spu-blue/10 bg-spu-blue/[0.03] p-6">
+            <h3 class="mb-3 flex items-center gap-2 text-base font-bold text-spu-blue">
+              <svg class="h-5 w-5 text-spu-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span x-text="isAr ? 'معلومات التسجيل' : 'Registration Information'"></span>
+            </h3>
+            <ul class="space-y-2 text-sm text-spu-blue/70">
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span x-text="isAr ? 'التسجيل مجاني لجميع المشاركين' : 'Registration is free for all participants'"></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span x-text="isAr ? 'سيتم إرسال تأكيد التسجيل عبر البريد الإلكتروني' : 'Registration confirmation will be sent via email'"></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span x-text="isAr ? 'الأماكن محدودة - سجّل الآن' : 'Limited spots - Register now'"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Dynamic form -->
+        <div class="lg:sticky mt-5 lg:top-24 lg:self-start">
+          <div class="rounded-2xl border border-spu-blue/10 bg-white p-6 shadow-sm">
+            <h3 class="mb-2 text-sm font-bold text-spu-blue"
+                x-text="isAr ? $store.dynamicForm.schema?.titleAr : $store.dynamicForm.schema?.titleEn"></h3>
+            <h4 class="mb-4 pb-4 border-b border-gray-100 text-[13px] font-semibold text-spu-blue/70"
+                x-text="isAr ? page.registerEvent?.titleAr : page.registerEvent?.titleEn"></h4>
+            <include src="src/fragments/components/dynamic-form.html"></include>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -8,7 +8,7 @@ export const newsPageContent = {
         links: [
             { id: 'last-news', labelEn: 'Last News', labelAr: 'آخر الأخبار' },
             { id: 'announcements', labelEn: 'Announcements', labelAr: 'الإعلانات' },
-            { id: 'events', labelEn: 'Events', labelAr: 'الفعاليات' },
+            { id: 'events', labelEn: 'Events', labelAr: 'الفعاليات', href: '/news/events-list/' },
             { id: 'media-gallery', labelEn: 'Media Gallery', labelAr: 'معرض الوسائط' },
         ]
     },
@@ -154,6 +154,15 @@ export const newsPageContent = {
     ],
     explore: [
         {
+            id: 'events',
+            titleEn: 'Events',
+            titleAr: 'الفعاليات',
+            summaryEn: 'Browse and register for university events',
+            summaryAr: 'تصفح وسجل في فعاليات الجامعة',
+            icon: 'calendar',
+            link: '/news/events-list/'
+        },
+        {
             id: 'media',
             titleEn: 'Media Gallery',
             titleAr: 'معرض الوسائط',
@@ -162,7 +171,6 @@ export const newsPageContent = {
             icon: 'image',
             link: '/news/gallery/'
         },
-        
     ]
 };
 

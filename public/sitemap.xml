@@ -143,6 +143,9 @@
     <loc>https://spu.edu.sy/research/conferences/</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/research/conferences/register/</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/research/library/</loc>
   </url>
   <url>
@@ -173,6 +176,9 @@
     <loc>https://spu.edu.sy/campus-life/career-development/jobs/</loc>
   </url>
   <url>
+    <loc>https://spu.edu.sy/campus-life/career-development/jobs/apply/</loc>
+  </url>
+  <url>
     <loc>https://spu.edu.sy/e-services/</loc>
   </url>
   <url>
@@ -201,6 +207,15 @@
   </url>
   <url>
     <loc>https://spu.edu.sy/news/events/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/news/events-list/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/news/events-list/register/</loc>
+  </url>
+  <url>
+    <loc>https://spu.edu.sy/news/events-list/past/</loc>
   </url>
   <url>
     <loc>https://spu.edu.sy/news/gallery/</loc>
